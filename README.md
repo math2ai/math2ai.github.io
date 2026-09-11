@@ -1,8 +1,8 @@
-Try it at [math2ai.github.io
-](https://math2ai.github.io/)
 # Mathematics to AI Model Conversations
 
 100 concept pages and 100 understanding checks for curious learners.
+
+Try it at [math2ai.github.io](https://math2ai.github.io/).
 
 ## Use the course
 
