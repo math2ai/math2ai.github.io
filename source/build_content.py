@@ -19,9 +19,33 @@ SOURCES = {
  'h100': ['H100 specifications, NVIDIA', 'https://www.nvidia.com/en-us/data-center/h100/'],
  'tsmc': ['About TSMC, Taiwan Semiconductor Manufacturing Company', 'https://www.tsmc.com/english/aboutTSMC'],
  'las': ['LAS format, U.S. Geological Survey', 'https://www.usgs.gov/programs/national-geological-and-geophysical-data-preservation-program/las-format'],
- 'australia': ['Australian National Offshore Wells Data Collection, Geoscience Australia', 'https://ecat.ga.gov.au/geonetwork/srv/api/records/afcaf460-6994-40f8-bc24-4a87c30d82ec?language=eng'],
- 'nopims': ['NOPIMS, Geoscience Australia', 'https://www.ga.gov.au/nopims'],
- 'osdu': ['The Open Group OSDU Forum', 'https://www.opengroup.org/osdu-forum/home'],
+ 'minerals': ['Mineral Resource Assessments, U.S. Geological Survey', 'https://www.usgs.gov/programs/mineral-resources-program/science/mineral-resource-assessments'],
+ 'assays': ['Analytical Chemistry, U.S. Geological Survey', 'https://www.usgs.gov/centers/gggsc/science/analytical-chemistry'],
+ 'grade': ['MapMark4: Probability calculations for mineral resource assessment, USGS', 'https://pubs.usgs.gov/tm/07/c15/tm7c15.pdf'],
+ 'core': ['Direct mineral content prediction from drill core images via transfer learning, 2024', 'https://arxiv.org/abs/2403.18495'],
+ 'linear': ['Deep Learning: Linear Algebra', 'https://www.deeplearningbook.org/contents/linear_algebra.html'],
+ 'probability': ['Deep Learning: Probability and Information Theory', 'https://www.deeplearningbook.org/contents/prob.html'],
+ 'numerical': ['Deep Learning: Numerical Computation', 'https://www.deeplearningbook.org/contents/numerical.html'],
+ 'montecarlo': ['Deep Learning: Monte Carlo Methods', 'https://www.deeplearningbook.org/contents/monte_carlo.html'],
+ 'neighbors': ['Nearest Neighbors, scikit-learn', 'https://scikit-learn.org/stable/modules/neighbors.html'],
+ 'trees': ['Decision Trees, scikit-learn', 'https://scikit-learn.org/stable/modules/tree.html'],
+ 'ensemble': ['Ensemble Methods, scikit-learn', 'https://scikit-learn.org/stable/modules/ensemble.html'],
+ 'metrics': ['Classification Metrics, scikit-learn', 'https://scikit-learn.org/stable/modules/model_evaluation.html'],
+ 'calibration': ['Probability Calibration, scikit-learn', 'https://scikit-learn.org/stable/modules/calibration.html'],
+ 'cnn': ['Convolutional Neural Networks, PyTorch', 'https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html'],
+ 'gnn': ['Semi-Supervised Classification with Graph Convolutional Networks, Kipf and Welling', 'https://arxiv.org/abs/1609.02907'],
+ 'contrastive': ['A Simple Framework for Contrastive Learning of Visual Representations, Chen et al.', 'https://arxiv.org/abs/2002.05709'],
+ 'shift': ['A Theory of Learning from Different Domains, Ben-David et al.', 'https://research.google/pubs/a-theory-of-learning-from-different-domains/'],
+ 'active': ['Active Learning Literature Survey, Burr Settles', 'https://burrsettles.com/pub/settles.activelearning.pdf'],
+ 'causal': ['Causal Inference in Statistics: An Overview, Judea Pearl', 'https://ftp.cs.ucla.edu/pub/stat_ser/r350-reprint.pdf'],
+ 'diffusion': ['Denoising Diffusion Probabilistic Models, Ho et al.', 'https://arxiv.org/abs/2006.11239'],
+ 'experts': ['Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer, Shazeer et al.', 'https://arxiv.org/abs/1701.06538'],
+ 'cache': ['How Caching Works, Hugging Face Transformers', 'https://huggingface.co/docs/transformers/en/cache_explanation'],
+ 'distillation': ['Distilling the Knowledge in a Neural Network, Hinton et al.', 'https://arxiv.org/abs/1503.02531'],
+ 'qc': ['Quality Assurance and Quality Control, USGS', 'https://www.usgs.gov/centers/columbia-environmental-research-center/science/quality-assurance-and-quality-control'],
+ 'spatial': ['Cross-validation Strategies for Data with Spatial Structure, Roberts et al.', 'https://doi.org/10.1111/ecog.02881'],
+ 'kriging': ['Understanding Ordinary Kriging, ArcGIS Pro', 'https://pro.arcgis.com/en/pro-app/3.6/help/analysis/geostatistical-analyst/understanding-ordinary-kriging.htm'],
+ 'recovery': ['Mass Balancing of Concentrator Data, Metso', 'https://www.metso.com/insights/blog/mining-and-metals/mass-balancing-of-concentrator-data/'],
  'opensource': ['The Open Source Definition, Open Source Initiative', 'https://opensource.org/osd'],
 }
 
@@ -29,12 +53,28 @@ def sources_for(i):
     specific = {7:['tensor'],55:['autocorrelation'],31:['mse'],38:['autograd'],49:['autoencoder'],50:['autoencoder'],
      52:['vq'],53:['vq'],54:['vq'],56:['attention'],57:['attention'],58:['attention'],59:['attention'],60:['attention'],
      65:['sensors'],66:['sensors'],67:['rlbook'],68:['rlbook'],69:['rlbook'],70:['rlbook'],71:['rlbook'],72:['rlbook'],73:['rlbook'],74:['rlbook'],
-     75:['rlhf'],76:['rlbook'],78:['sensing'],83:['h100'],84:['cuda'],87:['h100'],88:['cuda'],89:['tsmc'],90:['las','australia','nopims'],93:['osdu'],95:['opensource']}
+     75:['rlhf'],76:['rlbook'],78:['sensing'],83:['h100'],84:['cuda'],87:['h100'],88:['cuda'],89:['tsmc'],90:['las','assays'],93:['minerals'],95:['opensource'],96:['grade','core']}
+    specific.update({101: ['probability'], 102: ['probability'], 103: ['linear'], 104: ['linear'], 105: ['probability'], 106: ['montecarlo'], 107: ['numerical'], 108: ['numerical'], 109: ['neighbors'], 110: ['trees'], 111: ['ensemble'], 112: ['ensemble'], 113: ['metrics'], 114: ['calibration'], 115: ['cnn'], 116: ['gnn'], 117: ['contrastive'], 118: ['shift'], 119: ['active'], 120: ['causal'], 121: ['diffusion'], 122: ['experts'], 123: ['cache'], 124: ['distillation'], 125: ['qc'], 126: ['spatial'], 127: ['kriging'], 128: ['recovery']})
     return [dict(title=SOURCES[k][0],url=SOURCES[k][1]) for k in specific.get(i,[])]
 
-LEGACY_IDS = json.loads((ROOT/'concept-ids.json').read_text())
+LEGACY_IDS = json.loads((ROOT/'concept-ids.json').read_text(encoding='utf-8'))
+# Nine authored additions per concept; the original question remains in the bank.
+bank = {}
+for line in (ROOT/'question-bank.txt').read_text(encoding='utf-8').splitlines():
+    if line.startswith('## '):
+        bank_title = line[3:]
+        assert bank_title not in bank, bank_title
+        bank[bank_title] = []
+    elif line.strip() and not line.startswith('#'):
+        fields = [part.strip() for part in line.split('|')]
+        assert len(fields) == 3, line
+        question, choices, feedback = fields
+        options = [part.strip() for part in choices.split('~')]
+        assert len(options) == len(set(options)) == 4 and all(options), line
+        assert question and feedback, line
+        bank[bank_title].append(dict(question=question, options=options, feedback=feedback))
 course=[]; chapters=[]
-for line in (ROOT/'curriculum-source.txt').read_text().splitlines():
+for line in (ROOT/'curriculum-source.txt').read_text(encoding='utf-8').splitlines():
     if line.startswith('# Chapter'):
         chapter=line.split('. ',1)[1]
         chapters.append({'title':chapter,'start':len(course)+1})
@@ -50,13 +90,30 @@ for line in (ROOT/'curriculum-source.txt').read_text().splitlines():
         course.append(dict(id=len(course)+1,legacyId=legacy_id,chapter=chapter,title=title,definition=definition,formula=formula,
          example=example,metaphor=metaphor,question=question,options=opts,correct=opts.index(correct),feedback=feedback,
          sources=sources_for(legacy_id)))
-assert len(course)==100
+assert len(course)==128
+assert set(LEGACY_IDS) == {c['title'] for c in course}
+assert set(bank) == {c['title'] for c in course}
+# Rewritten banks use fresh question IDs so obsolete answers do not mark new content complete.
+QUESTION_REVISIONS = {90:2, 91:2, 92:2, 93:2, 94:2, 96:2, 99:2, 100:2}
+for c in course:
+    prefix = str(c['legacyId'])
+    if c['legacyId'] in QUESTION_REVISIONS:
+        prefix += f"-r{QUESTION_REVISIONS[c['legacyId']]}"
+    additions = bank[c['title']]
+    assert len(additions) == 9, (c['title'], len(additions))
+    c['questions'] = [dict(id=f"{prefix}-01", **{k:c[k] for k in ('question','options','correct','feedback')})]
+    for number, entry in enumerate(additions, 2):
+        options = entry['options'][:]
+        correct = options[0]
+        random.Random(7041 + c['legacyId'] * 100 + number).shuffle(options)
+        c['questions'].append(dict(id=f"{prefix}-{number:02}", question=entry['question'],
+            options=options, correct=options.index(correct), feedback=entry['feedback']))
+    assert len({q['question'].casefold() for q in c['questions']}) == 10, c['title']
 assert not any('—' in json.dumps(c,ensure_ascii=False) for c in course)
-payload={'version':'1.2','revisedQuestions':[7,77],'title':'Mathematics to Model Conversations','chapters':chapters,'concepts':course,
- 'about': 'A cumulative course for Linus and other curious learners: 100 concepts, 100 worked examples, 100 metaphors, and 100 questions. Numerical examples are teaching examples, not measured project results. Mathematics uses real scalars unless stated otherwise. Bracketed inner lists denote matrix rows. Engineering concepts use operational calculations rather than invented mathematical definitions.',
- 'context': 'The application follows Danny Castonguay’s description of Sememe.ai and the proposed Australian well-log demonstration for the Houston OSDU forum. Available prior context also describes work with his mentor Shie Mannor on computational models, sensing, and control. Retrieval did not recover the complete prior Australian autoencoder chat. Dataset choice, SDK methods, model architecture, and performance remain unverified here. The VQ-VAE pipeline is an educational candidate design, not a claim about the current implementation.',
- 'background': 'Danny describes bld.ai as providing opportunity identification, product management, R&D, integration, and deployment for enterprises including BHP, BP, and Aramco; working with platforms such as DataRobot, Dataiku, and H2O; and collaborating on learning with Cohere. These are user-provided context, not independently audited case studies. The course uses that context to explain applied engineering, without claiming measured client outcomes.',
- 'mentor': 'Shie Mannor, Yishay Mansour, and Aviv Tamar coauthored Reinforcement Learning: Foundations. Mannor’s work on sensing and dynamical systems provides relevant background for the control chapter. These sources do not establish endorsement of this course or of the proposed Sememe.ai design.',
+payload={'version':'2.0','title':'math2ai','chapters':chapters,'concepts':course,
+ 'previousOrder':json.loads((ROOT/'previous-order.json').read_text(encoding='utf-8')),
+ 'subtitle': 'From mathematics to AI, one concept at a time.',
  'sources':[dict(title=v[0],url=v[1]) for v in SOURCES.values()]}
-(ROOT/'dist/curriculum.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
-print(f'Built {len(course)} concepts, each with four choices, one answer, and feedback.')
+(ROOT/'dist').mkdir(exist_ok=True)
+(ROOT/'dist/curriculum.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n', encoding='utf-8')
+print(f"Built {len(course)} concepts and {sum(len(c['questions']) for c in course)} questions.")

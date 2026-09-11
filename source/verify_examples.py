@@ -1,7 +1,7 @@
 """Independent arithmetic checks for the revised worked examples."""
 from pathlib import Path
 import json, math
-course=json.loads((Path(__file__).parent/'dist/curriculum.json').read_text())
+course=json.loads((Path(__file__).parent/'dist/curriculum.json').read_text(encoding='utf-8'))
 by_title={c['title']:c for c in course['concepts']}
 checks=[]
 def check(title,actual,expected,needle,tol=1e-10):
@@ -61,11 +61,12 @@ check('Tensor core',1*3+2*4+5,16,'[[16]]')
 check('CUDA',1*4+2,6,'= 6')
 check('CUDA',8*4,32,'32 threads')
 check('Compute cluster',20+60/4,35,'35 seconds')
-check('Well log and LAS',(30.2-30)/(101-100),.2,'0.2 °C')
+check('Borehole logs and assays',102-100,2,'= 2 m')
+check('Ore grade estimation',1000*.8/100,8,'= 8 tonnes')
 check('Provenance and uncertainty',30-.2,29.8,'29.8')
 check('Open source and reproducibility',sum([2,4,6])/3,4,'= 4')
 check('Representation alignment',-math.log(.2),1.61,'≈ 1.61',tol=.001)
 check('Representation alignment',-math.log(.8),.22,'≈ 0.22',tol=.005)
 check('Benchmark and ablation',100*(40-35)/50,10,'10 percentage points')
-check('Grounded model conversation',10+2*3-2,14,'14 L')
+check('Grounded model conversation',1000*.008*.80,6.4,'= 6.4 t')
 print(f'PASS: {len(checks)} independently calculated results across {len(set(checks))} revised examples.')
