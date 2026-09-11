@@ -2,6 +2,8 @@
 
 128 concept pages and 1,280 understanding checks for curious learners, with ten varied questions per concept.
 
+Try it at [math2ai.github.io](https://math2ai.github.io/).
+
 ## Use the course
 
 Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install, network requests to run the course, accounts, analytics, or server components.
