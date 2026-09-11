@@ -1,22 +1,12 @@
 # Mathematics to Model Conversations
 
-100 concept pages and 100 understanding checks for Linus and other curious learners.
+100 concept pages and 100 understanding checks for curious learners.
 
 ## Use the course
 
 Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install, network requests to run the course, accounts, analytics, or server components.
 
 Read a concept, choose one of four answers, press **Check answer**, read the explanation, then press **Next concept**. The menu jumps to any concept. **Try again** preserves the first-attempt record while updating the latest answer. Progress stays in this browser's local storage, when available. It does not sync between browsers or devices. Opening a downloaded file and visiting its hosted version may use different saved progress.
-
-## Publish on GitHub Pages
-
-1. Put `index.html` at the root of the repository you want to publish.
-2. Enable GitHub Pages for that repository, selecting the branch and root folder containing the file.
-3. Open the Pages URL provided by GitHub.
-
-See [GitHub’s publishing-source instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) for the current settings.
-
-The file uses embedded assets and works under a repository subpath. No build step or external JavaScript service is required. This package has not been published to a GitHub account.
 
 ## Print and present
 
@@ -61,4 +51,4 @@ The result is `source/dist/index.html`. Copy it to the repository root to publis
 
 ## License
 
-The original course source and website code in this package are offered under the included MIT license. Linked papers, documentation, data, company names, and third-party materials retain their own rights. This license does not license Sememe.ai's existing software or any Australian dataset.
+The original course source and website code in this package are offered under the included MIT license. Linked papers, documentation, data, company names, and third-party materials retain their own rights. 
