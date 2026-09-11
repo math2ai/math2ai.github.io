@@ -1,0 +1,2364 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="100 concepts connecting mathematics, AI, reinforcement learning, hardware, and a proposed well-log language interface. Worked examples, metaphors, and understanding checks."><title>Mathematics to Model Conversations</title><style>:root{color-scheme:light;--ink:#111;--muted:#555;--rule:#ccc;--paper:#fff;font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink)}button,select,input{font:inherit}button,select{border:1px solid #777;border-radius:0;background:white;color:#111;padding:.55rem .8rem}button{cursor:pointer}button:hover:not(:disabled){background:#eee}button:disabled{cursor:default;color:#888;border-color:#ddd}button.primary{background:#111;color:#fff;border-color:#111}button.primary:hover:not(:disabled){background:#333}button.primary:disabled{background:#ddd;color:#777;border-color:#ddd}a{color:inherit;text-underline-offset:3px}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #111;outline-offset:4px}.skip{position:absolute;left:1rem;top:-5rem;background:#fff;padding:1rem;z-index:3}.skip:focus{top:0}
+header,main,footer{max-width:1000px;margin:auto;padding:1.3rem 2rem}header{border-bottom:1px solid var(--rule)}.topline{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.brand{font-size:.85rem;font-weight:700;letter-spacing:.04em}.meta{font-size:.75rem;color:var(--muted)}.navigation{display:flex;align-items:center;gap:.8rem;margin-top:.9rem}.navigation label{font-size:.8rem;white-space:nowrap}.navigation select{max-width:100%;width:100%;font-size:.8rem;padding:.45rem}.progressline{display:flex;align-items:center;gap:1rem;margin-top:.8rem}.progressline progress{accent-color:#222;height:8px;flex:1;min-width:30px}.progressline span{font-size:.7rem;white-space:nowrap;color:var(--muted)}.chapter{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:0 0 .5rem}h1{font-size:2.25rem;line-height:1.12;letter-spacing:-.04em;margin:.4rem 0 1.4rem;font-weight:700;overflow-wrap:anywhere}h2{font-size:1.15rem;line-height:1.35;margin:0 0 .8rem}h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:1.2rem 0 .35rem}p{margin:.3rem 0 1rem}.formula{font-family:'DejaVu Sans',Arial,sans-serif;font-size:1.2rem;line-height:1.65;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}.concept{padding-bottom:1.2rem}.example,.metaphor{max-width:880px}.quiz{border-top:2px solid #111;padding-top:1.4rem;margin-top:.6rem}fieldset{border:0;margin:0;padding:0;min-width:0}legend{font-size:1.05rem;line-height:1.4;margin-bottom:.9rem;font-weight:700;max-width:100%}.option{display:flex;align-items:flex-start;gap:.8rem;padding:.75rem .8rem;border:1px solid var(--rule);margin:.5rem 0;cursor:pointer}.option input{margin:.34rem 0 0;accent-color:#111;flex-shrink:0;width:18px;height:18px}.option:has(input:checked){border:2px solid #111;padding:calc(.75rem - 1px) calc(.8rem - 1px);background:#f4f4f4}.option span{font-size:.93rem}.quiz-actions,.pager{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-top:1rem}.pager{justify-content:space-between;margin-top:1.4rem}.feedback{border-left:3px solid #111;margin:1rem 0;padding:.2rem 0 .2rem 1rem}.feedback p{font-size:.9rem;margin:.35rem 0}.feedback strong{font-size:.9rem}.hint{font-size:.75rem;color:var(--muted)}details{font-size:.85rem;margin-top:1.5rem}details p,details li{font-size:.8rem}summary{cursor:pointer}footer{border-top:1px solid var(--rule);font-size:.75rem;color:var(--muted);padding-bottom:2rem}footer p{font-size:.75rem}.sources-list{padding-left:1.2rem}.sources-list li{margin:.45rem 0}.completion{padding:1rem 0 3rem}.completion h1{margin-top:1rem}#storage-note:empty{display:none}[hidden]{display:none!important}.animate{animation:arrive .18s ease-out}@keyframes arrive{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.animate{animation:none}html{scroll-behavior:auto}}
+@media(max-width:600px){:root{font-size:18px}header,main,footer{padding:1rem 1.1rem}h1{font-size:1.85rem}.navigation{display:block}.navigation label{display:block;margin-bottom:.3rem}.progressline{gap:.5rem}.progressline span{font-size:.65rem}.formula{font-size:1.02rem;line-height:1.75}.pager button{font-size:.85rem}.brand{font-size:.78rem}.topline .meta{font-size:.68rem}.option{padding:.75rem .6rem}}
+@media print{@page{size:A4 landscape;margin:0}header,footer,.quiz,.pager,details,.skip,.completion{display:none!important}main{max-width:none;padding:0;margin:0}.print-page{display:block;break-after:page;width:297mm;height:210mm;padding:13mm 16mm;position:relative;overflow:hidden}.print-page:last-child{break-after:auto}.print-page .chapter{font-size:12pt}.print-page h1{font-size:32pt;margin:5mm 0 7mm}.print-page h3{font-size:12pt;margin:5mm 0 2mm}.print-page p{font-size:20pt;line-height:1.3;margin:0 0 3mm}.print-page .formula{font-size:21pt;line-height:1.3;margin:4mm 0}.print-page .print-foot{position:absolute;bottom:9mm;left:16mm;font-size:11pt;color:#555}}
+</style></head>
+<body><a class="skip" href="#title">Skip to concept</a>
+<header><div class="topline"><span class="brand">MATHEMATICS TO MODEL CONVERSATIONS</span><span class="meta">100 concepts · 6 chapters</span></div><div class="navigation"><label for="concept-select">Concept</label><select id="concept-select" aria-label="Choose a concept"></select></div><div class="progressline"><progress id="progress" max="100" value="0" aria-label="Questions checked"></progress><span id="progress-text" aria-live="polite">0/100 checked</span></div></header>
+<main><noscript><p>Enable JavaScript to use the course and questions. The printable PDF contains all 100 concepts without JavaScript.</p></noscript><div id="content"><article class="concept"><p class="chapter" id="chapter"></p><h1 id="title" tabindex="-1"></h1><h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p><h3>Worked example</h3><p class="example" id="example"></p><h3>Metaphor</h3><p class="metaphor" id="metaphor"></p><details id="concept-sources"><summary>Source reading</summary><div id="concept-source-list"></div></details></article>
+<section class="quiz" aria-label="Check your understanding"><form id="quiz-form"><fieldset><legend id="question"></legend><div id="choices"></div></fieldset><div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button id="retry" type="button" hidden>Try again</button><span class="hint" id="question-hint"></span></div></form><div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div></section><nav class="pager" aria-label="Concept navigation"><button id="previous">Previous</button><button class="primary" id="next" disabled>Next concept</button></nav></div><section class="completion" id="completion" hidden aria-label="Course results"></section></main>
+<footer><p>Progress is saved on this browser. No account or server is needed. Correct answers are understanding checks, not a mastery certificate.</p><p id="storage-note" role="status"></p><details><summary>About the course and sources</summary><p id="about"></p><p id="context"></p><p id="mentor"></p><p id="background"></p><div id="all-sources"></div><p>Source claims checked 7 September 2026. Linked sources retain their own licenses.</p></details><details><summary>Reset progress</summary><p>Clear only this course's answers on this browser.</p><button id="reset">Clear saved answers</button></details></footer>
+<script type="application/json" id="course-data">{
+  "version": "1.2",
+  "revisedQuestions": [
+    7,
+    77
+  ],
+  "title": "Mathematics to Model Conversations",
+  "chapters": [
+    {
+      "title": "Mathematics",
+      "start": 1
+    },
+    {
+      "title": "Learning from data",
+      "start": 25
+    },
+    {
+      "title": "Representations and language",
+      "start": 46
+    },
+    {
+      "title": "Reinforcement learning and control",
+      "start": 68
+    },
+    {
+      "title": "Computing hardware",
+      "start": 82
+    },
+    {
+      "title": "The well-log application",
+      "start": 91
+    }
+  ],
+  "concepts": [
+    {
+      "id": 1,
+      "legacyId": 1,
+      "chapter": "Mathematics",
+      "title": "Scalar",
+      "definition": "A scalar is one number. In this course, scalars are real numbers, which can lie anywhere on the number line.",
+      "formula": "x ∈ ℝ   means “x is a real number.”",
+      "example": "A temperature reading is 24.5 °C. Its numerical value, 24.5, is a scalar.",
+      "metaphor": "One dial shows one number. Later, many dials will become a vector.",
+      "question": "Which object is a scalar?",
+      "options": [
+        "(7.5, 2)",
+        "A table of 12 readings",
+        "7.5",
+        "A list of three temperatures"
+      ],
+      "correct": 2,
+      "feedback": "A scalar is a single number. A vector or matrix contains several scalar entries. The unit explains what a measured number means.",
+      "sources": []
+    },
+    {
+      "id": 2,
+      "legacyId": 2,
+      "chapter": "Mathematics",
+      "title": "Variable",
+      "definition": "A variable is a symbol whose value can vary within a specified set. An equation states a relationship between values.",
+      "formula": "y = 2x + 1",
+      "example": "If x = 3, then y = 2 × 3 + 1 = 7.",
+      "metaphor": "A labeled empty box can hold different numbers while the rule stays the same.",
+      "question": "For y = 2x + 1, what is y when x = 4?",
+      "options": [
+        "6",
+        "5",
+        "8",
+        "9"
+      ],
+      "correct": 3,
+      "feedback": "Substitute 4 for x: 2 × 4 + 1 = 9. The symbol changes its value; the rule does not change.",
+      "sources": []
+    },
+    {
+      "id": 3,
+      "legacyId": 3,
+      "chapter": "Mathematics",
+      "title": "Function",
+      "definition": "A function assigns exactly one output to each allowed input. Its domain is the set of allowed inputs.",
+      "formula": "f: ℝ → ℝ,   f(x) = x²",
+      "example": "f(3) = 9 and f(−3) = 9. Different inputs may share an output.",
+      "metaphor": "A machine follows one recipe for each input, even if two ingredients produce the same result.",
+      "question": "Can a function map both 3 and −3 to 9?",
+      "options": [
+        "No, outputs must all differ",
+        "Only if 9 is negative",
+        "Only if the function is linear",
+        "Yes, each input still has exactly one output"
+      ],
+      "correct": 3,
+      "feedback": "A function requires one output per input, not one input per output. The squaring function is many-to-one.",
+      "sources": []
+    },
+    {
+      "id": 4,
+      "legacyId": 4,
+      "chapter": "Mathematics",
+      "title": "Units",
+      "definition": "A physical quantity is a numerical value multiplied by a unit. Only quantities with compatible dimensions can be added.",
+      "formula": "distance = speed × time",
+      "example": "3 metres/second × 4 seconds = 12 metres. Seconds cancel.",
+      "metaphor": "Units are labels on measuring cups. Mixing litres with metres makes no meaningful total.",
+      "question": "At 5 metres/second for 6 seconds, how far do you travel?",
+      "options": [
+        "1.2 metres",
+        "30 seconds",
+        "30 metres",
+        "11 metres"
+      ],
+      "correct": 2,
+      "feedback": "Multiply speed by duration. Units are part of the calculation, not decoration. A model must preserve them when reading or answering questions about data.",
+      "sources": []
+    },
+    {
+      "id": 5,
+      "legacyId": 5,
+      "chapter": "Mathematics",
+      "title": "Vector",
+      "definition": "A vector in ℝⁿ is an ordered list of n real numbers. Each position is a coordinate or feature.",
+      "formula": "x = (x₁, …, xₙ);   2x = (2x₁, …, 2xₙ)",
+      "example": "If x = (2, 3), then 2x = (4, 6). Order matters: (2, 3) ≠ (3, 2).",
+      "metaphor": "A vector is a dashboard: each dial has its own fixed position.",
+      "question": "If x = (2, 5), what is 3x?",
+      "options": [
+        "(15, 6)",
+        "(5, 8)",
+        "21",
+        "(6, 15)"
+      ],
+      "correct": 3,
+      "feedback": "Scalar multiplication multiplies every coordinate. It does not add 3, collapse the list, or reverse its order.",
+      "sources": []
+    },
+    {
+      "id": 6,
+      "legacyId": 6,
+      "chapter": "Mathematics",
+      "title": "Matrix",
+      "definition": "A matrix is a rectangular array of numbers with m rows and n columns. Entry Aᵢⱼ lies in row i, column j.",
+      "formula": "A ∈ ℝᵐˣⁿ;   A = [[1, 2, 3], [4, 5, 6]]",
+      "example": "This 2 × 3 matrix has six entries. A₂₃ = 6. Each inner bracket is one row.",
+      "metaphor": "A spreadsheet with numbered rows and columns is a matrix when its cells are numbers.",
+      "question": "What is A₂₁ in A = [[1, 2], [3, 4]]?",
+      "options": [
+        "2",
+        "4",
+        "3",
+        "1"
+      ],
+      "correct": 2,
+      "feedback": "The first subscript selects the row, the second selects the column. Row 2, column 1 contains 3.",
+      "sources": []
+    },
+    {
+      "id": 7,
+      "legacyId": 7,
+      "chapter": "Mathematics",
+      "title": "Tensor",
+      "definition": "In machine learning, a tensor organizes numbers along axes. Each entry has one index per axis. A vector has one axis, a matrix two, and a stack of matrices three.",
+      "formula": "T ∈ ℝ²ˣ²ˣ²;   Tᵢⱼₖ selects layer i, row j, column k",
+      "example": "Layers: [[1, 2], [3, 4]] and [[5, 6], [7, 8]]. T₂₁₂ = 6: layer 2, row 1, column 2. Its shape is (2, 2, 2).",
+      "metaphor": "A book of number tables needs a page, row, and column to locate one number.",
+      "question": "In the displayed tensor, what is T₂₂₁?",
+      "options": [
+        "6",
+        "8",
+        "3",
+        "7"
+      ],
+      "correct": 3,
+      "feedback": "Choose layer 2, then row 2, then column 1: the value is 7. Shape (2, 2, 2) means three axes, each of length two. A scalar has zero axes. This page uses the ML software meaning of tensor. In geometry, a tensor is a multilinear object independent of a chosen basis; its array of components changes according to the basis-transformation rules.",
+      "sources": [
+        {
+          "title": "Introduction to Tensors, TensorFlow",
+          "url": "https://www.tensorflow.org/guide/tensor"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "legacyId": 8,
+      "chapter": "Mathematics",
+      "title": "Summation",
+      "definition": "Summation adds a specified sequence of terms. The symbol Σ says which index varies and where it starts and ends.",
+      "formula": "Σᵢ₌₁ⁿ xᵢ = x₁ + x₂ + ⋯ + xₙ",
+      "example": "For x = (2, 4, 6), Σᵢ₌₁³ xᵢ = 12. Their mean is 12/3 = 4.",
+      "metaphor": "Σ is an instruction to sweep the named numbers into one adding bucket.",
+      "question": "What is Σᵢ₌₁³ i²?",
+      "options": [
+        "6",
+        "9",
+        "14",
+        "36"
+      ],
+      "correct": 2,
+      "feedback": "Add 1² + 2² + 3² = 1 + 4 + 9 = 14. The index tells us which terms to use.",
+      "sources": []
+    },
+    {
+      "id": 9,
+      "legacyId": 9,
+      "chapter": "Mathematics",
+      "title": "Dot product",
+      "definition": "The dot product of two equal-length vectors multiplies matching coordinates and adds the products.",
+      "formula": "x · w = Σᵢ xᵢwᵢ",
+      "example": "With x = (2, 3) and w = (4, 5), x · w = 8 + 15 = 23.",
+      "metaphor": "A shopping bill multiplies each quantity by its price, then adds the costs.",
+      "question": "What is (1, 4) · (3, 2)?",
+      "options": [
+        "24",
+        "11",
+        "(3, 8)",
+        "10"
+      ],
+      "correct": 1,
+      "feedback": "The products are 3 and 8; their sum is 11. Keeping (3, 8) would be elementwise multiplication, not a dot product.",
+      "sources": []
+    },
+    {
+      "id": 10,
+      "legacyId": 10,
+      "chapter": "Mathematics",
+      "title": "Matrix multiplication",
+      "definition": "For A of shape m × n and B of shape n × p, AB has shape m × p. Each entry is a row-column dot product.",
+      "formula": "(AB)ᵢⱼ = Σₖ₌₁ⁿ AᵢₖBₖⱼ",
+      "example": "[[1, 2], [3, 4]] × [[5], [6]] = [[17], [39]]. First entry: 1×5 + 2×6 = 17. Second: 3×5 + 4×6 = 39.",
+      "metaphor": "Each row submits a shopping list to each column of prices.",
+      "question": "A is 2 × 3 and B is 3 × 4. What shape is AB?",
+      "options": [
+        "3 × 3",
+        "2 × 4",
+        "6 × 12",
+        "4 × 2"
+      ],
+      "correct": 1,
+      "feedback": "The inner dimensions, 3 and 3, must match. The outer dimensions form the result, 2 × 4. Matrix multiplication is generally order-dependent.",
+      "sources": []
+    },
+    {
+      "id": 11,
+      "legacyId": 11,
+      "chapter": "Mathematics",
+      "title": "Transpose",
+      "definition": "The transpose of a matrix exchanges rows and columns. It changes an m × n matrix into an n × m matrix.",
+      "formula": "(Aᵀ)ᵢⱼ = Aⱼᵢ",
+      "example": "If A = [[1, 2, 3]], then Aᵀ = [[1], [2], [3]].",
+      "metaphor": "Turn a row of books into a vertical stack without changing their order.",
+      "question": "What is the transpose of a 2 × 5 matrix?",
+      "options": [
+        "A 2 × 5 matrix with doubled entries",
+        "Its inverse",
+        "A 5 × 2 matrix",
+        "A 10 × 1 matrix"
+      ],
+      "correct": 2,
+      "feedback": "Transposing swaps the two axes. It does not change the values, flatten the matrix, or undo a transformation.",
+      "sources": []
+    },
+    {
+      "id": 12,
+      "legacyId": 12,
+      "chapter": "Mathematics",
+      "title": "Linear transformation",
+      "definition": "A linear transformation preserves vector addition and scalar multiplication. In finite dimensions, it can be represented by a matrix.",
+      "formula": "T(ax + by) = aT(x) + bT(y)",
+      "example": "For A = [[2, 0], [0, 3]], A(1, 2) = (2, 6). The first coordinate doubles; the second triples.",
+      "metaphor": "Stretch a sheet by fixed factors along its axes, keeping the origin pinned.",
+      "question": "Which function is linear in the mathematical sense?",
+      "options": [
+        "f(x) = x + 3",
+        "f(x) = 3x",
+        "f(x) = x²",
+        "f(x) = max(0, x)"
+      ],
+      "correct": 1,
+      "feedback": "A linear map sends zero to zero and obeys superposition. The familiar straight-line function 3x + b is affine when b is nonzero.",
+      "sources": []
+    },
+    {
+      "id": 13,
+      "legacyId": 13,
+      "chapter": "Mathematics",
+      "title": "Euclidean distance",
+      "definition": "The Euclidean norm measures vector length. The distance between two vectors is the norm of their difference.",
+      "formula": "‖x‖₂ = √(Σᵢ xᵢ²);   d(x, y) = ‖x − y‖₂",
+      "example": "Between (0, 0) and (3, 4), distance = √(9 + 16) = 5.",
+      "metaphor": "Stretch a straight string between two pins instead of following the grid streets.",
+      "question": "What is the distance from (1, 1) to (4, 5)?",
+      "options": [
+        "7",
+        "5",
+        "4",
+        "25"
+      ],
+      "correct": 1,
+      "feedback": "The displacement is (3, 4), whose length is 5. With mixed physical features, choose units and scaling before interpreting distance.",
+      "sources": []
+    },
+    {
+      "id": 14,
+      "legacyId": 14,
+      "chapter": "Mathematics",
+      "title": "Probability",
+      "definition": "Probability measures how likely an event is on a scale from 0 to 1. Probabilities of all possible, nonoverlapping outcomes add to 1.",
+      "formula": "0 ≤ P(A) ≤ 1;   Σᵢ P(Aᵢ) = 1",
+      "example": "For a fair six-sided die, P(even) = 3/6 = 0.5.",
+      "metaphor": "Divide one whole pie among the possible outcomes. Larger slices mean greater probability.",
+      "question": "A fair die is rolled. What is P(rolling more than 4)?",
+      "options": [
+        "1/6",
+        "1/2",
+        "1/3",
+        "2/3"
+      ],
+      "correct": 2,
+      "feedback": "The favorable outcomes are 5 and 6: two of six equally likely outcomes. A probability describes uncertainty, not certainty about one trial.",
+      "sources": []
+    },
+    {
+      "id": 15,
+      "legacyId": 15,
+      "chapter": "Mathematics",
+      "title": "Conditional probability",
+      "definition": "Conditional probability measures how likely A is when B is known to have occurred, provided P(B) > 0.",
+      "formula": "P(A ∣ B) = P(A ∩ B) / P(B)",
+      "example": "Of four red balls, one is striped. P(striped ∣ red) = 1/4.",
+      "metaphor": "Once you enter the red-ball room, count only the balls inside that room.",
+      "question": "Of 10 samples, 4 are deep and 3 of those are hot. P(hot given deep)?",
+      "options": [
+        "3/4",
+        "4/10",
+        "4/3",
+        "3/10"
+      ],
+      "correct": 0,
+      "feedback": "Conditioning changes the relevant denominator to the four deep samples. P(A given B) generally differs from P(B given A).",
+      "sources": []
+    },
+    {
+      "id": 16,
+      "legacyId": 16,
+      "chapter": "Mathematics",
+      "title": "Expected value",
+      "definition": "The expected value of a discrete numerical outcome is its probability-weighted average.",
+      "formula": "E[X] = Σₓ x P(X = x)",
+      "example": "A reward is 0 or 10 with equal probability. E[X] = 0.5 × 0 + 0.5 × 10 = 5.",
+      "metaphor": "The balancing point of possible rewards can sit where no individual reward exists.",
+      "question": "A game pays 8 with probability 1/4 and 0 otherwise. Expected payout?",
+      "options": [
+        "2",
+        "0.25",
+        "4",
+        "8"
+      ],
+      "correct": 0,
+      "feedback": "The weighted average is 8 × 1/4 + 0 × 3/4 = 2. You need not receive exactly 2 in any play.",
+      "sources": []
+    },
+    {
+      "id": 17,
+      "legacyId": 17,
+      "chapter": "Mathematics",
+      "title": "Variance",
+      "definition": "Variance is the expected squared distance from the mean μ. Standard deviation σ is its square root.",
+      "formula": "μ = E[X];   Var(X) = E[(X − μ)²];   σ = √Var(X)",
+      "example": "Values 2 and 6 are equally likely. Mean = 4. Variance = [(2−4)² + (6−4)²]/2 = 4. Standard deviation = √4 = 2.",
+      "metaphor": "The mean locates the center of the arrow hits; variance describes how widely they spread.",
+      "question": "For equally likely 1 and 5, what is the variance?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "16"
+      ],
+      "correct": 2,
+      "feedback": "The mean is 3. Both squared deviations are 4, so their average is 4. Standard deviation would be 2. This is a population calculation.",
+      "sources": []
+    },
+    {
+      "id": 18,
+      "legacyId": 18,
+      "chapter": "Mathematics",
+      "title": "Exponential and logarithm",
+      "definition": "An exponential raises a fixed base to a variable power. A logarithm gives the power needed to obtain a number. Natural logarithms use the base e ≈ 2.718.",
+      "formula": "log_b(bˣ) = x,   b > 0 and b ≠ 1;   ln(x) = log_e(x)",
+      "example": "2³ = 8, so log₂(8) = 3. Likewise, e² ≈ 7.389, so ln(7.389) ≈ 2.",
+      "metaphor": "An exponential climbs a multiplicative ladder; a logarithm tells you how many rungs you climbed.",
+      "question": "What is ln(e³)?",
+      "options": [
+        "9",
+        "1",
+        "e",
+        "3"
+      ],
+      "correct": 3,
+      "feedback": "The logarithm reverses exponentiation. In later probability losses, logarithms also turn products of probabilities into sums.",
+      "sources": []
+    },
+    {
+      "id": 19,
+      "legacyId": 19,
+      "chapter": "Mathematics",
+      "title": "Derivative",
+      "definition": "The derivative is a function's instantaneous rate of change, defined by the limit of slopes over shrinking intervals.",
+      "formula": "f′(x) = limₕ→₀ [f(x + h) − f(x)] / h",
+      "example": "For f(x) = x²: f(3.01) − f(3) = 0.0601. The slope over this interval is 0.0601/0.01 = 6.01, close to f′(3) = 6.",
+      "metaphor": "A speedometer measures the slope of your distance-versus-time journey at this instant.",
+      "question": "For f(x) = x², what is the derivative at x = 4?",
+      "options": [
+        "8",
+        "16",
+        "4",
+        "2"
+      ],
+      "correct": 0,
+      "feedback": "The derivative is 2x, so its value is 8. The function's value is 16. Local slope and height are different quantities.",
+      "sources": []
+    },
+    {
+      "id": 20,
+      "legacyId": 22,
+      "chapter": "Mathematics",
+      "title": "Integral",
+      "definition": "A definite integral is the limit of sums of a function's values times small interval widths. It measures signed accumulation.",
+      "formula": "∫ₐᵇ f(t) dt = limₙ→∞ Σᵢ₌₁ⁿ f(a + iΔt)Δt\nΔt = (b − a)/n",
+      "example": "A flow of 2 litres/second for 3 seconds delivers ∫₀³ 2 dt = 6 litres.",
+      "metaphor": "A derivative reads the tap's flow rate; an integral counts the water collected in the bucket.",
+      "question": "A constant speed of 4 metres/second lasts 5 seconds. Integral of speed?",
+      "options": [
+        "9 metres",
+        "0.8 metres",
+        "20 metres/second",
+        "20 metres"
+      ],
+      "correct": 3,
+      "feedback": "For the constant speed, 4 × 5 = 20 metres. Integrating nonnegative speed gives distance; integrating signed velocity gives displacement. The displayed equal-width limit defines the integral for continuous functions, and more generally for Riemann-integrable functions.",
+      "sources": []
+    },
+    {
+      "id": 21,
+      "legacyId": 20,
+      "chapter": "Mathematics",
+      "title": "Gradient",
+      "definition": "For a scalar function of several variables, the gradient collects its partial derivatives. Each partial varies one coordinate while holding the others fixed.",
+      "formula": "∇L = (∂L/∂x, ∂L/∂y)",
+      "example": "If L = x² + 3y², then ∇L = (2x, 6y). At (1, 2), it is (2, 12).",
+      "metaphor": "A hill's gradient is a local uphill compass, with one component for each direction.",
+      "question": "For L = x² + y² at (2, 3), what is ∇L?",
+      "options": [
+        "13",
+        "(2, 3)",
+        "(4, 6)",
+        "(−4, −6)"
+      ],
+      "correct": 2,
+      "feedback": "Differentiate with respect to each coordinate. The negative gradient points locally downhill; the gradient itself points toward fastest local increase under Euclidean geometry.",
+      "sources": []
+    },
+    {
+      "id": 22,
+      "legacyId": 21,
+      "chapter": "Mathematics",
+      "title": "Chain rule",
+      "definition": "When one function feeds another, a change passes through both. The chain rule multiplies their local derivatives to find the derivative of the combined function.",
+      "formula": "If y = f(g(x)), then dy/dx = f′(g(x)) g′(x)",
+      "example": "Let u = 2x and y = u². At x = 3, u = 6. The two slopes are du/dx = 2 and dy/du = 12, so dy/dx = 12×2 = 24.",
+      "metaphor": "Linked gears multiply their speed ratios. A change travels through every gear.",
+      "question": "For y = (3x)², what is dy/dx at x = 2?",
+      "options": [
+        "12",
+        "6",
+        "36",
+        "18"
+      ],
+      "correct": 2,
+      "feedback": "Let u = 3x. Then dy/dx = 2u × 3 = 18x = 36. Forgetting the inner derivative loses a factor of 3.",
+      "sources": []
+    },
+    {
+      "id": 23,
+      "legacyId": 23,
+      "chapter": "Mathematics",
+      "title": "Optimization",
+      "definition": "An objective assigns a score to each choice. Optimization finds an allowed choice with the smallest or largest score. The allowed choices form the constraint set C.",
+      "formula": "x* = arg minₓ∈C L(x)",
+      "example": "For L(x) = (x − 3)² and C = [0, 2], x* = 2 and L(x*) = 1.",
+      "metaphor": "Find the lowest campsite inside the fence. A lower valley outside it is unavailable.",
+      "question": "Minimize (x − 5)² subject to 0 ≤ x ≤ 3. Which x wins?",
+      "options": [
+        "5",
+        "2",
+        "0",
+        "3"
+      ],
+      "correct": 3,
+      "feedback": "The unconstrained minimum is 5, but it is not allowed. Among allowed inputs, 3 is closest to 5. The optimum input differs from its objective value.",
+      "sources": []
+    },
+    {
+      "id": 24,
+      "legacyId": 24,
+      "chapter": "Mathematics",
+      "title": "Gradient descent",
+      "definition": "Gradient descent updates a variable or parameter vector in the direction opposite its gradient. The learning rate η sets the step size. A sufficiently small step can lower the loss.",
+      "formula": "θ⁺ = θ − η∇L(θ),   η > 0",
+      "example": "For L(θ) = θ², θ = 3 and η = 0.1: θ⁺ = 3 − 0.1×6 = 2.4. The loss falls from 9 to 2.4² = 5.76.",
+      "metaphor": "Feel the ground's slope, take a short downhill step, then measure again.",
+      "question": "For θ = 4, gradient 6, and learning rate 0.1, what is the next θ?",
+      "options": [
+        "0.6",
+        "4.6",
+        "3.4",
+        "−2"
+      ],
+      "correct": 2,
+      "feedback": "Subtract 0.1 × 6 from 4. Large steps can increase the loss, and nonconvex objectives need not lead to a global minimum.",
+      "sources": []
+    },
+    {
+      "id": 25,
+      "legacyId": 25,
+      "chapter": "Learning from data",
+      "title": "Dataset and features",
+      "definition": "A dataset collects examples. Features describe each example numerically. In supervised learning, each input x is paired with a target answer y.",
+      "formula": "D = {(xᵢ, yᵢ)}ᵢ₌₁ᴺ",
+      "example": "Two rooms have features (length, width): (2, 3) and (4, 3) metres. X = [[2, 3], [4, 3]] has two rows and two features per row.",
+      "metaphor": "Features are the clues on a detective's case card; the target is the answer being learned.",
+      "question": "There are 20 samples and 4 features per sample. Shape of X?",
+      "options": [
+        "20 × 4",
+        "4 × 4",
+        "80 × 1 only",
+        "20 × 20"
+      ],
+      "correct": 0,
+      "feedback": "By the row-per-sample convention, X has 20 rows and 4 columns. A measured target must not accidentally be included as an input feature.",
+      "sources": []
+    },
+    {
+      "id": 26,
+      "legacyId": 30,
+      "chapter": "Learning from data",
+      "title": "Linear regression",
+      "definition": "Linear regression predicts a numerical target using a weighted sum of features plus an intercept.",
+      "formula": "ŷ = w · x + b",
+      "example": "A toy taxi fare model is ŷ = 2x + 3 dollars for x kilometres. At 5 km: ŷ = 2×5 + 3 = $13. The intercept is the starting fare.",
+      "metaphor": "A recipe assigns each ingredient a fixed contribution, then adds a fixed starting amount.",
+      "question": "For ŷ = 2x + 3, what is predicted at x = 5?",
+      "options": [
+        "10",
+        "13",
+        "25",
+        "8"
+      ],
+      "correct": 1,
+      "feedback": "Multiply 5 by 2 and add the intercept 3. Regression predicts quantities; a classifier predicts categories or their probabilities.",
+      "sources": []
+    },
+    {
+      "id": 27,
+      "legacyId": 31,
+      "chapter": "Learning from data",
+      "title": "Mean squared error",
+      "definition": "Mean squared error is the average squared difference between predictions and targets. It penalizes larger errors more strongly.",
+      "formula": "MSE = (1/N) Σᵢ (ŷᵢ − yᵢ)²",
+      "example": "Predictions (2, 5), targets (3, 3): MSE = (1 + 4)/2 = 2.5.",
+      "metaphor": "Large misses get disproportionately heavier penalty weights than small misses.",
+      "question": "Errors are 1 and 3. What is their MSE?",
+      "options": [
+        "5",
+        "4",
+        "10",
+        "2"
+      ],
+      "correct": 0,
+      "feedback": "Square first: 1 and 9. Then average: 5. The loss has squared target units, so it is not directly an average absolute error.",
+      "sources": [
+        {
+          "title": "Mean squared error, PyTorch",
+          "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "legacyId": 29,
+      "chapter": "Learning from data",
+      "title": "Supervised learning",
+      "definition": "Supervised learning uses examples with known answers to learn a rule for new inputs. A loss measures prediction error; training adjusts the rule to reduce that loss.",
+      "formula": "Training objective: minimize (1/N) Σᵢ ℓ(f_θ(xᵢ), yᵢ)\nθ = model parameters; ℓ = loss for one example",
+      "example": "Inputs 1, 2, 3 paired with targets 2, 4, 6 suggest f(x) = 2x; it predicts 8 for input 4.",
+      "metaphor": "A coach gives both a problem and a worked answer so a learner can improve its rule.",
+      "question": "Which task is supervised learning?",
+      "options": [
+        "Learn rock type from logs paired with rock labels",
+        "Choose actions using only rewards",
+        "Store a file unchanged",
+        "Compress logs without rock labels"
+      ],
+      "correct": 0,
+      "feedback": "Supervision supplies target answers for inputs. Those targets may be numeric or categorical. The learned rule still needs evaluation on unseen examples.",
+      "sources": []
+    },
+    {
+      "id": 29,
+      "legacyId": 32,
+      "chapter": "Learning from data",
+      "title": "Parameter and hyperparameter",
+      "definition": "A parameter is fitted during learning. A hyperparameter configures the model or training procedure rather than being fitted by that procedure.",
+      "formula": "ŷ = wx + b;   w⁺ = w − η ∂L/∂w",
+      "example": "In this update, w = 2 is a parameter; the chosen learning rate η = 0.01 is a hyperparameter.",
+      "metaphor": "The learner adjusts recipe quantities; the teacher chooses how large each adjustment may be.",
+      "question": "Which is normally a hyperparameter in gradient descent?",
+      "options": [
+        "Fitted regression weight",
+        "A learned neuron weight",
+        "Fitted intercept",
+        "Learning rate"
+      ],
+      "correct": 3,
+      "feedback": "Weights and biases are fitted by training. Learning rate and batch size usually configure that training. Other optimization procedures can themselves tune hyperparameters.",
+      "sources": []
+    },
+    {
+      "id": 30,
+      "legacyId": 27,
+      "chapter": "Learning from data",
+      "title": "Training, validation and test",
+      "definition": "Training data fit parameters; validation data guide model choices; a held-out test estimates performance after those choices are fixed.",
+      "formula": "D = Dₜᵣₐᵢₙ ∪ Dᵥₐₗ ∪ Dₜₑₛₜ;   sets are disjoint",
+      "example": "A 100-well study might use 70 wells to train, 15 to choose settings, and 15 for final testing.",
+      "metaphor": "Practice exercises, a mock exam, and a sealed final exam have different jobs.",
+      "question": "Which set should choose the learning rate?",
+      "options": [
+        "Validation set",
+        "Final test set repeatedly",
+        "The alphabetic first well only",
+        "All data including the final test"
+      ],
+      "correct": 0,
+      "feedback": "Use validation performance to choose settings. Reusing the final test to tune the model makes it part of the development process.",
+      "sources": []
+    },
+    {
+      "id": 31,
+      "legacyId": 28,
+      "chapter": "Learning from data",
+      "title": "Data leakage",
+      "definition": "Data leakage occurs when model development uses information that would be unavailable in the intended prediction setting.",
+      "formula": "For new-well testing: train wells ∩ test wells = ∅",
+      "example": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
+      "metaphor": "An exam is misleading when the practice sheet contains copies of its questions.",
+      "question": "To measure generalization to unseen wells, how should you split data?",
+      "options": [
+        "Randomly split overlapping windows",
+        "Keep each well entirely in one split",
+        "Put duplicate rows in every split",
+        "Normalize using all test values first"
+      ],
+      "correct": 1,
+      "feedback": "Nearby measurements and overlapping windows are strongly related. Split at the deployment-relevant group before creating windows and fitting preprocessing.",
+      "sources": []
+    },
+    {
+      "id": 32,
+      "legacyId": 26,
+      "chapter": "Learning from data",
+      "title": "Normalization",
+      "definition": "Normalization rescales data to a chosen reference scale. Standardization, one common method, subtracts the mean μ and divides by the standard deviation σ.",
+      "formula": "Standardization: z = (x − μ)/σ,   σ > 0",
+      "example": "Training data give μ = 100 and σ = 20. A new value x = 140 becomes z = 2.",
+      "metaphor": "Convert different measuring rulers into a common “distance from typical” scale.",
+      "question": "With training mean 10 and standard deviation 2, what does 14 become?",
+      "options": [
+        "2",
+        "12",
+        "7",
+        "4"
+      ],
+      "correct": 0,
+      "feedback": "Compute (14 − 10)/2 = 2. Fit the mean and scale using training data only, reuse them later, and handle constant features separately.",
+      "sources": []
+    },
+    {
+      "id": 33,
+      "legacyId": 33,
+      "chapter": "Learning from data",
+      "title": "Artificial neuron",
+      "definition": "An artificial neuron multiplies inputs by weights, adds a bias, then applies an output rule called an activation function. The bias shifts the sum by a constant.",
+      "formula": "a = φ(w · x + b)",
+      "example": "With x = (2, 1), w = (3, −2), b = 1: z = 3×2 − 2×1 + 1 = 5. The activation max(0, z) gives a = 5.",
+      "metaphor": "A tiny decision station combines weighted signals, then applies one output rule.",
+      "question": "Before activation, what is 2 × 3 + (−1) × 4 + 1?",
+      "options": [
+        "3",
+        "−3",
+        "1",
+        "11"
+      ],
+      "correct": 0,
+      "feedback": "The sum is 6 − 4 + 1 = 3. “Neuron” is a computational abstraction, not a detailed biological model.",
+      "sources": []
+    },
+    {
+      "id": 34,
+      "legacyId": 34,
+      "chapter": "Learning from data",
+      "title": "Sigmoid",
+      "definition": "The logistic sigmoid maps a real input smoothly into the open interval (0, 1). Its slope becomes small at extreme inputs.",
+      "formula": "σ(z) = 1/(1 + e⁻ᶻ);   σ′(z) = σ(z)(1 − σ(z))",
+      "example": "σ(−2) ≈ 0.119, σ(0) = 0.5, σ(2) ≈ 0.881. At zero, the slope is 0.5×(1−0.5) = 0.25.",
+      "metaphor": "A dimmer gradually opens from almost off to almost fully on.",
+      "question": "What is σ(0)?",
+      "options": [
+        "0",
+        "Undefined",
+        "0.5",
+        "1"
+      ],
+      "correct": 2,
+      "feedback": "Since e⁰ = 1, the output is 1/(1 + 1). A sigmoid output can model a binary probability, but training and calibration determine how reliable it is.",
+      "sources": []
+    },
+    {
+      "id": 35,
+      "legacyId": 35,
+      "chapter": "Learning from data",
+      "title": "ReLU",
+      "definition": "The rectified linear unit keeps positive inputs and sets negative inputs to zero. It is a piecewise-linear activation.",
+      "formula": "ReLU(z) = max(0, z)",
+      "example": "ReLU(−3) = 0; ReLU(2) = 2. Its slope is 0 below zero and 1 above zero.",
+      "metaphor": "A one-way gate blocks negative signals and lets positive ones pass unchanged.",
+      "question": "What is ReLU(−2) + ReLU(3)?",
+      "options": [
+        "3",
+        "0",
+        "1",
+        "5"
+      ],
+      "correct": 0,
+      "feedback": "The two outputs are 0 and 3. At zero the ordinary derivative is undefined; software chooses a convention, often zero.",
+      "sources": []
+    },
+    {
+      "id": 36,
+      "legacyId": 37,
+      "chapter": "Learning from data",
+      "title": "Forward pass",
+      "definition": "A forward pass computes a model’s output using its current weights. Intermediate results follow a computation graph: the sequence of calculations connecting input to output.",
+      "formula": "Example model: ŷ = wx;   training loss: L = (ŷ − y)²",
+      "example": "With x = 2 and w = 1, predict ŷ = 2. If the target is y = 6, the loss is (2−6)² = 16. The weight is still 1.",
+      "metaphor": "Run ingredients through the workshop to see the current product before changing the machines.",
+      "question": "During an ordinary forward pass, what happens to the weights?",
+      "options": [
+        "They are replaced by the targets",
+        "They are differentiated and updated automatically",
+        "They all become zero",
+        "They stay fixed while outputs are calculated"
+      ],
+      "correct": 3,
+      "feedback": "Forward computation produces predictions and intermediate values. Training also needs a loss, a backward pass, and an optimizer update.",
+      "sources": []
+    },
+    {
+      "id": 37,
+      "legacyId": 38,
+      "chapter": "Learning from data",
+      "title": "Backpropagation",
+      "definition": "Backpropagation applies the chain rule backward through a model to compute how its loss changes with each weight. It calculates gradients; a separate update changes the weights.",
+      "formula": "∂L/∂w = (∂L/∂ŷ)(∂ŷ/∂w) = 2(ŷ − y)x",
+      "example": "For ŷ = wx, x = 2, w = 1, y = 6: ŷ = 2. The local derivatives are 2(2−6) = −8 and x = 2. Multiply: ∂L/∂w = −16.",
+      "metaphor": "Trace a faulty product backward through the workshop to measure each station's contribution.",
+      "question": "In this example, does the negative weight gradient suggest increasing or decreasing w?",
+      "options": [
+        "Setting w equal to the gradient",
+        "Backpropagation already changed w",
+        "Decreasing w to reduce loss locally",
+        "Increasing w to reduce loss locally"
+      ],
+      "correct": 3,
+      "feedback": "Gradient descent subtracts the negative gradient, so w increases for a positive step size. Backpropagation calculates derivatives; the optimizer performs the update.",
+      "sources": [
+        {
+          "title": "Automatic differentiation, PyTorch",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "legacyId": 39,
+      "chapter": "Learning from data",
+      "title": "Mini-batch gradient descent",
+      "definition": "Mini-batch stochastic gradient descent estimates a training gradient using a subset B of examples, then updates the parameters.",
+      "formula": "gᴮ = Σᵢ∈B ∇ℓᵢ / size(B);   θ⁺ = θ − ηgᴮ",
+      "example": "Two examples give gradients 2 and 6, averaging to 4. With θ = 1 and η = 0.1, the update is θ⁺ = 1 − 0.1×4 = 0.6.",
+      "metaphor": "Taste a small spoonful of soup before adjusting the whole pot.",
+      "question": "Batch gradients are 2 and 6. What is their average?",
+      "options": [
+        "3",
+        "12",
+        "4",
+        "8"
+      ],
+      "correct": 2,
+      "feedback": "Average the example gradients. Random mini-batches trade computation for sampling noise, which is why individual updates may not decrease the full training loss.",
+      "sources": []
+    },
+    {
+      "id": 39,
+      "legacyId": 40,
+      "chapter": "Learning from data",
+      "title": "Epoch",
+      "definition": "An epoch is one pass through a training dataset. A step is one parameter update, often using a mini-batch.",
+      "formula": "steps per epoch = ceiling(N / B)",
+      "example": "With 100 examples and batch size 20, one epoch contains 5 steps; three epochs contain 15.",
+      "metaphor": "An epoch is one complete lap; mini-batches are the strides within it.",
+      "question": "With 120 examples and batches of 30, how many steps in two epochs?",
+      "options": [
+        "240",
+        "8",
+        "4",
+        "60"
+      ],
+      "correct": 1,
+      "feedback": "There are 4 steps per epoch and 8 in two epochs. The formula assumes the final partial batch is kept and no gradient accumulation is used.",
+      "sources": []
+    },
+    {
+      "id": 40,
+      "legacyId": 36,
+      "chapter": "Learning from data",
+      "title": "Deep neural network",
+      "definition": "A deep neural network passes data through multiple hidden layers before producing its output. Each layer learns weights and biases, usually followed by a nonlinear activation.",
+      "formula": "h₀ = x;   hₗ = φₗ(Wₗhₗ₋₁ + bₗ)",
+      "example": "At x = 2: h₁ = ReLU(2x−1) = 3; h₂ = ReLU(h₁−1) = 2; output y = 3h₂ = 6. These are two hidden layers and an output layer.",
+      "metaphor": "A workshop has successive stations: each transforms what the previous station produced.",
+      "question": "Why include nonlinear activations between linear layers?",
+      "options": [
+        "Otherwise their composition remains linear",
+        "They make every weight positive",
+        "They guarantee correct answers",
+        "They remove all need for data"
+      ],
+      "correct": 0,
+      "feedback": "A stack of linear maps collapses to one linear map. Biases make it affine, still affine without nonlinearities. Depth alone does not guarantee useful learning.",
+      "sources": []
+    },
+    {
+      "id": 41,
+      "legacyId": 41,
+      "chapter": "Learning from data",
+      "title": "Overfitting",
+      "definition": "Overfitting occurs when a model learns training-specific details that do not generalize to the intended new data.",
+      "formula": "generalization gap = test error − training error",
+      "example": "A model has 1% training error but 20% test error. Its measured gap is 19 percentage points.",
+      "metaphor": "Memorizing the practice exam can look like understanding until the questions change.",
+      "question": "Training error falls while validation error steadily rises. What is the likely issue?",
+      "options": [
+        "Overfitting",
+        "The model is necessarily too small",
+        "Guaranteed improvement on new data",
+        "Validation is no longer needed"
+      ],
+      "correct": 0,
+      "feedback": "The model may be fitting details that do not transfer. More representative data, regularization, or early stopping may help; first rule out a data mismatch.",
+      "sources": []
+    },
+    {
+      "id": 42,
+      "legacyId": 42,
+      "chapter": "Learning from data",
+      "title": "Regularization",
+      "definition": "Regularization limits how a model fits its training data to help it generalize. L2 regularization adds a penalty for large weights to the prediction loss.",
+      "formula": "Lₜₒₜₐₗ = Ldata + λ‖w‖₂²,   λ ≥ 0",
+      "example": "If Ldata = 2, w = (3, 4), and λ = 0.1, total loss = 2 + 0.1 × 25 = 4.5.",
+      "metaphor": "Charge rent for very large knobs so the model needs a good reason to turn them far.",
+      "question": "Increasing λ in L2 regularization directly increases what?",
+      "options": [
+        "The penalty on large weights",
+        "The test-set accuracy by a guaranteed amount",
+        "The number of labels",
+        "The dataset size"
+      ],
+      "correct": 0,
+      "feedback": "L2 adds a weight-size penalty. Too much regularization can underfit. It is a preference, not a guarantee of better predictions.",
+      "sources": []
+    },
+    {
+      "id": 43,
+      "legacyId": 43,
+      "chapter": "Learning from data",
+      "title": "Softmax",
+      "definition": "Softmax converts a vector of real scores, called logits, into positive numbers that sum to one.",
+      "formula": "pᵢ = exp(zᵢ) / Σⱼ exp(zⱼ)",
+      "example": "Logits (0, ln 3) give exponentials (1, 3), so probabilities are (0.25, 0.75).",
+      "metaphor": "Convert competing bids into shares of one whole budget.",
+      "question": "Equal logits (2, 2) produce which probabilities?",
+      "options": [
+        "(0.5, 0.5)",
+        "(0, 1)",
+        "(0.25, 0.75)",
+        "(2, 2)"
+      ],
+      "correct": 0,
+      "feedback": "Equal exponentials get equal shares. Softmax creates normalized scores; it does not prove that the underlying model is well calibrated.",
+      "sources": []
+    },
+    {
+      "id": 44,
+      "legacyId": 44,
+      "chapter": "Learning from data",
+      "title": "Cross-entropy",
+      "definition": "Cross-entropy scores predicted probabilities against target probabilities. It is the average negative log probability of the target outcomes. Lower scores reward better predictions.",
+      "formula": "H(q, p) = −Σᵢ qᵢ ln pᵢ",
+      "example": "The correct class is cat. Predicting p(cat) = 0.9 gives −ln(0.9) ≈ 0.105. Predicting 0.1 gives −ln(0.1) ≈ 2.303, a much larger loss.",
+      "metaphor": "A confident wrong answer pays a much bigger surprise bill than a cautious one.",
+      "question": "Which correct-class probability gives the smaller cross-entropy loss?",
+      "options": [
+        "0.9",
+        "0.5",
+        "0.1",
+        "0.01"
+      ],
+      "correct": 0,
+      "feedback": "For a one-hot target, loss is −ln pcorrect. Higher probability for the true class reduces it. Confident mistakes are penalized heavily.",
+      "sources": []
+    },
+    {
+      "id": 45,
+      "legacyId": 45,
+      "chapter": "Learning from data",
+      "title": "Self-supervised learning",
+      "definition": "Self-supervised learning constructs prediction targets from the data themselves, without requiring a separately supplied label for every example.",
+      "formula": "L = ℓ(f_θ(mask(x)), xhidden)",
+      "example": "Hide the middle value in (2, 4, 6). The model sees (2, ?, 6) and predicts 5. The hidden target is 4, so squared error = (5−4)² = 1.",
+      "metaphor": "Cover a word in your own book, guess it, then uncover the answer.",
+      "question": "Which task is self-supervised?",
+      "options": [
+        "Ask an expert to label every sample",
+        "Hide a measured value and predict it from the remaining data",
+        "Choose actions using only rewards",
+        "Copy files without a learning objective"
+      ],
+      "correct": 1,
+      "feedback": "The original data provide the answer to the constructed task. This is still prediction with a loss; it does not mean learning without any target signal.",
+      "sources": []
+    },
+    {
+      "id": 46,
+      "legacyId": 46,
+      "chapter": "Representations and language",
+      "title": "Embedding",
+      "definition": "An embedding represents an object as a vector. Learned embeddings adjust these coordinates so distances or directions can capture relationships useful to a task.",
+      "formula": "f: objects → ℝᵈ;   z = f(x)",
+      "example": "Toy word vectors: cat = (1, 0), dog = (0.9, 0.1), rock = (0, 1). Cat is closer to dog (distance ≈ 0.14) than rock (≈ 1.41).",
+      "metaphor": "A map gives complicated places compact coordinates, while preserving only some relationships.",
+      "question": "What is an embedding of a well-log window?",
+      "options": [
+        "A vector representing that window",
+        "The original file's name only",
+        "Necessarily an English sentence",
+        "A guarantee of rock type"
+      ],
+      "correct": 0,
+      "feedback": "Embeddings encode patterns useful under their training objective. Nearby vectors need not imply the same geology, and coordinates need not have individual human meanings.",
+      "sources": []
+    },
+    {
+      "id": 47,
+      "legacyId": 47,
+      "chapter": "Representations and language",
+      "title": "Cosine similarity",
+      "definition": "Cosine similarity compares directions of two nonzero vectors by dividing their dot product by their lengths.",
+      "formula": "cos(x, y) = (x · y)/(‖x‖₂‖y‖₂)",
+      "example": "For x = (1, 0), y = (2, 0), similarity = 2/(1 × 2) = 1, despite different lengths.",
+      "metaphor": "Two arrows can point the same way even when one is twice as long.",
+      "question": "What is the cosine similarity of (1, 0) and (0, 1)?",
+      "options": [
+        "2",
+        "0",
+        "−1",
+        "1"
+      ],
+      "correct": 1,
+      "feedback": "Their dot product is zero, so their directions are perpendicular. Cosine ignores length and is undefined for a zero vector without a software convention.",
+      "sources": []
+    },
+    {
+      "id": 48,
+      "legacyId": 48,
+      "chapter": "Representations and language",
+      "title": "Principal component analysis",
+      "definition": "PCA subtracts the data’s mean, then finds perpendicular directions that preserve the most variance. Projecting onto the leading directions gives fewer coordinates per example.",
+      "formula": "First direction: maximize E[(u · x)²], with ‖u‖₂ = 1\nx is centered: its mean is zero",
+      "example": "Points (−1, −1) and (1, 1) lie on a diagonal. Projecting onto u = (1, 1)/√2 gives −√2 and √2. One coordinate locates each point.",
+      "metaphor": "Rotate a flashlight until a one-dimensional shadow preserves the object's greatest spread.",
+      "question": "What does the first principal component maximize?",
+      "options": [
+        "Prediction accuracy on every task",
+        "Number of original features",
+        "Number of class labels",
+        "Projected variance of centered data"
+      ],
+      "correct": 3,
+      "feedback": "PCA uses variance, not labels or task importance. A low-variance feature can still be crucial, so PCA is a baseline rather than a universal answer.",
+      "sources": []
+    },
+    {
+      "id": 49,
+      "legacyId": 49,
+      "chapter": "Representations and language",
+      "title": "Autoencoder",
+      "definition": "An autoencoder learns to reconstruct its input. Its encoder produces a code z; its decoder rebuilds the input from z. Training reduces the reconstruction error.",
+      "formula": "z = f_θ(x);   x̂ = g_φ(z);   L = MSE(x, x̂)\nTraining adjusts encoder weights θ and decoder weights φ.",
+      "example": "With toy weights: x = (2, 5), encoder z = x₁ = 2, decoder x̂ = (z, 2z) = (2, 4). Reconstruction loss = (0² + 1²)/2 = 0.5.",
+      "metaphor": "Pack a suitcase, then unpack it and check which belongings survived.",
+      "question": "What target does a basic autoencoder try to reconstruct?",
+      "options": [
+        "Its input",
+        "A human preference score only",
+        "A randomly chosen class always",
+        "The training computer's name"
+      ],
+      "correct": 0,
+      "feedback": "The input supplies the reconstruction target. This can reveal structure, but copying inputs accurately does not by itself create useful scientific concepts.",
+      "sources": [
+        {
+          "title": "Deep Learning, chapter 14: Autoencoders",
+          "url": "https://www.deeplearningbook.org/contents/autoencoders.html"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "legacyId": 50,
+      "chapter": "Representations and language",
+      "title": "Latent space and bottleneck",
+      "definition": "A latent vector encodes an input inside a model. Latent space contains its possible codes. A bottleneck limits the size or information capacity of that representation.",
+      "formula": "Undercomplete bottleneck: x ∈ ℝⁿ → z ∈ ℝᵈ,   d < n",
+      "example": "Pairs (2, 4), (3, 6), (5, 10) can use one-number codes 2, 3, 5. Decoder (z, 2z) restores every pair. Input (2, 5) breaks that pattern.",
+      "metaphor": "A narrow doorway forces a traveler to choose what to carry through.",
+      "question": "Does compressing 512 values to 16 guarantee that useful geology is preserved?",
+      "options": [
+        "No, preservation depends on the objective and evaluation",
+        "No information can ever be lost",
+        "Yes, 16 always suffices",
+        "Yes, all compression discovers meaning"
+      ],
+      "correct": 0,
+      "feedback": "Fewer coordinates can encourage useful structure but may erase rare or task-critical details. Coordinate count alone is not a bit-rate or scientific-quality guarantee.",
+      "sources": [
+        {
+          "title": "Deep Learning, chapter 14: Autoencoders",
+          "url": "https://www.deeplearningbook.org/contents/autoencoders.html"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "legacyId": 79,
+      "chapter": "Representations and language",
+      "title": "Bit and byte",
+      "definition": "A bit has two possible values, 0 or 1. A byte contains eight bits and can encode 256 different bit patterns.",
+      "formula": "n bits encode 2ⁿ patterns;   1 byte = 8 bits",
+      "example": "Two bits have four patterns: 00, 01, 10, 11. An agreed binary encoding maps them to 0, 1, 2, 3. Eight bits give 2⁸ = 256 patterns.",
+      "metaphor": "Bits are tiny switches; eight switches form a byte-sized combination lock.",
+      "question": "How many distinct patterns can 4 bits encode?",
+      "options": [
+        "16",
+        "4",
+        "32",
+        "8"
+      ],
+      "correct": 0,
+      "feedback": "Each added bit doubles the number of patterns. A bit pattern gets its meaning from an agreed encoding, such as an integer or character representation.",
+      "sources": []
+    },
+    {
+      "id": 52,
+      "legacyId": 80,
+      "chapter": "Representations and language",
+      "title": "Numerical precision",
+      "definition": "Numerical precision describes how finely a number format represents values. Limited bits require rounding and impose a finite range.",
+      "formula": "absolute rounding error = abs(x − rounded value)",
+      "example": "Rounding 1.234 to two decimal places gives 1.23, an error of 0.004.",
+      "metaphor": "A ruler marked only in centimetres cannot record every millimetre exactly.",
+      "question": "What is the rounding error when 2.718 becomes 2.72?",
+      "options": [
+        "0.2",
+        "0",
+        "0.002",
+        "0.02"
+      ],
+      "correct": 2,
+      "feedback": "Precision affects memory, speed, and numerical behavior. FP32, FP16, and BF16 are floating-point formats; FP16 and BF16 have different precision-range tradeoffs despite both using 16 bits.",
+      "sources": []
+    },
+    {
+      "id": 53,
+      "legacyId": 51,
+      "chapter": "Representations and language",
+      "title": "Rate-distortion tradeoff",
+      "definition": "Lossy compression balances representation size, or rate R, against reconstruction error, or distortion D.",
+      "formula": "Choose a code to minimize D + λR\nD = reconstruction error; R = bits per input",
+      "example": "Code A: D = 1, R = 20 bits. Code B: D = 2, R = 5 bits. At λ = 0.1, scores are 3 and 2.5. B wins by accepting more error for fewer bits.",
+      "metaphor": "Packing lighter is useful only if the missing items are worth the saved luggage space.",
+      "question": "Which code wins in that stated objective?",
+      "options": [
+        "Always the larger code",
+        "They tie",
+        "The code with D = 1 and R = 20",
+        "The code with D = 2 and R = 5"
+      ],
+      "correct": 3,
+      "feedback": "The objective prefers 2.5 over 3. Different λ values change the preference. Choose distortion measures that reflect the application, not only average reconstruction.",
+      "sources": []
+    },
+    {
+      "id": 54,
+      "legacyId": 52,
+      "chapter": "Representations and language",
+      "title": "Vector quantization",
+      "definition": "Vector quantization maps a vector to one of a finite set of codebook vectors. Nearest-neighbor quantization chooses the closest entry.",
+      "formula": "k* = arg minₖ ‖z − eₖ‖₂²;   zq = eₖ*",
+      "example": "For z = (1, 2), codebook entries e₁ = (0, 2) and e₂ = (3, 2) are 1 and 2 units away. Choose e₁, and store its index 1.",
+      "metaphor": "Choose the nearest paint swatch instead of describing an infinitely precise color.",
+      "question": "For z = 2.2 and codebook {0, 2, 5}, which representative is nearest?",
+      "options": [
+        "2.2, which must already be a code",
+        "0",
+        "2",
+        "5"
+      ],
+      "correct": 2,
+      "feedback": "Distances are 2.2, 0.2, and 2.8. The representative is 2. A deterministic rule can break ties between equally near codes.",
+      "sources": [
+        {
+          "title": "Neural Discrete Representation Learning, van den Oord et al., 2017",
+          "url": "https://arxiv.org/abs/1711.00937"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "legacyId": 54,
+      "chapter": "Representations and language",
+      "title": "Token and vocabulary",
+      "definition": "A token is a discrete symbol identified within a vocabulary, a finite set of allowed symbols. It need not be a word.",
+      "formula": "token k ∈ V = {1, …, K};   embedding = E[k]",
+      "example": "Codebook entry 6 is the vector (1, 2). Token 6 identifies that entry; a lookup retrieves (1, 2). A vocabulary of 8 entries needs 3 bits per fixed-length ID.",
+      "metaphor": "A coat-check ticket is a discrete ID; the numbered ticket is not the coat itself.",
+      "question": "What does assigning token 6 to a pattern establish by itself?",
+      "options": [
+        "That token 6 means sandstone",
+        "A consistent symbolic ID",
+        "That reconstruction is perfect",
+        "That an LLM understands the pattern"
+      ],
+      "correct": 1,
+      "feedback": "The ID is arbitrary until a system learns or is given its relationship to data and language. A token and its vector embedding are different objects.",
+      "sources": [
+        {
+          "title": "Neural Discrete Representation Learning, van den Oord et al., 2017",
+          "url": "https://arxiv.org/abs/1711.00937"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "legacyId": 53,
+      "chapter": "Representations and language",
+      "title": "Vector-quantized autoencoder",
+      "definition": "A VQ-VAE is an autoencoder whose decoder receives vectors selected from a learned codebook. Each continuous encoder output is replaced by its nearest codebook entry.",
+      "formula": "x → z → nearest code zq → x̂\nStraight-through estimate: ∂L/∂z ≈ ∂L/∂zq",
+      "example": "For x = (2, 5), the encoder gives z = 1.9. Codebook {0, 2} selects 2. Decoder (zq, 2zq) gives (2, 4), with MSE = (0+1)/2 = 0.5.",
+      "metaphor": "Pack with a catalog of standard boxes, and improve both the packing method and box catalog.",
+      "question": "How does a VQ-VAE train across nearest-code selection?",
+      "options": [
+        "Never train the encoder",
+        "Ordinary exact derivatives of arg min everywhere",
+        "Use a gradient estimator such as straight-through",
+        "Assign English meanings automatically"
+      ],
+      "correct": 2,
+      "feedback": "Nearest-code selection is discrete. The original method uses a straight-through estimator plus reconstruction, codebook, and commitment losses. This is an approximation, not an exact derivative of selection.",
+      "sources": [
+        {
+          "title": "Neural Discrete Representation Learning, van den Oord et al., 2017",
+          "url": "https://arxiv.org/abs/1711.00937"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "legacyId": 55,
+      "chapter": "Representations and language",
+      "title": "Sequence and autocorrelation",
+      "definition": "A sequence is an ordered list. Autocorrelation compares its values with the same sequence shifted by k positions, called the lag. It measures how values vary together across that gap.",
+      "formula": "rₖ = Σᵢ₌₁ⁿ⁻ᵏ (xᵢ−μ)(xᵢ₊ₖ−μ) / Σᵢ₌₁ⁿ (xᵢ−μ)²\nμ = sample mean; rₖ is a finite-sample estimate",
+      "example": "For (1, 3, 1, 3), mean = 2 and deviations = (−1, 1, −1, 1). At lag 1: r₁ = (−1−1−1)/(1+1+1+1) = −0.75. Neighbors alternate.",
+      "metaphor": "Loud, soft, loud, soft: shift the rhythm by one beat and loud lines up with soft.",
+      "question": "Why preserve the order of depth-indexed well-log tokens?",
+      "options": [
+        "A sequence is just an unordered set",
+        "Shuffling always improves scientific meaning",
+        "Nearby depths can carry meaningful dependencies",
+        "Token IDs must increase with depth"
+      ],
+      "correct": 2,
+      "feedback": "Depth order can carry dependencies that disappear after shuffling. The displayed sample estimator uses regularly spaced observations and a nonzero denominator. It differs from the population autocorrelation and from estimators that adjust separately for the number of pairs at each lag. Nonstationary logs may need local analysis.",
+      "sources": [
+        {
+          "title": "Autocorrelation, NIST Engineering Statistics Handbook",
+          "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35c.htm"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "legacyId": 61,
+      "chapter": "Representations and language",
+      "title": "Autoregressive language model",
+      "definition": "An autoregressive language model assigns a sequence probability by predicting each next token conditioned on the previous tokens.",
+      "formula": "P(t₁, …, tₙ) = Πᵢ P(tᵢ ∣ t₁, …, tᵢ₋₁)",
+      "example": "If P(A) = 0.5 and P(B given A) = 0.2, then P(A, B) = 0.1.",
+      "metaphor": "Write a sentence one tile at a time, choosing each tile from the tiles already placed.",
+      "question": "P(A) = 0.4 and P(B given A) = 0.5. What is P(A, B)?",
+      "options": [
+        "0.5",
+        "0.9",
+        "0.2",
+        "0.4"
+      ],
+      "correct": 2,
+      "feedback": "Multiply the conditional factors. A likely continuation is not necessarily a true statement about the physical world, which motivates retrieval and model tools.",
+      "sources": []
+    },
+    {
+      "id": 59,
+      "legacyId": 56,
+      "chapter": "Representations and language",
+      "title": "Positional encoding",
+      "definition": "Positional encoding gives a model token order or location. The additive method adds a position vector to each embedding. Other methods alter attention.",
+      "formula": "Additive version: hᵢ = E[tokenᵢ] + pᵢ",
+      "example": "The same token has vector (1, 2). At position 1, add (0.1, 0): (1.1, 2). At position 2, add (0, 0.1): (1, 2.1). Its position now changes the input.",
+      "metaphor": "Page numbers let you distinguish repeated words appearing in different places in a book.",
+      "question": "Why might depth metadata be needed beyond token index?",
+      "options": [
+        "Sampling intervals can differ between wells",
+        "Index always equals metres",
+        "Position is irrelevant to geology",
+        "Every token contains its absolute depth inherently"
+      ],
+      "correct": 0,
+      "feedback": "Position index says first, second, third. Physical depth adds units and spacing. The original Transformer uses sinusoidal encodings; modern models use several alternatives.",
+      "sources": [
+        {
+          "title": "Attention Is All You Need, Vaswani et al., 2017",
+          "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "legacyId": 57,
+      "chapter": "Representations and language",
+      "title": "Scaled dot-product attention",
+      "definition": "Each query scores a set of keys. Softmax turns the scores into weights. Attention returns a weighted sum of the corresponding values, letting a token use information from other tokens.",
+      "formula": "Attention(Q, K, V) = softmax(QKᵀ/√dₖ)V",
+      "example": "q = 1, keys = (0, ln 3), values = (2, 6), dₖ = 1. Scores (0, ln 3) give weights (0.25, 0.75). Output = 0.25×2 + 0.75×6 = 5.",
+      "metaphor": "A question asks several reference cards how relevant they are, then blends their answers.",
+      "question": "Attention weights are (0.25, 0.75) and values are (2, 6). Output?",
+      "options": [
+        "8",
+        "4",
+        "6",
+        "5"
+      ],
+      "correct": 3,
+      "feedback": "Compute 0.25 × 2 + 0.75 × 6 = 5. dₖ is the key dimension. Attention weights are learned mixing weights, not proof of a causal explanation.",
+      "sources": [
+        {
+          "title": "Attention Is All You Need, Vaswani et al., 2017",
+          "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "legacyId": 58,
+      "chapter": "Representations and language",
+      "title": "Multi-head attention",
+      "definition": "Multi-head attention runs several attention calculations using different learned matrix transformations. Their outputs are joined and mixed by another learned matrix.",
+      "formula": "MultiHead = Concat(head₁, …, headₕ)Wᴼ",
+      "example": "For values (2, 6), weights (0.25, 0.75) give 5; weights (0.75, 0.25) give 3. Join the heads as (5, 3). Output weights (0.5, 0.5) give 4.",
+      "metaphor": "Several readers inspect the same passage with different questions, then combine their notes.",
+      "question": "What makes attention heads different?",
+      "options": [
+        "They must see different documents",
+        "Each is a separate human",
+        "Each has a guaranteed named meaning",
+        "They use different learned projections"
+      ],
+      "correct": 3,
+      "feedback": "Heads can learn different relationships because their projections differ. Their roles emerge through training and need not correspond to clean human categories.",
+      "sources": [
+        {
+          "title": "Attention Is All You Need, Vaswani et al., 2017",
+          "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "legacyId": 60,
+      "chapter": "Representations and language",
+      "title": "Causal mask",
+      "definition": "A causal mask blocks attention to future tokens. It adds −∞ to their attention scores, so softmax assigns them zero weight. Each position can use only its present and past.",
+      "formula": "Mᵢⱼ = 0 if j ≤ i;   Mᵢⱼ = −∞ if j > i",
+      "example": "At position 2, start with scores (0, 0, 0). Mask position 3: (0, 0, −∞). Softmax gives (0.5, 0.5, 0): the future contributes nothing.",
+      "metaphor": "Fold the exam paper so the answer to the next question remains hidden.",
+      "question": "At position 3 of a four-token causal sequence, which position is hidden?",
+      "options": [
+        "1",
+        "4",
+        "2",
+        "3"
+      ],
+      "correct": 1,
+      "feedback": "Future attention scores are masked before softmax. During training, known sequences can be processed in parallel while each prediction is prevented from seeing its future.",
+      "sources": [
+        {
+          "title": "Attention Is All You Need, Vaswani et al., 2017",
+          "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "legacyId": 59,
+      "chapter": "Representations and language",
+      "title": "Transformer",
+      "definition": "A Transformer uses attention to mix information across tokens and feed-forward layers to transform each token. Residual additions and layer normalization help train many such layers.",
+      "formula": "One block: u = LN(h + Attention(h))\nh′ = LN(u + FFN(u));   LN normalizes each token’s features",
+      "example": "Illustrating the first stage: h = (1, 3), attention output = (1, 1), sum = (2, 4). Mean 3 and standard deviation 1 give approximately (−1, 1).",
+      "metaphor": "Revise a shared notebook repeatedly, preserving the old notes while adding improvements.",
+      "question": "Which components belong in a Transformer block?",
+      "options": [
+        "Attention and a feed-forward network",
+        "Only one sigmoid scalar",
+        "Only a nearest-neighbor lookup",
+        "A mandatory physical robot"
+      ],
+      "correct": 0,
+      "feedback": "FFN means feed-forward network. The same FFN transforms each token separately. LN means layer normalization: center and rescale features within each token, with learned scale and shift. The example uses scale 1, shift 0 and neglects the small stabilizing constant. The formula shows a post-normalization block; other orderings exist. A causal decoder also applies its attention mask. The 2017 paper is Attention Is All You Need.",
+      "sources": [
+        {
+          "title": "Attention Is All You Need, Vaswani et al., 2017",
+          "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "legacyId": 62,
+      "chapter": "Representations and language",
+      "title": "Fine-tuning",
+      "definition": "Fine-tuning continues optimization of some or all parameters of a pretrained model using a new dataset or objective.",
+      "formula": "θ⁺ = θ₀ − η∇Lnew(θ₀);   θ₀ is pretrained",
+      "example": "A trainable weight starts at 0.5. With gradient 2 and η = 0.01, one update gives 0.48.",
+      "metaphor": "Teach an experienced musician a new repertoire without starting musical training from zero.",
+      "question": "Which operation is fine-tuning?",
+      "options": [
+        "Update model parameters on new examples",
+        "Rename a model file",
+        "Read a stored vector without learning",
+        "Put a document into a prompt only"
+      ],
+      "correct": 0,
+      "feedback": "Fine-tuning changes trainable parameters. Prompting and retrieval can change the model's input without changing its weights. Adapter methods update only a selected parameter subset.",
+      "sources": []
+    },
+    {
+      "id": 65,
+      "legacyId": 63,
+      "chapter": "Representations and language",
+      "title": "Retrieval-augmented generation",
+      "definition": "Retrieval-augmented generation finds stored information relevant to a question and gives it to a language model as context for its answer.",
+      "formula": "c = Retrieve(q, D);   answer ~ P_θ(· ∣ q, c)",
+      "example": "Question: “How deep is Well A?” Retrieve record 17: “Well A, total depth 2,400 m.” The answer reports 2,400 m and points to record 17.",
+      "metaphor": "An open-book exam lets you consult selected pages before composing an answer.",
+      "question": "Does ordinary retrieval change the language model's weights?",
+      "options": [
+        "No, it supplies context at inference time",
+        "Yes, it always retrains every layer",
+        "It guarantees every answer is correct",
+        "Yes, it replaces the tokenizer"
+      ],
+      "correct": 0,
+      "feedback": "Retrieval changes available evidence, not normally parameters. Irrelevant retrieval or unsupported generation can still produce an incorrect answer.",
+      "sources": []
+    },
+    {
+      "id": 66,
+      "legacyId": 94,
+      "chapter": "Representations and language",
+      "title": "API and SDK",
+      "definition": "An application programming interface defines how software components interact. A software development kit supplies libraries and tools for developers to use those interfaces.",
+      "formula": "Example API contract: mean(list of numbers) → number",
+      "example": "Calling mean([2, 4, 6]) returns 4. An SDK might provide a function that sends this request to a service and reads its response.",
+      "metaphor": "An API is a socket's specification; an SDK is the toolkit for building a compatible plug.",
+      "question": "What is an SDK?",
+      "options": [
+        "Necessarily a trained scientific model",
+        "A GPU memory chip",
+        "A replacement for a dataset license",
+        "A toolkit of libraries and development resources"
+      ],
+      "correct": 3,
+      "feedback": "An API specifies how software interacts, including inputs, outputs and errors. An SDK provides libraries and development tools that help use interfaces. The mean function is a teaching example, not a documented Sememe.ai method.",
+      "sources": []
+    },
+    {
+      "id": 67,
+      "legacyId": 64,
+      "chapter": "Representations and language",
+      "title": "Tool calling",
+      "definition": "Tool calling lets a model request a structured operation from external software, then use the returned result. The software defines the operation's semantics.",
+      "formula": "request = {tool, arguments};   result = tool(arguments)",
+      "example": "A model requests mean([10, 20, 30]); the calculator returns 20, which the answer reports.",
+      "metaphor": "A coordinator asks a calculator to calculate instead of guessing the result from memory.",
+      "question": "Who should compute an exact average in a grounded answer?",
+      "options": [
+        "The token ID's numeric value",
+        "A defined numerical tool on the cited data",
+        "An unrelated retrieved paragraph",
+        "A guess from fluent wording"
+      ],
+      "correct": 1,
+      "feedback": "A tool can execute exact arithmetic or a computational model. Its inputs, units, implementation, and result still need to be checked and linked to the answer.",
+      "sources": []
+    },
+    {
+      "id": 68,
+      "legacyId": 66,
+      "chapter": "Reinforcement learning and control",
+      "title": "State, observation and action",
+      "definition": "A state contains enough information to predict the system’s next-state distribution given an action. An observation is a measurement of the system. An action is an input we choose.",
+      "formula": "sₜ₊₁ = F(sₜ, aₜ);   oₜ = H(sₜ) + noise",
+      "example": "In a simple tank model, state s = 10 litres. A noisy sensor reports observation o = 9.8 litres. Choosing to add 3 litres is action a = 3.",
+      "metaphor": "The whole room is the state; a keyhole view is the observation; turning the handle is an action.",
+      "question": "A thermometer reads 29.8 °C. What is that reading?",
+      "options": [
+        "An observation",
+        "Necessarily the complete system state",
+        "A control action",
+        "A reward definition"
+      ],
+      "correct": 0,
+      "feedback": "Measurements can be noisy and incomplete. A hidden-state problem may require a history or belief over states, rather than treating one reading as a complete Markov state.",
+      "sources": [
+        {
+          "title": "Sensor Selection for Crowdsensing Dynamical Systems, Schnitzler, Yu and Mannor, 2015",
+          "url": "https://proceedings.mlr.press/v38/schnitzler15.html"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "legacyId": 65,
+      "chapter": "Reinforcement learning and control",
+      "title": "Dynamical system",
+      "definition": "A dynamical system has a state that changes over time. Its transition rule describes how the next state depends on the current state, any chosen action, and disturbances.",
+      "formula": "sₜ₊₁ = F(sₜ, aₜ, ξₜ)\ns = state; a = action; ξ = disturbance; t = time step",
+      "example": "A tank holds 10 litres. Add 3 and drain 2 during one step: next volume = 10 + 3 − 2 = 11.",
+      "metaphor": "The present is a frame in a movie; dynamics specify how the next frame can unfold.",
+      "question": "A tank has 8 litres, receives 4, and drains 3. Next volume?",
+      "options": [
+        "15 litres",
+        "9 litres",
+        "7 litres",
+        "12 litres"
+      ],
+      "correct": 1,
+      "feedback": "Use conservation: 8 + 4 − 3 = 9. A model may use physical equations, learned relationships, or both to describe its dynamics.",
+      "sources": [
+        {
+          "title": "Sensor Selection for Crowdsensing Dynamical Systems, Schnitzler, Yu and Mannor, 2015",
+          "url": "https://proceedings.mlr.press/v38/schnitzler15.html"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "legacyId": 67,
+      "chapter": "Reinforcement learning and control",
+      "title": "Markov decision process",
+      "definition": "An MDP describes states, actions, rewards and transition probabilities. Given the current state and action, the next-state distribution does not depend on earlier history.",
+      "formula": "P(sₜ₊₁ ∣ history, aₜ) = P(sₜ₊₁ ∣ sₜ, aₜ)",
+      "example": "In state “low,” choosing “fill” reaches “safe” with probability 0.9 and stays “low” with probability 0.1. Suppose reaching “safe” earns reward 1, otherwise 0.",
+      "metaphor": "A board-game position contains everything needed to determine the next move's possibilities.",
+      "question": "What is the Markov assumption?",
+      "options": [
+        "Rewards never change",
+        "Observations always reveal every state variable",
+        "The future is always deterministic",
+        "The current state and action suffice for the next-state distribution"
+      ],
+      "correct": 3,
+      "feedback": "An MDP can be stochastic. The key condition is conditional dependence on the current state, not the whole history. Observations may require a partially observable extension.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "legacyId": 68,
+      "chapter": "Reinforcement learning and control",
+      "title": "Reward and return",
+      "definition": "A reward scores one outcome. Return adds rewards over several steps. A discount factor γ gives less weight to later rewards when 0 ≤ γ < 1.",
+      "formula": "For H remaining steps: Gₜ = Σₖ₌₀ᴴ⁻¹ γᵏrₜ₊ₖ\nrₜ is the reward from action aₜ; 0 ≤ γ ≤ 1",
+      "example": "For three rewards (2, 0, 10) and γ = 0.5, return = 2 + 0 + 0.25 × 10 = 4.5.",
+      "metaphor": "Immediate reward is one coin; return is the discounted value of the entire trail of coins.",
+      "question": "Rewards are (1, 4), γ = 0.5. What is the two-step return?",
+      "options": [
+        "3",
+        "1",
+        "5",
+        "2.5"
+      ],
+      "correct": 0,
+      "feedback": "The return is 1 + 0.5 × 4 = 3. Finite horizons permit γ = 1; infinite-horizon convergence needs appropriate assumptions, often γ < 1.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "legacyId": 69,
+      "chapter": "Reinforcement learning and control",
+      "title": "Policy",
+      "definition": "A policy specifies how an agent chooses actions. A stochastic policy gives an action probability for each state or available information.",
+      "formula": "π(a ∣ s) ≥ 0;   Σₐ π(a ∣ s) = 1",
+      "example": "In a low tank, π(fill) = 0.8 and π(wait) = 0.2. A deterministic policy might always fill.",
+      "metaphor": "A playbook says what to do when a particular situation appears.",
+      "question": "What does a policy map a state to?",
+      "options": [
+        "Necessarily the next state",
+        "A training loss value only",
+        "A matrix size only",
+        "An action or distribution over actions"
+      ],
+      "correct": 3,
+      "feedback": "The policy chooses behavior. The environment transition rule determines what happens next, and the reward rule assigns the resulting feedback.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "legacyId": 70,
+      "chapter": "Reinforcement learning and control",
+      "title": "Value function",
+      "definition": "A state-value function is the expected return starting in a state and following a specified policy. An action-value also fixes the first action.",
+      "formula": "Vπ(s) = Eπ[Gₜ ∣ sₜ = s];   Qπ(s, a) = Eπ[Gₜ ∣ s, a]",
+      "example": "A policy yields return 10 with probability 0.6 and 0 otherwise, so Vπ(s) = 6.",
+      "metaphor": "Value is a forecast of the whole journey's worth, not the reward on the next step.",
+      "question": "A state's possible returns are 4 and 8, equally likely. Its value?",
+      "options": [
+        "8",
+        "6",
+        "4",
+        "12"
+      ],
+      "correct": 1,
+      "feedback": "Value is the expected return: (4 + 8)/2 = 6. It depends on the policy, reward definition, discounting, and environment.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "legacyId": 71,
+      "chapter": "Reinforcement learning and control",
+      "title": "Bellman equation",
+      "definition": "The Bellman equation decomposes a policy's value into expected immediate reward plus discounted value of the next state.",
+      "formula": "Vπ(s) = Eπ[rₜ + γVπ(sₜ₊₁) ∣ sₜ = s]",
+      "example": "Reward now is 2. Next-state value is 10 or 0, equally likely, under the policy. At γ = 0.9: V = 2 + 0.9×(0.5×10 + 0.5×0) = 6.5.",
+      "metaphor": "A journey's worth is this leg's reward plus what remains beyond the next stop.",
+      "question": "Reward 3, deterministic next value 4, γ = 0.5. Current value?",
+      "options": [
+        "3.5",
+        "5",
+        "7",
+        "2"
+      ],
+      "correct": 1,
+      "feedback": "Compute 3 + 0.5 × 4 = 5. In stochastic settings, average over next states and actions under the specified policy.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "legacyId": 73,
+      "chapter": "Reinforcement learning and control",
+      "title": "Exploration and exploitation",
+      "definition": "Exploitation chooses what currently appears best. Exploration gathers information by trying alternatives that may improve future decisions.",
+      "formula": "ε-greedy: explore with probability ε; otherwise choose arg max_a Q(s, a)",
+      "example": "With ε = 0.1 over 100 decisions, expect about 10 exploration-branch choices, not exactly 10.",
+      "metaphor": "Return to your favorite food stall, but sometimes try another to discover a better one.",
+      "question": "Why try an action with a lower current value estimate?",
+      "options": [
+        "Its uncertain true value might be better",
+        "Exploration guarantees immediate profit",
+        "Estimates never change",
+        "Lower estimates always mean higher true rewards"
+      ],
+      "correct": 0,
+      "feedback": "Learning needs information about alternatives. Exploration should respect constraints. In ε-greedy, the random branch can sometimes select the currently best action too.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "legacyId": 72,
+      "chapter": "Reinforcement learning and control",
+      "title": "Q-learning",
+      "definition": "Q-learning updates an action-value estimate toward a target using observed reward and the largest estimated next-state action value.",
+      "formula": "Q(s, a) ← Q(s, a) + α[r + γ max_b Q(s′, b) − Q(s, a)]",
+      "example": "Q = 2, reward = 1, γ = 0.5, best next Q = 6. Target = 1 + 0.5×6 = 4. With α = 0.25, new Q = 2 + 0.25×(4−2) = 2.5.",
+      "metaphor": "Revise a travel guide whenever a journey reveals a better estimate of the route's payoff.",
+      "question": "In that example, what is the update target before averaging?",
+      "options": [
+        "2.5",
+        "4",
+        "6",
+        "1"
+      ],
+      "correct": 1,
+      "feedback": "The target is 1 + 0.5 × 6 = 4. The updated estimate is 2.5. A deep Q-network represents Q with a neural network instead of a table.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "legacyId": 74,
+      "chapter": "Reinforcement learning and control",
+      "title": "Policy gradient",
+      "definition": "Policy-gradient methods adjust a policy’s parameters to increase expected return. They add a step along the gradient, which points toward local improvement.",
+      "formula": "J(θ) = Eπθ[G];   θ⁺ = θ + η∇J(θ)",
+      "example": "Choose A with probability p. Rewards: A gives 4, B gives 1. J(p) = 4p + (1−p) = 1+3p, so J′(p) = 3. With η = 0.1: p⁺ = 0.5 + 0.1×3 = 0.8.",
+      "metaphor": "Strengthen decisions that led to better outcomes, using measured credit rather than copying every action.",
+      "question": "In this example, what is expected reward at p = 0.8?",
+      "options": [
+        "4",
+        "3.4",
+        "2.5",
+        "0.8"
+      ],
+      "correct": 1,
+      "feedback": "Compute 0.8×4 + 0.2×1 = 3.4, up from 2.5 when p = 0.5. Here rewards are known, so the derivative is exactly 3. In real RL, gradients are often estimated from sampled experience. A one-step estimator is r times the gradient of log πθ(a). A valid policy must keep probabilities between 0 and 1 and summing to 1.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "legacyId": 76,
+      "chapter": "Reinforcement learning and control",
+      "title": "Model-based RL",
+      "definition": "Model-based RL uses a model of environment changes or rewards to help choose actions. It can plan with this model or learn from simulated experience.",
+      "formula": "ŝₜ₊₁ = F̂(sₜ, aₜ);   choose actions using predicted returns",
+      "example": "A learned tank model predicts that “fill” yields return 7 and “wait” yields 5. Choose “fill,” observe the real outcome, and use it to check or improve the model.",
+      "metaphor": "Practice routes in a flight simulator before flying the aircraft.",
+      "question": "What is a central risk of planning with a learned model?",
+      "options": [
+        "Model errors can compound across predicted steps",
+        "More imagined steps always improve accuracy",
+        "Planning removes the need for rewards",
+        "Simulators always exactly match reality"
+      ],
+      "correct": 0,
+      "feedback": "Plans can exploit model mistakes. Test the model in the relevant operating range and measure real outcomes. A mechanistic model and learned residual can complement each other.",
+      "sources": [
+        {
+          "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+          "url": "https://sites.google.com/view/rlfoundations/home"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "legacyId": 78,
+      "chapter": "Reinforcement learning and control",
+      "title": "Safety constraint",
+      "definition": "A safety constraint restricts allowed states or actions. A constrained controller optimizes only among choices satisfying its stated limits.",
+      "formula": "maximize reward(a), subject to g(a) ≤ 0",
+      "example": "If a valve setting must satisfy a ≤ 5, a proposed setting of 7 is rejected even if its predicted reward is high.",
+      "metaphor": "A game's boundary line is a rule, not a small negative score you may pay to ignore.",
+      "question": "A proposal violates a hard constraint but has the highest predicted reward. What should happen?",
+      "options": [
+        "Execute it because reward is higher",
+        "Increase the text confidence",
+        "Reject or replace it with a permitted action",
+        "Hide the violation in the explanation"
+      ],
+      "correct": 2,
+      "feedback": "Hard constraints differ from reward penalties. A local controller and independent checks enforce limits; robustness depends on model error, measurement quality, and implementation.",
+      "sources": [
+        {
+          "title": "Dynamic Sensing, Richman and Mannor, 2015",
+          "url": "https://proceedings.mlr.press/v37/richman15.html"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "legacyId": 77,
+      "chapter": "Reinforcement learning and control",
+      "title": "Model predictive control",
+      "definition": "MPC plans several actions using a model, executes the first, then replans using new measurements. It minimizes a cost over a fixed number of future steps.",
+      "formula": "Minimize Σₖ₌₀ᴴ⁻¹ c(sₖ₊₁, aₖ), with sₖ₊₁ = F(sₖ, aₖ)\nH = planning horizon; enforce state and action limits",
+      "example": "A tank has 10 L, target 14 L, drain 2 L/step. Plan inflows (6, 2) L. Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L.",
+      "metaphor": "A navigator redraws the route at every junction as traffic changes.",
+      "question": "How many actions from a newly solved MPC plan are typically applied before replanning?",
+      "options": [
+        "Every planned action without feedback",
+        "None, always",
+        "Only the final action",
+        "The first action"
+      ],
+      "correct": 3,
+      "feedback": "Receding-horizon control uses fresh feedback. MPC is a control method and does not inherently require reinforcement learning; the model can be physical or learned.",
+      "sources": []
+    },
+    {
+      "id": 81,
+      "legacyId": 75,
+      "chapter": "Reinforcement learning and control",
+      "title": "RLHF",
+      "definition": "Reinforcement learning from human feedback (RLHF) often learns a reward model from human preferences, then trains a policy to earn higher scores.",
+      "formula": "For a fixed question: J(θ) = Σ_y πθ(y) r(y)\nπθ(y) = probability of answer y; r(y) = learned reward",
+      "example": "People prefer answer A to B. Suppose learned rewards are 2 and 0. Raising P(A) from 0.5 to 0.75 raises expected reward from 1 to 1.5.",
+      "metaphor": "A judge compares performances; the learner improves toward the judge's scoring pattern.",
+      "question": "Does optimizing a human-preference reward guarantee factual truth?",
+      "options": [
+        "Only if the answer is longer",
+        "Yes, a reward model verifies physics",
+        "No, preference and truth can diverge",
+        "Yes, every preferred answer is true"
+      ],
+      "correct": 2,
+      "feedback": "Human preference and factual truth can diverge. The displayed objective illustrates reward maximization only. Common RLHF systems also constrain departure from a reference policy and often begin with supervised fine-tuning. The reward model estimates human preferences; it does not establish scientific truth.",
+      "sources": [
+        {
+          "title": "Training language models to follow instructions with human feedback, Ouyang et al., 2022",
+          "url": "https://arxiv.org/abs/2203.02155"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "legacyId": 81,
+      "chapter": "Computing hardware",
+      "title": "CPU",
+      "definition": "A central processing unit (CPU) executes program instructions: arithmetic, comparisons, and decisions about what to run next. A computer can use several CPU cores at once.",
+      "formula": "Example program: total ← total + xᵢ;   mean = total/N",
+      "example": "To average (2, 4, 6), a program starts total = 0. Add each value: 2, then 6, then 12. Divide by 3 to return 4.",
+      "metaphor": "A versatile workshop supervisor handles varied jobs and directs specialist machines.",
+      "question": "Which statement best describes a CPU?",
+      "options": [
+        "A device that cannot do matrix multiplication",
+        "A synonym for a GPU",
+        "A general-purpose processor that also coordinates work",
+        "A disk for permanent storage only"
+      ],
+      "correct": 2,
+      "feedback": "CPUs can perform matrix operations and parallel work. Their strengths include flexible control flow and low-latency general tasks. Actual speed also depends on memory and instructions.",
+      "sources": []
+    },
+    {
+      "id": 83,
+      "legacyId": 82,
+      "chapter": "Computing hardware",
+      "title": "GPU",
+      "definition": "A graphics processing unit (GPU) performs many similar calculations in parallel. Large matrix operations supply repeated arithmetic to keep its execution units busy.",
+      "formula": "Independent elementwise work: yᵢ = 2xᵢ",
+      "example": "For x = (1, 2, 3, 4), compute y = (2, 4, 6, 8). Each output can be calculated independently. The same pattern scales to millions of entries.",
+      "metaphor": "A large team folds many identical paper cranes at once.",
+      "question": "Which workload is especially suitable for a GPU?",
+      "options": [
+        "One tiny operation with heavy transfer overhead",
+        "A task with no parallel work at all",
+        "Many similar, independent numerical operations",
+        "Permanent storage with no computation"
+      ],
+      "correct": 2,
+      "feedback": "GPUs excel when enough regular work amortizes coordination and transfer costs. More parallel workers do not automatically accelerate a small or sequential problem.",
+      "sources": []
+    },
+    {
+      "id": 84,
+      "legacyId": 83,
+      "chapter": "Computing hardware",
+      "title": "Tensor core",
+      "definition": "A Tensor Core is a specialized circuit inside an NVIDIA GPU that multiplies small matrix blocks and adds another matrix. Supported number formats depend on the GPU generation.",
+      "formula": "D = AB + C",
+      "example": "A = [[1, 2]], B = [[3], [4]], C = [[5]]. Multiply: AB = [[1×3 + 2×4]] = [[11]]. Add C: D = [[16]].",
+      "metaphor": "A factory station stamps whole groups of arithmetic steps using a specialized mold.",
+      "question": "For scalar A = 2, B = 3, C = 4, what does AB + C produce?",
+      "options": [
+        "24",
+        "10",
+        "14",
+        "9"
+      ],
+      "correct": 1,
+      "feedback": "Multiply then add: 2 × 3 + 4 = 10. The toy scalar example illustrates the operation; real Tensor Cores process supported matrix tiles and precisions.",
+      "sources": [
+        {
+          "title": "H100 specifications, NVIDIA",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "legacyId": 84,
+      "chapter": "Computing hardware",
+      "title": "CUDA",
+      "definition": "CUDA is NVIDIA’s platform for programming its GPUs. A kernel is a function run by many logical workers called threads. Threads have indices and are organized into blocks.",
+      "formula": "For a 1D launch: i = block index × B + thread index\nB = threads per block; indices start at 0",
+      "example": "With B = 4, block 1 and thread 2 give i = 1×4+2 = 6. That thread can compute y₆ = 2x₆. Eight such blocks launch 8×4 = 32 threads.",
+      "metaphor": "CUDA is the instruction system that assigns numbered tasks to a parallel workshop.",
+      "question": "A CUDA launch has 8 blocks of 128 threads. How many threads launch?",
+      "options": [
+        "136",
+        "1,024",
+        "16,384",
+        "8"
+      ],
+      "correct": 1,
+      "feedback": "Multiply blocks by threads per block. Threads are logical workers scheduled on hardware, not a promise that all execute simultaneously. CUDA is software, not a chip.",
+      "sources": [
+        {
+          "title": "CUDA C++ Programming Guide, NVIDIA",
+          "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "legacyId": 85,
+      "chapter": "Computing hardware",
+      "title": "Memory capacity",
+      "definition": "Memory capacity is the amount of information a device can hold. Model execution needs space for weights, intermediate values, and working buffers.",
+      "formula": "weight bytes = parameter count × bits per parameter / 8",
+      "example": "1 billion parameters at 16 bits use 2 billion bytes, or 2 GB, for weights alone.",
+      "metaphor": "A kitchen counter limits how many ingredients and partly prepared dishes fit at once.",
+      "question": "Can a 2 GB device necessarily train a 1-billion-parameter model at 16 bits?",
+      "options": [
+        "Yes, if the model has a short name",
+        "No, training also needs gradients, activations, and optimizer state",
+        "No, each bit always takes one byte",
+        "Yes, weights are the only memory cost"
+      ],
+      "correct": 1,
+      "feedback": "Two GB is only the weight storage estimate in decimal units. Training and inference have additional memory costs; autoregressive inference also caches attention keys and values.",
+      "sources": []
+    },
+    {
+      "id": 87,
+      "legacyId": 86,
+      "chapter": "Computing hardware",
+      "title": "Memory bandwidth",
+      "definition": "Memory bandwidth is the amount of data transferred per unit time. It can limit speed even when computation units are fast.",
+      "formula": "transfer time ≥ bytes moved / peak bytes per second",
+      "example": "Moving 10 GB through a 100 GB/second channel takes at least 0.1 seconds under ideal conditions.",
+      "metaphor": "A giant pantry does not help a cook if ingredients arrive through a narrow serving hatch.",
+      "question": "At an ideal 200 GB/second, how long does moving 20 GB take?",
+      "options": [
+        "0.01 seconds",
+        "10 seconds",
+        "0.1 seconds",
+        "4,000 seconds"
+      ],
+      "correct": 2,
+      "feedback": "Divide data by rate: 20/200 = 0.1. Peak bandwidth gives a lower bound on transfer time; effective rates and repeated transfers determine real performance.",
+      "sources": []
+    },
+    {
+      "id": 88,
+      "legacyId": 87,
+      "chapter": "Computing hardware",
+      "title": "H100",
+      "definition": "The NVIDIA H100 is a Hopper-generation data-center GPU. Its variants differ; the H100 SXM specification includes 80 GB of HBM3 memory.",
+      "formula": "weights-only capacity estimate: 80 GB / 2 bytes = 40 billion values",
+      "example": "A 10-billion-parameter model uses about 20 GB at 16 bits for weights, leaving nominal space for other needs.",
+      "metaphor": "An H100 is a particular workshop machine, with a specified counter size and arithmetic tools.",
+      "question": "Does 80 GB at 2 bytes/value prove a 40-billion-parameter model will run?",
+      "options": [
+        "No, 80 divided by 2 is 20",
+        "Yes, including all training state",
+        "No, execution requires additional memory",
+        "Yes, with no exceptions"
+      ],
+      "correct": 2,
+      "feedback": "The estimate concerns weights alone. H100 is one specific GPU family, not a generic synonym for GPU or a claim about the newest hardware. Capacities vary by variant.",
+      "sources": [
+        {
+          "title": "H100 specifications, NVIDIA",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "legacyId": 88,
+      "chapter": "Computing hardware",
+      "title": "Compute cluster",
+      "definition": "A compute cluster is a set of networked computers working together. Distributed training may divide data, model parameters, or both across devices.",
+      "formula": "Simple model: time = serial work + parallel work/n\nn = equal workers; communication adds further time",
+      "example": "An 80-second job has 20 seconds of serial work and 60 divisible seconds. Four workers need at least 20 + 60/4 = 35 seconds in this model.",
+      "metaphor": "Eight kitchens can cook together, but they still need roads to exchange ingredients and results.",
+      "question": "Why might eight GPUs deliver less than eightfold speedup?",
+      "options": [
+        "Each GPU must permanently store all data",
+        "More GPUs always slow every task",
+        "GPUs cannot communicate",
+        "Communication, synchronization, and serial work consume time"
+      ],
+      "correct": 3,
+      "feedback": "Data parallelism replicates a model and combines gradients; model parallelism splits model computation. Network links and synchronization can become the bottleneck, and memory does not automatically become one shared pool.",
+      "sources": [
+        {
+          "title": "CUDA C++ Programming Guide, NVIDIA",
+          "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "legacyId": 89,
+      "chapter": "Computing hardware",
+      "title": "TSMC and chip fabrication",
+      "definition": "TSMC is a semiconductor foundry: it manufactures chips designed by customers. Circuits are formed on a silicon wafer, then separated into individual chips called dies.",
+      "formula": "yield = usable dies / manufactured dies",
+      "example": "In a hypothetical batch of 100 dies, 80 passing inspection gives 80% yield. This is a teaching example, not TSMC production data.",
+      "metaphor": "A foundry is the factory that fabricates another company's machine design.",
+      "question": "Which role best describes TSMC's foundry business?",
+      "options": [
+        "Creating every neural network's training labels",
+        "Owning every GPU program",
+        "Replacing CUDA with English instructions",
+        "Manufacturing customers' chip designs"
+      ],
+      "correct": 3,
+      "feedback": "Chip design, fabrication, packaging, memory production, and software are distinct parts of the computing supply chain. Yield affects usable output and cost.",
+      "sources": [
+        {
+          "title": "About TSMC, Taiwan Semiconductor Manufacturing Company",
+          "url": "https://www.tsmc.com/english/aboutTSMC"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "legacyId": 90,
+      "chapter": "The well-log application",
+      "title": "Well log and LAS",
+      "definition": "A well log records measurements indexed by depth. Log ASCII Standard, LAS, is a text format for exchanging well-log curves and metadata.",
+      "formula": "curve x(d);   samples = {(dᵢ, xᵢ)}",
+      "example": "A toy temperature log records (100 m, 30 °C) and (101 m, 30.2 °C). Temperature rises 0.2 °C over 1 m. LAS stores curve names and units too.",
+      "metaphor": "A well log is a vertical diary of instrument readings through the ground.",
+      "question": "In a typical depth-indexed well log, what orders the measurements?",
+      "options": [
+        "The number of GPUs",
+        "An arbitrary shuffled row number",
+        "The alphabetic order of rock names",
+        "Depth"
+      ],
+      "correct": 3,
+      "feedback": "Depth orders this log’s measurements. LAS here means Log ASCII Standard, not the unrelated point-cloud LAS format. Curves may measure temperature, density, gamma-ray response or other quantities, each with its own units. The Australian dataset remains a project choice.",
+      "sources": [
+        {
+          "title": "LAS format, U.S. Geological Survey",
+          "url": "https://www.usgs.gov/programs/national-geological-and-geophysical-data-preservation-program/las-format"
+        },
+        {
+          "title": "Australian National Offshore Wells Data Collection, Geoscience Australia",
+          "url": "https://ecat.ga.gov.au/geonetwork/srv/api/records/afcaf460-6994-40f8-bc24-4a87c30d82ec?language=eng"
+        },
+        {
+          "title": "NOPIMS, Geoscience Australia",
+          "url": "https://www.ga.gov.au/nopims"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "legacyId": 91,
+      "chapter": "The well-log application",
+      "title": "Windowing and missing data",
+      "definition": "Windowing divides an ordered signal into local segments. A mask records which entries are observed so absent values are not mistaken for measurements.",
+      "formula": "Wᵢ = (xᵢ, …, xᵢ₊ₗ₋₁);   mⱼ ∈ {0, 1}",
+      "example": "Sequence (2, 4, missing, 6) gives length-3 windows (2, 4, missing) and (4, missing, 6). The second has mask (1, 0, 1): its middle value is absent.",
+      "metaphor": "Cut a long film into scenes, while marking damaged frames rather than pretending they show darkness.",
+      "question": "Why keep a missing-value mask after filling blanks with zero?",
+      "options": [
+        "To make depth unnecessary",
+        "To guarantee a perfect reconstruction",
+        "To turn every curve into a class label",
+        "To distinguish absence from a real zero"
+      ],
+      "correct": 3,
+      "feedback": "Masks carry observation status. Split wells before windowing; preserve curve units, sampling intervals, and preprocessing. Reconstruction losses should handle missing entries explicitly.",
+      "sources": []
+    },
+    {
+      "id": 93,
+      "legacyId": 92,
+      "chapter": "The well-log application",
+      "title": "Provenance and uncertainty",
+      "definition": "Provenance records a result's origin and transformations. Uncertainty describes what is not known about its value, using a stated method or bound.",
+      "formula": "If abs(error) ≤ δ: true value ∈ [reading − δ, reading + δ]",
+      "example": "Well A, 100 m depth, sensor S2: 30 °C. With a justified error bound ±0.2 °C, the interval is [29.8, 30.2] °C. Keep the source and calibration version.",
+      "metaphor": "A measurement needs both a return address and a ruler showing its fuzziness.",
+      "question": "What does a model score of 0.9 establish on its own?",
+      "options": [
+        "A reported score whose reliability must be assessed",
+        "The original well and depth",
+        "Zero sensor error",
+        "A guaranteed 90% chance of scientific truth"
+      ],
+      "correct": 0,
+      "feedback": "Keep source well, depth, units, masks, transformation versions, and uncertainty meaning. A deterministic error bound is not the same object as a statistical confidence interval or an uncalibrated score.",
+      "sources": []
+    },
+    {
+      "id": 94,
+      "legacyId": 93,
+      "chapter": "The well-log application",
+      "title": "OSDU Data Platform",
+      "definition": "The OSDU Data Platform provides shared data formats and services for storing, finding and accessing energy data. It links measurements to metadata and controls who can access them.",
+      "formula": "Conceptual path: record ID → authorized lookup → data + metadata",
+      "example": "Record 17 identifies a Well A temperature log. An authorized request retrieves its 100 m, 30 °C measurement together with the curve’s depth and temperature units.",
+      "metaphor": "A shared catalog lets different laboratories find and describe materials using compatible conventions.",
+      "question": "What does OSDU interoperability provide?",
+      "options": [
+        "A shared way to organize and access domain data",
+        "Universal permission to use every file",
+        "Automatic geological truth",
+        "A pretrained token language for every log"
+      ],
+      "correct": 0,
+      "feedback": "OSDU provides data infrastructure and conventions. It does not by itself supply the proposed autoencoder, token alignment, scientific validation, or permission to redistribute every dataset.",
+      "sources": [
+        {
+          "title": "The Open Group OSDU Forum",
+          "url": "https://www.opengroup.org/osdu-forum/home"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "legacyId": 95,
+      "chapter": "The well-log application",
+      "title": "Open source and reproducibility",
+      "definition": "Open-source licensing permits use, study, modification, and redistribution under stated terms. Reproducibility requires enough materials to repeat and evaluate a result.",
+      "formula": "Reproducible result: data + code + settings + environment",
+      "example": "Publish allowed data (2, 4, 6), code mean(x), and the environment. Another person obtains (2+4+6)/3 = 4. Publishing only “result = 4” cannot reproduce the calculation.",
+      "metaphor": "Share the recipe, ingredients, oven settings, and tasting rules so others can check the cake.",
+      "question": "Is publishing only trained weights sufficient for a reproducible open-source experiment?",
+      "options": [
+        "Yes, all missing details are inside the weights",
+        "Only if the weights are large",
+        "No, licensing and the experimental materials also matter",
+        "Yes, filenames replace data versions"
+      ],
+      "correct": 2,
+      "feedback": "Publish appropriate licenses, code, dependencies, configurations, splits, and permitted data or retrieval instructions. Numerical reproducibility may require tolerances because hardware and software can change rounding.",
+      "sources": [
+        {
+          "title": "The Open Source Definition, Open Source Initiative",
+          "url": "https://opensource.org/osd"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "legacyId": 97,
+      "chapter": "The well-log application",
+      "title": "Representation alignment",
+      "definition": "Representation alignment connects domain vectors or tokens to language tasks. Paired examples can train a model to use those representations when predicting an answer.",
+      "formula": "A supervised objective: minimize −Σᵢ ln P_θ(answerᵢ ∣ qᵢ, codesᵢ, metadataᵢ)",
+      "example": "For a code paired with answer “rising,” predicting probability 0.2 gives loss −ln(0.2) ≈ 1.61. At 0.8, loss ≈ 0.22. Paired data teach the connection.",
+      "metaphor": "Inventing an alphabet is easy; teaching readers what its symbols refer to takes examples and practice.",
+      "question": "What must follow assigning new IDs to log patterns?",
+      "options": [
+        "Assume the LLM understands them immediately",
+        "Interpret larger IDs as deeper rocks",
+        "Establish and evaluate their connection to language and tasks",
+        "Delete all original measurements"
+      ],
+      "correct": 2,
+      "feedback": "Options include learned embeddings or adapters, paired language training, or a defined tool interface. New vocabulary tokens require model/tokenizer support; printed ID strings alone are not a learned scientific language.",
+      "sources": []
+    },
+    {
+      "id": 97,
+      "legacyId": 96,
+      "chapter": "The well-log application",
+      "title": "Sememe.ai framework",
+      "definition": "Sememe.ai is the framework and SDK described for connecting domain models and representations to language interfaces. This well-log workflow is a proposed application.",
+      "formula": "well window → encoder → code IDs + metadata → language/model interface",
+      "example": "A proposed design maps 512 measurements into 8 code IDs while retaining the well, depth, units, and model version.",
+      "metaphor": "Build a translation workbench that keeps a scientific notebook beside its shorthand dictionary.",
+      "question": "Which claim is justified by this curriculum?",
+      "options": [
+        "It proves tokens already have English meanings",
+        "It proves geological superiority over all baselines",
+        "It verifies the deployed SDK's exact methods",
+        "It specifies a proposed, testable well-log workflow"
+      ],
+      "correct": 3,
+      "feedback": "The project intent comes from Danny's description and available prior context. Implementation details, chosen dataset, learned token meanings, and performance were not independently verified. Toy counts are design examples.",
+      "sources": []
+    },
+    {
+      "id": 98,
+      "legacyId": 98,
+      "chapter": "The well-log application",
+      "title": "Benchmark and ablation",
+      "definition": "A benchmark defines fixed evaluation tasks and metrics. An ablation changes one component to test what it contributes under a controlled comparison.",
+      "formula": "accuracy = correct / total;   change = scorefull − scorewithout",
+      "example": "On the same 50 held-out questions, the full system gets 40 right (80%). Disabling its learned-token input gives 35 (70%). The observed drop is 10 percentage points.",
+      "metaphor": "Race on the same course, then remove one engine part to see whether it actually helped.",
+      "question": "What would best test whether learned tokens add value?",
+      "options": [
+        "Compare different tasks with different answer rules",
+        "Show one attractive reconstruction only",
+        "Tune on the final test until the score rises",
+        "Compare matched systems with and without tokens on held-out wells"
+      ],
+      "correct": 3,
+      "feedback": "Hold the task, dataset and evaluation rules fixed. The example is an inference-time ablation of token input, not proof that tokens caused the whole gain. Such removal can introduce distribution shift; matched retraining and repeated runs answer complementary questions. Compare against raw-data tools and conventional representations, and evaluate reconstruction, scientific accuracy and cost.",
+      "sources": []
+    },
+    {
+      "id": 99,
+      "legacyId": 99,
+      "chapter": "The well-log application",
+      "title": "Forward-deployed engineering",
+      "definition": "Forward-deployed engineering embeds technical work with users to define a valuable problem, integrate a solution, and measure its performance in real operations.",
+      "formula": "time saved per case = previous time − deployed time",
+      "example": "If a verified workflow reduces a task from 30 to 10 minutes, 12 tasks save 240 minutes, or 4 hours.",
+      "metaphor": "An engineer builds a bridge at the actual river, adjusting to its banks and traffic.",
+      "question": "What makes a model demonstration a delivered operational solution?",
+      "options": [
+        "Integration, user acceptance, and measured performance in use",
+        "A slide claiming success",
+        "A larger model name alone",
+        "An impressive score on an unrelated dataset"
+      ],
+      "correct": 0,
+      "feedback": "Danny describes bld.ai's role as spanning opportunity identification, product work, R&D, implementation, and operation. The time example is hypothetical; project success requires evidence beyond a demonstration.",
+      "sources": []
+    },
+    {
+      "id": 100,
+      "legacyId": 100,
+      "chapter": "The well-log application",
+      "title": "Grounded model conversation",
+      "definition": "A grounded model conversation links a natural-language question to identified data and a defined computation, then reports the result with assumptions and evidence.",
+      "formula": "question → validated inputs → model/tool → result → explained answer",
+      "example": "“Double inflow.” Starting volume 10 L, usual inflow 3 L/step, drain 2 L/step. Model predicts 10 + 2×3 − 2 = 14 L after one step, assuming no overflow.",
+      "metaphor": "Language is the interpreter at the laboratory door; instruments and models do the measured work inside.",
+      "question": "What is the strongest scientific answer to a “what if” question?",
+      "options": [
+        "The nearest token ID alone",
+        "A fluent number without evidence",
+        "A computed result with the model, inputs, units, and assumptions",
+        "A claim that a simulation guarantees reality"
+      ],
+      "correct": 2,
+      "feedback": "The story closes with a division of work: representations organize patterns, language coordinates questions, and models calculate consequences. The well-log demo should test that connection before extending it to controlled physical systems.",
+      "sources": []
+    }
+  ],
+  "about": "A cumulative course for Linus and other curious learners: 100 concepts, 100 worked examples, 100 metaphors, and 100 questions. Numerical examples are teaching examples, not measured project results. Mathematics uses real scalars unless stated otherwise. Bracketed inner lists denote matrix rows. Engineering concepts use operational calculations rather than invented mathematical definitions.",
+  "context": "The application follows Danny Castonguay’s description of Sememe.ai and the proposed Australian well-log demonstration for the Houston OSDU forum. Available prior context also describes work with his mentor Shie Mannor on computational models, sensing, and control. Retrieval did not recover the complete prior Australian autoencoder chat. Dataset choice, SDK methods, model architecture, and performance remain unverified here. The VQ-VAE pipeline is an educational candidate design, not a claim about the current implementation.",
+  "background": "Danny describes bld.ai as providing opportunity identification, product management, R&D, integration, and deployment for enterprises including BHP, BP, and Aramco; working with platforms such as DataRobot, Dataiku, and H2O; and collaborating on learning with Cohere. These are user-provided context, not independently audited case studies. The course uses that context to explain applied engineering, without claiming measured client outcomes.",
+  "mentor": "Shie Mannor, Yishay Mansour, and Aviv Tamar coauthored Reinforcement Learning: Foundations. Mannor’s work on sensing and dynamical systems provides relevant background for the control chapter. These sources do not establish endorsement of this course or of the proposed Sememe.ai design.",
+  "sources": [
+    {
+      "title": "Introduction to Tensors, TensorFlow",
+      "url": "https://www.tensorflow.org/guide/tensor"
+    },
+    {
+      "title": "Autocorrelation, NIST Engineering Statistics Handbook",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35c.htm"
+    },
+    {
+      "title": "Automatic differentiation, PyTorch",
+      "url": "https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html"
+    },
+    {
+      "title": "Mean squared error, PyTorch",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"
+    },
+    {
+      "title": "Deep Learning, chapter 14: Autoencoders",
+      "url": "https://www.deeplearningbook.org/contents/autoencoders.html"
+    },
+    {
+      "title": "Neural Discrete Representation Learning, van den Oord et al., 2017",
+      "url": "https://arxiv.org/abs/1711.00937"
+    },
+    {
+      "title": "Attention Is All You Need, Vaswani et al., 2017",
+      "url": "https://papers.nips.cc/paper/7181-attention-is-all-you-need"
+    },
+    {
+      "title": "Reinforcement Learning: Foundations, Mannor, Mansour and Tamar",
+      "url": "https://sites.google.com/view/rlfoundations/home"
+    },
+    {
+      "title": "Dynamic Sensing, Richman and Mannor, 2015",
+      "url": "https://proceedings.mlr.press/v37/richman15.html"
+    },
+    {
+      "title": "Sensor Selection for Crowdsensing Dynamical Systems, Schnitzler, Yu and Mannor, 2015",
+      "url": "https://proceedings.mlr.press/v38/schnitzler15.html"
+    },
+    {
+      "title": "Training language models to follow instructions with human feedback, Ouyang et al., 2022",
+      "url": "https://arxiv.org/abs/2203.02155"
+    },
+    {
+      "title": "CUDA C++ Programming Guide, NVIDIA",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/"
+    },
+    {
+      "title": "H100 specifications, NVIDIA",
+      "url": "https://www.nvidia.com/en-us/data-center/h100/"
+    },
+    {
+      "title": "About TSMC, Taiwan Semiconductor Manufacturing Company",
+      "url": "https://www.tsmc.com/english/aboutTSMC"
+    },
+    {
+      "title": "LAS format, U.S. Geological Survey",
+      "url": "https://www.usgs.gov/programs/national-geological-and-geophysical-data-preservation-program/las-format"
+    },
+    {
+      "title": "Australian National Offshore Wells Data Collection, Geoscience Australia",
+      "url": "https://ecat.ga.gov.au/geonetwork/srv/api/records/afcaf460-6994-40f8-bc24-4a87c30d82ec?language=eng"
+    },
+    {
+      "title": "NOPIMS, Geoscience Australia",
+      "url": "https://www.ga.gov.au/nopims"
+    },
+    {
+      "title": "The Open Group OSDU Forum",
+      "url": "https://www.opengroup.org/osdu-forum/home"
+    },
+    {
+      "title": "The Open Source Definition, Open Source Initiative",
+      "url": "https://opensource.org/osd"
+    }
+  ]
+}
+</script><script>(()=>{'use strict';
+ const course=JSON.parse(document.getElementById('course-data').textContent);
+ const items=course.concepts, key='model-conversations-progress-v1';
+ const el=id=>document.getElementById(id), escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ let state={version:course.version,current:0,answers:{}},storageOK=true;
+ try{
+  const old=JSON.parse(localStorage.getItem(key));
+  const legacy=old&&old.version==='1.0';
+  if(old&&(old.version===course.version||old.version==='1.1'||legacy)&&old.answers&&typeof old.answers==='object'){
+   const current=Number.isInteger(old.current)?Math.max(0,Math.min(99,old.current)):0;
+   state.current=legacy?items.findIndex(c=>c.legacyId===current+1):current;
+   for(const [id,a] of Object.entries(old.answers)){
+    if(/^\d+$/.test(id)&&+id>=1&&+id<=100&&a&&Number.isInteger(a.first)&&a.first>=0&&a.first<4&&Number.isInteger(a.last)&&a.last>=0&&a.last<4&&Number.isInteger(a.attempts)&&a.attempts>0){
+     const newId=legacy?items.find(c=>c.legacyId===+id).id:id;
+     if(old.version!==course.version&&course.revisedQuestions.includes(+newId))continue;
+     state.answers[newId]={first:a.first,last:a.last,attempts:a.attempts};
+    }
+   }
+   if(legacy){
+    const match=location.hash.match(/^#concept-(\d+)$/);
+    const target=match?items.find(c=>c.legacyId===+match[1]):items[state.current];
+    if(target)history.replaceState(null,'',`#concept-${target.id}`);
+   }
+  }
+ }catch{storageOK=false;}
+ let selected=null,checked=false;
+ function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch{storageOK=false;}el('storage-note').textContent=storageOK?'':'Progress works for this session, but this browser cannot save it locally.';}
+ function sourceList(sources){return '<ul class="sources-list">'+sources.map(s=>`<li><a href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)}</a></li>`).join('')+'</ul>';}
+ function counts(){let checked=0,correct=0,first=0;for(const c of items){const a=state.answers[c.id];if(a){checked++;if(a.last===c.correct)correct++;if(a.first===c.correct)first++;}}return {checked,correct,first};}
+ function navigation(){const n=counts();el('progress').value=n.checked;el('progress-text').textContent=`${n.checked}/100 checked · ${n.correct} correct`;el('concept-select').innerHTML=course.chapters.map(ch=>`<optgroup label="${escape(ch.title)}">${items.filter(c=>c.chapter===ch.title).map(c=>`<option value="${c.id-1}">${String(c.id).padStart(3,'0')} · ${escape(c.title)}${state.answers[c.id]?' · checked':''}</option>`).join('')}</optgroup>`).join('');el('concept-select').value=state.current;}
+ function quiz(){const c=items[state.current];el('choices').innerHTML=c.options.map((o,i)=>`<label class="option"><input type="radio" name="answer" value="${i}" ${selected===i?'checked':''} ${checked?'disabled':''}><span>${escape(o)}</span></label>`).join('');el('check').disabled=selected===null||checked;el('retry').hidden=!checked;el('next').disabled=!checked;el('feedback').hidden=!checked;
+ if(checked){const ok=selected===c.correct;el('feedback').innerHTML=`<strong>${ok?'Correct.':'The correct answer is: '+escape(c.options[c.correct])+'.'}</strong><p>${escape(c.feedback)}</p>`;}
+ el('next').textContent=state.current===99?'Finish':'Next concept';el('question-hint').textContent=checked?'Read the explanation, then continue.':'Choose an answer, then check it.';
+ }
+ function render(focus=false){const c=items[state.current],a=state.answers[c.id];selected=a?a.last:null;checked=!!a;document.title=`${c.id}. ${c.title} | Mathematics to Model Conversations`;
+ el('content').hidden=false;el('completion').hidden=true;el('chapter').textContent=`${String(c.id).padStart(3,'0')} / 100 · ${c.chapter}`;el('title').textContent=c.title;el('definition').textContent=c.definition;el('formula').textContent=c.formula;el('example').textContent=c.example;el('metaphor').textContent=c.metaphor;el('question').textContent=c.question;el('previous').disabled=state.current===0;el('concept-sources').hidden=!c.sources.length;el('concept-source-list').innerHTML=sourceList(c.sources);navigation();quiz();save();
+ el('content').classList.remove('animate');void el('content').offsetWidth;el('content').classList.add('animate');if(focus){el('title').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
+ }
+ function go(index){state.current=Math.max(0,Math.min(99,index));history.replaceState(null,'',`#concept-${state.current+1}`);render(true);}
+ function finish(){const n=counts();el('content').hidden=true;el('completion').hidden=false;el('completion').innerHTML=`<p class="chapter">Mathematics to Model Conversations</p><h1 tabindex="-1">${n.checked===100?'All 100 concepts checked.':'You reached concept 100.'}</h1><p>${n.checked} questions checked. ${n.correct} correct on the latest attempt. ${n.first} correct on the first attempt.</p><p>Return to any concept using the menu. A correct multiple-choice answer is a useful check; explaining the idea in your own words tests it further.</p><div class="quiz-actions"><button id="review">Review a question</button><button id="return-last">Return to concept 100</button></div>`;el('review').onclick=()=>{const first=items.findIndex(c=>!state.answers[c.id]||state.answers[c.id].last!==c.correct);go(first<0?0:first);};el('return-last').onclick=()=>go(99);el('completion').querySelector('h1').focus();window.scrollTo({top:0,behavior:'instant'});}
+ el('choices').addEventListener('change',e=>{if(e.target.name==='answer'&&!checked){selected=Number(e.target.value);el('check').disabled=false;}});
+ el('quiz-form').addEventListener('submit',e=>{e.preventDefault();if(selected===null||checked)return;const c=items[state.current],old=state.answers[c.id];state.answers[c.id]={first:old?old.first:selected,last:selected,attempts:old?old.attempts+1:1};checked=true;save();navigation();quiz();el('feedback').focus({preventScroll:true});});
+ el('retry').onclick=()=>{selected=null;checked=false;quiz();el('choices').querySelector('input').focus();};
+ el('next').onclick=()=>{if(!checked)return;if(state.current===99)finish();else go(state.current+1);};el('previous').onclick=()=>go(state.current-1);el('concept-select').onchange=e=>go(Number(e.target.value));
+ el('reset').onclick=()=>{if(window.confirm('Clear all saved answers and return to concept 1 on this browser?')){state={version:course.version,current:0,answers:{}};go(0);}};
+ el('about').textContent=course.about;el('context').textContent=course.context;el('background').textContent=course.background;el('mentor').textContent=course.mentor;el('all-sources').innerHTML=sourceList(course.sources);
+ function hashIndex(){const match=location.hash.match(/^#concept-(\d+)$/);return match&&+match[1]>=1&&+match[1]<=100?+match[1]-1:null;}const initial=hashIndex();if(initial!==null)state.current=initial;window.addEventListener('hashchange',()=>{const index=hashIndex();if(index!==null){state.current=index;render(true);}});
+ render();
+})();
+</script></body></html>
