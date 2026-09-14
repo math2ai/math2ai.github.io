@@ -8,6 +8,20 @@ header,main,footer{max-width:1000px;margin:auto;padding:1.3rem 2rem}header{borde
 .brand{font-size:1rem;letter-spacing:0}
 .identity{display:flex;align-items:center;gap:.6rem}
 .identity>div{min-width:0}
+.header-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.header-top>.identity{flex:1;min-width:230px}
+.account{max-width:100%;font-size:.75rem;text-align:right}
+.account-actions{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;flex-wrap:wrap}
+#auth-account{max-width:15rem;overflow-wrap:anywhere}
+.google-signin{padding:0;border:0;border-radius:4px;width:180px;height:40px;background:transparent;flex:none}
+.google-signin img{display:block;width:180px;height:40px}
+.google-signin:disabled{opacity:.6}
+.google-signin:hover:not(:disabled){background:transparent;box-shadow:0 0 0 1px #747775}
+.signout-button{font-size:inherit;padding:.3rem .5rem}
+#auth-status{font-size:.7rem;max-width:18rem;margin:.3rem 0 0}
+#auth-status:empty{display:none}
+@media(max-width:600px){.account{text-align:left}.account-actions{justify-content:flex-start}}
+@media print{.account{display:none}}
 .brand-logo{display:block;flex:none;width:4rem;height:4rem;object-fit:contain}
 .subtitle{font-size:.8rem;color:var(--muted);margin:.2rem 0 0}
 footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;white-space:nowrap;vertical-align:baseline}

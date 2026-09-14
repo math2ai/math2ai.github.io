@@ -1,0 +1,4 @@
+# The vendored SDK has significant trailing whitespace inside template literals.
+# Keep its bytes intact, including when embedded in the generated website.
+source/vendor/*.js -text whitespace=-blank-at-eol
+index.html whitespace=-blank-at-eol linguist-generated=true

@@ -6,13 +6,23 @@ Try it at [math2ai.github.io](https://math2ai.github.io/).
 
 ## Use the course
 
-Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install, network requests to run the course, accounts, analytics, or server components.
+Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install or network requests needed for guest practice. Optional Google sign-in uses Supabase when configured; the course remains usable without an account. There are no analytics.
 
 Read a concept and try a randomly selected question. Choose one of four answers, press **Check answer**, and read its explanation. **Another question** rotates through all ten questions in random order before starting a new cycle, with no immediate repeat at the cycle boundary. You can skip a question, retry an incorrect answer, or use **Next concept** and the menu at any time.
 
 Lessons are numbered 001–128 in pedagogical order in the concept menu. A plain checkmark appears beside a concept's title and menu entry once any question has been answered correctly. Unanswered concepts have no marker. Answer counts stay in browser storage without being displayed, and there are no navigation gates.
 
-Progress stays in this browser's **local storage**, when available; the site does not use cookies, accounts, analytics, or a server to track answers. Ordinary refreshes retain saved answers, the current question, and the remaining random order. Storage is only a convenience: site updates, clearing browser data, or unavailable storage can reset progress. It does not sync between browsers or devices. Opening a downloaded file and visiting its hosted version may use different saved progress. The small **Clear saved answers** button beside the storage note resets only this course after confirmation.
+Guest progress stays in this browser's **local storage** until sign-in. Signing in automatically merges those answers into the Google account, keeps the current question and feedback, and preserves any existing account progress. Account answers are saved in Supabase, with live updates across open tabs and devices. Signing out hides the account's checkmarks and allows fresh guest practice; signing back in restores the account's answers. Guest answers already transferred to one account are not copied into another account. There are no analytics.
+
+Answers are written individually, so an older tab cannot replace the account's newer progress. Pending answers survive offline reloads and retry with the same operation ID to avoid double counting. The active lesson, question and randomized order remain local navigation preferences; remote answers update checkmarks without navigating another learner's tab. **Clear saved answers** resets the current account across devices, or just guest practice when signed out, after confirmation. Old offline writes cannot undo a reset. Site updates, browser storage failures, or incompatible course versions may reset progress; this is a convenience feature, not a durable learning record.
+
+## Optional Google sign-in and account progress
+
+Follow [the setup and live test checklist](source/AUTH_SETUP.md) to configure Supabase and Google. Account saving also requires the checked-in [database migration](supabase/migrations/202609140001_account_progress.sql). Apply it once in Supabase's SQL Editor before testing the new website. It creates private progress tables, restricted synchronization functions, and Realtime revision notifications. Google client secrets and privileged Supabase keys belong in the service dashboards, never in this repository.
+
+The public settings in `source/auth-config.json`, pinned SDK, and Google button are embedded in the website. Blank settings hide account controls and preserve offline guest practice. Until an account's answers can be loaded or a local account cache is available, its answer controls stay disabled; a failed load cannot upload an empty replacement. Signing out still allows guest practice.
+
+On the first load of this version, the previous shared browser save is assigned once to the resolved account, or to guest practice if signed out. The original record and an import recovery copy are retained. New guest answers transfer automatically on sign-in. Each transfer is assigned to one account, keeps the original operation IDs, and retains a recovery record until the server acknowledges it. Interrupted transfers resume for that account; they are not imported repeatedly or claimed by another account. Refresh all old tabs when updating the website.
 
 ## Print and present
 
@@ -70,12 +80,17 @@ python verify_examples.py
 python verify_bank.py
 python verify_expansion.py
 node verify_state.mjs
+python verify_auth_build.py
+node verify_auth.mjs
+node verify_progress.mjs
 ```
 
-The checks cover all 1,280 question records, independent numerical calculations, original worked examples, prerequisite order, embedded assets, and actual app event handlers. State checks cover every question, random cycles, repeat attempts, correct-answer indicators, unrestricted navigation, reloads, reset, deep links, incompatible/corrupt saves, and unavailable storage. No packages are required for these checks.
+The checks cover all 1,280 question records, independent numerical calculations, original worked examples, prerequisite order, embedded assets, and actual app event handlers. State checks cover every question, random cycles, repeat attempts, correct-answer indicators, unrestricted navigation, reloads, reset, deep links, incompatible/corrupt saves, and unavailable storage. Authentication checks cover Google redirects, PKCE callbacks, cancellation, session restoration and sign-out, including the pinned SDK against simulated Auth endpoints. Progress checks run the real UI and persistence handlers with controllable storage, account, network and Realtime events: stale tabs, concurrent answers, account isolation, lost replies, offline retries, reset epochs, late responses after sign-out, and the complete guest-to-account signup flow (including a fresh OAuth return page, failed transfers, repeat logins, multiple upload batches and retained question state). These checks need no packages.
+
+`source/verify_progress_sql.mjs` also executes the actual migration and access-control tests in PostgreSQL using the optional test-only `@electric-sql/pglite` package (tested with 0.3.14). Install it outside the deployed website, then run `node source/verify_progress_sql.mjs /absolute/path/to/pglite/dist/index.js`. It tests owner-only reads, denied guest and cross-account access, restricted writes, duplicate-operation handling, and idempotent resets. PGlite is not a runtime website dependency. A real Google/Supabase multi-device test still requires the manual checklist in `source/AUTH_SETUP.md`.
 
 Presentation builders are included for reuse; rebuilding the PPTX requires the OpenAI artifact-tool runtime. The already generated PDF and PowerPoint do not need that runtime to use.
 
 ## License
 
-The original course source and website code in this package are offered under the included MIT license. Linked papers, documentation, data, company names, and third-party materials retain their own rights. 
+The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK has its own included MIT license; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.

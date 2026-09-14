@@ -1,12 +1,12 @@
 (() => {
  'use strict';
  const course = JSON.parse(document.getElementById('course-data').textContent);
- const items = course.concepts, key = 'model-conversations-progress-v1';
+ const items = course.concepts, persistence = window.math2aiProgress;
  const el = id => document.getElementById(id);
  const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const fresh = () => ({version:course.version, current:0, concepts:{}});
  const validIndex = n => Number.isInteger(n) && n >= 0 && n < items.length;
- let state = fresh(), storageOK = true, storageMessage = '';
+ let state = fresh(), storageMessage = '', owner = null, viewRevision = null, ready = false, initialRender = true;
  let selected = null, checked = false;
  const object = v => v && typeof v === 'object' && !Array.isArray(v);
  const choice = n => Number.isInteger(n) && n >= 0 && n < 4;
@@ -36,11 +36,9 @@
    state.concepts[c.legacyId] = {active, remaining, answers, pending:p.pending === true};
   }
  }
- try { restore(localStorage.getItem(key)); } catch { storageOK = false; }
  function save() {
   state.currentConceptId = items[state.current].legacyId;
-  try { localStorage.setItem(key, JSON.stringify(state)); storageOK = true; } catch { storageOK = false; }
-  el('storage-note').textContent = storageOK ? storageMessage : 'Progress works for this session, but this browser cannot save it locally.';
+  persistence.saveView(state);
  }
  function progress(c) {
   return state.concepts[c.legacyId] || (state.concepts[c.legacyId] = {active:null, remaining:[], answers:{}, pending:true});
@@ -81,8 +79,11 @@
  function quiz() {
   const c = items[state.current], q = question(c);
   el('question').textContent = q.question;
-  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${selected === i ? 'checked' : ''} ${checked ? 'disabled' : ''}><span>${escape(o)}</span></label>`).join('');
-  el('check').disabled = selected === null || checked;
+  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${selected === i ? 'checked' : ''} ${checked || !ready ? 'disabled' : ''}><span>${escape(o)}</span></label>`).join('');
+  el('check').disabled = !ready || selected === null || checked;
+  el('another').disabled = !ready;
+  el('retry').disabled = !ready;
+  el('reset').disabled = !ready;
   el('retry').hidden = !checked || selected === q.correct;
   el('feedback').hidden = !checked;
   if (checked) el('feedback').innerHTML = `<strong>${selected === q.correct ? 'Correct.' : 'Not quite. The correct answer is: ' + escape(q.options[q.correct]) + '.'}</strong><p>${escape(q.feedback)}</p>`;
@@ -108,16 +109,18 @@
  }
  el('choices').addEventListener('change', e => {
   const value = Number(e.target.value);
-  if (e.target.name === 'answer' && !checked && choice(value)) { selected = value; el('check').disabled = false; }
+  if (ready && e.target.name === 'answer' && !checked && choice(value)) { selected = value; el('check').disabled = false; }
  });
  el('quiz-form').addEventListener('submit', e => {
-  e.preventDefault(); if (selected === null || checked) return;
+  e.preventDefault(); if (!ready || selected === null || checked) return;
   const c = items[state.current], p = progress(c), q = question(c), old = p.answers[q.id];
+  if (!persistence.record(q.id,selected)) return;
   p.answers[q.id] = {first:old ? old.first : selected, last:selected, attempts:old ? old.attempts + 1 : 1, solved:!!(old && old.solved) || selected === q.correct};
   checked = true; p.pending = false; save(); navigation(); quiz(); el('feedback').focus({preventScroll:true});
  });
- el('retry').onclick = () => { selected = null; checked = false; progress(items[state.current]).pending = true; save(); quiz(); el('choices').querySelector('input').focus(); };
+ el('retry').onclick = () => { if (!ready) return; selected = null; checked = false; progress(items[state.current]).pending = true; save(); quiz(); el('choices').querySelector('input').focus(); };
  el('another').onclick = () => {
+  if (!ready) return;
   const c = items[state.current]; draw(c); selected = null; checked = false;
   // Repeating a question does not increase its distinct correct-answer count.
   quiz(); save(); el('question').focus({preventScroll:true});
@@ -125,8 +128,11 @@
  el('next').onclick = () => go((state.current + 1) % items.length);
  el('previous').onclick = () => go(state.current - 1);
  el('concept-select').onchange = e => go(Number(e.target.value));
- el('reset').onclick = () => {
-  if (window.confirm('Clear all saved practice answers and return to concept 1 on this browser?')) { state = fresh(); storageMessage = ''; go(0); }
+ el('reset').onclick = async () => {
+  if (!ready) return;
+  const originalOwner = owner;
+  const scope = persistence.status().account ? 'your account on all devices' : 'guest practice in this browser';
+  if (window.confirm(`Clear all saved answers for ${scope}?`) && await persistence.reset() && owner === originalOwner) { state = fresh(); storageMessage = ''; go(0); }
  };
  el('subtitle').textContent = course.subtitle;
  function hashIndex() {
@@ -136,8 +142,27 @@
   const index = items.findIndex(c => c.legacyId === identity);
   return validIndex(index) ? index : null;
  }
- const initial = hashIndex(); if (initial !== null) state.current = initial;
+ const requestedIndex = hashIndex();
  window.addEventListener('hashchange', () => { const index = hashIndex(); if (index !== null) go(index); });
- history.replaceState(null,'',`#lesson-${items[state.current].legacyId}`);
- render();
+ persistence.subscribe(update => {
+  ready = update.ready;
+  el('storage-note').textContent = update.message;
+  el('save-description').textContent = update.account ? 'Answers sync to your account. Site updates may reset progress.' : 'Guest answers are saved in this browser. Sign in to save across devices.';
+  if (owner !== update.owner || viewRevision !== update.viewRevision || initialRender) {
+   owner = update.owner;
+   viewRevision = update.viewRevision;
+   state = fresh();
+   if (update.state) restore(JSON.stringify(update.state));
+   if (initialRender && requestedIndex !== null) state.current = requestedIndex;
+   if (ready) initialRender = false;
+   history.replaceState(null,'',`#lesson-${items[state.current].legacyId}`);
+   render();
+  } else {
+   for (const c of items) progress(c).answers = update.state?.concepts[c.legacyId]?.answers || {};
+   const p = progress(items[state.current]), a = p.pending ? null : p.answers[p.active];
+   // Keep a draft choice intact while another tab updates completion indicators.
+   if (checked || selected === null) { selected = a ? a.last : null; checked = !!a; }
+   navigation(); quiz();
+  }
+ });
 })();

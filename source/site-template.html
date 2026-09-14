@@ -4,10 +4,18 @@
 <body>
 <a class="skip" href="#title">Skip to concept</a>
 <header>
-  <div class="identity">
+  <div class="header-top"><div class="identity">
     <img class="brand-logo" src="/*COURSE_LOGO*/" width="80" height="80" alt="">
     <div><span class="brand">math2ai</span><p class="subtitle" id="subtitle"></p></div>
   </div>
+  <div class="account" id="account" aria-label="Account" hidden>
+    <div class="account-actions">
+      <span id="auth-account" hidden></span>
+      <button class="google-signin" id="auth-signin" type="button" aria-label="Sign in with Google" disabled><img src="/*GOOGLE_BUTTON*/" width="180" height="40" alt="Sign in with Google"></button>
+      <button class="signout-button" id="auth-signout" type="button" hidden>Sign out</button>
+    </div>
+    <p id="auth-status" role="status" aria-live="polite"></p>
+  </div></div>
   <div class="navigation"><label for="concept-select">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select></div></div>
 </header>
 <main>
@@ -31,8 +39,10 @@
   </div>
 </main>
 <footer>
-  <p>Answers are saved only in this browser. Site updates or clearing browser data may reset them. <button class="reset-button" id="reset" type="button">Clear saved answers</button></p>
+  <p><span id="save-description">Guest answers are saved in this browser. Sign in to save across devices.</span> <button class="reset-button" id="reset" type="button">Clear saved answers</button></p>
   <p id="storage-note" role="status"></p>
 </footer>
-<script type="application/json" id="course-data">/*COURSE_DATA*/</script><script>/*COURSE_JS*/</script>
+<script type="application/json" id="course-data">/*COURSE_DATA*/</script>
+<script type="application/json" id="auth-config">/*AUTH_CONFIG*/</script>
+<script>/*AUTH_SDK*/</script><script>/*PROGRESS_JS*/</script><script>/*AUTH_JS*/</script><script>/*COURSE_JS*/</script>
 </body></html>
