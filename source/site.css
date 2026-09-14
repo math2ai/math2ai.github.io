@@ -29,5 +29,57 @@ footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;w
 .concept-heading h1{min-width:0;margin:0}
 .concept-score{flex-shrink:0;font-size:1rem;line-height:1;color:#376144}
 
+.review-link{font-size:.8rem;white-space:nowrap;text-underline-offset:4px}
+.review-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
+.review-back{display:inline-block;font-size:.8rem;white-space:nowrap}
+#review-title{margin:0}
+.review-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(10rem,auto);gap:.8rem}
+.review-tools label{font-size:.75rem;display:block}
+.review-tools input,.review-tools select{display:block;width:100%;min-width:0;font-size:.8rem;padding:.5rem .6rem;border:1px solid #777;background:#fff;color:var(--ink);border-radius:0}
+.review-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.review-tools select{padding-right:1.5rem}
+.review-shortcuts{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.4rem 0}
+.review-shortcuts button,.review-chapter-select,#review-change{border:0;padding:.15rem 0;text-decoration:underline;text-underline-offset:3px;font-size:.75rem;background:transparent}
+.review-note{color:var(--muted);font-size:.72rem;margin:.5rem 0 .7rem;max-width:40rem}
+.review-chapter{position:relative;margin:0;border-top:1px solid var(--rule);font-size:.85rem}
+.review-chapter:last-child{border-bottom:1px solid var(--rule)}
+.review-chapter summary{padding:.8rem .2rem;font-size:.82rem}
+.review-chapter[open] summary{padding-right:6rem}
+.review-chapter summary>span:first-child{font-weight:700}
+.review-chapter-count{font-size:.7rem;color:var(--muted);margin-left:.75rem;white-space:nowrap}
+.review-chapter-select{position:absolute;right:.2rem;top:.65rem;margin:0}
+.review-table{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:.8rem;font-size:.78rem}
+.review-table th,.review-table td{padding:.65rem .4rem;border-top:1px solid #e7e7e7;text-align:right;vertical-align:middle;font-weight:400}
+.review-table thead th{font-size:.68rem;color:var(--muted);line-height:1.35;padding:.35rem .4rem}
+.review-table th:first-child{width:58%;text-align:left}
+.review-table td{font-variant-numeric:tabular-nums}
+.review-topic-label{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer;line-height:1.4}
+.review-topic-label input{accent-color:var(--ink);width:18px;height:18px;margin:.12rem 0 0;flex:none}
+.review-topic-status{display:block;font-size:.65rem;color:var(--muted);margin-top:.18rem}
+.review-topic-status.solid{color:#376144}
+.review-stat-label{display:none}
+.review-selection-bar{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:.7rem;flex-wrap:wrap;background:var(--paper);padding:.8rem 0;border-top:1px solid var(--ink);margin-top:1rem;z-index:1}
+#review-selection-count{font-size:.8rem}
+#review-start{font-size:.8rem}
+#review-session{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.75rem;color:var(--muted);margin:0 0 1.2rem}
+.review-table tr{scroll-margin-bottom:6rem}
+.review-concept{display:inline-block;font-size:.8rem;margin-bottom:.1rem}
+#review-panel:not([hidden])~.quiz{margin-top:.6rem}
+@media(max-width:600px){
+ .navigation{display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem}
+ .navigation label{margin:0}.navigation .select-wrap{grid-column:1 / -1;grid-row:2}
+ .review-link{grid-column:2;grid-row:1;justify-self:end}
+ .review-tools{grid-template-columns:minmax(0,1fr) minmax(8.8rem,.8fr);gap:.6rem}
+ .review-table,.review-table tbody{display:block}
+ .review-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .review-table tr{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e7e7e7;padding:.7rem .1rem}
+ .review-table th:first-child{width:auto;grid-column:1 / -1}
+ .review-table th,.review-table td{border:0;padding:.15rem .2rem;text-align:left}
+ .review-table td{margin-top:.4rem;padding-left:1.6rem}
+ .review-stat-label{display:block;font-size:.62rem;color:var(--muted);white-space:nowrap}
+ .review-topic-status{display:inline;margin-left:.5rem}
+}
+@media print{#review-panel,.review-link{display:none}}
+
 
 @media(max-width:600px){.quiz-actions button{font-size:.85rem}}

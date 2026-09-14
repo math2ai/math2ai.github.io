@@ -12,6 +12,10 @@ Read a concept and try a randomly selected question. Choose one of four answers,
 
 Lessons are numbered 001–128 in pedagogical order in the concept menu. A plain checkmark appears beside a concept's title and menu entry once any question has been answered correctly. Unanswered concepts have no marker. Answer counts stay in browser storage without being displayed, and there are no navigation gates.
 
+**Review**, beside the concept menu, opens a topic chooser grouped into the existing chapters. Search or filter the list, select individual concepts or the matching concepts in a chapter, then start a review. Every topic shows distinct questions tried, correct first answers, and correct latest answers; untried topics have no accuracy result. **Looking solid** requires three distinct questions answered correctly on both their first and latest attempts, with no latest incorrect answers; **Worth revisiting** highlights a latest incorrect answer. These are practice signals, not mastery scores. Suggested topics prioritize concepts with latest mistakes, then practiced concepts, then the current lesson for a new learner. Untried topics are always selectable.
+
+Review draws exclusively from the selected concepts, prioritizes latest mistakes, and varies concepts and questions. **Change topics** returns to current stats; **Resume review** keeps the question and draft if the selection is unchanged. Filters never alter the selection. Selected topic IDs are saved locally per project, course and account (or guest), separately from answers; incoming answer updates do not change the set. **Back to lesson** restores the lesson question, deck and unfinished choice. Review answers use the existing guest/account saving and sync. There is no time-based review schedule: the aggregate history does not retain review dates.
+
 Guest progress stays in this browser's **local storage** until sign-in. Signing in automatically merges those answers into the Google account, keeps the current question and feedback, and preserves any existing account progress. Account answers are saved in Supabase, with live updates across open tabs and devices. Signing out hides the account's checkmarks and allows fresh guest practice; signing back in restores the account's answers. Guest answers already transferred to one account are not copied into another account. There are no analytics.
 
 Answers are written individually, so an older tab cannot replace the account's newer progress. Pending answers survive offline reloads and retry with the same operation ID to avoid double counting. The active lesson, question and randomized order remain local navigation preferences; remote answers update checkmarks without navigating another learner's tab. **Clear saved answers** resets the current account across devices, or just guest practice when signed out, after confirmation. Old offline writes cannot undo a reset. Site updates, browser storage failures, or incompatible course versions may reset progress; this is a convenience feature, not a durable learning record.
@@ -80,6 +84,7 @@ python verify_examples.py
 python verify_bank.py
 python verify_expansion.py
 node verify_state.mjs
+node verify_review.mjs
 python verify_auth_build.py
 node verify_auth.mjs
 node verify_progress.mjs

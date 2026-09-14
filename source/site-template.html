@@ -16,12 +16,29 @@
     </div>
     <p id="auth-status" role="status" aria-live="polite"></p>
   </div></div>
-  <div class="navigation"><label for="concept-select">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select></div></div>
+  <div class="navigation"><label for="concept-select">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select></div><a class="review-link" id="review-link" href="#review">Review</a></div>
 </header>
 <main>
   <noscript><p>Enable JavaScript to use the course and questions.</p></noscript>
   <div id="content">
-    <article class="concept">
+    <section id="review-panel" aria-labelledby="review-title" hidden>
+      <div class="review-heading"><h1 id="review-title" tabindex="-1">Review</h1><a id="review-back" class="review-back" href="#lesson-1">Back to lesson</a></div>
+      <div id="review-chooser">
+        <div class="review-tools">
+          <label for="review-search"><span class="review-sr-only">Search topics</span><input id="review-search" type="search" placeholder="Search concepts or chapters" autocomplete="off"></label>
+          <label for="review-filter"><span class="review-sr-only">Show</span><select id="review-filter"><option value="all">All topics</option><option value="practiced">Practiced</option><option value="revisit">Worth revisiting</option><option value="solid">Looking solid</option><option value="selected">Selected</option></select></label>
+        </div>
+        <div class="review-shortcuts"><button id="review-suggested" type="button">Use suggested topics</button><button id="review-clear" type="button">Clear selection</button></div>
+        <p id="review-help" class="review-note">Tried counts different questions. Correct counts use each question’s first and latest answers.</p>
+        <p id="review-loading" class="review-note" role="status" hidden>Loading your saved answers…</p>
+        <div id="review-topics"></div>
+        <p id="review-no-matches" hidden>No topics match. Try a different search or filter.</p>
+        <div class="review-selection-bar"><span id="review-selection-count" role="status" aria-live="polite"></span><button id="review-start" class="primary" type="button" disabled>Start review</button></div>
+      </div>
+      <div id="review-session" hidden><span id="review-scope"></span><button id="review-change" type="button">Change topics</button></div>
+      <a id="review-concept" class="review-concept" href="#lesson-1" hidden></a>
+    </section>
+    <article class="concept" id="lesson-panel">
       <p class="chapter" id="chapter"></p>
       <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span></div>
       <h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p>
@@ -29,13 +46,13 @@
       <h3>Metaphor</h3><p class="metaphor" id="metaphor"></p>
       <details id="concept-sources"><summary>Source reading</summary><div id="concept-source-list"></div></details>
     </article>
-    <section class="quiz" aria-label="Check your understanding">
+    <section class="quiz" id="quiz-panel" aria-label="Check your understanding">
       <form id="quiz-form"><fieldset><legend id="question" tabindex="-1"></legend><div id="choices"></div></fieldset>
         <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button id="retry" type="button" hidden>Retry this question</button><button id="another" type="button">Another question</button></div>
       </form>
       <div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
     </section>
-    <nav class="pager" aria-label="Concept navigation"><button id="previous">Previous</button><button class="primary" id="next">Next concept</button></nav>
+    <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous</button><button class="primary" id="next">Next concept</button></nav>
   </div>
 </main>
 <footer>

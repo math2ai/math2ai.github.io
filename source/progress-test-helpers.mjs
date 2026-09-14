@@ -22,7 +22,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  const elements=new Map(),events={},timers=new Set();
  const get=id=>{
   if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',hidden:false,disabled:false,value:'',handlers:{},attributes:{},
-   setAttribute(k,v){this.attributes[k]=v;},classList:{toggle(){}},focus(){},addEventListener(k,fn){this.handlers[k]=fn;},querySelector(){return {focus(){}};}});
+   setAttribute(k,v){this.attributes[k]=v;},classList:{toggle(){}},focus(){},contains(){return false;},querySelectorAll(){return [];},addEventListener(k,fn){this.handlers[k]=fn;},querySelector(){return {focus(){}};}});
   return elements.get(id);
  };
  const emit=(name,event={})=>{for(const fn of events[name]||[])fn(event);};
@@ -33,18 +33,27 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
  const context=vm.createContext({URL,JSON,Math:math,Date,crypto:webcrypto,navigator:{locks:shared.locks},
   localStorage:shared.connect(emit,{readBlocked,writeBlocked}),location,
-  document:{getElementById:get,title:'',visibilityState:'visible',addEventListener:on},
+  document:{getElementById:get,querySelector:()=>get('skip'),title:'',visibilityState:'visible',addEventListener:on},
   history:{replaceState(_a,_b,h){location.hash=h;}},
   setTimeout(fn,ms){const id=setTimeout(fn,ms);id.unref();timers.add(id);return id;},clearTimeout,
   setInterval(){return 0;},clearInterval,queueMicrotask,
-  scrollTo(){},confirm:()=>confirm,addEventListener:on,console});
+  scrollY:0,scrollTo({top}){context.scrollY=top;},confirm:()=>confirm,addEventListener:on,console});
  context.window=context;
  vm.runInContext(fs.readFileSync(new URL('progress.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('site.js',root),'utf8'),context);
  const app={get,shared,storage:shared.storage,events,emit,engine:context.math2aiProgress,
   state:()=>JSON.parse(JSON.stringify(context.math2aiProgress.load())),
   current:()=>course.concepts.find(c=>c.title===get('title').textContent),
-  question:()=>app.current().questions.find(q=>q.question===get('question').textContent),
+  question:()=> (get('review-panel').hidden ? app.current() : course.concepts.find(c=>c.title===get('review-concept').textContent))?.questions.find(q=>q.question===get('question').textContent),
+  review(){app.hash('#review');},back(){app.hash(get('review-back').href);},
+  startReview(){get('review-start').onclick();},changeTopics(){get('review-change').onclick();},
+  selectTopic(id,checked=true){get('review-topics').handlers.change({target:{name:'review-topic',value:String(id),checked}});},
+  clearTopics(){get('review-clear').onclick();},suggestTopics(){get('review-suggested').onclick();},
+  searchReview(value){get('review-search').handlers.input({target:{value}});},
+  filterReview(value){get('review-filter').onchange({target:{value}});},
+  selectChapter(index){get('review-topics').handlers.click({target:{closest:()=>({dataset:{chapter:String(index)}})}});},
+  draft(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});},
+  scroll:top=>{context.scrollY=top;},scrollPosition:()=>context.scrollY,
   answer(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});get('quiz-form').handlers.submit({preventDefault(){}});},
   correct(){app.answer(app.question().correct);},wrong(){app.answer((app.question().correct+1)%4);},
   another(){get('another').onclick();},retry(){get('retry').onclick();},next(){get('next').onclick();},
