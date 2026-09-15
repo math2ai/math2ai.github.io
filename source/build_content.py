@@ -1,12 +1,14 @@
 """Build the canonical course data. Python standard library only."""
 from pathlib import Path
 import json, random, re
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent
 SOURCES = {
  'tensor': ['Introduction to Tensors, TensorFlow', 'https://www.tensorflow.org/guide/tensor'],
  'autocorrelation': ['Autocorrelation, NIST Engineering Statistics Handbook', 'https://www.itl.nist.gov/div898/handbook/eda/section3/eda35c.htm'],
  'autograd': ['Automatic differentiation, PyTorch', 'https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html'],
+ 'backprop': ['Learning representations by back-propagating errors, Rumelhart, Hinton and Williams, 1986', 'https://www.nature.com/articles/323533a0'],
  'mse': ['Mean squared error, PyTorch', 'https://docs.pytorch.org/docs/stable/generated/torch.nn.MSELoss.html'],
  'autoencoder': ['Deep Learning, chapter 14: Autoencoders', 'https://www.deeplearningbook.org/contents/autoencoders.html'],
  'vq': ['Neural Discrete Representation Learning, van den Oord et al., 2017', 'https://arxiv.org/abs/1711.00937'],
@@ -55,9 +57,19 @@ def sources_for(i):
      65:['sensors'],66:['sensors'],67:['rlbook'],68:['rlbook'],69:['rlbook'],70:['rlbook'],71:['rlbook'],72:['rlbook'],73:['rlbook'],74:['rlbook'],
      75:['rlhf'],76:['rlbook'],78:['sensing'],83:['h100'],84:['cuda'],87:['h100'],88:['cuda'],89:['tsmc'],90:['las','assays'],93:['minerals'],95:['opensource'],96:['grade','core']}
     specific.update({101: ['probability'], 102: ['probability'], 103: ['linear'], 104: ['linear'], 105: ['probability'], 106: ['montecarlo'], 107: ['numerical'], 108: ['numerical'], 109: ['neighbors'], 110: ['trees'], 111: ['ensemble'], 112: ['ensemble'], 113: ['metrics'], 114: ['calibration'], 115: ['cnn'], 116: ['gnn'], 117: ['contrastive'], 118: ['shift'], 119: ['active'], 120: ['causal'], 121: ['diffusion'], 122: ['experts'], 123: ['cache'], 124: ['distillation'], 125: ['qc'], 126: ['spatial'], 127: ['kriging'], 128: ['recovery']})
+    if i == 38: specific[i] = ['backprop','autograd']
     return [dict(title=SOURCES[k][0],url=SOURCES[k][1]) for k in specific.get(i,[])]
 
 LEGACY_IDS = json.loads((ROOT/'concept-ids.json').read_text(encoding='utf-8'))
+retry_feedback = {}
+for line in (ROOT/'retry-feedback.txt').read_text(encoding='utf-8').splitlines():
+    if line.startswith('## '):
+        feedback_title = line[3:]
+        assert feedback_title not in retry_feedback, feedback_title
+        retry_feedback[feedback_title] = []
+    elif line.strip() and not line.startswith('#'):
+        retry_feedback[feedback_title].append(line.strip())
+readings = json.loads((ROOT/'reading-links.json').read_text(encoding='utf-8'))
 # Nine authored additions per concept; the original question remains in the bank.
 bank = {}
 for line in (ROOT/'question-bank.txt').read_text(encoding='utf-8').splitlines():
@@ -93,6 +105,8 @@ for line in (ROOT/'curriculum-source.txt').read_text(encoding='utf-8').splitline
 assert len(course)==128
 assert set(LEGACY_IDS) == {c['title'] for c in course}
 assert set(bank) == {c['title'] for c in course}
+assert set(retry_feedback) == set(bank)
+assert set(readings) == set(bank)
 # Rewritten banks use fresh question IDs so obsolete answers do not mark new content complete.
 QUESTION_REVISIONS = {90:2, 91:2, 92:2, 93:2, 94:2, 96:2, 99:2, 100:2}
 for c in course:
@@ -109,6 +123,29 @@ for c in course:
         c['questions'].append(dict(id=f"{prefix}-{number:02}", question=entry['question'],
             options=options, correct=options.index(correct), feedback=entry['feedback']))
     assert len({q['question'].casefold() for q in c['questions']}) == 10, c['title']
+    hints = retry_feedback[c['title']]
+    assert len(hints) == 10, (c['title'], len(hints))
+    for q, hint in zip(c['questions'], hints):
+        assert len(hint.split()) >= 12 and hint != q['feedback'], q['id']
+        q['retryFeedback'] = hint
+    article = readings[c['title']]
+    assert isinstance(article,str) and article and not any(ch in article for ch in '<>"\\ '), c['title']
+    c['sources'] = [dict(title=unquote(article).replace('_',' ').replace('#',': ') + ', Wikipedia', label='Wikipedia',
+        url='https://en.wikipedia.org/wiki/' + article)] + c['sources']
+    seen = set()
+    c['sources'] = [s for s in c['sources'] if not (s['url'] in seen or seen.add(s['url']))]
+    for s in c['sources']:
+        if 'label' not in s:
+            host = s['url'].split('/')[2]
+            s['label'] = ('Paper' if host in ('arxiv.org','papers.nips.cc','proceedings.mlr.press','doi.org','www.nature.com') else
+                'Textbook' if 'deeplearningbook' in host or 'rlfoundations' in s['url'] else
+                'USGS' if 'usgs.gov' in host else 'NVIDIA' if 'nvidia.com' in host else
+                'Documentation' if host.startswith(('docs.','scikit-learn.','www.tensorflow.','huggingface.')) else 'Reading')
+    # Distinguish multiple sources of the same type without adding a visible section heading.
+    for label in {s['label'] for s in c['sources']}:
+        matches = [s for s in c['sources'] if s['label'] == label]
+        if len(matches) > 1:
+            for s in matches: s['label'] = s['title'].split(',')[0]
 assert not any('—' in json.dumps(c,ensure_ascii=False) for c in course)
 payload={'version':'2.0','title':'math2ai','chapters':chapters,'concepts':course,
  'previousOrder':json.loads((ROOT/'previous-order.json').read_text(encoding='utf-8')),

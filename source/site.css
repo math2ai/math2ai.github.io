@@ -83,3 +83,9 @@ footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;w
 
 
 @media(max-width:600px){.quiz-actions button{font-size:.85rem}}
+.concept-sources{margin-top:1.2rem;font-size:.72rem;color:var(--muted)}
+#concept-source-list{display:flex;align-items:baseline;flex-wrap:wrap;gap:.45rem 1rem}
+.concept-sources a{padding:.15rem 0;text-decoration-thickness:1px}
+.quiz-actions .reset-question{font-size:.72rem;border:0;background:transparent;padding:.2rem 0;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}
+@media(pointer:coarse){.concept-sources a{display:inline-flex;align-items:center;min-height:44px}.quiz-actions .reset-question{min-height:44px}}
+@media print{.concept-sources{display:none}}

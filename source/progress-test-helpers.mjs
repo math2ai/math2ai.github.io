@@ -18,7 +18,7 @@ export function hub(storage=new Map()) {
   }
  };
 }
-export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7}={}) {
+export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7,now}={}) {
  const elements=new Map(),events={},timers=new Set();
  const get=id=>{
   if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',hidden:false,disabled:false,value:'',handlers:{},attributes:{},
@@ -31,7 +31,8 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  get('auth-config').textContent=JSON.stringify(configured?{supabaseUrl:'https://example.supabase.co',publishableKey:'sb_publishable_test'}:{supabaseUrl:'',publishableKey:''});
  const location={hash};const math=Object.create(Math);
  math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
- const context=vm.createContext({URL,JSON,Math:math,Date,crypto:webcrypto,navigator:{locks:shared.locks},
+ const clock=now===undefined ? Date : class extends Date {static now(){return now;}};
+ const context=vm.createContext({URL,JSON,Math:math,Date:clock,crypto:webcrypto,navigator:{locks:shared.locks},
   localStorage:shared.connect(emit,{readBlocked,writeBlocked}),location,
   document:{getElementById:get,querySelector:()=>get('skip'),title:'',visibilityState:'visible',addEventListener:on},
   history:{replaceState(_a,_b,h){location.hash=h;}},
@@ -56,7 +57,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
   scroll:top=>{context.scrollY=top;},scrollPosition:()=>context.scrollY,
   answer(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});get('quiz-form').handlers.submit({preventDefault(){}});},
   correct(){app.answer(app.question().correct);},wrong(){app.answer((app.question().correct+1)%4);},
-  another(){get('another').onclick();},retry(){get('retry').onclick();},next(){get('next').onclick();},
+  another(){get('another').onclick();},retry(){get('retry').onclick();},resetQuestion(){get('reset-question').onclick();},next(){get('next').onclick();},
   go(index){get('concept-select').onchange({target:{value:String(index)}});},
   hash(value){location.hash=value;emit('hashchange');},reset:()=>get('reset').onclick(),
   signin(server,user){const client=server.client(user);context.math2aiProgress.setSession(client,{user:{id:user},access_token:'test-token'});},

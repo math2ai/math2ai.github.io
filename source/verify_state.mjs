@@ -131,5 +131,5 @@ const old=(await boot(new Map([[key,JSON.stringify({version:'1.2',current:20,ans
 assert.equal(score(old),0);assert.match(old.get('storage-note').textContent,/updated/);
 const resetStore=new Map([['unrelated','keep']]);const keep=(await boot(resetStore,{confirm:false}));keep.correct();const before=resetStore.get(key);await keep.get('reset').onclick();assert.equal(resetStore.get(key),before);
 const clear=(await boot(resetStore));await clear.get('reset').onclick();assert.equal(resetStore.get('unrelated'),'keep');assert.equal(score(clear),0);
-const pending=(await boot());pending.wrong();pending.retry();const pendingReload=(await boot(pending.storage));assert.equal(pendingReload.get('feedback').hidden,true);pendingReload.correct();assert.equal(score(pendingReload),1);
+const pending=(await boot());pending.wrong();pending.retry();const pendingReload=(await boot(pending.storage));assert.equal(pendingReload.get('feedback').hidden,false);assert.match(pendingReload.get('feedback').innerHTML,/Try again/);pendingReload.correct();assert.equal(score(pendingReload),1);
 console.log('PASS: deep links; blocked storage; corrupt/outdated saves; reset confirmation/scope; pending retry reload.');

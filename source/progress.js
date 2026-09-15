@@ -6,7 +6,7 @@
  const base = 'math2ai-progress-v3:' + (config.supabaseUrl ? new URL(config.supabaseUrl).hostname : 'offline') + ':' + course.version + ':';
  const legacyKey = 'model-conversations-progress-v1';
  const listeners = new Set(), memory = new Map();
- let current = null, storageOK = true, serial = 0;
+ let current = null, storageOK = true;
  const uuid = () => crypto.randomUUID();
  const parse = raw => { try { return JSON.parse(raw); } catch { return null; } };
  function read(key) {
@@ -153,7 +153,7 @@
  function saveView(state) {
   if (!current?.ready) return;
   const view = {version:course.version,current:state.current,currentConceptId:state.currentConceptId,concepts:{}};
-  for (const [id,p] of Object.entries(state.concepts)) view.concepts[id] = {active:p.active,remaining:p.remaining,pending:p.pending};
+  for (const [id,p] of Object.entries(state.concepts)) view.concepts[id] = {active:p.active,remaining:p.remaining,pending:p.pending,round:p.round};
   write(keyFor(current, 'view'), JSON.stringify(view));
  }
  function importLegacy(ctx) {
@@ -266,7 +266,10 @@
   const newer = ctx.user ? cached(ctx) : null;
   if (newer && newer.epoch !== ctx.snapshot.epoch) { snapshot(ctx,newer); notify(); return false; }
   if (!ctx.user && (read(keyFor(ctx,'epoch')) || '0') !== ctx.epoch) { ctx.epoch = read(keyFor(ctx,'epoch')) || '0'; notify(); return false; }
-  const op = {id:uuid(),question_id:questionId,answer,epoch:ctx.user ? ctx.snapshot.epoch : ctx.epoch,time:Date.now() + serial++/10000};
+  // Keep local submission order even within one clock tick, after reload or a clock adjustment.
+  // Tiny fractions added to a Unix timestamp can round away and reorder first/latest answers.
+  const time = pending(ctx).reduce((latest,op) => Number.isFinite(op.time) ? Math.max(latest,Math.floor(op.time)+1) : latest,Date.now());
+  const op = {id:uuid(),question_id:questionId,answer,epoch:ctx.user ? ctx.snapshot.epoch : ctx.epoch,time};
   write(keyFor(ctx,'attempt:' + op.id), JSON.stringify(op));
   if (ctx.user) { ctx.message = 'Saving answers…'; setTimeout(() => { void sync(ctx); },0); }
   return true;

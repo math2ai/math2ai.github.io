@@ -44,13 +44,13 @@
       <h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p>
       <h3>Worked example</h3><p class="example" id="example"></p>
       <h3>Metaphor</h3><p class="metaphor" id="metaphor"></p>
-      <details id="concept-sources"><summary>Source reading</summary><div id="concept-source-list"></div></details>
+      <nav id="concept-sources" class="concept-sources" aria-label="Further reading"><div id="concept-source-list"></div></nav>
     </article>
     <section class="quiz" id="quiz-panel" aria-label="Check your understanding">
       <form id="quiz-form"><fieldset><legend id="question" tabindex="-1"></legend><div id="choices"></div></fieldset>
-        <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button id="retry" type="button" hidden>Retry this question</button><button id="another" type="button">Another question</button></div>
+        <div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+        <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button class="primary" id="retry" type="button" hidden>Try again</button><button id="another" type="button">Another question</button><button id="reset-question" class="reset-question" type="button" title="Start fresh practice for this question. Your answer history is kept." hidden>Reset question</button></div>
       </form>
-      <div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
     </section>
     <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous</button><button class="primary" id="next">Next concept</button></nav>
   </div>

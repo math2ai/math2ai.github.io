@@ -38,7 +38,13 @@
    }
    const active = ids.has(p.active) ? p.active : null;
    const remaining = Array.isArray(p.remaining) ? [...new Set(p.remaining.filter(id => ids.has(id) && id !== active))] : [];
-   state.concepts[c.legacyId] = {active, remaining, answers, pending:p.pending === true};
+   const savedRound = p.round;
+   const round = object(savedRound) && savedRound.questionId === active && Number.isInteger(savedRound.attempts) && savedRound.attempts >= 0 && savedRound.attempts <= 2 &&
+    (savedRound.attempts === 0 ? savedRound.last === null : choice(savedRound.last)) ? {...savedRound} :
+    {questionId:active,attempts:Math.min(answers[active]?.attempts || 0,2),last:answers[active]?.last ?? null};
+   // A reset received while this tab was closed also clears its saved practice round.
+   if (!answers[active]) { round.attempts = 0; round.last = null; }
+   state.concepts[c.legacyId] = {active, remaining, answers, round, pending:p.pending === true};
   }
  }
  function save() {
@@ -61,8 +67,18 @@
    if (p.remaining[0] === p.active) [p.remaining[0], p.remaining[1]] = [p.remaining[1], p.remaining[0]];
   }
   p.active = p.remaining.shift(); p.pending = true;
+  p.round = {questionId:p.active,attempts:0,last:null};
  }
  function question(c) { return c.questions.find(q => q.id === progress(c).active); }
+ // A practice round has two attempts. Lifetime answer history remains independent.
+ // Starting a new question or review round does not erase earlier results.
+ function currentRound(c,q) {
+  if (review?.active?.q.id === q.id) return review.active.round;
+  const p = progress(c);
+  if (!p.round || p.round.questionId !== q.id) p.round = {questionId:q.id,attempts:0,last:null};
+  return p.round;
+ }
+ function roundFinished(r,q) { return r.attempts >= 2 || r.attempts > 0 && r.last === q.correct; }
  function correctCount(c) {
   return Object.values(progress(c).answers).filter(a => a.solved).length;
  }
@@ -159,7 +175,7 @@
   const previous = review.active?.q.id;
   if (candidates.length > 1) candidates = candidates.filter(({q}) => q.id !== previous);
   const next = shuffle(candidates).sort((a,b) => priority(a)-priority(b))[0];
-  review.active = {c:next.f.c,q:next.q};
+  review.active = {c:next.f.c,q:next.q,round:{questionId:next.q.id,attempts:0,last:null}};
   review.seen.add(next.q.id); review.concepts.add(next.f.c.legacyId);
   selected = null; checked = false;
  }
@@ -201,7 +217,7 @@
   window.scrollTo({top:draft?.scroll || 0,behavior:'instant'});
  }
  function sourceList(sources) {
-  return '<ul class="sources-list">' + sources.map(s => `<li><a href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)}</a></li>`).join('') + '</ul>';
+  return sources.map(s => `<a href="${escape(s.url)}" target="_blank" rel="noopener noreferrer" title="${escape(s.title)}" aria-label="${escape(s.title)} (opens in a new tab)">${escape(s.label || 'Reading')}<span aria-hidden="true"> ↗</span></a>`).join('');
  }
  function navigation() {
   const c = items[state.current], correct = correctCount(c);
@@ -222,23 +238,32 @@
   el('another').textContent = review ? 'Next review question' : 'Another question';
   el('reset').disabled = !ready;
   if (!q) return;
+  const r = currentRound(c,q), finished = roundFinished(r,q);
   if (review) { el('review-concept').textContent = c.title; el('review-concept').href = `#lesson-${c.legacyId}`; }
   el('question').textContent = q.question;
-  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${selected === i ? 'checked' : ''} ${checked || !ready ? 'disabled' : ''}><span>${escape(o)}</span></label>`).join('');
-  el('check').disabled = !ready || selected === null || checked;
+  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${selected === i ? 'checked' : ''} ${checked || finished || !ready ? 'disabled' : ''}><span>${escape(o)}</span></label>`).join('');
+  el('check').disabled = !ready || selected === null || checked || finished;
+  el('check').hidden = checked || finished;
   el('another').disabled = !ready;
   el('retry').disabled = !ready;
   el('reset').disabled = !ready;
-  el('retry').hidden = !checked || selected === q.correct;
-  el('feedback').hidden = !checked;
-  if (checked) el('feedback').innerHTML = `<strong>${selected === q.correct ? 'Correct.' : 'Not quite. The correct answer is: ' + escape(q.options[q.correct]) + '.'}</strong><p>${escape(q.feedback)}</p>`;
+  el('retry').hidden = !checked || finished || r.attempts !== 1;
+  el('reset-question').hidden = !finished;
+  el('reset-question').disabled = !ready;
+  el('feedback').hidden = r.attempts === 0;
+  if (r.attempts) {
+   const correct = r.last === q.correct;
+   const heading = correct ? 'Correct.' : finished ? 'Not quite. The correct answer is: ' + escape(q.options[q.correct]) + '.' : checked ? 'Not quite.' : 'Try again.';
+   el('feedback').innerHTML = `<strong>${heading}</strong><p>${escape(finished ? q.feedback : q.retryFeedback)}</p>`;
+  }
   el('next').disabled = false;
   el('next').textContent = state.current === items.length - 1 ? 'Back to start' : 'Next concept';
  }
  function render(focus = false) {
   const c = items[state.current], p = progress(c);
   if (!p.active) draw(c);
-  const a = p.pending ? null : p.answers[p.active]; selected = a ? a.last : null; checked = !!a;
+  const q = question(c), r = currentRound(c,q);
+  checked = r.attempts > 0 && (!p.pending || roundFinished(r,q)); selected = checked ? r.last : null;
   document.title = course.title;
   el('chapter').textContent = `${String(c.id).padStart(3,'0')} · ${c.chapter}`;
   for (const id of ['title','definition','formula','example','metaphor']) el(id).textContent = c[id];
@@ -293,20 +318,42 @@
  };
  el('choices').addEventListener('change', e => {
   const value = Number(e.target.value);
-  if (ready && e.target.name === 'answer' && !checked && choice(value)) { selected = value; el('check').disabled = false; }
+  const c = review ? review.active?.c : items[state.current], q = review ? review.active?.q : question(c);
+  if (ready && q && e.target.name === 'answer' && !checked && !roundFinished(currentRound(c,q),q) && choice(value)) { selected = value; el('check').disabled = false; }
  });
  el('quiz-form').addEventListener('submit', e => {
   e.preventDefault(); if (!ready || selected === null || checked) return;
   const c = review ? review.active?.c : items[state.current], q = review ? review.active?.q : question(c);
   if (!q) return;
+  const r = currentRound(c,q);
+  if (roundFinished(r,q)) return;
   const p = progress(c), old = p.answers[q.id];
   if (!persistence.record(q.id,selected)) return;
   p.answers[q.id] = {first:old ? old.first : selected, last:selected, attempts:old ? old.attempts + 1 : 1, solved:!!(old && old.solved) || selected === q.correct};
+  r.attempts++; r.last = selected;
   checked = true;
-  if (!review) { p.pending = false; save(); } else reviewSummary();
+  if (p.active === q.id) { p.pending = false; p.round = {...r}; }
+  save(); if (review) reviewSummary();
   navigation(); quiz(); el('feedback').focus({preventScroll:true});
  });
- el('retry').onclick = () => { if (!ready) return; selected = null; checked = false; if (!review) { progress(items[state.current]).pending = true; save(); } quiz(); el('choices').querySelector('input').focus(); };
+ el('retry').onclick = () => {
+  const c = review ? review.active?.c : items[state.current], q = review ? review.active?.q : question(c);
+  if (!ready || !q || !checked) return;
+  const r = currentRound(c,q);
+  if (r.attempts !== 1 || roundFinished(r,q)) return;
+  selected = null; checked = false;
+  if (!review) { progress(c).pending = true; save(); }
+  quiz(); el('choices').querySelector('input').focus();
+ };
+ el('reset-question').onclick = () => {
+  const c = review ? review.active?.c : items[state.current], q = review ? review.active?.q : question(c);
+  if (!ready || !q) return;
+  const r = currentRound(c,q);
+  if (!roundFinished(r,q)) return;
+  r.attempts = 0; r.last = null; selected = null; checked = false;
+  if (!review) { progress(c).pending = true; save(); }
+  quiz(); el('choices').querySelector('input').focus();
+ };
  el('another').onclick = () => {
   if (!ready) return;
   if (review) { drawReview(); reviewSummary(); quiz(); el('question').focus({preventScroll:true}); return; }
@@ -355,15 +402,21 @@
    displayMode(); render();
    if (requestedReview && ready) { requestedReview = false; openReview(false); }
   } else {
-   for (const c of items) progress(c).answers = update.state?.concepts[c.legacyId]?.answers || {};
+   for (const c of items) {
+    const p = progress(c);
+    p.answers = update.state?.concepts[c.legacyId]?.answers || {};
+    // A global reset must clear inactive lesson rounds as well as the visible one.
+    if (p.round?.attempts && !p.answers[p.active]) {
+     p.round.attempts = 0; p.round.last = null; p.pending = true;
+     if (!review && c === items[state.current]) { selected = null; checked = false; }
+    }
+   }
    if (review) {
     const a = review.active && progress(review.active.c).answers[review.active.q.id];
-    if (review.active && checked) { selected = a ? a.last : null; checked = !!a; }
+    if (review.active?.round.attempts && !a) { review.active.round.attempts = 0; review.active.round.last = null; selected = null; checked = false; }
     reviewSummary(); navigation(); quiz(); return;
    }
-   const p = progress(items[state.current]), a = p.pending ? null : p.answers[p.active];
-   // Keep a draft choice intact while another tab updates completion indicators.
-   if (checked || selected === null) { selected = a ? a.last : null; checked = !!a; }
+   // Other devices update answer history, not this round's choice, feedback or retry budget.
    navigation(); quiz();
   }
  });

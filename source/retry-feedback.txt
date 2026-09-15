@@ -1,0 +1,1410 @@
+# First-mistake explanations, in the same order as each concept's ten questions.
+# Teach the rule or identify the distinction without naming the selected answer or evaluating the final result.
+## Scalar
+A scalar describes one numerical value. Count separate components, rather than the number of digits used to write a value.
+The sign tells you where a number lies relative to zero. It does not change how many numerical components it has.
+The parentheses contain an ordered collection. Count each comma-separated numerical value, including repeated values if there are any.
+Having no magnitude is different from having no numerical value. Consider how many components are needed to write zero.
+Separate the operation's output from its inputs. Several readings can be combined into a single numerical result.
+Distinguish the numerical value from the notation that tells you how to interpret a physical measurement.
+A scalar is defined by having one numerical component. Sign, units, and whether the value is whole or fractional are separate properties.
+The loss summarizes prediction quality. Look at the number of components returned, rather than how complicated its calculation was.
+A minus sign and a decimal point belong to a number. A comma separating entries indicates additional numerical components.
+Think about the type of result ordinary multiplication produces. It does not package the inputs into a list.
+## Variable
+Substitute the given input wherever x appears. Multiplication is performed before the final addition.
+Follow the direction of the rule: one symbol is supplied, and the other is calculated from it.
+Compare the rule at x and at x + 1. The fixed added constant cancels when you subtract the outputs.
+Undo the addition before undoing the multiplication. Whatever operation you use must preserve equality on both sides.
+An expression names a quantity; an equation asserts that two quantities are equal. Look for that assertion.
+Check both restrictions: the number must be greater than zero and must have no fractional part.
+Replace b with its signed value before adding. A negative input is not the same as subtracting the entire expression.
+Distinguish the changing input and output from the numbers built into the rule itself.
+A symbolic rule covers many possible inputs. Substitution lets you examine what the rule does in one particular case.
+Equality lets you replace a symbol with an equal quantity. Apply that replacement to the first statement.
+## Function
+Check the outputs associated with each individual input. Different inputs sharing an output is a separate issue from one input being ambiguous.
+For each input, inspect whether the rule specifies a unique output. Sharing an output across different inputs is allowed.
+Separate what may be supplied to a rule from what the rule returns. The domain concerns the starting side.
+Parenthesize the negative input when substituting. Squaring multiplies the entire signed value by itself.
+The output need not change whenever the input changes. Check whether each input still receives a well-defined output.
+Look for an input that makes the denominator invalid. A reciprocal requires a permitted division operation.
+Work from the inside outward: evaluate g at the given input, then feed that result into f.
+An inverse must decide which input produced an output. Think about what happens if several inputs share that output.
+Limit attention to the IDs the table actually lists. Ask whether the assigned price is unambiguous for each one.
+Compare how the output changes when an input is scaled. A squared input does not scale in the same way as the input itself.
+## Units
+Distance accumulates at the stated rate over the stated duration. Multiply the quantities and cancel compatible units.
+Addition requires compatible physical dimensions. Different scales can be converted, but length and time cannot be added as lengths.
+Centimetres are smaller than metres, so converting the same length to metres reduces the numerical value.
+Keep the units in the fraction when dividing the quantities. The denominator describes the time over which distance is covered.
+A measurement is a number together with a scale. Compare the physical length represented by one unit in each system.
+Multiply the units as well as the side lengths. Area combines two independent length measurements.
+The numerical value alone does not establish a physical quantity. Compare what one unit means in each case.
+Convert both lengths into the same unit before adding. A kilometre contains a thousand metres.
+An error has the target's units. Squaring the error also squares its units.
+An input such as depth is ambiguous without a scale. A tool needs enough information to interpret the supplied number.
+## Vector
+Scalar multiplication applies the factor to every coordinate. It does not append the factor or multiply only one entry.
+Add coordinates in matching positions. Combining all entries into one total loses the vector's structure.
+Coordinates have positions and meanings. Compare the entries position by position, rather than as an unordered collection.
+Dimension counts coordinates, including zero-valued coordinates. It does not count only positive or nonzero entries.
+Apply the multiplier to every coordinate, including negative ones. The resulting vector retains its number of positions.
+Subtract the second vector coordinate by coordinate. Keep the subtraction order, especially where the result changes sign.
+Entrywise addition needs a partner for every coordinate. Check whether all positions can be paired.
+The model associates each position with a feature. Swapping positions changes what the same numbers mean to it.
+An additive inverse must cancel each coordinate separately when added to the original vector.
+With one-based indexing, counting starts at the first entry. The subscript names a position, not the value to search for.
+## Matrix
+In Aᵢⱼ, the first subscript selects a row and the second selects a column. Apply them in that order.
+Each inner list is a row. Matrix shape is written as the number of rows followed by the number of columns.
+Each row has the stated number of columns. Count entries across all rows rather than adding the two dimensions.
+A column is vertical: select the same position from each row. Do not copy one entire row.
+A rectangular array requires every row to have the same length. Check for an incomplete or extra entry in a row.
+Entrywise addition pairs entries at the same row and column. Both arrays must provide exactly those positions.
+The scalar multiplier acts on every entry. Keep zero entries and negative signs in their original positions.
+Being square concerns the two dimensions, not the values stored inside the array.
+Use the stated orientation: rows identify samples and columns identify features. Read the entire selected row accordingly.
+Locate each requested entry using row-then-column indexing, then add the two values. The subscripts are not factors.
+## Tensor
+Use the indices from left to right: select the outer block, then its row, then an entry within that row.
+Each position in a shape tuple specifies one axis. The values in those positions specify axis lengths.
+The total counts every combination of positions across the axes. Multiply the axis lengths rather than adding them.
+Read the axis names in their stated order. The first index chooses among examples before selecting an image position.
+Selecting one entry means fixing a position on every axis. Leaving an axis unspecified leaves a collection of values.
+An axis is a direction along which entries vary. A single numerical value requires no coordinate positions to distinguish entries.
+Reshaping changes the arrangement, not the number of stored entries. Compare the product of the proposed dimensions with the original count.
+Calculate the total entry count before and after each proposed reshape. A different count requires adding or removing values.
+Distinguish the number of positions in a shape tuple from the length specified at one of those positions.
+Axis order determines which index selects a color channel and which selects a spatial position. Shape numbers alone may not explain that order.
+## Summation
+Expand the sum using every integer in the stated bounds. Square each index value before adding the terms.
+The index controls how many terms appear, even when the term itself is constant. Write the constant once per index value.
+Both endpoints are included. Start with the lower bound and list each successive integer through the upper bound.
+A sum is a total; a mean also accounts for how many entries contributed. Use the number of indexed values.
+Distributing multiplication across addition gives the same factor on each term. Compare that with scaling the completed sum.
+The upper bound says where to stop, not which single value to return. Expand the full sequence of terms.
+Substitute each listed coordinate and keep its sign. Opposite-signed terms may cancel before you finish the addition.
+The index is a local label for visiting terms. Check whether the actual values being added change when that label changes.
+Read the parentheses carefully. They determine whether squaring acts on individual entries or on an already-computed total.
+Include the zero-indexed term and both endpoints. The number of included positions is not simply the upper bound.
+## Dot product
+Multiply coordinates in matching positions and then combine those products. Do not multiply the coordinate sums.
+Form the coordinatewise products first. Keep the negative sign when combining the products.
+After the matching products are formed, they are summed. Consider whether any coordinate list remains in the output.
+Pair each coordinate with itself, then add the products. This is a squared length, not the length itself.
+Use x·y = ||x|| ||y|| cos θ. The nonzero-vector assumption lets you reason about the angle from the cosine.
+A zero coordinate contributes no product. Match positions carefully before adding the contributions.
+Every coordinate on one side needs a corresponding coordinate on the other. Check whether all positions can be matched.
+For real numbers, each paired multiplication can be reversed without changing its value. The sum contains the same pairs.
+The changed factor appears in every coordinate product. Distribute it through the sum to see its overall effect.
+Match each purchased quantity with its own price, then combine the item-level amounts. Do not add quantities and prices separately.
+## Matrix multiplication
+Check the inner dimensions for compatibility. Then count the output's rows from the left matrix and columns from the right.
+The output entry comes from pairing the row's entries with the column's entries, multiplying, and summing.
+In this order, each row of the left matrix must pair with a column of the right matrix. Compare their lengths.
+Matrix products represent ordered operations. Reversing them can change the effect or even make the product undefined.
+An identity map performs no change to its input. Check how that property carries through a compatible product.
+An output's row comes from the left operand and its column from the right. Each output combines their matching entries.
+The inner dimensions match. Use the left operand's row count and the right operand's column count for the result.
+Compute a dot product for each output row. The zeros remove the cross-coordinate contributions.
+An output of a matrix product combines several input pairs. Elementwise multiplication keeps each position separate.
+The operation nearest x happens first. Write the second transformation around the result of the first.
+## Transpose
+Transposition exchanges row positions with column positions. Apply that exchange to the two dimensions.
+Read each original column as a row of the result. Keep the order within each column.
+The first transpose swaps the indices. Apply the same index swap again and track where an entry ends up.
+Transposition rearranges existing entries. It does not create new positions or discard values.
+A row matrix has one row. After exchanging the axes, consider which dimension becomes one.
+Compare every off-diagonal entry with the entry obtained by swapping its indices. A square shape alone is insufficient.
+Swap the row and column subscripts. The entry's value stays the same while its position changes.
+Transposing a composition reverses the order of its factors. Check the resulting shapes as well as the symbols.
+Undoing a transformation requires an inverse. Swapping rows and columns only gives an inverse for special matrices.
+A diagonal position has equal row and column indices. Track what swapping those equal indices does.
+## Linear transformation
+Test preservation of addition and scaling. A fixed offset or a nonlinear power can break those properties.
+Use preservation of scaling with a zero multiplier. A linear map cannot introduce a fixed offset at the origin.
+Evaluate the rule at zero and inspect the added constant. A straight-line graph alone does not establish mathematical linearity.
+Linearity lets a scalar factor pass through the map. Apply it to the given transformed vector.
+For a linear map, transform the two vectors separately and add those outputs coordinate by coordinate.
+Check that the operation fixes the origin and respects scaling and addition. Moving every point by an offset breaks this.
+A matrix can have fewer rows than columns. Think about what those dimensions mean for the output vector.
+Fixing the origin checks only one consequence of linearity. A nonlinear function can also pass through the origin.
+Substitute the coordinates into each output expression independently. The result still has two ordered components.
+Distribute matrix multiplication across a sum and pull scalar factors outside. These properties describe what the map preserves.
+## Euclidean distance
+Subtract matching coordinates, square the differences, and add. The final distance also requires a square root.
+Check which coordinate actually changes. An unchanged coordinate contributes zero to the squared separation.
+Subtract the vector from itself coordinate by coordinate. Then apply the usual distance calculation.
+Exchanging the points reverses each difference's sign. Consider what happens when those differences are squared.
+A norm measures distance from the origin. Square both signed coordinates before adding and taking the square root.
+Distance combines coordinate differences. Changing one feature's scale changes the influence of differences along that coordinate.
+The multiplier affects every coordinate. Track its effect through squaring, summing, and the final square root.
+This asks for squared distance. Sum the squared coordinate differences and check whether a square root is still requested.
+For one coordinate, distance ignores which point lies to the left. Your expression must stay the same when x and y are exchanged.
+The squared differences are nonnegative, and distance uses the nonnegative square root of their sum.
+## Eigenvalues and eigenvectors
+Multiply the matrix by the stated vector, then compare the output with the original vector. Look for a common scale factor.
+The defining equation must identify a direction and its scale factor. Test whether the zero vector distinguishes any particular factor.
+Matrix multiplication is linear. Pull the scalar multiplier outside before applying the given relation for Av.
+Separate the sign of a real scale factor from its absolute magnitude. They affect orientation and length differently.
+Substitute the eigenvalue into Av = λv. Consider the output of multiplying a nonzero vector by that factor.
+Compute the transformed vector and compare both component ratios with the original. An eigenvector requires a common ratio.
+An identity matrix preserves every vector. Compare that output with the eigenvalue equation for a nonzero vector.
+Real entries do not ensure real eigenvectors in every direction. Consider a planar rotation or a defective matrix.
+Apply A once, then apply it to that result. Linearity lets you pull the first scale factor outside.
+Symmetry supplies stronger guarantees than simply being square. Consider the eigenvalues' field and the geometry of the eigenvectors.
+## Singular value decomposition
+Compare the error caused by dropping each diagonal component. Squared entrywise error penalizes dropping a larger component more heavily.
+SVD separates input and output directions, which need not have the same dimension. Do not impose the square-matrix restriction from eigendecomposition.
+Singular values describe scale magnitudes. Directional signs can be represented by the associated singular vectors instead.
+Each retained singular component contributes at most one independent direction. Count the directions that can remain.
+Identify the component that was discarded. Its contribution to squared entrywise error is the square of its value.
+A zero singular component carries no independent direction through the matrix. Count only the components that remain active.
+An eigenvalue can include a sign or even be complex. Singular values summarize magnitudes under a different factorization.
+Apply the factors from right to left. The first rotation changes the input's coordinates before the singular-value scaling.
+The approximation minimizes a specified numerical reconstruction error. That objective need not match the needs of a later task.
+Centering removes the feature mean. Then relate the input directions of the data matrix to directions of maximum variance.
+## Probability
+List the equally likely die faces that satisfy the strict inequality. Divide their count by the total face count.
+A probability ranges from impossibility to certainty. Check each value against both ends of that range.
+An event and its complement exhaust all possible outcomes without overlap. Their probabilities must add to certainty.
+Independence lets you multiply the probabilities of the required outcomes. Count sequences, rather than only the outcome types.
+Mutually exclusive, exhaustive outcomes partition all possibilities. Subtract the known probabilities from the total probability mass.
+A high probability leaves room for other outcomes. A single trial does not have to match the more likely outcome.
+For disjoint events, no outcome belongs to both. Combining them therefore requires no overlap correction.
+Think about an outcome in both events. Adding the two event probabilities includes it once through each event.
+Counting treats every outcome as contributing the same probability mass. Check what must be true for that assumption to hold.
+An expected count describes an average over repeated sets of trials. Individual sets can fluctuate around that average.
+## Conditional probability
+Conditioning changes the population you count within. First restrict attention to the deep samples, then count hot samples in that group.
+Use the joint probability as the numerator and the probability of the condition as the denominator.
+The event after “given” restricts the reference group. Evaluate the color frequency within that restricted group.
+Reversing the condition changes the denominator and reference population. Sharing the same joint event does not make the fractions identical.
+Independence means learning that one event occurred supplies no information about the other event's probability.
+Write out the elementary ratio for conditioning. Check whether its denominator permits an ordinary division.
+The total sample count is not the denominator after conditioning. Count noisy samples within the deep subset.
+Test sensitivity describes one conditional direction. Reversing it also requires the condition's prevalence and the false-positive behavior.
+Rearrange the conditional-probability ratio to recover the joint probability. Keep the probability of the condition as a factor.
+Conditioning describes an association in observed probabilities. It does not specify what would happen if you intervened.
+## Bayes’ theorem
+Restrict the denominator to everything flagged, including good parts. Then count defective parts within that flagged group.
+Place the quantities on a timeline: belief before observing evidence, evidence under a hypothesis, and belief after the update.
+The condition specifies which hypothesis is assumed. The probability then concerns the observation you would see under that assumption.
+Multiply the prior by the likelihood, then normalize by the overall evidence probability. Do not reverse the conditional direction.
+Compare the evidence's likelihood under the competing hypotheses. A shared likelihood factor cancels when probabilities are normalized.
+Count how many tested people or objects come from each group. A small error rate applied to a large group can matter greatly.
+Each conditional probability uses a different reference population. Bayes' theorem accounts for those populations rather than swapping the notation.
+The elementary formula uses the evidence probability as a denominator. Check whether ordinary division is defined for the stated value.
+The condition is being flagged. Combine all flagged parts for the denominator, then identify defective ones within that group.
+An updated belief summarizes the evidence already processed. A later update should add new evidence without counting the old evidence twice.
+## Expected value
+Weight each possible payout by its probability, then add. The probability is a multiplier, not the amount paid.
+List the two coin outcomes and weight each payout by its chance. Do not assume the winning payout occurs every time.
+An expectation is a probability-weighted average. An average need not be one of the outcomes being averaged.
+With a constant, every possible observation has the same value. Averaging identical values does not introduce variation.
+Expectation distributes over addition and fixed scalar multiplication. Apply those operations to the stated expectation.
+Linearity of expectation concerns sums. Independence becomes relevant to other identities, such as factoring an expectation of a product.
+Net gain includes both the payout and the price paid to participate. Treat the cost as a certain subtraction.
+An expected value must reflect both outcome sizes and their relative chances. Counting outcomes alone ignores their values.
+The average does not specify how widely outcomes vary. Compare a guaranteed return with a mixture of gains and losses.
+The outcomes are not equally likely. Multiply each by its own probability before combining them.
+## Variance
+Find the mean, subtract it from each value, and square those deviations before averaging. Do not stop at the range.
+Variance measures deviations from the mean. Compare each observation of a constant with that same constant's mean.
+Variance and standard deviation are different quantities. One is the square of the other.
+Shifting all observations also shifts their mean by the same amount. Compare the deviations before and after the shift.
+Scaling multiplies every deviation, and variance squares those deviations. Track the multiplier through the square.
+Every squared deviation is nonnegative. Averaging those quantities cannot produce a value below zero.
+Compute the mean of the two equally likely values, then average their squared distances from that mean.
+Variance squares the original units; standard deviation reverses that squaring with a square root.
+Deviations on opposite sides of the mean have opposite signs. Their signed average does not preserve their distances.
+Compare the distances of each pair's entries from that pair's mean. The larger overall location is not what measures spread.
+## Covariance and correlation
+Center each coordinate by its own mean, multiply the paired deviations, then average those products over the two equally likely pairs.
+Examine the sign of a product when one deviation is positive and the other negative. Covariance averages those paired products.
+Pearson correlation normalizes covariance by both standard deviations. The resulting measure of linear association has bounded magnitude.
+Normalize covariance by the product of the two standard deviations, rather than their sum.
+Only one factor in each paired-deviation product is scaled. The centering step scales that deviation by the same amount.
+Adding a constant to a variable also adds it to that variable's mean. Compare the centered values.
+Pearson correlation measures linear association. A nonlinear dependence can have a vanishing average product of centered values.
+Write the correlation denominator as the product of standard deviations. A constant has no variation around its mean.
+Negating one variable reverses its centered deviations but leaves its standard deviation's magnitude unchanged.
+An association can arise from a common cause, selection, or other mechanisms. Correlation alone does not distinguish them.
+## Monte Carlo estimation
+A sample estimate of an expectation averages the observed rewards. Do not return their total or just the most frequent value.
+An unweighted sample mean reflects the distribution that generated its samples. More draws do not change which distribution that is.
+Apply the square root to the sample-size factor before considering the inverse relation for standard error.
+Represent a success as one and a failure as zero. Their sample mean estimates the success probability.
+Sampling error and model error are different. Additional draws can estimate a flawed simulator's predictions more precisely.
+A seed controls the pseudorandom sequence under a particular implementation. It does not establish that the model is correct.
+Repeatedly seeing similar fluctuations supplies less independent information. Raw sample count can overstate the effective sample size.
+Divide the sample standard deviation by the square root of the independent sample count, not by the count itself.
+The estimate depends on sampled outcomes. Another set of draws can produce a different average even under the same model.
+Estimating an event rate requires observing that event. Consider how many occurrences a finite simulation is likely to contain.
+## Exponential and logarithm
+A natural logarithm asks which power of e produced its input. Apply the inverse relationship before calculating any decimal approximation.
+Ask which exponent applied to the stated base produces the argument. Multiplying the base by an exponent is a different operation.
+Use the exponent rule for bᵃ divided by itself, with a permitted nonzero base, to understand the zero exponent.
+Ask what power of e yields the logarithm's argument. A logarithm returns an exponent, not its input.
+Logarithms convert multiplication of positive arguments into an operation on their exponents. Check the product rule rather than the power rule.
+A negative exponent takes a reciprocal. First evaluate the corresponding positive power, then invert it.
+The real natural logarithm inverts the positive-valued exponential function. Check which proposed input falls outside that range.
+Each doubling multiplies the current amount again. Repeated multiplicative changes do not add their factors.
+The exponential and natural logarithm are inverse operations. Track the exponent through that pair of operations.
+Multiplying many small probabilities can underflow in finite precision. Consider whether an equivalent accumulation avoids that repeated shrinking.
+## Derivative
+Differentiate the expression before substituting the location. For a power, reduce the exponent and bring down its original value.
+A derivative measures output change per input change. Check how much a constant output moves as its input changes.
+The slope of this straight line is fixed. Distinguish the coefficient of x from the function's value at x.
+Use the local approximation Δf ≈ f′(a)Δx with a small positive input change. Track the sign of the product.
+First derive the slope function for the square. Then evaluate that slope at the requested input.
+A stationary point can be a maximum, minimum, or neither. Its slope alone does not compare it with every other point.
+A derivative is obtained from slopes as the interval shrinks toward the point. A secant uses separated endpoints.
+Keep units in the ratio of output change to input change. Here the input variable is time.
+Use the local linear approximation: output change is approximately slope times the small input change.
+Apply the power rule before substituting the input. The requested quantity is slope, not the original cubic value.
+## Integral
+For a constant rate, accumulation is the rate multiplied by the duration. Keep the units through the multiplication.
+The graph is a rectangle with constant height over the integration interval. Use the interval's width, not merely a bound.
+Signed velocity distinguishes opposite directions. Its contributions accumulate with their signs, unlike total distance traveled.
+Integration bounds specify the direction of accumulation. Reversing that direction changes the orientation of the signed total.
+Identical bounds leave no interval over which to accumulate. A nonzero integrand alone does not create interval width.
+Multiply the rate's units by the integration variable's units. The per-second factor cancels the elapsed seconds.
+The graph rises linearly from the origin. Compute its triangular area or evaluate an antiderivative at both bounds.
+A function value supplies a height. An accumulated contribution also needs the width of the piece it represents.
+A definite integral is signed accumulation. Regions on different sides of the axis can contribute opposite amounts.
+Increasing the upper endpoint adds a thin slice of accumulation. The fundamental theorem relates its local rate to the slice's height.
+## Gradient
+Differentiate the loss with respect to each coordinate separately, then evaluate both derivatives at the given point.
+Apply the power rule coordinate by coordinate. Substitute the negative coordinate with its sign intact.
+A partial derivative isolates one coordinate's effect. Do not let other independent input coordinates change during that calculation.
+Each parameter has its own partial derivative. The scalar output's size does not determine the number of gradient entries.
+The directional derivative is a dot product with the gradient. Compare directions of equal Euclidean length.
+Each partial derivative treats the other variable's term as constant. Differentiate the two linear terms separately.
+Stationarity alone does not classify a point. Consider a surface that curves upward in one direction and downward in another.
+Approximate the loss change by the partial derivative times the small parameter change. The product's sign determines the local trend.
+A derivative measures change per unit of its coordinate. Coordinate units and scaling affect the numerical magnitude.
+When differentiating a product of independent inputs with respect to one input, hold the other input fixed, then substitute the point.
+## Hessian and curvature
+Take another derivative of each gradient component. Terms depending on only one variable do not produce cross-variable curvature.
+Differentiate twice and preserve the sign of the negative squared term. The two coordinate directions have different curvature signs.
+At a stationary point, inspect whether small moves can increase the function in one direction and decrease it in another.
+Positive definiteness gives upward second-order curvature in every nonzero direction. The conclusion is local to the stationary point.
+When second-order terms vanish, higher-order terms may still determine the behavior. Compare x⁴ with −x⁴ at the origin.
+Differentiate the fourth power twice before substituting the input. Evaluating the first derivative answers a different question.
+A Hessian contains one derivative for each ordered pair of input coordinates. Count the positions in that square array.
+Equality of mixed derivatives has regularity assumptions. Smoothness nearby matters, not merely writing the derivative symbols in either order.
+An affine function has constant first derivatives. Check what happens when those constants are differentiated again.
+The same step size acts in every direction. Strong curvature can cause overshooting while weak curvature permits little progress.
+## Chain rule
+Differentiate the outer square and multiply by the inner linear derivative. Evaluate the composed factors at the given input.
+The outer function sees the whole parenthesized expression as its input. Differentiate it and then include the inner derivative.
+Treat 2x as an intermediate variable. Its rate of change with x must multiply the outer derivative.
+Along a composition, changes pass through successive stages. Combine the rates multiplicatively rather than adding them.
+Differentiate sine with respect to its argument, then account for how quickly the argument changes with x.
+The composition's derivative multiplies its inner and outer factors. Track the effect of a vanishing factor with the stated finite assumption.
+A weight can affect the loss through several intermediate quantities. Each stage contributes a rate of change along the dependency path.
+The exponential differentiates with respect to its entire argument. Include the derivative of that argument with respect to x.
+Each stage scales the change received from the previous stage. Follow the complete path before combining its factors.
+A variable may contribute through more than one route. Compute each path's effect before combining the contributions to the total change.
+## Optimization
+The unconstrained best point may be forbidden. Compare feasible points by how close they can get to the square's center.
+Distinguish the location where the best value is reached from the value of the objective at that location.
+A square cannot be negative. Identify the input that makes the quantity inside the square vanish.
+A good objective value is not sufficient if the choice violates the allowed conditions. Check the permitted set first.
+Constraints can exclude the unconstrained optimum. The best allowed point can occur where further improvement would leave the permitted region.
+Check whether the goal prefers larger or smaller objective values. Maximizing reward reverses the preference used when minimizing loss.
+Local optimality compares nearby choices. It does not evaluate distant regions of the feasible set.
+Evaluate the objective for the allowed inputs, or examine whether it rises or falls as x increases.
+Different inputs can produce the same objective value. Uniqueness requires additional properties beyond the existence of an optimum.
+Performance can mean accuracy, speed, cost, or something else. An optimizer needs a stated criterion for comparing choices.
+## Lagrange multipliers
+Use the constraint to fix the sum. For this symmetric squared objective, compare an unequal allocation with an equal allocation.
+The constraint limits where candidates may lie. A point with an attractive objective can still be excluded.
+Write the equality in the form g = 0 before multiplying it by λ. Keep the sign convention stated in the question.
+The derivative equations balance changes; the original constraint still decides whether a candidate is permitted.
+Under a fixed sum, shifting away from equal coordinates increases this symmetric sum of squares. Use the required total.
+Stationary conditions produce candidates, not a complete classification. Check the objective and feasible behavior around each candidate.
+An equality multiplier balances gradients. Unlike multipliers for certain inequality conventions, it has no general sign restriction.
+Write both parameter derivative equations and the constraint. Solve for the coordinates before using either derivative equation to find λ.
+Feasible tangent moves must leave the constraint unchanged to first order. At stationarity, none of those moves can improve the objective to first order.
+Inequalities can be active or inactive and introduce additional conditions. The equality-only equations omit those cases.
+## Gradient descent
+Compute the learning-rate-scaled gradient, then subtract that step from the current parameter. Do not return the step alone.
+Write the subtraction explicitly before replacing the gradient with its signed value. Subtracting a negative step changes direction.
+The learning rate multiplies the gradient in the update. Track what happens when that multiplier vanishes.
+The gradient describes local behavior. A large move can leave the region where that direction gives improvement.
+The gradient points toward local increase. Inspect the sign used before the gradient term in each update.
+Differentiate the squared loss at the current parameter, multiply by the learning rate, and subtract from the current value.
+Plain gradient descent uses the current gradient directly. It has no momentum or random perturbation to supply another step.
+Nonconvex losses can contain several stationary regions. A local descent rule does not compare all possible minima.
+Hold the gradient fixed and change only its multiplier. Compare the resulting step lengths, not the resulting parameter values.
+The update needs local information about how the objective changes with its parameters. The loss value alone does not supply a direction.
+## Dataset and features
+Use one row for each sample and one column for each feature. Matrix shape records these counts in that order.
+Follow one column downward through the rows. The sample changes while the feature associated with that position stays fixed.
+The target is the quantity the model is meant to predict. Distinguish it from measurements available before making that prediction.
+Each sample supplies the same stated number of entries. Count entries across all samples using multiplication.
+The same number can represent different measurements or scales. Names and units establish the meaning expected by the model.
+Ask whether the input would actually be available at the prediction time. Including the outcome being predicted defeats that boundary.
+Supervised learning requires paired inputs and desired outputs. Those outputs need not be continuous measurements.
+Use the table's stated organization. One example pairs the inputs of a particular observation with its corresponding outcome.
+The model learned a meaning for each input position. An unnoticed permutation changes the interpretation of its inputs.
+More observations can reduce sampling noise while preserving the same systematic measurement error. Size alone does not repair bias.
+## Linear regression
+Substitute the input into the fitted rule. Multiply by the slope before adding the intercept.
+The negative intercept is added after the slope-times-input term. Keep the subtraction sign when evaluating the rule.
+Set the input to zero in the prediction equation. Observe which part of the expression remains.
+The slope measures output change per unit input change. Its sign determines the direction of that change.
+Pair each feature with its own weight, sum those products, and then include the bias.
+Regression predicts a numerical magnitude. Distinguish that from choosing a label or discovering unlabeled groups.
+A fitted line describes an association in the data. It does not specify what an intervention would do.
+If the feature's multiplier vanishes, varying the feature no longer contributes to the prediction.
+Residuals show what is left after the prediction. Systematic remaining structure suggests the fitted rule has not captured everything useful.
+Observed fit tests only the supported input region. The relationship outside that region may behave differently.
+## Mean squared error
+Square each error separately, then average those squares. Squaring the mean error is a different operation.
+The zero error still contributes an example to the denominator. Average over both observations after squaring.
+Squaring removes the sign of an error. Compare the magnitudes before considering which direction the prediction missed.
+MSE averages nonnegative terms. Consider what must be true of every term for their average to vanish.
+The scale factor acts on each error before squaring. Track that factor through the square and the average.
+The contribution is the square of the error, not the error itself. Larger mistakes grow disproportionately under this loss.
+The extra operation in RMSE restores the original error units. Distinguish an average of squares from its root.
+First subtract targets from matching predictions. Square the resulting errors and average over the two examples.
+Training error measures fit to examples already used in learning. New wells can contain different patterns or noise.
+Converting a length changes each numerical error by the conversion factor. MSE then squares that factor.
+## Supervised learning
+Look for training inputs paired with the desired outputs. Merely grouping similar inputs does not supply that pairing.
+The learning procedure needs a reference outcome against which to compare each prediction, not just a collection of inputs.
+Classification learns to predict categories from labeled examples. Look for a task with both examples and class labels.
+Separate values fitted from examples from fixed data and settings that govern the training procedure.
+Good fit to already-seen examples can include memorization. Evaluation needs evidence about performance beyond those examples.
+Training treats labels as the reference signal. Systematic mistakes in that signal can teach an undesirable association.
+Distinguish the stage that adjusts a model from the stage that applies its learned rule to an input.
+Targets may come from measurements, recorded outcomes, or other processes. The learning setup depends on pairing, not who created each label.
+A model evaluated with unavailable future information is solving an easier problem than the one it will face in use.
+The association between the example and its desired output matters. A separate unpaired list of outcomes does not define those training pairs.
+## Parameter and hyperparameter
+Separate values directly updated by the model's fitting procedure from settings that control how those updates are made.
+Gradient descent updates quantities inside the parameterized model. Compare those with choices made about the training procedure.
+Ask which quantity controls the size or organization of training steps rather than being fitted as part of a prediction rule.
+A bias can be adjusted to reduce loss just as a weight can. Its name does not place it outside the fitted model.
+Model-selection decisions need feedback that is separate from parameter fitting while leaving the final evaluation untouched.
+Changing how many examples contribute to one update changes the training procedure, not an individual learned coefficient.
+Hyperparameters can be searched over by another procedure. They need not remain fixed by a human's first guess.
+Identify the coefficients that fitting adjusts in this prediction equation. The input and observed target play different roles.
+The architecture determines which parameters exist before they are fitted. Distinguish choosing that structure from learning its weights.
+The final coefficients do not describe every choice made during training. Conversely, training settings do not specify the learned coefficients.
+## Training, validation and test
+Choosing an update setting is model selection. It needs a comparison set while preserving a separate final evaluation.
+Fitting weights directly uses examples to reduce the training objective. Distinguish fitting from model selection and final assessment.
+Comparing architectures is a model-selection step. Reserve a separate split whose results do not guide that choice.
+If evaluation results change the model choice, that evaluation has joined the selection process. An independent final estimate comes afterward.
+Check membership at the example level. Different filenames or shuffled ordering alone do not establish separation.
+Samples from one well can share geology and measurement conditions. Splitting their rows can make held-out data less independent than intended.
+Estimating preprocessing values uses information from the observations. Keep held-out examples out of that fitting step.
+Repeated selection adapts decisions to the observed scores. A dataset used that way no longer provides an untouched assessment.
+Match the information boundary of deployment. Future observations should not influence a model intended to predict them from the past.
+A test score is conditional on the sampled data, metric, and procedure. Extending it to other settings requires additional evidence.
+## Data leakage
+To test a genuinely unseen well, prevent any measurements from that well from influencing training or preprocessing.
+Preprocessing can learn from data even without labels. A held-out distribution should not influence the fitted transformation during evaluation.
+Ask whether the feature exists at the moment the prediction is made. Later outcomes cannot be available to a real-time predictor.
+Different windows can contain many of the same raw observations. Distinct row IDs do not make them independent examples.
+Decide the held-out groups before constructing examples that could share their measurements across the split.
+Using a test score to revise choices makes those choices depend on the test. That weakens its independence as a final evaluation.
+Feature presence can reveal an outcome even without storing the outcome's name. Inspect when and why the field is populated.
+Information about a target can remain in proxies, duplicated records, preprocessing statistics, or future measurements.
+Availability is a time-dependent property. A feature in an eventual record may be absent when the model must act.
+Unusually strong results deserve extra scrutiny when training and test examples share underlying information. A score alone does not identify the cause.
+## Normalization
+Subtract the fitted mean first, then express that deviation in units of the fitted standard deviation.
+Keep the sign of the difference from the mean before dividing by the positive scale.
+A standardized coordinate measures displacement from a fitted reference. Identify the original value that produces no displacement.
+Check the denominator before applying the transformation. A constant feature needs special handling instead of ordinary division by its scale.
+The model expects the coordinate system used during fitting. Re-estimating it on each deployment sample changes the input meaning.
+Centering and rescaling adjust location and spread. They do not remove skewness or force a particular distribution shape.
+Distance squares and combines coordinate differences. Large numerical scales can dominate that combination even without greater relevance.
+Undo division by multiplying by the fitted scale, then undo centering by adding the fitted mean.
+Centering a value by itself discards the difference you want to measure. The reference must be consistent with model training.
+The sign indicates which side of the fitted mean the value lies on. The magnitude counts fitted scale units.
+## k-nearest neighbors
+Unweighted neighbor regression averages the selected targets. Do not return their sum or the nearest target alone when k is larger than one.
+The selected examples already carry class labels. Think about how several labels can be combined into one class decision.
+First compare input distances to identify the selected neighbor. Then use that neighbor's target, not its input coordinate.
+Distance uses numerical differences, so units and scales affect which neighbors appear closest. Equal relevance does not imply equal raw magnitudes.
+With only one selected example, there is no averaging or voting across other neighbors to soften that example's error.
+Using more neighbors averages over a wider region. That can reduce sensitivity while blurring local changes.
+Count the selected labels with equal weight. The nearest example alone does not decide a majority vote with several neighbors.
+Closeness is computed in the supplied feature space. Differences in uninformative coordinates can outweigh useful similarities.
+The neighbor count influences the model's behavior and is a selection choice. Keep the final test out of that choice.
+Storing examples postpones much of the work until prediction. A query must still identify nearby training examples.
+## Decision trees
+Evaluate the split condition with the query input. Follow only the branch whose condition holds.
+After routing ends, the leaf must supply an output. In regression, that output is derived from the targets assigned to that region.
+A mean prediction combines all targets in the leaf equally. Divide the total by the number of observations.
+Many successive splits can isolate individual observations. That flexibility can capture accidental details of the training sample.
+An axis-aligned boundary acts on one coordinate at a time. It does not require a weighted combination of all features.
+Impurity concerns the distribution of labels inside a node. A node's size alone does not tell you how mixed those labels are.
+For a pure node, one class has all the probability mass. Substitute that distribution into the stated expression.
+Choosing thresholds is part of fitting the prediction rule. Held-out outcomes must not influence that fitted rule.
+A small input change can cross a split and reach a different leaf. Compare the predictions stored in those leaves.
+A split is chosen for predictive usefulness under the training objective. It does not establish the effect of an intervention.
+## Overfitting
+Compare improvement on seen examples with behavior on held-out examples. Diverging trends suggest the extra fit is not transferring.
+Look for a growing mismatch between fitting the training sample and predicting examples excluded from that fitting.
+A model may fit sample-specific details or encounter different deployment conditions. Training fit alone does not test either risk.
+Stopping time is a model-selection decision. Use held-out behavior while keeping a final test separate.
+Check whether the model is struggling even on the examples used for fitting. That differs from fitting them well but failing elsewhere.
+Representative additional examples can make accidental patterns less persuasive and expose variation missing from a narrow sample.
+Compare test error with training error using a difference in the stated direction. A ratio answers a different question.
+A gap can also reflect distribution differences, preprocessing errors, or sampling variation. Inspect the evaluation setup before assigning a cause.
+A flexible model has more ways to match the observed sample. Some of those ways capture noise instead of transferable structure.
+The evaluation should hold out the unit you want to generalize to. New rows from a familiar well may not test new-well performance.
+## Regularization
+In the objective, λ scales the weight-dependent term. Hold the weights fixed and inspect which contribution becomes more influential.
+The squared L2 norm sums squared coordinates. It does not take the final square root used by the ordinary L2 norm.
+The penalty's contribution is multiplied by its strength. Evaluate that multiplication before considering its effect on fitting.
+An overly strong preference for a restricted model can prevent it from capturing useful patterns, even in training.
+First weight the penalty by λ, then combine it with the data-fit loss. Neither part replaces the other.
+Treat λ as fixed and apply the power rule to w. The derivative is with respect to the weight, not the penalty strength.
+A squared-magnitude penalty treats all coefficient sizes continuously. Counting how many coefficients are nonzero is a different objective.
+Penalty strength affects model selection. Compare held-out performance while reserving a separate final assessment.
+The effect depends on the data, model, and selected strength. A method intended to improve generalization is not a universal guarantee.
+Rescaling an input can be offset by an inverse change in its weight. The predictions can match while the coefficient penalty changes.
+## Random forests
+Equal weighting combines the tree outputs through an average. Count each tree once in the denominator.
+Averaging is more useful when errors are not all identical. Random construction encourages trees to use somewhat different evidence.
+Check whether a drawn observation remains eligible for another draw. That distinction allows duplicates and leaves some observations absent.
+Restricting candidate features prevents every tree from always choosing the same dominant predictors at every split.
+Treat each tree's probability as one equally weighted estimate. Average the probabilities rather than multiplying them.
+If every component makes the same error, their average retains that shared error. Diversity matters for variance reduction.
+Bootstrap sampling repeats some training records and omits others. Identify the records that did not influence this particular tree's fitting.
+Consider the dependency between fitted trees. Some ensemble methods require a previous model's errors before fitting the next component.
+More trees can stabilize an average while retaining systematic errors or a mismatch between training and deployment populations.
+Complexity alone is not evidence of usefulness. A common evaluation lets you compare actual predictive value on the same task.
+## Gradient boosting
+Scale the new learner's output by the learning rate, then add that correction to the current prediction.
+For squared-error residual fitting, subtract the current prediction from the observed target. Preserve the order of that subtraction.
+Each added component is fitted with reference to the current ensemble's behavior. Changing earlier predictions changes that fitting problem.
+The learning rate controls how much of the proposed correction is included. It does not directly set the learner's prediction.
+Keep the new learner's negative sign when scaling its contribution. Add the signed correction to the old prediction.
+Additional stages may continue fitting training details after held-out performance stops improving. Stopping time is chosen from that held-out behavior.
+Gradient boosting follows the chosen loss's negative gradient. The familiar residual expression is specific to particular losses.
+The ensemble builds a prediction from many limited components. A component need not solve the whole problem accurately by itself.
+Sequential correction can keep adapting to incidental training details. The ensemble still needs appropriate capacity control and evaluation.
+Compute the scaled update and the resulting prediction first. Then subtract that prediction from the target to find what remains.
+## Class imbalance, precision and recall
+Recall uses all actual positive cases as its reference group. Include both detected and missed positives in the denominator.
+Precision asks about cases predicted positive. Include correct alarms and false alarms in that reference group.
+Count the correct predictions for the majority class, then divide by all examples. Accuracy weights each example equally.
+Actual positives exist, but the rule never predicts one. Examine the detected-positive numerator of recall.
+The “positive” part describes the prediction; “false” says it disagrees with reality. Track both labels separately.
+Lowering a fixed-score threshold adds possible positive predictions rather than removing them. Consider the already-detected positives.
+Distinguish the fraction of real positives found from the fraction of alarms that are justified. They use different denominators.
+Write the denominator in terms of all positive predictions. The raw ratio requires that reference group to be nonempty.
+Substitute both metrics into the stated harmonic-mean formula. Keep the denominator as their sum.
+Resampling learns or changes information from the data. Keep validation observations outside that operation in every fold.
+## Probability calibration
+Compare the predicted probability with the observed fraction of positives in this group. Do not compare it only with the positive count.
+The observed frequency is the positive count divided by the group size. The predicted probability is a separate quantity to compare afterward.
+A probabilistic forecast permits either outcome. Calibration concerns frequencies across comparable predictions, not certainty in one case.
+Ranking depends on order; calibration depends on numerical probability values. Changing those values can preserve order while changing calibration.
+Group similar forecasts and compare their numerical probabilities with what actually happened in those groups.
+Training predictions can reflect overfitting. A calibration mapping should see behavior representative of predictions on examples not used for fitting.
+Calibration is assessed relative to a population and conditions. A changed relationship or prevalence can invalidate that assessment.
+For a binary outcome, Brier loss is the square of the difference between the predicted probability and the outcome indicator.
+Compare the forecast level with the group's observed positive fraction. Check the direction of the discrepancy before labeling it.
+An observed fraction based on very few cases can move substantially with one additional outcome. That variability can mimic poor calibration.
+## Causal inference
+The requested contrast subtracts the control group's mean from the treatment group's mean. Preserve that order.
+Look for a prior variable that can create an association by affecting both which treatment is received and the eventual outcome.
+Randomization breaks systematic links between assignment and preexisting characteristics on average. It does not make every realized group perfectly identical.
+An individual is observed under the condition actually received. The causal comparison also needs an outcome under a condition not received.
+Prediction estimates observed associations. An intervention asks what changes when an action is imposed, which needs additional assumptions or design.
+Look for a factor that plausibly changes both activities. Correlated outcomes do not have to cause each other.
+Follow the specified treatment-minus-control direction, even when the treatment group's mean is smaller.
+A post-treatment variable may transmit part of the effect. Holding it fixed can change which causal effect the comparison measures.
+The target contrasts two potential conditions over a defined group. It is not merely the observed difference between any two selected groups.
+Observed groups may differ for reasons besides treatment. A causal interpretation must justify how the design handles those differences.
+## Domain shift and adaptation
+An absolute percentage-point gap subtracts the two percentages. A relative percentage change uses an additional division.
+The deployment distribution can change when the measurement process changes, even if the task and feature names stay the same.
+Distinguish a change in how frequently inputs occur from a change in the label relationship conditional on those inputs.
+A small target sample may be unrepresentative or insufficient. Updating weights does not establish performance on unseen target examples.
+Validation should resemble the situation in which predictions will be used, including the relevant population and information available.
+A single average combines potentially different environments. A large group with good results can hide a smaller group's poor results.
+A changed input mean is evidence of a distribution difference. Its effect on predictions depends on the model and target relationship.
+Using target examples to revise a model makes them part of adaptation. Reserve other target examples for an independent assessment.
+Changes that specialize the model to one narrow population can alter useful behavior elsewhere. Evaluate all conditions that remain relevant.
+The requested gain is a difference between percentages on the same scale. It is not a relative increase divided by the old score.
+## Active learning
+For a binary probability, uncertainty is greatest when the two outcomes are hardest to distinguish, rather than near either extreme.
+The active learner selects a query but still needs a reference label. Identify the role that supplies that missing information.
+Uncertainty alone does not measure representativeness or usefulness. Unusual cases can remain difficult without informing common decisions.
+Evaluate the inner signed expression, take its absolute value, and subtract from the outer constant in that order.
+Several nearby queries may teach nearly the same thing. A labeling budget should account for overlap in their information.
+Selected query labels influence training decisions. Final evaluation needs examples that have not participated in that process.
+Ordinary prediction produces an output for a supplied input. Active learning makes a decision about which examples to obtain supervision for.
+Divide the total labeling budget by the per-label cost. If the quotient is not whole, only complete affordable labels fit.
+Model confidence can be wrong. A selection policy that only inspects uncertainty may neglect regions where the model is confidently mistaken.
+Acquiring labels has a cost, and additional labels may have diminishing value. Compare the remaining resources with independent evidence of benefit.
+## Artificial neuron
+Compute each signed input-weight product, combine them, and then include the bias. The question stops before activation.
+The bias contributes even when all inputs vanish. Contrast that with a weight, whose contribution depends on its input.
+Match inputs with weights by position. Add the signed bias only after summing the products.
+Follow the computation order: combine weighted inputs and the offset before applying the activation rule.
+Zero weights remove the input-dependent terms. Check what remains before and after the activation is applied.
+Composing only affine transformations yields another affine transformation. An additional kind of operation is needed for richer relationships.
+Apply the activation after computing its input. For max(0, z), compare the signed pre-activation with the other argument.
+Holding everything else fixed, the input's weight is the slope of the pre-activation with respect to that input.
+Each input can contribute differently to the weighted sum. The model learns separate coefficients unless sharing is imposed.
+The name is an analogy. This compact numerical rule omits much of the structure and behavior of a biological cell.
+## Sigmoid
+Substitute the input into 1/(1 + exp(−z)). Evaluate the exponential before adding in the denominator.
+For a finite real input, the exponential is positive and finite mathematically. Examine the resulting fraction's strict bounds.
+As the input grows, inspect what happens to exp(−z) in the denominator of the logistic formula.
+A very negative input makes −z very positive. Track how that affects the denominator and hence the fraction.
+Use σ′(z) = σ(z)(1 − σ(z)). Evaluate the sigmoid at the specified input before multiplying.
+In saturated regions, output changes very little when input changes. The backward pass multiplies by that local rate.
+An output constrained to a probability interval is not automatically calibrated. Compare forecasts with frequencies on appropriate held-out examples.
+The sigmoid rises monotonically and is centered at input zero. Compare a candidate's position with that center.
+Use the logistic symmetry relating σ(z) and σ(−z). They represent complementary positions around the function's center.
+A bounded nonlinear curve does not behave like a linear map under arbitrary addition and scaling. Test one of those properties.
+## ReLU
+Apply the maximum operation separately to each input before adding. Negative inputs do not pass through unchanged.
+Compare the positive input with zero. ReLU returns the larger of its two arguments.
+Compare the negative input with zero. The activation does not take an absolute value.
+On the positive side, the graph follows y = x. Determine the slope of that straight segment.
+On the negative side, the graph is flat. A local change there does not change the output.
+Compare the slope approaching zero from the left with the slope approaching it from the right.
+Apply the rule to each coordinate independently. Keep the resulting coordinates in their original order.
+For positive inputs, ReLU follows the input itself. Consider arbitrarily large positive values.
+Backpropagation multiplies by the activation's local derivative. Check the derivative in the region occupied by every example.
+ReLU is linear on each side separately, but its slope changes at the origin. Test addition across the two regions.
+## Forward pass
+Separate evaluating the current model from optimizing it. An ordinary forward calculation uses the parameter values already available.
+Evaluate the specified prediction rule at the input. There is no parameter update requested in this calculation.
+Computing an output and changing the rule that computes it are separate operations. A training update needs additional steps.
+Intermediate results depend on earlier results. A graph records which values each operation must receive before it can run.
+An operation cannot consume an intermediate value before it exists. Follow the parentheses' dependency order.
+Inference applies the current model to an input. It needs the resulting output rather than a parameter-fitting step.
+A prediction alone does not establish how far it is from the desired output. Supervised loss needs that reference.
+Calculate the inner affine expression first, then apply ReLU to its signed result.
+Derivatives of later operations can depend on values computed earlier. Retaining those values avoids recomputing them during differentiation.
+Follow the direction of information: one pass evaluates intermediate quantities; the other traces how the loss changes through them.
+## Backpropagation
+A negative derivative means a small positive weight change locally lowers the loss. Apply the descent update with its subtraction sign carefully.
+Backpropagation propagates sensitivity information through a computation graph. Distinguish that calculation from making predictions or choosing optimizer steps.
+Differentiate the outer squared error, then include the prediction's derivative with respect to w. Both factors are required.
+Compute the prediction and signed residual first. Multiply the squared-error derivative by the input factor from the inner model.
+Derivative calculation supplies information about changes. A separate rule must use that information to choose and apply a parameter change.
+A shared parameter affects the loss through each use. Total sensitivity includes every route rather than choosing just one.
+Multiplying a long sequence of factors with magnitudes below one can shrink their combined contribution dramatically.
+Automatic differentiation applies derivative rules to operations in the graph. Perturbing inputs numerically is a different differentiation method.
+Varying an unused parameter leaves the computed loss unchanged. A derivative measures that dependence, not whether the parameter exists elsewhere.
+The derivative can be accurate for a poorly chosen objective or unrepresentative dataset. Correct calculus does not validate the learning setup.
+## Mini-batch gradient descent
+Combine the two gradient contributions and normalize by the number being averaged. The update scale depends on using a mean or sum.
+Add all per-example gradients and divide by the number of examples. Do not average only the extremes.
+A training step need not inspect the entire dataset. Identify the group of examples used for that particular estimate.
+A subset's gradient estimates the full objective's gradient imperfectly. Improving one subset need not improve the complete dataset at that step.
+Batch size counts how many examples contribute to one gradient estimate. Apply that interpretation at its smallest positive size.
+Contrast a subset-based estimate with a gradient computed using every training example before each update.
+Fixed ordering can repeatedly group similar examples or patterns. Mixing examples changes those systematic batch compositions.
+Scale the mean gradient by the learning rate, then subtract the scaled step from the current parameter.
+Differentiating an average includes its normalization factor. Omitting it changes how gradient magnitude depends on batch size.
+Runtime depends on hardware utilization, memory, update count, and convergence. Batch size alone does not determine the total.
+## Epoch
+First count batches in one complete dataset pass, then multiply by the number of passes requested.
+The remaining examples still form a step when partial batches are kept. Round the batch count upward.
+One term describes dataset coverage; the other describes an individual optimizer action. Several actions can occur during one pass.
+Compute updates per complete pass and then repeat that count for the requested number of epochs.
+Additional training can keep fitting sample-specific details after useful generalization stops improving. Check held-out behavior.
+Larger batches cover more examples per step. With the same dataset, fewer steps are needed for a pass.
+Dropping the remainder omits the final incomplete group. Compare rounding downward with rounding upward.
+An epoch describes one traversal of the dataset under the training convention. Repeated epochs revisit those examples.
+The relationship depends on batching and whether several batches contribute to one update. A single counter does not capture both quantities.
+With exact divisibility, steps per pass equal dataset size divided by batch size. Only the numerator changes here.
+## Deep neural network
+Multiplying successive linear maps yields another linear map. Consider what extra expressive ability depth adds without another operation.
+An affine composition remains affine. The intermediate activation must break that restriction to express a broader class of functions.
+Extra layers change capacity and optimization difficulty. Improvement still depends on the data, fitting procedure, and task.
+A hidden layer lies between the raw input and final output. It transforms the representation used by subsequent computations.
+Matrix multiplication can combine the two operators into a single operator. No nonlinear boundary appears between them.
+Each layer consumes the previous layer's output. Think of those values as representations that are progressively transformed.
+A large family of possible functions can fit accidental details in a small sample. Depth does not prevent that risk.
+The next matrix operation must accept the vector produced by the previous layer. Check its compatible inner dimension.
+A baseline provides a reference for judging the value of extra capacity and training effort on the same evaluation.
+The architecture only specifies a family of computations. Learning useful behavior and verifying it require additional ingredients.
+## Convolutional neural networks
+At each valid position, pair the filter with the local input window and sum the products without reversing the filter, using the course's CNN convention.
+Track which parameters are reused as a filter moves. Reusing a pattern detector differs from learning an independent detector at every location.
+Count the starting positions where the entire filter still fits inside the input. Include both the first and last valid window.
+Padding defines values beyond the original boundary so that filters can be applied there. It does not necessarily copy measured information.
+After computing one output, the filter's start position moves. Distinguish that movement from the filter's own width.
+Use the first valid input window, multiply its entries by the corresponding filter coefficients, and add the products.
+Trace which input positions can affect a particular output through the network. That extent can grow across layers.
+Weight sharing supports translation-related behavior, but boundaries, strides, pooling, and later layers affect the final result.
+Local structure may recur at different depths. A shared filter can respond to a similar short pattern at multiple positions.
+Trace the first layer's windows that feed one second-layer output. Overlapping windows expand the covered input interval without multiplying lengths.
+## Graph neural networks
+Average the neighbor values first, then add the self value. The specified rule does not average all three values together.
+A graph's connections encode the relationships chosen by its construction. They are not automatically physical distances or causal links.
+The set of neighbors stays the same under a list permutation. A neighborhood summary should not depend on an arbitrary listing choice.
+Compute the mean of the neighbors, then add the self term separately. Keep the stated aggregation rule.
+A single one-hop layer passes information across one edge. More distant nodes need additional propagation steps.
+The second layer receives neighbors' already-updated representations. Those can include information from their own neighbors.
+Repeated mixing can wash out differences among nodes. More layers do not always retain more distinguishable representations.
+The ordinary mean divides by the neighbor count. An empty set needs a defined fallback rather than an accidental division.
+Edges represent the relationship encoded by the modeler or data. Their existence alone does not identify intervention effects.
+Different readout designs can use individual representations, pairs, or an aggregate of the graph. The task determines the output level.
+## Softmax
+Equal logits have equal exponentials. Normalize those equal positive quantities by their combined total.
+Symmetry assigns the same probability to each equal logit. Divide the total probability mass across all listed classes.
+Every exponentiated score is divided by the same sum of scores. Sum the resulting fractions to see the normalization.
+Exponentiation turns the added constant into a common factor. That factor appears in both numerator and denominator.
+Exponentiation preserves the ordering of real logits, and the normalization denominator is shared by every class.
+Large positive exponentials can overflow in finite precision. A shared shift can change numerical scale without changing the normalized ratios.
+Exponentials are positive, and their sum is positive. Inspect the sign of a normalized term.
+Normalization provides a valid probability vector. Matching those values to observed frequencies is a separate property to evaluate.
+The shared softmax denominator cancels in the ratio. Express the remaining exponential ratio using the logit difference.
+Independent label probabilities can all be high at once. A shared normalization imposes competition for a fixed total mass.
+## Cross-entropy
+For a one-hot target, loss is the negative logarithm of the assigned true-class probability. Consider how that function changes as probability increases.
+In the weighted sum, a one-hot target leaves only one nonzero weight. Identify which class that weight belongs to.
+Use the logarithm's inverse relationship with exponentiation before applying the leading negative sign.
+The logarithm becomes increasingly negative as its positive argument approaches zero. Then account for the loss's negative sign.
+Compare the two values using the monotonic behavior of the negative logarithm, rather than the predicted class label alone.
+Getting the largest-probability class right does not fix the probability assigned to it. Cross-entropy remains sensitive to that amount.
+A confident wrong prediction can leave very little probability for the true class. Inspect how the negative logarithm treats that.
+The weights in this average come from the target distribution. The logarithms are applied to the predicted distribution.
+Training loss measures the specified prediction objective on training examples. Factual reliability in another setting requires separate evidence.
+Rewrite the reciprocal as an exponential, apply the natural logarithm, and then apply the outer negative sign.
+## KL divergence
+For every positive-probability outcome, compare the distribution with itself inside the logarithmic ratio. Use the standard zero-term convention elsewhere.
+The first distribution supplies the averaging weights and appears in the ratio's numerator. Swapping arguments changes both roles.
+Only the outcome with nonzero probability under P contributes. Insert its ratio into the natural logarithm.
+The first distribution expects an outcome that the second treats as impossible. Examine the logarithm of their probability ratio.
+Individual summands can have either sign, but the complete probability-weighted divergence obeys a nonnegativity inequality.
+Expand the logarithm of a ratio into a difference of logarithms. Identify the entropy and cross-entropy sums.
+When P is fixed, its entropy is constant. Use the entropy-plus-divergence decomposition of cross-entropy.
+A metric must meet several properties beyond nonnegativity. Check symmetry and the triangle inequality separately.
+The logarithm base sets the information unit. Binary logarithms measure information relative to two-way choices.
+Use the continuous limiting convention for p log(p/q) as p approaches zero with q positive. Do not evaluate log zero in isolation.
+## Self-supervised learning
+Look for a prediction target constructed from the available data themselves. No separately supplied semantic label is needed for that construction.
+Masking hides content from the input while retaining it as a reference for training. Identify that retained information.
+Self-supervision changes where the reference signal comes from. It does not remove the need for a learning objective.
+The full measured sequence exists before the task is constructed. Hide a portion for input while retaining its original value for comparison.
+If the input directly contains the target, a model can succeed without learning the intended relationship from surrounding information.
+Pretraining and later task-specific training can use different supervision sources. Their objectives need not be identical.
+Success on a constructed prediction task establishes performance on that objective. Semantic or scientific usefulness needs additional validation.
+The training sequence supplies both prefix and reference continuation. Distinguish the target token from an arbitrary generated guess.
+Sequences, images, and signals contain relationships among their parts. Those relationships can supply prediction targets without manual category labels.
+Shared examples, future information, or preprocessing can cross an evaluation boundary regardless of who or what constructed the targets.
+## Embedding
+An embedding supplies a numerical representation of the window. Distinguish that representation from a filename, label, or claim about geology.
+Consider the representation's multiple numerical coordinates. Its form is different from a single score or a source citation.
+Coordinates are learned to support an objective. A particular coordinate need not correspond to a named interpretable property.
+The learning objective determines which relationships a representation emphasizes. Changing that objective can change the representation of the same input.
+Coordinate comparisons assume the same representation convention. Equal vector lengths alone do not make independently learned spaces directly comparable.
+Closeness reflects the model and distance measure used. Establishing geological equivalence requires evidence beyond that numerical relationship.
+Each represented object has the stated number of stored coordinates. Count all table entries across objects.
+Dimension describes the length of one object's representation. It does not count the number of objects in the collection.
+An embedding is a representation technique, not a restriction to one input medium. Consider images, signals, or graph nodes.
+A representation's value depends on what it helps accomplish. Visual clusters or small training loss alone do not establish usefulness.
+## Cosine similarity
+Calculate the dot product, then divide by both norms. The vectors' orientation matters more than their lengths.
+The vectors differ in length but point in the same direction. Normalization removes that positive length scaling.
+Compute the signed dot product and normalize by positive lengths. Opposite directions preserve a negative sign.
+For nonzero real vectors, this normalized dot product is the cosine of an angle. Recall the bounds of cosine.
+The dot product and the scaled vector's norm acquire the same positive factor. Compare their ratio afterward.
+The denominator includes both vector lengths. A direction cannot be obtained by ordinary normalization of a zero-length vector.
+Unit vectors already have normalized lengths. Substitute those lengths into the denominator of the cosine formula.
+The normalization removes raw length information. Vectors can point almost identically while having very different magnitudes.
+Use the angle interpretation of the normalized dot product. The nonzero assumption ensures both directions are defined.
+Cosine normalizes away vector lengths before comparing them. Consider which kind of relationship that deliberately retains.
+## Contrastive learning
+The stated loss applies a negative natural logarithm to the positive pair's normalized probability. It does not use one minus that probability.
+A positive pair should share the property the representation is intended to preserve. Check whether the transformation keeps that property.
+Training treats the pair as related. If the transformation destroys the relevant relationship, that teaching signal becomes inconsistent.
+“Negative” refers to how the comparison is used in the objective. A false negative violates the intended unrelated-pair assumption.
+Inspect how the negative logarithm changes across probabilities between zero and one. Higher assigned probability changes loss monotonically.
+Apply the negative natural logarithm to the stated probability. The log base determines the numerical information unit.
+Similarity scores are divided by temperature before normalization. Changing their spread changes how concentrated the resulting comparison is.
+Training success concerns the chosen pairs, transformations, and objective. Other tasks may depend on information that objective did not preserve.
+Normalizing lengths makes the comparison depend on directions. Otherwise vector magnitude can influence similarity scores and learning dynamics.
+Related views can be constructed from existing data. Check whether those constructed relationships provide supervision without separate semantic labels.
+## Principal component analysis
+PCA chooses a direction by how widely centered observations spread along it. It does not directly optimize a target-label prediction score.
+Ordinary PCA analyzes variation around the feature means. Remove that common location before comparing directions of spread.
+Project the centered observations onto a unit direction and measure their spread. The leading component optimizes that quantity.
+Successive directions avoid repeating variation already represented. Ordinary principal axes are constrained geometrically relative to one another.
+Each retained component contributes one coordinate to the projected representation. The original feature count need not remain.
+Variance measures spread, not predictive relevance. A small but consistent signal can matter greatly for a particular target.
+Scaling a feature changes how much its numerical variation contributes. Ordinary PCA is sensitive to that relative scaling.
+PCA's objective is defined from input variation. It does not compare predictions with separately supplied outcome labels.
+Projection keeps only variation expressible in the chosen directions. Consider an input component perpendicular to that retained space.
+A more complex representation needs a reference comparison. A linear dimensionality-reduction method helps isolate the value of added complexity.
+## Autoencoder
+Follow the basic training loop: transform an example into a code and compare its reconstruction with the data that entered the system.
+Identify which part operates before the internal code exists. It transforms the original input into that intermediate representation.
+Identify which part consumes the internal code and produces an output in the original input space.
+Basic reconstruction training derives its reference from the example itself. A separate semantic class label is not needed for that target.
+Reproducing training inputs can involve memorization or irrelevant details. Scientific usefulness requires a separate criterion and evaluation.
+The corrupted example is supplied as input, while the desired output represents its uncorrupted counterpart. Keep those two roles separate.
+Compute coordinatewise reconstruction errors before averaging their squares. Exact equality makes every difference vanish.
+Without meaningful restrictions, the model may learn an easy copying rule. A constraint can encourage it to capture shared structure.
+Training reconstruction can overstate behavior on unfamiliar examples. Generalization needs inputs excluded from fitting.
+An average can be dominated by common features. Examine whether rare details important to the intended task are preserved.
+## Latent space and bottleneck
+Coordinate reduction establishes compression of a representation's dimension. It does not specify which information the objective preserves.
+Latent describes where the representation sits in the model. It does not guarantee a hidden physical cause has been discovered.
+Compare the code's coordinate count with the input's coordinate count. Undercompleteness concerns that dimensional relation.
+Storage depends on both coordinate count and how each coordinate is encoded. Include precision and any extra metadata.
+A capacity restriction forces information to compete for representation. Frequent patterns may be favored over uncommon but valuable details.
+Locate the intermediate stage through which information must pass. A bottleneck requires a meaningful capacity restriction there.
+Compression need not be one-to-one. Consider what happens when distinctions in the input are not retained in the code.
+Additional dimensions offer capacity but can retain noise or be poorly trained. Utility must be evaluated for the target task.
+A low-dimensional display is another transformation of the representation. Distances and separations in it need not preserve every original relationship.
+The code must balance space with the information needed later. Use evidence from reconstruction and the intended task together.
+## Bit and byte
+Each bit adds an independent binary choice. Multiply the number of choices across positions rather than adding them.
+Enumerate the choices for each position. Every additional binary position combines with all patterns formed so far.
+A byte contains eight bits. Multiply that conversion factor by the number of bytes.
+The extra bit can take either binary value for every previous pattern. Count the new possibilities for each old pattern.
+Find the smallest integer width whose binary pattern count can cover all required IDs. Use a power-of-two comparison.
+The stored pattern is a representation. Interpreting it as a number, character, or other object requires an agreed convention.
+First convert a byte into its number of binary positions. Then count all combinations of those positions.
+The width must cover every symbol, so round the binary logarithm upward when the symbol count is not a power of two.
+Character encodings can use variable numbers of bytes. A storage unit does not define one universal text character.
+Multiply value count by bits per value, then convert the total bits into bytes. The question excludes metadata and other overhead.
+## Numerical precision
+Absolute rounding error is the magnitude of the difference between the original and rounded values. Align their decimal places before subtracting.
+A finite format has a limited set of representable values. An arbitrary real input may lie between them.
+Use the original and rounded values in the same subtraction, then take the magnitude. Do not count changed digits as the error.
+Equal bit counts can be divided differently among sign, exponent, and significand. Those allocations affect range and precision differently.
+Raw storage scales with the bits used for each value. The number of values need not change for storage to shrink.
+Rounding and range limitations can alter computations. Whether the resulting change is acceptable depends on the model and task.
+Distinguish exceeding the largest representable magnitude from losing small-scale precision within the allowed range.
+Floating-point operations round as they run. Reordering additions changes which intermediate values are rounded together.
+Absolute error is a difference in the original units. Relative error would additionally divide by a reference magnitude.
+A smaller format changes numerical behavior. Compare the results and check for instability under the intended computations.
+## Rate-distortion tradeoff
+Evaluate D + λR for each proposed code using the example's stated λ. Comparing only distortion or only size misses the combined objective.
+The rate term accounts for representation size under a specified encoding. Distinguish it from the reconstruction-quality measure.
+The distortion term compares the reconstructed signal with the original under a chosen measure. It is not the code's storage cost.
+The multiplier acts on one term of the objective. Hold each candidate's rate and distortion fixed while changing that multiplier.
+Multiply the rate by its weight first, then add the distortion. The multiplier is not applied to the whole expression.
+With the rate multiplier removed, only one contribution remains in the objective. Other practical goals are not automatically included.
+Average numerical similarity may ignore rare or task-relevant details. The distortion metric does not represent every possible use of a signal.
+Lowering storage can worsen reconstruction, and improving reconstruction can require more storage. Reporting one side hides the compromise.
+Compute the weighted sum for both candidates with the stated λ. A lower distortion alone does not decide the comparison.
+File size measures storage. Answering geological questions depends on retaining relevant information and interpreting it correctly.
+## Vector quantization
+Compute the distance from the input to each available representative. Select from the codebook rather than inventing a new value.
+Compare absolute differences for these scalar representatives. The largest representative is not necessarily the closest.
+Quantization replaces inputs with members of a stored representative collection. Distinguish that collection from a sequence of selected IDs.
+One object names a position in the lookup system; the other contains the numerical coordinates stored at that position.
+Equal distances make nearest-choice selection ambiguous. A reproducible implementation must define what to do in that case.
+Compare squared distances to both representatives. The square root is unnecessary when it preserves the same ordering.
+Small input changes can cross the boundary between regions assigned to different representatives. The selected output can then jump.
+Replacing an input by a representative may change its value. The discrepancy can be measured under the chosen distance or distortion rule.
+A representative covers a region of input space. Selection is not required to assign a unique code to each possible input.
+Additional codebook entries increase the available choices. Whether learning makes good use of them remains a separate question.
+## Token and vocabulary
+Assigning a label establishes a mapping convention. Any useful semantic relationship must be learned or supplied through additional structure.
+Tokenization can split text more finely than words or use other units. The vocabulary determines what one symbol represents.
+A vocabulary defines which symbols the representation system may use. It is different from a particular sequence of those symbols.
+An identifier's numerical value does not establish a concept's meaning. Meaning depends on the agreed mapping and learned use.
+Find how many independent binary positions provide enough distinct patterns for every symbol in the vocabulary.
+The ID specifies an entry in a learned table. The retrieved representation contains information beyond the integer used to select it.
+Printed characters are processed by the model's existing tokenizer and training. A new-looking string does not establish a new learned representation.
+The model consumes an encoded sequence. The tokenizer must map the raw text into the vocabulary's representation system.
+A shared identifier is useful only when both sides associate it with the same entry. Different lookup conventions can silently change meaning.
+The discrete identifier selects an entry; the associated numerical representation is used in computations. They have different types and roles.
+## Vector-quantized autoencoder
+Nearest-code selection is discrete and does not supply the ordinary smooth derivative needed for training. Consider how a backward approximation can bridge it.
+After selecting a code, the decoder needs the numerical representation associated with that choice. An arbitrary printed ID alone is insufficient.
+The encoder's output can vary continuously. Identify the operation that restricts it to a finite set of representatives.
+The selection operation interrupts ordinary differentiation. A training estimator supplies an approximate backward path despite that discrete forward choice.
+The encoder should not drift arbitrarily far from the representative used by the decoder. This loss penalizes that separation.
+Reconstruction training establishes a coding system for inputs. Correspondence with language meanings requires additional alignment and evaluation.
+Available capacity and actual usage differ. Inspect whether most inputs choose only a few of the stored representatives.
+Low reconstruction error does not establish efficient code usage or usefulness for a later task. Examine those properties independently.
+Compare what happens between encoding and decoding. One design passes a continuous code directly, while the other restricts that representation.
+Compute the fixed number of bits needed per ID from codebook size, then multiply by the number of IDs emitted.
+## Diffusion models
+Take both square roots before multiplying their respective signal and noise terms. Add those weighted terms only afterward.
+The forward process follows a defined corruption rule. Distinguish adding noise during training construction from the learned generation process.
+The training procedure knows the random perturbation it added. That known quantity can supply a reference for the prediction loss.
+Substitute the endpoint value into both coefficients. Check which weighted term remains and which vanishes.
+Evaluate both coefficients at the stated endpoint. Track the surviving source of the resulting sample.
+A lightly corrupted sample and a heavily corrupted one require different inference. The network needs to distinguish those noise conditions.
+Generation follows learned transformations from a sampled starting state. That is not the same operation as looking up one stored example.
+Evaluate the signal coefficient before multiplying by the original value. The zero noise value removes the other term.
+Conditioning supplies additional information to the generative process. It guides the result without guaranteeing exact compliance or factual correctness.
+Many samplers use a sequence of smaller updates between noise levels. Count model evaluations across that sequence rather than assuming a single pass.
+## Sequence and autocorrelation
+An ordered log contains relationships between positions. Treating the same values as an unordered collection discards those relationships.
+A lag identifies how far apart the paired observations sit in the ordered sequence. It is not itself a measured signal value.
+Shuffling retains individual measurements but changes which ones are adjacent. Consider which predictive relationships depend on that adjacency.
+Center the sequence before comparing neighboring products. Similar signed deviations contribute positively to that comparison.
+The estimator normalizes by variation about the mean. For a constant sequence, every centered value vanishes.
+Temporal or spatial association can reflect several processes. A correlation estimate alone cannot identify an intervention mechanism.
+Index separation counts positions, while physical separation uses the measured depth scale. Those coincide only under an appropriate spacing convention.
+Pair each position with the one two places ahead, stopping when the second member would leave the sequence.
+At zero lag, each centered value pairs with itself. Compare that numerator with the stated normalization denominator.
+A single summary assumes some stability of the relationship it describes. Different depth regions may exhibit different means or dependencies.
+## Autoregressive language model
+Use the chain rule for the joint event: combine the first event's probability with the next event's probability conditioned on it.
+The existing prefix is given as context. The model supplies possibilities for the next position rather than all independent positions at once.
+Successive conditional factors multiply to form the sequence factorization. Addition applies only after taking logarithms.
+The objective concerns likelihood under learned patterns. A plausible continuation can still make an unsupported statement.
+Autoregressive generation extends the sequence one position at a time. The extended sequence is then used for the next prediction.
+Token choices depend on surrounding meaning and syntax. Ignoring the prefix removes information about those relationships.
+Apply the logarithm's product rule to the sequence factorization. Keep each factor's conditioning context attached.
+The predicted distribution can be used by several decoding rules. Selecting its maximum is one rule rather than a requirement.
+A prompt changes the input context. Ordinary generation evaluates existing parameters rather than running a training update.
+Training has access to the recorded continuation. Compare the next-position prediction with what actually follows the prefix in that sequence.
+## Positional encoding
+An index counts entries. Physical depth also depends on where and how those entries were sampled.
+Content alone may not distinguish different arrangements of the same tokens. Position information identifies their places in a sequence.
+The first term supplies token content. Identify the separate contribution that depends on position in the sequence.
+Repeated tokens share their content embedding, but their positions can contribute different additional information.
+An index has no physical unit by itself. Converting it to depth requires information about the sampling locations.
+Equal steps in an array need not correspond to equal distances in a well. The model may need those actual distances.
+Position can affect computations through several designs, including relative relationships. Addition to embeddings is only one design.
+Compare who performs the action and who receives it. Reordering the same words can change those roles.
+Entrywise addition pairs corresponding coordinates. The two representations must have compatible coordinate counts.
+A position mechanism describes how position enters the model. Reliable extrapolation still needs evaluation beyond the training lengths.
+## Scaled dot-product attention
+Multiply each value by its corresponding weight, then sum the products. The weights do not replace the values.
+In QKᵀ, one projection represents what is being sought and the other represents what can be matched. Values enter after scoring.
+Scores determine weights; a separate set of representations supplies the content being combined. Follow the final multiplication in the attention formula.
+A dot product accumulates contributions across coordinates. Without suitable scaling, its typical magnitude can grow with dimension and saturate softmax.
+Each scalar value contributes according to its weight. Equal weights combine them symmetrically rather than adding them unscaled.
+Softmax normalizes the allowed scores by their total exponentiated mass. Consider the sum of the resulting normalized weights.
+In the weighted sum, terms with zero coefficients disappear. Track which content remains when only one coefficient is active.
+Attention weights describe one internal computation. A causal explanation needs evidence about how changing that computation affects the result.
+Transpose K before checking multiplication dimensions. The result has one score for each query-key pair.
+Nonnegative normalized weights form a convex combination. Compare such an average with the smallest and largest available values.
+## Multi-head attention
+Heads receive related inputs but form their queries, keys, and values through separately learned transformations. Their count alone does not explain their differences.
+Separate projections let heads compare different aspects of the representations. They need not use identical coordinate systems.
+Follow the operations after each head produces its result. Distinguish joining feature coordinates from averaging them away.
+Concatenation places the heads' coordinate lists end to end. It does not average their widths.
+The learning objective does not normally assign semantic names to individual heads. Interpretable patterns must be investigated rather than assumed.
+After concatenation, a learned matrix can recombine coordinates from different heads. It is not another token-position lookup.
+Separate parameter sets permit different behavior but do not require disagreement on every input. Redundant patterns can still occur.
+Changing head count changes capacity and computation. Benefits depend on the training setup and evidence from the task.
+Separate projections can be applied to a common source of token representations. Distinguish the source from the learned projected coordinates.
+Inspecting weights suggests hypotheses. Changing or removing a component under controlled evaluation tests its contribution more directly.
+## Causal mask
+The allowed key positions satisfy j ≤ i. Compare each candidate position with the current query's index.
+Include the current position as well as earlier ones under the stated inequality. Later positions violate that rule.
+Generation has only the prefix available. Training should not let a prediction inspect the continuation it is meant to predict.
+The mask changes which scores participate in normalization. Applying it after normalization would not implement the stated score calculation.
+Exponentiation determines a score's contribution before normalization. Use the limiting exponential of a score tending to negative infinity.
+Known training tokens can be processed together while each position's permitted dependencies remain restricted by the mask.
+Here “causal” describes a sequence information boundary. It does not establish a scientific intervention relationship in generated content.
+For the query index given, compare candidate key indices against the allowed inequality. A later key is outside the prefix.
+Check the alignment of input and target positions. The current input is already available when predicting the following position.
+An attention mask restricts certain token dependencies. It cannot remove leaked information introduced by labels, preprocessing, or other features.
+## Transformer
+A standard block includes a mechanism for combining token information and another for transforming token features. Look for both roles.
+Identify the operation that compares a token with other sequence positions. A positionwise transformation acts on each token separately.
+The same feed-forward rule is applied at individual positions. It changes feature representations without directly mixing those positions.
+Trace the shortcut around the sublayer. Its contribution is combined with the transformed representation rather than replacing the input entirely.
+Layer normalization uses a reference computed within a representation. Distinguish the token's feature coordinates from the batch's examples.
+The displayed ordering describes one variant. Normalization can be placed differently while retaining the broader Transformer design.
+Autoregressive decoding must respect the prefix information boundary. Future positions must not influence a next-token prediction.
+This abbreviation names the block that transforms each token's features after information mixing. It is not the attention-score formula.
+Entrywise addition requires a matching value at each coordinate. A shortcut does not remove that dimensional requirement.
+Architecture specifies how computation is organized. Reliability also depends on data, training, evidence, and appropriate evaluation.
+## Mixture of experts
+Weight each expert's output separately and add those contributions. The result depends on both outputs and their assigned weights.
+Sparse processing requires choosing which component models participate for a given input. The combination also needs corresponding weights or rules.
+Subtract the selected expert count from the available count in this layer. The question concerns one token, not the entire batch.
+A sparse layer stores alternatives that need not all run for each input. Storage size and per-token computation therefore describe different quantities.
+Expert selection describes one part of the computation. Account for the common network and the routing mechanism around that part.
+Uneven routing concentrates work and learning on a subset of resources. Other available experts may remain underused.
+Compute the weighted contributions and sum them. Normalized weights make this an average rather than an unscaled total.
+Experts specialize according to training and routing pressures. Human subject labels are not automatically assigned by the architecture.
+The selected computation may reside on another device. Inputs and resulting representations must travel to and from that location.
+Routing uses the representation of the current input unit. Different token representations can lead to different selections within one sequence.
+## Fine-tuning
+Distinguish changing the model through further training from changing only the information presented to it for one response.
+Prompting changes the context used by existing parameters. Further fitting changes trainable parts of the model itself.
+Training can restrict which quantities receive updates. The existence of a pretrained model does not require updating every stored weight.
+Pretraining may have already learned reusable patterns. Further fitting can adapt that starting point instead of learning everything from scratch.
+Updating shared representations can alter behavior beyond the new task. Improvements on one dataset need not preserve earlier capabilities.
+Training performance reflects the examples used to fit the update. Evaluate on separate examples representing the intended use.
+Supplying context changes the input to inference. Ask whether any trainable quantities are actually being optimized in that operation.
+Further training follows the supplied examples and objective. Errors, narrow coverage, or inconsistent signals can shape the resulting behavior.
+Adapters introduce a limited set of trainable quantities. Consider whether the original pretrained coefficients must participate in those updates.
+An arbitrary ID supplies a symbol, not its interpretation. The examples and objective must establish the intended relationship to meaning.
+## Model distillation
+Apply the logarithm to student probabilities and weight the results by teacher probabilities. Equal student probabilities simplify the weighted sum.
+A hard label retains only the selected class. A full distribution also describes how probability mass is allocated among alternatives.
+The teacher supplies part of the learning signal. Incorrect or biased structure in that signal can be reproduced by the student.
+Reduced capacity and a particular distillation objective constrain what transfers. Compare behavior on relevant held-out tasks rather than assuming equivalence.
+Observed labels and teacher predictions provide different information. One can anchor the task while the other supplies richer comparative structure.
+Temperature divides the logits before softmax. Larger temperature reduces their relative spread and changes probability concentration.
+The teacher gives positive weight to a class the student treats as impossible. Inspect that term's negative logarithm.
+Compression is useful only relative to the task and deployment constraints. Check retained quality alongside time, memory, or other relevant costs.
+Distillation compares outputs or representations under an objective. The internal computation graphs do not have to be identical.
+Speedup compares the old time with the new time as a ratio. A difference in milliseconds is a different quantity.
+## Retrieval-augmented generation
+Retrieval selects material to place in the model's context. Check whether that step includes any optimization of trainable parameters.
+Retrieval searches a collection for evidence relevant to a query. Its output is not a gradient or a new set of learned weights.
+Ordinary RAG adds evidence to an inference request. Parameter training is a separate operation that need not occur per request.
+Relevant evidence can be present without being used faithfully. Inspect whether each generated claim actually follows from that evidence.
+An answer should be traceable to the material it used. A passage without its origin makes verification harder.
+Separate the search stage from the writing stage. Evaluate whether the evidence needed to answer was found before judging the generated response.
+The response's confidence should reflect what the evidence supports. Missing evidence should not be filled with an invented fact.
+Retrieval can find a document accurately even when its contents are outdated. Relevance and current applicability are different properties.
+A reference can exist without supporting the attached statement. Check the relationship between the claim and the cited content.
+Finding text and executing a specified mathematical operation solve different needs. Identify whether a numerical result must be calculated from inputs.
+## API and SDK
+Distinguish a defined software interface from a collection of resources that helps a developer use or build against interfaces.
+Callers need to know what to supply, what to expect back, and how an operation behaves. Its name alone is insufficient.
+A development kit packages support for implementation and integration. It does not replace the underlying service's contract.
+The contract's expected units determine how a value is interpreted. Supplying a number in another scale changes its physical meaning.
+Failure is a possible outcome of a call. A caller needs a defined way to recognize it and decide what to do next.
+Names can be suggestive but leave assumptions unstated. Units, defaults, constraints, and failure behavior need explicit documentation.
+A schema can reject malformed argument shapes or types. Passing it does not by itself establish scientific correctness.
+An interface describes observable behavior. Different internal programs can satisfy the same external agreement.
+An invalid input or unsuccessful operation must be distinguishable from a successful result. Otherwise downstream code may silently misuse it.
+The same request can behave differently after an implementation or model update. Reproducing a result needs its relevant version context.
+## Tool calling
+Exact arithmetic should follow a specified operation on identified inputs. Fluent text generation alone does not execute that calculation reliably.
+The execution system must identify the operation and parse its inputs. A vague natural-language claim that a tool was used is insufficient.
+A model can request a tool, but that request does not define arbitrary new semantics for the tool's existing operation.
+Execution can be technically successful yet use wrong units, missing values, or invalid inputs. Check the operation's contract first.
+A computed result supports only conclusions justified by its inputs, method, and scope. Surrounding prose can still overstate it.
+A failed operation supplies no successful result to report. The response must reflect what actually happened.
+The tool applies an explicit arithmetic procedure to the provided values. Input validity and interpretation still need to be checked.
+A number needs enough context to reproduce and interpret it. In a depth-indexed dataset, location and measurement conventions matter.
+Choosing an inference-time operation changes the workflow. It does not ordinarily run a parameter-fitting procedure.
+Issuing a request does not establish successful completion. Inspect the returned status and output before describing the result.
+## State, observation and action
+A sensor reading is obtained through a measurement process. Distinguish the reported value from the full underlying physical condition.
+Separate what a sensor reports from the actual system condition and the command selected by a controller.
+An action is something the controller chooses to influence the system. A measured level is received rather than chosen.
+Noise and partial sensing can leave relevant physical quantities unknown. One reading may be compatible with several underlying conditions.
+The state representation should retain information needed for the transition distribution. A convenient measurement list may omit some of it.
+Past readings can constrain hidden quantities that a single noisy reading cannot reveal. Their usefulness depends on the dynamics and observation model.
+When the exact state is unknown, uncertainty can be represented across possible states rather than by one asserted state value.
+Separate the mapping from physical condition to reported signal from the additional random measurement perturbation.
+A measurement mapping may discard information or include noise. It need not assign distinct readings to every distinct state.
+Different hidden conditions can lead to different action consequences despite a similar reading. Prediction needs an adequate information representation.
+## Dynamical system
+Start with the current quantity, add inflow, and subtract outflow. Keep chosen signs consistent with the physical balance.
+A transition relates a system before and after one time step. It uses current conditions and any specified driving inputs.
+Substitute both signed terms into the recurrence. A negative action reduces the state under this additive model.
+Separate influences selected by the controller from influences outside its choice, such as unmodeled inflow or external noise.
+A transition can specify a distribution of possible outcomes rather than one fixed next value. Randomness does not exclude dynamics.
+The same current state may evolve differently under different commands. The transition rule needs to represent that dependence.
+Apply the recurrence twice in sequence. The second update uses the result of the first, not the original state.
+Under unchanged inputs, an equilibrium remains unchanged after the transition. Compare the next state with the current one.
+Known physical structure can supply a baseline while data estimate remaining discrepancies. Those sources of information need not be mutually exclusive.
+A model's fit can depend on the conditions covered by its data. Intended operating conditions need relevant validation evidence.
+## Markov decision process
+The assumption concerns whether additional past history changes the next-state distribution after the current state and action are known.
+A Markov state is an information-sufficient summary for the specified transition model. It need not be just a single raw observation.
+Sequential decision making needs to describe situations, available choices, their consequences, and how those consequences are scored.
+The transition component is generally a probability distribution. A Markov assumption is about history dependence, not absence of randomness.
+If omitted information changes future probabilities, the recorded representation is not sufficient for the claimed transition rule.
+Separate the agent's decision rule from the environment's response to that decision. They describe different conditional relationships.
+If the decision maker cannot directly observe an adequate state, it must reason from incomplete information or a belief about states.
+For each fixed state and action, possible next states form the outcome distribution. Their complete probability mass must normalize.
+A state is a modeling representation. Relevant past information can be summarized within it when that helps make transitions well defined.
+Writing down a formal model states assumptions. Evidence about the real system is needed to determine whether those assumptions are adequate.
+## Reward and return
+The first reward is undiscounted; the next receives one factor of γ. Apply the factors before combining the rewards.
+Distinguish a score received at one step from the objective that combines scores over several steps.
+Apply successive powers of the discount factor to rewards at successive positions. Later terms do not all use the same multiplier.
+Every later reward contains a positive power of γ. Examine those terms when the discount factor vanishes.
+Over the stated finite horizon, evaluate the multiplier on each reward when every power of γ has the same value.
+Rewards are numerical scores defined by the task. Penalties can be represented with signed values.
+Keep the immediate reward's negative sign, and discount only the later reward before adding.
+A locally attractive action can change the states and opportunities encountered afterward. The full objective includes those later consequences.
+The reward is a chosen proxy for the desired behavior. Maximizing it can exploit omissions or mismatches in that proxy.
+Discounted weights form a decreasing geometric sequence. With bounded rewards, that can control an otherwise unbounded accumulation.
+## Policy
+A policy specifies the agent's choice behavior. Distinguish that from an environment model or a score of future outcomes.
+Read the condition as the available state information. The probability describes the agent's selection among permitted choices.
+The two available choices exhaust the policy's probability mass. Subtract the known allocation from the total.
+Compare a rule that always chooses one specified action in a state with a rule that randomizes among several actions.
+Choices affect state trajectories and their rewards. Holding the environment fixed does not make all decision rules equivalent.
+The decision rule must choose among actions the task allows. A high predicted reward does not make a forbidden action permissible.
+The policy chooses what to do; the transition dynamics describe what follows, possibly with randomness or disturbances.
+Evaluation asks how well a fixed decision rule performs. It is different from directly changing that rule to seek improvement.
+Improvement changes decision behavior according to expected future outcomes. It is not merely estimating an unchanged rule's performance.
+When one observation is incomplete, available history can inform the choice. The policy's input representation must be specified accordingly.
+## Value function
+A value averages possible returns using their probabilities. Equal probabilities require equal weighting of the listed returns.
+The superscript specifies which decision rule is followed. Value combines future rewards under that rule from the given starting point.
+An action-value function conditions on an additional initial choice. Subsequent behavior still follows the specified policy.
+Weight both possible returns equally, add, and normalize. Returning either outcome alone ignores the other possibility.
+Value depends on the future decisions made from a state. Changing those decisions can change its expected accumulated reward.
+Value averages the task's reward totals. If penalties dominate, the expected total can lie below zero.
+Expectation summarizes possible trajectories rather than eliminating their uncertainty. One realized trajectory may perform differently.
+Physical dynamics are only one part of value. The scoring rule determines which outcomes count as beneficial or costly.
+State value averages the action-conditioned values according to how often the policy selects each action in that state.
+Multiply each action-conditioned value by its selection probability, then add. The two choices are not equally weighted.
+## Bellman equation
+The current backup combines the immediate reward with a discounted continuation value. Discount the continuation, not both terms.
+Separate what is received now from the estimate of what follows. The recursive expression connects those two time scales.
+Multiply the next-state value by the discount factor before adding the current reward.
+A stochastic transition can reach different outcomes. Weight their contributions by the transition probabilities rather than selecting one arbitrarily.
+At termination, the assumed continuation contributes nothing. Substitute that boundary condition into the backup expression.
+Average the possible next-state values first, then discount that expectation and add the immediate reward.
+A fixed-policy equation follows specified action probabilities. An optimality equation instead compares available choices according to their values.
+The discount factor multiplies continuation. Check which part of the equation survives when that multiplier vanishes.
+The equation states a relationship for the modeled problem. A numerical estimate still needs to satisfy it accurately under appropriate assumptions.
+A long-horizon quantity can be expressed using one step and a continuation estimate. That structure supports repeated local calculations.
+## Exploration and exploitation
+Current estimates are uncertain and may be wrong. An action with a modest estimate can supply information about a potentially better option.
+Exploitation uses what the agent currently believes about action quality. It does not necessarily seek the most informative alternative.
+Exploration accepts a possible short-term cost to learn about uncertain choices. Compare that motivation with using the current best estimate.
+The ε-greedy procedure first chooses a branch. Distinguish the probability of that branch from the final probability of a particular action.
+Evaluate the branch-selection probabilities at the stated endpoint. The exploration branch then has no probability mass.
+Uniform random selection usually includes every allowed action. It need not exclude the action that the greedy branch would choose.
+The greedy action can be selected through either branch. Add its guaranteed greedy-branch probability and its share of random exploration.
+Without new information, an initially pessimistic estimate may never be corrected. A decision rule can remain committed to an inferior choice.
+Gathering information does not remove the task's permitted-action boundary. Exploration must still operate within applicable constraints.
+One observation does not reveal a noisy reward distribution or long-term consequences. The required evidence depends on the problem.
+## Q-learning
+Compute immediate reward plus discounted maximum next-state Q before blending with the old estimate. The target and updated estimate differ.
+The target uses a greedy comparison over next-state actions. It need not use the action selected by the behavior policy.
+Scale the best next-state estimate by γ and add the observed reward. Do not average those two terms.
+Move the old estimate a fraction α of the way toward the target. Equivalently, form the corresponding weighted average.
+The learning rate scales the correction from the old estimate toward the target. Evaluate that correction at the stated endpoint.
+Use Qnew = Qold + α(target − Qold). Substitute the endpoint learning rate before simplifying.
+Compare the observed-reward-plus-continuation target with the estimate being corrected. The sign tells which direction to move that estimate.
+The target evaluates greedy future behavior even when exploratory behavior generated the transition. Those two policies need not coincide.
+The terminal boundary removes the next-state value term. Evaluate the target using that continuation convention.
+Tabular storage assigns a separate number to each state-action pair. The deep version uses a parameterized function to approximate those values.
+## Policy gradient
+Weight each action's reward by its selection probability, including the complementary probability of the other action.
+The objective is expected return, which this update maximizes. Check the direction indicated by its gradient.
+Scale the expected-return gradient by the learning rate and move in the increasing-objective direction.
+The two action probabilities must add to one. Compute both probability-weighted rewards before combining them.
+Expand the expression or differentiate both terms with respect to p. Increasing one action's probability decreases the other's contribution.
+A direct numerical update can leave the valid probability set. The representation or update rule must enforce its constraints.
+Expected return averages possible trajectories, which are often too numerous or unknown to calculate exactly. Experience supplies an estimate.
+A sampled trajectory is one random outcome. Its favorable score does not establish the expectation over all trajectories.
+The likelihood-ratio method relates outcome value to how the chosen action's log probability changes with parameters.
+Changing a policy probability changes the frequency of the corresponding choice. It does not change the action's physical reward by itself.
+## Model-based RL
+Each imagined next state can become input to another prediction. An early error can therefore influence several later steps.
+Look for an explicit representation of environmental consequences used in decision making or learning. A value estimate alone has a different role.
+A model is an approximation supported by limited data or assumptions. Learning it does not make every transition prediction exact.
+Planning considers candidate actions and uses predicted outcomes to compare them before executing a choice.
+Rollouts repeatedly reuse the model's own outputs as inputs. Those inputs may drift away from states represented accurately during fitting.
+An optimizer searches for favorable predictions. If those predictions contain errors, it may prefer actions that exploit the errors rather than reality.
+Models can come from physical knowledge, system identification, learned functions, or combinations. Data-only fitting is not a requirement.
+The real transition supplies feedback about the model's prediction. Comparing them helps detect drift and missing dynamics.
+A simulator lets the learner examine hypothetical consequences. Those benefits depend on how well the simulated experience reflects the real task.
+Planning with a model can be done with other control or optimization methods. Reinforcement learning is one possible surrounding framework.
+## Safety constraint
+A hard limit defines admissibility before reward ranking. A high score does not put an excluded proposal back into the feasible set.
+A penalty changes an objective value, potentially allowing a tradeoff. A hard boundary changes which choices are allowed at all.
+Translate “at most” into an inclusive upper-bound comparison. Check each proposed value against that bound.
+The constraint is being checked on an estimate. Uncertainty in the model or measurement can make the actual outcome differ.
+First filter the candidate set by its constraints, then compare objective values among the remaining candidates.
+The allowed side of the inequality includes zero and values below it. Check which candidate lies on the excluded side.
+An optimizer or learned policy can make mistakes. A separate check can enforce a permitted-command boundary before acting.
+A hard constraint is not simply another weighted objective term. Reward ranking applies only after admissibility is established.
+A prediction near the boundary can become a violation under error. A margin accounts for some of that possible discrepancy.
+Optimization may return no permitted candidate. The system needs a defined response rather than silently executing an infeasible plan.
+## Model predictive control
+MPC plans several steps but then incorporates a new observation. Distinguish the sequence optimized from the portion executed before replanning.
+The plan is provisional because the state estimate will be updated after acting. The controller does not usually commit to the entire sequence.
+Measured outcomes can differ from predicted outcomes. Replanning starts from the updated estimate rather than an obsolete planned state.
+The horizon limits how far ahead candidate consequences are evaluated. It does not directly count repeated replanning cycles.
+MPC requires a model and a repeated planning optimization. Those can be supplied without a reinforcement-learning training procedure.
+Looking farther ahead increases the search and relies on more predicted transitions. Both computational cost and uncertainty can grow.
+The optimization must know which predicted trajectories are allowed. Checking reward alone does not enforce those limits.
+Compare only feasible candidates, then follow the objective's stated preference for smaller costs rather than larger rewards.
+After each action and new observation, the planning window is anchored to the new current situation.
+The optimizer solves its mathematical model. Disturbances and modeling errors can make the realized path differ from that solution.
+## RLHF
+The learned reward summarizes preference judgments under a procedure. Preference can favor an appealing response even when its claims are wrong.
+The reward model needs examples of which outputs people favor. Distinguish those judgments from a universal ground-truth score.
+The optimization follows its defined reward proxy, often with other constraints. The proxy does not automatically equal every desirable quality.
+Preferences may reflect style, helpfulness, or confidence as well as correctness. Those criteria can disagree.
+A reference supplies a baseline behavior distribution. Limiting divergence can help avoid extreme changes driven by an imperfect reward proxy.
+Compare what the scoring system rewards with what its designers intended. An improvement in one need not establish an improvement in the other.
+Judgments depend on people's goals, context, knowledge, and values. Aggregating them does not imply universal agreement.
+An answer can be persuasive or useful-looking while containing false claims. A preference score does not test those claims independently.
+A compact equation describes a particular optimization idea. Data collection, supervised stages, reward modeling, and constraints add further structure.
+Weight each possible response's reward by the policy's probability of selecting it, then combine the contributions.
+## CPU
+Consider both general instruction execution and control of other system components. A processor's role is not limited to one mathematical operation.
+Software describes operations through instructions. The processor carries out those operations on data.
+General-purpose instruction execution can implement numerical algorithms. Specialized hardware changes efficiency, not whether the operation is conceptually possible.
+Distinguish an individual processing resource from the complete chip, a memory unit, or a stored program.
+Some workloads make frequent data-dependent decisions with irregular dependencies. General-purpose control is valuable for those patterns.
+Parallel speedup depends on how much work can run independently, along with coordination and memory costs. Core count alone does not fix it.
+Accumulate every input value in sequence. Intermediate partial sums are not the requested final total.
+An arithmetic instruction needs its operands. If memory cannot deliver them quickly enough, execution resources may spend time waiting.
+Different processors can handle different parts of the workflow. Coordination and suitable large numerical work need not run on the same device.
+Instructions per cycle, memory, architecture, and workload all affect time. Frequency measures only one part of that system.
+## GPU
+Parallel hardware benefits from many operations that can proceed together with regular structure. Long serial dependencies limit that opportunity.
+Look for a workload with many similarly organized numerical tasks. Irregular or tiny tasks may not use the hardware efficiently.
+Moving data and scheduling work have costs even when arithmetic is small. Compare those fixed costs with the useful computation.
+Check whether computing one output requires another output first. Independent elementwise dependencies permit simultaneous work.
+Hardware cannot remove a required chain of dependencies simply by offering more execution units. The algorithm's structure matters.
+Grouped execution is efficient when threads follow compatible work. Different branch paths can require separate execution within the group.
+Repeated device transfers can cost more than reusing already-resident inputs and intermediate results. Consider the complete sequence of operations.
+Arithmetic units still need data. High numerical throughput does not remove a limit on memory delivery rate.
+Include transfer, setup, synchronization, and useful computation. A fast isolated kernel may not produce the same application-level improvement.
+One term describes a computing device; the other describes software using it. The device can support workloads beyond graphics.
+## Tensor core
+Evaluate the product first and then include the accumulated term. The operation combines multiplication with addition.
+The illustrative operation multiplies matrices and accumulates another matrix. It is not just an elementwise comparison or a storage operation.
+Specialized arithmetic hardware sits within a larger processor. It depends on the surrounding execution and memory system.
+Use the stated multiply-accumulate operation with the scalar illustration. Do not multiply the accumulator into the product.
+Hardware capabilities change by generation. Check the specific device's supported arithmetic rather than assuming a universal format list.
+Specialized instructions have compatibility requirements. An application's data must be arranged and typed appropriately to use them effectively.
+Only suitable operations can use the specialized units. Other work and bottlenecks remain part of end-to-end runtime.
+The product AB supplies one contribution. The C input contributes existing values to be accumulated with that product.
+Different formats and accumulation rules can change representable values and rounding. Speed and numerical behavior must both be considered.
+Having specialized hardware is insufficient if the workload cannot use it or spends most of its time elsewhere. Measure the relevant computation.
+## CUDA
+Each block contains the stated number of threads. Count the logical threads across all launched blocks.
+A kernel describes work for GPU execution across a configured launch. It is not the entire device or just its memory.
+The block index contributes the number of threads in earlier blocks. Add the thread's local index to that block offset.
+Multiply blocks by threads per block. The launch count does not itself state how many run at the same instant.
+Launch geometry describes logical work. Available hardware resources determine how that work is scheduled over time.
+Rounding the launch upward can create valid thread indices with no corresponding data element. Guard the data access using its actual length.
+Distinguish the programming environment and software interfaces from the physical processor that executes the work.
+CUDA organizes threads into groups within a launch. A group is not necessarily one data element or one complete GPU.
+Submitting work can return before device execution finishes. Timing only submission can omit most of the operation's duration.
+When concurrent operations access shared data without a safe ordering rule, different schedules can produce different results.
+## Memory capacity
+The raw weight estimate covers only one stored component. Training also retains intermediate quantities and information needed for updates.
+Convert bits per parameter to bytes first, then multiply by the parameter count. The estimate excludes other memory use.
+Executing a model requires more than its coefficients. Inputs, intermediate results, caches, and working buffers may also occupy memory.
+One quantity describes how much data fits; the other describes how quickly it can move. They have different units.
+Multiply parameter count by bytes per parameter. Then express the total using the stated decimal gigabyte convention.
+Updating a model requires information about derivatives and the optimizer, while differentiating layers can require retained intermediate outputs.
+Separate physical memories do not automatically behave as one allocation. Using them together requires a compatible distribution strategy.
+More examples processed together generally require more simultaneous intermediate outputs. Those outputs contribute to activation storage.
+Enough space for coefficients alone leaves no guarantee of room for execution. Consider the additional working quantities required by the workload.
+Hold parameter count fixed and compare bits per stored value. Raw storage scales with that per-value width.
+## Context windows and KV caching
+Multiply layers, tokens, KV heads, head dimension, and bytes per value, including a separate factor for both stored tensor types.
+The limit concerns the sequence supplied and generated under a configured model setup. It is not the number of learned parameters.
+Earlier tokens' attention representations would otherwise be recomputed during later decoding steps. A cache retains reusable intermediate results.
+In the given formula, token count is a single multiplicative factor. Hold all other storage assumptions fixed.
+Each cached token contributes two kinds of attention representation. Distinguish those from the query computed for the new token.
+The stored value count is unchanged; only bytes per value changes. Scale the original size by that byte-width ratio.
+Accepting a long sequence does not prove reliable reasoning over all its details. Capacity and effective use need separate evaluation.
+The prompt already occupies part of the shared token allowance. Subtract its usage from the total budget.
+Cached activations and model parameters serve different roles. Retaining earlier attention results does not replace the learned coefficients.
+The simple estimate assumes retained history grows with total tokens. A bounded recent window changes that retention assumption.
+## Memory bandwidth
+Transfer time is data volume divided by effective transfer rate. Compatible gigabyte units cancel, leaving time.
+Use the stated ideal rate and volume in the time-equals-volume-over-rate relation. Real overhead can only add to this simplified estimate.
+Peak specifications describe favorable conditions. Access patterns, contention, and overhead can lower the achieved rate.
+Identify the resource supplying operands and storing results. The arithmetic units may be ready before that resource supplies the data.
+At fixed effective rate, transfer time scales with total data volume. Only the numerator of the time formula changes.
+A nearby cached copy can serve repeated accesses without returning to a slower memory level every time.
+Storage amount and transfer rate are independent specifications. A larger container need not deliver its contents faster.
+Divide the volume by the effective rate using the same data unit. The resulting unit is seconds.
+The cost depends on traffic, not just the size of the distinct dataset. Repeated movement contributes again each time.
+Increasing a resource that is not the limiting one may leave runtime nearly unchanged. Identify whether the operation is waiting on arithmetic or data.
+## H100
+The division estimates raw weight storage only. An executing model also needs room for working data, activations, and other state.
+Identify whether the name refers to a hardware product, a software interface, or a model architecture. Those are different categories.
+This asks for the processor architecture associated with the named device family. Distinguish that from an older GPU generation or a software platform.
+A product family can include different form factors and configurations. Use the specification for the exact device being discussed.
+Divide the stated decimal byte capacity by bytes per value. Keep this as an ideal weight-only count rather than a full runtime estimate.
+A weights-only calculation counts coefficients. Temporary storage and other execution data must be budgeted separately.
+Faster computation can run a flawed model more quickly. Hardware ownership does not validate the model's claims or data.
+Performance numbers depend on the operation, arithmetic format, device configuration, and timing procedure. Compare like with like.
+One name identifies a GPU family, while the other identifies a programming platform used across supported devices.
+Capacity is only one constraint. Execution needs additional memory and suitable performance under the real workload, not just a weight-count calculation.
+## Compute cluster
+Only independent work can divide ideally across devices. Coordination, data movement, and nonparallel work still occupy time.
+The defining feature is cooperation among separate computing machines through connections. It is not simply a single processor with several cores.
+Data parallelism distributes different examples to workers performing the same model computation. Consider what must be available on each worker.
+Model parallelism distributes parts of the model itself. Contrast that with copying a complete model for each subset of data.
+As divisible computation shrinks, fixed work and coordination become a larger share of runtime. More workers do not shrink every term.
+Substitute the worker count only into the parallel term. The fixed-time contribution is not divided among workers.
+As the worker count grows, the divided term approaches zero. Identify the part of the expression that remains unchanged.
+Workers estimate gradients from different data. Combining those estimates keeps their parameter updates coordinated for the shared model.
+Memory on different machines must be managed and accessed through a distribution strategy. It is not automatically one local allocation space.
+Workers exchange information and may need to wait for one another. Those costs can dominate even when local arithmetic is fast.
+## TSMC and chip fabrication
+Distinguish specifying a circuit's design from physically producing it. A foundry provides manufacturing for designs supplied by customers.
+The foundry role concerns the physical production process. Chip architecture, end-user software, and data-center operation are different activities.
+Many repeated circuit patterns are fabricated on a larger substrate before separation. Identify that shared starting surface.
+The fabricated wafer contains many individual circuit units. After separation, each unit still needs suitable packaging and integration.
+Yield compares usable output with total fabricated output. Convert the resulting fraction into a percentage.
+Manufacturing effort also produces units that cannot be used. The fraction that works affects the cost of each usable unit.
+A design specifies circuitry and behavior; fabrication realizes physical devices. They can be performed by different organizations.
+A fabricated chip still needs packaging, systems, software, data, and a useful application. One manufacturing stage does not supply all of them.
+A bare die needs physical and electrical integration with its surroundings. Packaging enables that connection and protection.
+Apply the usable fraction to the total die count. Express the percentage as a fraction before multiplying.
+## Borehole logs and assays
+Mass percentage refers to a constituent's share of the analyzed material. It does not directly describe every location in a deposit.
+A sample needs both a borehole reference and a location within it. A depth number alone can occur in many different holes.
+Interval length is the end depth minus the start depth in the same along-hole coordinate system.
+A sensor response and a chemical assay measure different properties. Inferring one from the other needs a supported relationship.
+A concentration number must be interpreted using its scale. The same written value means different mass fractions under different units.
+In this context, LAS names a text-based exchange standard for log curves. It is not the name of an assay method.
+A measurement applies to sampled material with a defined location and extent. Extending it to unsampled intervals is an estimation step.
+A missing result supplies no measured concentration. An observed zero or a detection-limited result has a different evidential meaning.
+Sequence indices do not always represent uniform physical spacing. Processing methods may depend on actual distances and gaps.
+The method has a quantification threshold. Being below that threshold does not establish an exact absence of the constituent.
+## Assay quality control
+Relative bias divides the measured-minus-reference difference by the reference value. Preserve its sign before converting to percent.
+A blank is intended to contain no relevant analyte. An unexpected signal can reveal contributions from contamination or the procedure.
+A known reference composition allows comparison with an expected value. Repeated unknown samples test a different aspect of measurement quality.
+Duplicates compare repeated results at a specified processing stage. Agreement between them does not by itself establish agreement with the true value.
+Closeness between repeated measurements concerns precision. A shared displacement from a reference concerns a different property.
+Subtract the reference from the measured value, divide by the reference, and convert the signed ratio to a percentage.
+A predefined limit identifies a result requiring attention. The affected material needs a documented investigation rather than silent acceptance or arbitrary adjustment.
+Controls distributed through a batch can reveal effects that begin partway through processing. One control at the start may miss later changes.
+The denominator is the average of the two results. Divide the absolute difference by that average before multiplying by a hundred.
+Detection limits describe the measurement procedure's capability. A signal below its threshold can still correspond to a nonzero concentration.
+## Provenance and uncertainty
+A reported numerical score has a definition and calibration context. Its appearance alone does not establish reliability or an uncertainty interval.
+Tracing a result involves its original data and the operations applied afterward. A final value alone omits that history.
+An absolute bound allows deviations in both directions around the reading. Subtract and add the bound to form the endpoints.
+An error bound and a confidence procedure make different claims. A shared interval shape does not give them the same interpretation.
+Changing a transformation can alter values even when raw measurements stay fixed. Reproduction needs the transformation's identity.
+A traceable report identifies the value's source, scope, units, and procedure. Extra decimal places do not substitute for that context.
+Model confidence and measurement uncertainty are distinct quantities. One cannot replace the other without an explicit justified relationship.
+An imputed value is estimated from assumptions or other data. It should not silently acquire the status of a direct observation.
+Uncertainty notation can describe different kinds of variation or coverage. A report must explain the claim attached to its number.
+Displayed precision describes formatting. Evidence and measurement quality determine how much uncertainty remains behind those digits.
+## Geoscience data integration
+Match the physical sampling context, including the hole and interval. Coinciding row positions do not establish that correspondence.
+Rows reflect file organization, which can differ across sources. A reliable join uses identifiers and compatible sampling coordinates.
+The same numerical coordinates can locate different places under different reference systems. Check the spatial conventions before combining maps.
+A point reading and an interval assay have different support. Define how measurements over the interval are aggregated or matched.
+An unmatched identity means the association is unresolved. Preserve the record and its origin while investigating the mismatch.
+Convert a tonne into grams to form a dimensionless mass fraction, then multiply that fraction by a hundred for percent.
+Integration creates new combined records. Original identifiers let someone verify where each included value came from afterward.
+A join can create one output for each matching pair. Multiple matches on a key can therefore expand the result.
+Syntactic compatibility does not establish correct units, labels, timing, or sampling. Suitability for a learning task needs those checks too.
+Along-hole distance follows the drilled path. Its vertical component also depends on the borehole's inclination and trajectory.
+## Windowing and missing data
+Filling a blank supplies a numerical placeholder. A separate indicator preserves whether that value was observed or inserted.
+Slide the window one position at a time, keeping only placements where its full length fits inside the sequence.
+The mask describes availability at each position. It is different from the values themselves or their estimated replacements.
+Replacing absence with a valid measurement value can make two different situations indistinguishable unless missingness is retained separately.
+Define held-out groups before creating overlapping examples. Otherwise windows derived from one physical source can cross the boundary.
+Count valid starting positions from the first index through the last index where the full window fits.
+An absent target is not a measured reconstruction reference. The loss must follow an explicit rule for excluding or handling it.
+Larger steps between window starts reduce how often nearby observations are reused. Compare the positions still visited.
+A window's array position does not fully locate it in the original borehole. Keep the metadata needed to recover that location.
+A mean over observed targets uses their count as a denominator. An empty observed set requires a defined special case.
+## Ore grade estimation
+Convert the percentage into a mass fraction, then multiply by the rock mass. Contained metal is different from recovered metal.
+Grade compares the mass of the constituent with the mass of the material containing it. Distinguish this concentration from total metal mass.
+Contained metal is rock mass multiplied by the grade fraction. Hold that fraction fixed while changing the mass.
+Recovery is the fraction of contained metal captured through processing. Apply it to the metal amount, not the rock mass.
+Combine contained metal and total rock mass. Equal rock masses give the two grades equal weight.
+Weight each grade by its rock mass. A simple average of percentages is only appropriate for equal masses.
+A supervised grade model needs reference measurements tied to the sampled material. A sensor proxy or predicted label is not the same evidence.
+Nearby observations can share spatial structure. Holding out separated locations tests a harder and more relevant form of generalization.
+Fit to training samples does not establish behavior in a deposit with different geology, sampling, or measurement conditions.
+An unsampled block's grade is an estimate rather than a direct assay. Its interpretation needs the evidence and assumptions supporting that estimate.
+## Variograms and kriging
+Square each pair difference, average those squares within the bin, and include the semivariance factor of one half.
+The paired differences are grouped by spatial separation. The semivariogram describes how dissimilarity changes with that separation.
+Equal values within every pair make each pair difference vanish. Apply that to the squared-difference average.
+Subtract the paired observations, square that difference, and then apply the one-half factor for semivariance.
+Differences at very small separations can arise from measurement error or unresolved short-scale variation. Not all variation is captured by the sampling spacing.
+Compare spatial dependence along different directions, not only at different distances. Equal distance need not imply equal dependence.
+Ordinary kriging uses a constraint so an unknown constant mean is reproduced without bias. Apply the estimator to a constant field.
+Multiply each observation by its own kriging weight and add the contributions. The weights already specify the combination.
+Kriging weights depend on the modeled spatial covariance structure and constraints. Distance alone does not define those weights.
+The reported variance is conditional on the statistical model and assumptions. Geological, measurement, or model uncertainty can extend beyond it.
+## Spatial cross-validation
+Compare the candidate's separation with the excluded buffer width. Points too close to the held-out region cannot be training examples.
+A row-level split can place highly related neighbors on opposite sides. That does not simulate prediction in a genuinely unfamiliar region.
+The split should reflect where predictions will be made and how information is shared across space. One fixed recipe is not appropriate everywhere.
+Windows can reuse raw measurements and share geological context. Keeping only their row IDs separate does not remove that dependence.
+A buffer removes nearby training support around the test region. It changes the spatial information available during evaluation.
+“At least” includes equality at the threshold. Distinguish that rule from a strictly-greater-than requirement.
+Preprocessing parameters are learned from observations. Fit them again using only the training portion of each fold.
+Holding out one hole tests that design's separation and coverage. A distant deposit can introduce a larger change in conditions.
+Greater separation can reduce training coverage and sample size. The resulting score and its uncertainty depend on those changes.
+Selecting only the easiest region gives an incomplete account. Across-fold results reveal variation in performance across locations.
+## Mineral processing and recovery
+Recovery compares captured metal with metal entering in the feed. Divide those metal masses before converting to percent.
+The two ratios use different denominators: product material for concentration and incoming metal for capture efficiency.
+Convert concentrate grade to a mass fraction and multiply by concentrate mass. Keep metal mass distinct from total concentrate mass.
+Under the stated closed two-output balance, the output masses sum to the feed mass. Subtract the known output.
+The closed metal balance accounts for incoming metal in the two products. Subtract captured metal from feed metal.
+A product can become richer by rejecting more material while losing some valuable metal. Concentration and capture can trade off.
+Wet and dry masses include different amounts of water. Mixing those bases can distort apparent material and constituent totals.
+Apply the recovery fraction to contained feed metal. The result concerns metal reaching the product, not total product mass.
+A closed steady balance cannot create extra metal. An apparent excess calls for checking measurements and the balance's assumptions.
+The relationship between inputs and processing outcomes depends on material properties. New mineralogy can change that relationship from training.
+## Representation alignment
+Creating identifiers establishes a coding convention. Using them meaningfully in language requires a supported relationship to evidence and tasks.
+Separate representation construction from establishing how a language-facing system interprets and uses those representations.
+Paired observations supply examples of how domain information relates to the desired language output. An ID list alone lacks that relation.
+The numerical identity is arbitrary. Its intended scientific interpretation must enter through training, metadata, or a defined interface.
+An adapter can translate between representations expected by different components. That mapping still needs an appropriate training signal and evaluation.
+A compact code may omit where a signal was measured or the units used. Those details can be essential for interpretation.
+A model can request operations through a contract without directly interpreting every internal coordinate. The operation's meaning must be defined.
+Alignment should be assessed on the tasks it is meant to support, using examples and evidence excluded from fitting.
+Learning a useful representation connection does not guarantee every generated statement follows from available evidence. Check the answer itself.
+New symbols must be handled consistently by encoding and model interfaces. Useful interpretation also requires a learning signal or defined semantics.
+## Benchmark and ablation
+Isolate the proposed component's effect by making the comparison otherwise similar. Use evidence excluded from training to judge the difference.
+A fair comparison needs common task definitions and measurement procedures. Different splits or metrics can change what a score means.
+Change a component while controlling other relevant factors. An unrelated second system may differ for several reasons at once.
+Divide the number of correct answers by the total evaluated, then express the fraction as a percentage.
+An absolute score change subtracts the two scores. A relative change additionally divides by a reference score.
+The model was trained with a particular input distribution. Removing information only at test time can introduce an additional mismatch.
+A complex representation should add value beyond readily available alternatives. A direct computation may answer some questions without that extra machinery.
+These metrics test different objectives. A system can reproduce signals accurately without answering evidence-based questions well, or vice versa.
+Both sampled data and fitting randomness can affect the observed result. One run may not reveal how stable the comparison is.
+Deployment also depends on costs, reliability, integration, and consequences of mistakes. One predictive score does not capture all of those needs.
+## Open source and reproducibility
+Weights are one experimental ingredient. Repeating and legitimately reusing an experiment also depends on its materials, procedure, and permissions.
+An open-source license defines permitted activities and conditions. Public visibility alone does not establish those rights.
+Code still depends on data, settings, software versions, and execution details. Its availability does not specify the entire experiment.
+The exact examples used for fitting and assessment affect reported scores. A new random split is not the same experimental condition.
+Sharing must respect the applicable permissions. Reproduction can still be supported by describing lawful access and the required data precisely.
+Dependencies participate in the computation. Different releases can change results or prevent the experiment from running as described.
+A license grants rights under stated terms. “Open” does not remove the need to read and satisfy those terms.
+Numerical implementations can differ slightly without changing the substantive result. Comparisons should use a justified tolerance for that context.
+A seed controls pseudorandom choices in a particular setup. It does not freeze every hardware or software behavior across environments.
+Repeating a result requires the complete path from accessible inputs to measured outputs, not merely one trained artifact.
+## Forward-deployed engineering
+A demonstration shows a capability under selected conditions. Operational delivery also requires use within the actual workflow and evidence of value there.
+Begin with the user's task and constraints. A technically interesting model is useful only if it addresses a relevant operational need.
+Time saved is the old duration minus the new duration. A percentage reduction would require an additional division.
+An improvement claim needs a reference. Measure how the task was previously accomplished before attributing gains to the new system.
+Presentation quality does not establish sustained usefulness, integration, or reliability under everyday conditions. Those need evidence from use.
+Problem discovery identifies the person, decision, and desired outcome. A chosen algorithm does not by itself define the problem.
+Domain users know exceptions, constraints, and consequences that curated examples may omit. Their feedback can change the solution requirements.
+A working component must exchange data and fit existing processes. That surrounding connection is part of delivering the solution.
+Real users and data can differ from test scenarios and can change over time. Continued observation checks whether intended benefits persist.
+The approval requirement is part of the task, not an inconvenience to skip. The reviewer needs access to the evidence behind extracted values.
+## Grounded model conversation
+A hypothetical conclusion should follow from a stated model and specified inputs. Plausible prose alone does not establish that calculation or its assumptions.
+Trace the numerical claim to the measurements used and the operation applied. A confident statement without that trace is not sufficient.
+An undefined required input prevents the intended calculation. The response must represent that limitation rather than invent a convenient value.
+A computation interprets numbers according to its expected scales. Correct arithmetic on mismatched units can still produce an invalid result.
+Grounding requires a relevant connection between the evidence and the claim. Merely displaying a reference does not create that connection.
+Distinguish what was measured or computed from what is concluded under an additional assumption. The wording should make that boundary visible.
+The calculation has a defined output and scope. A generated explanation must not silently add claims that the output did not establish.
+The calculation follows its inputs and assumptions. Actual plant behavior also depends on whether those inputs and assumptions hold in operation.
+Reproducibility requires following the claim back through its evidence and reasoning. A final number alone hides that path.
+Recognizing an option is one check of understanding. Explaining or applying the idea tests it from another direction.

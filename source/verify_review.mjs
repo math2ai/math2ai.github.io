@@ -3,7 +3,12 @@ import assert from 'node:assert/strict';
 import {bootBrowser,hub,course,flush,Server} from './progress-test-helpers.mjs';
 const boot=async options=>{const app=bootBrowser(options);await flush();return app;};
 const [scalar,variable,fn]=course.concepts;
-const savedView=app=>[...app.storage.entries()].filter(([k])=>k.endsWith(':guest:view')).map(([,v])=>JSON.parse(v))[0];
+const savedView=app=>{
+ const view=[...app.storage.entries()].filter(([k])=>k.endsWith(':guest:view')).map(([,v])=>JSON.parse(v))[0];
+ // Feedback for an answered lesson question may change; its navigation/deck must not.
+ for(const p of Object.values(view.concepts)) delete p.round;
+ return view;
+};
 const row=(app,c)=>app.get('review-topics').innerHTML.split('<tr>').find(s=>s.includes(`id="review-topic-${c.legacyId}"`))||'';
 const chosen=(app,c)=>new RegExp(`value="${c.legacyId}"[^>]* checked`).test(row(app,c));
 const count=app=>app.get('review-selection-count').textContent;
