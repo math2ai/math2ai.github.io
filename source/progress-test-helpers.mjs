@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {webcrypto} from 'node:crypto';
+import {buildMath} from './build_math.mjs';
 export const root = new URL('.',import.meta.url);
 export const course = JSON.parse(fs.readFileSync(new URL('dist/curriculum.json',root),'utf8'));
+const mathData = JSON.stringify(buildMath(course).data);
 export const flush = async () => { for (let i=0;i<12;i++) await new Promise(r=>setTimeout(r,1)); };
 export function hub(storage=new Map()) {
  const clients=[],queues=new Map();
@@ -28,6 +30,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  const emit=(name,event={})=>{for(const fn of events[name]||[])fn(event);};
  const on=(name,fn)=>(events[name]||=[]).push(fn);
  get('course-data').textContent=JSON.stringify(course);
+ get('math-data').textContent=mathData;
  get('auth-config').textContent=JSON.stringify(configured?{supabaseUrl:'https://example.supabase.co',publishableKey:'sb_publishable_test'}:{supabaseUrl:'',publishableKey:''});
  const location={hash};const math=Object.create(Math);
  math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
@@ -40,6 +43,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
   setInterval(){return 0;},clearInterval,queueMicrotask,
   scrollY:0,scrollTo({top}){context.scrollY=top;},confirm:()=>confirm,addEventListener:on,console});
  context.window=context;
+ vm.runInContext(fs.readFileSync(new URL('math-display.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('progress.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('site.js',root),'utf8'),context);
  const app={get,shared,storage:shared.storage,events,emit,engine:context.math2aiProgress,

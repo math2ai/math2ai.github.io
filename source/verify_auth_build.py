@@ -14,7 +14,7 @@ with tempfile.TemporaryDirectory(prefix='math2ai-auth-build-') as folder:
  for values in [{'supabaseUrl':'','publishableKey':''},config]:
   result=build(values);assert result.returncode==0,result.stderr
   html=(stage/'dist/index.html').read_text(encoding='utf-8')
-  assert not re.search(r'/\*(?:AUTH|GOOGLE|COURSE|PROGRESS)_\w+\*/',html)
+  assert not re.search(r'/\*(?:AUTH|GOOGLE|COURSE|PROGRESS|MATH)_\w+\*/',html)
   embedded=json.loads(re.search(r'id="auth-config">(.*?)</script>',html,re.S).group(1))
   assert embedded==values
   for identifier in re.findall(r"el\('([^']+)'\)",(stage/'auth.js').read_text(encoding='utf-8')):

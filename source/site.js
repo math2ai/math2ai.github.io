@@ -4,6 +4,10 @@
  const items = course.concepts, persistence = window.math2aiProgress;
  const el = id => document.getElementById(id);
  const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const notation = window.math2aiMath;
+ const content = (text,key) => notation ? notation.html(text,key) : escape(text);
+ const spoken = (text,key) => notation ? notation.label(text,key) : text;
+ const write = (node,text,key) => notation ? notation.write(node,text,key) : (node.textContent = text);
  const fresh = () => ({version:course.version, current:0, concepts:{}});
  const validIndex = n => Number.isInteger(n) && n >= 0 && n < items.length;
  let state = fresh(), storageMessage = '', owner = null, viewRevision = null, ready = false, initialRender = true;
@@ -240,8 +244,9 @@
   if (!q) return;
   const r = currentRound(c,q), finished = roundFinished(r,q);
   if (review) { el('review-concept').textContent = c.title; el('review-concept').href = `#lesson-${c.legacyId}`; }
-  el('question').textContent = q.question;
-  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" value="${i}" ${selected === i ? 'checked' : ''} ${checked || finished || !ready ? 'disabled' : ''}><span>${escape(o)}</span></label>`).join('');
+  write(el('question'),q.question,`q:${q.id}:question`);
+  el('question-group').setAttribute('aria-label',spoken(q.question,`q:${q.id}:question`));
+  el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" aria-label="${escape(spoken(o,`q:${q.id}:option:${i}`))}" value="${i}" ${selected === i ? 'checked' : ''} ${checked || finished || !ready ? 'disabled' : ''}><span>${content(o,`q:${q.id}:option:${i}`)}</span></label>`).join('');
   el('check').disabled = !ready || selected === null || checked || finished;
   el('check').hidden = checked || finished;
   el('another').disabled = !ready;
@@ -253,9 +258,10 @@
   el('feedback').hidden = r.attempts === 0;
   if (r.attempts) {
    const correct = r.last === q.correct;
-   const heading = correct ? 'Correct.' : finished ? 'Not quite. The correct answer is: ' + escape(q.options[q.correct]) + '.' : checked ? 'Not quite.' : 'Try again.';
-   el('feedback').innerHTML = `<strong>${heading}</strong><p>${escape(finished ? q.feedback : q.retryFeedback)}</p>`;
+   const heading = correct ? 'Correct.' : finished ? 'Not quite. The correct answer is: ' + content(q.options[q.correct],`q:${q.id}:option:${q.correct}`) + '.' : checked ? 'Not quite.' : 'Try again.';
+   el('feedback').innerHTML = `<strong>${heading}</strong><p>${content(finished ? q.feedback : q.retryFeedback,`q:${q.id}:${finished ? 'feedback' : 'retryFeedback'}`)}</p>`;
   }
+  notation?.refresh(el('content'));
   el('next').disabled = false;
   el('next').textContent = state.current === items.length - 1 ? 'Back to start' : 'Next concept';
  }
@@ -266,7 +272,7 @@
   checked = r.attempts > 0 && (!p.pending || roundFinished(r,q)); selected = checked ? r.last : null;
   document.title = course.title;
   el('chapter').textContent = `${String(c.id).padStart(3,'0')} · ${c.chapter}`;
-  for (const id of ['title','definition','formula','example','metaphor']) el(id).textContent = c[id];
+  for (const id of ['title','definition','formula','example','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
   el('previous').disabled = state.current === 0;
   el('concept-sources').hidden = !c.sources.length;
   el('concept-source-list').innerHTML = sourceList(c.sources);

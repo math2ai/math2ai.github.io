@@ -1,6 +1,6 @@
 """Create a self-contained index.html, requiring no server or build tools to use."""
 from pathlib import Path
-import base64, json, re
+import base64, json, re, subprocess
 from urllib.parse import urlsplit
 ROOT=Path(__file__).resolve().parent
 config=json.loads((ROOT/'auth-config.json').read_text(encoding='utf-8'))
@@ -14,7 +14,18 @@ if enabled:
  if not re.fullmatch(r'sb_publishable_[A-Za-z0-9_-]+',config['publishableKey']):
   raise ValueError('Use a Supabase publishable key (sb_publishable_...), never a secret or service-role key.')
  config['supabaseUrl']=config['supabaseUrl'].rstrip('/')
+# KaTeX runs only during this build; the browser receives HTML, CSS and fonts.
+try:
+ result=subprocess.run(['node',str(ROOT/'build_math.mjs')],capture_output=True,text=True,encoding='utf-8',check=True)
+except FileNotFoundError as exc:
+ raise RuntimeError('Node.js is required to build the matrix notation. The published page needs no KaTeX JavaScript or installation.') from exc
+except subprocess.CalledProcessError as exc:
+ raise RuntimeError('Matrix typesetting failed: '+exc.stderr) from exc
+math=json.loads(result.stdout)
 html=(ROOT/'site-template.html').read_text(encoding='utf-8')
+html=html.replace('/*MATH_CSS*/',math['css'])
+html=html.replace('/*MATH_DATA*/',json.dumps(math['data'],ensure_ascii=False).replace('</','<\\/'))
+html=html.replace('/*MATH_JS*/',(ROOT/'math-display.js').read_text(encoding='utf-8'))
 logo=base64.b64encode((ROOT/'assets/math2ai-logo.png').read_bytes()).decode('ascii')
 html=html.replace('/*COURSE_LOGO*/','data:image/png;base64,'+logo)
 button=base64.b64encode((ROOT/'assets/google-signin.png').read_bytes()).decode('ascii')

@@ -2,3 +2,7 @@
 # Keep its bytes intact, including when embedded in the generated website.
 source/vendor/*.js -text whitespace=-blank-at-eol
 index.html whitespace=-blank-at-eol linguist-generated=true
+# Preserve the pinned KaTeX asset hashes across Windows and Unix checkouts.
+source/vendor/katex-0.18.7/** -text
+# Keep whitespace in the unmodified upstream renderer.
+source/vendor/katex-0.18.7/katex.js whitespace=-blank-at-eol

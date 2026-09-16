@@ -59,7 +59,7 @@ Representations can organize patterns, but assigning an ID does not give it scie
 
 ## Edit and rebuild
 
-The `source/` directory contains the editable course and site source. Python 3's standard library suffices to rebuild the website:
+The `source/` directory contains the editable course and site source. Rebuilding requires Python 3 and Node.js 22 or newer. The renderer is bundled; no npm installation or network access is needed:
 
 ```sh
 cd source
@@ -72,6 +72,12 @@ The result is `source/dist/index.html`. Copy it to the repository root to publis
 `question-bank.txt` adds nine authored questions per concept to the original one. Each `## Concept title` section has nine records in `question|correct answer ~ distractor ~ distractor ~ distractor|explanation` format. The builder combines them into each concept's `questions` array and deterministically shuffles answer positions. Runtime question order is independently randomized. The original single-question fields remain available to the presentation builders.
 
 `retry-feedback.txt` supplies ten first-mistake explanations per concept, in original-question-then-bank order. Explain the reasoning or misconception without naming the correct option or evaluating the final numerical result. Full solutions remain in the original question records. `reading-links.json` maps every concept to a Wikipedia article or section; existing primary sources are retained alongside it. Source labels are compact, with full titles available on hover and to screen readers. These additions preserve the course version and all existing question IDs and answer positions.
+
+Questions should assess the current concept using this lesson, earlier teaching, or information supplied in the prompt. Each question must stand alone in random order and in Review; a retry hint is not prerequisite instruction. The [question alignment review](source/ALIGNMENT_REVIEW.md) records the 163 flagged questions addressed in the September 2026 editorial pass and the decision to retain existing practice credit.
+
+Matrices in lessons, quiz choices, hints and solutions are typeset by the bundled KaTeX renderer **during the build**. The published page contains prebuilt HTML and accessible MathML, plus embedded CSS and fonts; it never loads KaTeX JavaScript or a font CDN. A small display helper leaves the original readable notation visible until the required fonts load. Missing styles, failed fonts, or unsupported notation keep that fallback. Wide matrices scroll within their own container; answer controls also have spoken row descriptions.
+
+`build_math.mjs` recognizes numeric nested arrays such as `[[1, 2], [3, 4]]` and basic arithmetic cells. Course data stays in its original plain notation. Uneven or empty rows are preserved as row lists, and all options in a rectangularity question share that style so formatting does not reveal the answer. Unsupported cells remain plain text. Formatting does not change the course version, question IDs, answer positions, or saved-progress format. `verify_math.mjs` checks matrix cell fidelity, irregular rows, bundled assets, accessible labels and fallback behavior.
 
 `source/assets/math2ai-logo.png` is the existing math2ai GitHub profile logo. The site builder embeds it directly into the header, so the generated page still works as a single offline file.
 
@@ -87,7 +93,9 @@ python verify_course.py
 python verify_examples.py
 python verify_bank.py
 python verify_expansion.py
+python verify_alignment.py
 python verify_feedback.py
+node verify_math.mjs
 node verify_state.mjs
 node verify_review.mjs
 node verify_feedback.mjs
@@ -104,4 +112,4 @@ Presentation builders are included for reuse; rebuilding the PPTX requires the O
 
 ## License
 
-The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK has its own included MIT license; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.
+The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK and KaTeX have their own included MIT licenses; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.
