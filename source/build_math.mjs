@@ -79,7 +79,7 @@ export function buildMath(course) {
   }
  }
  for (const concept of course.concepts) {
-  for (const field of ['definition','formula','example','metaphor']) add(`c:${concept.legacyId}:${field}`,concept[field]);
+  for (const field of ['definition','formula','formulaNote','example','metaphor']) add(`c:${concept.legacyId}:${field}`,concept[field] ?? "");
   for (const q of concept.questions) {
    for (const field of ['question','feedback','retryFeedback']) add(`q:${q.id}:${field}`,q[field]);
    // All four choices in a rectangularity question share one notation style.

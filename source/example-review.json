@@ -1,0 +1,2875 @@
+{
+  "date": "2026-09-17",
+  "courseVersion": "2.0",
+  "reviewed": [
+    {
+      "conceptId": 1,
+      "title": "Scalar",
+      "example": "A temperature reading is 24.5 °C. Its numerical value, 24.5, is a scalar.",
+      "questionIds": [
+        "1-01",
+        "1-02",
+        "1-03",
+        "1-04",
+        "1-05",
+        "1-06",
+        "1-07",
+        "1-08",
+        "1-09",
+        "1-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 2,
+      "title": "Variable",
+      "example": "If x = 3, then y = 2 × 3 + 1 = 7.",
+      "questionIds": [
+        "2-01",
+        "2-02",
+        "2-03",
+        "2-04",
+        "2-05",
+        "2-06",
+        "2-07",
+        "2-08",
+        "2-09",
+        "2-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "2-04",
+          "previousQuestion": "What value of x makes 2x + 1 = 7?",
+          "reason": "The original reversed the worked equation with the same solved input and output."
+        }
+      ]
+    },
+    {
+      "conceptId": 3,
+      "title": "Function",
+      "example": "f(3) = 9 and f(−3) = 9. Different inputs may share an output.",
+      "questionIds": [
+        "3-01",
+        "3-02",
+        "3-03",
+        "3-04",
+        "3-05",
+        "3-06",
+        "3-07",
+        "3-08",
+        "3-09",
+        "3-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "3-01",
+          "previousQuestion": "Can a function map both 3 and −3 to 9?",
+          "reason": "The original repeated the example's inputs 3 and −3 and output 9."
+        }
+      ]
+    },
+    {
+      "conceptId": 4,
+      "title": "Units",
+      "example": "3 metres/second × 4 seconds = 12 metres. Seconds cancel.",
+      "questionIds": [
+        "4-01",
+        "4-02",
+        "4-03",
+        "4-04",
+        "4-05",
+        "4-06",
+        "4-07",
+        "4-08",
+        "4-09",
+        "4-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 5,
+      "title": "Vector",
+      "example": "If x = (2, 3), then 2x = (4, 6). Order matters: (2, 3) ≠ (3, 2).",
+      "questionIds": [
+        "5-01",
+        "5-02",
+        "5-03",
+        "5-04",
+        "5-05",
+        "5-06",
+        "5-07",
+        "5-08",
+        "5-09",
+        "5-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 6,
+      "title": "Matrix",
+      "example": "This 2 × 3 matrix has six entries. A₂₃ = 6. Each horizontal row has three entries.",
+      "questionIds": [
+        "6-01",
+        "6-02",
+        "6-03",
+        "6-04",
+        "6-05",
+        "6-06",
+        "6-07",
+        "6-08",
+        "6-09",
+        "6-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "6-02",
+          "previousQuestion": "What shape is [[1, 2, 3], [4, 5, 6]]?",
+          "reason": "The original asked for the already stated shape of the example matrix."
+        }
+      ]
+    },
+    {
+      "conceptId": 7,
+      "title": "Tensor",
+      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).",
+      "questionIds": [
+        "7-01",
+        "7-02",
+        "7-03",
+        "7-04",
+        "7-05",
+        "7-06",
+        "7-07",
+        "7-08",
+        "7-09",
+        "7-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "7-01",
+          "previousQuestion": "A tensor has tables [[1,2],[3,4]] and [[5,6],[7,8]]. Indices start at 1 and mean (table, row, column). What is T₂₂₁?",
+          "reason": "Fresh tables replace another lookup in the worked example's two tables."
+        },
+        {
+          "questionId": "7-03",
+          "previousQuestion": "How many entries are in shape (2, 3, 4)?",
+          "reason": "The original repeated shape (2,3,4) and the solved count of 24."
+        },
+        {
+          "questionId": "7-04",
+          "previousQuestion": "The axes of a tensor are (table, row, column), with shape (2, 3, 4). What does the middle length, 3, count?",
+          "reason": "The original asked for a dimension explicitly described in the worked stack."
+        }
+      ]
+    },
+    {
+      "conceptId": 8,
+      "title": "Summation",
+      "example": "For x = (2, 4, 6), Σᵢ₌₁³ xᵢ = 12. Their mean is 12/3 = 4.",
+      "questionIds": [
+        "8-01",
+        "8-02",
+        "8-03",
+        "8-04",
+        "8-05",
+        "8-06",
+        "8-07",
+        "8-08",
+        "8-09",
+        "8-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 9,
+      "title": "Dot product",
+      "example": "With x = (2, 3) and w = (4, 5), x · w = 8 + 15 = 23.",
+      "questionIds": [
+        "9-01",
+        "9-02",
+        "9-03",
+        "9-04",
+        "9-05",
+        "9-06",
+        "9-07",
+        "9-08",
+        "9-09",
+        "9-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 10,
+      "title": "Matrix multiplication",
+      "example": "[[1, 2], [3, 4]] × [[5], [6]] = [[17], [39]]. First entry: 1×5 + 2×6 = 17. Second: 3×5 + 4×6 = 39.",
+      "questionIds": [
+        "10-01",
+        "10-02",
+        "10-03",
+        "10-04",
+        "10-05",
+        "10-06",
+        "10-07",
+        "10-08",
+        "10-09",
+        "10-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 11,
+      "title": "Transpose",
+      "example": "If A = [[1, 2, 3]], then Aᵀ = [[1], [2], [3]].",
+      "questionIds": [
+        "11-01",
+        "11-02",
+        "11-03",
+        "11-04",
+        "11-05",
+        "11-06",
+        "11-07",
+        "11-08",
+        "11-09",
+        "11-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 12,
+      "title": "Linear transformation",
+      "example": "For A = [[2, 0], [0, 3]], A(1, 2) = (2, 6). The first coordinate doubles; the second triples.",
+      "questionIds": [
+        "12-01",
+        "12-02",
+        "12-03",
+        "12-04",
+        "12-05",
+        "12-06",
+        "12-07",
+        "12-08",
+        "12-09",
+        "12-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 13,
+      "title": "Euclidean distance",
+      "example": "Between (0, 0) and (3, 4), distance = √(9 + 16) = 5.",
+      "questionIds": [
+        "13-01",
+        "13-02",
+        "13-03",
+        "13-04",
+        "13-05",
+        "13-06",
+        "13-07",
+        "13-08",
+        "13-09",
+        "13-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "13-01",
+          "previousQuestion": "What is the distance from (1, 1) to (4, 5)?",
+          "reason": "The original shifted both example endpoints but repeated the same (3,4) displacement and distance."
+        },
+        {
+          "questionId": "13-05",
+          "previousQuestion": "What is the norm of (−3, −4)?",
+          "reason": "The original changed only signs while repeating the example's squared coordinates and norm."
+        },
+        {
+          "questionId": "13-08",
+          "previousQuestion": "What is the squared distance between (1, 2) and (4, 6)?",
+          "reason": "The original reused the example's (3,4) displacement and intermediate squared sum."
+        }
+      ]
+    },
+    {
+      "conceptId": 103,
+      "title": "Eigenvalues and eigenvectors",
+      "example": "For A = [[2,0],[0,3]], A(1,0) = (2,0). Thus (1,0) is an eigenvector with eigenvalue 2. The other coordinate direction has eigenvalue 3.",
+      "questionIds": [
+        "103-01",
+        "103-02",
+        "103-03",
+        "103-04",
+        "103-05",
+        "103-06",
+        "103-07",
+        "103-08",
+        "103-09",
+        "103-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "103-01",
+          "previousQuestion": "For A = [[2,0],[0,3]] and v = (1,0), what is the eigenvalue?",
+          "reason": "The original was exactly the solved eigenvector and eigenvalue in the screenshot."
+        },
+        {
+          "questionId": "103-06",
+          "previousQuestion": "For A=[[2,0],[0,3]], is (1,1) an eigenvector?",
+          "reason": "Replaces reuse of the worked diagonal matrix with a case testing a different eigenvector direction."
+        },
+        {
+          "questionId": "103-10",
+          "previousQuestion": "For A = [[2,0],[0,3]], which vector has eigenvalue 3?",
+          "reason": "The worked example already identified the other coordinate direction and its eigenvalue."
+        }
+      ]
+    },
+    {
+      "conceptId": 104,
+      "title": "Singular value decomposition",
+      "example": "For A = [[3,0],[0,1]], the singular values are 3 and 1. Keeping only the first gives A₁ = [[3,0],[0,0]], a rank-one approximation.",
+      "questionIds": [
+        "104-01",
+        "104-02",
+        "104-03",
+        "104-04",
+        "104-05",
+        "104-06",
+        "104-07",
+        "104-08",
+        "104-09",
+        "104-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "104-01",
+          "previousQuestion": "For diagonal A = [[3,0],[0,1]], which is its best rank-one approximation under squared entrywise error?",
+          "reason": "The original asked for the exact rank-one matrix already displayed in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 14,
+      "title": "Probability",
+      "example": "For a fair six-sided die, P(even) = 3/6 = 0.5.",
+      "questionIds": [
+        "14-01",
+        "14-02",
+        "14-03",
+        "14-04",
+        "14-05",
+        "14-06",
+        "14-07",
+        "14-08",
+        "14-09",
+        "14-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 15,
+      "title": "Conditional probability",
+      "example": "Of four red balls, one is striped. P(striped ∣ red) = 1/4.",
+      "questionIds": [
+        "15-01",
+        "15-02",
+        "15-03",
+        "15-04",
+        "15-05",
+        "15-06",
+        "15-07",
+        "15-08",
+        "15-09",
+        "15-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 101,
+      "title": "Bayes’ theorem",
+      "example": "Of 100 parts, 10 are defective. A test flags 8 defective parts and 9 good parts. Among 17 flagged parts, 8 are defective: P(defective ∣ flagged) = 8/17.",
+      "questionIds": [
+        "101-01",
+        "101-02",
+        "101-03",
+        "101-04",
+        "101-05",
+        "101-06",
+        "101-07",
+        "101-08",
+        "101-09",
+        "101-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "101-01",
+          "previousQuestion": "A test flags 8 defective and 9 good parts. What fraction of flagged parts are defective?",
+          "reason": "The original repeated the example's 8 defective and 9 good parts and its fraction 8/17."
+        }
+      ]
+    },
+    {
+      "conceptId": 16,
+      "title": "Expected value",
+      "example": "A reward is 0 or 10 with equal probability. E[X] = 0.5 × 0 + 0.5 × 10 = 5.",
+      "questionIds": [
+        "16-01",
+        "16-02",
+        "16-03",
+        "16-04",
+        "16-05",
+        "16-06",
+        "16-07",
+        "16-08",
+        "16-09",
+        "16-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 17,
+      "title": "Variance",
+      "example": "Values 2 and 6 are equally likely. Mean = 4. Variance = [(2−4)² + (6−4)²]/2 = 4. Standard deviation = √4 = 2.",
+      "questionIds": [
+        "17-01",
+        "17-02",
+        "17-03",
+        "17-04",
+        "17-05",
+        "17-06",
+        "17-07",
+        "17-08",
+        "17-09",
+        "17-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "17-01",
+          "previousQuestion": "For equally likely 1 and 5, what is the variance?",
+          "reason": "The original shifted the example values without changing either squared deviation."
+        },
+        {
+          "questionId": "17-07",
+          "previousQuestion": "What is the population variance of equally likely values 0 and 4?",
+          "reason": "The original used the same deviations and variance as the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 102,
+      "title": "Covariance and correlation",
+      "example": "The equally likely pairs (1,2) and (3,6) have means 2 and 4. Covariance = [(-1)(-2)+(1)(2)]/2 = 2. Standard deviations are 1 and 2, so correlation = 1.",
+      "questionIds": [
+        "102-01",
+        "102-02",
+        "102-03",
+        "102-04",
+        "102-05",
+        "102-06",
+        "102-07",
+        "102-08",
+        "102-09",
+        "102-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "102-01",
+          "previousQuestion": "For equally likely pairs (1,2) and (3,6), what is the covariance?",
+          "reason": "The original repeated both example pairs and the covariance already calculated."
+        }
+      ]
+    },
+    {
+      "conceptId": 106,
+      "title": "Monte Carlo estimation",
+      "example": "Four simulated rewards are 0, 2, 4, and 6. Their sample average is 12/4 = 3, an estimate of expected reward rather than its exact value.",
+      "questionIds": [
+        "106-01",
+        "106-02",
+        "106-03",
+        "106-04",
+        "106-05",
+        "106-06",
+        "106-07",
+        "106-08",
+        "106-09",
+        "106-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "106-01",
+          "previousQuestion": "For sampled rewards 0, 2, 4, and 6, what is the Monte Carlo estimate of their expected reward?",
+          "reason": "The original asked for the sample mean already calculated in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 18,
+      "title": "Exponential and logarithm",
+      "example": "2³ = 8, so log₂(8) = 3. Likewise, e² ≈ 7.389, so ln(7.389) ≈ 2.",
+      "questionIds": [
+        "18-01",
+        "18-02",
+        "18-03",
+        "18-04",
+        "18-05",
+        "18-06",
+        "18-07",
+        "18-08",
+        "18-09",
+        "18-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "18-08",
+          "previousQuestion": "If a quantity doubles three times, what factor multiplies it?",
+          "reason": "The original recast the example's already evaluated 2³ as three doublings."
+        }
+      ]
+    },
+    {
+      "conceptId": 19,
+      "title": "Derivative",
+      "example": "For f(x) = x²: f(3.01) − f(3) = 0.0601. The slope over this interval is 0.0601/0.01 = 6.01, close to f′(3) = 6.",
+      "questionIds": [
+        "19-01",
+        "19-02",
+        "19-03",
+        "19-04",
+        "19-05",
+        "19-06",
+        "19-07",
+        "19-08",
+        "19-09",
+        "19-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 22,
+      "title": "Integral",
+      "example": "A flow of 2 litres/second for 3 seconds delivers ∫₀³ 2 dt = 6 litres.",
+      "questionIds": [
+        "22-01",
+        "22-02",
+        "22-03",
+        "22-04",
+        "22-05",
+        "22-06",
+        "22-07",
+        "22-08",
+        "22-09",
+        "22-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "22-02",
+          "previousQuestion": "What is ∫₀³ 2 dt?",
+          "reason": "The original repeated the exact integral and result in the example."
+        },
+        {
+          "questionId": "22-06",
+          "previousQuestion": "What unit results from integrating a flow rate in litres/second over seconds?",
+          "reason": "The original asked for the same flow and resulting unit shown in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 20,
+      "title": "Gradient",
+      "example": "If L = x² + 3y², then ∇L = (2x, 6y). At (1, 2), it is (2, 12).",
+      "questionIds": [
+        "20-01",
+        "20-02",
+        "20-03",
+        "20-04",
+        "20-05",
+        "20-06",
+        "20-07",
+        "20-08",
+        "20-09",
+        "20-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 108,
+      "title": "Hessian and curvature",
+      "example": "For f(x,y)=x²+3y², H=[[2,0],[0,6]]. At (0,0), the gradient is zero and both curvature directions are positive, so this is a strict local minimum.",
+      "questionIds": [
+        "108-01",
+        "108-02",
+        "108-03",
+        "108-04",
+        "108-05",
+        "108-06",
+        "108-07",
+        "108-08",
+        "108-09",
+        "108-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "108-01",
+          "previousQuestion": "For f(x,y)=x²+3y², what is the Hessian?",
+          "reason": "The original requested the exact Hessian printed in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 21,
+      "title": "Chain rule",
+      "example": "Let u = 2x and y = u². At x = 3, u = 6. The two slopes are du/dx = 2 and dy/du = 12, so dy/dx = 12×2 = 24. If y is a sum of two paths from x, compute each path’s derivative and add them: for y = (2x)² + (3x)², dy/dx = 8x + 18x.",
+      "questionIds": [
+        "21-01",
+        "21-02",
+        "21-03",
+        "21-04",
+        "21-05",
+        "21-06",
+        "21-07",
+        "21-08",
+        "21-09",
+        "21-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "21-03",
+          "previousQuestion": "For y = (2x)², which factor is missed by ignoring the inner derivative?",
+          "reason": "The original used the same inner function and multiplier explicitly calculated in the example."
+        },
+        {
+          "questionId": "21-05",
+          "previousQuestion": "For y = u² and u = 3x, which expression gives dy/dx?",
+          "reason": "The original derivative 18x was already given for one of the example's two paths."
+        },
+        {
+          "questionId": "21-07",
+          "previousQuestion": "A length x is converted to u = 2x and then to y = u². Why is dy/du alone insufficient to find dy/dx?",
+          "reason": "Replaces the exact two-stage calculation used in the example with a signed inner transformation."
+        }
+      ]
+    },
+    {
+      "conceptId": 23,
+      "title": "Optimization",
+      "example": "For L(x) = (x − 3)² and C = [0, 2], x* = 2 and L(x*) = 1.",
+      "questionIds": [
+        "23-01",
+        "23-02",
+        "23-03",
+        "23-04",
+        "23-05",
+        "23-06",
+        "23-07",
+        "23-08",
+        "23-09",
+        "23-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 107,
+      "title": "Lagrange multipliers",
+      "example": "Minimize x²+y² subject to x+y=2. Conditions 2x+λ=0 and 2y+λ=0 imply x=y. The constraint then gives x=y=1 and objective 2.",
+      "questionIds": [
+        "107-01",
+        "107-02",
+        "107-03",
+        "107-04",
+        "107-05",
+        "107-06",
+        "107-07",
+        "107-08",
+        "107-09",
+        "107-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "107-01",
+          "previousQuestion": "What minimizes x²+y² subject to x+y=2?",
+          "reason": "The original asked for the already solved point (1,1)."
+        },
+        {
+          "questionId": "107-03",
+          "previousQuestion": "For minimizing x²+y² with x+y=2, which Lagrangian matches ℒ=f+λg?",
+          "reason": "Replaces reconstruction of the worked problem's Lagrangian with a different constraint."
+        },
+        {
+          "questionId": "107-08",
+          "previousQuestion": "What is λ for minimizing x²+y² with x+y=2 using ℒ=x²+y²+λ(x+y−2)?",
+          "reason": "The original reused the worked point and gradient equations to ask for its multiplier."
+        },
+        {
+          "questionId": "107-09",
+          "previousQuestion": "For f(x,y) = x² + y² subject to x+y=2, what follows from 2x+λ=0 and 2y+λ=0?",
+          "reason": "The original asked for x=y immediately after the example derived that same relation."
+        }
+      ]
+    },
+    {
+      "conceptId": 24,
+      "title": "Gradient descent",
+      "example": "For L(θ) = θ², θ = 3 and η = 0.1: θ⁺ = 3 − 0.1×6 = 2.4. The loss falls from 9 to 2.4² = 5.76.",
+      "questionIds": [
+        "24-01",
+        "24-02",
+        "24-03",
+        "24-04",
+        "24-05",
+        "24-06",
+        "24-07",
+        "24-08",
+        "24-09",
+        "24-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 25,
+      "title": "Dataset and features",
+      "example": "Two rooms have features (length, width): (2, 3) and (4, 3) metres. X = [[2, 3], [4, 3]] has two rows and two features per row.",
+      "questionIds": [
+        "25-01",
+        "25-02",
+        "25-03",
+        "25-04",
+        "25-05",
+        "25-06",
+        "25-07",
+        "25-08",
+        "25-09",
+        "25-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 30,
+      "title": "Linear regression",
+      "example": "A toy taxi fare model is ŷ = 2x + 3 dollars for x kilometres. At 5 km: ŷ = 2×5 + 3 = $13. The intercept is the starting fare.",
+      "questionIds": [
+        "30-01",
+        "30-02",
+        "30-03",
+        "30-04",
+        "30-05",
+        "30-06",
+        "30-07",
+        "30-08",
+        "30-09",
+        "30-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "30-01",
+          "previousQuestion": "For ŷ = 2x + 3, what is predicted at x = 5?",
+          "reason": "The original repeated the worked taxi prediction at 5 km."
+        }
+      ]
+    },
+    {
+      "conceptId": 31,
+      "title": "Mean squared error",
+      "example": "Predictions (2, 5), targets (3, 3): MSE = (1 + 4)/2 = 2.5.",
+      "questionIds": [
+        "31-01",
+        "31-02",
+        "31-03",
+        "31-04",
+        "31-05",
+        "31-06",
+        "31-07",
+        "31-08",
+        "31-09",
+        "31-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "31-08",
+          "previousQuestion": "For predictions (2, 4) and targets (1, 2), what is MSE?",
+          "reason": "The original reproduced the example's squared errors 1 and 4 with different-looking inputs."
+        }
+      ]
+    },
+    {
+      "conceptId": 29,
+      "title": "Supervised learning",
+      "example": "Inputs 1, 2, 3 paired with targets 2, 4, 6 suggest f(x) = 2x; it predicts 8 for input 4.",
+      "questionIds": [
+        "29-01",
+        "29-02",
+        "29-03",
+        "29-04",
+        "29-05",
+        "29-06",
+        "29-07",
+        "29-08",
+        "29-09",
+        "29-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 32,
+      "title": "Parameter and hyperparameter",
+      "example": "In this update, w = 2 is a parameter; the chosen learning rate η = 0.01 is a hyperparameter.",
+      "questionIds": [
+        "32-01",
+        "32-02",
+        "32-03",
+        "32-04",
+        "32-05",
+        "32-06",
+        "32-07",
+        "32-08",
+        "32-09",
+        "32-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "32-01",
+          "previousQuestion": "Which is normally a hyperparameter in gradient descent?",
+          "reason": "The original asked for the learning-rate classification already supplied by the example."
+        },
+        {
+          "questionId": "32-05",
+          "previousQuestion": "Two runs use the same fitting procedure and data, but one uses learning rate 0.01 and the other 0.1. What was deliberately changed?",
+          "reason": "The original repeated the worked example's learning-rate hyperparameter with a second rate."
+        }
+      ]
+    },
+    {
+      "conceptId": 27,
+      "title": "Training, validation and test",
+      "example": "A 100-well study might use 70 wells to train, 15 to choose settings, and 15 for final testing.",
+      "questionIds": [
+        "27-01",
+        "27-02",
+        "27-03",
+        "27-04",
+        "27-05",
+        "27-06",
+        "27-07",
+        "27-08",
+        "27-09",
+        "27-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 28,
+      "title": "Data leakage",
+      "example": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
+      "questionIds": [
+        "28-01",
+        "28-02",
+        "28-03",
+        "28-04",
+        "28-05",
+        "28-06",
+        "28-07",
+        "28-08",
+        "28-09",
+        "28-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 26,
+      "title": "Normalization",
+      "example": "Training data give μ = 100 and σ = 20. A new value x = 140 becomes z = 2.",
+      "questionIds": [
+        "26-01",
+        "26-02",
+        "26-03",
+        "26-04",
+        "26-05",
+        "26-06",
+        "26-07",
+        "26-08",
+        "26-09",
+        "26-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "26-01",
+          "previousQuestion": "With training mean 10 and standard deviation 2, what does 14 become?",
+          "reason": "The original proportionally rescaled the example's inputs and retained its exact standardized result."
+        }
+      ]
+    },
+    {
+      "conceptId": 109,
+      "title": "k-nearest neighbors",
+      "example": "The three nearest examples have targets 2, 4, and 9. An unweighted k=3 regressor predicts (2+4+9)/3 = 5.",
+      "questionIds": [
+        "109-01",
+        "109-02",
+        "109-03",
+        "109-04",
+        "109-05",
+        "109-06",
+        "109-07",
+        "109-08",
+        "109-09",
+        "109-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "109-01",
+          "previousQuestion": "A k=3 regressor's nearest target values are 2, 4, and 9. What is its unweighted prediction?",
+          "reason": "The original repeated the neighbor targets and mean already solved in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 110,
+      "title": "Decision trees",
+      "example": "A tree predicts 2 when x≤5 and 8 otherwise. Input x=4 follows the left branch and receives prediction 2.",
+      "questionIds": [
+        "110-01",
+        "110-02",
+        "110-03",
+        "110-04",
+        "110-05",
+        "110-06",
+        "110-07",
+        "110-08",
+        "110-09",
+        "110-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "110-03",
+          "previousQuestion": "For a leaf with training targets 2, 4, and 9, what is its mean prediction?",
+          "reason": "The original reused the exact three-target averaging problem from the k-nearest-neighbors worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 41,
+      "title": "Overfitting",
+      "example": "A model has 1% training error but 20% test error. Its measured gap is 19 percentage points.",
+      "questionIds": [
+        "41-01",
+        "41-02",
+        "41-03",
+        "41-04",
+        "41-05",
+        "41-06",
+        "41-07",
+        "41-08",
+        "41-09",
+        "41-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 42,
+      "title": "Regularization",
+      "example": "If Ldata = 2, w = (3, 4), and λ = 0.1, total loss = 2 + 0.1 × 25 = 4.5.",
+      "questionIds": [
+        "42-01",
+        "42-02",
+        "42-03",
+        "42-04",
+        "42-05",
+        "42-06",
+        "42-07",
+        "42-08",
+        "42-09",
+        "42-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "42-02",
+          "previousQuestion": "For w = (3, 4), what is the L2 penalty term ‖w‖₂²?",
+          "reason": "The original asked for the norm-squared intermediate result already evaluated in the worked loss."
+        }
+      ]
+    },
+    {
+      "conceptId": 111,
+      "title": "Random forests",
+      "example": "Three regression trees predict 2, 4, and 6. Their average prediction is 4. Diversity can reduce variance compared with relying on one unstable tree.",
+      "questionIds": [
+        "111-01",
+        "111-02",
+        "111-03",
+        "111-04",
+        "111-05",
+        "111-06",
+        "111-07",
+        "111-08",
+        "111-09",
+        "111-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "111-01",
+          "previousQuestion": "Three regression trees predict 2, 4, and 6. What does their equally weighted forest predict?",
+          "reason": "The original repeated the example's three tree predictions and average."
+        }
+      ]
+    },
+    {
+      "conceptId": 112,
+      "title": "Gradient boosting",
+      "example": "The current prediction is 4. A new learner outputs a correction of 2 and η=0.1. The updated prediction is 4+0.1×2 = 4.2.",
+      "questionIds": [
+        "112-01",
+        "112-02",
+        "112-03",
+        "112-04",
+        "112-05",
+        "112-06",
+        "112-07",
+        "112-08",
+        "112-09",
+        "112-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "112-01",
+          "previousQuestion": "If F=4, a new learner outputs 2, and η=0.1, what is the updated prediction?",
+          "reason": "The original repeated the exact boosting update solved above it."
+        }
+      ]
+    },
+    {
+      "conceptId": 113,
+      "title": "Class imbalance, precision and recall",
+      "example": "A detector has 6 true positives, 2 false positives, and 4 false negatives. Precision is 6/8=0.75; recall is 6/10=0.6.",
+      "questionIds": [
+        "113-01",
+        "113-02",
+        "113-03",
+        "113-04",
+        "113-05",
+        "113-06",
+        "113-07",
+        "113-08",
+        "113-09",
+        "113-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "113-01",
+          "previousQuestion": "With TP=6, FP=2, and FN=4, what is recall?",
+          "reason": "The original requested the recall already calculated from the example's counts."
+        },
+        {
+          "questionId": "113-02",
+          "previousQuestion": "With TP=6 and FP=2, what is precision?",
+          "reason": "The original requested the precision already calculated from the example's counts."
+        }
+      ]
+    },
+    {
+      "conceptId": 114,
+      "title": "Probability calibration",
+      "example": "Among 100 held-out cases predicted at 0.8, only 60 are positive. Their observed frequency is 0.6, suggesting overconfidence in this group.",
+      "questionIds": [
+        "114-01",
+        "114-02",
+        "114-03",
+        "114-04",
+        "114-05",
+        "114-06",
+        "114-07",
+        "114-08",
+        "114-09",
+        "114-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "114-01",
+          "previousQuestion": "Among 100 cases predicted at 0.8, 60 are positive. What does this suggest for that group?",
+          "reason": "The original repeated the worked overconfidence diagnosis with exactly the same counts."
+        }
+      ]
+    },
+    {
+      "conceptId": 120,
+      "title": "Causal inference",
+      "example": "In a hypothetical randomized trial, mean outcome is 12 in the treated group and 9 in the control group. The difference 12−9 = 3 estimates an average effect under the trial's assumptions.",
+      "questionIds": [
+        "120-01",
+        "120-02",
+        "120-03",
+        "120-04",
+        "120-05",
+        "120-06",
+        "120-07",
+        "120-08",
+        "120-09",
+        "120-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "120-01",
+          "previousQuestion": "A randomized trial has mean outcomes 12 for treatment and 9 for control. What is the difference-in-means estimate?",
+          "reason": "The original repeated the example's two means and already computed effect."
+        }
+      ]
+    },
+    {
+      "conceptId": 118,
+      "title": "Domain shift and adaptation",
+      "example": "A model scores 90% on held-out source-site cases but 70% at a new site. The observed gap is 20 percentage points. Different geology, sensors, or label rules could matter.",
+      "questionIds": [
+        "118-01",
+        "118-02",
+        "118-03",
+        "118-04",
+        "118-05",
+        "118-06",
+        "118-07",
+        "118-08",
+        "118-09",
+        "118-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "118-01",
+          "previousQuestion": "Accuracy is 90% at the source site and 70% at a new site. What is the absolute gap?",
+          "reason": "The original repeated the source and target accuracies and gap from the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 119,
+      "title": "Active learning",
+      "example": "For predicted positive probabilities 0.5, 0.9, and 0.1, this score gives 1, 0.2, and 0.2. Pure uncertainty sampling selects the first case.",
+      "questionIds": [
+        "119-01",
+        "119-02",
+        "119-03",
+        "119-04",
+        "119-05",
+        "119-06",
+        "119-07",
+        "119-08",
+        "119-09",
+        "119-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "119-01",
+          "previousQuestion": "Under pure binary uncertainty sampling, which probability is the highest-priority candidate?",
+          "reason": "The original selected the exact 0.5 candidate already selected in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 33,
+      "title": "Artificial neuron",
+      "example": "With x = (2, 1), w = (3, −2), b = 1: z = 3×2 − 2×1 + 1 = 5. The activation max(0, z) gives a = 5.",
+      "questionIds": [
+        "33-01",
+        "33-02",
+        "33-03",
+        "33-04",
+        "33-05",
+        "33-06",
+        "33-07",
+        "33-08",
+        "33-09",
+        "33-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 34,
+      "title": "Sigmoid",
+      "example": "σ(−2) ≈ 0.119, σ(0) = 0.5, σ(2) ≈ 0.881. At zero, the slope is 0.5×(1−0.5) = 0.25.",
+      "questionIds": [
+        "34-01",
+        "34-02",
+        "34-03",
+        "34-04",
+        "34-05",
+        "34-06",
+        "34-07",
+        "34-08",
+        "34-09",
+        "34-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "34-01",
+          "previousQuestion": "What is σ(0)?",
+          "reason": "The original asked for σ(0), explicitly evaluated in the example."
+        },
+        {
+          "questionId": "34-05",
+          "previousQuestion": "What is σ′(0)?",
+          "reason": "The original repeated the worked derivative at zero."
+        }
+      ]
+    },
+    {
+      "conceptId": 35,
+      "title": "ReLU",
+      "example": "ReLU(−3) = 0; ReLU(2) = 2. Its slope is 0 below zero and 1 above zero.",
+      "questionIds": [
+        "35-01",
+        "35-02",
+        "35-03",
+        "35-04",
+        "35-05",
+        "35-06",
+        "35-07",
+        "35-08",
+        "35-09",
+        "35-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "35-03",
+          "previousQuestion": "What is ReLU(−3)?",
+          "reason": "The original repeated ReLU(−3)=0 from the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 37,
+      "title": "Forward pass",
+      "example": "With x = 2 and w = 1, predict ŷ = 2. If the target is y = 6, the loss is (2−6)² = 16. The weight is still 1.",
+      "questionIds": [
+        "37-01",
+        "37-02",
+        "37-03",
+        "37-04",
+        "37-05",
+        "37-06",
+        "37-07",
+        "37-08",
+        "37-09",
+        "37-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "37-02",
+          "previousQuestion": "With ŷ = 2x and x = 3, what does the forward pass produce?",
+          "reason": "The original reused the 3-to-6 mapping explicitly listed in the supervised-learning worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 38,
+      "title": "Backpropagation",
+      "example": "For ŷ = wx, x = 2, w = 1, y = 6: ŷ = 2. The local derivatives are 2(2−6) = −8 and x = 2. Multiply: ∂L/∂w = −16.",
+      "questionIds": [
+        "38-01",
+        "38-02",
+        "38-03",
+        "38-04",
+        "38-05",
+        "38-06",
+        "38-07",
+        "38-08",
+        "38-09",
+        "38-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "38-01",
+          "previousQuestion": "In this example, does the negative weight gradient suggest increasing or decreasing w?",
+          "reason": "The original explicitly referred to the worked example instead of supplying an independent gradient."
+        }
+      ]
+    },
+    {
+      "conceptId": 39,
+      "title": "Mini-batch gradient descent",
+      "example": "Two examples give gradients 2 and 6, averaging to 4. With θ = 1 and η = 0.1, the update is θ⁺ = 1 − 0.1×4 = 0.6.",
+      "questionIds": [
+        "39-01",
+        "39-02",
+        "39-03",
+        "39-04",
+        "39-05",
+        "39-06",
+        "39-07",
+        "39-08",
+        "39-09",
+        "39-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "39-01",
+          "previousQuestion": "Batch gradients are 2 and 6. What is their average?",
+          "reason": "The original asked for the example's already calculated gradient average."
+        },
+        {
+          "questionId": "39-02",
+          "previousQuestion": "For example gradients 2, 4, and 6, what is the mean batch gradient?",
+          "reason": "The original reused the (2,4,6) averaging example taught in several other lessons."
+        }
+      ]
+    },
+    {
+      "conceptId": 40,
+      "title": "Epoch",
+      "example": "With 100 examples and batch size 20, one epoch contains 5 steps; three epochs contain 15.",
+      "questionIds": [
+        "40-01",
+        "40-02",
+        "40-03",
+        "40-04",
+        "40-05",
+        "40-06",
+        "40-07",
+        "40-08",
+        "40-09",
+        "40-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 36,
+      "title": "Deep neural network",
+      "example": "At x = 2: h₁ = ReLU(2x−1) = 3; h₂ = ReLU(h₁−1) = 2; output y = 3h₂ = 6. These are two hidden layers and an output layer.",
+      "questionIds": [
+        "36-01",
+        "36-02",
+        "36-03",
+        "36-04",
+        "36-05",
+        "36-06",
+        "36-07",
+        "36-08",
+        "36-09",
+        "36-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 115,
+      "title": "Convolutional neural networks",
+      "example": "For input (1,2,3), filter (1,−1), zero bias, stride 1, and no padding, the outputs are 1−2=−1 and 2−3=−1. This is the cross-correlation convention commonly used in CNNs.",
+      "questionIds": [
+        "115-01",
+        "115-02",
+        "115-03",
+        "115-04",
+        "115-05",
+        "115-06",
+        "115-07",
+        "115-08",
+        "115-09",
+        "115-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "115-01",
+          "previousQuestion": "For input (1,2,3) and filter (1,−1), with stride 1 and no padding, what is the output?",
+          "reason": "The original repeated the entire input, filter, and output from the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 116,
+      "title": "Graph neural networks",
+      "example": "A node has value 1 and neighbors with values 2 and 4. Under this toy update, its new value is 1+(2+4)/2 = 4.",
+      "questionIds": [
+        "116-01",
+        "116-02",
+        "116-03",
+        "116-04",
+        "116-05",
+        "116-06",
+        "116-07",
+        "116-08",
+        "116-09",
+        "116-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "116-01",
+          "previousQuestion": "A node has value 1 and neighbors 2 and 4. For self plus neighbor mean, what is its new value?",
+          "reason": "The original repeated the worked node and neighbors and their resulting update."
+        }
+      ]
+    },
+    {
+      "conceptId": 43,
+      "title": "Softmax",
+      "example": "Logits (0, ln 3) give exponentials (1, 3), so probabilities are (0.25, 0.75).",
+      "questionIds": [
+        "43-01",
+        "43-02",
+        "43-03",
+        "43-04",
+        "43-05",
+        "43-06",
+        "43-07",
+        "43-08",
+        "43-09",
+        "43-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 44,
+      "title": "Cross-entropy",
+      "example": "The correct class is cat. Predicting p(cat) = 0.9 gives −ln(0.9) ≈ 0.105. Predicting 0.1 gives −ln(0.1) ≈ 2.303, a much larger loss.",
+      "questionIds": [
+        "44-01",
+        "44-02",
+        "44-03",
+        "44-04",
+        "44-05",
+        "44-06",
+        "44-07",
+        "44-08",
+        "44-09",
+        "44-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "44-01",
+          "previousQuestion": "Which correct-class probability gives the smaller cross-entropy loss?",
+          "reason": "The original selected the exact probability whose lower loss was already demonstrated."
+        }
+      ]
+    },
+    {
+      "conceptId": 105,
+      "title": "KL divergence",
+      "example": "For P = (1,0) and Q = (0.5,0.5), KL = ln(2) ≈ 0.693 nats. For P = Q, every nonzero term has ln(1) = 0.",
+      "questionIds": [
+        "105-01",
+        "105-02",
+        "105-03",
+        "105-04",
+        "105-05",
+        "105-06",
+        "105-07",
+        "105-08",
+        "105-09",
+        "105-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "105-01",
+          "previousQuestion": "What is D_KL(P ∥ P) for a valid probability distribution P?",
+          "reason": "Replaces direct recall of the P=Q calculation already given as part of the example."
+        },
+        {
+          "questionId": "105-03",
+          "previousQuestion": "For P=(1,0) and Q=(0.5,0.5), what is KL in nats?",
+          "reason": "The original repeated the example's distributions and its calculated ln 2 result."
+        }
+      ]
+    },
+    {
+      "conceptId": 45,
+      "title": "Self-supervised learning",
+      "example": "Hide the middle value in (2, 4, 6). The model sees (2, ?, 6) and predicts 5. The hidden target is 4, so squared error = (5−4)² = 1.",
+      "questionIds": [
+        "45-01",
+        "45-02",
+        "45-03",
+        "45-04",
+        "45-05",
+        "45-06",
+        "45-07",
+        "45-08",
+        "45-09",
+        "45-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 46,
+      "title": "Embedding",
+      "example": "Toy word vectors: cat = (1, 0), dog = (0.9, 0.1), rock = (0, 1). Cat is closer to dog (distance ≈ 0.14) than rock (≈ 1.41).",
+      "questionIds": [
+        "46-01",
+        "46-02",
+        "46-03",
+        "46-04",
+        "46-05",
+        "46-06",
+        "46-07",
+        "46-08",
+        "46-09",
+        "46-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 47,
+      "title": "Cosine similarity",
+      "example": "For x = (1, 0), y = (2, 0), similarity = 2/(1 × 2) = 1, despite different lengths.",
+      "questionIds": [
+        "47-01",
+        "47-02",
+        "47-03",
+        "47-04",
+        "47-05",
+        "47-06",
+        "47-07",
+        "47-08",
+        "47-09",
+        "47-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "47-02",
+          "previousQuestion": "What is the cosine similarity of (1, 0) and (2, 0)?",
+          "reason": "The original repeated the two vectors and similarity already calculated in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 117,
+      "title": "Contrastive learning",
+      "example": "If the positive pair receives normalized probability 0.8 among the comparisons, its loss is −ln(0.8) ≈ 0.223. Assigning it probability 0.2 gives a larger loss, about 1.609.",
+      "questionIds": [
+        "117-01",
+        "117-02",
+        "117-03",
+        "117-04",
+        "117-05",
+        "117-06",
+        "117-07",
+        "117-08",
+        "117-09",
+        "117-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "117-01",
+          "previousQuestion": "If the positive pair has normalized probability 0.8, what is its contrastive loss using natural logs?",
+          "reason": "The original repeated the example's probability and approximate logarithmic loss."
+        }
+      ]
+    },
+    {
+      "conceptId": 48,
+      "title": "Principal component analysis",
+      "example": "Points (−1, −1) and (1, 1) lie on a diagonal. Projecting onto u = (1, 1)/√2 gives −√2 and √2. One coordinate locates each point.",
+      "questionIds": [
+        "48-01",
+        "48-02",
+        "48-03",
+        "48-04",
+        "48-05",
+        "48-06",
+        "48-07",
+        "48-08",
+        "48-09",
+        "48-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 49,
+      "title": "Autoencoder",
+      "example": "With toy weights: x = (2, 5), encoder z = x₁ = 2, decoder x̂ = (z, 2z) = (2, 4). Reconstruction loss = (0² + 1²)/2 = 0.5.",
+      "questionIds": [
+        "49-01",
+        "49-02",
+        "49-03",
+        "49-04",
+        "49-05",
+        "49-06",
+        "49-07",
+        "49-08",
+        "49-09",
+        "49-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 50,
+      "title": "Latent space and bottleneck",
+      "example": "Pairs (2, 4), (3, 6), (5, 10) can use one-number codes 2, 3, 5. Decoder (z, 2z) restores every pair. Input (2, 5) breaks that pattern.",
+      "questionIds": [
+        "50-01",
+        "50-02",
+        "50-03",
+        "50-04",
+        "50-05",
+        "50-06",
+        "50-07",
+        "50-08",
+        "50-09",
+        "50-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 79,
+      "title": "Bit and byte",
+      "example": "Two bits have four patterns: 00, 01, 10, 11. An agreed binary encoding maps them to 0, 1, 2, 3. Eight bits give 2⁸ = 256 patterns.",
+      "questionIds": [
+        "79-01",
+        "79-02",
+        "79-03",
+        "79-04",
+        "79-05",
+        "79-06",
+        "79-07",
+        "79-08",
+        "79-09",
+        "79-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "79-07",
+          "previousQuestion": "How many different patterns fit in one byte?",
+          "reason": "The original asked for the example's explicitly calculated eight-bit capacity."
+        }
+      ]
+    },
+    {
+      "conceptId": 80,
+      "title": "Numerical precision",
+      "example": "Rounding 1.234 to two decimal places gives 1.23, an error of 0.004.",
+      "questionIds": [
+        "80-01",
+        "80-02",
+        "80-03",
+        "80-04",
+        "80-05",
+        "80-06",
+        "80-07",
+        "80-08",
+        "80-09",
+        "80-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "80-03",
+          "previousQuestion": "What is the absolute error when 1.234 is rounded to 1.23?",
+          "reason": "The original repeated both example values and the displayed rounding error."
+        }
+      ]
+    },
+    {
+      "conceptId": 51,
+      "title": "Rate-distortion tradeoff",
+      "example": "Code A: D = 1, R = 20 bits. Code B: D = 2, R = 5 bits. At λ = 0.1, scores are 3 and 2.5. B wins by accepting more error for fewer bits.",
+      "questionIds": [
+        "51-01",
+        "51-02",
+        "51-03",
+        "51-04",
+        "51-05",
+        "51-06",
+        "51-07",
+        "51-08",
+        "51-09",
+        "51-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "51-01",
+          "previousQuestion": "Minimize D + 0.1R. Code A has distortion D = 1 and rate R = 20 bits; code B has D = 2 and R = 5 bits. Which code wins?",
+          "reason": "The original repeated the exact two codes, rate weight, scores, and winning code from the example."
+        },
+        {
+          "questionId": "51-02",
+          "previousQuestion": "In D + λR, what does R measure in the course example?",
+          "reason": "The original explicitly asked for the meaning of R in the worked example; the replacement applies the unit to new data."
+        }
+      ]
+    },
+    {
+      "conceptId": 52,
+      "title": "Vector quantization",
+      "example": "For z = (1, 2), codebook entries e₁ = (0, 2) and e₂ = (3, 2) are 1 and 2 units away. Choose e₁, and store its index 1.",
+      "questionIds": [
+        "52-01",
+        "52-02",
+        "52-03",
+        "52-04",
+        "52-05",
+        "52-06",
+        "52-07",
+        "52-08",
+        "52-09",
+        "52-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 54,
+      "title": "Token and vocabulary",
+      "example": "Codebook entry 6 is the vector (1, 2). Token 6 identifies that entry; a lookup retrieves (1, 2). A vocabulary of 8 entries needs 3 bits per fixed-length ID.",
+      "questionIds": [
+        "54-01",
+        "54-02",
+        "54-03",
+        "54-04",
+        "54-05",
+        "54-06",
+        "54-07",
+        "54-08",
+        "54-09",
+        "54-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "54-01",
+          "previousQuestion": "What does assigning token 6 to a pattern establish by itself?",
+          "reason": "The original asked about the exact token ID already explained in the worked example."
+        },
+        {
+          "questionId": "54-05",
+          "previousQuestion": "For a vocabulary of 8 symbols, what is the minimum fixed bit width per ID?",
+          "reason": "The original repeated the worked vocabulary size and its solved bit width."
+        }
+      ]
+    },
+    {
+      "conceptId": 53,
+      "title": "Vector-quantized autoencoder",
+      "example": "For x = (2, 5), the encoder gives z = 1.9. Codebook {0, 2} selects 2. Decoder (zq, 2zq) gives (2, 4), with MSE = (0+1)/2 = 0.5.",
+      "questionIds": [
+        "53-01",
+        "53-02",
+        "53-03",
+        "53-04",
+        "53-05",
+        "53-06",
+        "53-07",
+        "53-08",
+        "53-09",
+        "53-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "53-05",
+          "previousQuestion": "The encoder returns z = 1.9, and the nearest codebook entry is 2. Which value is passed to the decoder in the forward calculation?",
+          "reason": "The original repeated the example's encoder output, selected code, and decoder input."
+        }
+      ]
+    },
+    {
+      "conceptId": 121,
+      "title": "Diffusion models",
+      "example": "If ᾱₜ=0.64, x₀=2, and the sampled ε=1, then xₜ=0.8×2+0.6×1 = 2.2. A network learns denoising information across many noise levels.",
+      "questionIds": [
+        "121-01",
+        "121-02",
+        "121-03",
+        "121-04",
+        "121-05",
+        "121-06",
+        "121-07",
+        "121-08",
+        "121-09",
+        "121-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "121-01",
+          "previousQuestion": "With ᾱ=0.64, x₀=2, and ε=1, what is √ᾱ x₀ + √(1−ᾱ) ε?",
+          "reason": "The original repeated every noising input and the resulting value from the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 55,
+      "title": "Sequence and autocorrelation",
+      "example": "For (1, 3, 1, 3), mean = 2 and deviations = (−1, 1, −1, 1). At lag 1: r₁ = (−1−1−1)/(1+1+1+1) = −0.75. Neighbors alternate.",
+      "questionIds": [
+        "55-01",
+        "55-02",
+        "55-03",
+        "55-04",
+        "55-05",
+        "55-06",
+        "55-07",
+        "55-08",
+        "55-09",
+        "55-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 61,
+      "title": "Autoregressive language model",
+      "example": "If P(A) = 0.5 and P(B given A) = 0.2, then P(A, B) = 0.1.",
+      "questionIds": [
+        "61-01",
+        "61-02",
+        "61-03",
+        "61-04",
+        "61-05",
+        "61-06",
+        "61-07",
+        "61-08",
+        "61-09",
+        "61-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "61-03",
+          "previousQuestion": "If two successive conditional probabilities are 0.5 and 0.2, what is their joint factor product?",
+          "reason": "The original repeated the example's two probabilities and product."
+        }
+      ]
+    },
+    {
+      "conceptId": 56,
+      "title": "Positional encoding",
+      "example": "The same token has vector (1, 2). At position 1, add (0.1, 0): (1.1, 2). At position 2, add (0, 0.1): (1, 2.1). Its position now changes the input.",
+      "questionIds": [
+        "56-01",
+        "56-02",
+        "56-03",
+        "56-04",
+        "56-05",
+        "56-06",
+        "56-07",
+        "56-08",
+        "56-09",
+        "56-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 57,
+      "title": "Scaled dot-product attention",
+      "example": "q = 1, keys = (0, ln 3), values = (2, 6), dₖ = 1. Scores (0, ln 3) give weights (0.25, 0.75). Output = 0.25×2 + 0.75×6 = 5.",
+      "questionIds": [
+        "57-01",
+        "57-02",
+        "57-03",
+        "57-04",
+        "57-05",
+        "57-06",
+        "57-07",
+        "57-08",
+        "57-09",
+        "57-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "57-01",
+          "previousQuestion": "Attention weights are (0.25, 0.75) and values are (2, 6). Output?",
+          "reason": "The original repeated the example's attention weights, values, and output."
+        }
+      ]
+    },
+    {
+      "conceptId": 58,
+      "title": "Multi-head attention",
+      "example": "For values (2, 6), weights (0.25, 0.75) give 5; weights (0.75, 0.25) give 3. Join the heads as (5, 3). Output weights (0.5, 0.5) give 4.",
+      "questionIds": [
+        "58-01",
+        "58-02",
+        "58-03",
+        "58-04",
+        "58-05",
+        "58-06",
+        "58-07",
+        "58-08",
+        "58-09",
+        "58-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 60,
+      "title": "Causal mask",
+      "example": "At position 2, start with scores (0, 0, 0). Mask position 3: (0, 0, −∞). Softmax gives (0.5, 0.5, 0): the future contributes nothing.",
+      "questionIds": [
+        "60-01",
+        "60-02",
+        "60-03",
+        "60-04",
+        "60-05",
+        "60-06",
+        "60-07",
+        "60-08",
+        "60-09",
+        "60-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "60-08",
+          "previousQuestion": "Which key position is blocked for a query at position 2?",
+          "reason": "The original asked for the exact future position masked in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 59,
+      "title": "Transformer",
+      "example": "Illustrating the first stage: h = (1, 3), attention output = (1, 1), sum = (2, 4). Mean 3 and standard deviation 1 give approximately (−1, 1).",
+      "questionIds": [
+        "59-01",
+        "59-02",
+        "59-03",
+        "59-04",
+        "59-05",
+        "59-06",
+        "59-07",
+        "59-08",
+        "59-09",
+        "59-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 122,
+      "title": "Mixture of experts",
+      "example": "Two selected experts output 2 and 6. With routing weights 0.25 and 0.75, their combined output is 0.25×2+0.75×6 = 5.",
+      "questionIds": [
+        "122-01",
+        "122-02",
+        "122-03",
+        "122-04",
+        "122-05",
+        "122-06",
+        "122-07",
+        "122-08",
+        "122-09",
+        "122-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "122-01",
+          "previousQuestion": "Experts output 2 and 6 with weights 0.25 and 0.75. What is their combined output?",
+          "reason": "The original repeated the worked mixture and also the same solved attention calculation in earlier lessons."
+        }
+      ]
+    },
+    {
+      "conceptId": 62,
+      "title": "Fine-tuning",
+      "example": "A trainable weight starts at 0.5. With gradient 2 and η = 0.01, one update gives 0.48.",
+      "questionIds": [
+        "62-01",
+        "62-02",
+        "62-03",
+        "62-04",
+        "62-05",
+        "62-06",
+        "62-07",
+        "62-08",
+        "62-09",
+        "62-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 124,
+      "title": "Model distillation",
+      "example": "A teacher assigns probabilities (0.8,0.2); the student predicts (0.5,0.5). The unscaled soft-target cross-entropy is −0.8ln(0.5)−0.2ln(0.5) ≈ 0.693.",
+      "questionIds": [
+        "124-01",
+        "124-02",
+        "124-03",
+        "124-04",
+        "124-05",
+        "124-06",
+        "124-07",
+        "124-08",
+        "124-09",
+        "124-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "124-01",
+          "previousQuestion": "What is the student's soft-target cross-entropy for teacher (0.8,0.2) and student (0.5,0.5), using natural logs?",
+          "reason": "The original repeated the example's teacher/student distributions and its solved loss."
+        }
+      ]
+    },
+    {
+      "conceptId": 63,
+      "title": "Retrieval-augmented generation",
+      "example": "Question: “How deep is Well A?” Retrieve record 17: “Well A, total depth 2,400 m.” The answer reports 2,400 m and points to record 17.",
+      "questionIds": [
+        "63-01",
+        "63-02",
+        "63-03",
+        "63-04",
+        "63-05",
+        "63-06",
+        "63-07",
+        "63-08",
+        "63-09",
+        "63-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 94,
+      "title": "API and SDK",
+      "example": "Calling mean([2, 4, 6]) returns 4. An SDK might provide a function that sends this request to a service and reads its response.",
+      "questionIds": [
+        "94-r2-01",
+        "94-r2-02",
+        "94-r2-03",
+        "94-r2-04",
+        "94-r2-05",
+        "94-r2-06",
+        "94-r2-07",
+        "94-r2-08",
+        "94-r2-09",
+        "94-r2-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "94-r2-07",
+          "previousQuestion": "The API mean expects a list of numbers. Which argument matches this input requirement?",
+          "reason": "The original correct option copied the precise argument used in the worked API call."
+        }
+      ]
+    },
+    {
+      "conceptId": 64,
+      "title": "Tool calling",
+      "example": "A model requests mean([10, 20, 30]); the calculator returns 20, which the answer reports.",
+      "questionIds": [
+        "64-01",
+        "64-02",
+        "64-03",
+        "64-04",
+        "64-05",
+        "64-06",
+        "64-07",
+        "64-08",
+        "64-09",
+        "64-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 66,
+      "title": "State, observation and action",
+      "example": "In a simple tank model, state s = 10 litres. A noisy sensor reports observation o = 9.8 litres. Choosing to add 3 litres is action a = 3.",
+      "questionIds": [
+        "66-01",
+        "66-02",
+        "66-03",
+        "66-04",
+        "66-05",
+        "66-06",
+        "66-07",
+        "66-08",
+        "66-09",
+        "66-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "66-02",
+          "previousQuestion": "Which is an observation in a tank-control example?",
+          "reason": "The original classified the same noisy tank reading already labeled as an observation in the example."
+        },
+        {
+          "questionId": "66-03",
+          "previousQuestion": "Which is an action in that example?",
+          "reason": "The original reused the tank-control action already labeled in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 65,
+      "title": "Dynamical system",
+      "example": "A tank holds 10 litres. Add 3 and drain 2 during one step: next volume = 10 + 3 − 2 = 11.",
+      "questionIds": [
+        "65-01",
+        "65-02",
+        "65-03",
+        "65-04",
+        "65-05",
+        "65-06",
+        "65-07",
+        "65-08",
+        "65-09",
+        "65-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 67,
+      "title": "Markov decision process",
+      "example": "In state “low,” choosing “fill” reaches “safe” with probability 0.9 and stays “low” with probability 0.1. Suppose reaching “safe” earns reward 1, otherwise 0.",
+      "questionIds": [
+        "67-01",
+        "67-02",
+        "67-03",
+        "67-04",
+        "67-05",
+        "67-06",
+        "67-07",
+        "67-08",
+        "67-09",
+        "67-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 68,
+      "title": "Reward and return",
+      "example": "For three rewards (2, 0, 10) and γ = 0.5, return = 2 + 0 + 0.25 × 10 = 4.5.",
+      "questionIds": [
+        "68-01",
+        "68-02",
+        "68-03",
+        "68-04",
+        "68-05",
+        "68-06",
+        "68-07",
+        "68-08",
+        "68-09",
+        "68-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 69,
+      "title": "Policy",
+      "example": "In a low tank, π(fill) = 0.8 and π(wait) = 0.2. A deterministic policy might always fill.",
+      "questionIds": [
+        "69-01",
+        "69-02",
+        "69-03",
+        "69-04",
+        "69-05",
+        "69-06",
+        "69-07",
+        "69-08",
+        "69-09",
+        "69-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 70,
+      "title": "Value function",
+      "example": "A policy yields return 10 with probability 0.6 and 0 otherwise, so Vπ(s) = 6.",
+      "questionIds": [
+        "70-01",
+        "70-02",
+        "70-03",
+        "70-04",
+        "70-05",
+        "70-06",
+        "70-07",
+        "70-08",
+        "70-09",
+        "70-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 71,
+      "title": "Bellman equation",
+      "example": "Reward now is 2. Next-state value is 10 or 0, equally likely, under the policy. At γ = 0.9: V = 2 + 0.9×(0.5×10 + 0.5×0) = 6.5.",
+      "questionIds": [
+        "71-01",
+        "71-02",
+        "71-03",
+        "71-04",
+        "71-05",
+        "71-06",
+        "71-07",
+        "71-08",
+        "71-09",
+        "71-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 73,
+      "title": "Exploration and exploitation",
+      "example": "With ε = 0.1 over 100 decisions, expect about 10 exploration-branch choices, not exactly 10.",
+      "questionIds": [
+        "73-01",
+        "73-02",
+        "73-03",
+        "73-04",
+        "73-05",
+        "73-06",
+        "73-07",
+        "73-08",
+        "73-09",
+        "73-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 72,
+      "title": "Q-learning",
+      "example": "Q = 2, reward = 1, γ = 0.5, best next Q = 6. Target = 1 + 0.5×6 = 4. With α = 0.25, new Q = 2 + 0.25×(4−2) = 2.5.",
+      "questionIds": [
+        "72-01",
+        "72-02",
+        "72-03",
+        "72-04",
+        "72-05",
+        "72-06",
+        "72-07",
+        "72-08",
+        "72-09",
+        "72-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "72-01",
+          "previousQuestion": "In Q-learning, reward r = 1, discount γ = 0.5, and the best next-state Q value is 6. What is the update target r + γ max Q before averaging?",
+          "reason": "The original asked for the target already calculated in the worked update."
+        }
+      ]
+    },
+    {
+      "conceptId": 74,
+      "title": "Policy gradient",
+      "example": "Choose A with probability p. Rewards: A gives 4, B gives 1. J(p) = 4p + (1−p) = 1+3p, so J′(p) = 3. With η = 0.1: p⁺ = 0.5 + 0.1×3 = 0.8.",
+      "questionIds": [
+        "74-01",
+        "74-02",
+        "74-03",
+        "74-04",
+        "74-05",
+        "74-06",
+        "74-07",
+        "74-08",
+        "74-09",
+        "74-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "74-01",
+          "previousQuestion": "A policy chooses A with probability 0.8 and B otherwise. A gives reward 4 and B gives reward 1. What is its expected reward?",
+          "reason": "Replaces another evaluation of the worked bandit at its stated updated probability with a different signed-reward problem."
+        },
+        {
+          "questionId": "74-05",
+          "previousQuestion": "For J(p) = 4p + 1(1−p), what is dJ/dp?",
+          "reason": "The original repeated the derivative already explicitly calculated in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 76,
+      "title": "Model-based RL",
+      "example": "A learned tank model predicts that “fill” yields return 7 and “wait” yields 5. Choose “fill,” observe the real outcome, and use it to check or improve the model.",
+      "questionIds": [
+        "76-01",
+        "76-02",
+        "76-03",
+        "76-04",
+        "76-05",
+        "76-06",
+        "76-07",
+        "76-08",
+        "76-09",
+        "76-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 78,
+      "title": "Safety constraint",
+      "example": "If a valve setting must satisfy a ≤ 5, a proposed setting of 7 is rejected even if its predicted reward is high.",
+      "questionIds": [
+        "78-01",
+        "78-02",
+        "78-03",
+        "78-04",
+        "78-05",
+        "78-06",
+        "78-07",
+        "78-08",
+        "78-09",
+        "78-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "78-01",
+          "previousQuestion": "A proposal violates a hard constraint but has the highest predicted reward. What should happen?",
+          "reason": "The original repeated the example's rejection decision; the replacement requires choosing among several feasible and infeasible actions."
+        }
+      ]
+    },
+    {
+      "conceptId": 77,
+      "title": "Model predictive control",
+      "example": "A tank has 10 L, target 14 L, drain 2 L/step. Plan inflows (6, 2) L. Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L.",
+      "questionIds": [
+        "77-01",
+        "77-02",
+        "77-03",
+        "77-04",
+        "77-05",
+        "77-06",
+        "77-07",
+        "77-08",
+        "77-09",
+        "77-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "77-02",
+          "previousQuestion": "A tank should reach 14 litres next step and drains 2 litres during that step. A new measurement says it now holds 13 litres. What inflow should the replanned first action use?",
+          "reason": "The original requested the exact replanned inflow already given in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 75,
+      "title": "RLHF",
+      "example": "People prefer answer A to B. Suppose learned rewards are 2 and 0. Raising P(A) from 0.5 to 0.75 raises expected reward from 1 to 1.5.",
+      "questionIds": [
+        "75-01",
+        "75-02",
+        "75-03",
+        "75-04",
+        "75-05",
+        "75-06",
+        "75-07",
+        "75-08",
+        "75-09",
+        "75-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 81,
+      "title": "CPU",
+      "example": "To average (2, 4, 6), a program starts total = 0. Add each value: 2, then 6, then 12. Divide by 3 to return 4.",
+      "questionIds": [
+        "81-01",
+        "81-02",
+        "81-03",
+        "81-04",
+        "81-05",
+        "81-06",
+        "81-07",
+        "81-08",
+        "81-09",
+        "81-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 82,
+      "title": "GPU",
+      "example": "For x = (1, 2, 3, 4), compute y = (2, 4, 6, 8). Each output can be calculated independently. The same pattern scales to millions of entries.",
+      "questionIds": [
+        "82-01",
+        "82-02",
+        "82-03",
+        "82-04",
+        "82-05",
+        "82-06",
+        "82-07",
+        "82-08",
+        "82-09",
+        "82-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "82-04",
+          "previousQuestion": "For independent yᵢ = 2xᵢ, why can entries be computed in parallel?",
+          "reason": "The original repeated the independence statement for the exact elementwise rule in the example."
+        },
+        {
+          "questionId": "82-06",
+          "previousQuestion": "For which task can all four GPU outputs be calculated independently from the stated inputs?",
+          "reason": "The original correct choice was the exact four-output computation used in the worked example."
+        }
+      ]
+    },
+    {
+      "conceptId": 83,
+      "title": "Tensor core",
+      "example": "A = [[1, 2]], B = [[3], [4]], C = [[5]]. Multiply: AB = [[1×3 + 2×4]] = [[11]]. Add C: D = [[16]].",
+      "questionIds": [
+        "83-01",
+        "83-02",
+        "83-03",
+        "83-04",
+        "83-05",
+        "83-06",
+        "83-07",
+        "83-08",
+        "83-09",
+        "83-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 84,
+      "title": "CUDA",
+      "example": "With B = 4, block 1 and thread 2 give i = 1×4+2 = 6. That thread can compute y₆ = 2x₆. Eight such blocks launch 8×4 = 32 threads.",
+      "questionIds": [
+        "84-01",
+        "84-02",
+        "84-03",
+        "84-04",
+        "84-05",
+        "84-06",
+        "84-07",
+        "84-08",
+        "84-09",
+        "84-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 85,
+      "title": "Memory capacity",
+      "example": "1 billion parameters at 16 bits use 2 billion bytes, or 2 GB, for weights alone.",
+      "questionIds": [
+        "85-01",
+        "85-02",
+        "85-03",
+        "85-04",
+        "85-05",
+        "85-06",
+        "85-07",
+        "85-08",
+        "85-09",
+        "85-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 123,
+      "title": "Context windows and KV caching",
+      "example": "For 2 layers, 10 tokens, 1 KV head, dimension 4, and 2 bytes/value, the cache uses 2×2×10×1×4×2 = 320 bytes, excluding overhead and other memory.",
+      "questionIds": [
+        "123-01",
+        "123-02",
+        "123-03",
+        "123-04",
+        "123-05",
+        "123-06",
+        "123-07",
+        "123-08",
+        "123-09",
+        "123-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "123-01",
+          "previousQuestion": "Under the stated cache formula, how many bytes are needed for 2 layers, 10 tokens, 1 KV head, dimension 4, and 2 bytes/value?",
+          "reason": "The original repeated all dimensions and the solved cache size from the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 86,
+      "title": "Memory bandwidth",
+      "example": "Moving 10 GB through a 100 GB/second channel takes at least 0.1 seconds under ideal conditions.",
+      "questionIds": [
+        "86-01",
+        "86-02",
+        "86-03",
+        "86-04",
+        "86-05",
+        "86-06",
+        "86-07",
+        "86-08",
+        "86-09",
+        "86-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "86-01",
+          "previousQuestion": "At an ideal 200 GB/second, how long does moving 20 GB take?",
+          "reason": "The original proportionally rescaled the example while keeping its transfer time unchanged."
+        },
+        {
+          "questionId": "86-02",
+          "previousQuestion": "At an ideal 100 GB/s, what is the lower-bound time to move 10 GB?",
+          "reason": "The original repeated the exact bandwidth, data size, and result in the example."
+        },
+        {
+          "questionId": "86-08",
+          "previousQuestion": "At 50 GB/s effective bandwidth, how long does a 5 GB transfer take in the simple model?",
+          "reason": "The original was another proportional rescaling of the example with the same 0.1-second answer."
+        }
+      ]
+    },
+    {
+      "conceptId": 87,
+      "title": "H100",
+      "example": "A 10-billion-parameter model uses about 20 GB at 16 bits for weights, leaving nominal space for other needs.",
+      "questionIds": [
+        "87-01",
+        "87-02",
+        "87-03",
+        "87-04",
+        "87-05",
+        "87-06",
+        "87-07",
+        "87-08",
+        "87-09",
+        "87-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "87-07",
+          "previousQuestion": "In a hypothetical H100 run, transferring 60 GB at an effective 600 GB/s takes at least how long, ignoring all other costs?",
+          "reason": "The original reused a scaled version of the memory-bandwidth example and its 0.1-second result."
+        }
+      ]
+    },
+    {
+      "conceptId": 88,
+      "title": "Compute cluster",
+      "example": "An 80-second job has 20 seconds of serial work and 60 divisible seconds. Four workers need at least 20 + 60/4 = 35 seconds in this model.",
+      "questionIds": [
+        "88-01",
+        "88-02",
+        "88-03",
+        "88-04",
+        "88-05",
+        "88-06",
+        "88-07",
+        "88-08",
+        "88-09",
+        "88-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 89,
+      "title": "TSMC and chip fabrication",
+      "example": "In a hypothetical batch of 100 dies, 80 passing inspection gives 80% yield. This is a teaching example, not TSMC production data.",
+      "questionIds": [
+        "89-01",
+        "89-02",
+        "89-03",
+        "89-04",
+        "89-05",
+        "89-06",
+        "89-07",
+        "89-08",
+        "89-09",
+        "89-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "89-05",
+          "previousQuestion": "If 80 of 100 fabricated dies are usable, what is yield?",
+          "reason": "The original repeated the example's batch, passing count, and yield."
+        }
+      ]
+    },
+    {
+      "conceptId": 90,
+      "title": "Borehole logs and assays",
+      "example": "Sample A from borehole BH01 spans 100–102 m and assays 0.8% copper by mass. Its sampled interval is 102 − 100 = 2 m. A sensor log is a different measurement over depth.",
+      "questionIds": [
+        "90-r2-01",
+        "90-r2-02",
+        "90-r2-03",
+        "90-r2-04",
+        "90-r2-05",
+        "90-r2-06",
+        "90-r2-07",
+        "90-r2-08",
+        "90-r2-09",
+        "90-r2-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "90-r2-01",
+          "previousQuestion": "What does an assay of 0.8% copper by mass describe?",
+          "reason": "The original asked about the exact assay value already described in the example."
+        },
+        {
+          "questionId": "90-r2-06",
+          "previousQuestion": "An assay reports 0.8% copper for sample BH01, 100–102 m. Which record identifies where this measured grade came from?",
+          "reason": "The original copied the worked sample's identifier, interval, and assay directly into the correct option."
+        }
+      ]
+    },
+    {
+      "conceptId": 125,
+      "title": "Assay quality control",
+      "example": "A certified reference value is 1.00% copper and a lab reports 1.10%. Relative bias is 100×(1.10−1.00)/1.00 = +10%. Whether this passes depends on the specified acceptance limits and uncertainty.",
+      "questionIds": [
+        "125-01",
+        "125-02",
+        "125-03",
+        "125-04",
+        "125-05",
+        "125-06",
+        "125-07",
+        "125-08",
+        "125-09",
+        "125-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "125-01",
+          "previousQuestion": "A reference is 1.00% copper and the measured value is 1.10%. What is the relative bias?",
+          "reason": "The original repeated the example's reference, measurement, and computed bias."
+        }
+      ]
+    },
+    {
+      "conceptId": 92,
+      "title": "Provenance and uncertainty",
+      "example": "Borehole A, 100 m depth, sensor S2: 30 °C. With a justified error bound ±0.2 °C, the interval is [29.8, 30.2] °C. Keep the source and calibration version.",
+      "questionIds": [
+        "92-r2-01",
+        "92-r2-02",
+        "92-r2-03",
+        "92-r2-04",
+        "92-r2-05",
+        "92-r2-06",
+        "92-r2-07",
+        "92-r2-08",
+        "92-r2-09",
+        "92-r2-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 93,
+      "title": "Geoscience data integration",
+      "example": "BH01 has an assay for 100–102 m. Match it to geological records from BH01 covering that interval, check units, and retain both sources. A row at 100 m in BH02 refers to different rock.",
+      "questionIds": [
+        "93-r2-01",
+        "93-r2-02",
+        "93-r2-03",
+        "93-r2-04",
+        "93-r2-05",
+        "93-r2-06",
+        "93-r2-07",
+        "93-r2-08",
+        "93-r2-09",
+        "93-r2-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 91,
+      "title": "Windowing and missing data",
+      "example": "Sequence (2, 4, missing, 6) gives length-3 windows (2, 4, missing) and (4, missing, 6). The second has mask (1, 0, 1): its middle value is absent.",
+      "questionIds": [
+        "91-r2-01",
+        "91-r2-02",
+        "91-r2-03",
+        "91-r2-04",
+        "91-r2-05",
+        "91-r2-06",
+        "91-r2-07",
+        "91-r2-08",
+        "91-r2-09",
+        "91-r2-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 96,
+      "title": "Ore grade estimation",
+      "example": "In a toy estimate, 1,000 tonnes of rock at 0.8% copper contain 1,000 × 0.8 / 100 = 8 tonnes of copper before recovery losses.",
+      "questionIds": [
+        "96-r2-01",
+        "96-r2-02",
+        "96-r2-03",
+        "96-r2-04",
+        "96-r2-05",
+        "96-r2-06",
+        "96-r2-07",
+        "96-r2-08",
+        "96-r2-09",
+        "96-r2-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "96-r2-01",
+          "previousQuestion": "How much copper is contained in 1,000 tonnes of rock at 0.8% copper by mass?",
+          "reason": "The original repeated the exact rock mass, grade, and contained metal already calculated."
+        }
+      ]
+    },
+    {
+      "conceptId": 127,
+      "title": "Variograms and kriging",
+      "example": "At one distance bin, two pairs have value differences 2 and 4. Estimated semivariance is (2²+4²)/(2×2) = 5. Kriging weights would then require a fitted model and sample geometry.",
+      "questionIds": [
+        "127-01",
+        "127-02",
+        "127-03",
+        "127-04",
+        "127-05",
+        "127-06",
+        "127-07",
+        "127-08",
+        "127-09",
+        "127-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "127-01",
+          "previousQuestion": "Two pairs in a distance bin have differences 2 and 4. What is their estimated semivariance?",
+          "reason": "The original repeated the example's pair differences and solved semivariance."
+        },
+        {
+          "questionId": "127-08",
+          "previousQuestion": "Given kriging weights 0.25 and 0.75 and observations 2 and 6, what is the estimate?",
+          "reason": "The original reused the (0.25,0.75) weights and (2,6) values already solved in multiple attention and expert-mixture examples."
+        }
+      ]
+    },
+    {
+      "conceptId": 126,
+      "title": "Spatial cross-validation",
+      "example": "A held-out block has a 100 m exclusion buffer. A candidate training sample 30 m from its boundary is excluded; one 150 m away satisfies this distance rule.",
+      "questionIds": [
+        "126-01",
+        "126-02",
+        "126-03",
+        "126-04",
+        "126-05",
+        "126-06",
+        "126-07",
+        "126-08",
+        "126-09",
+        "126-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "126-01",
+          "previousQuestion": "With a 100 m buffer around a held-out test block, which candidate training point meets the distance rule?",
+          "reason": "The original selected the exact point already classified as allowed in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 128,
+      "title": "Mineral processing and recovery",
+      "example": "For a steady, balanced example, 100 t of feed at 2% copper contains 2 t copper. A 10 t concentrate at 16% contains 1.6 t, giving recovery 1.6/2 = 80%. The 90 t tailings contain the remaining 0.4 t copper.",
+      "questionIds": [
+        "128-01",
+        "128-02",
+        "128-03",
+        "128-04",
+        "128-05",
+        "128-06",
+        "128-07",
+        "128-08",
+        "128-09",
+        "128-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "128-01",
+          "previousQuestion": "Feed contains 2 tonnes of copper and concentrate contains 1.6 tonnes. What is copper recovery?",
+          "reason": "The original repeated the example's metal masses and calculated recovery."
+        },
+        {
+          "questionId": "128-04",
+          "previousQuestion": "In a steady two-output dry-mass balance, feed is 100 tonnes and concentrate is 10 tonnes. What is tailings mass?",
+          "reason": "The original asked for the tailings mass explicitly stated in the worked balance."
+        },
+        {
+          "questionId": "128-05",
+          "previousQuestion": "Feed contains 2 tonnes of copper and concentrate captures 1.6 tonnes. How much copper remains in tailings under a closed balance?",
+          "reason": "The original asked for the remaining copper explicitly calculated in the example."
+        }
+      ]
+    },
+    {
+      "conceptId": 97,
+      "title": "Representation alignment",
+      "example": "For a code paired with answer “rising,” predicting probability 0.2 gives loss −ln(0.2) ≈ 1.61. At 0.8, loss ≈ 0.22. Paired data teach the connection.",
+      "questionIds": [
+        "97-01",
+        "97-02",
+        "97-03",
+        "97-04",
+        "97-05",
+        "97-06",
+        "97-07",
+        "97-08",
+        "97-09",
+        "97-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 98,
+      "title": "Benchmark and ablation",
+      "example": "On the same 50 held-out questions, the full system gets 40 right (80%). Disabling its learned-token input gives 35 (70%). The observed drop is 10 percentage points.",
+      "questionIds": [
+        "98-01",
+        "98-02",
+        "98-03",
+        "98-04",
+        "98-05",
+        "98-06",
+        "98-07",
+        "98-08",
+        "98-09",
+        "98-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "98-05",
+          "previousQuestion": "If a full system scores 0.8 and an ablated one 0.7, what is the absolute score difference?",
+          "reason": "The original rewrote the example's 80% and 70% scores as decimals but asked for the same difference."
+        }
+      ]
+    },
+    {
+      "conceptId": 95,
+      "title": "Open source and reproducibility",
+      "example": "Publish allowed data (2, 4, 6), code mean(x), and the environment. Another person obtains (2+4+6)/3 = 4. Publishing only “result = 4” cannot reproduce the calculation.",
+      "questionIds": [
+        "95-01",
+        "95-02",
+        "95-03",
+        "95-04",
+        "95-05",
+        "95-06",
+        "95-07",
+        "95-08",
+        "95-09",
+        "95-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 99,
+      "title": "Forward-deployed engineering",
+      "example": "If a verified workflow reduces a task from 30 to 10 minutes, 12 tasks save 240 minutes, or 4 hours.",
+      "questionIds": [
+        "99-r2-01",
+        "99-r2-02",
+        "99-r2-03",
+        "99-r2-04",
+        "99-r2-05",
+        "99-r2-06",
+        "99-r2-07",
+        "99-r2-08",
+        "99-r2-09",
+        "99-r2-10"
+      ],
+      "replacements": []
+    },
+    {
+      "conceptId": 100,
+      "title": "Grounded model conversation",
+      "example": "“How much copper is recovered at 80% recovery?” For 1,000 t of rock at 0.8% copper, the tool computes 1,000 × 0.008 × 0.80 = 6.4 t. This assumes the stated grade represents the feed and recovery applies to its contained copper.",
+      "questionIds": [
+        "100-r2-01",
+        "100-r2-02",
+        "100-r2-03",
+        "100-r2-04",
+        "100-r2-05",
+        "100-r2-06",
+        "100-r2-07",
+        "100-r2-08",
+        "100-r2-09",
+        "100-r2-10"
+      ],
+      "replacements": []
+    }
+  ]
+}

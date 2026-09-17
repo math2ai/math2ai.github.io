@@ -92,14 +92,15 @@ for line in (ROOT/'curriculum-source.txt').read_text(encoding='utf-8').splitline
         chapters.append({'title':chapter,'start':len(course)+1})
     elif line and not line.startswith('#'):
         fields=[x.strip().replace('\\n','\n') for x in line.split('|')]
-        assert len(fields)==8,(len(course)+1,fields)
-        title,definition,formula,example,metaphor,question,choices,feedback=fields
+        assert len(fields) in (8,9),(len(course)+1,fields)
+        title,definition,formula,example,metaphor,question,choices,feedback=fields[:8]
+        formula_note = fields[8] if len(fields) == 9 else ""
         opts=[x.strip() for x in choices.split('~')]
         assert len(opts)==4 and len(set(opts))==4, title
         correct=opts[0]
         legacy_id=LEGACY_IDS[title]
         random.Random(7041+legacy_id-1).shuffle(opts)
-        course.append(dict(id=len(course)+1,legacyId=legacy_id,chapter=chapter,title=title,definition=definition,formula=formula,
+        course.append(dict(id=len(course)+1,legacyId=legacy_id,chapter=chapter,title=title,definition=definition,formula=formula,formulaNote=formula_note,
          example=example,metaphor=metaphor,question=question,options=opts,correct=opts.index(correct),feedback=feedback,
          sources=sources_for(legacy_id)))
 assert len(course)==128

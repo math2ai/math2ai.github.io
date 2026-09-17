@@ -67,13 +67,19 @@ python build_content.py
 python build_site.py
 ```
 
-The result is `source/dist/index.html`. Copy it to the repository root to publish the revision. `curriculum-source.txt` is one record per concept, with pipe-separated fields and tilde-separated options. A literal `\n` inside a field starts a new displayed line. Its first option is the correct answer; the builder shuffles displayed positions deterministically. `concept-ids.json` keeps a stable original ID for each concept, including source links and original answer positions. Each question has an ID formed from that concept ID, an optional bank revision, and its number within the bank.
+The result is `source/dist/index.html`. Copy it to the repository root to publish the revision. `curriculum-source.txt` is one record per concept, with pipe-separated fields and tilde-separated options. A literal `\n` inside a field starts a new displayed line. An optional ninth field holds ordinary-size formula notes, separate from the equation; use it for symbol meanings and conditions. Its first option is the correct answer; the builder shuffles displayed positions deterministically. `concept-ids.json` keeps a stable original ID for each concept, including source links and original answer positions. Each question has an ID formed from that concept ID, an optional bank revision, and its number within the bank.
 
 `question-bank.txt` adds nine authored questions per concept to the original one. Each `## Concept title` section has nine records in `question|correct answer ~ distractor ~ distractor ~ distractor|explanation` format. The builder combines them into each concept's `questions` array and deterministically shuffles answer positions. Runtime question order is independently randomized. The original single-question fields remain available to the presentation builders.
 
 `retry-feedback.txt` supplies ten first-mistake explanations per concept, in original-question-then-bank order. Explain the reasoning or misconception without naming the correct option or evaluating the final numerical result. Full solutions remain in the original question records. `reading-links.json` maps every concept to a Wikipedia article or section; existing primary sources are retained alongside it. Source labels are compact, with full titles available on hover and to screen readers. These additions preserve the course version and all existing question IDs and answer positions.
 
 Questions should assess the current concept using this lesson, earlier teaching, or information supplied in the prompt. Each question must stand alone in random order and in Review; a retry hint is not prerequisite instruction. The [question alignment review](source/ALIGNMENT_REVIEW.md) records the 163 flagged questions addressed in the September 2026 editorial pass and the decision to retain existing practice credit.
+
+Questions must also require fresh reasoning beyond the worked example, rather than ask for its already solved answer or an intermediate result. The [worked-example review](source/EXAMPLE_REVIEW.md) records the complete 128-lesson, 1,280-question review and 99 replacements across 70 concepts. Each replacement includes a new first-mistake hint and final explanation; existing question IDs and historical practice credit are retained.
+
+The [prerequisite follow-up](source/PREREQUISITE_REVIEW.md) corrects missing definitions such as low-rank approximation. Teach technical terms and decision rules before assessing them; naming them in an example or explaining them only after a wrong answer is insufficient. Distractors should use understandable terminology too.
+
+Keep each lesson focused on its main idea. Prefer simplifying an exercise or supplying a short premise over expanding the lesson to teach every incidental term. The [lesson clarity review](source/LESSON_CLARITY_REVIEW.md) records the follow-up: ordinary-size formula notes, shorter explanations, and removal of unnecessary notation and side topics.
 
 Matrices in lessons, quiz choices, hints and solutions are typeset by the bundled KaTeX renderer **during the build**. The published page contains prebuilt HTML and accessible MathML, plus embedded CSS and fonts; it never loads KaTeX JavaScript or a font CDN. A small display helper leaves the original readable notation visible until the required fonts load. Missing styles, failed fonts, or unsupported notation keep that fallback. Wide matrices scroll within their own container; answer controls also have spoken row descriptions.
 
@@ -94,8 +100,11 @@ python verify_examples.py
 python verify_bank.py
 python verify_expansion.py
 python verify_alignment.py
+python verify_example_questions.py
+python verify_prerequisites.py
 python verify_feedback.py
 node verify_math.mjs
+node verify_lesson_clarity.mjs
 node verify_state.mjs
 node verify_review.mjs
 node verify_feedback.mjs

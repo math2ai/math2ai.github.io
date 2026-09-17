@@ -273,6 +273,8 @@
   document.title = course.title;
   el('chapter').textContent = `${String(c.id).padStart(3,'0')} · ${c.chapter}`;
   for (const id of ['title','definition','formula','example','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
+  write(el('formula-note'),c.formulaNote || '',`c:${c.legacyId}:formulaNote`);
+  el('formula-note').hidden = !c.formulaNote;
   el('previous').disabled = state.current === 0;
   el('concept-sources').hidden = !c.sources.length;
   el('concept-source-list').innerHTML = sourceList(c.sources);

@@ -33,7 +33,7 @@ unique('11-06', ast.literal_eval, lambda a: a == transpose(a))
 a, b = [[1, 2], [3, 4]], [[2, 0], [0, 1]]
 product = [[sum(x*y for x,y in zip(row, col)) for col in zip(*b)] for row in a]
 unique('11-08', ast.literal_eval, lambda candidate: candidate == transpose(product))
-unique('103-10', ast.literal_eval, lambda v: any(v) and (2*v[0], 3*v[1]) == tuple(3*x for x in v))
+unique('103-10', ast.literal_eval, lambda v: any(v) and (5*v[0], -2*v[1]) == tuple(-2*x for x in v))
 unique('104-10', lambda text: [int(x) for x in re.findall(r'\d+', text)], lambda scales: scales == sorted([5, 2, 0], reverse=True)[1:])
 number('16-06', .5*(2+4) + .5*0)
 number('22-07', 2*2/2)
@@ -41,12 +41,12 @@ number('22-10', 3*2 + 1*4)
 number('108-06', 4*3*2**2)
 number('108-08', [[2,5],[5,8]][0][0])
 # Evaluate the proposed derivative expressions at several points against the
-# independently simplified polynomial (3x)^2 = 9x^2.
+# independently simplified polynomial (4x)^2 = 16x^2.
 def polynomial(text, x):
     coefficient = int(re.search(r'\d+', text).group())
     return coefficient * x**(2 if '²' in text else 1)
 q = questions['21-05']
-assert [i for i, option in enumerate(q['options']) if all(polynomial(option, x) == 2*9*x for x in [0, 1, 2, -3])] == [q['correct']]
+assert [i for i, option in enumerate(q['options']) if all(polynomial(option, x) == 2*16*x for x in [0, 1, 2, -3])] == [q['correct']]
 checked.add(q['id'])
 data = [0,0,10,10]
 mean = sum(data)/len(data)
@@ -62,22 +62,22 @@ assert answer('105-09') == 'Negative' and .25*math.log(.25/.5) < 0
 number('45-08', [2,4,6,8][3])
 number('48-03', sum(x*y for x,y in zip([3,4],[1,0])))
 assert answer('50-04') == 'Code B' and 4*2 < 2*10
-number('53-05', min([0,2], key=lambda x: abs(1.9-x)))
+number('53-05', min([-3,0,4], key=lambda x: abs(-1.2-x)))
 number('53-07', len({2,5}))
 unique('65-08', int, lambda s: .5*s+2 == s)
 number('68-10', max([.5,.9], key=lambda gamma: gamma*10))
 number('71-07', .2*10 + .8*0)
-number('72-01', 1+.5*6)
-number('74-01', .8*4+.2*1)
+number('72-01', -2+.9*10)
+number('74-01', .7*6+.3*(-2))
 number('74-09', .1*(-2))
-number('77-02', 14-13+2)
+number('77-02', 25-20+3)
 # Simulate the specified interleaving: both read before either writes.
 shared = 0
 local_a, local_b = shared+1, shared+1
 shared = local_a
 shared = local_b
 number('84-10', shared)
-number('87-07', 60/600)
+number('87-07', 75/500)
 number('88-07', 2)
 assert abs((2+8/10**12)-2) < 1e-10
 unique('92-r2-04', float, lambda x: abs(x-10) > .5)
@@ -91,10 +91,10 @@ number('127-09', sum(w*(x+2) for w,x in zip(weights,values)) - sum(w*x for w,x i
 # The four previously lesson-dependent numerical prompts must carry their
 # input data in the prompt sent to both lesson and review views.
 context = {
-    '7-01': ['[[1,2],[3,4]]', '[[5,6],[7,8]]', '(table, row, column)', 'start at 1'],
-    '51-01': ['D + 0.1R', 'D = 1', 'R = 20', 'D = 2', 'R = 5'],
-    '72-01': ['r = 1', 'γ = 0.5', 'is 6'],
-    '74-01': ['probability 0.8', 'reward 4', 'reward 1'],
+    '7-01': ['[[2,8],[5,1]]', '[[9,4],[6,3]]', '(table, row, column)', 'start at 1'],
+    '51-01': ['D + 0.2R', 'distortion 0.5', 'rate 12', 'distortion 1.5', 'rate 5'],
+    '72-01': ['reward −2', 'γ = 0.9', 'Q value 10'],
+    '74-01': ['probability 0.7', 'reward 6', 'reward −2'],
     '88-07': ['T(n) = 2 + 8/n'],
 }
 for qid, inputs in context.items():
