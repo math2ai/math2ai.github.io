@@ -156,15 +156,15 @@ Apply A once, then apply it to that result. Linearity lets you pull the first sc
 Check that a candidate is nonzero and that applying A gives the stated multiplier times every coordinate of that candidate.
 ## Singular value decomposition
 For this diagonal matrix with positive entries, the diagonal entries are its singular values. Keep the larger scale in its original position and set the other to zero.
-SVD separates input and output directions, which need not have the same dimension. Do not impose the square-matrix restriction from eigendecomposition.
-Singular values describe scale magnitudes. Directional signs can be represented by the associated singular vectors instead.
-Each retained singular component contributes at most one independent direction. Count the directions that can remain.
+A matrix can map inputs with one number of coordinates to outputs with another. Check whether the definition limits SVD to square matrices.
+Singular values measure how strongly a direction is stretched, using a magnitude. A reversal can be carried by the input and output directions.
+A direction with a zero scale is flattened. Count the scale factors left nonzero after carrying out the stated operation.
 A singular value is a scale factor for its associated direction. Multiply the input length by that factor; the other direction’s scale is not involved.
-A zero singular component carries no independent direction through the matrix. Count only the components that remain active.
-An eigenvalue can include a sign or even be complex. Singular values summarize magnitudes under a different factorization.
-Apply the factors from right to left. The first rotation changes the input's coordinates before the singular-value scaling.
-Separate the size of a component from its relevance to a task. Compare what the retained representation contains with what the task needs.
-Order the singular values by size. Keeping one component refers to one direction and its scale, not to a row of the matrix.
+Count how many listed scales carry a direction through the transformation. Count the nonzero scales rather than adding their numerical values.
+Apply the scale factor to two different input lengths. If their outputs are indistinguishable, the original difference cannot be recovered from them.
+A singular value multiplies the input length to give the output length. Work backward from that multiplication to find the missing factor.
+Identify exactly which coordinate the task uses. Then check whether the approximation changes that coordinate; irrelevant lost information need not prevent this particular decision.
+Order the singular values by size. Retaining one scale keeps one direction; identify which other scales must be left out.
 ## Probability
 List the equally likely die faces that satisfy the strict inequality. Divide their count by the total face count.
 A probability ranges from impossibility to certainty. Check each value against both ends of that range.
@@ -321,15 +321,15 @@ Different inputs can produce the same objective value. Uniqueness requires addit
 Performance can mean accuracy, speed, cost, or something else. An optimizer needs a stated criterion for comparing choices.
 ## Lagrange multipliers
 A candidate must satisfy both gradient balance and the constraint. Substitute the stated relation between coordinates into the equality constraint.
-The constraint limits where candidates may lie. A point with an attractive objective can still be excluded.
-First express the required equality as an expression equal to zero. Multiply that entire expression by the multiplier and add the objective.
-The derivative equations balance changes; the original constraint still decides whether a candidate is permitted.
-Under a fixed sum, shifting away from equal coordinates increases this symmetric sum of squares. Use the required total.
-Stationary conditions produce candidates, not a complete classification. Check the objective and feasible behavior around each candidate.
-An equality multiplier balances gradients. Unlike multipliers for certain inequality conventions, it has no general sign restriction.
-The two gradient equations relate both coordinates to the same multiplier. Use the constraint to find the coordinates before substituting back.
+Keep the two roles separate: one function scores an input pair, while the other checks whether that pair obeys the required rule.
+Start with the score function. Then add the multiplier times the entire rule function, including the constant that makes the rule equal zero.
+The derivative equations compare changes in the score and rule. Separately check whether the candidate pair is actually allowed by the original rule.
+Use the supplied equality between the two inputs in the total rule. The score and the total are different functions of the same pair.
+Finding a candidate and proving it has the lowest allowed score are separate steps. Think about what the derivative equations establish.
+Treat the derivative condition as an equation for one unknown. Choose the value that makes the two terms add to zero; keep track of the existing minus sign.
+Use the supplied input value in the derivative equation. Then isolate the multiplier, keeping the sign needed to make the sum zero.
 Eliminate the shared multiplier by equating the remaining terms. Keep the different coefficients of the two coordinates when simplifying.
-Inequalities can be active or inactive and introduce additional conditions. The equality-only equations omit those cases.
+Write the equality with zero on one side by subtracting the required total from both sides. Check the result using any allowed pair.
 ## Gradient descent
 Compute the learning-rate-scaled gradient, then subtract that step from the current parameter. Do not return the step alone.
 Write the subtraction explicitly before replacing the gradient with its signed value. Subtracting a negative step changes direction.
@@ -408,7 +408,7 @@ Repeated selection adapts decisions to the observed scores. A dataset used that 
 Match the information boundary of deployment. Future observations should not influence a model intended to predict them from the past.
 A test score is conditional on the sampled data, metric, and procedure. Extending it to other settings requires additional evidence.
 ## Data leakage
-To test a genuinely unseen well, prevent any measurements from that well from influencing training or preprocessing.
+The intended use is a well the model has never learned from. Identify which choice keeps the underlying source measurements separate, not just their row names.
 Preprocessing can learn from data even without labels. A held-out distribution should not influence the fitted transformation during evaluation.
 Ask whether the feature exists at the moment the prediction is made. Later outcomes cannot be available to a real-time predictor.
 Different windows can contain many of the same raw observations. Distinct row IDs do not make them independent examples.

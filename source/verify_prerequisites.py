@@ -21,13 +21,13 @@ assert all(r['questionId'] in questions for r in review['questionChanges'])
 dependencies = [
  ('6-06',6,r'entrywise addition'), ('6-07',6,r'every entry'),
  ('11-10',6,r'diagonal entries'), ('12-03',12,r'affine map'),
- ('104-04',104,r'rank at most k'), ('104-09',104,r'low-rank approximation'),
- ('104-01',104,r'largest k singular values'), ('104-05',104,r'nonnegative scale factors'),
- ('104-08',104,r'V give perpendicular \(orthogonal\) input directions'),
+ ('104-04',104,r'at most k independent directions'), ('104-09',104,r'low-rank approximation'),
+ ('104-01',104,r'largest k singular values'), ('104-05',104,r'nonnegative stretch'),
+ ('104-08',104,r'stretches are its singular values'),
  ('14-04',14,r'independent trials'), ('101-10',101,r'posterior'),
  ('18-07',18,r'logarithm requires a positive input'),
  ('19-06',19,r'global minimum'), ('20-07',19,r'zero derivative alone'),
- ('108-05',108,r'classification inconclusive'), ('107-10',107,r'inequality constraints'),
+ ('108-05',108,r'classification inconclusive'), ('107-10',107,r'g\(x,y\)=0 is the rule'),
  ('29-03',29,r'classification predicts a category'), ('28-04',28,r'window is'),
  ('110-05',110,r'axis-aligned split'), ('113-05',113,r'false positive.*negative case predicted positive'),
  ('120-04',120,r'only one can be observed'), ('40-02',40,r'ceiling rounds up'),
@@ -59,7 +59,7 @@ premises = {
  '113-04': ['always predicts negative', 'actual positive'],
  '121-05': ['xₜ=√ᾱ x₀+√(1−ᾱ)ε', 'ᾱ=0'],
  '124-06': ['T > 0', 'softmax(z/T)'],
- '104-09': ['discards the second', 'task needs information from the second'],
+ '104-09': ['keeps vertical coordinates exactly', 'vertical coordinate is above 5'],
 }
 for qid, fragments in premises.items():
     assert all(s in questions[qid][1]['question'] for s in fragments), qid

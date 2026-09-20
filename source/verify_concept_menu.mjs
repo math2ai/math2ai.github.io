@@ -1,0 +1,58 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const handlers={},windowEvents={};
+const node=()=>({hidden:false,textContent:'',style:{},attrs:{},handlers:{},
+ setAttribute(k,v){this.attrs[k]=v;},removeAttribute(k){delete this.attrs[k];},
+ addEventListener(k,f){this.handlers[k]=f;},contains(target){return target===this;},focus(){this.focused=true;}});
+const trigger=node(),list=node(),label=node(),select=node();
+trigger.getBoundingClientRect=()=>({top:100,bottom:145});
+list.clientHeight=300;let markup='',options=[],scroll=0;
+Object.defineProperty(list,'innerHTML',{get:()=>markup,set:text=>{
+ markup=text;
+ options=[...text.matchAll(/role="option" id="([^"]+)" data-index="(\d+)"/g)].map(match=>{
+  const option=node();option.id=match[1];option.dataset={index:match[2]};
+  option.offsetTop=Number(match[2])*32+(text.slice(0,match.index).match(/role="group"/g)||[]).length*24;
+  option.offsetHeight=32;option.classList={toggle(_name,value){option.active=value;}};
+  option.closest=()=>option;return option;
+ });
+}});
+Object.defineProperty(list,'scrollTop',{get:()=>scroll,set:v=>{scroll=Math.max(0,Math.min(v,(options.at(-1)?.offsetTop||0)+32-list.clientHeight));}});
+list.querySelectorAll=()=>options;list.contains=target=>options.includes(target)||target===list;
+const context=vm.createContext({console,Date,document:{addEventListener:(k,f)=>handlers[k]=f},innerHeight:800,addEventListener:(k,f)=>windowEvents[k]=f});context.window=context;
+vm.runInContext(fs.readFileSync(new URL('concept-menu.js',import.meta.url),'utf8'),context);
+const course=JSON.parse(fs.readFileSync(new URL('dist/curriculum.json',import.meta.url),'utf8'));
+const rows=course.concepts.map(c=>({title:c.title,chapter:c.chapter,text:`${String(c.id).padStart(3,'0')} · ${c.title}`}));
+const selected=[];
+const menu=context.math2aiConceptMenu({select,trigger,list,label,onChoose:index=>{selected.push(index);menu.update(rows,index);}});
+const gradient=rows.findIndex(r=>r.title==='Gradient descent');
+const key=(key,extra={})=>{const event={key,preventDefault(){this.prevented=true;},...extra};trigger.handlers.keydown(event);return event;};
+menu.update(rows,gradient);assert.equal(select.hidden,true);assert.equal(trigger.hidden,false);
+trigger.handlers.click();
+assert.equal(trigger.attrs['aria-expanded'],'true');
+assert.equal(trigger.attrs['aria-activedescendant'],`concept-option-${gradient}`);
+assert.equal(options[gradient].offsetTop+16-list.scrollTop,150,'opening must center the current row');
+assert.ok(options[gradient-2].offsetTop>=list.scrollTop);
+assert.ok(options[gradient+2].offsetTop+32<=list.scrollTop+300);
+key('ArrowDown');key('Escape');assert.equal(selected.length,0);assert.equal(list.hidden,true);
+key('ArrowDown');assert.equal(trigger.attrs['aria-activedescendant'],`concept-option-${gradient}`);
+key('ArrowDown');key('Enter');assert.equal(selected.at(-1),gradient+1);assert.equal(list.hidden,true);
+key('Enter');key('End');assert.equal(trigger.attrs['aria-activedescendant'],'concept-option-127');
+key('ArrowDown');assert.equal(trigger.attrs['aria-activedescendant'],'concept-option-127');
+key('Home');key('ArrowUp');assert.equal(trigger.attrs['aria-activedescendant'],'concept-option-0');
+key('PageDown');assert.equal(trigger.attrs['aria-activedescendant'],'concept-option-10');
+key('PageUp');assert.equal(trigger.attrs['aria-activedescendant'],'concept-option-0');
+key('Escape');key('g');key('r');key('a');
+assert.ok(rows[Number(trigger.attrs['aria-activedescendant'].split('-').at(-1))].title.toLowerCase().startsWith('gra'));
+key('Escape');menu.update(rows,gradient);trigger.handlers.click();
+const before=list.scrollTop;const updated=structuredClone(rows);updated[0].text+=' ✓';menu.update(updated,gradient);
+assert.equal(list.scrollTop,before);assert.equal(trigger.attrs['aria-activedescendant'],`concept-option-${gradient}`);
+key('ArrowDown');key('Tab');assert.equal(selected.at(-1),gradient+1);assert.equal(list.hidden,true);
+trigger.handlers.click();list.handlers.click({target:options[5]});assert.equal(selected.at(-1),5);assert.equal(list.hidden,true);
+trigger.handlers.click();handlers.pointerdown({target:{}});assert.equal(list.hidden,true);
+trigger.handlers.click();trigger.handlers.blur();assert.equal(list.hidden,true);
+menu.update(rows,gradient);trigger.handlers.click();trigger.getBoundingClientRect=()=>({top:650,bottom:695});windowEvents.resize();
+assert.equal(list.style.top,'auto');assert.equal(list.style.bottom,'calc(100% + 4px)');
+assert.equal(options[gradient].offsetTop+16-list.scrollTop,150);
+windowEvents.scroll();assert.equal(list.hidden,true);
+console.log('PASS: current-row centering, bounds, mouse selection, keyboard navigation, type-ahead, Tab/Enter/Escape, live label refresh, outside dismissal and resize placement.');

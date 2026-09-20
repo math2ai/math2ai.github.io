@@ -20,7 +20,7 @@ export function hub(storage=new Map()) {
   }
  };
 }
-export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7,now}={}) {
+export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7,now,learning=false}={}) {
  const elements=new Map(),events={},timers=new Set();
  const get=id=>{
   if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',hidden:false,disabled:false,value:'',handlers:{},attributes:{},
@@ -44,9 +44,10 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
   scrollY:0,scrollTo({top}){context.scrollY=top;},confirm:()=>confirm,addEventListener:on,console});
  context.window=context;
  vm.runInContext(fs.readFileSync(new URL('math-display.js',root),'utf8'),context);
+ if(learning)vm.runInContext(fs.readFileSync(new URL('learning.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('progress.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('site.js',root),'utf8'),context);
- const app={get,shared,storage:shared.storage,events,emit,engine:context.math2aiProgress,
+ const app={get,shared,storage:shared.storage,events,emit,engine:context.math2aiProgress,learning:context.math2aiLearning,
   state:()=>JSON.parse(JSON.stringify(context.math2aiProgress.load())),
   current:()=>course.concepts.find(c=>c.title===get('title').textContent),
   question:()=> (get('review-panel').hidden ? app.current() : course.concepts.find(c=>c.title===get('review-concept').textContent))?.questions.find(q=>q.question===get('question').textContent),

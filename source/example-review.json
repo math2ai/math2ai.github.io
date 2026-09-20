@@ -323,7 +323,7 @@
     {
       "conceptId": 104,
       "title": "Singular value decomposition",
-      "example": "For A = [[3,0],[0,1]], the singular values are 3 and 1. Keeping only the first gives A₁ = [[3,0],[0,0]], a rank-one approximation.",
+      "example": "Let A = [[3,0],[0,1]] act on points in a drawing.\nA(1,0) = (3,0): a one-unit horizontal arrow becomes three units long.\nA(0,1) = (0,1): a one-unit vertical arrow keeps its length. The singular values are 3 and 1.\n\nKeep only the stronger stretch by replacing 1 with 0: A₁ = [[3,0],[0,0]]. Now (2,5) maps to (6,0), instead of (6,5). This rank-one approximation keeps horizontal detail but loses vertical detail.",
       "questionIds": [
         "104-01",
         "104-02",
@@ -342,7 +342,9 @@
           "previousQuestion": "For diagonal A = [[3,0],[0,1]], which is its best rank-one approximation under squared entrywise error?",
           "reason": "The original asked for the exact rank-one matrix already displayed in the example."
         }
-      ]
+      ],
+      "previousExample": "For A = [[3,0],[0,1]], the singular values are 3 and 1. Keeping only the first gives A₁ = [[3,0],[0,0]], a rank-one approximation.",
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
     },
     {
       "conceptId": 14,
@@ -667,7 +669,7 @@
     {
       "conceptId": 107,
       "title": "Lagrange multipliers",
-      "example": "Minimize x²+y² subject to x+y=2. Conditions 2x+λ=0 and 2y+λ=0 imply x=y. The constraint then gives x=y=1 and objective 2.",
+      "example": "Goal: choose x and y to minimize f(x,y)=x²+y². For example, f(0,2)=0²+2²=4. Both x and y are inputs to this score.\n\nRule: the chosen numbers must total 2. Write g(x,y)=x+y−2, so an allowed pair has g(x,y)=0.\n\nCombine them: ℒ=x²+y²+λ(x+y−2). Its x derivative gives 2x+λ=0; its y derivative gives 2y+λ=0. Both 2x and 2y equal −λ, so x=y.\n\nUse the rule: x+y=2 gives (x,y)=(1,1). The objective is f(1,1)=1²+1²=2. The multiplier is λ=−2. Moving away from this equal split raises the score.",
       "questionIds": [
         "107-01",
         "107-02",
@@ -701,7 +703,9 @@
           "previousQuestion": "For f(x,y) = x² + y² subject to x+y=2, what follows from 2x+λ=0 and 2y+λ=0?",
           "reason": "The original asked for x=y immediately after the example derived that same relation."
         }
-      ]
+      ],
+      "previousExample": "Minimize x²+y² subject to x+y=2. Conditions 2x+λ=0 and 2y+λ=0 imply x=y. The constraint then gives x=y=1 and objective 2.",
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
     },
     {
       "conceptId": 24,
@@ -855,7 +859,7 @@
     {
       "conceptId": 28,
       "title": "Data leakage",
-      "example": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
+      "example": "Leakage: train on depths 100, 101, 102 m from Well A, then test on 101, 102, 103 m from that same well. The two shared measurements make the test partly familiar, so its score can look too good.\n\nFix for testing on new wells: assign all of Well A to training and all of a different Well B to testing before making windows. Fit preprocessing using training wells only, then apply it to the test well. No measurements from Well B influence training.",
       "questionIds": [
         "28-01",
         "28-02",
@@ -868,7 +872,9 @@
         "28-09",
         "28-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "previousExample": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
     },
     {
       "conceptId": 26,
@@ -1011,7 +1017,7 @@
     {
       "conceptId": 112,
       "title": "Gradient boosting",
-      "example": "The current prediction is 4. A new learner outputs a correction of 2 and η=0.1. The updated prediction is 4+0.1×2 = 4.2.",
+      "example": "Consider one training row whose target is 6. The current model predicts 4, so its residual is 6−4=2.\n\nFit a small tree to residuals across the training set. Suppose it predicts a correction of 2 for this row. With learning rate η=0.1, add only 0.1×2=0.2: the new prediction is 4+0.2 = 4.2.\n\nThe remaining error is 6−4.2=1.8. The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor.",
       "questionIds": [
         "112-01",
         "112-02",
@@ -1030,7 +1036,9 @@
           "previousQuestion": "If F=4, a new learner outputs 2, and η=0.1, what is the updated prediction?",
           "reason": "The original repeated the exact boosting update solved above it."
         }
-      ]
+      ],
+      "previousExample": "The current prediction is 4. A new learner outputs a correction of 2 and η=0.1. The updated prediction is 4+0.1×2 = 4.2.",
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
     },
     {
       "conceptId": 113,

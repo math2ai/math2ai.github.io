@@ -105,6 +105,9 @@ python verify_prerequisites.py
 python verify_feedback.py
 node verify_math.mjs
 node verify_lesson_clarity.mjs
+node verify_concept_menu.mjs
+node verify_learning.mjs
+python verify_teaching_steps.py
 node verify_state.mjs
 node verify_review.mjs
 node verify_feedback.mjs
@@ -122,3 +125,18 @@ Presentation builders are included for reuse; rebuilding the PPTX requires the O
 ## License
 
 The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK and KaTeX have their own included MIT licenses; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.
+
+
+## Revisit later
+
+Revisit later is a reversible personal bookmark. It does not grant quiz credit and a correct answer does not remove it. Review provides a personal revisit list; automatic suggestions remain based on answer history. Clear saved answers deliberately keeps these bookmarks.
+
+`source/learning.js` saves bookmarks separately from the answer journal. Guests use browser storage; signed-in users use an operation queue and the additive `supabase/migrations/202609200001_learning_choices.sql` migration. Run that migration before releasing the new page, then test the real account flow. It adds its own private table/RPC/Realtime publication entry without changing existing quiz tables or functions. If setup is missing or the network fails, bookmarks remain queued on the device and the footer says they have not synced.
+
+Each concept has its own revision, including explicit removals. A write based on an older revision cannot overwrite a newer saved choice. Sequential offline changes keep their order; repeated writes are idempotent. Guest bookmarks fill missing account choices on signup; an existing account choice wins a conflict. Sign-out immediately switches to the guest view. Localhost and production share account bookmarks after upload to the same Supabase project and course version; guest bookmarks belong to their browser origin.
+
+See [the release test checklist](source/LEARNING_CHOICES_TESTING.md) for the UI flows and database setup. PostgreSQL checks use the optional PGlite test dependency:
+
+```sh
+node source/verify_learning_sql.mjs /absolute/path/to/pglite/dist/index.js
+```

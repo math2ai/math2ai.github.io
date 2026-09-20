@@ -2277,11 +2277,11 @@
       "legacyId": 104,
       "chapter": "Numbers and linear algebra",
       "title": "Singular value decomposition",
-      "definition": "Singular value decomposition (SVD) separates a real matrix into input directions, nonnegative scale factors, and output directions. The scale factors are its singular values. It works for rectangular matrices too.",
+      "definition": "A matrix can stretch an input differently in different directions. Singular value decomposition (SVD) describes that action using perpendicular input directions, a nonnegative stretch for each, and matching output directions. The stretches are its singular values. SVD works for rectangular matrices too.",
       "formula": "A = UΣVᵀ",
-      "formulaNote": "The columns of V give perpendicular (orthogonal) input directions; U gives the corresponding output directions. Σ is the diagonal matrix of singular values.\n\nRank counts the nonzero singular values. A low-rank approximation uses fewer independent directions to approximate A. Keep the largest k singular values and set the rest to zero: the result has rank at most k, and some information can be lost.",
-      "example": "For A = [[3,0],[0,1]], the singular values are 3 and 1. Keeping only the first gives A₁ = [[3,0],[0,0]], a rank-one approximation.",
-      "metaphor": "Rotate the viewpoint, stretch along perpendicular axes, then rotate again. Keeping the strongest stretches compresses the transformation.",
+      "formulaNote": "Read the product from right to left: Vᵀ measures the input along the chosen directions, Σ applies the stretches, and U places the result along the output directions. The columns of V give perpendicular (orthogonal) input directions.\n\nRank counts the nonzero singular values. Keeping the largest k singular values and setting the others to zero gives a low-rank approximation: it retains at most k independent directions, so some detail can be lost.",
+      "example": "Let A = [[3,0],[0,1]] act on points in a drawing.\nA(1,0) = (3,0): a one-unit horizontal arrow becomes three units long.\nA(0,1) = (0,1): a one-unit vertical arrow keeps its length. The singular values are 3 and 1.\n\nKeep only the stronger stretch by replacing 1 with 0: A₁ = [[3,0],[0,0]]. Now (2,5) maps to (6,0), instead of (6,5). This rank-one approximation keeps horizontal detail but loses vertical detail.",
+      "metaphor": "Stretch a drawing sideways, then flatten it into a horizontal line. The first change keeps both directions; the second loses the drawing’s height.",
       "question": "For A = [[1,0],[0,4]], keep only the direction with the largest singular value. Which matrix results?",
       "options": [
         "[[1,0],[0,0]]",
@@ -2319,7 +2319,7 @@
         },
         {
           "id": "104-02",
-          "question": "Can singular value decomposition be applied to a rectangular real matrix?",
+          "question": "Can SVD describe a rectangular real matrix, such as a 2 × 3 matrix?",
           "options": [
             "Only if it is square",
             "Only if every entry is positive",
@@ -2327,8 +2327,8 @@
             "No"
           ],
           "correct": 2,
-          "feedback": "SVD applies to any finite real matrix, including rectangular and rank-deficient ones.",
-          "retryFeedback": "SVD separates input and output directions, which need not have the same dimension. Do not impose the square-matrix restriction from eigendecomposition."
+          "feedback": "Yes. The input and output can have different numbers of coordinates. SVD can still describe how the matrix maps between them.",
+          "retryFeedback": "A matrix can map inputs with one number of coordinates to outputs with another. Check whether the definition limits SVD to square matrices."
         },
         {
           "id": "104-03",
@@ -2341,20 +2341,20 @@
           ],
           "correct": 0,
           "feedback": "Singular values are nonnegative scale factors, commonly sorted in descending order.",
-          "retryFeedback": "Singular values describe scale magnitudes. Directional signs can be represented by the associated singular vectors instead."
+          "retryFeedback": "Singular values measure how strongly a direction is stretched, using a magnitude. A reversal can be carried by the input and output directions."
         },
         {
           "id": "104-04",
-          "question": "What does keeping only the largest k singular values produce?",
+          "question": "A matrix has singular values 6, 2, and 1. Keep the two largest and set the other to zero. How many independent directions can remain?",
           "options": [
-            "A matrix with exactly k rows",
-            "A matrix that undoes every transformation",
-            "An approximation of rank at most k",
-            "The same matrix entries merely rearranged"
+            "Exactly six",
+            "Exactly three",
+            "At most two",
+            "None"
           ],
           "correct": 2,
-          "feedback": "Truncation limits the number of retained independent components.",
-          "retryFeedback": "Each retained singular component contributes at most one independent direction. Count the directions that can remain."
+          "feedback": "Only two nonzero scales remain, so at most two independent directions are carried through the approximation.",
+          "retryFeedback": "A direction with a zero scale is flattened. Count the scale factors left nonzero after carrying out the stated operation."
         },
         {
           "id": "104-05",
@@ -2371,55 +2371,55 @@
         },
         {
           "id": "104-06",
-          "question": "How is the rank related to the singular values in exact arithmetic?",
+          "question": "Rank counts nonzero singular values. What is the rank of a matrix with singular values 7, 0, and 0?",
           "options": [
-            "It is the number of matrix entries",
-            "It is the number of nonzero singular values",
-            "It is always the largest value",
-            "It is their sum"
+            "7",
+            "1",
+            "0",
+            "3"
           ],
           "correct": 1,
-          "feedback": "Nonzero singular values correspond to independent directions carried by the matrix.",
-          "retryFeedback": "A zero singular component carries no independent direction through the matrix. Count only the components that remain active."
+          "feedback": "Only one singular value is nonzero, so the matrix has rank 1.",
+          "retryFeedback": "Count how many listed scales carry a direction through the transformation. Count the nonzero scales rather than adding their numerical values."
         },
         {
           "id": "104-07",
-          "question": "Are singular values generally the same as signed eigenvalues?",
+          "question": "If a direction has singular value 0, can the output retain a distinction between different input lengths along that direction?",
           "options": [
-            "Only when a matrix has zeros",
-            "Only for rectangular matrices",
-            "Yes",
-            "No"
+            "Only when the input length is positive",
+            "Yes; zero doubles every length",
+            "Yes; zero leaves lengths unchanged",
+            "No; every such length is scaled to zero"
           ],
           "correct": 3,
-          "feedback": "For example, a negative diagonal entry can be a negative eigenvalue but its associated singular value is nonnegative.",
-          "retryFeedback": "An eigenvalue can include a sign or even be complex. Singular values summarize magnitudes under a different factorization."
+          "feedback": "Multiplying different lengths by zero gives the same result. That direction’s information is lost.",
+          "retryFeedback": "Apply the scale factor to two different input lengths. If their outputs are indistinguishable, the original difference cannot be recovered from them."
         },
         {
           "id": "104-08",
-          "question": "What do the columns of V describe in A=UΣVᵀ?",
+          "question": "An input arrow of length 2 lies along one SVD input direction. Its output has length 10. What is the singular value for that direction?",
           "options": [
-            "Only the output directions",
-            "The magnitudes of all matrix entries",
-            "The row and column counts",
-            "Orthogonal directions in the input space"
+            "2",
+            "20",
+            "10",
+            "5"
           ],
           "correct": 3,
-          "feedback": "Vᵀ expresses the input in directions whose scales are recorded in Σ.",
-          "retryFeedback": "Apply the factors from right to left. The first rotation changes the input's coordinates before the singular-value scaling."
+          "feedback": "The stretch is output length divided by input length: 10/2=5.",
+          "retryFeedback": "A singular value multiplies the input length to give the output length. Work backward from that multiplication to find the missing factor."
         },
         {
           "id": "104-09",
-          "question": "A low-rank approximation keeps the first coordinate direction and discards the second. A later task needs information from the second coordinate. Is that information guaranteed to survive?",
+          "question": "An approximation discards horizontal information but keeps vertical coordinates exactly. A task only asks whether a point’s vertical coordinate is above 5. Can the approximation still answer that task exactly?",
           "options": [
-            "Yes; any rank-one approximation preserves every coordinate",
-            "Yes; a small singular value always means irrelevant information",
-            "Yes; all tasks depend only on the largest singular value",
-            "No; the needed direction was discarded"
+            "Only if the horizontal coordinate is zero",
+            "No; discarding any direction ruins every task",
+            "Only if the vertical coordinate is above 10",
+            "Yes; all information needed by this task is retained"
           ],
           "correct": 3,
-          "feedback": "The approximation has removed the direction that this task needs. Small squared entrywise error does not guarantee preservation of information important to every task.",
-          "retryFeedback": "Separate the size of a component from its relevance to a task. Compare what the retained representation contains with what the task needs."
+          "feedback": "Yes. This task depends only on the vertical coordinate, which is unchanged. Losing information can matter for some tasks without affecting others.",
+          "retryFeedback": "Identify exactly which coordinate the task uses. Then check whether the approximation changes that coordinate; irrelevant lost information need not prevent this particular decision."
         },
         {
           "id": "104-10",
@@ -2432,7 +2432,7 @@
           ],
           "correct": 3,
           "feedback": "Keeping the largest component retains scale 5 and omits the components with scales 2 and 0.",
-          "retryFeedback": "Order the singular values by size. Keeping one component refers to one direction and its scale, not to a row of the matrix."
+          "retryFeedback": "Order the singular values by size. Retaining one scale keeps one direction; identify which other scales must be left out."
         }
       ]
     },
@@ -4687,12 +4687,12 @@
       "legacyId": 107,
       "chapter": "Probability and calculus",
       "title": "Lagrange multipliers",
-      "definition": "Lagrange multipliers help find candidates for optimization with equality constraints. For one smooth constraint with a nonzero gradient, a candidate’s objective gradient balances a multiple of the constraint gradient. The candidate must also satisfy the constraint. These conditions do not guarantee a minimum.",
-      "formula": "ℒ(x,λ) = f(x) + λg(x)\n∇f(x) + λ∇g(x) = 0;   g(x) = 0",
-      "formulaNote": "Here f is the objective and g(x) = 0 is the equality constraint. Inequality constraints need additional conditions.",
-      "example": "Minimize x²+y² subject to x+y=2. Conditions 2x+λ=0 and 2y+λ=0 imply x=y. The constraint then gives x=y=1 and objective 2.",
-      "metaphor": "Find the lowest contour that touches the permitted path without leaving it.",
-      "question": "To minimize x² + 3y² subject to x + y = 8, the stationary conditions give x = 3y. Which point satisfies both conditions?",
+      "definition": "Lagrange multipliers help minimize or maximize a score while obeying an equality rule. With two inputs x and y, f(x,y) is the score and g(x,y)=0 is the rule. Each function takes the pair (x,y) and returns one number; y is an input, not the value of f.",
+      "formula": "ℒ(x,y,λ) = f(x,y) + λg(x,y)",
+      "formulaNote": "The extra number λ (lambda) links the score and the rule. For a smooth rule whose gradient is nonzero, set the x and y derivatives of ℒ to zero and also solve g(x,y)=0. These equations give candidates to check; they do not guarantee a minimum. λ may be positive, zero, or negative.",
+      "example": "Goal: choose x and y to minimize f(x,y)=x²+y². For example, f(0,2)=0²+2²=4. Both x and y are inputs to this score.\n\nRule: the chosen numbers must total 2. Write g(x,y)=x+y−2, so an allowed pair has g(x,y)=0.\n\nCombine them: ℒ=x²+y²+λ(x+y−2). Its x derivative gives 2x+λ=0; its y derivative gives 2y+λ=0. Both 2x and 2y equal −λ, so x=y.\n\nUse the rule: x+y=2 gives (x,y)=(1,1). The objective is f(1,1)=1²+1²=2. The multiplier is λ=−2. Moving away from this equal split raises the score.",
+      "metaphor": "The rule is a path you must stay on; the score is the height along that path. Find the lowest allowed point.",
+      "question": "The score is f(x,y)=x²+3y² and the rule is x+y=8. The Lagrange equations give x=3y. Which pair satisfies both x=3y and x+y=8?",
       "options": [
         "(4,4)",
         "(8,0)",
@@ -4716,7 +4716,7 @@
       "questions": [
         {
           "id": "107-01",
-          "question": "To minimize x² + 3y² subject to x + y = 8, the stationary conditions give x = 3y. Which point satisfies both conditions?",
+          "question": "The score is f(x,y)=x²+3y² and the rule is x+y=8. The Lagrange equations give x=3y. Which pair satisfies both x=3y and x+y=8?",
           "options": [
             "(4,4)",
             "(8,0)",
@@ -4729,7 +4729,7 @@
         },
         {
           "id": "107-02",
-          "question": "What does the equality constraint define?",
+          "question": "In a Lagrange problem, what does the rule g(x,y)=0 describe?",
           "options": [
             "The number of calculation steps",
             "The matrix transpose",
@@ -4737,12 +4737,12 @@
             "The feasible points for the optimization"
           ],
           "correct": 3,
-          "feedback": "Candidate solutions must satisfy the specified equality as well as the optimality conditions.",
-          "retryFeedback": "The constraint limits where candidates may lie. A point with an attractive objective can still be excluded."
+          "feedback": "It describes which input pairs are allowed. The separate function f(x,y) assigns a score to each pair.",
+          "retryFeedback": "Keep the two roles separate: one function scores an input pair, while the other checks whether that pair obeys the required rule."
         },
         {
           "id": "107-03",
-          "question": "For minimizing x² + y² subject to 2x + y = 7, which Lagrangian matches ℒ = f + λg with g = 0?",
+          "question": "Let f(x,y)=x²+y² be the score, and let the rule be 2x+y=7, written g(x,y)=2x+y−7. Which expression is ℒ=f+λg?",
           "options": [
             "x² + y² + λ(2x + y − 7)",
             "x² + y² + λ(2x + y + 7)",
@@ -4751,11 +4751,11 @@
           ],
           "correct": 0,
           "feedback": "Move 7 to the left to write g = 2x+y−7 = 0, then add λg to the objective.",
-          "retryFeedback": "First express the required equality as an expression equal to zero. Multiply that entire expression by the multiplier and add the objective."
+          "retryFeedback": "Start with the score function. Then add the multiplier times the entire rule function, including the constant that makes the rule equal zero."
         },
         {
           "id": "107-04",
-          "question": "Why must g(x)=0 still be solved alongside the gradient equations?",
+          "question": "Why must a candidate also satisfy g(x,y)=0 after solving the derivative equations?",
           "options": [
             "Feasibility is automatic for every gradient",
             "The multiplier replaces all variables",
@@ -4763,12 +4763,12 @@
             "The constraint is optional"
           ],
           "correct": 2,
-          "feedback": "The stationary equations and the original constraint form one system.",
-          "retryFeedback": "The derivative equations balance changes; the original constraint still decides whether a candidate is permitted."
+          "feedback": "Balancing derivatives does not by itself establish that an input pair obeys the rule. Both requirements must hold.",
+          "retryFeedback": "The derivative equations compare changes in the score and rule. Separately check whether the candidate pair is actually allowed by the original rule."
         },
         {
           "id": "107-05",
-          "question": "For x+y=6, what equal values minimize x²+y²?",
+          "question": "Minimize f(x,y)=x²+y² while x+y=6. The derivative equations give x=y. Which equal values also obey the rule?",
           "options": [
             "x=y=6",
             "x=y=1",
@@ -4776,12 +4776,12 @@
             "x=y=3"
           ],
           "correct": 3,
-          "feedback": "Equal sharing minimizes this convex quadratic while satisfying the sum.",
-          "retryFeedback": "Under a fixed sum, shifting away from equal coordinates increases this symmetric sum of squares. Use the required total."
+          "feedback": "With x=y, the rule becomes 2x=6. Thus x=y=3.",
+          "retryFeedback": "Use the supplied equality between the two inputs in the total rule. The score and the total are different functions of the same pair."
         },
         {
           "id": "107-06",
-          "question": "Does every Lagrange stationary candidate have to be a minimum?",
+          "question": "Do the Lagrange equations alone guarantee that every candidate is a minimum?",
           "options": [
             "Yes",
             "No",
@@ -4789,25 +4789,25 @@
             "Only if λ is positive"
           ],
           "correct": 1,
-          "feedback": "Candidates may be maxima or other stationary points; further analysis establishes their character.",
-          "retryFeedback": "Stationary conditions produce candidates, not a complete classification. Check the objective and feasible behavior around each candidate."
+          "feedback": "No. They identify candidates; compare their scores and check the allowed choices to determine whether a candidate is a minimum.",
+          "retryFeedback": "Finding a candidate and proving it has the lowest allowed score are separate steps. Think about what the derivative equations establish."
         },
         {
           "id": "107-07",
-          "question": "Can a Lagrange multiplier be negative under the stated equality-constraint convention?",
+          "question": "Using ℒ=f+λg, the x derivative at an allowed pair gives −3+λ=0. Which statement about λ follows?",
           "options": [
-            "No",
-            "Only if the objective is negative",
-            "Yes",
-            "Only if the constraint is infeasible"
+            "It is negative: λ=−3",
+            "It is zero",
+            "It is positive: λ=3",
+            "It cannot be positive for an equality rule"
           ],
           "correct": 2,
-          "feedback": "Equality multipliers are not restricted to a nonnegative sign, unlike some inequality formulations.",
-          "retryFeedback": "An equality multiplier balances gradients. Unlike multipliers for certain inequality conventions, it has no general sign restriction."
+          "feedback": "Adding 3 to both sides gives λ=3, a positive multiplier. Equality-rule multipliers can be positive, zero, or negative depending on the problem.",
+          "retryFeedback": "Treat the derivative condition as an equation for one unknown. Choose the value that makes the two terms add to zero; keep track of the existing minus sign."
         },
         {
           "id": "107-08",
-          "question": "For minimizing x² + y² with x + y = 8, use ℒ = x² + y² + λ(x + y − 8). What is λ at the minimizing point?",
+          "question": "For score f(x,y)=x²+y² and rule x+y=8, a minimizing pair is x=y=4. The x derivative gives 2x+λ=0. What is λ?",
           "options": [
             "−4",
             "8",
@@ -4815,8 +4815,8 @@
             "−8"
           ],
           "correct": 3,
-          "feedback": "Gradient balance gives 2x+λ = 0 and 2y+λ = 0. Thus x = y = 4, and λ = −8.",
-          "retryFeedback": "The two gradient equations relate both coordinates to the same multiplier. Use the constraint to find the coordinates before substituting back."
+          "feedback": "Substitute x=4 into 2x+λ=0: 8+λ=0, so λ=−8.",
+          "retryFeedback": "Use the supplied input value in the derivative equation. Then isolate the multiplier, keeping the sign needed to make the sum zero."
         },
         {
           "id": "107-09",
@@ -4833,16 +4833,16 @@
         },
         {
           "id": "107-10",
-          "question": "Do the simple equality-multiplier equations directly cover every inequality constraint without extra conditions?",
+          "question": "The rule is x+y=10. Which function g(x,y) equals zero exactly when that rule holds?",
           "options": [
-            "No",
-            "Yes",
-            "Only with positive inputs",
-            "Only with two constraints"
+            "x+y−10",
+            "x²+y²",
+            "x+y+10",
+            "10(x+y)"
           ],
           "correct": 0,
-          "feedback": "Inequalities require additional feasibility and complementary-slackness conditions in the usual constrained framework.",
-          "retryFeedback": "Inequalities can be active or inactive and introduce additional conditions. The equality-only equations omit those cases."
+          "feedback": "Move the required total to the left: x+y−10=0 is equivalent to x+y=10.",
+          "retryFeedback": "Write the equality with zero on one side by subtracting the required total from both sides. Check the result using any allowed pair."
         }
       ]
     },
@@ -5972,17 +5972,17 @@
       "definition": "Data leakage occurs when model development uses information that would be unavailable in the intended prediction setting. A window is a short consecutive segment of a sequence, so nearby windows can include the same measurements.",
       "formula": "train wells ∩ test wells = ∅",
       "formulaNote": "For testing on new wells, keep every well entirely within one split.",
-      "example": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
+      "example": "Leakage: train on depths 100, 101, 102 m from Well A, then test on 101, 102, 103 m from that same well. The two shared measurements make the test partly familiar, so its score can look too good.\n\nFix for testing on new wells: assign all of Well A to training and all of a different Well B to testing before making windows. Fit preprocessing using training wells only, then apply it to the test well. No measurements from Well B influence training.",
       "metaphor": "An exam is misleading when the practice sheet contains copies of its questions.",
-      "question": "To measure generalization to unseen wells, how should you split data?",
+      "question": "A model trained on Wells A and B will be used on new wells. Which test set best checks that goal?",
       "options": [
-        "Randomly split overlapping windows",
-        "Keep each well entirely in one split",
-        "Put duplicate rows in every split",
-        "Normalize using all test values first"
+        "New windows from Well A",
+        "Measurements from previously unused Wells C and D",
+        "Copies of the training rows with different row IDs",
+        "Shuffled training measurements from A and B"
       ],
       "correct": 1,
-      "feedback": "Nearby measurements and overlapping windows are strongly related. Split at the deployment-relevant group before creating windows and fitting preprocessing.",
+      "feedback": "Previously unused wells test performance beyond the wells used to fit the model. New windows or row IDs from training wells do not create that separation.",
       "sources": [
         {
           "title": "Leakage (machine learning), Wikipedia",
@@ -5993,16 +5993,16 @@
       "questions": [
         {
           "id": "28-01",
-          "question": "To measure generalization to unseen wells, how should you split data?",
+          "question": "A model trained on Wells A and B will be used on new wells. Which test set best checks that goal?",
           "options": [
-            "Randomly split overlapping windows",
-            "Keep each well entirely in one split",
-            "Put duplicate rows in every split",
-            "Normalize using all test values first"
+            "New windows from Well A",
+            "Measurements from previously unused Wells C and D",
+            "Copies of the training rows with different row IDs",
+            "Shuffled training measurements from A and B"
           ],
           "correct": 1,
-          "feedback": "Nearby measurements and overlapping windows are strongly related. Split at the deployment-relevant group before creating windows and fitting preprocessing.",
-          "retryFeedback": "To test a genuinely unseen well, prevent any measurements from that well from influencing training or preprocessing."
+          "feedback": "Previously unused wells test performance beyond the wells used to fit the model. New windows or row IDs from training wells do not create that separation.",
+          "retryFeedback": "The intended use is a well the model has never learned from. Identify which choice keeps the underlying source measurements separate, not just their row names."
         },
         {
           "id": "28-02",
@@ -7097,10 +7097,10 @@
       "legacyId": 112,
       "chapter": "Learning from data",
       "title": "Gradient boosting",
-      "definition": "Gradient boosting builds an additive model in stages. Each new learner aims to reduce the current loss, often by fitting negative gradients. For squared error, these are proportional to residuals: target minus prediction.",
+      "definition": "Gradient boosting builds a predictor one correction at a time. Each new learner, often a small decision tree, learns where the current model is wrong. For squared error it fits residuals: target minus prediction. Other losses use corrections based on their negative gradients.",
       "formula": "Fₘ(x) = Fₘ₋₁(x) + ηhₘ(x)",
-      "formulaNote": "Add a new learner hₘ to the current model Fₘ₋₁. The learning rate η scales its contribution.",
-      "example": "The current prediction is 4. A new learner outputs a correction of 2 and η=0.1. The updated prediction is 4+0.1×2 = 4.2.",
+      "formulaNote": "Fₘ₋₁ is the current predictor. A new learner hₘ proposes corrections from the input features. The learning rate η controls how much of each correction is added to form Fₘ.",
+      "example": "Consider one training row whose target is 6. The current model predicts 4, so its residual is 6−4=2.\n\nFit a small tree to residuals across the training set. Suppose it predicts a correction of 2 for this row. With learning rate η=0.1, add only 0.1×2=0.2: the new prediction is 4+0.2 = 4.2.\n\nThe remaining error is 6−4.2=1.8. The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor.",
       "metaphor": "An editor revises a draft by adding small corrections aimed at its remaining mistakes.",
       "question": "A boosted model currently predicts 6. A new learner outputs −3 and η = 0.2. What is the updated prediction?",
       "options": [

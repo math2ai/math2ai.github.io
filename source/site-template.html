@@ -16,7 +16,7 @@
     </div>
     <p id="auth-status" role="status" aria-live="polite"></p>
   </div></div>
-  <div class="navigation"><label for="concept-select">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select></div><a class="review-link" id="review-link" href="#review">Review</a></div>
+  <div class="navigation"><label for="concept-select" id="concept-label">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select><div id="concept-trigger" class="concept-trigger" role="combobox" tabindex="0" aria-label="Choose a concept" aria-haspopup="listbox" aria-controls="concept-options" aria-expanded="false" hidden></div><div id="concept-options" class="concept-options" role="listbox" aria-label="Concepts" hidden></div></div><a class="review-link" id="review-link" href="#review">Review</a></div>
 </header>
 <main>
   <noscript><p>Enable JavaScript to use the course and questions.</p></noscript>
@@ -26,9 +26,10 @@
       <div id="review-chooser">
         <div class="review-tools">
           <label for="review-search"><span class="review-sr-only">Search topics</span><input id="review-search" type="search" placeholder="Search concepts or chapters" autocomplete="off"></label>
-          <label for="review-filter"><span class="review-sr-only">Show</span><select id="review-filter"><option value="all">All topics</option><option value="practiced">Practiced</option><option value="revisit">Worth revisiting</option><option value="solid">Looking solid</option><option value="selected">Selected</option></select></label>
+          <label for="review-filter"><span class="review-sr-only">Show</span><select id="review-filter"><option value="all">All topics</option><option value="bookmarked">My revisit list</option><option value="practiced">Practiced</option><option value="revisit">Worth revisiting</option><option value="solid">Looking solid</option><option value="selected">Selected</option></select></label>
         </div>
-        <div class="review-shortcuts"><button id="review-suggested" type="button">Use suggested topics</button><button id="review-clear" type="button">Clear selection</button></div>
+        <div class="review-shortcuts"><button id="review-bookmarks" type="button">My revisit list</button><button id="review-suggested" type="button">Use suggested topics</button><button id="review-clear" type="button">Clear selection</button></div>
+        <p id="review-personal-note" class="review-note" hidden>Your choices are independent of quiz scores. Open a concept to change its marker.</p>
         <p id="review-help" class="review-note">Tried counts different questions. Correct counts use each question’s first and latest answers.</p>
         <p id="review-loading" class="review-note" role="status" hidden>Loading your saved answers…</p>
         <div id="review-topics"></div>
@@ -40,7 +41,7 @@
     </section>
     <article class="concept" id="lesson-panel">
       <p class="chapter" id="chapter"></p>
-      <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span></div>
+      <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span></div><p id="concept-personal" class="personal-summary" hidden></p>
       <h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p><p class="formula-note" id="formula-note" hidden></p>
       <h3>Worked example</h3><p class="example" id="example"></p>
       <h3>Metaphor</h3><p class="metaphor" id="metaphor"></p>
@@ -52,16 +53,17 @@
         <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button class="primary" id="retry" type="button" hidden>Try again</button><button id="another" type="button">Another question</button><button id="reset-question" class="reset-question" type="button" title="Start fresh practice for this question. Your answer history is kept." hidden>Reset question</button></div>
       </form>
     </section>
-    <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous</button><button class="primary" id="next">Next concept</button></nav>
+    <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous</button><div class="pager-next"><button class="revisit-toggle" id="mark-revisit" type="button" aria-label="Revisit later" aria-pressed="false" title="Revisit later. Click to save or remove this reminder."><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path class="revisit-check" d="m7 12 3.5 3.5L17 9"/></svg><span>Revisit later</span></button><button class="primary" id="next">Next concept</button></div></nav>
   </div>
 </main>
 <footer>
   <p><span id="save-description">Guest answers are saved in this browser. Sign in to save across devices.</span> <button class="reset-button" id="reset" type="button">Clear saved answers</button></p>
   <p id="storage-note" role="status"></p>
+  <p id="learning-note" role="status" hidden></p>
 </footer>
 <script type="application/json" id="course-data">/*COURSE_DATA*/</script>
 <script type="application/json" id="math-data">/*MATH_DATA*/</script>
 <script>/*MATH_JS*/</script>
 <script type="application/json" id="auth-config">/*AUTH_CONFIG*/</script>
-<script>/*AUTH_SDK*/</script><script>/*PROGRESS_JS*/</script><script>/*AUTH_JS*/</script><script>/*COURSE_JS*/</script>
+<script>/*LEARNING_JS*/</script><script>/*AUTH_SDK*/</script><script>/*PROGRESS_JS*/</script><script>/*AUTH_JS*/</script><script>/*CONCEPT_MENU_JS*/</script><script>/*COURSE_JS*/</script>
 </body></html>

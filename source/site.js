@@ -8,6 +8,11 @@
  const content = (text,key) => notation ? notation.html(text,key) : escape(text);
  const spoken = (text,key) => notation ? notation.label(text,key) : text;
  const write = (node,text,key) => notation ? notation.write(node,text,key) : (node.textContent = text);
+ const conceptMenu = window.math2aiConceptMenu?.({select:el('concept-select'),trigger:el('concept-trigger'),list:el('concept-options'),label:el('concept-label'),onChoose:index=>go(index)});
+ const learning=window.math2aiLearning;
+ let personal=learning?.status() || {owner:'loading',ready:false,values:{},message:''};
+ const marker=c=>personal.values['concept:'+c.legacyId]==='revisit'?'revisit':'none';
+ const markerLabel=value=>value==='revisit'?'Revisit later':'';
  const fresh = () => ({version:course.version, current:0, concepts:{}});
  const validIndex = n => Number.isInteger(n) && n >= 0 && n < items.length;
  let state = fresh(), storageMessage = '', owner = null, viewRevision = null, ready = false, initialRender = true;
@@ -115,7 +120,7 @@
  function matchingTopics() {
   const search = review.search.trim().toLocaleLowerCase();
   return reviewFacts().filter(f => (!search || `${String(f.c.id).padStart(3,'0')} ${f.c.title} ${f.c.chapter}`.toLocaleLowerCase().includes(search)) &&
-   (review.filter === 'all' || review.filter === 'practiced' && f.tried || review.filter === 'revisit' && f.missed ||
+   (review.filter === 'all' || review.filter === 'bookmarked' && marker(f.c)==='revisit' || review.filter === 'practiced' && f.tried || review.filter === 'revisit' && f.missed ||
     review.filter === 'solid' && f.solid || review.filter === 'selected' && review.selection.has(f.c.legacyId)));
  }
  function selectionSignature() { return [...review.selection].sort((a,b) => a-b).join(','); }
@@ -138,6 +143,9 @@
   review.filtered = !!review.search.trim() || review.filter !== 'all';
   el('review-search').disabled = !ready; el('review-filter').disabled = !ready;
   el('review-suggested').disabled = !ready; el('review-clear').disabled = !ready || !review.selection.size;
+  el('review-bookmarks').disabled=!ready || !personal.ready;
+  el('review-personal-note').hidden=review.filter!=='bookmarked';
+  el('review-no-matches').textContent=review.filter==='bookmarked'&&!review.search.trim()?'No concepts saved for later. Use Revisit later on any lesson.':'No topics match. Try a different search or filter.';
   el('review-loading').hidden = ready;
   el('review-no-matches').hidden = !ready || !!matches.length;
   topics.hidden = !ready;
@@ -151,8 +159,9 @@
    return `<details class="review-chapter" data-chapter="${index}" ${open ? 'open' : ''}><summary id="review-heading-${index}"><span>${escape(chapter.title)}</span><span class="review-chapter-count">${totalSelected ? totalSelected + ' selected' : ''}</span></summary>
     <button type="button" class="review-chapter-select" id="review-chapter-${index}" data-chapter="${index}">${allSelected ? 'Deselect shown' : 'Select shown'}</button>
     <table class="review-table" aria-label="${escape(chapter.title)} topic statistics" aria-describedby="review-help"><thead><tr><th scope="col">Topic</th><th scope="col">Tried</th><th scope="col">Correct<br>first</th><th scope="col">Correct<br>latest</th></tr></thead><tbody>${rows.map(f => {
+     const manual=markerLabel(marker(f.c));
      const label = f.solid ? 'Looking solid' : f.missed ? 'Worth revisiting' : !f.tried ? 'Not tried' : '';
-     return `<tr><th scope="row"><label class="review-topic-label" for="review-topic-${f.c.legacyId}"><input type="checkbox" name="review-topic" id="review-topic-${f.c.legacyId}" value="${f.c.legacyId}" aria-label="Review ${String(f.c.id).padStart(3,'0')} · ${escape(f.c.title)}" ${review.selection.has(f.c.legacyId) ? 'checked' : ''}><span>${String(f.c.id).padStart(3,'0')} · ${escape(f.c.title)}${label ? `<span class="review-topic-status${f.solid ? ' solid' : ''}">${label}</span>` : ''}</span></label></th>
+     return `<tr><th scope="row"><div class="review-topic-label"><input type="checkbox" name="review-topic" id="review-topic-${f.c.legacyId}" value="${f.c.legacyId}" aria-label="Review ${String(f.c.id).padStart(3,'0')} · ${escape(f.c.title)}" ${review.selection.has(f.c.legacyId) ? 'checked' : ''}><span><a class="review-lesson" href="#lesson-${f.c.legacyId}" aria-label="Open ${escape(f.c.title)}">${String(f.c.id).padStart(3,'0')} · ${escape(f.c.title)}</a>${manual?`<span class="review-personal-status">${manual}</span>`:''}${label ? `<span class="review-topic-status${f.solid ? ' solid' : ''}">${label}</span>` : ''}</span></div></th>
       <td><span class="review-stat-label" aria-hidden="true">Tried</span>${f.tried}/${f.c.questions.length}</td><td><span class="review-stat-label" aria-hidden="true">Correct first</span>${f.tried ? f.first + '/' + f.tried : '—'}</td><td><span class="review-stat-label" aria-hidden="true">Correct latest</span>${f.tried ? f.latest + '/' + f.tried : '—'}</td></tr>`;
     }).join('')}</tbody></table></details>`;
   }).join('');
@@ -231,9 +240,14 @@
   el('concept-score').title = 'Answered correctly';
   el('concept-select').innerHTML = course.chapters.map(ch => `<optgroup label="${escape(ch.title)}">${items.filter(item => item.chapter === ch.title).map(item => {
    const n = correctCount(item);
-   return `<option value="${item.id - 1}">${String(item.id).padStart(3,'0')} · ${escape(item.title)}${n ? ' ✓' : ''}</option>`;
+   return `<option value="${item.id - 1}">${String(item.id).padStart(3,'0')} · ${escape(item.title)}${n ? ' ✓' : ''}${markerLabel(marker(item))?' · '+markerLabel(marker(item)):''}</option>`;
   }).join('')}</optgroup>`).join('');
+  el('concept-personal').textContent=markerLabel(marker(c));
+  el('concept-personal').hidden=marker(c)==='none';
+  el('mark-revisit').setAttribute('aria-pressed',String(marker(c)==='revisit'));
+  el('mark-revisit').disabled=!personal.ready;
   el('concept-select').value = state.current;
+  conceptMenu?.update(items.map(item=>({title:item.title,chapter:item.chapter,marker:markerLabel(marker(item)),text:`${String(item.id).padStart(3,'0')} · ${item.title}${correctCount(item) ? ' ✓' : ''}`})),state.current);
  }
  function quiz() {
   const c = review ? review.active?.c : items[state.current], q = review ? review.stage === 'practice' && review.active?.q : question(c);
@@ -283,11 +297,20 @@
  }
  function go(index) {
   if (!validIndex(index)) return;
+  conceptMenu?.close();
   requestedReview = false;
   if (review && index === state.current) { returnToLesson(); return; }
   review = null; lessonDraft = null; displayMode();
   state.current = index; history.replaceState(null,'',`#lesson-${items[index].legacyId}`); render(true);
  }
+ el('mark-revisit').onclick=()=>{
+  const c=items[state.current];learning?.set('concept:'+c.legacyId,marker(c)==='revisit'?'none':'revisit');
+ };
+ el('review-bookmarks').onclick=()=>{
+  if(!review||!ready)return;
+  review.search='';review.filter='bookmarked';review.selection=new Set(items.filter(c=>marker(c)==='revisit').map(c=>c.legacyId));
+  el('review-search').value='';el('review-filter').value='bookmarked';saveReviewSelection();reviewSummary();
+ };
  el('review-search').addEventListener('input', e => { if (!review || !ready) return; review.search = e.target.value; reviewSummary(); });
  el('review-filter').onchange = e => { if (!review || !ready) return; review.filter = e.target.value; reviewSummary(); };
  el('review-topics').addEventListener('change', e => {
@@ -427,5 +450,11 @@
    // Other devices update answer history, not this round's choice, feedback or retry budget.
    navigation(); quiz();
   }
+ });
+ learning?.subscribe(update=>{
+  personal=update;
+  el('learning-note').textContent=[update.message,update.conflict].filter(Boolean).join(' ');
+  el('learning-note').hidden=!el('learning-note').textContent;
+  navigation();if(review)reviewSummary();
  });
 })();

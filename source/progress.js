@@ -239,6 +239,7 @@
   void sync(ctx);
  }
  function setSession(client, session) {
+  window.math2aiLearning?.setSession(client,session);
   const user = session?.user?.id || null, owner = user ? 'user:' + user : 'guest';
   if (current?.owner === owner) {
    if (user) setTimeout(() => { if (current?.owner === owner) { void client.realtime.setAuth(session.access_token); void sync(); } },0);
