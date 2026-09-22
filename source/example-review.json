@@ -1096,7 +1096,7 @@
     {
       "conceptId": 120,
       "title": "Causal inference",
-      "example": "In a hypothetical randomized trial, mean outcome is 12 in the treated group and 9 in the control group. The difference 12−9 = 3 estimates an average effect under the trial's assumptions.",
+      "example": "Randomly assign plants to fertilizer or no fertilizer (the control group), and otherwise give them the same care. Suppose their mean heights after four weeks are 12 cm and 9 cm, respectively. The treatment-minus-control estimate is 12−9 = 3 cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect.",
       "questionIds": [
         "120-01",
         "120-02",

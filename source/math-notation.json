@@ -9567,19 +9567,6 @@
         "tex": "0.04"
       }
     ],
-    "c:120:definition": [
-      "Causal inference asks how outcomes would change under interventions. Observed association can be distorted by confounders: variables that influence both the treatment or action and the outcome.\n\n",
-      {
-        "plain": "Y(1)",
-        "tex": "Y(1)"
-      },
-      " and ",
-      {
-        "plain": "Y(0)",
-        "tex": "Y(0)"
-      },
-      " denote an individual’s outcomes with and without treatment; only one can be observed for that individual in the same trial. Random assignment makes treatment independent of prior causes on average."
-    ],
     "c:120:formula": [
       {
         "plain": "E[Y(1) − Y(0)]",
@@ -9588,12 +9575,12 @@
       }
     ],
     "c:120:example": [
-      "In a hypothetical randomized trial, mean outcome is 12 in the treated group and 9 in the control group. The difference ",
+      "Randomly assign plants to fertilizer or no fertilizer (the control group), and otherwise give them the same care. Suppose their mean heights after four weeks are 12 cm and 9 cm, respectively. The treatment-minus-control estimate is ",
       {
         "plain": "12−9 = 3",
         "tex": "12-9 = 3"
       },
-      " estimates an average effect under the trial's assumptions."
+      " cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect."
     ],
     "q:120-01:feedback": [
       "The specified estimate is ",
@@ -17855,6 +17842,24 @@
         "tex": "000 \\times  0.008 \\times  0.80 = 6.4 t"
       },
       ". This assumes the stated grade represents the feed and recovery applies to its contained copper."
+    ],
+    "c:120:formulaNote": [
+      "For the same plant, ",
+      {
+        "plain": "Y(1)",
+        "tex": "Y(1)"
+      },
+      " is its height with fertilizer and ",
+      {
+        "plain": "Y(0)",
+        "tex": "Y(0)"
+      },
+      " its height without it, after the same four weeks. These are two possible outcomes; only one can be observed in that experiment. Their difference is the plant's treatment effect. ",
+      {
+        "plain": "E",
+        "tex": "\\mathbb{E}"
+      },
+      " averages these effects across a specified population; individual plants need not benefit equally."
     ]
   }
 }
