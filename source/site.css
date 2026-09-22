@@ -90,10 +90,15 @@ footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;w
 @media(pointer:coarse){.concept-sources a{display:inline-flex;align-items:center;min-height:44px}.quiz-actions .reset-question{min-height:44px}}
 @media print{.concept-sources{display:none}}
 
-/* Prebuilt KaTeX matrices keep a plain-text fallback until bundled fonts load. */
-.math-fragment{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto;overflow-y:hidden;margin:.15em .1em;padding:.15em .1em;white-space:normal;line-height:normal}
+/* Prebuilt math keeps the original text until bundled fonts load. */
+.math-fragment{display:inline-block;vertical-align:middle;max-width:100%;overflow:hidden;margin:.15em .1em;padding:.15em .1em .35em;white-space:normal;line-height:normal}
+.math-fragment[tabindex="0"]{overflow-x:auto}
 .math-fallback{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+.math-rendered{display:inline-block;vertical-align:middle}
 .math-rendered .katex{font-size:1.05em;text-align:left}
+.math-rendered .katex-display{margin:0;text-align:left}
+.formula .math-fragment{margin:.25em .1em;padding:.25em .1em .45em}
+.formula .math-rendered .katex{font-size:1em}
 .math-fragment:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .option>span{min-width:0;flex:1}
 @media(max-width:600px){.math-fragment{max-width:100%;margin:.15em 0}}

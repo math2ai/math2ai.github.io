@@ -23,9 +23,17 @@
   try {
    return entry.parts.map(part => {
     if (typeof part === 'string') return part;
-    const fragment = data.fragments[part], rows = fragment.rows;
-    const shape = fragment.rowLists ? `array with ${rows.length} rows` : `matrix with ${rows.length} rows and ${rows[0].length} columns`;
-    return shape + '; ' + rows.map((row,i) => `row ${i+1}: ${row.length ? row.join(', ') : 'empty'}`).join('; ');
+    const fragment = data.fragments[part];
+    if (!fragment || typeof fragment.plain !== 'string') throw Error('Missing math fragment');
+    let index=0;
+    // Keep spoken matrix rows even when a matrix is embedded in a larger equation.
+    return fragment.plain.replace(/\[\s*\[[^\[\]\n]*\](?:\s*,\s*\[[^\[\]\n]*\])*\s*\]/g, original => {
+     const matrix=fragment.matrices?.[index++] || (fragment.rows ? fragment : null);
+     if(!matrix)return original;
+     const rows=matrix.rows;
+     const shape=matrix.rowLists?`array with ${rows.length} rows`:`matrix with ${rows.length} rows and ${rows[0].length} columns`;
+     return shape+'; '+rows.map((row,i)=>`row ${i+1}: ${row.length?row.join(', '):'empty'}`).join('; ');
+    });
    }).join('');
   } catch { return text; }
  }

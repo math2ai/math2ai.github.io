@@ -53,23 +53,35 @@ export function bundleStyles() {
 export function buildMath(course) {
  const {css, fonts} = bundleStyles();
  const katex = require(path.join(vendor, 'katex.js')); // Load only after integrity verification.
- const data = {version:1, katexVersion:katex.version, fonts, fragments:[], fields:{}};
+ const annotations = JSON.parse(fs.readFileSync(path.join(root,'math-notation.json'),'utf8'));
+ const data = {version:2, katexVersion:katex.version, fonts, fragments:[], fields:{}};
  const cache = new Map();
+ const used = new Set();
+ function fragment(plain,tex,{display=false,rowLists=false}={}) {
+  const cacheKey=JSON.stringify([plain,tex,display,rowLists]);
+  if(cache.has(cacheKey))return cache.get(cacheKey);
+  const markup=katex.renderToString(tex,{output:'htmlAndMathml',displayMode:display,throwOnError:true,strict:'error',trust:false,maxExpand:1000});
+  const matrices=[...plain.matchAll(matrixPattern)].map(m=>parseMatrix(m[0])).filter(Boolean);
+  const matrix=parseMatrix(plain);
+  const entry={plain,tex,display,html:markup};
+  if(matrices.length)entry.matrices=matrices.map(m=>({rows:m.rows,rowLists:rowLists||!m.rectangular}));
+  if(matrix){entry.rows=matrix.rows;entry.rowLists=rowLists||!matrix.rectangular;}
+  const index=data.fragments.length;data.fragments.push(entry);cache.set(cacheKey,index);return index;
+ }
  function add(key, text, rowLists = false) {
+  const authored=annotations.fields[key];
+  if(authored) {
+   used.add(key);
+   if(!Array.isArray(authored)||authored.map(p=>typeof p==='string'?p:p.plain).join('')!==text)throw new Error(`Stale mathematical notation: ${key}. Update math-notation.json with the edited text.`);
+   const parts=authored.map(p=>typeof p==='string'?p:fragment(p.plain,p.tex,p));
+   data.fields[key]={text,parts};return;
+  }
   const parts = []; let end = 0;
   for (const match of text.matchAll(matrixPattern)) {
    const matrix = parseMatrix(match[0]);
    if (!matrix) continue; // Original notation remains readable for unsupported input.
    const style = rowLists || !matrix.rectangular;
-   const cacheKey = JSON.stringify([match[0],style]);
-   let index = cache.get(cacheKey);
-   if (index === undefined) {
-    const tex = matrixTex(matrix, style);
-    const markup = katex.renderToString(tex, {output:'htmlAndMathml', displayMode:false, throwOnError:true, strict:'error', trust:false, maxExpand:1000});
-    index = data.fragments.length;
-    data.fragments.push({plain:match[0], tex, rows:matrix.rows, rowLists:style, html:markup});
-    cache.set(cacheKey,index);
-   }
+   const index=fragment(match[0],matrixTex(matrix,style),{rowLists:style});
    parts.push(text.slice(end,match.index), index);
    end = match.index + match[0].length;
   }
@@ -88,6 +100,8 @@ export function buildMath(course) {
    q.options.forEach((option,i) => add(`q:${q.id}:option:${i}`,option,rowLists));
   }
  }
+ // A renamed or removed field must not leave behind silently unused annotations.
+ for(const key of Object.keys(annotations.fields))if(!used.has(key))throw new Error(`Unknown mathematical notation field: ${key}`);
  return {css, data};
 }
 

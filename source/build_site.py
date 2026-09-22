@@ -18,9 +18,9 @@ if enabled:
 try:
  result=subprocess.run(['node',str(ROOT/'build_math.mjs')],capture_output=True,text=True,encoding='utf-8',check=True)
 except FileNotFoundError as exc:
- raise RuntimeError('Node.js is required to build the matrix notation. The published page needs no KaTeX JavaScript or installation.') from exc
+ raise RuntimeError('Node.js is required to build the mathematical notation. The published page needs no KaTeX JavaScript or installation.') from exc
 except subprocess.CalledProcessError as exc:
- raise RuntimeError('Matrix typesetting failed: '+exc.stderr) from exc
+ raise RuntimeError('Mathematical typesetting failed: '+exc.stderr) from exc
 math=json.loads(result.stdout)
 html=(ROOT/'site-template.html').read_text(encoding='utf-8')
 html=html.replace('/*MATH_CSS*/',math['css'])
