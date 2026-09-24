@@ -62,7 +62,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
   scroll:top=>{context.scrollY=top;},scrollPosition:()=>context.scrollY,
   answer(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});get('quiz-form').handlers.submit({preventDefault(){}});},
   correct(){app.answer(app.question().correct);},wrong(){app.answer((app.question().correct+1)%4);},
-  another(){get('another').onclick();},retry(){get('retry').onclick();},resetQuestion(){get('reset-question').onclick();},next(){get('next').onclick();},
+  another(){get('another').onclick();},previousQuestion(){get('previous-question').onclick();},retry(){get('retry').onclick();},resetQuestion(){get('reset-question').onclick();},next(){get('next').onclick();},
   go(index){get('concept-select').onchange({target:{value:String(index)}});},
   hash(value){location.hash=value;emit('hashchange');},reset:()=>get('reset').onclick(),
   signin(server,user){const client=server.client(user);context.math2aiProgress.setSession(client,{user:{id:user},access_token:'test-token'});},

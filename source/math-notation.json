@@ -9779,43 +9779,59 @@
     ],
     "c:33:formula": [
       {
-        "plain": "a = φ(w · x + b)",
-        "tex": "a=\\varphi(w\\cdot x+b)",
+        "plain": "z = w₁x₁ + w₂x₂ + b",
+        "tex": "z=w_1x_1+w_2x_2+b",
+        "display": true
+      },
+      "\n",
+      {
+        "plain": "a = φ(z)",
+        "tex": "a=\\varphi(z)",
         "display": true
       }
     ],
     "c:33:example": [
-      "With ",
+      "Use inputs ",
       {
         "plain": "x = (2, 1)",
-        "tex": "x = (2, 1)"
+        "tex": "\\mathbf{x}=(2,1)"
       },
-      ", ",
+      ", weights ",
       {
         "plain": "w = (3, −2)",
-        "tex": "w = (3, -2)"
+        "tex": "\\mathbf{w}=(3,-2)"
       },
-      ", ",
+      ", and bias ",
       {
         "plain": "b = 1",
-        "tex": "b = 1"
+        "tex": "b=1"
       },
-      ": ",
+      ".\n\n1. Multiply each input by its matching weight:\n",
       {
-        "plain": "z = 3×2 − 2×1 + 1 = 5",
-        "tex": "z = 3\\times 2 - 2\\times 1 + 1 = 5"
+        "plain": "3 × 2 = 6",
+        "tex": "3\\times2=6"
       },
-      ". The activation ",
+      "\n",
       {
-        "plain": "max(0, z)",
-        "tex": "\\max (0, z)"
+        "plain": "(−2) × 1 = −2",
+        "tex": "(-2)\\times1=-2"
       },
-      " gives ",
+      "\n\n2. Add the two contributions and the bias:\n",
       {
-        "plain": "a = 5",
-        "tex": "a = 5"
+        "plain": "z = 6 + (−2) + 1 = 5",
+        "tex": "z=6+(-2)+1=5"
       },
-      "."
+      "\n\n3. Apply an activation rule. Here ",
+      {
+        "plain": "φ(z) = max(0, z)",
+        "tex": "\\varphi(z)=\\max(0,z)"
+      },
+      ": keep a positive value and replace a negative value with zero.\n",
+      {
+        "plain": "a = max(0, 5) = 5",
+        "tex": "a=\\max(0,5)=5"
+      },
+      "\n\nThe neuron's output is 5."
     ],
     "q:33-01:question": [
       "Before activation, what is ",
@@ -17860,6 +17876,52 @@
         "tex": "\\mathbb{E}"
       },
       " averages these effects across a specified population; individual plants need not benefit equally."
+    ],
+    "c:33:definition": [
+      "An artificial neuron turns several input numbers into one output. Each input is multiplied by a weight, which controls the size and direction of its contribution. A bias is then added.\n\nFor two inputs, ",
+      {
+        "plain": "x = (x₁, x₂)",
+        "tex": "\\mathbf{x}=(x_1,x_2)"
+      },
+      " is the input vector and ",
+      {
+        "plain": "w = (w₁, w₂)",
+        "tex": "\\mathbf{w}=(w_1,w_2)"
+      },
+      " is the weight vector. Match entries by position. The bias ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " is a single number.\n\nFirst compute ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      ", the weighted sum including the bias (the pre-activation value). Then apply the activation function ",
+      {
+        "plain": "φ",
+        "tex": "\\varphi"
+      },
+      " to ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " to get the output ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      ". The weights and bias are adjusted during training."
+    ],
+    "c:33:formulaNote": [
+      "The dot product ",
+      {
+        "plain": "w · x",
+        "tex": "\\mathbf{w}\\cdot\\mathbf{x}"
+      },
+      " is shorthand for adding these matching products. With more inputs, include one term for each input. A nonlinear activation lets the neuron represent a relationship beyond a straight-line rule."
     ]
   }
 }

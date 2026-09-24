@@ -6,6 +6,14 @@ header,main,footer{max-width:1000px;margin:auto;padding:1.3rem 2rem}header{borde
 @media print{@page{size:A4 landscape;margin:0}header,footer,.quiz,.pager,details,.skip,.concept-score{flex-shrink:0;font-size:1rem;line-height:1;color:#376144}main{max-width:none;padding:0;margin:0}.print-page{display:block;break-after:page;width:297mm;height:210mm;padding:13mm 16mm;position:relative;overflow:hidden}.print-page:last-child{break-after:auto}.print-page .chapter{font-size:12pt}.print-page h1{font-size:32pt;margin:5mm 0 7mm}.print-page h3{font-size:12pt;margin:5mm 0 2mm}.print-page p{font-size:20pt;line-height:1.3;margin:0 0 3mm}.print-page .formula{font-size:21pt;line-height:1.3;margin:4mm 0}.print-page .print-foot{position:absolute;bottom:9mm;left:16mm;font-size:11pt;color:#555}}
 
 .brand{font-size:1rem;letter-spacing:0}
+.question-toolbar{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:.8rem;font-size:max(14px,.75rem);color:var(--muted)}
+.question-navigation{display:flex;align-items:center}
+.question-navigation button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border:0;background:transparent}
+.question-navigation button:hover:not(:disabled){background:#eee}
+.question-navigation svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#question-position{width:7.3em;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+.question-reset-slot{display:flex;justify-content:flex-end;flex:none;min-width:44px;min-height:44px}
+.question-toolbar .reset-question{font:inherit;min-width:44px;min-height:44px;border:0;background:transparent;padding:0;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}
 .identity{display:flex;align-items:center;gap:.6rem}
 .identity>div{min-width:0}
 .header-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
@@ -86,8 +94,7 @@ footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;w
 .concept-sources{margin-top:1.2rem;font-size:.72rem;color:var(--muted)}
 #concept-source-list{display:flex;align-items:baseline;flex-wrap:wrap;gap:.45rem 1rem}
 .concept-sources a{padding:.15rem 0;text-decoration-thickness:1px}
-.quiz-actions .reset-question{font-size:.72rem;border:0;background:transparent;padding:.2rem 0;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}
-@media(pointer:coarse){.concept-sources a{display:inline-flex;align-items:center;min-height:44px}.quiz-actions .reset-question{min-height:44px}}
+@media(pointer:coarse){.concept-sources a{display:inline-flex;align-items:center;min-height:44px}}
 @media print{.concept-sources{display:none}}
 
 /* Prebuilt math keeps the original text until bundled fonts load. */

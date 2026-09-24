@@ -82,7 +82,12 @@ for (const seed of [1, 19, 2048, 123456]) {
   for(let i=0;i<10;i++) {
    const id = r.question().id;
    assert.notEqual(id, last); assert.ok(!ids.has(id)); ids.add(id);
-   if(cycle===0) r.correct(); else r.wrong();
+   if(cycle===0) r.correct(); else {
+    // Browsing never starts a fresh practice round implicitly.
+    if (r.get('reset-question').hidden === false) r.resetQuestion();
+    if (r.get('retry').hidden === false) r.retry();
+    r.wrong();
+   }
    last=id;
    if(i===4) r=(await boot(r.storage, {seed:99}));
    r.another();
@@ -92,12 +97,12 @@ for (const seed of [1, 19, 2048, 123456]) {
  assert.equal(score(r), 10);
  const answers=Object.values(r.state().concepts[r.current().legacyId].answers);
  assert.equal(answers.reduce((n,a)=>n+a.attempts,0),30);
- r=(await boot(r.storage)); assert.equal(r.get('feedback').hidden,true);
+ r=(await boot(r.storage)); assert.equal(r.get('feedback').hidden,false);
  assert.equal(r.get('check').disabled,true);
 }
 const starts = new Set(); for(let seed=0;seed<20;seed++) starts.add((await boot(new Map(),{seed:seed*1009})).question().id);
 assert.ok(starts.size > 1);
-console.log('PASS: randomized starts and unique cycles across reloads; repeated answers do not inflate the count.');
+console.log('PASS: randomized starts and stable question order across reloads; browsing retains rounds and repeated answers do not inflate the count.');
 
 const all = (await boot());
 for(let i=0;i<course.concepts.length;i++) {

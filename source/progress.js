@@ -153,7 +153,7 @@
  function saveView(state) {
   if (!current?.ready) return;
   const view = {version:course.version,current:state.current,currentConceptId:state.currentConceptId,concepts:{}};
-  for (const [id,p] of Object.entries(state.concepts)) view.concepts[id] = {active:p.active,remaining:p.remaining,pending:p.pending,round:p.round};
+  for (const [id,p] of Object.entries(state.concepts)) view.concepts[id] = {active:p.active,remaining:p.remaining,order:p.order,rounds:p.rounds,pending:p.pending,round:p.round};
   write(keyFor(current, 'view'), JSON.stringify(view));
  }
  function importLegacy(ctx) {

@@ -6,7 +6,7 @@ const [scalar,variable,fn]=course.concepts;
 const savedView=app=>{
  const view=[...app.storage.entries()].filter(([k])=>k.endsWith(':guest:view')).map(([,v])=>JSON.parse(v))[0];
  // Feedback for an answered lesson question may change; its navigation/deck must not.
- for(const p of Object.values(view.concepts)) delete p.round;
+ for(const p of Object.values(view.concepts)) { delete p.round; delete p.rounds; }
  return view;
 };
 const row=(app,c)=>app.get('review-topics').innerHTML.split('<tr>').find(s=>s.includes(`id="review-topic-${c.legacyId}"`))||'';

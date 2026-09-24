@@ -1168,7 +1168,7 @@
     {
       "conceptId": 33,
       "title": "Artificial neuron",
-      "example": "With x = (2, 1), w = (3, −2), b = 1: z = 3×2 − 2×1 + 1 = 5. The activation max(0, z) gives a = 5.",
+      "example": "Use inputs x = (2, 1), weights w = (3, −2), and bias b = 1.\n\n1. Multiply each input by its matching weight:\n3 × 2 = 6\n(−2) × 1 = −2\n\n2. Add the two contributions and the bias:\nz = 6 + (−2) + 1 = 5\n\n3. Apply an activation rule. Here φ(z) = max(0, z): keep a positive value and replace a negative value with zero.\na = max(0, 5) = 5\n\nThe neuron's output is 5.",
       "questionIds": [
         "33-01",
         "33-02",

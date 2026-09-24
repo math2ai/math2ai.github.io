@@ -48,12 +48,21 @@
       <nav id="concept-sources" class="concept-sources" aria-label="Further reading"><div id="concept-source-list"></div></nav>
     </article>
     <section class="quiz" id="quiz-panel" aria-label="Check your understanding">
-      <form id="quiz-form"><fieldset id="question-group"><legend id="question" tabindex="-1"></legend><div id="choices"></div></fieldset>
+      <form id="quiz-form">
+        <div class="question-toolbar">
+          <div class="question-navigation" role="group" aria-label="Question navigation">
+            <button id="previous-question" type="button" aria-label="Previous question" title="Previous question"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14 6-6 6 6 6"/></svg></button>
+            <span id="question-position" aria-live="polite" aria-atomic="true"></span>
+            <button id="another" type="button" aria-label="Next question" title="Next question"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6"/></svg></button>
+          </div>
+          <span class="question-reset-slot"><button id="reset-question" class="reset-question" type="button" aria-label="Reset question" title="Start fresh practice for this question. Your answer history is kept." hidden>Reset</button></span>
+        </div>
+        <fieldset id="question-group"><legend id="question" tabindex="-1"></legend><div id="choices"></div></fieldset>
         <div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
-        <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button class="primary" id="retry" type="button" hidden>Try again</button><button id="another" type="button">Another question</button><button id="reset-question" class="reset-question" type="button" title="Start fresh practice for this question. Your answer history is kept." hidden>Reset question</button></div>
+        <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button class="primary" id="retry" type="button" hidden>Try again</button></div>
       </form>
     </section>
-    <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous</button><div class="pager-next"><button class="revisit-toggle" id="mark-revisit" type="button" aria-label="Revisit later" aria-pressed="false" title="Revisit later. Click to save or remove this reminder."><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path class="revisit-check" d="m7 12 3.5 3.5L17 9"/></svg><span>Revisit later</span></button><button class="primary" id="next">Next concept</button></div></nav>
+    <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous concept</button><div class="pager-next"><button class="revisit-toggle" id="mark-revisit" type="button" aria-label="Revisit later" aria-pressed="false" title="Revisit later. Click to save or remove this reminder."><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path class="revisit-check" d="m7 12 3.5 3.5L17 9"/></svg><span>Revisit later</span></button><button class="primary" id="next">Next concept</button></div></nav>
   </div>
 </main>
 <footer>

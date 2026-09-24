@@ -18,12 +18,22 @@
  let state = fresh(), storageMessage = '', owner = null, viewRevision = null, ready = false, initialRender = true;
  let selected = null, checked = false;
  // Review uses the same answer journal, with its own temporary question and draft.
- // It never changes the lesson's active question or randomized deck.
+ // It never changes the lesson's active question or shuffled order.
  let review = null, lessonDraft = null;
  const reviewPreferences = new Map();
  const reviewPrefix = 'math2ai-review-v1:' + JSON.parse(el('auth-config').textContent).supabaseUrl + ':' + course.version + ':';
  const object = v => v && typeof v === 'object' && !Array.isArray(v);
  const choice = n => Number.isInteger(n) && n >= 0 && n < 4;
+ function savedRound(raw,qid,answer,pending=false) {
+  const valid = object(raw) && raw.questionId === qid && Number.isInteger(raw.attempts) && raw.attempts >= 0 && raw.attempts <= 2 &&
+   (raw.attempts === 0 ? raw.last === null : choice(raw.last));
+  const r = valid ? {questionId:qid,attempts:raw.attempts,last:raw.last,pending:raw.pending ?? pending,draft:choice(raw.draft) ? raw.draft : null} :
+   {questionId:qid,attempts:Math.min(answer?.attempts || 0,2),last:answer?.last ?? null,pending,draft:null};
+  // A global reset also invalidates rounds saved while this tab was closed.
+  if (!answer && r.attempts) { r.attempts=0; r.last=null; r.pending=true; r.draft=null; }
+  r.pending=r.pending===true;
+  return r;
+ }
  // Progress is a convenience cache. Discard incompatible or malformed records.
  function restore(raw) {
   let old;
@@ -47,36 +57,46 @@
    }
    const active = ids.has(p.active) ? p.active : null;
    const remaining = Array.isArray(p.remaining) ? [...new Set(p.remaining.filter(id => ids.has(id) && id !== active))] : [];
-   const savedRound = p.round;
-   const round = object(savedRound) && savedRound.questionId === active && Number.isInteger(savedRound.attempts) && savedRound.attempts >= 0 && savedRound.attempts <= 2 &&
-    (savedRound.attempts === 0 ? savedRound.last === null : choice(savedRound.last)) ? {...savedRound} :
-    {questionId:active,attempts:Math.min(answers[active]?.attempts || 0,2),last:answers[active]?.last ?? null};
-   // A reset received while this tab was closed also clears its saved practice round.
-   if (!answers[active]) { round.attempts = 0; round.last = null; }
-   state.concepts[c.legacyId] = {active, remaining, answers, round, pending:p.pending === true};
+   const rounds = {};
+   if (object(p.rounds)) for (const q of c.questions) if (object(p.rounds[q.id])) rounds[q.id]=savedRound(p.rounds[q.id],q.id,answers[q.id]);
+   const round = active ? savedRound(p.round || rounds[active],active,answers[active],p.pending === true) : null;
+   if (active) rounds[active]=round;
+   const order = Array.isArray(p.order) ? [...new Set(p.order.filter(id=>ids.has(id)))] : [];
+   // Retain the active question and unseen order when upgrading older saves.
+   if (order.length !== ids.size) {
+    order.splice(0,order.length,...(active ? [...ids].filter(id=>id!==active&&!remaining.includes(id)).concat(active,remaining) : shuffle([...ids])));
+   }
+   state.concepts[c.legacyId] = {active, remaining, order, rounds, answers, round, pending:round?.pending ?? true};
   }
  }
  function save() {
+  if (!review) {
+   const p=progress(items[state.current]);
+   if (p.round) { p.round.pending=p.pending; p.round.draft=checked ? null : selected; p.rounds[p.active]=p.round; }
+  }
   state.currentConceptId = items[state.current].legacyId;
   persistence.saveView(state);
  }
  function progress(c) {
-  return state.concepts[c.legacyId] || (state.concepts[c.legacyId] = {active:null, remaining:[], answers:{}, pending:true});
+  return state.concepts[c.legacyId] || (state.concepts[c.legacyId] = {active:null, remaining:[], order:[], rounds:{}, answers:{}, pending:true});
  }
  function shuffle(values) {
   const deck = values.slice();
   for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
   return deck;
  }
- function draw(c) {
+ function draw(c,step=1) {
   const p = progress(c);
-  if (!p.remaining.length) {
-   p.remaining = shuffle(c.questions.map(q => q.id));
-   // Even at a cycle boundary, never immediately repeat the current question.
-   if (p.remaining[0] === p.active) [p.remaining[0], p.remaining[1]] = [p.remaining[1], p.remaining[0]];
-  }
-  p.active = p.remaining.shift(); p.pending = true;
-  p.round = {questionId:p.active,attempts:0,last:null};
+  if (!p.order.length) p.order=shuffle(c.questions.map(q=>q.id));
+  const index=p.active ? (p.order.indexOf(p.active)+step+p.order.length)%p.order.length : 0;
+  p.active=p.order[index]; p.remaining=p.order.slice(index+1);
+  p.round=currentRound(c,question(c)); p.pending=p.round.pending;
+  restoreChoice(c);
+ }
+ function restoreChoice(c) {
+  const p=progress(c), q=question(c), r=currentRound(c,q);
+  checked=r.attempts>0 && (!p.pending || roundFinished(r,q));
+  selected=checked ? r.last : r.draft ?? null;
  }
  function question(c) { return c.questions.find(q => q.id === progress(c).active); }
  // A practice round has two attempts. Lifetime answer history remains independent.
@@ -84,7 +104,8 @@
  function currentRound(c,q) {
   if (review?.active?.q.id === q.id) return review.active.round;
   const p = progress(c);
-  if (!p.round || p.round.questionId !== q.id) p.round = {questionId:q.id,attempts:0,last:null};
+  if (!p.round || p.round.questionId !== q.id) p.round = p.rounds[q.id] || savedRound(null,q.id,p.answers[q.id],!p.answers[q.id]);
+  p.rounds[q.id]=p.round;
   return p.round;
  }
  function roundFinished(r,q) { return r.attempts >= 2 || r.attempts > 0 && r.last === q.correct; }
@@ -253,9 +274,14 @@
   const c = review ? review.active?.c : items[state.current], q = review ? review.stage === 'practice' && review.active?.q : question(c);
   el('quiz-panel').hidden = !!review && !q;
   el('review-concept').hidden = !review || !q;
-  el('another').textContent = review ? 'Next review question' : 'Another question';
+  const nextLabel = review ? 'Next review question' : 'Next question';
+  el('another').setAttribute('aria-label',nextLabel);
+  el('another').setAttribute('title',nextLabel);
+  el('previous-question').hidden = !!review;
+  el('previous-question').disabled = !ready;
   el('reset').disabled = !ready;
   if (!q) return;
+  el('question-position').textContent = review ? 'Review question' : `Question ${progress(c).order.indexOf(q.id) + 1} of ${c.questions.length}`;
   const r = currentRound(c,q), finished = roundFinished(r,q);
   if (review) { el('review-concept').textContent = c.title; el('review-concept').href = `#lesson-${c.legacyId}`; }
   write(el('question'),q.question,`q:${q.id}:question`);
@@ -282,8 +308,7 @@
  function render(focus = false) {
   const c = items[state.current], p = progress(c);
   if (!p.active) draw(c);
-  const q = question(c), r = currentRound(c,q);
-  checked = r.attempts > 0 && (!p.pending || roundFinished(r,q)); selected = checked ? r.last : null;
+  restoreChoice(c);
   document.title = course.title;
   el('chapter').textContent = `${String(c.id).padStart(3,'0')} · ${c.chapter}`;
   for (const id of ['title','definition','formula','example','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
@@ -350,7 +375,7 @@
  el('choices').addEventListener('change', e => {
   const value = Number(e.target.value);
   const c = review ? review.active?.c : items[state.current], q = review ? review.active?.q : question(c);
-  if (ready && q && e.target.name === 'answer' && !checked && !roundFinished(currentRound(c,q),q) && choice(value)) { selected = value; el('check').disabled = false; }
+  if (ready && q && e.target.name === 'answer' && !checked && !roundFinished(currentRound(c,q),q) && choice(value)) { selected = value; el('check').disabled = false; if (!review) save(); }
  });
  el('quiz-form').addEventListener('submit', e => {
   e.preventDefault(); if (!ready || selected === null || checked) return;
@@ -361,9 +386,9 @@
   const p = progress(c), old = p.answers[q.id];
   if (!persistence.record(q.id,selected)) return;
   p.answers[q.id] = {first:old ? old.first : selected, last:selected, attempts:old ? old.attempts + 1 : 1, solved:!!(old && old.solved) || selected === q.correct};
-  r.attempts++; r.last = selected;
+  r.attempts++; r.last = selected; r.pending=false; r.draft=null;
   checked = true;
-  if (p.active === q.id) { p.pending = false; p.round = {...r}; }
+  if (p.active === q.id) { p.pending = false; p.round = {...r}; p.rounds[q.id]=p.round; }
   save(); if (review) reviewSummary();
   navigation(); quiz(); el('feedback').focus({preventScroll:true});
  });
@@ -387,10 +412,14 @@
  };
  el('another').onclick = () => {
   if (!ready) return;
-  if (review) { drawReview(); reviewSummary(); quiz(); el('question').focus({preventScroll:true}); return; }
-  const c = items[state.current]; draw(c); selected = null; checked = false;
-  // Repeating a question does not increase its distinct correct-answer count.
-  quiz(); save(); el('question').focus({preventScroll:true});
+  if (review) { drawReview(); reviewSummary(); quiz(); return; }
+  const c = items[state.current]; draw(c);
+  // Browsing preserves each question's draft, feedback and retry budget.
+  quiz(); save();
+ };
+ el('previous-question').onclick = () => {
+  if (!ready || review) return;
+  draw(items[state.current],-1); quiz(); save();
  };
  el('next').onclick = () => go((state.current + 1) % items.length);
  el('previous').onclick = () => go(state.current - 1);
@@ -437,9 +466,12 @@
     const p = progress(c);
     p.answers = update.state?.concepts[c.legacyId]?.answers || {};
     // A global reset must clear inactive lesson rounds as well as the visible one.
-    if (p.round?.attempts && !p.answers[p.active]) {
-     p.round.attempts = 0; p.round.last = null; p.pending = true;
-     if (!review && c === items[state.current]) { selected = null; checked = false; }
+    for (const [qid,r] of Object.entries(p.rounds)) if (r.attempts && !p.answers[qid]) {
+     r.attempts=0; r.last=null; r.pending=true; r.draft=null;
+     if (qid===p.active) {
+      p.round=r; p.pending=true;
+      if (!review && c === items[state.current]) { selected=null; checked=false; }
+     }
     }
    }
    if (review) {
