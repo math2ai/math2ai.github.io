@@ -71,3 +71,27 @@ assert.equal(migrated.question().id,q.id);assert.match(migrated.get('feedback').
 migrated.another();assert.equal(migrated.question().id,next.id);migrated.previousQuestion();assert.equal(migrated.question().id,q.id);
 assert.equal(new Set(migrated.state().concepts[c.legacyId].order).size,10);migrated.close();
 console.log('PASS: older saves retain their active question, next question and earned answers.');
+
+// Replacing one prompt retires only its old answer, including when it was active.
+const forward=course.concepts.find(c=>c.legacyId===37), kept=forward.questions[0];
+const replacement=forward.questions.find(q=>q.id==='37-r2-05');
+const h=Math.max(0,2*1-3),prediction=4*h+1;
+assert.equal(replacement.options[replacement.correct],`h = ${h}, ŷ = ${prediction}`);
+for(const active of ['37-05',kept.id]) {
+ const oldOrder=forward.questions.map(q=>q===replacement?'37-05':q.id);
+ const oldSave={version:course.version,currentConceptId:37,concepts:{37:{
+  active,order:oldOrder,remaining:oldOrder.filter(id=>id!==active),pending:false,
+  answers:{'37-05':{first:3,last:3,attempts:1,solved:true},[kept.id]:{first:kept.correct,last:kept.correct,attempts:1,solved:true}}
+ }}};
+ const upgraded=await boot({shared:hub(new Map([['model-conversations-progress-v1',JSON.stringify(oldSave)]]))});
+ assert.deepEqual(Object.keys(upgraded.state().concepts[37].answers),[kept.id]);
+ const seen=new Set();
+ for(let i=0;i<10;i++) {
+  const id=upgraded.question().id;seen.add(id);
+  if(id===replacement.id) assert.equal(upgraded.get('feedback').hidden,true,'new prompt must start unanswered');
+  upgraded.another();
+ }
+ assert.equal(seen.size,10);assert.ok(seen.has(replacement.id));assert.ok(!seen.has('37-05'));
+ upgraded.close();
+}
+console.log('PASS: individual question replacements keep other answers and remain browsable without inheriting obsolete feedback.');

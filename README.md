@@ -110,6 +110,7 @@ node verify_learning.mjs
 python verify_teaching_steps.py
 node verify_state.mjs
 node verify_question_navigation.mjs
+node verify_concept_links.mjs
 node verify_review.mjs
 node verify_feedback.mjs
 python verify_auth_build.py
@@ -127,6 +128,8 @@ Presentation builders are included for reuse; rebuilding the PPTX requires the O
 
 The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK and KaTeX have their own included MIT licenses; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.
 
+
+Concept connections are curated in `source/concept-links.json`, with an explicit entry for all 128 lessons. Each lesson may link up to three earlier prerequisites within its explanation or worked example and up to two later applications in a small “Used in” line. Use stable concept IDs, not display numbers. The content build rejects missing phrases, backward/forward order mistakes, duplicate prerequisites, and links inside mathematical notation. Quiz text is not linked. Following a connection uses browser history; Back restores the question and reading position while keeping current answer and account state. No schema or course-version change is needed.
 
 ## Revisit later
 

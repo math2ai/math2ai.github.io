@@ -588,7 +588,7 @@ Separate evaluating the current model from optimizing it. An ordinary forward ca
 Pass the input through the stated arithmetic in order. A forward pass evaluates the rule with its existing coefficients.
 Computing an output and changing the rule that computes it are separate operations. A training update needs additional steps.
 Intermediate results depend on earlier results. A graph records which values each operation must receive before it can run.
-An operation cannot consume an intermediate value before it exists. Follow the parentheses' dependency order.
+Complete the first stage, including ReLU, before moving on. The output stage receives the intermediate value h. Keep the stated weights and biases fixed throughout the calculation.
 Inference applies the current model to an input. It needs the resulting output rather than a parameter-fitting step.
 A prediction alone does not establish how far it is from the desired output. Supervised loss needs that reference.
 Calculate the inner affine expression first, then apply ReLU to its signed result.

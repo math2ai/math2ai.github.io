@@ -193,7 +193,14 @@
           "feedback": "Real numbers are closed under multiplication; the sign and integrality can vary.",
           "retryFeedback": "Think about the type of result ordinary multiplication produces. It does not package the inputs into a list."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          5,
+          33
+        ]
+      }
     },
     {
       "id": 2,
@@ -352,7 +359,13 @@
           "feedback": "Equality allows the value of y to be substituted for y.",
           "retryFeedback": "Equality lets you replace a symbol with an equal quantity. Apply that replacement to the first statement."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          3
+        ]
+      }
     },
     {
       "id": 3,
@@ -511,7 +524,14 @@
           "feedback": "Both (−2)² and 2² equal 4. A function may send different inputs to the same output.",
           "retryFeedback": "Evaluate the rule separately at each input in a pair. The definition restricts outputs per input, not inputs per output."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          21,
+          33
+        ]
+      }
     },
     {
       "id": 4,
@@ -670,7 +690,14 @@
           "feedback": "Software needs an agreed meaning for its numbers.",
           "retryFeedback": "An input such as depth is ambiguous without a scale. A tool needs enough information to interpret the supplied number."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          90,
+          128
+        ]
+      }
     },
     {
       "id": 5,
@@ -829,7 +856,14 @@
           "feedback": "The subscript selects the second coordinate, not the value two.",
           "retryFeedback": "With one-based indexing, counting starts at the first entry. The subscript names a position, not the value to search for."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          9,
+          46
+        ]
+      }
     },
     {
       "id": 6,
@@ -988,7 +1022,20 @@
           "feedback": "The selected entries are 7 and 8.",
           "retryFeedback": "Locate each requested entry using row-then-column indexing, then add the two values. The subscripts are not factors."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "scalar",
+            "target": 1
+          }
+        ],
+        "usedIn": [
+          10,
+          104
+        ]
+      }
     },
     {
       "id": 7,
@@ -1152,7 +1199,29 @@
           "feedback": "The first index selects the table. The other two still select the same row and column within the new table.",
           "retryFeedback": "Separate the coordinate that selects a table from the coordinates that locate an entry inside that table."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "scalar",
+            "target": 1
+          },
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          115
+        ]
+      }
     },
     {
       "id": 8,
@@ -1311,7 +1380,14 @@
           "feedback": "Both endpoints are included: indices 0 through 4.",
           "retryFeedback": "Include the zero-indexed term and both endpoints. The number of included positions is not simply the upper bound."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          9,
+          16
+        ]
+      }
     },
     {
       "id": 9,
@@ -1470,7 +1546,20 @@
           "feedback": "Each quantity-price product is a line cost; summation gives the bill.",
           "retryFeedback": "Match each purchased quantity with its own price, then combine the item-level amounts. Do not add quantities and prices separately."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vectors",
+            "target": 5
+          }
+        ],
+        "usedIn": [
+          33,
+          57
+        ]
+      }
     },
     {
       "id": 10,
@@ -1629,7 +1718,20 @@
           "feedback": "The transformation closest to x acts first.",
           "retryFeedback": "The operation nearest x happens first. Write the second transformation around the result of the first."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "dot product",
+            "target": 9
+          }
+        ],
+        "usedIn": [
+          12,
+          59
+        ]
+      }
     },
     {
       "id": 11,
@@ -1788,7 +1890,19 @@
           "feedback": "Entries with equal row and column indices retain their positions.",
           "retryFeedback": "A diagonal position has equal row and column indices. Track what swapping those equal indices does."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          104
+        ]
+      }
     },
     {
       "id": 12,
@@ -1947,7 +2061,29 @@
           "feedback": "Every matrix map is linear, but not every one is length-preserving or invertible.",
           "retryFeedback": "Distribute matrix multiplication across a sum and pull scalar factors outside. These properties describe what the map preserves."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "scalar",
+            "target": 1
+          },
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          48
+        ]
+      }
     },
     {
       "id": 13,
@@ -2106,7 +2242,20 @@
           "feedback": "It is a square root of a sum of nonnegative squares.",
           "retryFeedback": "The squared differences are nonnegative, and distance uses the nonnegative square root of their sum."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          }
+        ],
+        "usedIn": [
+          109,
+          52
+        ]
+      }
     },
     {
       "id": 14,
@@ -2270,7 +2419,25 @@
           "feedback": "A(0,3) = (0,−6) = −2(0,3). The zero vector is excluded, and vectors with a nonzero first coordinate are not scaled uniformly by −2.",
           "retryFeedback": "Check that a candidate is nonzero and that applying A gives the stated multiplier times every coordinate of that candidate."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          108,
+          48
+        ]
+      }
     },
     {
       "id": 15,
@@ -2434,7 +2601,19 @@
           "feedback": "Keeping the largest component retains scale 5 and omits the components with scales 2 and 0.",
           "retryFeedback": "Order the singular values by size. Retaining one scale keeps one direction; identify which other scales must be left out."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          48
+        ]
+      }
     },
     {
       "id": 16,
@@ -2593,7 +2772,14 @@
           "feedback": "Probability describes a distribution of possible counts, not a fixed sequence.",
           "retryFeedback": "An expected count describes an average over repeated sets of trials. Individual sets can fluctuate around that average."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          15,
+          16
+        ]
+      }
     },
     {
       "id": 17,
@@ -2752,7 +2938,20 @@
           "feedback": "Conditional association alone does not establish causation.",
           "retryFeedback": "Conditioning describes an association in observed probabilities. It does not specify what would happen if you intervened."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probabilities",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          101,
+          120
+        ]
+      }
     },
     {
       "id": 18,
@@ -2916,7 +3115,17 @@
           "feedback": "Sequential updates are valid with the appropriate conditional likelihoods; reusing the same evidence as new would double-count it.",
           "retryFeedback": "An updated belief summarizes the evidence already processed. A later update should add new evidence without counting the old evidence twice."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probability",
+            "target": 14
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 19,
@@ -3075,7 +3284,20 @@
           "feedback": "Compute 2×0.75 + 10×0.25 = 4.",
           "retryFeedback": "The outcomes are not equally likely. Multiply each by its own probability before combining them."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probability",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          17,
+          70
+        ]
+      }
     },
     {
       "id": 20,
@@ -3234,7 +3456,20 @@
           "feedback": "All three means are 5, but (0, 10) has the largest deviations.",
           "retryFeedback": "Compare the distances of each pair's entries from that pair's mean. The larger overall location is not what measures spread."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "expected squared distance",
+            "target": 16
+          }
+        ],
+        "usedIn": [
+          26,
+          48
+        ]
+      }
     },
     {
       "id": 21,
@@ -3398,7 +3633,20 @@
           "feedback": "Shared causes, selection, and other mechanisms can produce association without one variable causing the other.",
           "retryFeedback": "An association can arise from a common cause, selection, or other mechanisms. Correlation alone does not distinguish them."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "standard deviations",
+            "target": 17
+          }
+        ],
+        "usedIn": [
+          48,
+          127
+        ]
+      }
     },
     {
       "id": 22,
@@ -3562,7 +3810,17 @@
           "feedback": "Special sampling methods may help, but their weighting and assumptions need to be handled correctly.",
           "retryFeedback": "Estimating an event rate requires observing that event. Consider how many occurrences a finite simulation is likely to contain."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "expected value",
+            "target": 16
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 23,
@@ -3721,7 +3979,20 @@
           "feedback": "The product rule turns a product into a sum of logarithms. Keeping the result as a log value avoids repeatedly multiplying already tiny numbers; converting back can still underflow.",
           "retryFeedback": "Use the logarithm product rule to express the combined value differently. Consider what happens when positive numbers below one are multiplied repeatedly."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "variable",
+            "target": 2
+          }
+        ],
+        "usedIn": [
+          34,
+          44
+        ]
+      }
     },
     {
       "id": 24,
@@ -3880,7 +4151,20 @@
           "feedback": "Differentiate to 3x², then substitute 2.",
           "retryFeedback": "Apply the power rule before substituting the input. The requested quantity is slope, not the original cubic value."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "function",
+            "target": 3
+          }
+        ],
+        "usedIn": [
+          20,
+          21
+        ]
+      }
     },
     {
       "id": 25,
@@ -4039,7 +4323,22 @@
           "feedback": "Add each interval’s accumulation: 3×2 + 1×4 = 10 litres.",
           "retryFeedback": "Find the amount delivered during each constant-flow interval by multiplying rate by duration, then combine the amounts."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "function",
+            "target": 3
+          },
+          {
+            "field": "definition",
+            "text": "sums",
+            "target": 8
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 26,
@@ -4198,7 +4497,25 @@
           "feedback": "The partial derivatives are y and x.",
           "retryFeedback": "When differentiating a product of independent inputs with respect to one input, hold the other input fixed, then substitute the point."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "scalar",
+            "target": 1
+          },
+          {
+            "field": "definition",
+            "text": "partial derivatives",
+            "target": 19
+          }
+        ],
+        "usedIn": [
+          24,
+          38
+        ]
+      }
     },
     {
       "id": 27,
@@ -4362,7 +4679,27 @@
           "feedback": "The second derivatives are 2 in x and 18 in y. The y direction has the greater upward curvature.",
           "retryFeedback": "Hold one coordinate fixed and differentiate twice with respect to the other. Compare the resulting second derivatives."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          },
+          {
+            "field": "definition",
+            "text": "eigenvalues",
+            "target": 103
+          },
+          {
+            "field": "definition",
+            "text": "gradient",
+            "target": 20
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 28,
@@ -4521,7 +4858,19 @@
           "feedback": "The multivariable chain rule sums contributions from all paths.",
           "retryFeedback": "A variable may contribute through more than one route. Compute each path's effect before combining the contributions to the total change."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "derivatives",
+            "target": 19
+          }
+        ],
+        "usedIn": [
+          38
+        ]
+      }
     },
     {
       "id": 29,
@@ -4680,7 +5029,14 @@
           "feedback": "A scoring rule defines what the optimization is trying to improve.",
           "retryFeedback": "Performance can mean accuracy, speed, cost, or something else. An optimizer needs a stated criterion for comparing choices."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          107,
+          24
+        ]
+      }
     },
     {
       "id": 30,
@@ -4844,7 +5200,27 @@
           "feedback": "Move the required total to the left: x+y−10=0 is equivalent to x+y=10.",
           "retryFeedback": "Write the equality with zero on one side by subtracting the required total from both sides. Check the result using any allowed pair."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "function",
+            "target": 3
+          },
+          {
+            "field": "formulaNote",
+            "text": "gradient",
+            "target": 20
+          },
+          {
+            "field": "formulaNote",
+            "text": "derivatives",
+            "target": 19
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 31,
@@ -5003,7 +5379,24 @@
           "feedback": "The current gradient supplies the local update direction.",
           "retryFeedback": "The update needs local information about how the objective changes with its parameters. The loss value alone does not supply a direction."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "gradient",
+            "target": 20
+          }
+        ],
+        "usedIn": [
+          39
+        ]
+      }
     },
     {
       "id": 32,
@@ -5162,7 +5555,14 @@
           "feedback": "More biased observations can preserve the same systematic error.",
           "retryFeedback": "More observations can reduce sampling noise while preserving the same systematic measurement error. Size alone does not repair bias."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          30,
+          27
+        ]
+      }
     },
     {
       "id": 33,
@@ -5321,7 +5721,20 @@
           "feedback": "The relationship may change beyond the data used to fit it.",
           "retryFeedback": "Observed fit tests only the supported input region. The relationship outside that region may behave differently."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "features",
+            "target": 25
+          }
+        ],
+        "usedIn": [
+          31,
+          112
+        ]
+      }
     },
     {
       "id": 34,
@@ -5485,7 +5898,13 @@
           "feedback": "Errors multiply by 100, so their squares multiply by 100².",
           "retryFeedback": "Converting a length changes each numerical error by the conversion factor. MSE then squares that factor."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          49
+        ]
+      }
     },
     {
       "id": 35,
@@ -5644,7 +6063,14 @@
           "feedback": "A mismatched target teaches the wrong relationship.",
           "retryFeedback": "The association between the example and its desired output matters. A separate unpaired list of outcomes does not define those training pairs."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          41,
+          38
+        ]
+      }
     },
     {
       "id": 36,
@@ -5803,7 +6229,20 @@
           "feedback": "Reproducing training requires more than saved weights alone.",
           "retryFeedback": "The final coefficients do not describe every choice made during training. Conversely, training settings do not specify the learned coefficients."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "example",
+            "text": "learning rate",
+            "target": 24
+          }
+        ],
+        "usedIn": [
+          27,
+          62
+        ]
+      }
     },
     {
       "id": 37,
@@ -5962,7 +6401,20 @@
           "feedback": "The test must represent the intended use to support broader conclusions.",
           "retryFeedback": "A test score is conditional on the sampled data, metric, and procedure. Extending it to other settings requires additional evidence."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "parameters",
+            "target": 32
+          }
+        ],
+        "usedIn": [
+          28,
+          41
+        ]
+      }
     },
     {
       "id": 38,
@@ -6121,7 +6573,19 @@
           "feedback": "Shared records can make apparent generalization misleading.",
           "retryFeedback": "Unusually strong results deserve extra scrutiny when training and test examples share underlying information. A score alone does not identify the cause."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "formulaNote",
+            "text": "split",
+            "target": 27
+          }
+        ],
+        "usedIn": [
+          126
+        ]
+      }
     },
     {
       "id": 39,
@@ -6280,7 +6744,19 @@
           "feedback": "The sign and magnitude describe position relative to the fitted reference.",
           "retryFeedback": "The sign indicates which side of the fitted mean the value lies on. The magnitude counts fitted scale units."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "standard deviation",
+            "target": 17
+          }
+        ],
+        "usedIn": [
+          109
+        ]
+      }
     },
     {
       "id": 40,
@@ -6444,7 +6920,24 @@
           "feedback": "Indexing and approximate search can help, but prediction still needs a way to find relevant neighbors.",
           "retryFeedback": "Storing examples postpones much of the work until prediction. A query must still identify nearby training examples."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "distance",
+            "target": 13
+          },
+          {
+            "field": "definition",
+            "text": "Classification",
+            "target": 29
+          }
+        ],
+        "usedIn": [
+          52
+        ]
+      }
     },
     {
       "id": 41,
@@ -6608,7 +7101,25 @@
           "feedback": "A useful predictive split establishes association within the fitted data, not an intervention effect.",
           "retryFeedback": "A split is chosen for predictive usefulness under the training objective. It does not establish the effect of an intervention."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "feature",
+            "target": 25
+          },
+          {
+            "field": "definition",
+            "text": "classification",
+            "target": 29
+          }
+        ],
+        "usedIn": [
+          111,
+          112
+        ]
+      }
     },
     {
       "id": 42,
@@ -6767,7 +7278,19 @@
           "feedback": "Evaluation should match the intended new-well setting.",
           "retryFeedback": "The evaluation should hold out the unit you want to generalize to. New rows from a familiar well may not test new-well performance."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "validation",
+            "target": 27
+          }
+        ],
+        "usedIn": [
+          42
+        ]
+      }
     },
     {
       "id": 43,
@@ -6926,7 +7449,11 @@
           "feedback": "A weight-size preference depends on the coordinate scale.",
           "retryFeedback": "Rescaling an input can be offset by an inverse change in its weight. The predictions can match while the coefficient penalty changes."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 44,
@@ -7090,7 +7617,17 @@
           "feedback": "The relevant evidence is measured predictive value under an appropriate evaluation design.",
           "retryFeedback": "Complexity alone is not evidence of usefulness. A common evaluation lets you compare actual predictive value on the same task."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "decision trees",
+            "target": 110
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 45,
@@ -7254,7 +7791,27 @@
           "feedback": "The new prediction is 1, so the remaining residual is 5−1=4.",
           "retryFeedback": "Compute the scaled update and the resulting prediction first. Then subtract that prediction from the target to find what remains."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "decision tree",
+            "target": 110
+          },
+          {
+            "field": "definition",
+            "text": "squared error",
+            "target": 31
+          },
+          {
+            "field": "definition",
+            "text": "gradients",
+            "target": 20
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 46,
@@ -7418,7 +7975,13 @@
           "feedback": "A has recall 8/10 and precision 8/8. B has recall 9/10 and precision 9/15: it finds more positives but makes more false alarms.",
           "retryFeedback": "Compute two fractions for each detector: found positives over actual positives, and found positives over all positive predictions."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          98
+        ]
+      }
     },
     {
       "id": 47,
@@ -7582,7 +8145,17 @@
           "feedback": "Use enough data and uncertainty-aware interpretation rather than treating each empirical fraction as exact.",
           "retryFeedback": "An observed fraction based on very few cases can move substantially with one additional outcome. That variability can mimic poor calibration."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probability",
+            "target": 14
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 48,
@@ -7746,7 +8319,17 @@
           "feedback": "Sample size cannot by itself resolve confounding or other identification problems.",
           "retryFeedback": "Observed groups may differ for reasons besides treatment. A causal interpretation must justify how the design handles those differences."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "formulaNote",
+            "text": "averages these effects",
+            "target": 16
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 49,
@@ -7910,7 +8493,20 @@
           "feedback": "Subtract 70 from 78; uncertainty is needed to judge how stable the observed difference is.",
           "retryFeedback": "The requested gain is a difference between percentages on the same scale. It is not a relative increase divided by the old score."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "training data",
+            "target": 27
+          }
+        ],
+        "usedIn": [
+          62,
+          126
+        ]
+      }
     },
     {
       "id": 50,
@@ -8074,7 +8670,17 @@
           "feedback": "The aim is useful learning under constraints, not necessarily labeling the entire population.",
           "retryFeedback": "Acquiring labels has a cost, and additional labels may have diminishing value. Compare the remaining resources with independent evidence of benefit."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "formulaNote",
+            "text": "probability",
+            "target": 14
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 51,
@@ -8233,7 +8839,25 @@
           "feedback": "The name is a metaphor, not a detailed biological equivalence.",
           "retryFeedback": "The name is an analogy. This compact numerical rule omits much of the structure and behavior of a biological cell."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "formulaNote",
+            "text": "dot product",
+            "target": 9
+          }
+        ],
+        "usedIn": [
+          34,
+          36
+        ]
+      }
     },
     {
       "id": 52,
@@ -8392,7 +9016,22 @@
           "feedback": "Its curved, bounded response is nonlinear.",
           "retryFeedback": "A bounded nonlinear curve does not behave like a linear map under arbitrary addition and scaling. Test one of those properties."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "activation function",
+            "target": 33
+          },
+          {
+            "field": "definition",
+            "text": "derivative",
+            "target": 19
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 53,
@@ -8551,7 +9190,20 @@
           "feedback": "It is piecewise linear but fails global superposition.",
           "retryFeedback": "ReLU is linear on each side separately, but its slope changes at the origin. Test addition across the two regions."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "activation",
+            "target": 33
+          }
+        ],
+        "usedIn": [
+          37,
+          36
+        ]
+      }
     },
     {
       "id": 54,
@@ -8633,17 +9285,17 @@
           "retryFeedback": "Intermediate results depend on earlier results. A graph records which values each operation must receive before it can run."
         },
         {
-          "id": "37-05",
-          "question": "Which order is valid for y = 2(x + 1)?",
+          "id": "37-r2-05",
+          "question": "A model first computes an intermediate value h = ReLU(2x − 3), then its prediction ŷ = 4h + 1. For input x = 1, which intermediate value and prediction does the forward pass produce?",
           "options": [
-            "Multiply 1 by x only",
-            "Update weights, then invent x",
-            "Compute the loss before obtaining inputs",
-            "Compute x + 1, then multiply by 2"
+            "h = 0, ŷ = 5",
+            "h = −1, ŷ = −3",
+            "h = 2, ŷ = 9",
+            "h = 0, ŷ = 1"
           ],
           "correct": 3,
-          "feedback": "Each dependent operation needs its inputs first.",
-          "retryFeedback": "An operation cannot consume an intermediate value before it exists. Follow the parentheses' dependency order."
+          "feedback": "First compute 2×1−3 = −1. ReLU turns this into h = 0. Feed that intermediate value into the output calculation: ŷ = 4×0+1 = 1. A forward pass carries the calculated values through the model, using its existing weights and biases.",
+          "retryFeedback": "Complete the first stage, including ReLU, before moving on. The output stage receives the intermediate value h. Keep the stated weights and biases fixed throughout the calculation."
         },
         {
           "id": "37-06",
@@ -8710,7 +9362,19 @@
           "feedback": "The same deterministic calculations with the same inputs and weights give the same output. A forward pass alone does not fit the weights.",
           "retryFeedback": "Check whether any input, weight, or operation changed. Repeating a calculation is different from performing a learning update."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "weights",
+            "target": 32
+          }
+        ],
+        "usedIn": [
+          38
+        ]
+      }
     },
     {
       "id": 55,
@@ -8879,7 +9543,27 @@
           "feedback": "Derivative correctness does not establish data quality or performance on new cases.",
           "retryFeedback": "The derivative can be accurate for a poorly chosen objective or unrepresentative dataset. Correct calculus does not validate the learning setup."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "chain rule",
+            "target": 21
+          },
+          {
+            "field": "definition",
+            "text": "gradients",
+            "target": 20
+          },
+          {
+            "field": "example",
+            "text": "derivatives",
+            "target": 19
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 56,
@@ -9038,7 +9722,24 @@
           "feedback": "Hardware, update counts, memory, and optimization behavior all affect time.",
           "retryFeedback": "Runtime depends on hardware utilization, memory, update count, and convergence. Batch size alone does not determine the total."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "gradient descent",
+            "target": 24
+          },
+          {
+            "field": "definition",
+            "text": "parameters",
+            "target": 32
+          }
+        ],
+        "usedIn": [
+          40
+        ]
+      }
     },
     {
       "id": 57,
@@ -9197,7 +9898,22 @@
           "feedback": "The number of full batches is dataset size divided by batch size.",
           "retryFeedback": "With exact divisibility, steps per pass equal dataset size divided by batch size. Only the numerator changes here."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "dataset",
+            "target": 25
+          },
+          {
+            "field": "definition",
+            "text": "mini-batch",
+            "target": 39
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 58,
@@ -9356,7 +10072,20 @@
           "feedback": "Architecture alone does not supply a learned, validated relationship.",
           "retryFeedback": "The architecture only specifies a family of computations. Learning useful behavior and verifying it require additional ingredients."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "weights and biases",
+            "target": 33
+          }
+        ],
+        "usedIn": [
+          115,
+          59
+        ]
+      }
     },
     {
       "id": 59,
@@ -9520,7 +10249,17 @@
           "feedback": "The windows overlap. Their union is positions 1, 2, 3, 4, and 5, not nine distinct positions.",
           "retryFeedback": "List the original positions covered by all three windows. Count an overlapping position once when finding the total region that can influence the output."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "layers",
+            "target": 36
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 60,
@@ -9684,7 +10423,11 @@
           "feedback": "The representation and output layer should match the prediction target.",
           "retryFeedback": "Different readout designs can use individual representations, pairs, or an aggregate of the graph. The task determines the output level."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 61,
@@ -9843,7 +10586,20 @@
           "feedback": "Independent sigmoid outputs need not form a single normalized distribution.",
           "retryFeedback": "Independent label probabilities can all be high at once. A shared normalization imposes competition for a fixed total mass."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          }
+        ],
+        "usedIn": [
+          44,
+          57
+        ]
+      }
     },
     {
       "id": 62,
@@ -10002,7 +10758,25 @@
           "feedback": "Since ln(1/e) = −1, its negative is 1.",
           "retryFeedback": "Use the inverse relationship between the natural logarithm and the exponential, then apply the minus sign in the loss formula."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probabilities",
+            "target": 14
+          },
+          {
+            "field": "definition",
+            "text": "log",
+            "target": 18
+          }
+        ],
+        "usedIn": [
+          61,
+          124
+        ]
+      }
     },
     {
       "id": 63,
@@ -10166,7 +10940,19 @@
           "feedback": "An outcome never occurring under P has no weighted contribution to its KL expectation.",
           "retryFeedback": "Use the continuous limiting convention for p log(p/q) as p approaches zero with q positive. Do not evaluate log zero in isolation."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "probability distribution",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          124
+        ]
+      }
     },
     {
       "id": 64,
@@ -10325,7 +11111,14 @@
           "feedback": "Overlapping or duplicated held-out data can still inflate performance.",
           "retryFeedback": "Shared examples, future information, or preprocessing can cross an evaluation boundary regardless of who or what constructed the targets."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          117,
+          49
+        ]
+      }
     },
     {
       "id": 65,
@@ -10484,7 +11277,25 @@
           "feedback": "The representation should support the intended application.",
           "retryFeedback": "A representation's value depends on what it helps accomplish. Visual clusters or small training loss alone do not establish usefulness."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "distances",
+            "target": 13
+          }
+        ],
+        "usedIn": [
+          47,
+          56
+        ]
+      }
     },
     {
       "id": 66,
@@ -10643,7 +11454,29 @@
           "feedback": "Cosine deliberately removes the contribution of vector length.",
           "retryFeedback": "Cosine normalizes away vector lengths before comparing them. Consider which kind of relationship that deliberately retains."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vectors",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "dot product",
+            "target": 9
+          },
+          {
+            "field": "definition",
+            "text": "norm",
+            "target": 13
+          }
+        ],
+        "usedIn": [
+          117
+        ]
+      }
     },
     {
       "id": 67,
@@ -10807,7 +11640,17 @@
           "feedback": "Pair construction can provide a training signal even when task labels are absent.",
           "retryFeedback": "Related views can be constructed from existing data. Check whether those constructed relationships provide supervision without separate semantic labels."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "representations",
+            "target": 46
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 68,
@@ -10966,7 +11809,27 @@
           "feedback": "PCA offers a relatively simple comparison using linear projections. The comparison can show whether the more complex method adds useful performance.",
           "retryFeedback": "A comparison method gives added complexity something to justify. Consider what PCA already does with centered data and a small number of directions."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "variance",
+            "target": 17
+          },
+          {
+            "field": "definition",
+            "text": "dot product",
+            "target": 9
+          },
+          {
+            "field": "formulaNote",
+            "text": "unit vector",
+            "target": 47
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 69,
@@ -11130,7 +11993,20 @@
           "feedback": "Average loss can underweight uncommon features that matter to the task.",
           "retryFeedback": "An average can be dominated by common features. Examine whether rare details important to the intended task are preserved."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "reconstruction error",
+            "target": 31
+          }
+        ],
+        "usedIn": [
+          50,
+          53
+        ]
+      }
     },
     {
       "id": 70,
@@ -11294,7 +12170,25 @@
           "feedback": "The useful capacity depends on what the application must retain.",
           "retryFeedback": "The code must balance space with the information needed later. Use evidence from reconstruction and the intended task together."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "example",
+            "text": "Decoder",
+            "target": 49
+          }
+        ],
+        "usedIn": [
+          51,
+          53
+        ]
+      }
     },
     {
       "id": 71,
@@ -11453,7 +12347,14 @@
           "feedback": "The total is 1600 bits, divided by eight.",
           "retryFeedback": "Multiply value count by bits per value, then convert the total bits into bytes. The question excludes metadata and other overhead."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          80,
+          85
+        ]
+      }
     },
     {
       "id": 72,
@@ -11612,7 +12513,19 @@
           "feedback": "A smaller representation must be validated for the intended computations.",
           "retryFeedback": "A smaller format changes numerical behavior. Compare the results and check for instability under the intended computations."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "bits",
+            "target": 79
+          }
+        ],
+        "usedIn": [
+          85
+        ]
+      }
     },
     {
       "id": 73,
@@ -11771,7 +12684,24 @@
           "feedback": "Task-relevant information must survive the compression.",
           "retryFeedback": "File size measures storage. Answering questions about the original data depends on retaining relevant information and interpreting it correctly."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "reconstruction error",
+            "target": 49
+          },
+          {
+            "field": "formulaNote",
+            "text": "bits",
+            "target": 79
+          }
+        ],
+        "usedIn": [
+          53
+        ]
+      }
     },
     {
       "id": 74,
@@ -11935,7 +12865,24 @@
           "feedback": "More entries increase representational choices but also affect storage and learning.",
           "retryFeedback": "Additional codebook entries increase the available choices. Whether learning makes good use of them remains a separate question."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "Nearest-neighbor",
+            "target": 109
+          }
+        ],
+        "usedIn": [
+          53
+        ]
+      }
     },
     {
       "id": 75,
@@ -12099,7 +13046,14 @@
           "feedback": "A token is a discrete identity; its embedding is a numerical representation.",
           "retryFeedback": "The discrete identifier selects an entry; the associated numerical representation is used in computations. They have different types and roles."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          61,
+          56
+        ]
+      }
     },
     {
       "id": 76,
@@ -12263,7 +13217,27 @@
           "feedback": "Each ID needs 4 bits, and there are four IDs.",
           "retryFeedback": "Compute the fixed number of bits needed per ID from codebook size, then multiply by the number of IDs emitted."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "autoencoder",
+            "target": 49
+          },
+          {
+            "field": "definition",
+            "text": "codebook",
+            "target": 52
+          },
+          {
+            "field": "definition",
+            "text": "gradient",
+            "target": 20
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 77,
@@ -12427,7 +13401,11 @@
           "feedback": "The number of sampling steps is a speed-quality choice, and some methods reduce it.",
           "retryFeedback": "Many samplers use a sequence of smaller updates between noise levels. Count model evaluations across that sequence rather than assuming a single pass."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 78,
@@ -12591,7 +13569,13 @@
           "feedback": "The two regions have different patterns. Separate summaries can reveal those differences instead of combining them into one global value.",
           "retryFeedback": "Compare the kind of neighboring relationships in each region. A summary over the whole sequence mixes both kinds together."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          91
+        ]
+      }
     },
     {
       "id": 79,
@@ -12750,7 +13734,30 @@
           "feedback": "The shifted sequence supplies next-token supervision.",
           "retryFeedback": "Training has access to the recorded continuation. Compare the next-position prediction with what actually follows the prefix in that sequence."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "sequence",
+            "target": 55
+          },
+          {
+            "field": "definition",
+            "text": "token",
+            "target": 54
+          },
+          {
+            "field": "definition",
+            "text": "conditioned",
+            "target": 15
+          }
+        ],
+        "usedIn": [
+          60,
+          59
+        ]
+      }
     },
     {
       "id": 80,
@@ -12914,7 +13921,29 @@
           "feedback": "Length generalization still depends on the method, training, and evaluation.",
           "retryFeedback": "A position mechanism describes how position enters the model. Reliable extrapolation still needs evaluation beyond the training lengths."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "token",
+            "target": 54
+          },
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "embedding",
+            "target": 46
+          }
+        ],
+        "usedIn": [
+          59
+        ]
+      }
     },
     {
       "id": 81,
@@ -13078,7 +14107,25 @@
           "feedback": "A convex weighted average stays within the values' range.",
           "retryFeedback": "Nonnegative normalized weights form a convex combination. Compare such an average with the smallest and largest available values."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "Softmax",
+            "target": 43
+          },
+          {
+            "field": "definition",
+            "text": "token",
+            "target": 54
+          }
+        ],
+        "usedIn": [
+          58,
+          60
+        ]
+      }
     },
     {
       "id": 82,
@@ -13242,7 +14289,24 @@
           "feedback": "A controlled removal comparison tests how performance changes when the head is disabled. The result depends on the evaluation and is not proof of a universal role.",
           "retryFeedback": "Look for a comparison that changes the component of interest while keeping the task and evaluation consistent. A label or weight alone is not a performance test."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "attention",
+            "target": 57
+          },
+          {
+            "field": "definition",
+            "text": "matrix transformations",
+            "target": 12
+          }
+        ],
+        "usedIn": [
+          59
+        ]
+      }
     },
     {
       "id": 83,
@@ -13406,7 +14470,29 @@
           "feedback": "A causal attention pattern cannot repair leaked features or overlapping evaluation data.",
           "retryFeedback": "An attention mask restricts certain token dependencies. It cannot remove leaked information introduced by labels, preprocessing, or other features."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "attention",
+            "target": 57
+          },
+          {
+            "field": "definition",
+            "text": "softmax",
+            "target": 43
+          },
+          {
+            "field": "definition",
+            "text": "tokens",
+            "target": 54
+          }
+        ],
+        "usedIn": [
+          59
+        ]
+      }
     },
     {
       "id": 84,
@@ -13570,7 +14656,22 @@
           "feedback": "Data, training, grounding, and evaluation are still necessary.",
           "retryFeedback": "Architecture specifies how computation is organized. Reliability also depends on data, training, evidence, and appropriate evaluation."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "attention",
+            "target": 57
+          },
+          {
+            "field": "definition",
+            "text": "feed-forward network",
+            "target": 36
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 85,
@@ -13734,7 +14835,11 @@
           "feedback": "Input-dependent routing can select different experts at different positions.",
           "retryFeedback": "Routing uses the representation of the current input unit. Different token representations can lead to different selections within one sequence."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 86,
@@ -13893,7 +14998,24 @@
           "feedback": "The training or interface must provide a meaningful relationship and be evaluated.",
           "retryFeedback": "An arbitrary ID supplies a symbol, not its interpretation. The examples and objective must establish the intended relationship to meaning."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "optimization",
+            "target": 23
+          },
+          {
+            "field": "definition",
+            "text": "parameters",
+            "target": 32
+          }
+        ],
+        "usedIn": [
+          75
+        ]
+      }
     },
     {
       "id": 87,
@@ -14057,7 +15179,17 @@
           "feedback": "Divide the old latency by the new latency: 100/25=4, while checking that the quality tradeoff remains acceptable.",
           "retryFeedback": "Speedup compares the old time with the new time as a ratio. A difference in milliseconds is a different quantity."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "example",
+            "text": "cross-entropy",
+            "target": 44
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 88,
@@ -14216,7 +15348,19 @@
           "feedback": "Retrieval supplies evidence; a tool can execute the required operation.",
           "retryFeedback": "Finding text and executing a specified mathematical operation solve different needs. Identify whether a numerical result must be calculated from inputs."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "language model",
+            "target": 61
+          }
+        ],
+        "usedIn": [
+          100
+        ]
+      }
     },
     {
       "id": 89,
@@ -14375,7 +15519,13 @@
           "feedback": "Version context helps reproduce and interpret computations.",
           "retryFeedback": "The same request can behave differently after an implementation or model update. Reproducing a result needs its relevant version context."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          64
+        ]
+      }
     },
     {
       "id": 90,
@@ -14534,7 +15684,11 @@
           "feedback": "The answer should reflect observed tool output, not merely the intended call.",
           "retryFeedback": "Issuing a request does not establish successful completion. Inspect the returned status and output before describing the result."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 91,
@@ -14698,7 +15852,20 @@
           "feedback": "Incomplete state information can invalidate the assumed prediction model.",
           "retryFeedback": "Different hidden conditions can lead to different action consequences despite a similar reading. Prediction needs an adequate information representation."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "distribution",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          65,
+          67
+        ]
+      }
     },
     {
       "id": 92,
@@ -14862,7 +16029,20 @@
           "feedback": "Useful accuracy in one region need not transfer to another.",
           "retryFeedback": "A model's fit can depend on the conditions covered by its data. Intended operating conditions need relevant validation evidence."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "state",
+            "target": 66
+          }
+        ],
+        "usedIn": [
+          67,
+          77
+        ]
+      }
     },
     {
       "id": 93,
@@ -15026,7 +16206,25 @@
           "feedback": "The representation and transition assumptions need to fit the real task.",
           "retryFeedback": "Writing down a formal model states assumptions. Evidence about the real system is needed to determine whether those assumptions are adequate."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "states",
+            "target": 66
+          },
+          {
+            "field": "definition",
+            "text": "probabilities",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          69,
+          71
+        ]
+      }
     },
     {
       "id": 94,
@@ -15190,7 +16388,14 @@
           "feedback": "The later reward contributes γ×10: 9 with γ = 0.9 versus 5 with γ = 0.5. The immediate reward has weight 1 in both cases.",
           "retryFeedback": "Compare the factor multiplying the second reward in the return formula. The immediate reward does not receive that one-step discount."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          70,
+          72
+        ]
+      }
     },
     {
       "id": 95,
@@ -15354,7 +16559,25 @@
           "feedback": "History or a belief can provide the needed information under partial observability.",
           "retryFeedback": "When one observation is incomplete, available history can inform the choice. The policy's input representation must be specified accordingly."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "actions",
+            "target": 66
+          },
+          {
+            "field": "definition",
+            "text": "probability",
+            "target": 14
+          }
+        ],
+        "usedIn": [
+          70,
+          74
+        ]
+      }
     },
     {
       "id": 96,
@@ -15518,7 +16741,30 @@
           "feedback": "The weighted average is 0.75×4 + 0.25×10.",
           "retryFeedback": "Multiply each action-conditioned value by its selection probability, then add. The two choices are not equally weighted."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "expected",
+            "target": 16
+          },
+          {
+            "field": "definition",
+            "text": "return",
+            "target": 68
+          },
+          {
+            "field": "definition",
+            "text": "policy",
+            "target": 69
+          }
+        ],
+        "usedIn": [
+          71,
+          72
+        ]
+      }
     },
     {
       "id": 97,
@@ -15682,7 +16928,30 @@
           "feedback": "Dynamic programming and temporal-difference methods exploit this recursive structure.",
           "retryFeedback": "A long-horizon quantity can be expressed using one step and a continuation estimate. That structure supports repeated local calculations."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "policy",
+            "target": 69
+          },
+          {
+            "field": "definition",
+            "text": "value",
+            "target": 70
+          },
+          {
+            "field": "definition",
+            "text": "reward",
+            "target": 68
+          }
+        ],
+        "usedIn": [
+          72,
+          76
+        ]
+      }
     },
     {
       "id": 98,
@@ -15846,7 +17115,19 @@
           "feedback": "Uncertainty and sequential consequences may require much more evidence.",
           "retryFeedback": "One observation does not reveal a noisy reward distribution or long-term consequences. The required evidence depends on the problem."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "formulaNote",
+            "text": "Q value",
+            "target": 70
+          }
+        ],
+        "usedIn": [
+          72
+        ]
+      }
     },
     {
       "id": 99,
@@ -16010,7 +17291,22 @@
           "feedback": "Q-learning uses the largest estimated next-state action value. Of 2 and 5, that maximum is 5.",
           "retryFeedback": "Identify the operation requested by the target formula. Compare the action values rather than averaging or adding them."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "action-value",
+            "target": 70
+          },
+          {
+            "field": "definition",
+            "text": "reward",
+            "target": 68
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 100,
@@ -16174,7 +17470,29 @@
           "feedback": "Policy updates change behavior probabilities, not the reward values themselves.",
           "retryFeedback": "Changing a policy probability changes the frequency of the corresponding choice. It does not change the action's physical reward by itself."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "policy",
+            "target": 69
+          },
+          {
+            "field": "definition",
+            "text": "return",
+            "target": 68
+          },
+          {
+            "field": "definition",
+            "text": "gradient",
+            "target": 20
+          }
+        ],
+        "usedIn": [
+          75
+        ]
+      }
     },
     {
       "id": 101,
@@ -16338,7 +17656,24 @@
           "feedback": "Planning and control can use models without an RL training procedure.",
           "retryFeedback": "Planning with a model can be done with other control or optimization methods. Reinforcement learning is one possible surrounding framework."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "rewards",
+            "target": 68
+          },
+          {
+            "field": "definition",
+            "text": "actions",
+            "target": 66
+          }
+        ],
+        "usedIn": [
+          77
+        ]
+      }
     },
     {
       "id": 102,
@@ -16502,7 +17837,24 @@
           "feedback": "Infeasibility requires explicit handling rather than silently violating constraints.",
           "retryFeedback": "Optimization may return no permitted candidate. The system needs a defined response rather than silently executing an infeasible plan."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "states",
+            "target": 66
+          },
+          {
+            "field": "definition",
+            "text": "optimizes",
+            "target": 23
+          }
+        ],
+        "usedIn": [
+          77
+        ]
+      }
     },
     {
       "id": 103,
@@ -16661,7 +18013,22 @@
           "feedback": "Disturbances, modeling error, and execution differences can affect reality.",
           "retryFeedback": "The optimizer solves its mathematical model. Disturbances and modeling errors can make the realized path differ from that solution."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "using a model",
+            "target": 76
+          },
+          {
+            "field": "definition",
+            "text": "actions",
+            "target": 66
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 104,
@@ -16825,7 +18192,22 @@
           "feedback": "Compute 0.25×3 + 0.75×1.",
           "retryFeedback": "Weight each possible response's reward by the policy's probability of selecting it, then combine the contributions."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "reward",
+            "target": 68
+          },
+          {
+            "field": "definition",
+            "text": "policy",
+            "target": 69
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 105,
@@ -16984,7 +18366,14 @@
           "feedback": "Architecture, instructions, memory, and the workload also matter.",
           "retryFeedback": "Instructions per cycle, memory, architecture, and workload all affect time. Frequency measures only one part of that system."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          82,
+          88
+        ]
+      }
     },
     {
       "id": 106,
@@ -17143,7 +18532,20 @@
           "feedback": "A GPU is hardware that can run many kinds of computation.",
           "retryFeedback": "One term describes a computing device; the other describes software using it. The device can support workloads beyond graphics."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "matrix operations",
+            "target": 10
+          }
+        ],
+        "usedIn": [
+          83,
+          84
+        ]
+      }
     },
     {
       "id": 107,
@@ -17307,7 +18709,17 @@
           "feedback": "A matching workload and implementation are needed to benefit.",
           "retryFeedback": "Having specialized hardware is insufficient if the workload cannot use it or spends most of its time elsewhere. Measure the relevant computation."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "GPU",
+            "target": 82
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 108,
@@ -17471,7 +18883,19 @@
           "feedback": "Both writes contain 1, so the final value is 1 instead of the intended 2. Such conflicting uncoordinated accesses are a race condition.",
           "retryFeedback": "Track what each thread actually reads and writes in the stated ordering. A local increment does not automatically combine with another thread’s write."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "GPUs",
+            "target": 82
+          }
+        ],
+        "usedIn": [
+          88
+        ]
+      }
     },
     {
       "id": 109,
@@ -17630,7 +19054,30 @@
           "feedback": "The number of bits per stored parameter is halved.",
           "retryFeedback": "Hold parameter count fixed and compare bits per stored value. Raw storage scales with that per-value width."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "weights",
+            "target": 32
+          },
+          {
+            "field": "definition",
+            "text": "gradients",
+            "target": 38
+          },
+          {
+            "field": "definition",
+            "text": "Activations",
+            "target": 33
+          }
+        ],
+        "usedIn": [
+          87,
+          123
+        ]
+      }
     },
     {
       "id": 110,
@@ -17794,7 +19241,27 @@
           "feedback": "Once the sequence exceeds W tokens, this cache retains only the stated recent window. The full-attention formula counts every retained token.",
           "retryFeedback": "Look at the token-count factor in the cache-size formula. Count retained tokens rather than every token ever processed."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "token",
+            "target": 54
+          },
+          {
+            "field": "definition",
+            "text": "autoregressive",
+            "target": 61
+          },
+          {
+            "field": "definition",
+            "text": "attention",
+            "target": 57
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 111,
@@ -17953,7 +19420,13 @@
           "feedback": "The limiting data supply may remain unchanged.",
           "retryFeedback": "Increasing a resource that is not the limiting one may leave runtime nearly unchanged. Identify whether the operation is waiting on arithmetic or data."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          87
+        ]
+      }
     },
     {
       "id": 112,
@@ -18117,7 +19590,22 @@
           "feedback": "Deployment sizing needs more than a weights-only calculation.",
           "retryFeedback": "Capacity is only one constraint. Execution needs additional memory and suitable performance under the real workload, not just a weight-count calculation."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "GPU",
+            "target": 82
+          },
+          {
+            "field": "definition",
+            "text": "memory",
+            "target": 85
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 113,
@@ -18281,7 +19769,27 @@
           "feedback": "Moving and coordinating model information can limit throughput.",
           "retryFeedback": "Workers exchange information and may need to wait for one another. Those costs can dominate even when local arithmetic is fast."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "parameters",
+            "target": 32
+          },
+          {
+            "field": "definition",
+            "text": "batches",
+            "target": 39
+          },
+          {
+            "field": "definition",
+            "text": "gradients",
+            "target": 38
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 114,
@@ -18445,7 +19953,11 @@
           "feedback": "Multiply 200 by 0.75.",
           "retryFeedback": "Apply the usable fraction to the total die count. Express the percentage as a fraction before multiplying."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 115,
@@ -18614,7 +20126,14 @@
           "feedback": "Keep the below-limit qualification. It describes the method’s detection capability and is not an exact zero concentration.",
           "retryFeedback": "Separate what a measurement procedure can distinguish from what material is actually absent. Preserve the qualification instead of inventing an exact value."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          125,
+          93
+        ]
+      }
     },
     {
       "id": 116,
@@ -18778,7 +20297,20 @@
           "feedback": "The result is qualified by the method's detection capability; preserve that qualification in the data.",
           "retryFeedback": "A method can fail to distinguish a small signal from background without proving that no element is present. Preserve that distinction in the record."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "Assay",
+            "target": 90
+          }
+        ],
+        "usedIn": [
+          92,
+          96
+        ]
+      }
     },
     {
       "id": 117,
@@ -18937,7 +20469,13 @@
           "feedback": "Displayed precision and knowledge about the true value are different properties.",
           "retryFeedback": "Displayed precision describes formatting. Evidence and measurement quality determine how much uncertainty remains behind those digits."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": [
+          100
+        ]
+      }
     },
     {
       "id": 118,
@@ -19101,7 +20639,22 @@
           "feedback": "Borehole trajectory is needed to relate distance along the hole to its three-dimensional position.",
           "retryFeedback": "Along-hole distance follows the drilled path. Its vertical component also depends on the borehole's inclination and trajectory."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "assays",
+            "target": 90
+          },
+          {
+            "field": "definition",
+            "text": "units",
+            "target": 4
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 119,
@@ -19260,7 +20813,17 @@
           "feedback": "A masked mean needs an explicit policy when its denominator is zero.",
           "retryFeedback": "A mean over observed targets uses their count as a denominator. An empty observed set requires a defined special case."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "ordered signal",
+            "target": 55
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 120,
@@ -19429,7 +20992,25 @@
           "feedback": "An estimate needs traceable evidence and a clear account of its limits.",
           "retryFeedback": "An unsampled block's grade is an estimate rather than a direct assay. Its interpretation needs the evidence and assumptions supporting that estimate."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "assays",
+            "target": 90
+          },
+          {
+            "field": "definition",
+            "text": "validation",
+            "target": 27
+          }
+        ],
+        "usedIn": [
+          127,
+          126
+        ]
+      }
     },
     {
       "id": 121,
@@ -19593,7 +21174,19 @@
           "feedback": "It is conditional on the spatial model and setup; model misspecification, uncertain parameters, and sampling biases need separate consideration.",
           "retryFeedback": "The reported variance is conditional on the statistical model and assumptions. Geological, measurement, or model uncertainty can extend beyond it."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "distance",
+            "target": 13
+          }
+        ],
+        "usedIn": [
+          126
+        ]
+      }
     },
     {
       "id": 122,
@@ -19757,7 +21350,17 @@
           "feedback": "Across-region variation is relevant evidence about how performance transfers.",
           "retryFeedback": "Selecting only the easiest region gives an incomplete account. Across-fold results reveal variation in performance across locations."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "training and evaluation",
+            "target": 27
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 123,
@@ -19921,7 +21524,22 @@
           "feedback": "Recovery depends on process and material conditions, so evaluate the intended operating range.",
           "retryFeedback": "The relationship between inputs and processing outcomes depends on material properties. New mineralogy can change that relationship from training."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "formulaNote",
+            "text": "units",
+            "target": 4
+          },
+          {
+            "field": "definition",
+            "text": "grade",
+            "target": 96
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 124,
@@ -20080,7 +21698,27 @@
           "feedback": "New discrete symbols need a supported, useful role in the full system.",
           "retryFeedback": "New symbols must be handled consistently by encoding and model interfaces. Useful interpretation also requires a learning signal or defined semantics."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "vectors",
+            "target": 46
+          },
+          {
+            "field": "definition",
+            "text": "tokens",
+            "target": 54
+          },
+          {
+            "field": "formulaNote",
+            "text": "supervised",
+            "target": 29
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 125,
@@ -20239,7 +21877,17 @@
           "feedback": "Cost, latency, reliability, and user needs also affect usefulness.",
           "retryFeedback": "Deployment also depends on costs, reliability, integration, and consequences of mistakes. One predictive score does not capture all of those needs."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "evaluation",
+            "target": 27
+          }
+        ],
+        "usedIn": []
+      }
     },
     {
       "id": 126,
@@ -20403,7 +22051,11 @@
           "feedback": "A result depends on the full experimental setup.",
           "retryFeedback": "Repeating a result requires the complete path from accessible inputs to measured outputs, not merely one trained artifact."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 127,
@@ -20562,7 +22214,11 @@
           "feedback": "Integration must support the actual acceptance process and make the evidence available to the reviewer.",
           "retryFeedback": "The approval requirement is part of the task, not an inconvenience to skip. The reviewer needs access to the evidence behind extracted values."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [],
+        "usedIn": []
+      }
     },
     {
       "id": 128,
@@ -20721,7 +22377,27 @@
           "feedback": "The tool computed a scenario, not a measured or guaranteed outcome. A grounded answer reports the amount together with its recovery assumption.",
           "retryFeedback": "Compare the certainty in the answer with the evidence supplied to the calculation. An assumed input does not become an observed fact when a tool uses it."
         }
-      ]
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "identified data",
+            "target": 92
+          },
+          {
+            "field": "example",
+            "text": "tool",
+            "target": 64
+          },
+          {
+            "field": "example",
+            "text": "recovery",
+            "target": 128
+          }
+        ],
+        "usedIn": []
+      }
     }
   ],
   "previousOrder": [

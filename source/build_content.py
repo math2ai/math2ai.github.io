@@ -110,6 +110,8 @@ assert set(retry_feedback) == set(bank)
 assert set(readings) == set(bank)
 # Rewritten banks use fresh question IDs so obsolete answers do not mark new content complete.
 QUESTION_REVISIONS = {90:2, 91:2, 92:2, 93:2, 94:2, 96:2, 99:2, 100:2}
+# A single replacement must not inherit an answer to the old prompt or reset its bank.
+QUESTION_REPLACEMENTS = {'37-05': '37-r2-05'}
 for c in course:
     prefix = str(c['legacyId'])
     if c['legacyId'] in QUESTION_REVISIONS:
@@ -127,6 +129,7 @@ for c in course:
     hints = retry_feedback[c['title']]
     assert len(hints) == 10, (c['title'], len(hints))
     for q, hint in zip(c['questions'], hints):
+        q['id'] = QUESTION_REPLACEMENTS.get(q['id'], q['id'])
         assert len(hint.split()) >= 12 and hint != q['feedback'], q['id']
         q['retryFeedback'] = hint
     article = readings[c['title']]
@@ -148,6 +151,31 @@ for c in course:
         if len(matches) > 1:
             for s in matches: s['label'] = s['title'].split(',')[0]
 assert not any('—' in json.dumps(c,ensure_ascii=False) for c in course)
+# Connections are editorial choices, not automatic matches of every concept name.
+# Require an explicit review entry for every lesson, including intentional blanks.
+connections = json.loads((ROOT/'concept-links.json').read_text(encoding='utf-8'))
+notation = json.loads((ROOT/'math-notation.json').read_text(encoding='utf-8'))['fields']
+by_id = {c['legacyId']: c for c in course}
+assert set(connections) == {str(id) for id in by_id}, 'Review connections for every concept.'
+for c in course:
+    entry = connections[str(c['legacyId'])]
+    assert set(entry) == {'title', 'mentions', 'usedIn'} and entry['title'] == c['title'], c['title']
+    assert len(entry['mentions']) <= 3 and len(entry['usedIn']) <= 2, c['title']
+    seen = set()
+    for link in entry['mentions']:
+        assert set(link) == {'field', 'text', 'target'}, (c['title'], link)
+        field, phrase, target = link['field'], link['text'], link['target']
+        assert field in ('definition', 'formulaNote', 'example'), (c['title'], field)
+        assert target in by_id and by_id[target]['id'] < c['id'], (c['title'], target)
+        assert target not in seen, (c['title'], 'Duplicate prerequisite', target)
+        seen.add(target)
+        parts = notation.get(f"c:{c['legacyId']}:{field}", [c[field]])
+        # Only link prose; never insert anchors into prebuilt math or quiz text.
+        pattern = re.compile(r'(?<!\w)' + re.escape(phrase) + r'(?!\w)')
+        assert phrase and any(isinstance(p, str) and pattern.search(p) for p in parts), (c['title'], link, 'Missing prose phrase')
+    assert len(set(entry['usedIn'])) == len(entry['usedIn']), c['title']
+    assert all(target in by_id and by_id[target]['id'] > c['id'] for target in entry['usedIn']), c['title']
+    c['connections'] = {key:entry[key] for key in ('mentions', 'usedIn')}
 payload={'version':'2.0','title':'math2ai','chapters':chapters,'concepts':course,
  'previousOrder':json.loads((ROOT/'previous-order.json').read_text(encoding='utf-8')),
  'subtitle': 'From mathematics to AI, one concept at a time.',

@@ -5,17 +5,17 @@
  let data = {}, ready = false;
  try { data = JSON.parse(document.getElementById('math-data')?.textContent || '{}'); } catch {}
  const fonts = Array.isArray(data.fonts) ? data.fonts : [];
- function html(text, key) {
+ function html(text, key, prose = escape) {
   const entry = data.fields?.[key];
-  if (!entry || entry.text !== text || !Array.isArray(entry.parts)) return escape(text);
+  if (!entry || entry.text !== text || !Array.isArray(entry.parts)) return prose(text);
   try {
    return entry.parts.map(part => {
-    if (typeof part === 'string') return escape(part);
+    if (typeof part === 'string') return prose(part);
     const fragment = Number.isSafeInteger(part) && data.fragments?.[part];
     if (!fragment || typeof fragment.html !== 'string' || typeof fragment.plain !== 'string') throw Error('Missing math fragment');
     return `<span class="math-fragment"><span class="math-fallback"${ready ? ' hidden' : ''}>${escape(fragment.plain)}</span><span class="math-rendered"${ready ? '' : ' hidden'}>${fragment.html}</span></span>`;
    }).join('');
-  } catch { return escape(text); }
+  } catch { return prose(text); }
  }
  function label(text, key) {
   const entry = data.fields?.[key];

@@ -92,6 +92,12 @@ footer .reset-button{font-size:inherit;padding:.12rem .4rem;margin-left:.25rem;w
 
 @media(max-width:600px){.quiz-actions button{font-size:.85rem}}
 .concept-sources{margin-top:1.2rem;font-size:.72rem;color:var(--muted)}
+.concept-reference{color:inherit;text-decoration:underline;text-decoration-color:#999;text-decoration-thickness:1px;text-underline-offset:.15em}
+.concept-reference:hover{text-decoration-color:currentColor}
+.concept-applications{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem 1rem;margin-top:1rem;font-size:.78rem;color:var(--muted)}
+.concept-applications a{padding:.15rem 0;text-decoration-thickness:1px;text-underline-offset:.15em}
+.concept-applications:not([hidden]) + .concept-sources{margin-top:.6rem}
+@media(pointer:coarse){.concept-applications a{display:inline-flex;align-items:center;min-height:44px}}
 #concept-source-list{display:flex;align-items:baseline;flex-wrap:wrap;gap:.45rem 1rem}
 .concept-sources a{padding:.15rem 0;text-decoration-thickness:1px}
 @media(pointer:coarse){.concept-sources a{display:inline-flex;align-items:center;min-height:44px}}

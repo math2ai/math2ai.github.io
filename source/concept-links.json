@@ -1,0 +1,1806 @@
+{
+  "1": {
+    "title": "Scalar",
+    "mentions": [],
+    "usedIn": [
+      5,
+      33
+    ]
+  },
+  "2": {
+    "title": "Variable",
+    "mentions": [],
+    "usedIn": [
+      3
+    ]
+  },
+  "3": {
+    "title": "Function",
+    "mentions": [],
+    "usedIn": [
+      21,
+      33
+    ]
+  },
+  "4": {
+    "title": "Units",
+    "mentions": [],
+    "usedIn": [
+      90,
+      128
+    ]
+  },
+  "5": {
+    "title": "Vector",
+    "mentions": [],
+    "usedIn": [
+      9,
+      46
+    ]
+  },
+  "6": {
+    "title": "Matrix",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "scalar",
+        "target": 1
+      }
+    ],
+    "usedIn": [
+      10,
+      104
+    ]
+  },
+  "7": {
+    "title": "Tensor",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "scalar",
+        "target": 1
+      },
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      }
+    ],
+    "usedIn": [
+      115
+    ]
+  },
+  "8": {
+    "title": "Summation",
+    "mentions": [],
+    "usedIn": [
+      9,
+      16
+    ]
+  },
+  "9": {
+    "title": "Dot product",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vectors",
+        "target": 5
+      }
+    ],
+    "usedIn": [
+      33,
+      57
+    ]
+  },
+  "10": {
+    "title": "Matrix multiplication",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "dot product",
+        "target": 9
+      }
+    ],
+    "usedIn": [
+      12,
+      59
+    ]
+  },
+  "11": {
+    "title": "Transpose",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      }
+    ],
+    "usedIn": [
+      104
+    ]
+  },
+  "12": {
+    "title": "Linear transformation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "scalar",
+        "target": 1
+      },
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      }
+    ],
+    "usedIn": [
+      48
+    ]
+  },
+  "13": {
+    "title": "Euclidean distance",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      }
+    ],
+    "usedIn": [
+      109,
+      52
+    ]
+  },
+  "103": {
+    "title": "Eigenvalues and eigenvectors",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      }
+    ],
+    "usedIn": [
+      108,
+      48
+    ]
+  },
+  "104": {
+    "title": "Singular value decomposition",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      }
+    ],
+    "usedIn": [
+      48
+    ]
+  },
+  "14": {
+    "title": "Probability",
+    "mentions": [],
+    "usedIn": [
+      15,
+      16
+    ]
+  },
+  "15": {
+    "title": "Conditional probability",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probabilities",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      101,
+      120
+    ]
+  },
+  "101": {
+    "title": "Bayes’ theorem",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probability",
+        "target": 14
+      }
+    ],
+    "usedIn": []
+  },
+  "16": {
+    "title": "Expected value",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probability",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      17,
+      70
+    ]
+  },
+  "17": {
+    "title": "Variance",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "expected squared distance",
+        "target": 16
+      }
+    ],
+    "usedIn": [
+      26,
+      48
+    ]
+  },
+  "102": {
+    "title": "Covariance and correlation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "standard deviations",
+        "target": 17
+      }
+    ],
+    "usedIn": [
+      48,
+      127
+    ]
+  },
+  "106": {
+    "title": "Monte Carlo estimation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "expected value",
+        "target": 16
+      }
+    ],
+    "usedIn": []
+  },
+  "18": {
+    "title": "Exponential and logarithm",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "variable",
+        "target": 2
+      }
+    ],
+    "usedIn": [
+      34,
+      44
+    ]
+  },
+  "19": {
+    "title": "Derivative",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "function",
+        "target": 3
+      }
+    ],
+    "usedIn": [
+      20,
+      21
+    ]
+  },
+  "22": {
+    "title": "Integral",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "function",
+        "target": 3
+      },
+      {
+        "field": "definition",
+        "text": "sums",
+        "target": 8
+      }
+    ],
+    "usedIn": []
+  },
+  "20": {
+    "title": "Gradient",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "scalar",
+        "target": 1
+      },
+      {
+        "field": "definition",
+        "text": "partial derivatives",
+        "target": 19
+      }
+    ],
+    "usedIn": [
+      24,
+      38
+    ]
+  },
+  "108": {
+    "title": "Hessian and curvature",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "matrix",
+        "target": 6
+      },
+      {
+        "field": "definition",
+        "text": "eigenvalues",
+        "target": 103
+      },
+      {
+        "field": "definition",
+        "text": "gradient",
+        "target": 20
+      }
+    ],
+    "usedIn": []
+  },
+  "21": {
+    "title": "Chain rule",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "derivatives",
+        "target": 19
+      }
+    ],
+    "usedIn": [
+      38
+    ]
+  },
+  "23": {
+    "title": "Optimization",
+    "mentions": [],
+    "usedIn": [
+      107,
+      24
+    ]
+  },
+  "107": {
+    "title": "Lagrange multipliers",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "function",
+        "target": 3
+      },
+      {
+        "field": "formulaNote",
+        "text": "gradient",
+        "target": 20
+      },
+      {
+        "field": "formulaNote",
+        "text": "derivatives",
+        "target": 19
+      }
+    ],
+    "usedIn": []
+  },
+  "24": {
+    "title": "Gradient descent",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "gradient",
+        "target": 20
+      }
+    ],
+    "usedIn": [
+      39
+    ]
+  },
+  "25": {
+    "title": "Dataset and features",
+    "mentions": [],
+    "usedIn": [
+      30,
+      27
+    ]
+  },
+  "30": {
+    "title": "Linear regression",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "features",
+        "target": 25
+      }
+    ],
+    "usedIn": [
+      31,
+      112
+    ]
+  },
+  "31": {
+    "title": "Mean squared error",
+    "mentions": [],
+    "usedIn": [
+      49
+    ]
+  },
+  "29": {
+    "title": "Supervised learning",
+    "mentions": [],
+    "usedIn": [
+      41,
+      38
+    ]
+  },
+  "32": {
+    "title": "Parameter and hyperparameter",
+    "mentions": [
+      {
+        "field": "example",
+        "text": "learning rate",
+        "target": 24
+      }
+    ],
+    "usedIn": [
+      27,
+      62
+    ]
+  },
+  "27": {
+    "title": "Training, validation and test",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "parameters",
+        "target": 32
+      }
+    ],
+    "usedIn": [
+      28,
+      41
+    ]
+  },
+  "28": {
+    "title": "Data leakage",
+    "mentions": [
+      {
+        "field": "formulaNote",
+        "text": "split",
+        "target": 27
+      }
+    ],
+    "usedIn": [
+      126
+    ]
+  },
+  "26": {
+    "title": "Normalization",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "standard deviation",
+        "target": 17
+      }
+    ],
+    "usedIn": [
+      109
+    ]
+  },
+  "109": {
+    "title": "k-nearest neighbors",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "distance",
+        "target": 13
+      },
+      {
+        "field": "definition",
+        "text": "Classification",
+        "target": 29
+      }
+    ],
+    "usedIn": [
+      52
+    ]
+  },
+  "110": {
+    "title": "Decision trees",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "feature",
+        "target": 25
+      },
+      {
+        "field": "definition",
+        "text": "classification",
+        "target": 29
+      }
+    ],
+    "usedIn": [
+      111,
+      112
+    ]
+  },
+  "41": {
+    "title": "Overfitting",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "validation",
+        "target": 27
+      }
+    ],
+    "usedIn": [
+      42
+    ]
+  },
+  "42": {
+    "title": "Regularization",
+    "mentions": [],
+    "usedIn": []
+  },
+  "111": {
+    "title": "Random forests",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "decision trees",
+        "target": 110
+      }
+    ],
+    "usedIn": []
+  },
+  "112": {
+    "title": "Gradient boosting",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "decision tree",
+        "target": 110
+      },
+      {
+        "field": "definition",
+        "text": "squared error",
+        "target": 31
+      },
+      {
+        "field": "definition",
+        "text": "gradients",
+        "target": 20
+      }
+    ],
+    "usedIn": []
+  },
+  "113": {
+    "title": "Class imbalance, precision and recall",
+    "mentions": [],
+    "usedIn": [
+      98
+    ]
+  },
+  "114": {
+    "title": "Probability calibration",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probability",
+        "target": 14
+      }
+    ],
+    "usedIn": []
+  },
+  "120": {
+    "title": "Causal inference",
+    "mentions": [
+      {
+        "field": "formulaNote",
+        "text": "averages these effects",
+        "target": 16
+      }
+    ],
+    "usedIn": []
+  },
+  "118": {
+    "title": "Domain shift and adaptation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "training data",
+        "target": 27
+      }
+    ],
+    "usedIn": [
+      62,
+      126
+    ]
+  },
+  "119": {
+    "title": "Active learning",
+    "mentions": [
+      {
+        "field": "formulaNote",
+        "text": "probability",
+        "target": 14
+      }
+    ],
+    "usedIn": []
+  },
+  "33": {
+    "title": "Artificial neuron",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "formulaNote",
+        "text": "dot product",
+        "target": 9
+      }
+    ],
+    "usedIn": [
+      34,
+      36
+    ]
+  },
+  "34": {
+    "title": "Sigmoid",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "activation function",
+        "target": 33
+      },
+      {
+        "field": "definition",
+        "text": "derivative",
+        "target": 19
+      }
+    ],
+    "usedIn": []
+  },
+  "35": {
+    "title": "ReLU",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "activation",
+        "target": 33
+      }
+    ],
+    "usedIn": [
+      37,
+      36
+    ]
+  },
+  "37": {
+    "title": "Forward pass",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "weights",
+        "target": 32
+      }
+    ],
+    "usedIn": [
+      38
+    ]
+  },
+  "38": {
+    "title": "Backpropagation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "chain rule",
+        "target": 21
+      },
+      {
+        "field": "definition",
+        "text": "gradients",
+        "target": 20
+      },
+      {
+        "field": "example",
+        "text": "derivatives",
+        "target": 19
+      }
+    ],
+    "usedIn": []
+  },
+  "39": {
+    "title": "Mini-batch gradient descent",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "gradient descent",
+        "target": 24
+      },
+      {
+        "field": "definition",
+        "text": "parameters",
+        "target": 32
+      }
+    ],
+    "usedIn": [
+      40
+    ]
+  },
+  "40": {
+    "title": "Epoch",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "dataset",
+        "target": 25
+      },
+      {
+        "field": "definition",
+        "text": "mini-batch",
+        "target": 39
+      }
+    ],
+    "usedIn": []
+  },
+  "36": {
+    "title": "Deep neural network",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "weights and biases",
+        "target": 33
+      }
+    ],
+    "usedIn": [
+      115,
+      59
+    ]
+  },
+  "115": {
+    "title": "Convolutional neural networks",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "layers",
+        "target": 36
+      }
+    ],
+    "usedIn": []
+  },
+  "116": {
+    "title": "Graph neural networks",
+    "mentions": [],
+    "usedIn": []
+  },
+  "43": {
+    "title": "Softmax",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      }
+    ],
+    "usedIn": [
+      44,
+      57
+    ]
+  },
+  "44": {
+    "title": "Cross-entropy",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probabilities",
+        "target": 14
+      },
+      {
+        "field": "definition",
+        "text": "log",
+        "target": 18
+      }
+    ],
+    "usedIn": [
+      61,
+      124
+    ]
+  },
+  "105": {
+    "title": "KL divergence",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "probability distribution",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      124
+    ]
+  },
+  "45": {
+    "title": "Self-supervised learning",
+    "mentions": [],
+    "usedIn": [
+      117,
+      49
+    ]
+  },
+  "46": {
+    "title": "Embedding",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "distances",
+        "target": 13
+      }
+    ],
+    "usedIn": [
+      47,
+      56
+    ]
+  },
+  "47": {
+    "title": "Cosine similarity",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vectors",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "dot product",
+        "target": 9
+      },
+      {
+        "field": "definition",
+        "text": "norm",
+        "target": 13
+      }
+    ],
+    "usedIn": [
+      117
+    ]
+  },
+  "117": {
+    "title": "Contrastive learning",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "representations",
+        "target": 46
+      }
+    ],
+    "usedIn": []
+  },
+  "48": {
+    "title": "Principal component analysis",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "variance",
+        "target": 17
+      },
+      {
+        "field": "definition",
+        "text": "dot product",
+        "target": 9
+      },
+      {
+        "field": "formulaNote",
+        "text": "unit vector",
+        "target": 47
+      }
+    ],
+    "usedIn": []
+  },
+  "49": {
+    "title": "Autoencoder",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "reconstruction error",
+        "target": 31
+      }
+    ],
+    "usedIn": [
+      50,
+      53
+    ]
+  },
+  "50": {
+    "title": "Latent space and bottleneck",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "example",
+        "text": "Decoder",
+        "target": 49
+      }
+    ],
+    "usedIn": [
+      51,
+      53
+    ]
+  },
+  "79": {
+    "title": "Bit and byte",
+    "mentions": [],
+    "usedIn": [
+      80,
+      85
+    ]
+  },
+  "80": {
+    "title": "Numerical precision",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "bits",
+        "target": 79
+      }
+    ],
+    "usedIn": [
+      85
+    ]
+  },
+  "51": {
+    "title": "Rate-distortion tradeoff",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "reconstruction error",
+        "target": 49
+      },
+      {
+        "field": "formulaNote",
+        "text": "bits",
+        "target": 79
+      }
+    ],
+    "usedIn": [
+      53
+    ]
+  },
+  "52": {
+    "title": "Vector quantization",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "Nearest-neighbor",
+        "target": 109
+      }
+    ],
+    "usedIn": [
+      53
+    ]
+  },
+  "54": {
+    "title": "Token and vocabulary",
+    "mentions": [],
+    "usedIn": [
+      61,
+      56
+    ]
+  },
+  "53": {
+    "title": "Vector-quantized autoencoder",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "autoencoder",
+        "target": 49
+      },
+      {
+        "field": "definition",
+        "text": "codebook",
+        "target": 52
+      },
+      {
+        "field": "definition",
+        "text": "gradient",
+        "target": 20
+      }
+    ],
+    "usedIn": []
+  },
+  "121": {
+    "title": "Diffusion models",
+    "mentions": [],
+    "usedIn": []
+  },
+  "55": {
+    "title": "Sequence and autocorrelation",
+    "mentions": [],
+    "usedIn": [
+      91
+    ]
+  },
+  "61": {
+    "title": "Autoregressive language model",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "sequence",
+        "target": 55
+      },
+      {
+        "field": "definition",
+        "text": "token",
+        "target": 54
+      },
+      {
+        "field": "definition",
+        "text": "conditioned",
+        "target": 15
+      }
+    ],
+    "usedIn": [
+      60,
+      59
+    ]
+  },
+  "56": {
+    "title": "Positional encoding",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "token",
+        "target": 54
+      },
+      {
+        "field": "definition",
+        "text": "vector",
+        "target": 5
+      },
+      {
+        "field": "definition",
+        "text": "embedding",
+        "target": 46
+      }
+    ],
+    "usedIn": [
+      59
+    ]
+  },
+  "57": {
+    "title": "Scaled dot-product attention",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "Softmax",
+        "target": 43
+      },
+      {
+        "field": "definition",
+        "text": "token",
+        "target": 54
+      }
+    ],
+    "usedIn": [
+      58,
+      60
+    ]
+  },
+  "58": {
+    "title": "Multi-head attention",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "attention",
+        "target": 57
+      },
+      {
+        "field": "definition",
+        "text": "matrix transformations",
+        "target": 12
+      }
+    ],
+    "usedIn": [
+      59
+    ]
+  },
+  "60": {
+    "title": "Causal mask",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "attention",
+        "target": 57
+      },
+      {
+        "field": "definition",
+        "text": "softmax",
+        "target": 43
+      },
+      {
+        "field": "definition",
+        "text": "tokens",
+        "target": 54
+      }
+    ],
+    "usedIn": [
+      59
+    ]
+  },
+  "59": {
+    "title": "Transformer",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "attention",
+        "target": 57
+      },
+      {
+        "field": "definition",
+        "text": "feed-forward network",
+        "target": 36
+      }
+    ],
+    "usedIn": []
+  },
+  "122": {
+    "title": "Mixture of experts",
+    "mentions": [],
+    "usedIn": []
+  },
+  "62": {
+    "title": "Fine-tuning",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "optimization",
+        "target": 23
+      },
+      {
+        "field": "definition",
+        "text": "parameters",
+        "target": 32
+      }
+    ],
+    "usedIn": [
+      75
+    ]
+  },
+  "124": {
+    "title": "Model distillation",
+    "mentions": [
+      {
+        "field": "example",
+        "text": "cross-entropy",
+        "target": 44
+      }
+    ],
+    "usedIn": []
+  },
+  "63": {
+    "title": "Retrieval-augmented generation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "language model",
+        "target": 61
+      }
+    ],
+    "usedIn": [
+      100
+    ]
+  },
+  "94": {
+    "title": "API and SDK",
+    "mentions": [],
+    "usedIn": [
+      64
+    ]
+  },
+  "64": {
+    "title": "Tool calling",
+    "mentions": [],
+    "usedIn": []
+  },
+  "66": {
+    "title": "State, observation and action",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "distribution",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      65,
+      67
+    ]
+  },
+  "65": {
+    "title": "Dynamical system",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "state",
+        "target": 66
+      }
+    ],
+    "usedIn": [
+      67,
+      77
+    ]
+  },
+  "67": {
+    "title": "Markov decision process",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "states",
+        "target": 66
+      },
+      {
+        "field": "definition",
+        "text": "probabilities",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      69,
+      71
+    ]
+  },
+  "68": {
+    "title": "Reward and return",
+    "mentions": [],
+    "usedIn": [
+      70,
+      72
+    ]
+  },
+  "69": {
+    "title": "Policy",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "actions",
+        "target": 66
+      },
+      {
+        "field": "definition",
+        "text": "probability",
+        "target": 14
+      }
+    ],
+    "usedIn": [
+      70,
+      74
+    ]
+  },
+  "70": {
+    "title": "Value function",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "expected",
+        "target": 16
+      },
+      {
+        "field": "definition",
+        "text": "return",
+        "target": 68
+      },
+      {
+        "field": "definition",
+        "text": "policy",
+        "target": 69
+      }
+    ],
+    "usedIn": [
+      71,
+      72
+    ]
+  },
+  "71": {
+    "title": "Bellman equation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "policy",
+        "target": 69
+      },
+      {
+        "field": "definition",
+        "text": "value",
+        "target": 70
+      },
+      {
+        "field": "definition",
+        "text": "reward",
+        "target": 68
+      }
+    ],
+    "usedIn": [
+      72,
+      76
+    ]
+  },
+  "73": {
+    "title": "Exploration and exploitation",
+    "mentions": [
+      {
+        "field": "formulaNote",
+        "text": "Q value",
+        "target": 70
+      }
+    ],
+    "usedIn": [
+      72
+    ]
+  },
+  "72": {
+    "title": "Q-learning",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "action-value",
+        "target": 70
+      },
+      {
+        "field": "definition",
+        "text": "reward",
+        "target": 68
+      }
+    ],
+    "usedIn": []
+  },
+  "74": {
+    "title": "Policy gradient",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "policy",
+        "target": 69
+      },
+      {
+        "field": "definition",
+        "text": "return",
+        "target": 68
+      },
+      {
+        "field": "definition",
+        "text": "gradient",
+        "target": 20
+      }
+    ],
+    "usedIn": [
+      75
+    ]
+  },
+  "76": {
+    "title": "Model-based RL",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "rewards",
+        "target": 68
+      },
+      {
+        "field": "definition",
+        "text": "actions",
+        "target": 66
+      }
+    ],
+    "usedIn": [
+      77
+    ]
+  },
+  "78": {
+    "title": "Safety constraint",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "states",
+        "target": 66
+      },
+      {
+        "field": "definition",
+        "text": "optimizes",
+        "target": 23
+      }
+    ],
+    "usedIn": [
+      77
+    ]
+  },
+  "77": {
+    "title": "Model predictive control",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "using a model",
+        "target": 76
+      },
+      {
+        "field": "definition",
+        "text": "actions",
+        "target": 66
+      }
+    ],
+    "usedIn": []
+  },
+  "75": {
+    "title": "RLHF",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "reward",
+        "target": 68
+      },
+      {
+        "field": "definition",
+        "text": "policy",
+        "target": 69
+      }
+    ],
+    "usedIn": []
+  },
+  "81": {
+    "title": "CPU",
+    "mentions": [],
+    "usedIn": [
+      82,
+      88
+    ]
+  },
+  "82": {
+    "title": "GPU",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "matrix operations",
+        "target": 10
+      }
+    ],
+    "usedIn": [
+      83,
+      84
+    ]
+  },
+  "83": {
+    "title": "Tensor core",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "GPU",
+        "target": 82
+      }
+    ],
+    "usedIn": []
+  },
+  "84": {
+    "title": "CUDA",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "GPUs",
+        "target": 82
+      }
+    ],
+    "usedIn": [
+      88
+    ]
+  },
+  "85": {
+    "title": "Memory capacity",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "weights",
+        "target": 32
+      },
+      {
+        "field": "definition",
+        "text": "gradients",
+        "target": 38
+      },
+      {
+        "field": "definition",
+        "text": "Activations",
+        "target": 33
+      }
+    ],
+    "usedIn": [
+      87,
+      123
+    ]
+  },
+  "123": {
+    "title": "Context windows and KV caching",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "token",
+        "target": 54
+      },
+      {
+        "field": "definition",
+        "text": "autoregressive",
+        "target": 61
+      },
+      {
+        "field": "definition",
+        "text": "attention",
+        "target": 57
+      }
+    ],
+    "usedIn": []
+  },
+  "86": {
+    "title": "Memory bandwidth",
+    "mentions": [],
+    "usedIn": [
+      87
+    ]
+  },
+  "87": {
+    "title": "H100",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "GPU",
+        "target": 82
+      },
+      {
+        "field": "definition",
+        "text": "memory",
+        "target": 85
+      }
+    ],
+    "usedIn": []
+  },
+  "88": {
+    "title": "Compute cluster",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "parameters",
+        "target": 32
+      },
+      {
+        "field": "definition",
+        "text": "batches",
+        "target": 39
+      },
+      {
+        "field": "definition",
+        "text": "gradients",
+        "target": 38
+      }
+    ],
+    "usedIn": []
+  },
+  "89": {
+    "title": "TSMC and chip fabrication",
+    "mentions": [],
+    "usedIn": []
+  },
+  "90": {
+    "title": "Borehole logs and assays",
+    "mentions": [],
+    "usedIn": [
+      125,
+      93
+    ]
+  },
+  "125": {
+    "title": "Assay quality control",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "Assay",
+        "target": 90
+      }
+    ],
+    "usedIn": [
+      92,
+      96
+    ]
+  },
+  "92": {
+    "title": "Provenance and uncertainty",
+    "mentions": [],
+    "usedIn": [
+      100
+    ]
+  },
+  "93": {
+    "title": "Geoscience data integration",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "assays",
+        "target": 90
+      },
+      {
+        "field": "definition",
+        "text": "units",
+        "target": 4
+      }
+    ],
+    "usedIn": []
+  },
+  "91": {
+    "title": "Windowing and missing data",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "ordered signal",
+        "target": 55
+      }
+    ],
+    "usedIn": []
+  },
+  "96": {
+    "title": "Ore grade estimation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "assays",
+        "target": 90
+      },
+      {
+        "field": "definition",
+        "text": "validation",
+        "target": 27
+      }
+    ],
+    "usedIn": [
+      127,
+      126
+    ]
+  },
+  "127": {
+    "title": "Variograms and kriging",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "distance",
+        "target": 13
+      }
+    ],
+    "usedIn": [
+      126
+    ]
+  },
+  "126": {
+    "title": "Spatial cross-validation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "training and evaluation",
+        "target": 27
+      }
+    ],
+    "usedIn": []
+  },
+  "128": {
+    "title": "Mineral processing and recovery",
+    "mentions": [
+      {
+        "field": "formulaNote",
+        "text": "units",
+        "target": 4
+      },
+      {
+        "field": "definition",
+        "text": "grade",
+        "target": 96
+      }
+    ],
+    "usedIn": []
+  },
+  "97": {
+    "title": "Representation alignment",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "vectors",
+        "target": 46
+      },
+      {
+        "field": "definition",
+        "text": "tokens",
+        "target": 54
+      },
+      {
+        "field": "formulaNote",
+        "text": "supervised",
+        "target": 29
+      }
+    ],
+    "usedIn": []
+  },
+  "98": {
+    "title": "Benchmark and ablation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "evaluation",
+        "target": 27
+      }
+    ],
+    "usedIn": []
+  },
+  "95": {
+    "title": "Open source and reproducibility",
+    "mentions": [],
+    "usedIn": []
+  },
+  "99": {
+    "title": "Forward-deployed engineering",
+    "mentions": [],
+    "usedIn": []
+  },
+  "100": {
+    "title": "Grounded model conversation",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "identified data",
+        "target": 92
+      },
+      {
+        "field": "example",
+        "text": "tool",
+        "target": 64
+      },
+      {
+        "field": "example",
+        "text": "recovery",
+        "target": 128
+      }
+    ],
+    "usedIn": []
+  }
+}

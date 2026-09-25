@@ -33,12 +33,19 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  get('math-data').textContent=mathData;
  get('auth-config').textContent=JSON.stringify(configured?{supabaseUrl:'https://example.supabase.co',publishableKey:'sb_publishable_test'}:{supabaseUrl:'',publishableKey:''});
  const location={hash};const math=Object.create(Math);
+ const entries=[{state:null,hash}],clone=v=>v==null?null:JSON.parse(JSON.stringify(v));let position=0;
+ const history={
+  get state(){return clone(entries[position].state);},get length(){return entries.length;},scrollRestoration:'auto',
+  replaceState(state,_title,url){entries[position]={state:clone(state),hash:url};location.hash=url;},
+  pushState(state,_title,url){entries.splice(++position,entries.length,{state:clone(state),hash:url});location.hash=url;},
+  go(step){const next=position+step;if(next<0||next>=entries.length)return;const old=location.hash;position=next;location.hash=entries[position].hash;emit('popstate',{state:history.state});if(old!==location.hash)emit('hashchange');}
+ };
  math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
  const clock=now===undefined ? Date : class extends Date {static now(){return now;}};
  const context=vm.createContext({URL,JSON,Math:math,Date:clock,crypto:webcrypto,navigator:{locks:shared.locks},
   localStorage:shared.connect(emit,{readBlocked,writeBlocked}),location,
   document:{getElementById:get,querySelector:()=>get('skip'),title:'',visibilityState:'visible',addEventListener:on},
-  history:{replaceState(_a,_b,h){location.hash=h;}},
+  history,
   setTimeout(fn,ms){const id=setTimeout(fn,ms);id.unref();timers.add(id);return id;},clearTimeout,
   setInterval(){return 0;},clearInterval,queueMicrotask,
   scrollY:0,scrollTo({top}){context.scrollY=top;},confirm:()=>confirm,addEventListener:on,console});
@@ -47,7 +54,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  if(learning)vm.runInContext(fs.readFileSync(new URL('learning.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('progress.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('site.js',root),'utf8'),context);
- const app={get,shared,storage:shared.storage,events,emit,engine:context.math2aiProgress,learning:context.math2aiLearning,
+ const app={get,shared,storage:shared.storage,events,emit,history,math:context.math2aiMath,engine:context.math2aiProgress,learning:context.math2aiLearning,
   state:()=>JSON.parse(JSON.stringify(context.math2aiProgress.load())),
   current:()=>course.concepts.find(c=>c.title===get('title').textContent),
   question:()=> (get('review-panel').hidden ? app.current() : course.concepts.find(c=>c.title===get('review-concept').textContent))?.questions.find(q=>q.question===get('question').textContent),
@@ -59,12 +66,14 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
   filterReview(value){get('review-filter').onchange({target:{value}});},
   selectChapter(index){get('review-topics').handlers.click({target:{closest:()=>({dataset:{chapter:String(index)}})}});},
   draft(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});},
-  scroll:top=>{context.scrollY=top;},scrollPosition:()=>context.scrollY,
+  scroll:top=>{context.scrollY=top;emit('scroll');},scrollPosition:()=>context.scrollY,
+  followConcept(id,modifiers={}){let prevented=false;get('lesson-panel').handlers.click({target:{closest:()=>({dataset:{conceptId:String(id)}})},button:0,...modifiers,preventDefault(){prevented=true;}});return prevented;},
+  browserBack:()=>history.go(-1),browserForward:()=>history.go(1),
   answer(index){get('choices').handlers.change({target:{name:'answer',value:String(index)}});get('quiz-form').handlers.submit({preventDefault(){}});},
   correct(){app.answer(app.question().correct);},wrong(){app.answer((app.question().correct+1)%4);},
   another(){get('another').onclick();},previousQuestion(){get('previous-question').onclick();},retry(){get('retry').onclick();},resetQuestion(){get('reset-question').onclick();},next(){get('next').onclick();},
   go(index){get('concept-select').onchange({target:{value:String(index)}});},
-  hash(value){location.hash=value;emit('hashchange');},reset:()=>get('reset').onclick(),
+  hash(value){history.pushState(null,'',value);emit('hashchange');},reset:()=>get('reset').onclick(),
   signin(server,user){const client=server.client(user);context.math2aiProgress.setSession(client,{user:{id:user},access_token:'test-token'});},
   signout(){context.math2aiProgress.setSession(null,null);},
   close(){for(const id of timers)clearTimeout(id);}

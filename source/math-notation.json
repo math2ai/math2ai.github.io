@@ -10522,22 +10522,6 @@
         "tex": "5"
       }
     ],
-    "q:37-05:question": [
-      "Which order is valid for ",
-      {
-        "plain": "y = 2(x + 1)",
-        "tex": "y = 2(x + 1)"
-      },
-      "?"
-    ],
-    "q:37-05:option:3": [
-      "Compute ",
-      {
-        "plain": "x + 1",
-        "tex": "x + 1"
-      },
-      ", then multiply by 2"
-    ],
     "q:37-08:question": [
       "For ",
       {
@@ -17958,6 +17942,86 @@
         "tex": "\\mathbf{w}\\cdot\\mathbf{x}"
       },
       " is shorthand for adding these matching products. With more inputs, include one term for each input. A nonlinear activation lets the neuron represent a relationship beyond a straight-line rule."
+    ],
+    "q:37-r2-05:question": [
+      "A model first computes an intermediate value ",
+      {
+        "plain": "h = ReLU(2x − 3)",
+        "tex": "h=\\operatorname{ReLU}(2x-3)"
+      },
+      ", then its prediction ",
+      {
+        "plain": "ŷ = 4h + 1",
+        "tex": "\\hat{y}=4h+1"
+      },
+      ". For input ",
+      {
+        "plain": "x = 1",
+        "tex": "x=1"
+      },
+      ", which intermediate value and prediction does the forward pass produce?"
+    ],
+    "q:37-r2-05:feedback": [
+      "First compute ",
+      {
+        "plain": "2×1−3 = −1",
+        "tex": "2\\times1-3=-1"
+      },
+      ". ReLU turns this into ",
+      {
+        "plain": "h = 0",
+        "tex": "h=0"
+      },
+      ". Feed that intermediate value into the output calculation: ",
+      {
+        "plain": "ŷ = 4×0+1 = 1",
+        "tex": "\\hat{y}=4\\times0+1=1"
+      },
+      ". A forward pass carries the calculated values through the model, using its existing weights and biases."
+    ],
+    "q:37-r2-05:option:0": [
+      {
+        "plain": "h = 0",
+        "tex": "h = 0"
+      },
+      ", ",
+      {
+        "plain": "ŷ = 5",
+        "tex": "\\hat{y} = 5"
+      }
+    ],
+    "q:37-r2-05:option:1": [
+      {
+        "plain": "h = −1",
+        "tex": "h = -1"
+      },
+      ", ",
+      {
+        "plain": "ŷ = −3",
+        "tex": "\\hat{y} = -3"
+      }
+    ],
+    "q:37-r2-05:option:2": [
+      {
+        "plain": "h = 2",
+        "tex": "h = 2"
+      },
+      ", ",
+      {
+        "plain": "ŷ = 9",
+        "tex": "\\hat{y} = 9"
+      }
+    ],
+    "q:37-r2-05:option:3": [
+      {
+        "plain": "h = 0",
+        "tex": "h = 0"
+      },
+      ", ",
+      {
+        "plain": "ŷ = 1",
+        "tex": "\\hat{y} = 1"
+      }
     ]
   }
 }

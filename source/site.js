@@ -8,6 +8,37 @@
  const content = (text,key) => notation ? notation.html(text,key) : escape(text);
  const spoken = (text,key) => notation ? notation.label(text,key) : text;
  const write = (node,text,key) => notation ? notation.write(node,text,key) : (node.textContent = text);
+ const byId = new Map(items.map(c => [c.legacyId,c]));
+ const visits = new Map();
+ function conceptLink(target,text,inline=false) {
+  const c=byId.get(target);
+  return `<a href="#lesson-${target}" data-concept-id="${target}"${inline ? ` class="concept-reference" title="Review ${escape(c.title)}"` : ''}>${escape(text)}</a>`;
+ }
+ function writeLesson(node,c,field) {
+  const text=c[field] || '', mentions=c.connections?.mentions.filter(m=>m.field===field) || [];
+  const used=new Set();
+  const prose=part=>{
+   const matches=[];
+   for(const m of mentions) {
+    if(used.has(m.target))continue;
+    let start=part.indexOf(m.text);
+    while(start>=0) {
+     const end=start+m.text.length, word=ch=>ch && /[\p{L}\p{N}_]/u.test(ch);
+     if(!word(part[start-1])&&!word(part[end])) {matches.push({start,end,m});break;}
+     start=part.indexOf(m.text,start+1);
+    }
+   }
+   let result='',end=0;
+   for(const hit of matches.sort((a,b)=>a.start-b.start)) {
+    if(hit.start<end)continue;
+    result+=escape(part.slice(end,hit.start))+conceptLink(hit.m.target,hit.m.text,true);
+    used.add(hit.m.target);end=hit.end;
+   }
+   return result+escape(part.slice(end));
+  };
+  node.textContent=text;
+  node.innerHTML=notation ? notation.html(text,`c:${c.legacyId}:${field}`,prose) : prose(text);
+ }
  const conceptMenu = window.math2aiConceptMenu?.({select:el('concept-select'),trigger:el('concept-trigger'),list:el('concept-options'),label:el('concept-label'),onChoose:index=>go(index)});
  const learning=window.math2aiLearning;
  let personal=learning?.status() || {owner:'loading',ready:false,values:{},message:''};
@@ -76,6 +107,7 @@
   }
   state.currentConceptId = items[state.current].legacyId;
   persistence.saveView(state);
+  rememberVisit();
  }
  function progress(c) {
   return state.concepts[c.legacyId] || (state.concepts[c.legacyId] = {active:null, remaining:[], order:[], rounds:{}, answers:{}, pending:true});
@@ -311,23 +343,60 @@
   restoreChoice(c);
   document.title = course.title;
   el('chapter').textContent = `${String(c.id).padStart(3,'0')} · ${c.chapter}`;
-  for (const id of ['title','definition','formula','example','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
-  write(el('formula-note'),c.formulaNote || '',`c:${c.legacyId}:formulaNote`);
+  for (const id of ['title','formula','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
+  for (const id of ['definition','example','formulaNote']) writeLesson(el(id==='formulaNote'?'formula-note':id),c,id);
   el('formula-note').hidden = !c.formulaNote;
   el('previous').disabled = state.current === 0;
   el('concept-sources').hidden = !c.sources.length;
   el('concept-source-list').innerHTML = sourceList(c.sources);
+  const applications=c.connections?.usedIn || [];
+  el('concept-applications').hidden=!applications.length;
+  el('concept-applications').innerHTML=applications.length ? '<span>Used in:</span>'+applications.map(id=>conceptLink(id,byId.get(id).title)).join('') : '';
   navigation(); quiz(); save();
   if (focus) { el('title').focus({preventScroll:true}); window.scrollTo({top:0, behavior:'instant'}); }
  }
- function go(index) {
+ // History stores reading position and question identity only. Answers remain in
+ // the live, account-specific journal, so Back cannot undo resets or sync updates.
+ function rememberVisit(persist=true) {
+  const c=items[state.current];
+  if(!ready || review || location.hash!==`#lesson-${c.legacyId}`)return;
+  const key=history.state?.math2aiVisit?.key || crypto.randomUUID();
+  const visit={key,owner,conceptId:c.legacyId,questionId:progress(c).active,scroll:window.scrollY || 0};
+  visits.set(key,visit);
+  if(persist)history.replaceState({math2aiVisit:visit},'',location.hash);
+ }
+ // Scroll updates stay in memory; do not spam browser history writes on mobile.
+ window.addEventListener('scroll',()=>rememberVisit(false),{passive:true});
+ function go(index,visit=null) {
   if (!validIndex(index)) return;
   conceptMenu?.close();
   requestedReview = false;
   if (review && index === state.current) { returnToLesson(); return; }
   review = null; lessonDraft = null; displayMode();
-  state.current = index; history.replaceState(null,'',`#lesson-${items[index].legacyId}`); render(true);
+  const c=items[index], restoreVisit=visit?.owner===owner && visit.conceptId===c.legacyId && c.questions.some(q=>q.id===visit.questionId);
+  state.current=index;
+  if(restoreVisit) {
+   const p=progress(c);p.active=visit.questionId;
+   p.round=currentRound(c,question(c));p.pending=p.round.pending;
+  }
+  history.replaceState(restoreVisit?{math2aiVisit:visit}:null,'',`#lesson-${c.legacyId}`);
+  render(!restoreVisit);
+  if(restoreVisit) {
+   el('title').focus({preventScroll:true});
+   window.scrollTo({top:Number.isFinite(visit.scroll)?Math.max(0,visit.scroll):0,behavior:'instant'});
+  }
+  rememberVisit();
  }
+ el('lesson-panel').addEventListener('click',e=>{
+  const link=e.target.closest('a[data-concept-id]');
+  if(!link || !ready || e.defaultPrevented || e.button!==0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)return;
+  const index=items.findIndex(c=>c.legacyId===Number(link.dataset.conceptId));
+  if(!validIndex(index))return;
+  e.preventDefault();save();rememberVisit();
+  history.scrollRestoration='manual';
+  history.pushState(null,'',`#lesson-${items[index].legacyId}`);
+  go(index);
+ });
  el('mark-revisit').onclick=()=>{
   const c=items[state.current];learning?.set('concept:'+c.legacyId,marker(c)==='revisit'?'none':'revisit');
  };
@@ -443,7 +512,8 @@
  window.addEventListener('hashchange', () => {
   if (location.hash === '#review') { openReview(); return; }
   const index = hashIndex();
-  if (index !== null) go(index);
+  const stored=history.state?.math2aiVisit;
+  if (index !== null) go(index,visits.get(stored?.key) || stored);
   else if (review) returnToLesson();
  });
  persistence.subscribe(update => {
@@ -451,6 +521,7 @@
   el('storage-note').textContent = update.message;
   el('save-description').textContent = update.account ? 'Answers sync to your account. Site updates may reset progress.' : 'Guest answers are saved in this browser. Sign in to save across devices.';
   if (owner !== update.owner || viewRevision !== update.viewRevision || initialRender) {
+   visits.clear();
    review = null; lessonDraft = null;
    owner = update.owner;
    viewRevision = update.viewRevision;
