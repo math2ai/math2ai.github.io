@@ -1186,7 +1186,7 @@
     {
       "conceptId": 34,
       "title": "Sigmoid",
-      "example": "σ(−2) ≈ 0.119, σ(0) = 0.5, σ(2) ≈ 0.881. At zero, the slope is 0.5×(1−0.5) = 0.25.",
+      "example": "Some points on the curve:\nσ(−2) ≈ 0.119\nσ(0) = 0.5\nσ(2) ≈ 0.881\n\nAt z = 0, the output is 0.5. Its slope is:\nσ′(0) = 0.5 × (1 − 0.5) = 0.25\n\nFor a small input increase from 0 to 0.1, multiply the slope by the input change to estimate the output change:\n0.25 × 0.1 = 0.025\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve.",
       "questionIds": [
         "34-01",
         "34-02",

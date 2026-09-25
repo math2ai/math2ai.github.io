@@ -8240,10 +8240,10 @@
       "legacyId": 34,
       "chapter": "Neural networks and representations",
       "title": "Sigmoid",
-      "definition": "The logistic sigmoid maps a real input smoothly into the open interval (0, 1). Its slope becomes small at extreme inputs.",
-      "formula": "σ(z) = 1/(1 + e⁻ᶻ);   σ′(z) = σ(z)(1 − σ(z))",
+      "definition": "The logistic sigmoid is an activation function with a smooth, rising S-shaped curve. It takes a real input z and produces an output σ(z) strictly between 0 and 1. Here σ (sigma) is the function's name; in a neuron, z is the weighted sum including the bias.\n\nσ′(z), read “sigma prime of z,” is its derivative with respect to z: the local slope, describing how sensitive the output is to a small change in input. The curve becomes flatter at very positive or negative inputs, where this slope is small.",
+      "formula": "σ(z) = 1/(1 + e⁻ᶻ)\nσ′(z) = σ(z)(1 − σ(z))",
       "formulaNote": "",
-      "example": "σ(−2) ≈ 0.119, σ(0) = 0.5, σ(2) ≈ 0.881. At zero, the slope is 0.5×(1−0.5) = 0.25.",
+      "example": "Some points on the curve:\nσ(−2) ≈ 0.119\nσ(0) = 0.5\nσ(2) ≈ 0.881\n\nAt z = 0, the output is 0.5. Its slope is:\nσ′(0) = 0.5 × (1 − 0.5) = 0.25\n\nFor a small input increase from 0 to 0.1, multiply the slope by the input change to estimate the output change:\n0.25 × 0.1 = 0.025\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve.",
       "metaphor": "A dimmer gradually opens from almost off to almost fully on.",
       "question": "For a sigmoid input z, suppose e^(−z) = 3. What is σ(z) = 1/(1 + e^(−z))?",
       "options": [
