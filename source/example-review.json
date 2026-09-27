@@ -1263,7 +1263,7 @@
     {
       "conceptId": 38,
       "title": "Backpropagation",
-      "example": "For ŷ = wx, x = 2, w = 1, y = 6: ŷ = 2. The local derivatives are 2(2−6) = −8 and x = 2. Multiply: ∂L/∂w = −16.",
+      "example": "Use input x = 2, weight w = 1, and target y = 6. The prediction is ŷ = 1×2 = 2, and the loss is L = (2−6)² = 16.\n\nWork backward through the two calculations:\n1. Loss to prediction: ∂L/∂ŷ = 2(2−6) = −8.\n2. Prediction to weight: ∂ŷ/∂w = x = 2.\n\nMultiply the local derivatives: ∂L/∂w = (−8)×2 = −16. The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight.",
       "questionIds": [
         "38-01",
         "38-02",

@@ -1,0 +1,1114 @@
+{
+  "date": "2026-09-27",
+  "scope": "Manual review of notation in all definitions, formulas, notes and worked examples. Local symbol roles, indices, hats and primes; quiz content unchanged.",
+  "concepts": [
+    {
+      "conceptId": 1,
+      "title": "Scalar",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "70b39c3a7bbaaa41502c72999d4df964b96f1c97082d5be73b8e9237740693ea"
+    },
+    {
+      "conceptId": 2,
+      "title": "Variable",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "8baf61ed5b0c296945f4478498dda699354a150be1e0cc456b273dabf7789058"
+    },
+    {
+      "conceptId": 3,
+      "title": "Function",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "9a181435dee8fd2dc6593892e13dd916bb5363e269b38cd782704a6a238aa9c2"
+    },
+    {
+      "conceptId": 4,
+      "title": "Units",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "6160c3dbcd113057e3079bc686ad6df38885f6c2ae794bcf0a6945eb437abdf4"
+    },
+    {
+      "conceptId": 5,
+      "title": "Vector",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "b55964bff65aa7927ea6eafb3020bc94f4e575ac3ed83033a50ef20170d7ae34"
+    },
+    {
+      "conceptId": 6,
+      "title": "Matrix",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "6fce7ee4344cd8443e1da448572c20b1fc59437e5e3833d50f4af8ba3ae02e99"
+    },
+    {
+      "conceptId": 7,
+      "title": "Tensor",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "cd09f803793225fa7fd2e6f644bf14e011bda55f52d964b3520d49790d6ced87"
+    },
+    {
+      "conceptId": 8,
+      "title": "Summation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "960f5ff4978b3fe1cd353ac3448c5d0190a6d3af097d7782bed8c23ebd5de725"
+    },
+    {
+      "conceptId": 9,
+      "title": "Dot product",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "616db6ca1924f5b9baeeb17d329d44dc64e1b56740d89f3e17cb8ff9ab087eb0"
+    },
+    {
+      "conceptId": 10,
+      "title": "Matrix multiplication",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d578b8ced2c2806b0f1c79886eea4a3ec07d335c92f82374c1bf1d9312eda0cc"
+    },
+    {
+      "conceptId": 11,
+      "title": "Transpose",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "b7ce5d8b99985059fe5c17cc055cff7b9a19b06d9ec63a5debcd65266183ff30"
+    },
+    {
+      "conceptId": 12,
+      "title": "Linear transformation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "8532c5c7ce14d5c51388bdd49812b3ca1e6d4d446e1e66c56185615ad900b940"
+    },
+    {
+      "conceptId": 13,
+      "title": "Euclidean distance",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d23baa61f91e8bc52305441dfe6d465cacfb29a7cfde97b6a77b0b1490695526"
+    },
+    {
+      "conceptId": 103,
+      "title": "Eigenvalues and eigenvectors",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "fb9b883e28b4b49c331a156d5e1b793966d1c1f12acaa251cca363f4860b2353"
+    },
+    {
+      "conceptId": 104,
+      "title": "Singular value decomposition",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "1431c675f5f77416c442a365edb669d4fc195d30b23a573b40363bac11d6f007"
+    },
+    {
+      "conceptId": 14,
+      "title": "Probability",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f1db2ccddd7e08c559c126a3d3d856e2d33cd0a275b69d1c8cd74e20b3c5b344"
+    },
+    {
+      "conceptId": 15,
+      "title": "Conditional probability",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "c1c7bf7f2a398329ce14930a0394c480f3505f4d5c8d0d0a63c5c85fb07108fd"
+    },
+    {
+      "conceptId": 101,
+      "title": "Bayes’ theorem",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "17ab9540c8de3ee72aa0cbc35410019758f99ee4a5b8b439cc21356daf6186b5"
+    },
+    {
+      "conceptId": 16,
+      "title": "Expected value",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "4da745ddf6115608fcfa465aa5679b70b757c9a493b01b579bc764b1e2104e30"
+    },
+    {
+      "conceptId": 17,
+      "title": "Variance",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "8b84885fa90d2f7e5ad071b2c8b33a0159b468ecde40482601d0c0ed1321927c"
+    },
+    {
+      "conceptId": 102,
+      "title": "Covariance and correlation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "59bd6e191997cb63221824a6e013fe1c8726d425cffcb1265d12d1b74e363b8d"
+    },
+    {
+      "conceptId": 106,
+      "title": "Monte Carlo estimation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "5f91430f783b2550776eb1e6165c1729836247ddb228f62d47e776345ba3934a"
+    },
+    {
+      "conceptId": 18,
+      "title": "Exponential and logarithm",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "9bcb30cab5fc213a7b05502620f7912db5d3c7ed2bc41369c79835f7656fd328"
+    },
+    {
+      "conceptId": 19,
+      "title": "Derivative",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d2cb9f26d0710a6d5345c4910ff69a38da420368e40234774ec3bb5355abf393"
+    },
+    {
+      "conceptId": 22,
+      "title": "Integral",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "fd24ac81d44a736b2d3416647a94b6ea250d36419176e036c7a3541924e75c8e"
+    },
+    {
+      "conceptId": 20,
+      "title": "Gradient",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "845aca6084c387d23cf659e276dabc1ebbe58c33c373b9d0016683508329b86e"
+    },
+    {
+      "conceptId": 108,
+      "title": "Hessian and curvature",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "7102645a8bf01dba6ffa279d771e57f83883e17977447c504e6552b6c9815c24"
+    },
+    {
+      "conceptId": 21,
+      "title": "Chain rule",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "533bf9bf89549a110455a3315bb84c0dfdc7f9cc0b8e00ed76ca3b8525069a51"
+    },
+    {
+      "conceptId": 23,
+      "title": "Optimization",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3a015cc0da19d66ee07ca778a2836bccb2a021172aabdf794106576da422514b"
+    },
+    {
+      "conceptId": 107,
+      "title": "Lagrange multipliers",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "c01bb08dd7642019d11a64f2b725d594ea74bebb08c90da07cee1c503e16cdb9"
+    },
+    {
+      "conceptId": 24,
+      "title": "Gradient descent",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ed35da6148380c5f0239dbb45f14bef7b4eecee7f0e144733cc70fe6c68102ce"
+    },
+    {
+      "conceptId": 25,
+      "title": "Dataset and features",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "cbda54bf5396e2af21e8f08ef1742a3045593b22d4c6ac34ff1e17d3c5f0c258"
+    },
+    {
+      "conceptId": 30,
+      "title": "Linear regression",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "199c55eaecb22ef3446840ec340e84bb761a6204876571a9dc5028e4ea1b59d5"
+    },
+    {
+      "conceptId": 31,
+      "title": "Mean squared error",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f3e4d38740bf82a949cc44b71c6c5d59a8c9a425584a79fe8a89b5602c2653a5"
+    },
+    {
+      "conceptId": 29,
+      "title": "Supervised learning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "013a6cf1a3d9dda555ba1475b39d6107bf4356192422d2a2febc12ed2b23e1e5"
+    },
+    {
+      "conceptId": 32,
+      "title": "Parameter and hyperparameter",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "c6a0fa08ebb299fbeb0c68fc11e266b24aa61766831be0922c99dbdd74970306"
+    },
+    {
+      "conceptId": 27,
+      "title": "Training, validation and test",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "5c2b6e685b8c3cfa50c9925c23e3a18b19c473891e231942cf98a01105054aa7"
+    },
+    {
+      "conceptId": 28,
+      "title": "Data leakage",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "40a29f70a30a52fcfc873cefad5dc5297b9d8fde93c1b50f231f9aef20c048e5"
+    },
+    {
+      "conceptId": 26,
+      "title": "Normalization",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "47db9eed8979cd8e6d003684fa0ec637d94628455951c78461bbfbe4dc2ad040"
+    },
+    {
+      "conceptId": 109,
+      "title": "k-nearest neighbors",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f01115822806e35d0e8fe2202a6917629f313fa254b68111a272587a53d223ef"
+    },
+    {
+      "conceptId": 110,
+      "title": "Decision trees",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f455fbdf580bef72b18991c9fd97b37b9117c1b8880b8f77b059dbbe5abacb9e"
+    },
+    {
+      "conceptId": 41,
+      "title": "Overfitting",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "0316b7d1e45396b1e57cf0701875f0bec7ed10e61809a67f18711b044227e277"
+    },
+    {
+      "conceptId": 42,
+      "title": "Regularization",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "bd0cac7837b4b760bf36f7edd6c4adb1f40f7ae69ad4fbf973e2400682425e04"
+    },
+    {
+      "conceptId": 111,
+      "title": "Random forests",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3832b4bca24a950d91a8fe3f4e172b1c1c20d526256bb83b353ff77b1fd5e274"
+    },
+    {
+      "conceptId": 112,
+      "title": "Gradient boosting",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "42eda1357a3e6696d36de883cee252483f6ca13fcb297e80deb3d547efe8c5f0"
+    },
+    {
+      "conceptId": 113,
+      "title": "Class imbalance, precision and recall",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "0913c44f8762707a43dc0efd679faa062f141cc4542d3fa7e804c5d96a79b330"
+    },
+    {
+      "conceptId": 114,
+      "title": "Probability calibration",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "47408f4864bd84db0f12e16d579d1cb26b33d46e4a6038c83ddac04a4b299a2d"
+    },
+    {
+      "conceptId": 120,
+      "title": "Causal inference",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "3ed36d9e4f4c7b9728262c1be4362de62e8377a75d1bb08bd974ed508c0bf199"
+    },
+    {
+      "conceptId": 118,
+      "title": "Domain shift and adaptation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "96a6ed4db6e2891ab6b5d59bf5c39ac4fbbc91da2551335c283cae672b3bb9bc"
+    },
+    {
+      "conceptId": 119,
+      "title": "Active learning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "34e8eb0311564eb3525075405db0f5a7c230dc020c8c4fd68162b36afe927391"
+    },
+    {
+      "conceptId": 33,
+      "title": "Artificial neuron",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "1278f0ecec98136bacefaa63f8384528638db8fd8be1f4a1d9676ce7ebf81f92"
+    },
+    {
+      "conceptId": 34,
+      "title": "Sigmoid",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "4315e1010982e3959039029476925db656c21938469fd708459cfc6ef2bf3ec8"
+    },
+    {
+      "conceptId": 35,
+      "title": "ReLU",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "b3db6a01a23129f7822e2601c86e37d5afa40741a42887629a236083693a85e1"
+    },
+    {
+      "conceptId": 37,
+      "title": "Forward pass",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "07a15f09a34925127d1b99e41041c15612dbc6062c1f1a0794cb44d82384ac72"
+    },
+    {
+      "conceptId": 38,
+      "title": "Backpropagation",
+      "changedFields": [
+        "formulaNote",
+        "definition",
+        "example"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3957ea411912aeabdd3f29b6326256cf132b44edeae4d1f280912b814cace7cb"
+    },
+    {
+      "conceptId": 39,
+      "title": "Mini-batch gradient descent",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "9f76ed72db56dbc88f3e8a611578d54f003a8e134879a04231191e036f4c5e99"
+    },
+    {
+      "conceptId": 40,
+      "title": "Epoch",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "773323108c66663da19a208bf66ec6ceda62cb988c79386f7826f3b126f24310"
+    },
+    {
+      "conceptId": 36,
+      "title": "Deep neural network",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "76564594fd18871b10a42e1904b16aafe58885ec968be6efb32371984f3658a5"
+    },
+    {
+      "conceptId": 115,
+      "title": "Convolutional neural networks",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "31e8b4c608f5490891de5892f205149cb60eae2d2a9eda03fcb2ed4c4783e612"
+    },
+    {
+      "conceptId": 116,
+      "title": "Graph neural networks",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "8c415cc269272855c6db1385c0d0952ec5ee7b26e60164aab568a354a1cb6950"
+    },
+    {
+      "conceptId": 43,
+      "title": "Softmax",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3616ca7ca581265e9d4d0863fec3d7728c6410477b6eb3a77e10cb849202aea5"
+    },
+    {
+      "conceptId": 44,
+      "title": "Cross-entropy",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ed72ad825e55208e1c5eb596360f93288b515c031a990836492a7497f4e121de"
+    },
+    {
+      "conceptId": 105,
+      "title": "KL divergence",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "a637ee93b35f9de4e67a47035f4684a8689a2456e99e48307057fbb759325c96"
+    },
+    {
+      "conceptId": 45,
+      "title": "Self-supervised learning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "e4479c84e5ee963a2e6ed0d329d7fed508a4ffcd7b4d0aac6802c357ed70d512"
+    },
+    {
+      "conceptId": 46,
+      "title": "Embedding",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "2c474a1074f6f2b0237aaef5b792d56975c043e6b4bec65910d85ea9c6bbfb73"
+    },
+    {
+      "conceptId": 47,
+      "title": "Cosine similarity",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f5be96a5dd1bf79af3f978da8fde1f165843e78ef87afea9e79dc1bcfe615727"
+    },
+    {
+      "conceptId": 117,
+      "title": "Contrastive learning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d1b532af30fc5953b2dfe66a7bd43ec7c6eaf58749011c5ecbeb2dcf4f9d8b08"
+    },
+    {
+      "conceptId": 48,
+      "title": "Principal component analysis",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "5760d4e24637d66abbd9aa0c0818c0a4ffedf2abe55e21f78b3887eaf63c646d"
+    },
+    {
+      "conceptId": 49,
+      "title": "Autoencoder",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "24b5b0e7c3175a90beb28d2b2d4a8907d30c8c779b4d770b47ba3b2e7972f7cf"
+    },
+    {
+      "conceptId": 50,
+      "title": "Latent space and bottleneck",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "da5fefae62c8822392c84c26227f1d5c4235f342365f7a5cb5b03ec0c692cd46"
+    },
+    {
+      "conceptId": 79,
+      "title": "Bit and byte",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "755818ff61789c2e3055fb94ae93a69cc8b92848d2019ad3f1cc475c0118e5e0"
+    },
+    {
+      "conceptId": 80,
+      "title": "Numerical precision",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "2027739eac45eff71d045e84ff773b986e193e764429470dfbc7a9ad0ae1312a"
+    },
+    {
+      "conceptId": 51,
+      "title": "Rate-distortion tradeoff",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "e66ae0b2dc7148ea36af872a8b59140032995fb307b8629f932a1fc38f9f1bf2"
+    },
+    {
+      "conceptId": 52,
+      "title": "Vector quantization",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "6ca80ecc46e1ee8dd4ecc7f9429f84a4363da3ebc3c54c9ebef1d1ec251b3904"
+    },
+    {
+      "conceptId": 54,
+      "title": "Token and vocabulary",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ac532978819bb066d84952891c85b2ceb5d236878fa7d60168d0fd219ae0de9f"
+    },
+    {
+      "conceptId": 53,
+      "title": "Vector-quantized autoencoder",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "e4f4786bab3eaf61e246f641684a10aa36f7695be4b57cb470fb07d3c7ad4208"
+    },
+    {
+      "conceptId": 121,
+      "title": "Diffusion models",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "0e8057971542626e59ae437ac356115e0a2c7b0f033e2a9abe159546d73fc3bc"
+    },
+    {
+      "conceptId": 55,
+      "title": "Sequence and autocorrelation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "053c5b64def52def78247d88d3b7ece4b5a0b3d4df003ab70eab5ecb4236ddca"
+    },
+    {
+      "conceptId": 61,
+      "title": "Autoregressive language model",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "e7e6f260c35508a7aee85d963edf785c1bd353464124555d66ceb7824fbfcd31"
+    },
+    {
+      "conceptId": 56,
+      "title": "Positional encoding",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "7a3de4cdfdab8ecdb75ac34129501615cdf0e6bfe2bcdb3fb1f3cf1759b83bf1"
+    },
+    {
+      "conceptId": 57,
+      "title": "Scaled dot-product attention",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "73894a68b4f4a29873815dc12903c8ef98b9e28a2ed60bfd76c9cbefdb788b68"
+    },
+    {
+      "conceptId": 58,
+      "title": "Multi-head attention",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ed655a8da962faba5d3b1e92d925c924dea0f8a788e3bb3bc2033932b8923ec5"
+    },
+    {
+      "conceptId": 60,
+      "title": "Causal mask",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "112b6a970714f1f800a1773bbbab1801ed9ade4c3ce94bfc1cb69802fcf756d5"
+    },
+    {
+      "conceptId": 59,
+      "title": "Transformer",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3b24db5923e69b31139295f92f876cc85dc4380934124a7828359c63baffebca"
+    },
+    {
+      "conceptId": 122,
+      "title": "Mixture of experts",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "f64af8c92d78bebd709c9c2b953985110d26f6873f37131465df86e806178363"
+    },
+    {
+      "conceptId": 62,
+      "title": "Fine-tuning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "bb32724bced1fe4c5a63480b1bc649d6e922b350c04db10f83abae4b82ebf42d"
+    },
+    {
+      "conceptId": 124,
+      "title": "Model distillation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d3360e025c8c0d7fba5986909d4132ef8a505631ff32d2968948c01fdebcc232"
+    },
+    {
+      "conceptId": 63,
+      "title": "Retrieval-augmented generation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "33b16cddae01b9f3e813836d68012e247880f819d9228924c2e9d71d7e5f1d8a"
+    },
+    {
+      "conceptId": 94,
+      "title": "API and SDK",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "aa4b125831c58c7b162cc9d63da5d8776d797f1c60868eef980dee7ab55eb28f"
+    },
+    {
+      "conceptId": 64,
+      "title": "Tool calling",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "895d3f006559bc1b6b3b30bb59754a4778017193ab6eaf5d09082f55a1c95b66"
+    },
+    {
+      "conceptId": 66,
+      "title": "State, observation and action",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "07954cc4bb2a1d24228e729d9a239d37b1ee9b5be22598f1cf8366687768126e"
+    },
+    {
+      "conceptId": 65,
+      "title": "Dynamical system",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "c1ad599003000983afa067709b68025ae61441ad75e2c54347ddc50f34992288"
+    },
+    {
+      "conceptId": 67,
+      "title": "Markov decision process",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ad515c1f336b23fadcc8a5e9f22cec4d81a7e917a9910ff5dd72b884bbdb355f"
+    },
+    {
+      "conceptId": 68,
+      "title": "Reward and return",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "9bede730b425f32d0cdef91c6ba184a0e9c963dc0882b479b3ed66467b86c827"
+    },
+    {
+      "conceptId": 69,
+      "title": "Policy",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "6a9b9bb94b38b3b13660f1b8d09c80eb2f938e9fb9954f396762eca558ca8ed8"
+    },
+    {
+      "conceptId": 70,
+      "title": "Value function",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "7662cad95fe6e528a08347844f640e0e111dcc76bb0574f7471ebbce58bb6c4f"
+    },
+    {
+      "conceptId": 71,
+      "title": "Bellman equation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "6903aa3dff2302f549421dddcb25352422bd67a09e8e93dac70d0d02386a4f4e"
+    },
+    {
+      "conceptId": 73,
+      "title": "Exploration and exploitation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d331f81ead11b531ca640272bdd079cbe3f4786ac41148570138b8597eae615f"
+    },
+    {
+      "conceptId": 72,
+      "title": "Q-learning",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "02a8c5b839563449c63f66e9f571957444396e76e03119d763d6e1a6d2704f09"
+    },
+    {
+      "conceptId": 74,
+      "title": "Policy gradient",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "087004014650929be93a3b26660866a9ef478c52b1ca114a41c76758539d7ec1"
+    },
+    {
+      "conceptId": 76,
+      "title": "Model-based RL",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "81e56182e90044068f1930a7fb2cf6d4758b6c224e49bd48446fc4b92180f30e"
+    },
+    {
+      "conceptId": 78,
+      "title": "Safety constraint",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "4ee3935162d3ce529d55dc206d262fa58a5851ad745d6ac50e4c53381830c8be"
+    },
+    {
+      "conceptId": 77,
+      "title": "Model predictive control",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ef83f22701cd85204831fd822f4daaea179e8ab56c9bd3be962fa0e2a3aae428"
+    },
+    {
+      "conceptId": 75,
+      "title": "RLHF",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "c378197ea99a457fd5232f262461e85096f1f701f7559231d2f6398577e513ff"
+    },
+    {
+      "conceptId": 81,
+      "title": "CPU",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "bd41e225d90cf8dfbcf4456e4cfc1bb6cc3da4203cccc90394a61b4881ae9cbd"
+    },
+    {
+      "conceptId": 82,
+      "title": "GPU",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "3e3b26f4e0447d25bfd4d99204cd9c1c8ef6ef6919f625f5328db7e850427ff7"
+    },
+    {
+      "conceptId": 83,
+      "title": "Tensor core",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "61a2fb0f0155c599dd2d938b3933ea89eea37c1b1f1bdaeef6154945b0e1cc70"
+    },
+    {
+      "conceptId": 84,
+      "title": "CUDA",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "14e75f110cddf26a248ac413e8cee85c8de191a1d0f973f0fc729e7508cca0fe"
+    },
+    {
+      "conceptId": 85,
+      "title": "Memory capacity",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "d27f47418884d2fe461587cbe89d58ea3d12edbe8b54d7d426449997e9f5034d"
+    },
+    {
+      "conceptId": 123,
+      "title": "Context windows and KV caching",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "b3d02f2580145df499deadd57b611e56a30ff4454859b23f2140437b72a9999b"
+    },
+    {
+      "conceptId": 86,
+      "title": "Memory bandwidth",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "441dbc1c79c34dee0b49ce51bc8af444fc5f1a1827c1499945340157d3aa78ac"
+    },
+    {
+      "conceptId": 87,
+      "title": "H100",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "ce1a9364e023e7a8a14d0643f7fcd15f278dde99273e5d88d425c4e77668205f"
+    },
+    {
+      "conceptId": 88,
+      "title": "Compute cluster",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "fe50de3a6f9d718d6d4440a53343ad7752071e6db966083f89ffaf60a2833bbd"
+    },
+    {
+      "conceptId": 89,
+      "title": "TSMC and chip fabrication",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "a510186ddf797a93097fd6125d96331849aba796c9a42c8928196f96dd626f99"
+    },
+    {
+      "conceptId": 90,
+      "title": "Borehole logs and assays",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "38bf3e0873c8c3b900dd9df90bfe65e27dd241da49ed1a803e83c78455e93464"
+    },
+    {
+      "conceptId": 125,
+      "title": "Assay quality control",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "016b391616706e1aa11ee00968d8ef66796b074904c4a30412c2f9180f4736ee"
+    },
+    {
+      "conceptId": 92,
+      "title": "Provenance and uncertainty",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "cba4e3122da690871f5a381cafa965f57f11837e83a266bd4d303535de4d2836"
+    },
+    {
+      "conceptId": 93,
+      "title": "Geoscience data integration",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "f351508815ae480aff12c0ec082b469286d7f38b4fc0a212a5c63fd690a1bc1d"
+    },
+    {
+      "conceptId": 91,
+      "title": "Windowing and missing data",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "5df8440155ae0312c1a3077de3e8661e3a8cca929bdc382142b0123e37a8fe9e"
+    },
+    {
+      "conceptId": 96,
+      "title": "Ore grade estimation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "2df1a4ef736e352be73174303d550d29d701ce07f7dac0b4529471224c2071df"
+    },
+    {
+      "conceptId": 127,
+      "title": "Variograms and kriging",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "e0eacf3fbedb12428a222501b66d0195cf4e5adfc4061e6a0aefde2d3538612a"
+    },
+    {
+      "conceptId": 126,
+      "title": "Spatial cross-validation",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "377ce3468743b5c5e5771305ac0b463e24bb5f1b3d1658426fd50debe76a5ee4"
+    },
+    {
+      "conceptId": 128,
+      "title": "Mineral processing and recovery",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "fd379953e9b79a71128fc1a9d5519002fffa52b83d893b5d3a3318ac6cee0307"
+    },
+    {
+      "conceptId": 97,
+      "title": "Representation alignment",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "6ef514752c6906c1bff28f361156ff403380828a1f16cc9b6f33ea3321b76ce4"
+    },
+    {
+      "conceptId": 98,
+      "title": "Benchmark and ablation",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "e8afd9aa81bf7d56b43aee3d068d5161c7b0f8989e28de1a54b50b700d70e033"
+    },
+    {
+      "conceptId": 95,
+      "title": "Open source and reproducibility",
+      "changedFields": [
+        "formulaNote"
+      ],
+      "review": "Added local symbol explanations.",
+      "teachingSha256": "949417d18f0f6aa437cdb274891515527142798886b4fa8bee6e3d6ce7537b98"
+    },
+    {
+      "conceptId": 99,
+      "title": "Forward-deployed engineering",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "70af34d3e0576aba17a6bf6e00e7fb43a8e359927a05dcf6631aa5758349a797"
+    },
+    {
+      "conceptId": 100,
+      "title": "Grounded model conversation",
+      "changedFields": [],
+      "review": "Existing text defines the notation locally, or uses named quantities instead of symbolic variables.",
+      "teachingSha256": "3e58c6970232c9cac8ef2ddaedb335fdf32a094c2c658e6db72755b95e56aeeb"
+    }
+  ]
+}

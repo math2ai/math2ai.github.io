@@ -11,7 +11,7 @@ for(const c of course.concepts) {
 // Move back from a note-bearing lesson to one without a note; no stale teaching.
 app.go(course.concepts.findIndex(c=>c.legacyId===104));
 assert.match(app.get('formula-note').textContent,/low-rank approximation/);
-app.go(course.concepts.findIndex(c=>c.legacyId===2));
+app.go(course.concepts.findIndex(c=>c.legacyId===4));
 assert.equal(app.get('formula-note').textContent,'');
 assert.equal(app.get('formula-note').hidden,true);
 app.close();

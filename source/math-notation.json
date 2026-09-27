@@ -1266,10 +1266,30 @@
     ],
     "c:7:formulaNote": [
       {
+        "plain": "T",
+        "tex": "T"
+      },
+      " names the tensor. ",
+      {
         "plain": "Tᵢⱼₖ",
         "tex": "T_{ijk}"
       },
-      " selects table i, row j, column k. Indices start at 1."
+      " selects table ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ", row ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      ", column ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      ". Indices start at 1."
     ],
     "c:7:example": [
       "A stack of 2 tables, each with 3 rows and 4 columns, has shape ",
@@ -3097,12 +3117,21 @@
       }
     ],
     "c:103:formulaNote": [
-      "The nonzero vector v is an eigenvector; ",
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " is the square matrix acting on the nonzero vector ",
+      {
+        "plain": "v",
+        "tex": "v"
+      },
+      ". That vector is an eigenvector; ",
       {
         "plain": "λ",
         "tex": "\\lambda"
       },
-      " is its eigenvalue."
+      " (lambda) is its eigenvalue, the scalar by which the vector is multiplied."
     ],
     "c:103:example": [
       "For ",
@@ -3406,17 +3435,56 @@
       }
     ],
     "c:104:formulaNote": [
-      "Read the product from right to left: ",
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " is the original matrix. Read the product from right to left: ",
       {
         "plain": "Vᵀ",
-        "tex": "V^{\\mathsf{T}}"
+        "tex": "V^{\\mathsf T}"
       },
       " measures the input along the chosen directions, ",
       {
         "plain": "Σ",
         "tex": "\\Sigma"
       },
-      " applies the stretches, and U places the result along the output directions. The columns of V give perpendicular (orthogonal) input directions.\n\nRank counts the nonzero singular values. Keeping the largest k singular values and setting the others to zero gives a low-rank approximation: it retains at most k independent directions, so some detail can be lost."
+      " applies the stretches, and ",
+      {
+        "plain": "U",
+        "tex": "U"
+      },
+      " places the result along the output directions. The columns of ",
+      {
+        "plain": "V",
+        "tex": "V"
+      },
+      " give perpendicular (orthogonal) input directions; T means transpose. Here ",
+      {
+        "plain": "Σ",
+        "tex": "\\Sigma"
+      },
+      " is a diagonal matrix of singular values, not a summation sign.\n\nRank counts the nonzero singular values. Keeping the largest ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " singular values and setting the others to zero gives a low-rank approximation: it retains at most ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " independent directions, so some detail can be lost. ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " is the chosen number to keep; ",
+      {
+        "plain": "A₁",
+        "tex": "A_{1}"
+      },
+      " in the example keeps one."
     ],
     "c:104:example": [
       "Let ",
@@ -6353,10 +6421,45 @@
     "c:21:formulaNote": [
       "Here ",
       {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input, ",
+      {
+        "plain": "g",
+        "tex": "g"
+      },
+      " the inner function, ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " the outer function, and ",
+      {
         "plain": "y = f(g(x))",
         "tex": "y = f(g(x))"
       },
-      ": the output of g becomes the input of f."
+      " the final output: the output of ",
+      {
+        "plain": "g",
+        "tex": "g"
+      },
+      " becomes the input of ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      ". A prime denotes a derivative; ",
+      {
+        "plain": "dy/dx",
+        "tex": "\\frac{dy}{dx}"
+      },
+      " is the output’s rate of change with the original input. The example names the intermediate value ",
+      {
+        "plain": "u",
+        "tex": "u"
+      },
+      "."
     ],
     "c:21:example": [
       "Let ",
@@ -6944,7 +7047,26 @@
       }
     ],
     "c:107:formulaNote": [
-      "The extra number λ (lambda) links the score and the rule. For a smooth rule whose gradient is nonzero, set the x and y derivatives of ",
+      {
+        "plain": "ℒ",
+        "tex": "\\mathcal{L}"
+      },
+      " (script L) names the combined function, called the Lagrangian. The extra number ",
+      {
+        "plain": "λ",
+        "tex": "\\lambda"
+      },
+      " (lambda) links the score and the rule. For a smooth rule whose gradient is nonzero, set the ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " derivatives of ",
       {
         "plain": "ℒ",
         "tex": "\\mathcal{L}"
@@ -8142,17 +8264,41 @@
       }
     ],
     "c:29:formulaNote": [
-      "The model f uses parameters ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " and ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " are input and target for example ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ", among ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " examples. The model ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " uses parameters ",
       {
         "plain": "θ",
         "tex": "\\theta"
       },
-      ". The loss ",
+      " (theta). The loss ",
       {
         "plain": "ℓ",
         "tex": "\\ell"
       },
-      " scores one prediction against its target; training minimizes the average loss."
+      " (ell) scores one prediction against its target; training minimizes the average loss."
     ],
     "c:29:example": [
       "Inputs 1, 2, 3 paired with targets 2, 4, 6 suggest ",
@@ -8464,12 +8610,36 @@
       }
     ],
     "c:109:formulaNote": [
-      "For regression, average the targets of the k nearest training examples, denoted ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input to predict, ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " the number of neighbors, and ",
       {
         "plain": "Nₖ(x)",
-        "tex": "N_{k}(x)"
+        "tex": "N_k(x)"
       },
-      "."
+      " the set of their training-example indices. For each selected index ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ", ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " is its known target. Their average is the prediction ",
+      {
+        "plain": "ŷ(x)",
+        "tex": "\\hat{y}(x)"
+      },
+      " (y hat)."
     ],
     "c:109:example": [
       "The three nearest examples have targets 2, 4, and 9. An unweighted ",
@@ -9057,23 +9227,33 @@
     ],
     "c:112:formulaNote": [
       {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input and ",
+      {
+        "plain": "m",
+        "tex": "m"
+      },
+      " the boosting stage. ",
+      {
         "plain": "Fₘ₋₁",
         "tex": "F_{m-1}"
       },
       " is the current predictor. A new learner ",
       {
         "plain": "hₘ",
-        "tex": "h_{m}"
+        "tex": "h_m"
       },
       " proposes corrections from the input features. The learning rate ",
       {
         "plain": "η",
         "tex": "\\eta"
       },
-      " controls how much of each correction is added to form ",
+      " controls how much of each correction is added to form the updated predictor ",
       {
         "plain": "Fₘ",
-        "tex": "F_{m}"
+        "tex": "F_m"
       },
       "."
     ],
@@ -9661,7 +9841,21 @@
       }
     ],
     "c:119:formulaNote": [
-      "One simple uncertainty score for a binary prediction with probability p. It is largest near ",
+      {
+        "plain": "p",
+        "tex": "p"
+      },
+      " is the predicted probability of the positive class; ",
+      {
+        "plain": "u(p)",
+        "tex": "u(p)"
+      },
+      " is an uncertainty score for that prediction. ",
+      {
+        "plain": "abs",
+        "tex": "\\operatorname{abs}"
+      },
+      " means absolute value, the distance from zero. This score is largest near ",
       {
         "plain": "p = 0.5",
         "tex": "p = 0.5"
@@ -10442,12 +10636,32 @@
       }
     ],
     "c:37:formulaNote": [
-      "An example model and loss: first compute the prediction ",
+      "Here ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is an input and ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " a fixed weight. First compute the prediction ",
       {
         "plain": "ŷ",
         "tex": "\\hat{y}"
       },
-      ", then compare it with target y."
+      " (y hat), then compare it with target ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      ". ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the squared-error loss for this one example; the forward pass evaluates it without updating the weight."
     ],
     "c:37:example": [
       "With ",
@@ -10593,47 +10807,47 @@
       }
     ],
     "c:38:example": [
-      "For ",
-      {
-        "plain": "ŷ = wx",
-        "tex": "\\hat{y} = wx"
-      },
-      ", ",
+      "Use input ",
       {
         "plain": "x = 2",
         "tex": "x = 2"
       },
-      ", ",
+      ", weight ",
       {
         "plain": "w = 1",
         "tex": "w = 1"
       },
-      ", ",
+      ", and target ",
       {
         "plain": "y = 6",
         "tex": "y = 6"
       },
-      ": ",
+      ". The prediction is ",
       {
-        "plain": "ŷ = 2",
-        "tex": "\\hat{y} = 2"
+        "plain": "ŷ = 1×2 = 2",
+        "tex": "\\hat y=1\\times2=2"
       },
-      ". The local derivatives are ",
+      ", and the loss is ",
       {
-        "plain": "2(2−6) = −8",
-        "tex": "2(2-6) = -8"
+        "plain": "L = (2−6)² = 16",
+        "tex": "L=(2-6)^2=16"
       },
-      " and ",
+      ".\n\nWork backward through the two calculations:\n1. Loss to prediction: ",
       {
-        "plain": "x = 2",
-        "tex": "x = 2"
+        "plain": "∂L/∂ŷ = 2(2−6) = −8",
+        "tex": "\\frac{\\partial L}{\\partial\\hat y}=2(2-6)=-8"
       },
-      ". Multiply: ",
+      ".\n2. Prediction to weight: ",
       {
-        "plain": "∂L/∂w = −16",
-        "tex": "\\frac{\\partial L}{\\partial w} = -16"
+        "plain": "∂ŷ/∂w = x = 2",
+        "tex": "\\frac{\\partial\\hat y}{\\partial w}=x=2"
       },
-      "."
+      ".\n\nMultiply the local derivatives: ",
+      {
+        "plain": "∂L/∂w = (−8)×2 = −16",
+        "tex": "\\frac{\\partial L}{\\partial w}=(-8)\\times2=-16"
+      },
+      ". The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight."
     ],
     "q:38-01:question": [
       "Backpropagation gives ",
@@ -11552,7 +11766,41 @@
       }
     ],
     "c:105:formulaNote": [
-      "A term with ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " and ",
+      {
+        "plain": "Q",
+        "tex": "Q"
+      },
+      " are the distributions being compared; ",
+      {
+        "plain": "pᵢ",
+        "tex": "p_{i}"
+      },
+      " and ",
+      {
+        "plain": "qᵢ",
+        "tex": "q_{i}"
+      },
+      " are their probabilities for outcome ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". ",
+      {
+        "plain": "D_KL",
+        "tex": "D_{\\mathrm{KL}}"
+      },
+      " names the divergence and ",
+      {
+        "plain": "ln",
+        "tex": "\\ln"
+      },
+      " the natural logarithm, giving units called nats. The double bar separates the two distributions. A term with ",
       {
         "plain": "pᵢ = 0",
         "tex": "p_{i} = 0"
@@ -12111,12 +12359,21 @@
       }
     ],
     "c:117:formulaNote": [
-      "Here ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the loss and ",
+      {
+        "plain": "ln",
+        "tex": "\\ln"
+      },
+      " the natural logarithm. ",
       {
         "plain": "p₊",
-        "tex": "p_{+}"
+        "tex": "p_+"
       },
-      " is the probability assigned to the positive pair among its comparisons. Increasing this probability lowers the loss."
+      " is the probability assigned to the positive pair among its comparisons; + labels that pair. Increasing this probability lowers the loss."
     ],
     "c:117:example": [
       "If the positive pair receives normalized probability 0.8 among the comparisons, its loss is ",
@@ -12355,17 +12612,46 @@
       }
     ],
     "c:49:formulaNote": [
-      "Training adjusts encoder weights ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input and ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " its code. Encoder ",
+      {
+        "plain": "f_θ",
+        "tex": "f_\\theta"
+      },
+      " uses weights ",
       {
         "plain": "θ",
         "tex": "\\theta"
       },
-      " and decoder weights ",
+      "; decoder ",
+      {
+        "plain": "g_φ",
+        "tex": "g_\\varphi"
+      },
+      " uses weights ",
       {
         "plain": "φ",
         "tex": "\\varphi"
       },
-      "."
+      ". ",
+      {
+        "plain": "x̂",
+        "tex": "\\hat{x}"
+      },
+      " (x hat) is the reconstructed input. Loss ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the mean squared error (MSE) between original and reconstruction. Training adjusts both sets of weights."
     ],
     "c:49:example": [
       "With toy weights: ",
@@ -13211,17 +13497,22 @@
         "plain": "ε",
         "tex": "\\varepsilon"
       },
-      " is sampled noise, and ",
+      " (epsilon) is sampled noise, and ",
       {
         "plain": "xₜ",
         "tex": "x_{t}"
       },
-      " is the noisy result. The value ",
+      " is the noisy result at noising step ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      ". The coefficient ",
       {
         "plain": "ᾱₜ",
-        "tex": "\\bar{\\alpha}_{t}"
+        "tex": "\\bar{\\alpha}_t"
       },
-      " lies between 0 and 1: smaller values put more weight on noise."
+      " (alpha bar) lies between 0 and 1 and specifies the retained signal level: smaller values put more weight on noise."
     ],
     "c:121:example": [
       "If ",
@@ -13443,12 +13734,41 @@
       }
     ],
     "c:55:formulaNote": [
-      "Here ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is entry ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " of a sequence with ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " entries. ",
       {
         "plain": "μ",
         "tex": "\\mu"
       },
-      " is the sample mean and k is the lag. This is an estimate from a finite sequence with nonzero variation."
+      " is its sample mean, ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " the lag, and ",
+      {
+        "plain": "rₖ",
+        "tex": "r_{k}"
+      },
+      " the estimated autocorrelation at that lag. Pair each entry with the one ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " positions later. This estimate requires nonzero variation."
     ],
     "c:55:example": [
       "For ",
@@ -13629,17 +13949,31 @@
       }
     ],
     "c:56:formulaNote": [
-      "In the additive method, ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " is the token’s position; ",
+      {
+        "plain": "E",
+        "tex": "E"
+      },
+      " is the embedding table. ",
+      {
+        "plain": "E[tokenᵢ]",
+        "tex": "E[\\mathrm{token}_i]"
+      },
+      " is the token embedding and ",
       {
         "plain": "pᵢ",
         "tex": "p_{i}"
       },
-      " is the position vector and ",
+      " its position vector. Adding them gives the position-aware input ",
       {
-        "plain": "E[tokenᵢ]",
-        "tex": "E[\\operatorname{token}_{i}]"
+        "plain": "hᵢ",
+        "tex": "h_{i}"
       },
-      " is the token embedding."
+      "."
     ],
     "c:56:example": [
       "The same token has vector ",
@@ -14154,17 +14488,31 @@
       }
     ],
     "c:122:formulaNote": [
-      "Combine the selected expert outputs ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input, ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " labels an expert, and ",
       {
         "plain": "Eᵢ(x)",
-        "tex": "E_{i}(x)"
+        "tex": "E_i(x)"
       },
-      " using weights ",
+      " is that expert’s output. Routing weight ",
       {
         "plain": "gᵢ",
         "tex": "g_{i}"
       },
-      " that sum to 1 in this example."
+      " controls its contribution. Sum only over the selected experts to produce ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      ". The routing weights sum to 1 in this example."
     ],
     "c:122:example": [
       "Two selected experts output 2 and 6. With routing weights 0.25 and 0.75, their combined output is ",
@@ -14275,12 +14623,31 @@
       }
     ],
     "c:62:formulaNote": [
-      "One update starting from pretrained parameters ",
       {
         "plain": "θ₀",
-        "tex": "\\theta _{0}"
+        "tex": "\\theta_0"
       },
-      " and using the new task’s loss."
+      " is the pretrained parameter vector and ",
+      {
+        "plain": "θ⁺",
+        "tex": "\\theta^+"
+      },
+      " the result of one update. ",
+      {
+        "plain": "Lnew",
+        "tex": "L_{\\mathrm{new}}"
+      },
+      " is the new task’s loss; ",
+      {
+        "plain": "∇",
+        "tex": "\\nabla"
+      },
+      " denotes its gradient with respect to the parameters. ",
+      {
+        "plain": "η",
+        "tex": "\\eta"
+      },
+      " is the learning rate."
     ],
     "c:62:example": [
       "A trainable weight starts at 0.5. With gradient 2 and ",
@@ -14472,12 +14839,36 @@
       }
     ],
     "c:65:formulaNote": [
-      "s is state, a is action, ",
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      " is state, ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " is action, ",
       {
         "plain": "ξ",
         "tex": "\\xi"
       },
-      " is a disturbance, and t is the time step."
+      " (xi) is a disturbance, and ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      " is the time step. ",
+      {
+        "plain": "F",
+        "tex": "F"
+      },
+      " is the transition rule. Subscript ",
+      {
+        "plain": "t+1",
+        "tex": "t+1"
+      },
+      " labels the next state."
     ],
     "c:65:example": [
       "A tank holds 10 litres. Add 3 and drain 2 during one step: ",
@@ -14662,7 +15053,26 @@
       }
     ],
     "c:68:formulaNote": [
-      "H is the number of remaining steps. The reward ",
+      {
+        "plain": "Gₜ",
+        "tex": "G_{t}"
+      },
+      " is the return starting at time ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      "; ",
+      {
+        "plain": "H",
+        "tex": "H"
+      },
+      " counts the remaining steps and ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " counts how far ahead a reward lies. Reward ",
       {
         "plain": "rₜ",
         "tex": "r_{t}"
@@ -14672,12 +15082,17 @@
         "plain": "aₜ",
         "tex": "a_{t}"
       },
-      "; ",
+      ". ",
       {
         "plain": "γ",
         "tex": "\\gamma"
       },
-      " discounts later rewards."
+      " (gamma) discounts later rewards; its power ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " applies that discount once per step ahead."
     ],
     "c:68:example": [
       "For three rewards ",
@@ -15943,12 +16358,31 @@
       }
     ],
     "c:76:formulaNote": [
-      "Use a model ",
+      {
+        "plain": "sₜ",
+        "tex": "s_{t}"
+      },
+      " is the current state and ",
+      {
+        "plain": "aₜ",
+        "tex": "a_{t}"
+      },
+      " an action at time ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      ". The learned model ",
       {
         "plain": "F̂",
         "tex": "\\hat{F}"
       },
-      " to predict the next state, then compare actions using predicted returns."
+      " predicts next state ",
+      {
+        "plain": "ŝₜ₊₁",
+        "tex": "\\hat{s}_{t+1}"
+      },
+      ". Hats label predictions or estimates. Compare actions using predicted returns, then check them against real outcomes."
     ],
     "c:78:formula": [
       {
@@ -16126,15 +16560,30 @@
     "c:75:formulaNote": [
       "For a fixed question, ",
       {
+        "plain": "y",
+        "tex": "y"
+      },
+      " is a possible answer and ",
+      {
         "plain": "πθ(y)",
         "tex": "\\pi_\\theta(y)"
       },
-      " is the probability of answer y and ",
+      " its probability under the policy with parameters ",
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      ". ",
       {
         "plain": "r(y)",
         "tex": "r(y)"
       },
-      " is its learned reward."
+      " is its learned reward. ",
+      {
+        "plain": "J(θ)",
+        "tex": "J(\\theta)"
+      },
+      " averages rewards across possible answers, weighted by those probabilities."
     ],
     "c:75:example": [
       "People prefer answer A to B. Suppose learned rewards are 2 and 0. Raising ",
@@ -17160,12 +17609,16 @@
       }
     ],
     "c:92:formulaNote": [
-      "This interval follows if the absolute measurement error is at most ",
       {
         "plain": "δ",
         "tex": "\\delta"
       },
-      "."
+      " (delta) is a nonnegative bound on the absolute measurement error, in the same units as the reading. The interval follows if that bound holds; ",
+      {
+        "plain": "∈",
+        "tex": "\\in"
+      },
+      " means the true value lies within it."
     ],
     "q:92-r2-03:option:0": [
       {
@@ -17450,22 +17903,61 @@
       }
     ],
     "c:127:formulaNote": [
-      "For separation h, average squared differences over ",
+      {
+        "plain": "sᵢ",
+        "tex": "s_{i}"
+      },
+      " and ",
+      {
+        "plain": "sⱼ",
+        "tex": "s_{j}"
+      },
+      " are sample locations, with measured values ",
+      {
+        "plain": "z(sᵢ)",
+        "tex": "z(s_i)"
+      },
+      " and ",
+      {
+        "plain": "z(sⱼ)",
+        "tex": "z(s_j)"
+      },
+      ". For separation bin ",
+      {
+        "plain": "h",
+        "tex": "h"
+      },
+      ", average squared differences over ",
       {
         "plain": "N(h)",
         "tex": "N(h)"
       },
-      " sample pairs and divide by 2. Ordinary kriging then estimates a value at ",
+      " sample pairs and divide by 2; ",
+      {
+        "plain": "γ̂(h)",
+        "tex": "\\hat{\\gamma}(h)"
+      },
+      " names that estimated semivariance. Ordinary kriging uses weights ",
+      {
+        "plain": "wᵢ",
+        "tex": "w_{i}"
+      },
+      " to estimate ",
+      {
+        "plain": "ẑ(s₀)",
+        "tex": "\\hat{z}(s_0)"
+      },
+      " at unsampled location ",
       {
         "plain": "s₀",
         "tex": "s_{0}"
       },
-      " by weighting observed values ",
+      ". Hats indicate estimates, and ",
       {
-        "plain": "z(sᵢ)",
-        "tex": "z(s_{i})"
+        "plain": "Σᵢ",
+        "tex": "\\sum_i"
       },
-      "."
+      " sums over observations."
     ],
     "c:127:example": [
       "At one distance bin, two pairs have value differences 2 and 4. Estimated semivariance is ",
@@ -18022,6 +18514,2309 @@
         "plain": "ŷ = 1",
         "tex": "\\hat{y} = 1"
       }
+    ],
+    "c:2:formulaNote": [
+      "Here ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input value and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " is the resulting value. The rule doubles the input, then adds 1."
+    ],
+    "c:3:formulaNote": [
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " names the function, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is its input, and ",
+      {
+        "plain": "f(x)",
+        "tex": "f(x)"
+      },
+      " is its output. The notation ",
+      {
+        "plain": "ℝ → ℝ",
+        "tex": "\\mathbb{R}\\to\\mathbb{R}"
+      },
+      " says both inputs and outputs are real numbers."
+    ],
+    "c:5:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " names the whole vector; ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is its entry at position ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". There are ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " entries, numbered 1 through ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      ". ",
+      {
+        "plain": "ℝⁿ",
+        "tex": "\\mathbb{R}^{n}"
+      },
+      " denotes vectors with that many real coordinates."
+    ],
+    "c:6:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " names the matrix. ",
+      {
+        "plain": "ℝᵐˣⁿ",
+        "tex": "\\mathbb{R}^{m\\times n}"
+      },
+      " denotes real matrices with ",
+      {
+        "plain": "m",
+        "tex": "m"
+      },
+      " rows and ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " columns. The subscripts ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " and ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " select a row and column, counted from 1."
+    ],
+    "c:8:formulaNote": [
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is the term at position ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      "; ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " is the number of terms. Start with ",
+      {
+        "plain": "i = 1",
+        "tex": "i=1"
+      },
+      " and add one term for each position through ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      ". Here ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " names the full list."
+    ],
+    "c:9:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " are the two vectors; ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " and ",
+      {
+        "plain": "wᵢ",
+        "tex": "w_{i}"
+      },
+      " are their entries at position ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". The sum runs over all matching positions. The centered dot means dot product."
+    ],
+    "c:10:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " and ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      " are the input matrices. ",
+      {
+        "plain": "m",
+        "tex": "m"
+      },
+      " counts rows of ",
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      ", ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " its columns and the rows of ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      ", and ",
+      {
+        "plain": "p",
+        "tex": "p"
+      },
+      " the columns of ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      ". To obtain result entry ",
+      {
+        "plain": "(AB)ᵢⱼ",
+        "tex": "(AB)_{ij}"
+      },
+      ", fix row ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " and column ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      ", then sum over the shared position ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      "."
+    ],
+    "c:11:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " is the original matrix; ",
+      {
+        "plain": "Aᵀ",
+        "tex": "A^{\\mathsf T}"
+      },
+      " is its transpose. The superscript T is a transpose label, not a power. ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " and ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " are row and column indices. ",
+      {
+        "plain": "m",
+        "tex": "m"
+      },
+      " and ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " count the original rows and columns."
+    ],
+    "c:12:formulaNote": [
+      {
+        "plain": "T",
+        "tex": "T"
+      },
+      " is the transformation, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " are input vectors, and ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " and ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " are scalar multipliers. ",
+      {
+        "plain": "T(x)",
+        "tex": "T(x)"
+      },
+      " means the transformed vector. In the example, matrix ",
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " represents the transformation."
+    ],
+    "c:13:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " are vectors; ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is entry ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " of ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      ". ",
+      {
+        "plain": "‖x‖₂",
+        "tex": "\\lVert x\\rVert_2"
+      },
+      " means its Euclidean length; the subscript 2 names this norm. ",
+      {
+        "plain": "d(x, y)",
+        "tex": "d(x, y)"
+      },
+      " is the distance between the vectors. Sum over all coordinates."
+    ],
+    "c:14:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " names an event and ",
+      {
+        "plain": "P(A)",
+        "tex": "P(A)"
+      },
+      " its probability. In the sum, ",
+      {
+        "plain": "Aᵢ",
+        "tex": "A_{i}"
+      },
+      " labels outcome ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". These outcomes must be nonoverlapping and cover every possibility for their probabilities to total 1."
+    ],
+    "c:15:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " and ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      " are events. ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " denotes probability, ",
+      {
+        "plain": "∣",
+        "tex": "\\mid"
+      },
+      " means “given,” and ",
+      {
+        "plain": "A ∩ B",
+        "tex": "A\\cap B"
+      },
+      " means both events occur. Divide their joint probability by the probability of the conditioning event ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      "."
+    ],
+    "c:101:formulaNote": [
+      {
+        "plain": "H",
+        "tex": "H"
+      },
+      " is the hypothesis and ",
+      {
+        "plain": "E",
+        "tex": "E"
+      },
+      " the observed evidence. ",
+      {
+        "plain": "P(H)",
+        "tex": "P(H)"
+      },
+      " is the prior; ",
+      {
+        "plain": "P(E ∣ H)",
+        "tex": "P(E\\mid H)"
+      },
+      " the likelihood; ",
+      {
+        "plain": "P(E)",
+        "tex": "P(E)"
+      },
+      " the overall probability of the evidence; and ",
+      {
+        "plain": "P(H ∣ E)",
+        "tex": "P(H\\mid E)"
+      },
+      " the posterior. The bar means “given.”"
+    ],
+    "c:16:formulaNote": [
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " names the uncertain numerical outcome; lowercase ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is one possible value. ",
+      {
+        "plain": "P(X = x)",
+        "tex": "P(X=x)"
+      },
+      " is the chance of that value. ",
+      {
+        "plain": "E[X]",
+        "tex": "\\mathbb{E}[X]"
+      },
+      " means expected value: sum each possible value times its probability."
+    ],
+    "c:17:formulaNote": [
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " is the numerical outcome and ",
+      {
+        "plain": "E",
+        "tex": "\\mathbb{E}"
+      },
+      " means its probability-weighted average. ",
+      {
+        "plain": "μ",
+        "tex": "\\mu"
+      },
+      " (mu) is the mean, ",
+      {
+        "plain": "Var(X)",
+        "tex": "\\operatorname{Var}(X)"
+      },
+      " the variance, and ",
+      {
+        "plain": "σ",
+        "tex": "\\sigma"
+      },
+      " (sigma) the standard deviation."
+    ],
+    "c:102:formulaNote": [
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " and ",
+      {
+        "plain": "Y",
+        "tex": "Y"
+      },
+      " are the two numerical outcomes. ",
+      {
+        "plain": "μX",
+        "tex": "\\mu_X"
+      },
+      " and ",
+      {
+        "plain": "μY",
+        "tex": "\\mu_Y"
+      },
+      " are their means; ",
+      {
+        "plain": "σX",
+        "tex": "\\sigma_X"
+      },
+      " and ",
+      {
+        "plain": "σY",
+        "tex": "\\sigma_Y"
+      },
+      " their standard deviations. ",
+      {
+        "plain": "E",
+        "tex": "\\mathbb{E}"
+      },
+      " averages over paired outcomes. ",
+      {
+        "plain": "Cov(X,Y)",
+        "tex": "\\operatorname{Cov}(X,Y)"
+      },
+      " denotes covariance, and ",
+      {
+        "plain": "ρ",
+        "tex": "\\rho"
+      },
+      " (rho) denotes correlation."
+    ],
+    "c:106:formulaNote": [
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " is a random input, ",
+      {
+        "plain": "Xᵢ",
+        "tex": "X_{i}"
+      },
+      " the draw numbered ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ", and ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " the rule that computes the quantity of interest, such as a reward. Average ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " over ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " samples to estimate ",
+      {
+        "plain": "E[f(X)]",
+        "tex": "\\mathbb{E}[f(X)]"
+      },
+      ", its expected value. A random seed lets the same implementation reproduce the sampled draws."
+    ],
+    "c:18:formulaNote": [
+      "In the first identity, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is an exponent and ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " is the base, which must be positive and different from 1. ",
+      {
+        "plain": "ln",
+        "tex": "\\ln"
+      },
+      " means natural logarithm. A real logarithm requires a positive input; in the product rule, ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " and ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " are positive factors."
+    ],
+    "c:19:formulaNote": [
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " is the function, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " the input, and ",
+      {
+        "plain": "h",
+        "tex": "h"
+      },
+      " a small nonzero change in input. The limit follows the slope as ",
+      {
+        "plain": "h",
+        "tex": "h"
+      },
+      " approaches zero. ",
+      {
+        "plain": "f′(x)",
+        "tex": "f'(x)"
+      },
+      ", read “f prime of x,” and ",
+      {
+        "plain": "df/dx",
+        "tex": "\\frac{df}{dx}"
+      },
+      " both denote the derivative with respect to ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      ". The second equation is the power rule, shown here for a positive integer exponent ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      "."
+    ],
+    "c:22:formulaNote": [
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      " is the input to function ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      "; ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " and ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " are the lower and upper bounds. Split that interval into ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " equal pieces of width ",
+      {
+        "plain": "Δt",
+        "tex": "\\Delta t"
+      },
+      " (delta t); ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " numbers the pieces. The limit uses more, narrower pieces. ",
+      {
+        "plain": "dt",
+        "tex": "dt"
+      },
+      " marks integration with respect to ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      ". In the flow example, ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      " is time in seconds."
+    ],
+    "c:20:formulaNote": [
+      "Here ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is a scalar-valued function of inputs ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      ". ",
+      {
+        "plain": "∇",
+        "tex": "\\nabla"
+      },
+      " (nabla) denotes its gradient. ",
+      {
+        "plain": "∂L/∂x",
+        "tex": "\\frac{\\partial L}{\\partial x}"
+      },
+      " means the rate of change in ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " as ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " changes with ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " held fixed; the other component reverses those roles."
+    ],
+    "c:108:formulaNote": [
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " is the scalar function, ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " and ",
+      {
+        "plain": "xⱼ",
+        "tex": "x_{j}"
+      },
+      " are input coordinates, and ",
+      {
+        "plain": "H",
+        "tex": "H"
+      },
+      " is its Hessian. Entry ",
+      {
+        "plain": "Hᵢⱼ",
+        "tex": "H_{ij}"
+      },
+      " differentiates first with respect to coordinate ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      ", then ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". The superscript 2 means two differentiations. In the example, the two inputs are ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      "."
+    ],
+    "c:23:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is a candidate choice, ",
+      {
+        "plain": "C",
+        "tex": "C"
+      },
+      " the allowed set, and ",
+      {
+        "plain": "L(x)",
+        "tex": "L(x)"
+      },
+      " its score. ",
+      {
+        "plain": "arg min",
+        "tex": "\\arg\\min"
+      },
+      " asks for the minimizing choice, called ",
+      {
+        "plain": "x*",
+        "tex": "x^*"
+      },
+      " (x star), rather than the score itself. The star is a label, not multiplication."
+    ],
+    "c:24:formulaNote": [
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      " (theta) is the current parameter or parameter vector; ",
+      {
+        "plain": "θ⁺",
+        "tex": "\\theta^+"
+      },
+      " is its updated value. ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the loss and ",
+      {
+        "plain": "∇L(θ)",
+        "tex": "\\nabla L(\\theta)"
+      },
+      " its gradient at the current parameters. ",
+      {
+        "plain": "η",
+        "tex": "\\eta"
+      },
+      " (eta) is the positive learning rate. The superscript + labels the next value."
+    ],
+    "c:25:formulaNote": [
+      {
+        "plain": "D",
+        "tex": "D"
+      },
+      " is the dataset, ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " its number of examples, and ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " the example index. ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " and ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " are example ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      "’s input and target. In the worked example, uppercase ",
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " stacks the input vectors as matrix rows."
+    ],
+    "c:30:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input feature vector and ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " the matching weights; their dot product adds the weighted features. ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " is the intercept. ",
+      {
+        "plain": "ŷ",
+        "tex": "\\hat{y}"
+      },
+      ", read “y hat,” is the predicted target; ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " denotes the actual target. The taxi example uses just one feature, distance."
+    ],
+    "c:31:formulaNote": [
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " is the number of examples and ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " selects one. ",
+      {
+        "plain": "ŷᵢ",
+        "tex": "\\hat{y}_{i}"
+      },
+      " (y hat) is its prediction and ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " its target. Sum the squared errors over all ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " examples and divide by ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      ". MSE abbreviates mean squared error."
+    ],
+    "c:32:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is an input, ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " its weight, ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " the bias, and ",
+      {
+        "plain": "ŷ",
+        "tex": "\\hat{y}"
+      },
+      " (y hat) the prediction. ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the training loss. Its derivative ",
+      {
+        "plain": "∂L/∂w",
+        "tex": "\\frac{\\partial L}{\\partial w}"
+      },
+      " measures sensitivity to the weight. ",
+      {
+        "plain": "η",
+        "tex": "\\eta"
+      },
+      " is the learning rate, and ",
+      {
+        "plain": "w⁺",
+        "tex": "w^+"
+      },
+      " is the updated weight."
+    ],
+    "c:27:formulaNote": [
+      {
+        "plain": "D",
+        "tex": "D"
+      },
+      " is the complete dataset; subscripts train, val, and test identify its three parts (val means validation). ",
+      {
+        "plain": "∪",
+        "tex": "\\cup"
+      },
+      " means combine the sets. These sets are disjoint: an example belongs to only one split."
+    ],
+    "c:28:formulaNote": [
+      "For testing on new wells, keep every well entirely within one split. The intersection sign ",
+      {
+        "plain": "∩",
+        "tex": "\\cap"
+      },
+      " selects shared wells; ",
+      {
+        "plain": "∅",
+        "tex": "\\varnothing"
+      },
+      " means there are none."
+    ],
+    "c:26:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the original value and ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " its standardized value. ",
+      {
+        "plain": "μ",
+        "tex": "\\mu"
+      },
+      " (mu) and ",
+      {
+        "plain": "σ",
+        "tex": "\\sigma"
+      },
+      " (sigma) are the reference mean and standard deviation, fitted on training data. Subtract that mean, then divide by the positive standard deviation."
+    ],
+    "c:110:formulaNote": [
+      "The worked example uses ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " for the single input feature being tested; 5 is the threshold. Follow the selected branch to the next test or leaf."
+    ],
+    "c:42:formulaNote": [
+      {
+        "plain": "Ldata",
+        "tex": "L_{\\mathrm{data}}"
+      },
+      " is the prediction loss; ",
+      {
+        "plain": "Lₜₒₜₐₗ",
+        "tex": "L_{\\mathrm{total}}"
+      },
+      " includes the penalty. ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " is the vector of learned weights, and ",
+      {
+        "plain": "‖w‖₂²",
+        "tex": "\\lVert w\\rVert_2^2"
+      },
+      " is the sum of their squares. ",
+      {
+        "plain": "λ",
+        "tex": "\\lambda"
+      },
+      " (lambda) controls how strongly large weights are penalized."
+    ],
+    "c:111:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input and ",
+      {
+        "plain": "ŷ(x)",
+        "tex": "\\hat{y}(x)"
+      },
+      " (y hat) the forest’s prediction. ",
+      {
+        "plain": "T",
+        "tex": "T"
+      },
+      " counts trees; ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      " selects one. ",
+      {
+        "plain": "treeₜ(x)",
+        "tex": "\\operatorname{tree}_t(x)"
+      },
+      " is that tree’s prediction. For regression, average all ",
+      {
+        "plain": "T",
+        "tex": "T"
+      },
+      " predictions."
+    ],
+    "c:114:formulaNote": [
+      {
+        "plain": "Y",
+        "tex": "Y"
+      },
+      " is the actual outcome: 1 means positive and 0 negative. ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " denotes probability and the bar means “given.” Calibration compares the predicted probability ",
+      {
+        "plain": "p",
+        "tex": "p"
+      },
+      " with the observed fraction of positive cases."
+    ],
+    "c:118:formulaNote": [
+      {
+        "plain": "X",
+        "tex": "X"
+      },
+      " denotes inputs and ",
+      {
+        "plain": "Y",
+        "tex": "Y"
+      },
+      " targets. ",
+      {
+        "plain": "Pₛ",
+        "tex": "P_s"
+      },
+      " is their joint probability distribution in the source setting (",
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      "); ",
+      {
+        "plain": "Pₜ",
+        "tex": "P_t"
+      },
+      " is the distribution in the target setting (",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      "). The formula says these distributions differ."
+    ],
+    "c:34:formulaNote": [
+      "The constant ",
+      {
+        "plain": "e",
+        "tex": "e"
+      },
+      " is approximately 2.718, the base of the natural exponential. Here ",
+      {
+        "plain": "σ",
+        "tex": "\\sigma"
+      },
+      " names the sigmoid function; it does not denote standard deviation."
+    ],
+    "c:35:formulaNote": [
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " is the input value. ",
+      {
+        "plain": "max(0, z)",
+        "tex": "\\max(0,z)"
+      },
+      " chooses whichever is larger: zero or that input. ReLU is the function’s name, short for rectified linear unit."
+    ],
+    "c:38:formulaNote": [
+      {
+        "plain": "∂L/∂w",
+        "tex": "\\frac{\\partial L}{\\partial w}"
+      },
+      " asks how the loss changes if the weight changes while the input and target stay fixed. The chain rule multiplies two local sensitivities: loss to prediction, ",
+      {
+        "plain": "∂L/∂ŷ",
+        "tex": "\\frac{\\partial L}{\\partial\\hat y}"
+      },
+      ", and prediction to weight, ",
+      {
+        "plain": "∂ŷ/∂w",
+        "tex": "\\frac{\\partial\\hat y}{\\partial w}"
+      },
+      ". The last expression above is specific to this model and squared-error loss."
+    ],
+    "c:38:definition": [
+      "Backpropagation applies the chain rule backward through a model to compute how its loss changes with each weight. It calculates gradients; a separate update changes the weights.\n\nFor this example, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is one input, ",
+      {
+        "plain": "w",
+        "tex": "w"
+      },
+      " its weight, ",
+      {
+        "plain": "ŷ",
+        "tex": "\\hat{y}"
+      },
+      " (read “y hat”) the model’s prediction, and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " the target answer. The model is ",
+      {
+        "plain": "ŷ = wx",
+        "tex": "\\hat{y} = wx"
+      },
+      ". Its loss ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " measures squared prediction error: ",
+      {
+        "plain": "L = (ŷ − y)²",
+        "tex": "L = (\\hat{y} - y)^{2}"
+      },
+      "."
+    ],
+    "c:39:formulaNote": [
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      " is the set of example indices in a mini-batch; ",
+      {
+        "plain": "size(B)",
+        "tex": "\\operatorname{size}(B)"
+      },
+      " counts them. ",
+      {
+        "plain": "ℓᵢ",
+        "tex": "\\ell_i"
+      },
+      " is example ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      "’s loss and ",
+      {
+        "plain": "∇ℓᵢ",
+        "tex": "\\nabla\\ell_i"
+      },
+      " its parameter gradient. Their mean is ",
+      {
+        "plain": "gᴮ",
+        "tex": "g^B"
+      },
+      ". ",
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      " is the current parameter vector, ",
+      {
+        "plain": "η",
+        "tex": "\\eta"
+      },
+      " the learning rate, and ",
+      {
+        "plain": "θ⁺",
+        "tex": "\\theta^+"
+      },
+      " the updated vector."
+    ],
+    "c:36:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input. ",
+      {
+        "plain": "hₗ",
+        "tex": "h_l"
+      },
+      " is the output of layer ",
+      {
+        "plain": "l",
+        "tex": "l"
+      },
+      "; ",
+      {
+        "plain": "hₗ₋₁",
+        "tex": "h_{l-1}"
+      },
+      " is what that layer receives. ",
+      {
+        "plain": "Wₗ",
+        "tex": "W_l"
+      },
+      " is its weight matrix, ",
+      {
+        "plain": "bₗ",
+        "tex": "b_l"
+      },
+      " its bias vector, and ",
+      {
+        "plain": "φₗ",
+        "tex": "\\varphi_l"
+      },
+      " its activation function. Subscript 0 labels the original input. In the example, ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " names the final output."
+    ],
+    "c:115:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input sequence and ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " the output at position ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". The filter offset ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " selects weight ",
+      {
+        "plain": "wⱼ",
+        "tex": "w_{j}"
+      },
+      " and input entry ",
+      {
+        "plain": "xᵢ₊ⱼ",
+        "tex": "x_{i+j}"
+      },
+      "; sum across the filter, then add bias ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      ". The same weights and bias are used at each position. The example uses offsets 0 and 1."
+    ],
+    "c:116:formulaNote": [
+      {
+        "plain": "v",
+        "tex": "v"
+      },
+      " names the node being updated and ",
+      {
+        "plain": "u",
+        "tex": "u"
+      },
+      " a neighboring node. ",
+      {
+        "plain": "hᵥ",
+        "tex": "h_v"
+      },
+      " and ",
+      {
+        "plain": "hᵤ",
+        "tex": "h_u"
+      },
+      " are their current representations; ",
+      {
+        "plain": "h′ᵥ",
+        "tex": "h'_v"
+      },
+      " is the updated representation. The prime means “updated,” not a derivative here. This example adds the neighbors’ average to the node’s own value."
+    ],
+    "c:43:formulaNote": [
+      {
+        "plain": "zᵢ",
+        "tex": "z_{i}"
+      },
+      " is the logit for option ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ", and ",
+      {
+        "plain": "pᵢ",
+        "tex": "p_{i}"
+      },
+      " is its resulting probability. ",
+      {
+        "plain": "exp",
+        "tex": "\\exp"
+      },
+      " means the natural exponential. Index ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " runs over all options in the denominator, so every probability uses the same normalizing sum."
+    ],
+    "c:44:formulaNote": [
+      {
+        "plain": "q",
+        "tex": "q"
+      },
+      " is the target distribution and ",
+      {
+        "plain": "p",
+        "tex": "p"
+      },
+      " the predicted distribution. Entries ",
+      {
+        "plain": "qᵢ",
+        "tex": "q_{i}"
+      },
+      " and ",
+      {
+        "plain": "pᵢ",
+        "tex": "p_{i}"
+      },
+      " give outcome ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      "’s probabilities. ",
+      {
+        "plain": "H(q, p)",
+        "tex": "H(q, p)"
+      },
+      " names the cross-entropy; ",
+      {
+        "plain": "ln",
+        "tex": "\\ln"
+      },
+      " is the natural logarithm. For a single known correct class, its target probability is 1 and all others are 0."
+    ],
+    "c:45:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the original data; ",
+      {
+        "plain": "mask(x)",
+        "tex": "\\operatorname{mask}(x)"
+      },
+      " hides part of it. Model ",
+      {
+        "plain": "f_θ",
+        "tex": "f_\\theta"
+      },
+      ", with parameters ",
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      ", predicts that hidden part. ",
+      {
+        "plain": "xhidden",
+        "tex": "x_{\\mathrm{hidden}}"
+      },
+      " is the hidden target. ",
+      {
+        "plain": "ℓ",
+        "tex": "\\ell"
+      },
+      " (ell) compares prediction and target; ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " is the resulting loss."
+    ],
+    "c:46:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the object, ",
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " the embedding rule, and ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " the resulting vector. ",
+      {
+        "plain": "d",
+        "tex": "d"
+      },
+      " counts its coordinates; ",
+      {
+        "plain": "ℝᵈ",
+        "tex": "\\mathbb{R}^{d}"
+      },
+      " is the space of real vectors with that many coordinates."
+    ],
+    "c:47:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " and ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      " are the two vectors. The centered dot forms their dot product; ",
+      {
+        "plain": "‖x‖₂",
+        "tex": "\\lVert x\\rVert_2"
+      },
+      " is the length of ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      ", with the same notation for ",
+      {
+        "plain": "y",
+        "tex": "y"
+      },
+      ". Here ",
+      {
+        "plain": "cos(x, y)",
+        "tex": "\\operatorname{cos}(x,y)"
+      },
+      " names the cosine similarity."
+    ],
+    "c:48:formulaNote": [
+      "For the first principal direction, choose a unit vector ",
+      {
+        "plain": "u",
+        "tex": "u"
+      },
+      " that preserves the most variance. The data vectors ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " have been centered by subtracting their mean. ",
+      {
+        "plain": "E",
+        "tex": "\\mathbb{E}"
+      },
+      " averages the squared projected coordinate over the data; ",
+      {
+        "plain": "‖u‖₂ = 1",
+        "tex": "\\lVert u\\rVert_2=1"
+      },
+      " requires length 1."
+    ],
+    "c:50:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the input with ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " coordinates; ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " is its code with ",
+      {
+        "plain": "d",
+        "tex": "d"
+      },
+      " coordinates. ",
+      {
+        "plain": "ℝⁿ",
+        "tex": "\\mathbb{R}^{n}"
+      },
+      " and ",
+      {
+        "plain": "ℝᵈ",
+        "tex": "\\mathbb{R}^{d}"
+      },
+      " denote those real vector spaces. An undercomplete bottleneck uses ",
+      {
+        "plain": "d < n",
+        "tex": "d<n"
+      },
+      ": fewer coordinates in the code than in the input."
+    ],
+    "c:80:formulaNote": [
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " is the original value; ",
+      {
+        "plain": "abs",
+        "tex": "\\operatorname{abs}"
+      },
+      " means absolute value, making the rounding error nonnegative."
+    ],
+    "c:52:formulaNote": [
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      " is the input vector; ",
+      {
+        "plain": "eₖ",
+        "tex": "e_{k}"
+      },
+      " is codebook entry ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      ". ",
+      {
+        "plain": "arg min",
+        "tex": "\\arg\\min"
+      },
+      " selects the index ",
+      {
+        "plain": "k*",
+        "tex": "k^*"
+      },
+      " with the smallest squared distance to ",
+      {
+        "plain": "z",
+        "tex": "z"
+      },
+      ". The star marks the chosen index. ",
+      {
+        "plain": "zq",
+        "tex": "z_q"
+      },
+      " is the selected codebook vector; subscript q labels the quantized result."
+    ],
+    "c:54:formulaNote": [
+      {
+        "plain": "V",
+        "tex": "V"
+      },
+      " is the vocabulary of ",
+      {
+        "plain": "K",
+        "tex": "K"
+      },
+      " token IDs; ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " is one ID. Here ",
+      {
+        "plain": "E",
+        "tex": "E"
+      },
+      " is an embedding table, not an expected value. Looking up row ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      ", written ",
+      {
+        "plain": "E[k]",
+        "tex": "E[k]"
+      },
+      ", retrieves that token’s vector."
+    ],
+    "c:61:formulaNote": [
+      {
+        "plain": "tᵢ",
+        "tex": "t_{i}"
+      },
+      " is token ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " in a sequence of ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " tokens. ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " denotes probability and the bar means “given.” ",
+      {
+        "plain": "Π",
+        "tex": "\\prod"
+      },
+      " (capital pi) means multiply the next-token probabilities over all positions. The first token has no earlier tokens to condition on."
+    ],
+    "c:57:formulaNote": [
+      {
+        "plain": "Q",
+        "tex": "Q"
+      },
+      ", ",
+      {
+        "plain": "K",
+        "tex": "K"
+      },
+      ", and ",
+      {
+        "plain": "V",
+        "tex": "V"
+      },
+      " are matrices whose rows hold query, key, and value vectors. ",
+      {
+        "plain": "Kᵀ",
+        "tex": "K^{\\mathsf T}"
+      },
+      " is the key matrix transposed; ",
+      {
+        "plain": "QKᵀ",
+        "tex": "QK^{\\mathsf T}"
+      },
+      " contains query–key dot products. ",
+      {
+        "plain": "dₖ",
+        "tex": "d_{k}"
+      },
+      " is the shared query/key dimension, and softmax normalizes each query’s scores. Lowercase ",
+      {
+        "plain": "q",
+        "tex": "q"
+      },
+      " in the example is one query."
+    ],
+    "c:58:formulaNote": [
+      {
+        "plain": "h",
+        "tex": "h"
+      },
+      " is the number of heads. Each ",
+      {
+        "plain": "headᵢ",
+        "tex": "\\mathrm{head}_i"
+      },
+      " is the output of attention calculation ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". Concat joins those outputs; ",
+      {
+        "plain": "Wᴼ",
+        "tex": "W^O"
+      },
+      " is the learned matrix that mixes them into the final output. Its superscript O labels “output,” not a power."
+    ],
+    "c:60:formulaNote": [
+      {
+        "plain": "M",
+        "tex": "M"
+      },
+      " is the mask matrix. Row ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " is the position making a query; column ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " is the position it could attend to. Add entry ",
+      {
+        "plain": "Mᵢⱼ",
+        "tex": "M_{ij}"
+      },
+      " to that attention score. Negative infinity blocks a future position; zero leaves an allowed score unchanged."
+    ],
+    "c:59:formulaNote": [
+      {
+        "plain": "h",
+        "tex": "h"
+      },
+      " holds the incoming token representations; ",
+      {
+        "plain": "u",
+        "tex": "u"
+      },
+      " is the intermediate result after attention, and ",
+      {
+        "plain": "h′",
+        "tex": "h'"
+      },
+      " is the block’s output. The prime labels an updated representation, not a derivative. A residual connection adds a sublayer’s input to its output. LN means layer normalization: it normalizes features within each token. FFN is the feed-forward network. This is one possible block ordering."
+    ],
+    "c:124:formulaNote": [
+      "This example combines loss on known targets with loss for disagreeing with the teacher. ",
+      {
+        "plain": "λ",
+        "tex": "\\lambda"
+      },
+      " (lambda) is a nonnegative weight controlling the teacher-matching term."
+    ],
+    "c:63:formulaNote": [
+      {
+        "plain": "q",
+        "tex": "q"
+      },
+      " is the question, ",
+      {
+        "plain": "D",
+        "tex": "D"
+      },
+      " the document collection, and ",
+      {
+        "plain": "c",
+        "tex": "c"
+      },
+      " the retrieved context. Retrieve names the search operation. ",
+      {
+        "plain": "P_θ",
+        "tex": "P_\\theta"
+      },
+      " is the language model’s answer distribution with parameters ",
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      ". The bar means “given”; the dot stands for possible answers, and ",
+      {
+        "plain": "~",
+        "tex": "\\sim"
+      },
+      " means an answer is sampled from that distribution."
+    ],
+    "c:66:formulaNote": [
+      "At time step ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      ", ",
+      {
+        "plain": "sₜ",
+        "tex": "s_{t}"
+      },
+      " is the state, ",
+      {
+        "plain": "aₜ",
+        "tex": "a_{t}"
+      },
+      " the action, and ",
+      {
+        "plain": "oₜ",
+        "tex": "o_{t}"
+      },
+      " the observation. ",
+      {
+        "plain": "F",
+        "tex": "F"
+      },
+      " is the transition rule producing next state ",
+      {
+        "plain": "sₜ₊₁",
+        "tex": "s_{t+1}"
+      },
+      ". ",
+      {
+        "plain": "H",
+        "tex": "H"
+      },
+      " is the measurement rule producing a noiseless reading; noise accounts for measurement error."
+    ],
+    "c:67:formulaNote": [
+      {
+        "plain": "sₜ",
+        "tex": "s_{t}"
+      },
+      " is the current state, ",
+      {
+        "plain": "aₜ",
+        "tex": "a_{t}"
+      },
+      " the chosen action, and ",
+      {
+        "plain": "sₜ₊₁",
+        "tex": "s_{t+1}"
+      },
+      " the next state. ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " denotes probability and the bar means “given.” History includes the current state and all earlier observations and actions; the Markov assumption lets the current state replace that history."
+    ],
+    "c:69:formulaNote": [
+      {
+        "plain": "π",
+        "tex": "\\pi"
+      },
+      " (pi) names the policy. ",
+      {
+        "plain": "π(a ∣ s)",
+        "tex": "\\pi(a\\mid s)"
+      },
+      " is the probability of choosing action ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " in state ",
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      ". The sum runs over all available actions. The example leaves the fixed low-tank state implicit."
+    ],
+    "c:70:formulaNote": [
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      " is a state, ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " an action, and ",
+      {
+        "plain": "π",
+        "tex": "\\pi"
+      },
+      " the policy followed afterward. ",
+      {
+        "plain": "Gₜ",
+        "tex": "G_{t}"
+      },
+      " is the return from time ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      " onward. ",
+      {
+        "plain": "Eπ",
+        "tex": "\\mathbb{E}_\\pi"
+      },
+      " averages over outcomes under that policy. ",
+      {
+        "plain": "Vπ",
+        "tex": "V^\\pi"
+      },
+      " names state-value and ",
+      {
+        "plain": "Qπ",
+        "tex": "Q^\\pi"
+      },
+      " action-value; the superscript ",
+      {
+        "plain": "π",
+        "tex": "\\pi"
+      },
+      " identifies the policy, not a power. The bar means “given.”"
+    ],
+    "c:71:formulaNote": [
+      {
+        "plain": "Vπ(s)",
+        "tex": "V^\\pi(s)"
+      },
+      " is the value of state ",
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      " under policy ",
+      {
+        "plain": "π",
+        "tex": "\\pi"
+      },
+      ". At time ",
+      {
+        "plain": "t",
+        "tex": "t"
+      },
+      ", ",
+      {
+        "plain": "rₜ",
+        "tex": "r_{t}"
+      },
+      " is the reward and ",
+      {
+        "plain": "sₜ₊₁",
+        "tex": "s_{t+1}"
+      },
+      " the next state. ",
+      {
+        "plain": "γ",
+        "tex": "\\gamma"
+      },
+      " is the discount factor; ",
+      {
+        "plain": "Eπ",
+        "tex": "\\mathbb{E}_\\pi"
+      },
+      " averages over actions and outcomes under the policy, given current state ",
+      {
+        "plain": "sₜ = s",
+        "tex": "s_t=s"
+      },
+      "."
+    ],
+    "c:73:formulaNote": [
+      {
+        "plain": "ε",
+        "tex": "\\varepsilon"
+      },
+      " (epsilon) is the probability of choosing the exploration branch; ",
+      {
+        "plain": "P",
+        "tex": "P"
+      },
+      " denotes probability. In ε-greedy action selection, exploration chooses uniformly from all actions. Exploitation chooses an action with the largest estimated Q value: its expected return after taking that action."
+    ],
+    "c:72:formulaNote": [
+      {
+        "plain": "Q(s, a)",
+        "tex": "Q(s, a)"
+      },
+      " estimates return for action ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " in state ",
+      {
+        "plain": "s",
+        "tex": "s"
+      },
+      ". After taking it, observe reward ",
+      {
+        "plain": "r",
+        "tex": "r"
+      },
+      " and next state ",
+      {
+        "plain": "s′",
+        "tex": "s'"
+      },
+      "; the prime means “next,” not a derivative. ",
+      {
+        "plain": "b",
+        "tex": "b"
+      },
+      " ranges over possible next actions. ",
+      {
+        "plain": "γ",
+        "tex": "\\gamma"
+      },
+      " discounts their value, and ",
+      {
+        "plain": "α",
+        "tex": "\\alpha"
+      },
+      " (alpha) is the learning rate. The arrow ",
+      {
+        "plain": "←",
+        "tex": "\\leftarrow"
+      },
+      " means replace the old estimate with the updated one."
+    ],
+    "c:74:formulaNote": [
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      " holds the policy parameters; ",
+      {
+        "plain": "πθ",
+        "tex": "\\pi_\\theta"
+      },
+      " is that policy. ",
+      {
+        "plain": "G",
+        "tex": "G"
+      },
+      " is total discounted reward, and ",
+      {
+        "plain": "J(θ)",
+        "tex": "J(\\theta)"
+      },
+      " its expectation under the policy. ",
+      {
+        "plain": "∇J(θ)",
+        "tex": "\\nabla J(\\theta)"
+      },
+      " is the parameter gradient; learning rate ",
+      {
+        "plain": "η",
+        "tex": "\\eta"
+      },
+      " scales the step to updated parameters ",
+      {
+        "plain": "θ⁺",
+        "tex": "\\theta^+"
+      },
+      ". In the example, actions A and B have fixed rewards and the only parameter is probability ",
+      {
+        "plain": "p",
+        "tex": "p"
+      },
+      "."
+    ],
+    "c:78:formulaNote": [
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " is the proposed action. ",
+      {
+        "plain": "reward(a)",
+        "tex": "\\operatorname{reward}(a)"
+      },
+      " scores it, while ",
+      {
+        "plain": "g(a)",
+        "tex": "g(a)"
+      },
+      " measures its constraint: nonpositive values are allowed. For the example limit, use ",
+      {
+        "plain": "g(a) = a − 5",
+        "tex": "g(a)=a-5"
+      },
+      "."
+    ],
+    "c:77:formulaNote": [
+      {
+        "plain": "H",
+        "tex": "H"
+      },
+      " is the number of planned steps; ",
+      {
+        "plain": "k",
+        "tex": "k"
+      },
+      " counts them from 0. ",
+      {
+        "plain": "sₖ",
+        "tex": "s_{k}"
+      },
+      " and ",
+      {
+        "plain": "aₖ",
+        "tex": "a_{k}"
+      },
+      " are the planned state and action. Model ",
+      {
+        "plain": "F",
+        "tex": "F"
+      },
+      " predicts the next state, and ",
+      {
+        "plain": "c",
+        "tex": "c"
+      },
+      " scores that state and action with a step’s cost. Planned states and actions must satisfy the stated limits."
+    ],
+    "c:81:formulaNote": [
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is input value ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " and ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " the number of values. Start total at zero, then update it for each input; ",
+      {
+        "plain": "←",
+        "tex": "\\leftarrow"
+      },
+      " means “replace with.” Finally divide by ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " to compute the mean."
+    ],
+    "c:82:formulaNote": [
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is input entry ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " and ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_{i}"
+      },
+      " the corresponding output. Each output can be calculated independently, illustrating work that can run in parallel."
+    ],
+    "c:83:formulaNote": [
+      {
+        "plain": "A",
+        "tex": "A"
+      },
+      " and ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      " are matrices to multiply, ",
+      {
+        "plain": "C",
+        "tex": "C"
+      },
+      " the matrix to add, and ",
+      {
+        "plain": "D",
+        "tex": "D"
+      },
+      " the result. Their shapes must allow both operations."
+    ],
+    "c:84:formulaNote": [
+      "For a one-dimensional launch, ",
+      {
+        "plain": "B",
+        "tex": "B"
+      },
+      " is the number of threads per block and ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " is a thread’s overall index. Block and thread indices start at 0. In the example, ",
+      {
+        "plain": "x₆",
+        "tex": "x_{6}"
+      },
+      " is input entry 6 and ",
+      {
+        "plain": "y₆",
+        "tex": "y_{6}"
+      },
+      " its output."
+    ],
+    "c:91:formulaNote": [
+      {
+        "plain": "xᵢ",
+        "tex": "x_{i}"
+      },
+      " is the sequence entry at position ",
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      ". Window ",
+      {
+        "plain": "Wᵢ",
+        "tex": "W_{i}"
+      },
+      " starts there and contains ",
+      {
+        "plain": "l",
+        "tex": "l"
+      },
+      " entries, ending at position ",
+      {
+        "plain": "i+l−1",
+        "tex": "i+l-1"
+      },
+      ". For position ",
+      {
+        "plain": "j",
+        "tex": "j"
+      },
+      " within a window, mask value ",
+      {
+        "plain": "mⱼ",
+        "tex": "m_{j}"
+      },
+      " is 1 for an observed entry and 0 for a missing one."
+    ],
+    "c:97:formulaNote": [
+      {
+        "plain": "i",
+        "tex": "i"
+      },
+      " indexes paired training examples; ",
+      {
+        "plain": "qᵢ",
+        "tex": "q_{i}"
+      },
+      " is the question, with its domain codes, metadata, and known answer. ",
+      {
+        "plain": "P_θ",
+        "tex": "P_\\theta"
+      },
+      " is the model’s answer probability using parameters ",
+      {
+        "plain": "θ",
+        "tex": "\\theta"
+      },
+      ". This supervised objective minimizes negative natural log probabilities, encouraging the model to assign higher probability to each known answer given its inputs."
+    ],
+    "c:95:formulaNote": [
+      "In the example, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " names the data list and ",
+      {
+        "plain": "mean(x)",
+        "tex": "\\operatorname{mean}(x)"
+      },
+      " is the code operation that returns its arithmetic average."
     ]
   }
 }

@@ -81,6 +81,8 @@ The [prerequisite follow-up](source/PREREQUISITE_REVIEW.md) corrects missing def
 
 Keep each lesson focused on its main idea. Prefer simplifying an exercise or supplying a short premise over expanding the lesson to teach every incidental term. The [lesson clarity review](source/LESSON_CLARITY_REVIEW.md) records the follow-up: ordinary-size formula notes, shorter explanations, and removal of unnecessary notation and side topics.
 
+Define mathematical symbols locally, including their role, indices, and any special marks. The [symbol review](source/symbol-review.json) records the manual check of all 128 lessons. `verify_symbols.py` detects teaching text changed since that review; recheck the affected lesson's notation before updating its review fingerprint. The check tracks review coverage, not pedagogical correctness.
+
 Mathematical notation in lessons, quiz choices, hints and solutions is typeset by the bundled KaTeX renderer **during the build**. This includes matrices, grouped indices and powers, summation limits, fractions, and radicals. The published page contains prebuilt HTML and accessible MathML, plus embedded CSS and fonts; it never loads KaTeX JavaScript or a font CDN. A small display helper leaves the original readable notation visible until the required fonts load. Missing styles or failed fonts keep that fallback. Wide formulas scroll within their own container by touch or keyboard; answer controls also have spoken matrix row descriptions.
 
 `math-notation.json` supplies explicit, reviewed TeX for all 128 main formula fields and mathematical expressions throughout the course and question bank. Its spans must reconstruct the original text exactly; `build_math.mjs` rejects stale annotations after a content edit. The original numeric-array formatter remains available for unannotated matrix fields. Uneven or empty rows are preserved as row lists, and all options in a rectangularity question share that style so formatting does not reveal the answer. Course data, the course version, question IDs, answer positions, and saved-progress format remain unchanged. `verify_math.mjs` checks notation coverage, numerical and matrix-cell fidelity, bundled assets, accessible labels, and fallback behavior. See [mathematical notation](source/MATH_FORMATTING.md) for authoring and verification details.
@@ -102,6 +104,7 @@ python verify_expansion.py
 python verify_alignment.py
 python verify_example_questions.py
 python verify_prerequisites.py
+python verify_symbols.py
 python verify_feedback.py
 node verify_math.mjs
 node verify_lesson_clarity.mjs
