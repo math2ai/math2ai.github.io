@@ -37,6 +37,26 @@ for(const bad of [op('concept:0','revisit'),op('concept:129','revisit'),op('conc
 await assert.rejects(sync(A,Array(101).fill(bookmark)),/Batch too large/);
 await assert.rejects(sync(A,null),/Invalid changes/);
 const check=await sync(A);await db.exec(migration);assert.deepEqual(await sync(A),check);assert.deepEqual(await answers(),before);
+// Expansion keeps every old row and conflict rule while allowing new stable IDs.
+const expansion=fs.readFileSync(new URL('../supabase/migrations/202609290001_expand_learning_concepts.sql',import.meta.url),'utf8');
+await db.exec(expansion);assert.deepEqual(await sync(A),check);assert.deepEqual(await answers(),before);
+for(const id of [149,150,151,152,153,154,155,156,159,160,256]) {
+ const change=op('concept:'+id,'revisit');
+ const result=await sync(A,[change]);assert.equal(result.fields['concept:'+id].value,'revisit');
+ assert.deepEqual(result.accepted,[change.id]);
+}
+await assert.rejects(sync(A,[op('concept:257','revisit')]),/Invalid concept choice/);
+await assert.rejects(sync(A,[op('concept:0','revisit')]));
+await assert.rejects(sync(B,[op('concept:160','none')],A),/Not authorized/);
+await assert.rejects(asUser(null,tx=>tx.query('select public.math2ai_learning_sync($1,$2)',[A,'2.0']),'anon'),/permission denied/);
+const expanded=await sync(A);await db.exec(expansion);assert.deepEqual(await sync(A),expanded);
+assert.deepEqual(await answers(),before);
+const newAnswers=[149,150,151,152,153,154,155,156,159,160].flatMap(id=>
+ Array.from({length:10},(_,n)=>({id:randomUUID(),question_id:`${id}-${String(n+1).padStart(2,'0')}`,answer:n%4})));
+const newSaved=await asUser(B,async tx=>(await tx.query('select public.math2ai_sync($1,$2,$3,$4) as data',
+ [B,'2.0',0,JSON.stringify(newAnswers)])).rows[0].data);
+assert.equal(Object.keys(newSaved.answers).length,100,'Every new question ID is accepted by the existing answer RPC');
+assert.deepEqual(await answers(),before,'Another account adding the new bank cannot affect old progress');
 assert.equal((await db.query("select count(*)::int as n from pg_publication_tables where pubname='supabase_realtime' and tablename='math2ai_learning'")).rows[0].n,1);
 console.log('PASS: actual PostgreSQL migration; private account/course state; owner-only RPC writes; per-field conflict checks; ordered offline changes; idempotent retries; validation; reapplication; quiz progress untouched.');
 await db.close();

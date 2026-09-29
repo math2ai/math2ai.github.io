@@ -42,7 +42,7 @@ for(let i=0;i<course.concepts.length;i++) {
  }
  all.close();
 }
-console.log('PASS: all 1,280 questions have staged feedback; two wrong attempts lock the round; reset retains history; successful practice still marks completion.');
+console.log('PASS: all 1,380 questions have staged feedback; two wrong attempts lock the round; reset retains history; successful practice still marks completion.');
 
 const shared=hub();let app=await boot({shared});const q=app.question();app.wrong();app.retry();app.close();
 app=await boot({shared});assert.equal(app.question().id,q.id);assert.match(visibleText(app),/Try again/);

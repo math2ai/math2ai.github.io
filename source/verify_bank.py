@@ -109,7 +109,7 @@ cases = [
  ('Vector-quantized autoencoder','4 IDs from a 16-entry',4*math.ceil(math.log2(16))),
  ('Sequence and autocorrelation','length-6 sequence',6-2),
  ('Sequence and autocorrelation','lag zero',1),
- ('Autoregressive language model','conditional probabilities 0.6, 0.5, and 0.2',.6*.5*.2),
+ ('Large language models and next-token prediction','conditional probabilities 0.6, 0.5, and 0.2',.6*.5*.2),
  ('Scaled dot-product attention','weights (0.5, 0.5)',.5*2+.5*8),
  ('Multi-head attention','four heads each output width 8',4*8),
  ('Dynamical system','sₜ = 4, aₜ = −1',4-1),

@@ -7,7 +7,7 @@ course=json.loads((root/'dist/curriculum.json').read_text(encoding='utf-8'))
 review=json.loads((root/'symbol-review.json').read_text(encoding='utf-8'))
 concepts={c['legacyId']:c for c in course['concepts']}
 assert [r['conceptId'] for r in review['concepts']]==list(concepts)
-assert len(concepts)==128
+assert len(concepts)==138
 for record in review['concepts']:
     c=concepts[record['conceptId']]
     assert record['title']==c['title']
@@ -30,4 +30,4 @@ for x in (-3,0,2,4):
             assert math.isclose(measured,predicted,rel_tol=1e-8,abs_tol=1e-8)
 assert 2*(1*2-6)*2==-16
 assert ((1+.01)*2-6)**2<(1*2-6)**2
-print('PASS: all 128 lessons have a current notation review; backpropagation matches its stated model and loss across 36 independent cases.')
+print('PASS: all 138 lessons have a current notation review; backpropagation matches its stated model and loss across 36 independent cases.')

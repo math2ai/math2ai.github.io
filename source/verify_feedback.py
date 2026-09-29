@@ -4,7 +4,7 @@ import json,re
 root=Path(__file__).resolve().parent
 course=json.loads((root/'dist/curriculum.json').read_text(encoding='utf-8'))
 questions=[q for c in course['concepts'] for q in c['questions']]
-assert len(questions)==1280
+assert len(questions)==len(course['concepts'])*10
 for q in questions:
     hint=q['retryFeedback']
     assert 12 <= len(hint.split()) <= 75, (q['id'],len(hint.split()))
@@ -21,4 +21,4 @@ html=(root/'dist/index.html').read_text(encoding='utf-8')
 assert '<details id="concept-sources">' not in html
 assert 'aria-label="Further reading"' in html
 assert 'id="reset-question"' in html
-print('PASS: 1,280 authored first-mistake explanations; no explicit answer labels or copied long options; direct reading links on all 128 concepts.')
+print('PASS: 1,380 authored first-mistake explanations; no explicit answer labels or copied long options; direct reading links on all 138 concepts.')

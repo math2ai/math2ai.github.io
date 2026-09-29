@@ -18,7 +18,7 @@ const fresh=await boot();const first=fresh.question().id;
 fresh.review();
 assert.equal(fresh.get('review-chooser').hidden,false);
 assert.equal(fresh.get('quiz-panel').hidden,true,'Review opens the overview, not a question');
-assert.equal((fresh.get('review-topics').innerHTML.match(/name="review-topic"/g)||[]).length,128);
+assert.equal((fresh.get('review-topics').innerHTML.match(/name="review-topic"/g)||[]).length,course.concepts.length);
 assert.equal((fresh.get('review-topics').innerHTML.match(/class="review-chapter"/g)||[]).length,course.chapters.length);
 assert.deepEqual(stats(fresh,scalar),['0/10','—','—']);
 assert.match(row(fresh,scalar),/Not tried/);assert.doesNotMatch(row(fresh,scalar),/Looking solid|Worth revisiting/);

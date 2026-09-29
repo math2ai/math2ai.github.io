@@ -1,11 +1,11 @@
 {
-  "date": "2026-09-17",
+  "date": "2026-09-29",
   "courseVersion": "2.0",
   "reviewed": [
     {
       "conceptId": 1,
       "title": "Scalar",
-      "example": "A temperature reading is 24.5 °C. Its numerical value, 24.5, is a scalar.",
+      "example": "A temperature reading is 24.5 °C. Its numerical value, 24.5, is a scalar.\n\nA second reading might be 25.0 °C. Subtracting the first numerical value from the second gives a rise of 0.5 °C: two scalar inputs produce one scalar difference. Keeping both readings is a collection, rather than a single scalar. Later, a learning algorithm will also use a scalar to summarize how badly its predictions missed their targets.",
       "questionIds": [
         "1-01",
         "1-02",
@@ -18,12 +18,13 @@
         "1-09",
         "1-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 2,
       "title": "Variable",
-      "example": "If x = 3, then y = 2 × 3 + 1 = 7.",
+      "example": "If x = 3, then y = 2 × 3 + 1 = 7.\n\nRead the calculation as a small process: take the input 3, double it to get 6, then add the fixed 1. The resulting 7 belongs to y. If the input changes, substitute the new value everywhere x occurs. This is how a single formula can describe many measurements or predictions without rewriting the calculation each time.",
       "questionIds": [
         "2-01",
         "2-02",
@@ -42,12 +43,13 @@
           "previousQuestion": "What value of x makes 2x + 1 = 7?",
           "reason": "The original reversed the worked equation with the same solved input and output."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 3,
       "title": "Function",
-      "example": "f(3) = 9 and f(−3) = 9. Different inputs may share an output.",
+      "example": "f(3) = 9 and f(−3) = 9. Different inputs may share an output.\n\nThe rule squares its input. Starting with 3 or with −3 therefore reaches the same 9. The rule is perfectly definite in the forward direction, yet “which input produced 9?” has two answers here. This distinction matters whenever we transform measurements: an easy forward calculation may be impossible to undo uniquely.",
       "questionIds": [
         "3-01",
         "3-02",
@@ -66,12 +68,13 @@
           "previousQuestion": "Can a function map both 3 and −3 to 9?",
           "reason": "The original repeated the example's inputs 3 and −3 and output 9."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 4,
       "title": "Units",
-      "example": "3 metres/second × 4 seconds = 12 metres. Seconds cancel.",
+      "example": "3 metres/second × 4 seconds = 12 metres. Seconds cancel.\n\nThink of four one-second intervals. Each contributes 3 metres, so four such intervals contribute 12 metres in total. The same speed is 300 centimetres per second; multiplying by 4 gives 1,200 centimetres, the same distance. A changed numerical representation should not change the physical prediction.",
       "questionIds": [
         "4-01",
         "4-02",
@@ -84,12 +87,13 @@
         "4-09",
         "4-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 5,
       "title": "Vector",
-      "example": "If x = (2, 3), then 2x = (4, 6). Order matters: (2, 3) ≠ (3, 2).",
+      "example": "If x = (2, 3), then 2x = (4, 6). Order matters: (2, 3) ≠ (3, 2).\n\nFor a displacement, start at the origin, move 2 units horizontally and 3 vertically. Doubling the vector doubles both movements, producing the same direction with twice the length. If instead the entries mean temperature and pressure, scaling still works coordinate by coordinate, but the geometric interpretation requires care because the units differ.",
       "questionIds": [
         "5-01",
         "5-02",
@@ -102,12 +106,13 @@
         "5-09",
         "5-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 6,
       "title": "Matrix",
-      "example": "This 2 × 3 matrix has six entries. A₂₃ = 6. Each horizontal row has three entries.",
+      "example": "This 2 × 3 matrix has six entries. A₂₃ = 6. Each horizontal row has three entries.\n\nSuppose the first row describes observation A and the second describes observation B. Then the first feature is the column containing 1 and 4; the third feature is the column containing 3 and 6. Reading entry 6 means selecting observation B's third feature. Swapping rows changes observation order; swapping columns changes which measurement occupies each position.",
       "questionIds": [
         "6-01",
         "6-02",
@@ -126,12 +131,13 @@
           "previousQuestion": "What shape is [[1, 2, 3], [4, 5, 6]]?",
           "reason": "The original asked for the already stated shape of the example matrix."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 7,
       "title": "Tensor",
-      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).",
+      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).\n\nTo find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
       "questionIds": [
         "7-01",
         "7-02",
@@ -160,12 +166,13 @@
           "previousQuestion": "The axes of a tensor are (table, row, column), with shape (2, 3, 4). What does the middle length, 3, count?",
           "reason": "The original asked for a dimension explicitly described in the worked stack."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 8,
       "title": "Summation",
-      "example": "For x = (2, 4, 6), Σᵢ₌₁³ xᵢ = 12. Their mean is 12/3 = 4.",
+      "example": "For x = (2, 4, 6), Σᵢ₌₁³ xᵢ = 12. Their mean is 12/3 = 4.\n\nThe three contributions are 2, 4, and 6; none is a multiplier or an extra index value. Their total is 12. Sharing that total equally across three positions gives the mean 4. A sum answers “how much altogether?” while a mean answers “how much per observation?” Doubling a dataset changes the sum but not its mean when all observations are duplicated.",
       "questionIds": [
         "8-01",
         "8-02",
@@ -178,12 +185,32 @@
         "8-09",
         "8-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 150,
+      "title": "Linear combinations",
+      "example": "Take u = (1, 0) and v = (1, 2). Using coefficients 2 and 3 gives 2u = (2, 0) and 3v = (3, 6). Adding gives y = (5, 6).\n\nThe plot walks along the first scaled vector and then along the second, ending at the sum. Change the second coefficient to minus one: the second movement reverses and the result becomes (1, −2). The rule is unchanged; the coefficients choose the mixture.",
+      "questionIds": [
+        "150-01",
+        "150-02",
+        "150-03",
+        "150-04",
+        "150-05",
+        "150-06",
+        "150-07",
+        "150-08",
+        "150-09",
+        "150-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
     },
     {
       "conceptId": 9,
       "title": "Dot product",
-      "example": "With x = (2, 3) and w = (4, 5), x · w = 8 + 15 = 23.",
+      "example": "With x = (2, 3) and w = (4, 5), x · w = 8 + 15 = 23.\n\nImagine two products with quantities 2 and 3 and unit prices 4 and 5. Their costs are 8 and 15, totaling 23. Pairing a quantity with the wrong price would change the meaning. The same arithmetic can combine measured features into a score; learning will later mean adjusting those weights from examples.",
       "questionIds": [
         "9-01",
         "9-02",
@@ -196,66 +223,32 @@
         "9-09",
         "9-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
-      "conceptId": 10,
-      "title": "Matrix multiplication",
-      "example": "[[1, 2], [3, 4]] × [[5], [6]] = [[17], [39]]. First entry: 1×5 + 2×6 = 17. Second: 3×5 + 4×6 = 39.",
+      "conceptId": 149,
+      "title": "Norms and unit vectors",
+      "example": "For v = (3, 4), the squared length is 3² + 4² = 25, so the length is 5. Dividing both coordinates by 5 gives u = (0.6, 0.8). Its squared length is 0.6² + 0.8² = 1.\n\nThe plot shows two vectors along the same direction, with different lengths. Normalizing twice changes nothing further. Edit the input to (0, 0) to see why the code must handle that case before dividing.",
       "questionIds": [
-        "10-01",
-        "10-02",
-        "10-03",
-        "10-04",
-        "10-05",
-        "10-06",
-        "10-07",
-        "10-08",
-        "10-09",
-        "10-10"
+        "149-01",
+        "149-02",
+        "149-03",
+        "149-04",
+        "149-05",
+        "149-06",
+        "149-07",
+        "149-08",
+        "149-09",
+        "149-10"
       ],
-      "replacements": []
-    },
-    {
-      "conceptId": 11,
-      "title": "Transpose",
-      "example": "If A = [[1, 2, 3]], then Aᵀ = [[1], [2], [3]].",
-      "questionIds": [
-        "11-01",
-        "11-02",
-        "11-03",
-        "11-04",
-        "11-05",
-        "11-06",
-        "11-07",
-        "11-08",
-        "11-09",
-        "11-10"
-      ],
-      "replacements": []
-    },
-    {
-      "conceptId": 12,
-      "title": "Linear transformation",
-      "example": "For A = [[2, 0], [0, 3]], A(1, 2) = (2, 6). The first coordinate doubles; the second triples.",
-      "questionIds": [
-        "12-01",
-        "12-02",
-        "12-03",
-        "12-04",
-        "12-05",
-        "12-06",
-        "12-07",
-        "12-08",
-        "12-09",
-        "12-10"
-      ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
     },
     {
       "conceptId": 13,
       "title": "Euclidean distance",
-      "example": "Between (0, 0) and (3, 4), distance = √(9 + 16) = 5.",
+      "example": "Between (0, 0) and (3, 4), distance = √(9 + 16) = 5.\n\nMoving from the first point to the second changes the horizontal coordinate by 3 and the vertical by 4. These are perpendicular sides of a right triangle; the straight path is its hypotenuse, of length 5, not the 7-unit route along both sides. A feature measured on a much larger numerical scale can dominate this distance, even when it is not more important.",
       "questionIds": [
         "13-01",
         "13-02",
@@ -284,12 +277,203 @@
           "previousQuestion": "What is the squared distance between (1, 2) and (4, 6)?",
           "reason": "The original reused the example's (3,4) displacement and intermediate squared sum."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 154,
+      "title": "Orthogonality",
+      "example": "Take u = (1, 2) and v = (−2, 1). Their dot product is 1(−2) + 2(1) = 0. Both lengths are √5, so they are orthogonal but not unit vectors.\n\nDividing each vector by its own length produces an orthonormal pair without changing the right angle. In the plot, edit the second vector's last coordinate from 1 to 2: the dot product becomes 2 and the right angle disappears.",
+      "questionIds": [
+        "154-01",
+        "154-02",
+        "154-03",
+        "154-04",
+        "154-05",
+        "154-06",
+        "154-07",
+        "154-08",
+        "154-09",
+        "154-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 155,
+      "title": "Vector projection",
+      "example": "Project x = (3, 1) onto the line along u = (1, 1). The numerator is 4 and the denominator is 2, giving c = 2. Therefore p = (2, 2) and r = (1, −1).\n\nCheck the result: the residual's dot product with u is zero. The plot shows the projected point on the diagonal and the perpendicular gap from it to the original point. Replacing u by (2, 2) changes c to 1 but leaves the same point p, because the line has not changed.",
+      "questionIds": [
+        "155-01",
+        "155-02",
+        "155-03",
+        "155-04",
+        "155-05",
+        "155-06",
+        "155-07",
+        "155-08",
+        "155-09",
+        "155-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 151,
+      "title": "Span",
+      "example": "Let u = (1, 2) and v = (2, 4). The combination u + 2v = (5, 10) is reachable. Every combination keeps the second coordinate twice the first, so (1, 0) is unreachable.\n\nReplace v by (0, 1). Now (1, 0) is obtained with coefficients 1 and −2, and any point in the plane can be reached. The plot samples integer coefficients from −2 to 2; it shows the pattern but is not the whole span, which also includes fractional and arbitrarily large coefficients.",
+      "questionIds": [
+        "151-01",
+        "151-02",
+        "151-03",
+        "151-04",
+        "151-05",
+        "151-06",
+        "151-07",
+        "151-08",
+        "151-09",
+        "151-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 152,
+      "title": "Linear independence",
+      "example": "For u = (1, 0) and v = (0, 1), reaching zero forces each coefficient to be zero, so the pair is independent.\n\nAdd w = (1, 1). Now u + v − w = (0, 0) with nonzero coefficients, so the three-vector set is dependent. The target (2, 3) can be made as two u plus three v, or as one u plus two v plus one w. The extra vector adds another recipe, not another reachable direction.",
+      "questionIds": [
+        "152-01",
+        "152-02",
+        "152-03",
+        "152-04",
+        "152-05",
+        "152-06",
+        "152-07",
+        "152-08",
+        "152-09",
+        "152-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 153,
+      "title": "Basis and dimension",
+      "example": "Use the basis b₁ = (1, 1) and b₂ = (1, −1). Basis coordinates (3, 1) represent x = 3b₁ + b₂ = (4, 2) in the usual horizontal-vertical coordinates.\n\nTo recover the basis coordinates, the first usual coordinate is their sum and the second is their difference. Adding the usual coordinates and halving gives 3; subtracting and halving gives 1. This is one vector described with two coordinate systems, not two different vectors. The example's recovery rule is specific to this chosen basis.",
+      "questionIds": [
+        "153-01",
+        "153-02",
+        "153-03",
+        "153-04",
+        "153-05",
+        "153-06",
+        "153-07",
+        "153-08",
+        "153-09",
+        "153-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 10,
+      "title": "Matrix multiplication",
+      "example": "[[1, 2], [3, 4]] × [[5], [6]] = [[17], [39]]. First entry: 1×5 + 2×6 = 17. Second: 3×5 + 4×6 = 39.\n\nThe column holds one input with two coordinates. The first row combines it with weights 1 and 2; the second uses weights 3 and 4. That produces two different output coordinates, 17 and 39, from the same input. Adding another input column would calculate both outputs for that input as well, without changing the transformation.",
+      "questionIds": [
+        "10-01",
+        "10-02",
+        "10-03",
+        "10-04",
+        "10-05",
+        "10-06",
+        "10-07",
+        "10-08",
+        "10-09",
+        "10-10"
+      ],
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 11,
+      "title": "Transpose",
+      "example": "If A = [[1, 2, 3]], then Aᵀ = [[1], [2], [3]].\n\nAll three numbers survive, in the same order, but the horizontal row becomes a vertical column. Transposing again restores the original row. No stretching has been undone and no equation has been solved: rearranging entries is different from finding an inverse transformation.",
+      "questionIds": [
+        "11-01",
+        "11-02",
+        "11-03",
+        "11-04",
+        "11-05",
+        "11-06",
+        "11-07",
+        "11-08",
+        "11-09",
+        "11-10"
+      ],
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 12,
+      "title": "Linear transformation",
+      "example": "For A = [[2, 0], [0, 3]], A(1, 2) = (2, 6). The first coordinate doubles; the second triples.\n\nThe horizontal unit direction becomes twice as long and the vertical one three times as long. The input contains one horizontal unit and two vertical units, so the result contains 2 horizontal units and 6 vertical units. The transformation changes the entire drawing consistently; it is not a separate rule invented for each point.",
+      "questionIds": [
+        "12-01",
+        "12-02",
+        "12-03",
+        "12-04",
+        "12-05",
+        "12-06",
+        "12-07",
+        "12-08",
+        "12-09",
+        "12-10"
+      ],
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 156,
+      "title": "Systems of linear equations",
+      "example": "Suppose two measurements give p + q = 5 and p − q = 1, where p and q are the two unknowns. Adding the equations cancels q and gives 2p = 6, so p = 3. Substituting into the first gives q = 2. Both original equations now hold.\n\nThe code stores coefficients in A = [[1, 1], [1, −1]] and right-hand sides in b = (5, 1). Its solver returns the two values; multiplying back verifies them. If the two equations instead demanded the same sum equal both 5 and 6, no values could satisfy both. A numerical solver is not a substitute for checking what system you asked it to solve.",
+      "questionIds": [
+        "156-01",
+        "156-02",
+        "156-03",
+        "156-04",
+        "156-05",
+        "156-06",
+        "156-07",
+        "156-08",
+        "156-09",
+        "156-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
+    },
+    {
+      "conceptId": 159,
+      "title": "Matrix rank",
+      "example": "For A = [[1, 2], [2, 4]], the second column is twice the first. Its rank is 1. Every output has a second coordinate twice its first: this matrix cannot reach an arbitrary point in the plane.\n\nChange the bottom-right entry from 4 to 5. The columns are no longer multiples, giving rank 2. For this two-by-two case, compare the products of opposite corners: they are both 4 in the first matrix, but 5 and 4 after the edit. Unequal products mean rank 2; equal products mean rank 1 unless every entry is zero, when the rank is 0. The code uses this exact two-by-two test; large or noisy matrices need more careful numerical methods.",
+      "questionIds": [
+        "159-01",
+        "159-02",
+        "159-03",
+        "159-04",
+        "159-05",
+        "159-06",
+        "159-07",
+        "159-08",
+        "159-09",
+        "159-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
     },
     {
       "conceptId": 103,
       "title": "Eigenvalues and eigenvectors",
-      "example": "For A = [[2,0],[0,3]], A(1,0) = (2,0). Thus (1,0) is an eigenvector with eigenvalue 2. The other coordinate direction has eigenvalue 3.",
+      "example": "For A = [[2,0],[0,3]], A(1,0) = (2,0). Thus (1,0) is an eigenvector with eigenvalue 2. The other coordinate direction has eigenvalue 3.\n\nA vector with both coordinates nonzero usually changes its direction here because its horizontal part is multiplied by 2 while its vertical part is multiplied by 3. The coordinate arrows avoid that mixing. Repeating the transformation favors the vertical component because it grows by the larger factor on every application; this explains why the special directions are useful, beyond just naming them.",
       "questionIds": [
         "103-01",
         "103-02",
@@ -318,12 +502,13 @@
           "previousQuestion": "For A = [[2,0],[0,3]], which vector has eigenvalue 3?",
           "reason": "The worked example already identified the other coordinate direction and its eigenvalue."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 104,
       "title": "Singular value decomposition",
-      "example": "Let A = [[3,0],[0,1]] act on points in a drawing.\nA(1,0) = (3,0): a one-unit horizontal arrow becomes three units long.\nA(0,1) = (0,1): a one-unit vertical arrow keeps its length. The singular values are 3 and 1.\n\nKeep only the stronger stretch by replacing 1 with 0: A₁ = [[3,0],[0,0]]. Now (2,5) maps to (6,0), instead of (6,5). This rank-one approximation keeps horizontal detail but loses vertical detail.",
+      "example": "Let A = [[3,0],[0,1]] act on points in a drawing.\nA(1,0) = (3,0): a one-unit horizontal arrow becomes three units long.\nA(0,1) = (0,1): a one-unit vertical arrow keeps its length. The singular values are 3 and 1.\n\nKeep only the stronger stretch by replacing 1 with 0: A₁ = [[3,0],[0,0]]. Now (2,5) maps to (6,0), instead of (6,5). This rank-one approximation keeps horizontal detail but loses vertical detail.\n\nThe compressed matrix needs only one input coordinate to reproduce its output, because the vertical contribution has been removed. For the displayed point, the missing vertical output is exactly the information lost. With a non-diagonal matrix, SVD first finds suitable perpendicular directions rather than assuming they are horizontal and vertical. Compression means choosing what to lose, not preserving every number for free.",
       "questionIds": [
         "104-01",
         "104-02",
@@ -344,12 +529,32 @@
         }
       ],
       "previousExample": "For A = [[3,0],[0,1]], the singular values are 3 and 1. Keeping only the first gives A₁ = [[3,0],[0,0]], a rank-one approximation.",
-      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result.",
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 160,
+      "title": "Low-rank approximation",
+      "example": "Use A = [[6, 0], [0, 2]]. Its singular values are 6 and 2. Keeping the stronger direction gives A₁ = [[6, 0], [0, 0]], of rank 1. The only changed entry is 2, so the squared entry error is 2² = 4.\n\nKeeping no directions instead gives the zero matrix, with error 6² + 2² = 40. Keeping both gives error zero. The plot shows this error versus the number retained. This diagonal example makes the SVD visible by inspection. Change the two nonnegative diagonal values and the code retains whichever is larger, not necessarily the first coordinate. A general matrix requires computing its singular vectors as well.",
+      "questionIds": [
+        "160-01",
+        "160-02",
+        "160-03",
+        "160-04",
+        "160-05",
+        "160-06",
+        "160-07",
+        "160-08",
+        "160-09",
+        "160-10"
+      ],
+      "replacements": [],
+      "depthReview": "Ten new questions reviewed against this example: numerical scenarios change the data or ask a different implication; conceptual questions test the stated definition and boundaries."
     },
     {
       "conceptId": 14,
       "title": "Probability",
-      "example": "For a fair six-sided die, P(even) = 3/6 = 0.5.",
+      "example": "For a fair six-sided die, P(even) = 3/6 = 0.5.\n\nThe event “even” collects three die faces, while the full experiment has six equally likely faces. The fraction one-half describes that event before a throw. It does not say which particular face will occur, or promise an exact split in a short run. This distinction lets a predictive model express uncertainty instead of pretending every future outcome is determined.",
       "questionIds": [
         "14-01",
         "14-02",
@@ -362,12 +567,13 @@
         "14-09",
         "14-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 15,
       "title": "Conditional probability",
-      "example": "Of four red balls, one is striped. P(striped ∣ red) = 1/4.",
+      "example": "Of four red balls, one is striped. P(striped ∣ red) = 1/4.\n\nOnce “red” is known, non-red balls are outside the relevant group. The denominator is four red balls, and the numerator is the one ball that is both red and striped. To reverse the question and ask about red balls among striped balls, we would need the total number of striped balls instead. The two denominators answer different questions.",
       "questionIds": [
         "15-01",
         "15-02",
@@ -380,12 +586,13 @@
         "15-09",
         "15-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 101,
       "title": "Bayes’ theorem",
-      "example": "Of 100 parts, 10 are defective. A test flags 8 defective parts and 9 good parts. Among 17 flagged parts, 8 are defective: P(defective ∣ flagged) = 8/17.",
+      "example": "Of 100 parts, 10 are defective. A test flags 8 defective parts and 9 good parts. Among 17 flagged parts, 8 are defective: P(defective ∣ flagged) = 8/17.\n\nBegin with the 10 defective and 90 good parts, then follow each group through the flagging process. Eight of the defects are flagged, but so are nine good parts. The alert therefore narrows attention to 17 parts, not just the eight true defects. Its usefulness comes from increasing the defect fraction above the original 10%, while leaving substantial uncertainty.",
       "questionIds": [
         "101-01",
         "101-02",
@@ -404,12 +611,13 @@
           "previousQuestion": "A test flags 8 defective and 9 good parts. What fraction of flagged parts are defective?",
           "reason": "The original repeated the example's 8 defective and 9 good parts and its fraction 8/17."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 16,
       "title": "Expected value",
-      "example": "A reward is 0 or 10 with equal probability. E[X] = 0.5 × 0 + 0.5 × 10 = 5.",
+      "example": "A reward is 0 or 10 with equal probability. E[X] = 0.5 × 0 + 0.5 × 10 = 5.\n\nHalf of many trials contribute zero and half contribute ten on average, so the average payout approaches five under independent repetition. A single trial still pays only zero or ten. A guaranteed payout of five would have the same mean but a very different experience: uncertainty about individual outcomes has not vanished just because we summarized them by one number.",
       "questionIds": [
         "16-01",
         "16-02",
@@ -422,12 +630,13 @@
         "16-09",
         "16-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 17,
       "title": "Variance",
-      "example": "Values 2 and 6 are equally likely. Mean = 4. Variance = [(2−4)² + (6−4)²]/2 = 4. Standard deviation = √4 = 2.",
+      "example": "Values 2 and 6 are equally likely. Mean = 4. Variance = [(2−4)² + (6−4)²]/2 = 4. Standard deviation = √4 = 2.\n\nSubtracting the mean 4 produces deviations −2 and 2. Their signed average is zero, even though the readings differ. Squaring makes both contributions 4, and averaging gives variance 4. The standard deviation 2 describes the spread around the mean; it is not an uncertainty bound guaranteeing that future readings stay inside a fixed interval.",
       "questionIds": [
         "17-01",
         "17-02",
@@ -451,12 +660,13 @@
           "previousQuestion": "What is the population variance of equally likely values 0 and 4?",
           "reason": "The original used the same deviations and variance as the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 102,
       "title": "Covariance and correlation",
-      "example": "The equally likely pairs (1,2) and (3,6) have means 2 and 4. Covariance = [(-1)(-2)+(1)(2)]/2 = 2. Standard deviations are 1 and 2, so correlation = 1.",
+      "example": "The equally likely pairs (1,2) and (3,6) have means 2 and 4. Covariance = [(-1)(-2)+(1)(2)]/2 = 2. Standard deviations are 1 and 2, so correlation = 1.\n\nThe first observation is below both means and the second above both, so both products contribute positively. The perfect correlation describes the straight-line pattern in these two points, not evidence that one measurement causes the other. With only two distinct pairs, this apparent perfection is especially weak evidence about what a larger dataset will do.",
       "questionIds": [
         "102-01",
         "102-02",
@@ -475,12 +685,13 @@
           "previousQuestion": "For equally likely pairs (1,2) and (3,6), what is the covariance?",
           "reason": "The original repeated both example pairs and the covariance already calculated."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 106,
       "title": "Monte Carlo estimation",
-      "example": "Four simulated rewards are 0, 2, 4, and 6. Their sample average is 12/4 = 3, an estimate of expected reward rather than its exact value.",
+      "example": "Four simulated rewards are 0, 2, 4, and 6. Their sample average is 12/4 = 3, an estimate of expected reward rather than its exact value.\n\nKeep a running total: after the four draws it reaches 12, which divided by four gives 3. Another set of four draws can give a different average. In the editable example, the simulated population is explicitly the four equally likely reward values, so its exact mean is available as a check. In larger problems, that exact comparison may be unavailable.",
       "questionIds": [
         "106-01",
         "106-02",
@@ -499,12 +710,13 @@
           "previousQuestion": "For sampled rewards 0, 2, 4, and 6, what is the Monte Carlo estimate of their expected reward?",
           "reason": "The original asked for the sample mean already calculated in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 18,
       "title": "Exponential and logarithm",
-      "example": "2³ = 8, so log₂(8) = 3. Likewise, e² ≈ 7.389, so ln(7.389) ≈ 2.",
+      "example": "2³ = 8, so log₂(8) = 3. Likewise, e² ≈ 7.389, so ln(7.389) ≈ 2.\n\nStarting from one, three doublings produce two, four, then eight. The base-2 logarithm asks how many doublings connect one to eight. Natural logarithms use a different base but the same inverse idea. A logarithm reports a multiplicative change on an additive scale; it is not another name for division.",
       "questionIds": [
         "18-01",
         "18-02",
@@ -523,12 +735,13 @@
           "previousQuestion": "If a quantity doubles three times, what factor multiplies it?",
           "reason": "The original recast the example's already evaluated 2³ as three doublings."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 19,
       "title": "Derivative",
-      "example": "For f(x) = x²: f(3.01) − f(3) = 0.0601. The slope over this interval is 0.0601/0.01 = 6.01, close to f′(3) = 6.",
+      "example": "For f(x) = x²: f(3.01) − f(3) = 0.0601. The slope over this interval is 0.0601/0.01 = 6.01, close to f′(3) = 6.\n\nThe slope 6 predicts a change of about 0.06 for an input increase of 0.01. The actual change, 0.0601, is close but not identical because the curve bends over that interval. The tangent in the plot represents this local straight-line prediction. Move the input and both its slope and the point of contact change.",
       "questionIds": [
         "19-01",
         "19-02",
@@ -541,12 +754,13 @@
         "19-09",
         "19-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 22,
       "title": "Integral",
-      "example": "A flow of 2 litres/second for 3 seconds delivers ∫₀³ 2 dt = 6 litres.",
+      "example": "A flow of 2 litres/second for 3 seconds delivers ∫₀³ 2 dt = 6 litres.\n\nDuring each of the three seconds, two litres enter the tank. Adding those contributions produces six litres. For a varying flow, rectangles with different heights approximate the same total-volume calculation. If negative flow represents water leaving, its contribution subtracts, so the integral measures net change rather than all water that ever passed the valve.",
       "questionIds": [
         "22-01",
         "22-02",
@@ -570,12 +784,13 @@
           "previousQuestion": "What unit results from integrating a flow rate in litres/second over seconds?",
           "reason": "The original asked for the same flow and resulting unit shown in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 20,
       "title": "Gradient",
-      "example": "If L = x² + 3y², then ∇L = (2x, 6y). At (1, 2), it is (2, 12).",
+      "example": "If L = x² + 3y², then ∇L = (2x, 6y). At (1, 2), it is (2, 12).\n\nAt the displayed point, increasing x by 0.01 alone raises the score by about 0.02; increasing y by 0.01 alone raises it by about 0.12. The y direction is locally more sensitive in these units. A small step opposite both gradient coordinates should lower the score, but the gradient must be recalculated as the point moves.",
       "questionIds": [
         "20-01",
         "20-02",
@@ -588,12 +803,13 @@
         "20-09",
         "20-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 108,
       "title": "Hessian and curvature",
-      "example": "For f(x,y)=x²+3y², H=[[2,0],[0,6]]. At (0,0), the gradient is zero and both curvature directions are positive, so this is a strict local minimum.",
+      "example": "For f(x,y)=x²+3y², H=[[2,0],[0,6]]. At (0,0), the gradient is zero and both curvature directions are positive, so this is a strict local minimum.\n\nThe x slope is twice x, and the y slope is six times y. Changing x by one unit therefore changes its slope by 2; changing y by one changes its slope by 6. The zero off-diagonal entries mean those slope changes do not couple the coordinates in this example. The valley is steeper in y even though both directions lead upward from the origin.",
       "questionIds": [
         "108-01",
         "108-02",
@@ -612,12 +828,13 @@
           "previousQuestion": "For f(x,y)=x²+3y², what is the Hessian?",
           "reason": "The original requested the exact Hessian printed in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 21,
       "title": "Chain rule",
-      "example": "Let u = 2x and y = u². At x = 3, u = 6. The two slopes are du/dx = 2 and dy/du = 12, so dy/dx = 12×2 = 24. If y is a sum of two paths from x, compute each path’s derivative and add them: for y = (2x)² + (3x)², dy/dx = 8x + 18x.",
+      "example": "Let u = 2x and y = u². At x = 3, u = 6. The two slopes are du/dx = 2 and dy/du = 12, so dy/dx = 12×2 = 24. If y is a sum of two paths from x, compute each path’s derivative and add them: for y = (2x)² + (3x)², dy/dx = 8x + 18x.\n\nA tiny increase in x is doubled on its way to u. Near the current u, squaring multiplies that small change by about 12, so the full change is amplified by about 24. Omitting either stage would answer a different sensitivity question. When two branches both affect the output, their effects add because both changes reach the same final quantity.",
       "questionIds": [
         "21-01",
         "21-02",
@@ -646,12 +863,13 @@
           "previousQuestion": "A length x is converted to u = 2x and then to y = u². Why is dy/du alone insufficient to find dy/dx?",
           "reason": "Replaces the exact two-stage calculation used in the example with a signed inner transformation."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 23,
       "title": "Optimization",
-      "example": "For L(x) = (x − 3)² and C = [0, 2], x* = 2 and L(x*) = 1.",
+      "example": "For L(x) = (x − 3)² and C = [0, 2], x* = 2 and L(x*) = 1.\n\nThe score measures squared distance from 3, so without the restriction we would choose 3. The allowed interval ends at 2, making 2 the nearest permitted choice. This separates the best possible score from the best feasible score. Checking constraints after finding an unconstrained answer would miss the actual problem we were asked to solve.",
       "questionIds": [
         "23-01",
         "23-02",
@@ -664,12 +882,13 @@
         "23-09",
         "23-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 107,
       "title": "Lagrange multipliers",
-      "example": "Goal: choose x and y to minimize f(x,y)=x²+y². For example, f(0,2)=0²+2²=4. Both x and y are inputs to this score.\n\nRule: the chosen numbers must total 2. Write g(x,y)=x+y−2, so an allowed pair has g(x,y)=0.\n\nCombine them: ℒ=x²+y²+λ(x+y−2). Its x derivative gives 2x+λ=0; its y derivative gives 2y+λ=0. Both 2x and 2y equal −λ, so x=y.\n\nUse the rule: x+y=2 gives (x,y)=(1,1). The objective is f(1,1)=1²+1²=2. The multiplier is λ=−2. Moving away from this equal split raises the score.",
+      "example": "Goal: choose x and y to minimize f(x,y)=x²+y². For example, f(0,2)=0²+2²=4. Both x and y are inputs to this score.\n\nRule: the chosen numbers must total 2. Write g(x,y)=x+y−2, so an allowed pair has g(x,y)=0.\n\nCombine them: ℒ=x²+y²+λ(x+y−2). Its x derivative gives 2x+λ=0; its y derivative gives 2y+λ=0. Both 2x and 2y equal −λ, so x=y.\n\nUse the rule: x+y=2 gives (x,y)=(1,1). The objective is f(1,1)=1²+1²=2. The multiplier is λ=−2. Moving away from this equal split raises the score.\n\nThe equality rule leaves only one freedom: increasing x forces y to decrease by the same amount. At the equal split, these opposing first-order effects balance. Here the squared objective rises for every unequal split, so the candidate is the minimum. In a different objective, the same method could instead identify a maximum or another stationary candidate.",
       "questionIds": [
         "107-01",
         "107-02",
@@ -705,12 +924,13 @@
         }
       ],
       "previousExample": "Minimize x²+y² subject to x+y=2. Conditions 2x+λ=0 and 2y+λ=0 imply x=y. The constraint then gives x=y=1 and objective 2.",
-      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result.",
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 24,
       "title": "Gradient descent",
-      "example": "For L(θ) = θ², θ = 3 and η = 0.1: θ⁺ = 3 − 0.1×6 = 2.4. The loss falls from 9 to 2.4² = 5.76.",
+      "example": "For L(θ) = θ², θ = 3 and η = 0.1: θ⁺ = 3 − 0.1×6 = 2.4. The loss falls from 9 to 2.4² = 5.76.\n\nThe first step moves toward zero because the slope at 3 is positive. At the new value 2.4 the slope is smaller, so the next step must use that new slope rather than reuse 6. Repetition can approach the bottom of this simple bowl. A step that is too large can cross the bowl and land at a higher loss; decreasing loss is something to check, not assume.",
       "questionIds": [
         "24-01",
         "24-02",
@@ -723,12 +943,13 @@
         "24-09",
         "24-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 25,
       "title": "Dataset and features",
-      "example": "Two rooms have features (length, width): (2, 3) and (4, 3) metres. X = [[2, 3], [4, 3]] has two rows and two features per row.",
+      "example": "Two rooms have features (length, width): (2, 3) and (4, 3) metres. X = [[2, 3], [4, 3]] has two rows and two features per row.\n\nIf the task is predicting floor area, the known targets for these two rooms are 6 and 12 square metres. The two dimensions form each input; area is the answer used to check a prediction. A future room must use the same column order and units. Replacing width with area in the input would change the task and could accidentally reveal the answer.",
       "questionIds": [
         "25-01",
         "25-02",
@@ -741,12 +962,13 @@
         "25-09",
         "25-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 30,
       "title": "Linear regression",
-      "example": "A toy taxi fare model is ŷ = 2x + 3 dollars for x kilometres. At 5 km: ŷ = 2×5 + 3 = $13. The intercept is the starting fare.",
+      "example": "Start with data: three trips of 1, 3 and 5 km cost $6, $7 and $14. We want to learn the fare per km and starting fare.\nTry a line: w = 2, b = 2 predicts (4, 8, 12). Residuals are (2, −1, 2), so MSE = (2² + (−1)² + 2²)/3 = 3.\nFit from data: for one input with at least two different values, there is a shortcut to the minimum-MSE line. Subtract each list's mean, take the dot product of the centered lists, and divide by the sum of squared centered inputs. Here the means are 3 and 9, giving centered lists (−2, 0, 2) and (−3, −2, 5). Thus w = (6 + 0 + 10)/(4 + 0 + 4) = 2. The fitted line passes through the pair of means, so b = 9 − 2×3 = 3.\nCheck the fit: ŷ = 2x + 3 predicts (5, 9, 13). Residuals (1, −2, 1) give MSE = (1² + (−2)² + 1²)/3 = 2, the smallest possible for a straight line on these data. Even the best-fitting line need not pass through every observation.\n\nThe slope means an additional kilometre adds two dollars to the predicted fare, and the intercept supplies the starting three dollars. Those meanings were inferred jointly from all three trips, not specified by a programmer. Check future trips separately: a line that fits these observations best need not remain accurate for very long journeys or a different pricing system.",
       "questionIds": [
         "30-01",
         "30-02",
@@ -765,12 +987,13 @@
           "previousQuestion": "For ŷ = 2x + 3, what is predicted at x = 5?",
           "reason": "The original repeated the worked taxi prediction at 5 km."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 31,
       "title": "Mean squared error",
-      "example": "Predictions (2, 5), targets (3, 3): MSE = (1 + 4)/2 = 2.5.",
+      "example": "Predictions (2, 5), targets (3, 3): MSE = (1 + 4)/2 = 2.5.\n\nThe first prediction misses by one unit and the second by two. Their squared contributions are 1 and 4, so the second miss contributes four times as much, not twice as much. A training procedure can change the predictions and recompute this score. Minimizing it chooses what “better” means; if large errors should not dominate so strongly, another loss may be more suitable.",
       "questionIds": [
         "31-01",
         "31-02",
@@ -789,12 +1012,13 @@
           "previousQuestion": "For predictions (2, 4) and targets (1, 2), what is MSE?",
           "reason": "The original reproduced the example's squared errors 1 and 4 with different-looking inputs."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 29,
       "title": "Supervised learning",
-      "example": "Inputs 1, 2, 3 paired with targets 2, 4, 6 suggest f(x) = 2x; it predicts 8 for input 4.",
+      "example": "Inputs 1, 2, 3 paired with targets 2, 4, 6 suggest f(x) = 2x; it predicts 8 for input 4.\n\nA rule that simply returns the input misses all three targets. Within the family of straight lines through the origin, doubling the input removes every training error. That is evidence for the rule within this chosen family, not proof that nature must double every future value: many more complicated rules could also fit three points. The prediction at 4 therefore needs a fresh check.",
       "questionIds": [
         "29-01",
         "29-02",
@@ -807,12 +1031,13 @@
         "29-09",
         "29-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 32,
       "title": "Parameter and hyperparameter",
-      "example": "In this update, w = 2 is a parameter; the chosen learning rate η = 0.01 is a hyperparameter.",
+      "example": "In this update, w = 2 is a parameter; the chosen learning rate η = 0.01 is a hyperparameter.\n\nTraining calculates a gradient and uses it to change w; the value 0.01 controls the size of that change. To compare two learning rates, run training separately with each rate and examine validation performance. Editing w directly chooses a model coefficient; editing the learning rate changes the process that will discover coefficients.",
       "questionIds": [
         "32-01",
         "32-02",
@@ -836,12 +1061,13 @@
           "previousQuestion": "Two runs use the same fitting procedure and data, but one uses learning rate 0.01 and the other 0.1. What was deliberately changed?",
           "reason": "The original repeated the worked example's learning-rate hyperparameter with a second rate."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 27,
       "title": "Training, validation and test",
-      "example": "A 100-well study might use 70 wells to train, 15 to choose settings, and 15 for final testing.",
+      "example": "A 100-well study might use 70 wells to train, 15 to choose settings, and 15 for final testing.\n\nFit each candidate on the same 70 training wells, then use the 15 validation wells to select a candidate. Only then evaluate once on the remaining 15. The counts alone do not make the design valid: if the intended use is on new wells, measurements from one well should not be scattered across the groups. The split must imitate the future prediction task.",
       "questionIds": [
         "27-01",
         "27-02",
@@ -854,12 +1080,13 @@
         "27-09",
         "27-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 28,
       "title": "Data leakage",
-      "example": "Leakage: train on depths 100, 101, 102 m from Well A, then test on 101, 102, 103 m from that same well. The two shared measurements make the test partly familiar, so its score can look too good.\n\nFix for testing on new wells: assign all of Well A to training and all of a different Well B to testing before making windows. Fit preprocessing using training wells only, then apply it to the test well. No measurements from Well B influence training.",
+      "example": "Leakage: train on depths 100, 101, 102 m from Well A, then test on 101, 102, 103 m from that same well. The two shared measurements make the test partly familiar, so its score can look too good.\n\nFix for testing on new wells: assign all of Well A to training and all of a different Well B to testing before making windows. Fit preprocessing using training wells only, then apply it to the test well. No measurements from Well B influence training.\n\nThe overlapping-window example is a problem when the goal is performance on a new well: the test should not reward recognition of the same measurements. If the goal were predicting a later depth in an already observed well, we would need a different split that respects the order and information available at that time. The correct fix follows the intended use, not a universal random-split recipe.",
       "questionIds": [
         "28-01",
         "28-02",
@@ -874,12 +1101,13 @@
       ],
       "replacements": [],
       "previousExample": "Training uses a well segment at depths 100, 101, 102 m. Testing uses 101, 102, 103 m from the same well. Two of three measurements are shared.",
-      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result.",
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 26,
       "title": "Normalization",
-      "example": "Training data give μ = 100 and σ = 20. A new value x = 140 becomes z = 2.",
+      "example": "Training data give μ = 100 and σ = 20. A new value x = 140 becomes z = 2.\n\nSubtracting 100 gives an excess of 40 in the original units. Dividing by 20 says the new value is two training standard deviations above the training mean. It is not a probability and need not lie between zero and one. A constant feature has zero standard deviation, so it needs a separate handling rule rather than division by zero.",
       "questionIds": [
         "26-01",
         "26-02",
@@ -898,12 +1126,13 @@
           "previousQuestion": "With training mean 10 and standard deviation 2, what does 14 become?",
           "reason": "The original proportionally rescaled the example's inputs and retained its exact standardized result."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 109,
       "title": "k-nearest neighbors",
-      "example": "The three nearest examples have targets 2, 4, and 9. An unweighted k=3 regressor predicts (2+4+9)/3 = 5.",
+      "example": "The three nearest examples have targets 2, 4, and 9. An unweighted k=3 regressor predicts (2+4+9)/3 = 5.\n\nMake the neighbor search explicit: suppose the stored input positions are 1, 4 and 7 with the displayed targets 2, 4 and 9. A query at 5 has distances 4, 1 and 2. With three neighbors, all three targets contribute to the prediction 5; with one neighbor, only the target at position 4 contributes. Using more neighbors smooths the prediction, but may blend examples from genuinely different regions.",
       "questionIds": [
         "109-01",
         "109-02",
@@ -922,12 +1151,13 @@
           "previousQuestion": "A k=3 regressor's nearest target values are 2, 4, and 9. What is its unweighted prediction?",
           "reason": "The original repeated the neighbor targets and mean already solved in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 110,
       "title": "Decision trees",
-      "example": "A tree predicts 2 when x≤5 and 8 otherwise. Input x=4 follows the left branch and receives prediction 2.",
+      "example": "A tree predicts 2 when x≤5 and 8 otherwise. Input x=4 follows the left branch and receives prediction 2.\n\nFor a small training set, take inputs 2, 4, 7 and 9 with targets 2, 2, 8 and 8. Before splitting, the mean target is 5 and every row has squared error 9. Splitting at 5 creates two constant-target groups: their means are 2 and 8, with zero training error. This explains how the displayed rule could be learned. With noisy data, continuing to split can memorize accidents rather than useful patterns.",
       "questionIds": [
         "110-01",
         "110-02",
@@ -946,12 +1176,13 @@
           "previousQuestion": "For a leaf with training targets 2, 4, and 9, what is its mean prediction?",
           "reason": "The original reused the exact three-target averaging problem from the k-nearest-neighbors worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 41,
       "title": "Overfitting",
-      "example": "A model has 1% training error but 20% test error. Its measured gap is 19 percentage points.",
+      "example": "A model has 1% training error but 20% test error. Its measured gap is 19 percentage points.\n\nThe model makes very few mistakes on familiar cases but many more on the held-out cases. During development, compare candidate complexity or training duration on validation data rather than repeatedly tuning against this test result. A simpler model may make slightly more training errors and fewer new-case errors, which is the useful tradeoff.",
       "questionIds": [
         "41-01",
         "41-02",
@@ -964,12 +1195,13 @@
         "41-09",
         "41-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 42,
       "title": "Regularization",
-      "example": "If Ldata = 2, w = (3, 4), and λ = 0.1, total loss = 2 + 0.1 × 25 = 4.5.",
+      "example": "If Ldata = 2, w = (3, 4), and λ = 0.1, total loss = 2 + 0.1 × 25 = 4.5.\n\nThe weights contribute squared magnitudes 9 and 16, totaling 25. The chosen penalty adds 2.5 to the data loss, producing 4.5. Suppose another candidate has data loss 3 and weights 1 and 2: its penalty is 0.5 and its total is 3.5. The regularized objective prefers that candidate despite its larger data error; held-out performance must tell us whether this preference was useful.",
       "questionIds": [
         "42-01",
         "42-02",
@@ -988,12 +1220,13 @@
           "previousQuestion": "For w = (3, 4), what is the L2 penalty term ‖w‖₂²?",
           "reason": "The original asked for the norm-squared intermediate result already evaluated in the worked loss."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 111,
       "title": "Random forests",
-      "example": "Three regression trees predict 2, 4, and 6. Their average prediction is 4. Diversity can reduce variance compared with relying on one unstable tree.",
+      "example": "Three regression trees predict 2, 4, and 6. Their average prediction is 4. Diversity can reduce variance compared with relying on one unstable tree.\n\nFor the same new input, one tree predicts low, another in the middle and another high. The ensemble's 4 is the average of their outputs, not a new target supplied to training. With a three-row training set, one bootstrap sample could repeat the first row and omit the second; another tree can see a different sample. Those differing training views are one source of prediction diversity.",
       "questionIds": [
         "111-01",
         "111-02",
@@ -1012,12 +1245,13 @@
           "previousQuestion": "Three regression trees predict 2, 4, and 6. What does their equally weighted forest predict?",
           "reason": "The original repeated the example's three tree predictions and average."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 112,
       "title": "Gradient boosting",
-      "example": "Consider one training row whose target is 6. The current model predicts 4, so its residual is 6−4=2.\n\nFit a small tree to residuals across the training set. Suppose it predicts a correction of 2 for this row. With learning rate η=0.1, add only 0.1×2=0.2: the new prediction is 4+0.2 = 4.2.\n\nThe remaining error is 6−4.2=1.8. The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor.",
+      "example": "Consider one training row whose target is 6. The current model predicts 4, so its residual is 6−4=2.\n\nFit a small tree to residuals across the training set. Suppose it predicts a correction of 2 for this row. With learning rate η=0.1, add only 0.1×2=0.2: the new prediction is 4+0.2 = 4.2.\n\nThe remaining error is 6−4.2=1.8. The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor.\n\nA tiny full dataset makes the fitting step visible. For inputs 1, 2, 3 and 4, suppose targets are 6, 6, 2 and 2 and the baseline predicts 4 everywhere. Residuals are 2, 2, −2 and −2. A tree that splits between inputs 2 and 3 can learn those two mean residuals. Adding one-tenth of its output raises predictions in the first region to 4.2 and lowers those in the second to 3.8. At prediction time, evaluate the baseline and the saved correction trees; the targets are no longer needed.",
       "questionIds": [
         "112-01",
         "112-02",
@@ -1038,12 +1272,13 @@
         }
       ],
       "previousExample": "The current prediction is 4. A new learner outputs a correction of 2 and η=0.1. The updated prediction is 4+0.1×2 = 4.2.",
-      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result."
+      "followUpReview": "20 September 2026: checked all ten questions against the expanded example; fresh numerical inputs or transfer scenarios remain. Teaching now explains the steps rather than just naming their result.",
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 113,
       "title": "Class imbalance, precision and recall",
-      "example": "A detector has 6 true positives, 2 false positives, and 4 false negatives. Precision is 6/8=0.75; recall is 6/10=0.6.",
+      "example": "A detector has 6 true positives, 2 false positives, and 4 false negatives. Precision is 6/8=0.75; recall is 6/10=0.6.\n\nThe detector raised eight alerts: six useful ones and two false alarms. But ten positive cases existed, and four received no alert. These are different denominators and answer different operational questions. A user reviewing alerts cares about the first; a user trying not to miss positives cares about the second. Neither metric alone counts correctly rejected negatives.",
       "questionIds": [
         "113-01",
         "113-02",
@@ -1067,12 +1302,13 @@
           "previousQuestion": "With TP=6 and FP=2, what is precision?",
           "reason": "The original requested the precision already calculated from the example's counts."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 114,
       "title": "Probability calibration",
-      "example": "Among 100 held-out cases predicted at 0.8, only 60 are positive. Their observed frequency is 0.6, suggesting overconfidence in this group.",
+      "example": "Among 100 held-out cases predicted at 0.8, only 60 are positive. Their observed frequency is 0.6, suggesting overconfidence in this group.\n\nThe model effectively anticipated about 80 positives in this group, but only 60 appeared. On a representative calibration set, that may motivate lowering forecasts of this strength toward the observed frequency. It does not mean we know which 60 individuals will be positive, or that 0.6 is exact from only 100 cases. Keep final test cases separate from the data used to learn the correction.",
       "questionIds": [
         "114-01",
         "114-02",
@@ -1091,12 +1327,13 @@
           "previousQuestion": "Among 100 cases predicted at 0.8, 60 are positive. What does this suggest for that group?",
           "reason": "The original repeated the worked overconfidence diagnosis with exactly the same counts."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 120,
       "title": "Causal inference",
-      "example": "Randomly assign plants to fertilizer or no fertilizer (the control group), and otherwise give them the same care. Suppose their mean heights after four weeks are 12 cm and 9 cm, respectively. The treatment-minus-control estimate is 12−9 = 3 cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect.",
+      "example": "Randomly assign plants to fertilizer or no fertilizer (the control group), and otherwise give them the same care. Suppose their mean heights after four weeks are 12 cm and 9 cm, respectively. The treatment-minus-control estimate is 12−9 = 3 cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect.\n\nEach plant supplies only its assigned outcome; we cannot observe the same plant both treated and untreated in the same trial. Randomization makes the other group's average a useful comparison rather than a chosen collection of sunnier plants. Repeating the trial would generally give a different estimated difference, so the point estimate needs an assessment of sampling uncertainty before drawing a strong conclusion.",
       "questionIds": [
         "120-01",
         "120-02",
@@ -1115,12 +1352,13 @@
           "previousQuestion": "A randomized trial has mean outcomes 12 for treatment and 9 for control. What is the difference-in-means estimate?",
           "reason": "The original repeated the example's two means and already computed effect."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 118,
       "title": "Domain shift and adaptation",
-      "example": "A model scores 90% on held-out source-site cases but 70% at a new site. The observed gap is 20 percentage points. Different geology, sensors, or label rules could matter.",
+      "example": "A model scores 90% on held-out source-site cases but 70% at a new site. The observed gap is 20 percentage points. Different geology, sensors, or label rules could matter.\n\nIf the new sensor reports a systematically different scale, first check units and calibration rather than immediately retrain on its scores. If the physical input-target relationship changed, rescaling alone may not help. Reserve some new-site cases for evaluation, adapt using the others, then compare old and adapted models on the same reserved cases. That tests improvement on the intended setting rather than another source-site score.",
       "questionIds": [
         "118-01",
         "118-02",
@@ -1139,12 +1377,13 @@
           "previousQuestion": "Accuracy is 90% at the source site and 70% at a new site. What is the absolute gap?",
           "reason": "The original repeated the source and target accuracies and gap from the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 119,
       "title": "Active learning",
-      "example": "For predicted positive probabilities 0.5, 0.9, and 0.1, this score gives 1, 0.2, and 0.2. Pure uncertainty sampling selects the first case.",
+      "example": "For predicted positive probabilities 0.5, 0.9, and 0.1, this score gives 1, 0.2, and 0.2. Pure uncertainty sampling selects the first case.\n\nThe first case is near an even split between the two predicted classes, so its label could resolve an uncertainty. Send that case to a qualified labeler, add the returned answer to training data, and update the model before making the next selection. If all uncertain cases are almost identical, choosing a less uncertain but different case may teach more about another region.",
       "questionIds": [
         "119-01",
         "119-02",
@@ -1163,12 +1402,13 @@
           "previousQuestion": "Under pure binary uncertainty sampling, which probability is the highest-priority candidate?",
           "reason": "The original selected the exact 0.5 candidate already selected in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 33,
       "title": "Artificial neuron",
-      "example": "Use inputs x = (2, 1), weights w = (3, −2), and bias b = 1.\n\n1. Multiply each input by its matching weight:\n3 × 2 = 6\n(−2) × 1 = −2\n\n2. Add the two contributions and the bias:\nz = 6 + (−2) + 1 = 5\n\n3. Apply an activation rule. Here φ(z) = max(0, z): keep a positive value and replace a negative value with zero.\na = max(0, 5) = 5\n\nThe neuron's output is 5.",
+      "example": "Use inputs x = (2, 1), weights w = (3, −2), and bias b = 1.\n\n1. Multiply each input by its matching weight:\n3 × 2 = 6\n(−2) × 1 = −2\n\n2. Add the two contributions and the bias:\nz = 6 + (−2) + 1 = 5\n\n3. Apply an activation rule. Here φ(z) = max(0, z): keep a positive value and replace a negative value with zero.\na = max(0, 5) = 5\n\nThe neuron's output is 5.\n\nThe two weighted contributions are 6 and −2. Add them, then the bias, to obtain the pre-activation 5; this activation (called ReLU) keeps it because it is positive. For input values 0 and 2, the same neuron instead totals −3, so ReLU returns zero. One set of learned weights therefore responds differently to different inputs. Linking many such responses lets a network describe more than one straight-line relationship.",
       "questionIds": [
         "33-01",
         "33-02",
@@ -1181,12 +1421,13 @@
         "33-09",
         "33-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 34,
       "title": "Sigmoid",
-      "example": "Some points on the curve:\nσ(−2) ≈ 0.119\nσ(0) = 0.5\nσ(2) ≈ 0.881\n\nAt z = 0, the output is 0.5. Its slope is:\nσ′(0) = 0.5 × (1 − 0.5) = 0.25\n\nFor a small input increase from 0 to 0.1, multiply the slope by the input change to estimate the output change:\n0.25 × 0.1 = 0.025\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve.",
+      "example": "Some points on the curve:\nσ(−2) ≈ 0.119\nσ(0) = 0.5\nσ(2) ≈ 0.881\n\nAt z = 0, the output is 0.5. Its slope is:\nσ′(0) = 0.5 × (1 − 0.5) = 0.25\n\nFor a small input increase from 0 to 0.1, multiply the slope by the input change to estimate the output change:\n0.25 × 0.1 = 0.025\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve.\n\nA score of zero sits halfway between the two extremes. Raising it to 2 raises the output substantially, but raising an already large score from 6 to 8 changes it only from about 0.9975 to 0.9997. The output is approaching its upper limit. During training, the derivative measures how strongly an upstream score change reaches the output; it is not another prediction or a second activation.",
       "questionIds": [
         "34-01",
         "34-02",
@@ -1210,12 +1451,13 @@
           "previousQuestion": "What is σ′(0)?",
           "reason": "The original repeated the worked derivative at zero."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 35,
       "title": "ReLU",
-      "example": "ReLU(−3) = 0; ReLU(2) = 2. Its slope is 0 below zero and 1 above zero.",
+      "example": "ReLU(−3) = 0; ReLU(2) = 2. Its slope is 0 below zero and 1 above zero.\n\nMove the input from −8 to −7: both outputs stay zero. Move it from 6 to 7: the output rises by one. That change of behavior is the useful nonlinearity. At exactly zero the mathematical derivative is undefined; implementations choose a convention for training. A unit that stays negative on every example can receive no gradient through this gate and stop contributing.",
       "questionIds": [
         "35-01",
         "35-02",
@@ -1234,12 +1476,13 @@
           "previousQuestion": "What is ReLU(−3)?",
           "reason": "The original repeated ReLU(−3)=0 from the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 37,
       "title": "Forward pass",
-      "example": "With x = 2 and w = 1, predict ŷ = 2. If the target is y = 6, the loss is (2−6)² = 16. The weight is still 1.",
+      "example": "With x = 2 and w = 1, predict ŷ = 2. If the target is y = 6, the loss is (2−6)² = 16. The weight is still 1.\n\nThe prediction 2 differs from the target 6 by −4, giving squared loss 16. Now keep the same weight but change the input to 3: the prediction becomes 3. This changes an input, not the model. Conversely, changing the weight to 2 would make the original input predict 4, with loss 4. Deciding which weight change helps is the job of backpropagation and optimization, not the forward pass itself.",
       "questionIds": [
         "37-01",
         "37-02",
@@ -1258,12 +1501,13 @@
           "previousQuestion": "With ŷ = 2x and x = 3, what does the forward pass produce?",
           "reason": "The original reused the 3-to-6 mapping explicitly listed in the supervised-learning worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 38,
       "title": "Backpropagation",
-      "example": "Use input x = 2, weight w = 1, and target y = 6. The prediction is ŷ = 1×2 = 2, and the loss is L = (2−6)² = 16.\n\nWork backward through the two calculations:\n1. Loss to prediction: ∂L/∂ŷ = 2(2−6) = −8.\n2. Prediction to weight: ∂ŷ/∂w = x = 2.\n\nMultiply the local derivatives: ∂L/∂w = (−8)×2 = −16. The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight.",
+      "example": "Use input x = 2, weight w = 1, and target y = 6. The prediction is ŷ = 1×2 = 2, and the loss is L = (2−6)² = 16.\n\nWork backward through the two calculations:\n1. Loss to prediction: ∂L/∂ŷ = 2(2−6) = −8.\n2. Prediction to weight: ∂ŷ/∂w = x = 2.\n\nMultiply the local derivatives: ∂L/∂w = (−8)×2 = −16. The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight.\n\nThe negative gradient says that increasing the weight slightly should decrease this loss. With learning rate 0.1, subtracting one-tenth of −16 changes the weight from 1 to 2.6. Run forward again: the prediction is 5.2 and squared loss is 0.64. This closes one learning cycle. The gradient described the old weight; further training must recompute it, and a much larger step can overshoot.",
       "questionIds": [
         "38-01",
         "38-02",
@@ -1282,12 +1526,13 @@
           "previousQuestion": "In this example, does the negative weight gradient suggest increasing or decreasing w?",
           "reason": "The original explicitly referred to the worked example instead of supplying an independent gradient."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 39,
       "title": "Mini-batch gradient descent",
-      "example": "Two examples give gradients 2 and 6, averaging to 4. With θ = 1 and η = 0.1, the update is θ⁺ = 1 − 0.1×4 = 0.6.",
+      "example": "Two examples give gradients 2 and 6, averaging to 4. With θ = 1 and η = 0.1, the update is θ⁺ = 1 − 0.1×4 = 0.6.\n\nThe two examples both push the weight down, with different strengths. Their average 4 gives a single update of −0.4. This is not two consecutive updates: after the first of those, the second example would see a changed weight and usually produce a different gradient. On the next mini-batch, calculate new predictions and gradients using the updated weight 0.6.",
       "questionIds": [
         "39-01",
         "39-02",
@@ -1311,12 +1556,13 @@
           "previousQuestion": "For example gradients 2, 4, and 6, what is the mean batch gradient?",
           "reason": "The original reused the (2,4,6) averaging example taught in several other lessons."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 40,
       "title": "Epoch",
-      "example": "With 100 examples and batch size 20, one epoch contains 5 steps; three epochs contain 15.",
+      "example": "With 100 examples and batch size 20, one epoch contains 5 steps; three epochs contain 15.\n\nAfter five batches of 20, all 100 examples have been used once. Start the next pass with the weights resulting from the fifth update, not with the initial weights. Training for more epochs may improve the fit but eventually overfit, so monitor held-out validation performance. If the dataset instead had 103 examples and partial batches were retained, the sixth batch would contain only three.",
       "questionIds": [
         "40-01",
         "40-02",
@@ -1329,12 +1575,13 @@
         "40-09",
         "40-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 36,
       "title": "Deep neural network",
-      "example": "At x = 2: h₁ = ReLU(2x−1) = 3; h₂ = ReLU(h₁−1) = 2; output y = 3h₂ = 6. These are two hidden layers and an output layer.",
+      "example": "At x = 2: h₁ = ReLU(2x−1) = 3; h₂ = ReLU(h₁−1) = 2; output y = 3h₂ = 6. These are two hidden layers and an output layer.\n\nFollow the same network with input 0: both hidden outputs and the final output are zero. With input 2, the first gate passes 3, the second passes 2, and the output is 6. The gates therefore matter. If both ReLUs were removed, multiplying out the layers would give one straight-line rule, with output −6 at input 0 instead of zero.",
       "questionIds": [
         "36-01",
         "36-02",
@@ -1347,12 +1594,13 @@
         "36-09",
         "36-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 115,
       "title": "Convolutional neural networks",
-      "example": "For input (1,2,3), filter (1,−1), zero bias, stride 1, and no padding, the outputs are 1−2=−1 and 2−3=−1. This is the cross-correlation convention commonly used in CNNs.",
+      "example": "For input (1,2,3), filter (1,−1), zero bias, stride 1, and no padding, the outputs are 1−2=−1 and 2−3=−1. This is the cross-correlation convention commonly used in CNNs.\n\nThe filter compares each value with its right neighbor. Both pairs in the rising signal give −1. A falling pair, such as 3 followed by 1, gives 2, so the sign and size describe the local change. Training can learn these two filter weights from a task loss; they are supplied here only to make the operation visible. The output remains a sequence of local responses, not yet a class label.",
       "questionIds": [
         "115-01",
         "115-02",
@@ -1371,12 +1619,13 @@
           "previousQuestion": "For input (1,2,3) and filter (1,−1), with stride 1 and no padding, what is the output?",
           "reason": "The original repeated the entire input, filter, and output from the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 116,
       "title": "Graph neural networks",
-      "example": "A node has value 1 and neighbors with values 2 and 4. Under this toy update, its new value is 1+(2+4)/2 = 4.",
+      "example": "A node has value 1 and neighbors with values 2 and 4. Under this toy update, its new value is 1+(2+4)/2 = 4.\n\nThe neighbors contribute an average of 3, which combines with the node's own 1 to give 4. Compute all nodes' new values from their old values before starting another round; otherwise the result depends on visiting order. In a learned network, trainable transformations can control the messages and updates. This toy rule fixes them so we can see exactly how the connections move information.",
       "questionIds": [
         "116-01",
         "116-02",
@@ -1395,12 +1644,13 @@
           "previousQuestion": "A node has value 1 and neighbors 2 and 4. For self plus neighbor mean, what is its new value?",
           "reason": "The original repeated the worked node and neighbors and their resulting update."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 43,
       "title": "Softmax",
-      "example": "Logits (0, ln 3) give exponentials (1, 3), so probabilities are (0.25, 0.75).",
+      "example": "Logits (0, ln 3) give exponentials (1, 3), so probabilities are (0.25, 0.75).\n\nExponentiation turns the two scores into positive weights 1 and 3, then division by their total 4 gives the probabilities. The second class receives three times as much probability as the first. These probabilities can supply a prediction, a sampled choice, or a training loss. In code, subtracting the largest score before exponentiation gives the same probabilities while avoiding very large intermediate numbers.",
       "questionIds": [
         "43-01",
         "43-02",
@@ -1413,12 +1663,13 @@
         "43-09",
         "43-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 44,
       "title": "Cross-entropy",
-      "example": "The correct class is cat. Predicting p(cat) = 0.9 gives −ln(0.9) ≈ 0.105. Predicting 0.1 gives −ln(0.1) ≈ 2.303, a much larger loss.",
+      "example": "The correct class is cat. Predicting p(cat) = 0.9 gives −ln(0.9) ≈ 0.105. Predicting 0.1 gives −ln(0.1) ≈ 2.303, a much larger loss.\n\nBoth examples have the same true class; only the model's confidence changes. Moving its probability from 0.1 to 0.9 reduces loss by about 2.198. With several labeled rows, calculate each row's loss and average them before computing the gradient. At inference time, the model still produces probabilities, but this supervised loss cannot be calculated until the true answer is available.",
       "questionIds": [
         "44-01",
         "44-02",
@@ -1437,12 +1688,13 @@
           "previousQuestion": "Which correct-class probability gives the smaller cross-entropy loss?",
           "reason": "The original selected the exact probability whose lower loss was already demonstrated."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 105,
       "title": "KL divergence",
-      "example": "For P = (1,0) and Q = (0.5,0.5), KL = ln(2) ≈ 0.693 nats. For P = Q, every nonzero term has ln(1) = 0.",
+      "example": "For P = (1,0) and Q = (0.5,0.5), KL = ln(2) ≈ 0.693 nats. For P = Q, every nonzero term has ln(1) = 0.\n\nThe first distribution puts all its mass on the first outcome, so only that outcome contributes to this direction of KL. The second distribution wastes half its mass elsewhere, costing about 0.693. Reverse them and the comparison is infinite: the second outcome now has positive reference probability but zero probability under the approximating distribution. This is why order and support matter, not just the numerical difference between probability entries.",
       "questionIds": [
         "105-01",
         "105-02",
@@ -1466,12 +1718,13 @@
           "previousQuestion": "For P=(1,0) and Q=(0.5,0.5), what is KL in nats?",
           "reason": "The original repeated the example's distributions and its calculated ln 2 result."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 45,
       "title": "Self-supervised learning",
-      "example": "Hide the middle value in (2, 4, 6). The model sees (2, ?, 6) and predicts 5. The hidden target is 4, so squared error = (5−4)² = 1.",
+      "example": "Hide the middle value in (2, 4, 6). The model sees (2, ?, 6) and predicts 5. The hidden target is 4, so squared error = (5−4)² = 1.\n\nThe input to the predictor contains only the visible 2 and 6; the hidden 4 is used afterward to score its answer. A prediction of 5 is an error, so backpropagation can change the predictor's weights. Repeating across many different sequences can teach useful regularities. Simply returning the target from the original unmasked sequence would get zero loss while learning nothing useful.",
       "questionIds": [
         "45-01",
         "45-02",
@@ -1484,12 +1737,13 @@
         "45-09",
         "45-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 46,
       "title": "Embedding",
-      "example": "Toy word vectors: cat = (1, 0), dog = (0.9, 0.1), rock = (0, 1). Cat is closer to dog (distance ≈ 0.14) than rock (≈ 1.41).",
+      "example": "Toy word vectors: cat = (1, 0), dog = (0.9, 0.1), rock = (0, 1). Cat is closer to dog (distance ≈ 0.14) than rock (≈ 1.41).\n\nThe displayed vectors illustrate a possible learned arrangement, not a training algorithm. A task that rewards identifying similar contexts could move cat and dog closer together while keeping rock farther away. That would change the table entries themselves. A different task might group all three differently, so the small distances should be interpreted as evidence about the learned task rather than universal semantic truth.",
       "questionIds": [
         "46-01",
         "46-02",
@@ -1502,12 +1756,13 @@
         "46-09",
         "46-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 47,
       "title": "Cosine similarity",
-      "example": "For x = (1, 0), y = (2, 0), similarity = 2/(1 × 2) = 1, despite different lengths.",
+      "example": "For x = (1, 0), y = (2, 0), similarity = 2/(1 × 2) = 1, despite different lengths.\n\nThe first vector has length 1, the second length 2, and their dot product is 2. Dividing by the product of lengths removes that scale difference, producing similarity 1. Turning the second vector to point the opposite way would give −1; turning it perpendicular would give zero. Neither value by itself tells us whether the underlying items are relevant without a useful embedding.",
       "questionIds": [
         "47-01",
         "47-02",
@@ -1526,12 +1781,13 @@
           "previousQuestion": "What is the cosine similarity of (1, 0) and (2, 0)?",
           "reason": "The original repeated the two vectors and similarity already calculated in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 117,
       "title": "Contrastive learning",
-      "example": "If the positive pair receives normalized probability 0.8 among the comparisons, its loss is −ln(0.8) ≈ 0.223. Assigning it probability 0.2 gives a larger loss, about 1.609.",
+      "example": "If the positive pair receives normalized probability 0.8 among the comparisons, its loss is −ln(0.8) ≈ 0.223. Assigning it probability 0.2 gives a larger loss, about 1.609.\n\nFor one positive and one negative candidate, take similarity scores ln 4 and zero. Exponentiating gives 4 and 1, so the positive receives probability 0.8 after normalization. Swapping the scores gives probability 0.2 and the larger loss shown above. Training pushes the positive score upward relative to the negative. The choice of related views matters: a transformation that changes the true meaning can teach the wrong invariance.",
       "questionIds": [
         "117-01",
         "117-02",
@@ -1550,12 +1806,13 @@
           "previousQuestion": "If the positive pair has normalized probability 0.8, what is its contrastive loss using natural logs?",
           "reason": "The original repeated the example's probability and approximate logarithmic loss."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 48,
       "title": "Principal component analysis",
-      "example": "Points (−1, −1) and (1, 1) lie on a diagonal. Projecting onto u = (1, 1)/√2 gives −√2 and √2. One coordinate locates each point.",
+      "example": "Points (−1, −1) and (1, 1) lie on a diagonal. Projecting onto u = (1, 1)/√2 gives −√2 and √2. One coordinate locates each point.\n\nHere both feature means are zero. The two coordinates always move together, so averaging their products gives a covariance matrix whose four entries are all 1. Along the shared diagonal, the projection values are about −1.414 and 1.414; along the perpendicular direction both are zero. Keeping one diagonal coordinate therefore loses nothing for these two points. New points off that line would lose their perpendicular component.",
       "questionIds": [
         "48-01",
         "48-02",
@@ -1568,12 +1825,13 @@
         "48-09",
         "48-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 49,
       "title": "Autoencoder",
-      "example": "With toy weights: x = (2, 5), encoder z = x₁ = 2, decoder x̂ = (z, 2z) = (2, 4). Reconstruction loss = (0² + 1²)/2 = 0.5.",
+      "example": "1. Start with data and a small network. Use four training inputs: (−2, −4), (−1, −2), (1, 2), (2, 4). The second coordinate is twice the first. Can the network learn to preserve that shared structure using one code number?\n\nUse encoder weights e = (1, 0) and decoder weights d = (1, 1). For each input x = (x₁, x₂), compute z = e₁x₁ + e₂x₂, then reconstruct x̂ = (d₁z, d₂z). Here e and d name the two weight vectors; their subscripts identify entries. This tiny network has no bias or nonlinear activation.\n\n2. Measure the initial error. The code is initially just the first coordinate. Input (1, 2) reconstructs as (1, 1). Across the four rows, the first-coordinate errors are zero and the second-coordinate squared errors are 4, 1, 1 and 4. Averaging over all eight coordinates gives MSE = 10/8 = 1.25.\n\n3. Learn from all four inputs. Backpropagation gives weight gradients ∇e L = (−2.5, −5) and ∇d L = (0, −2.5), where L is the mean squared error and each gradient measures sensitivity to its weight vector. For example, the second decoder weight has one contribution per input: code times second-coordinate error gives −4, −1, −1 and −4. Their average is −2.5. The other weight gradients follow the same chain rule. With learning rate 0.04, subtract the scaled gradients to obtain e = (1.1, 0.2) and d = (1, 1.1). Both updates use the old weights. The input (1, 2) now has code 1.5 and reconstruction (1.5, 1.65). The loss across all four inputs falls to 0.465625.\n\n4. Repeat, then test something new. Recompute the gradients after every update. After 40 updates, training MSE is about 0.0000000012. A held-out input (3, 6) reconstructs as approximately (3.00008, 5.99996). The decoder has learned a direction whose second coordinate is about twice its first; that relationship was not fixed in its initial weights.\n\nOne number can describe position along this learned line. It cannot preserve every possible two-number input: try (3, 1), which lies off that line, or change the training rows. Different learned weight scales can express the same line, so the code itself has no unique numerical interpretation. The editable calculation below shows the loss falling and compares the input points with their reconstructions.",
       "questionIds": [
         "49-01",
         "49-02",
@@ -1586,12 +1844,13 @@
         "49-09",
         "49-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 50,
       "title": "Latent space and bottleneck",
-      "example": "Pairs (2, 4), (3, 6), (5, 10) can use one-number codes 2, 3, 5. Decoder (z, 2z) restores every pair. Input (2, 5) breaks that pattern.",
+      "example": "Pairs (2, 4), (3, 6), (5, 10) can use one-number codes 2, 3, 5. Decoder (z, 2z) restores every pair. Input (2, 5) breaks that pattern.\n\nAll three pairs lie on the same line: the second number is twice the first. Saving only the first number is enough because the decoder has learned or been given that shared relationship. The pair 2, 5 does not obey it, so the same code reconstructs 2, 4 and loses a difference of 1. The benefit and the limitation both come from deciding which structure the representation preserves.",
       "questionIds": [
         "50-01",
         "50-02",
@@ -1604,12 +1863,13 @@
         "50-09",
         "50-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 79,
       "title": "Bit and byte",
-      "example": "Two bits have four patterns: 00, 01, 10, 11. An agreed binary encoding maps them to 0, 1, 2, 3. Eight bits give 2⁸ = 256 patterns.",
+      "example": "Two bits have four patterns: 00, 01, 10, 11. An agreed binary encoding maps them to 0, 1, 2, 3. Eight bits give 2⁸ = 256 patterns.\n\nWith two bits there are four choices, so one of four codebook entries can be stored as a two-bit index. Eight choices require three bits. A byte can therefore hold one of 256 distinct patterns, but it cannot represent every possible real number exactly. Data formats decide how to spend those patterns on range and precision.",
       "questionIds": [
         "79-01",
         "79-02",
@@ -1628,12 +1888,13 @@
           "previousQuestion": "How many different patterns fit in one byte?",
           "reason": "The original asked for the example's explicitly calculated eight-bit capacity."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 80,
       "title": "Numerical precision",
-      "example": "Rounding 1.234 to two decimal places gives 1.23, an error of 0.004.",
+      "example": "Rounding 1.234 to two decimal places gives 1.23, an error of 0.004.\n\nStoring three rounded copies of 1.234 gives a sum of 3.69, while adding the original values gives 3.702. The small per-value errors have accumulated to 0.012. In a learning system, repeated operations can amplify or cancel such errors. Lower precision is useful when its speed and memory benefits outweigh the effect on the result, which needs to be measured.",
       "questionIds": [
         "80-01",
         "80-02",
@@ -1652,12 +1913,13 @@
           "previousQuestion": "What is the absolute error when 1.234 is rounded to 1.23?",
           "reason": "The original repeated both example values and the displayed rounding error."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 51,
       "title": "Rate-distortion tradeoff",
-      "example": "Code A: D = 1, R = 20 bits. Code B: D = 2, R = 5 bits. At λ = 0.1, scores are 3 and 2.5. B wins by accepting more error for fewer bits.",
+      "example": "Code A: D = 1, R = 20 bits. Code B: D = 2, R = 5 bits. At λ = 0.1, scores are 3 and 2.5. B wins by accepting more error for fewer bits.\n\nThe first candidate preserves more detail, but spends 15 extra rate units. At the stated weight those units cost 1.5, outweighing its distortion improvement of 1. If the weight were 0.01 instead, the totals would be 1.2 and 2.05, preferring the first candidate. This comparison exposes the design choice rather than hiding it behind the word “compressed.”",
       "questionIds": [
         "51-01",
         "51-02",
@@ -1681,12 +1943,13 @@
           "previousQuestion": "In D + λR, what does R measure in the course example?",
           "reason": "The original explicitly asked for the meaning of R in the worked example; the replacement applies the unit to new data."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 52,
       "title": "Vector quantization",
-      "example": "For z = (1, 2), codebook entries e₁ = (0, 2) and e₂ = (3, 2) are 1 and 2 units away. Choose e₁, and store its index 1.",
+      "example": "For z = (1, 2), codebook entries e₁ = (0, 2) and e₂ = (3, 2) are 1 and 2 units away. Choose e₁, and store its index 1.\n\nThe chosen entry substitutes 0, 2 for the original 1, 2, losing one unit in the first coordinate. If training vectors 0, 2 and 2, 2 are both assigned to this entry, their mean is 1, 2; moving the entry there reduces their total squared error from 4 to 2. Repeating assignment and averaging can improve the representatives, although initialization can affect the result.",
       "questionIds": [
         "52-01",
         "52-02",
@@ -1699,12 +1962,13 @@
         "52-09",
         "52-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 54,
       "title": "Token and vocabulary",
-      "example": "Codebook entry 6 is the vector (1, 2). Token 6 identifies that entry; a lookup retrieves (1, 2). A vocabulary of 8 entries needs 3 bits per fixed-length ID.",
+      "example": "Codebook entry 6 is the vector (1, 2). Token 6 identifies that entry; a lookup retrieves (1, 2). A vocabulary of 8 entries needs 3 bits per fixed-length ID.\n\nIdentifier 6 selects the corresponding row 1, 2 from the embedding table. Identifier 7 is not necessarily more similar to it than identifier 2; the learned vectors carry that relationship. Three bits suffice for each fixed-width identifier in an eight-entry vocabulary, but the table, tokenization rules and any framing information must also be stored somewhere.",
       "questionIds": [
         "54-01",
         "54-02",
@@ -1728,12 +1992,13 @@
           "previousQuestion": "For a vocabulary of 8 symbols, what is the minimum fixed bit width per ID?",
           "reason": "The original repeated the worked vocabulary size and its solved bit width."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 53,
       "title": "Vector-quantized autoencoder",
-      "example": "For x = (2, 5), the encoder gives z = 1.9. Codebook {0, 2} selects 2. Decoder (zq, 2zq) gives (2, 4), with MSE = (0+1)/2 = 0.5.",
+      "example": "For x = (2, 5), the encoder gives z = 1.9. Codebook {0, 2} selects 2. Decoder (zq, 2zq) gives (2, 4), with MSE = (0+1)/2 = 0.5.\n\nThe proposed code 1.9 selects entry 2, so the decoder receives exactly 2, not 1.9. Moving the proposal slightly within the same selection region leaves that discrete input unchanged. The reconstruction error supplies a training signal for the decoder; the encoder needs the stated gradient approximation, and the codebook needs its own learning signal or averaging update. Only the entry index is needed to represent this selected code once the model and codebook are shared.",
       "questionIds": [
         "53-01",
         "53-02",
@@ -1752,12 +2017,13 @@
           "previousQuestion": "The encoder returns z = 1.9, and the nearest codebook entry is 2. Which value is passed to the decoder in the forward calculation?",
           "reason": "The original repeated the example's encoder output, selected code, and decoder input."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 121,
       "title": "Diffusion models",
-      "example": "If ᾱₜ=0.64, x₀=2, and the sampled ε=1, then xₜ=0.8×2+0.6×1 = 2.2. A network learns denoising information across many noise levels.",
+      "example": "If ᾱₜ=0.64, x₀=2, and the sampled ε=1, then xₜ=0.8×2+0.6×1 = 2.2. A network learns denoising information across many noise levels.\n\nThe clean contribution is 1.6 and the noise contribution is 0.6, producing 2.2. If a predictor estimated the added noise as 0.5 instead of the actual 1, its squared noise-prediction error would be 0.25. Subtracting the estimated contribution 0.3 and dividing by 0.8 would estimate the clean value as 2.375, not 2. That error trains the predictor. Real generation uses a schedule of many reverse steps because heavily corrupted inputs do not determine one unique clean answer.",
       "questionIds": [
         "121-01",
         "121-02",
@@ -1776,12 +2042,13 @@
           "previousQuestion": "With ᾱ=0.64, x₀=2, and ε=1, what is √ᾱ x₀ + √(1−ᾱ) ε?",
           "reason": "The original repeated every noising input and the resulting value from the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 55,
       "title": "Sequence and autocorrelation",
-      "example": "For (1, 3, 1, 3), mean = 2 and deviations = (−1, 1, −1, 1). At lag 1: r₁ = (−1−1−1)/(1+1+1+1) = −0.75. Neighbors alternate.",
+      "example": "For (1, 3, 1, 3), mean = 2 and deviations = (−1, 1, −1, 1). At lag 1: r₁ = (−1−1−1)/(1+1+1+1) = −0.75. Neighbors alternate.\n\nAt lag 1, each neighboring deviation has the opposite sign, producing three negative products. At lag 2, the two available pairs have the same sign, so the numerator is 2 and this estimator gives 0.5. The alternation becomes a positive match after two positions. The values are not exactly −1 and 1 because this finite-sample formula keeps the full-sequence denominator while fewer pairs are available at larger lags.",
       "questionIds": [
         "55-01",
         "55-02",
@@ -1794,36 +2061,13 @@
         "55-09",
         "55-10"
       ],
-      "replacements": []
-    },
-    {
-      "conceptId": 61,
-      "title": "Autoregressive language model",
-      "example": "If P(A) = 0.5 and P(B given A) = 0.2, then P(A, B) = 0.1.",
-      "questionIds": [
-        "61-01",
-        "61-02",
-        "61-03",
-        "61-04",
-        "61-05",
-        "61-06",
-        "61-07",
-        "61-08",
-        "61-09",
-        "61-10"
-      ],
-      "replacements": [
-        {
-          "questionId": "61-03",
-          "previousQuestion": "If two successive conditional probabilities are 0.5 and 0.2, what is their joint factor product?",
-          "reason": "The original repeated the example's two probabilities and product."
-        }
-      ]
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 56,
       "title": "Positional encoding",
-      "example": "The same token has vector (1, 2). At position 1, add (0.1, 0): (1.1, 2). At position 2, add (0, 0.1): (1, 2.1). Its position now changes the input.",
+      "example": "The same token has vector (1, 2). At position 1, add (0.1, 0): (1.1, 2). At position 2, add (0, 0.1): (1, 2.1). Its position now changes the input.\n\nThe token's identity contribution stays 1, 2 in both positions. Only the added position vector changes. Now swap two different tokens: their identity vectors move while the position vectors stay attached to the locations, giving different combinations. Those combinations let later attention distinguish “A before B” from “B before A.” The tiny offsets are illustrative, not a claim that these two vectors are an effective encoding for long sequences.",
       "questionIds": [
         "56-01",
         "56-02",
@@ -1836,12 +2080,13 @@
         "56-09",
         "56-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 57,
       "title": "Scaled dot-product attention",
-      "example": "q = 1, keys = (0, ln 3), values = (2, 6), dₖ = 1. Scores (0, ln 3) give weights (0.25, 0.75). Output = 0.25×2 + 0.75×6 = 5.",
+      "example": "q = 1, keys = (0, ln 3), values = (2, 6), dₖ = 1. Scores (0, ln 3) give weights (0.25, 0.75). Output = 0.25×2 + 0.75×6 = 5.\n\nThe weights favor the second value, but the output is a mixture, not selection of that value alone. With query zero, both scores become zero, so the weights become equal and the output becomes 4. This exposes attention's input-dependent behavior. Training adjusts the query, key and value transformations so that useful mixtures reduce the downstream loss.",
       "questionIds": [
         "57-01",
         "57-02",
@@ -1860,12 +2105,13 @@
           "previousQuestion": "Attention weights are (0.25, 0.75) and values are (2, 6). Output?",
           "reason": "The original repeated the example's attention weights, values, and output."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 58,
       "title": "Multi-head attention",
-      "example": "For values (2, 6), weights (0.25, 0.75) give 5; weights (0.75, 0.25) give 3. Join the heads as (5, 3). Output weights (0.5, 0.5) give 4.",
+      "example": "For values (2, 6), weights (0.25, 0.75) give 5; weights (0.75, 0.25) give 3. Join the heads as (5, 3). Output weights (0.5, 0.5) give 4.\n\nThe first head favors the larger value and returns 5; the second favors the smaller and returns 3. Concatenation preserves both results as separate coordinates. The final equal-weight mixture gives 4, but other learned output weights could keep their difference or emphasize one view. Averaging the attention weights before computing head outputs would hide that distinction in this example.",
       "questionIds": [
         "58-01",
         "58-02",
@@ -1878,12 +2124,13 @@
         "58-09",
         "58-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 60,
       "title": "Causal mask",
-      "example": "At position 2, start with scores (0, 0, 0). Mask position 3: (0, 0, −∞). Softmax gives (0.5, 0.5, 0): the future contributes nothing.",
+      "example": "At position 2, start with scores (0, 0, 0). Mask position 3: (0, 0, −∞). Softmax gives (0.5, 0.5, 0): the future contributes nothing.\n\nThe output at position 2 uses a half share from each of positions 1 and 2 and none from position 3. At position 1, only position 1 is allowed, so its attention weights would be 1, 0, 0. This permits the same training sequence to supply several next-token targets without revealing their answers. A mask restricts access; it does not itself make the remaining predictions accurate.",
       "questionIds": [
         "60-01",
         "60-02",
@@ -1902,12 +2149,13 @@
           "previousQuestion": "Which key position is blocked for a query at position 2?",
           "reason": "The original asked for the exact future position masked in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 59,
       "title": "Transformer",
-      "example": "Illustrating the first stage: h = (1, 3), attention output = (1, 1), sum = (2, 4). Mean 3 and standard deviation 1 give approximately (−1, 1).",
+      "example": "Illustrating the first stage: h = (1, 3), attention output = (1, 1), sum = (2, 4). Mean 3 and standard deviation 1 give approximately (−1, 1).\n\nContinue the toy block: suppose the feed-forward network returns 0, 2 for the normalized input −1, 1. Their residual sum is −1, 3. Its mean is 1 and its population standard deviation is 2, so the next normalization again gives approximately −1, 1. This is a numerical walkthrough of one block, with outputs supplied to keep the arithmetic small; a real block computes them from learned weights. Practical normalization also includes a small denominator constant and learned scale and offset.",
       "questionIds": [
         "59-01",
         "59-02",
@@ -1920,12 +2168,38 @@
         "59-09",
         "59-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 61,
+      "title": "Large language models and next-token prediction",
+      "example": "If P(A) = 0.5 and P(B given A) = 0.2, then P(A, B) = 0.1.\n\nTurn the short sequence A, B into a training case: after A, the target is B. A predicted probability of 0.2 for B gives a loss of about 1.609. Training can raise that probability; it does not store a rule saying B must always follow A. At generation time, a sample or selection rule chooses a next token, appends it, then recomputes the distribution for the longer prefix. An unlikely early choice can change every later prediction.",
+      "questionIds": [
+        "61-01",
+        "61-02",
+        "61-03",
+        "61-04",
+        "61-05",
+        "61-06",
+        "61-07",
+        "61-08",
+        "61-09",
+        "61-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "61-03",
+          "previousQuestion": "If two successive conditional probabilities are 0.5 and 0.2, what is their joint factor product?",
+          "reason": "The original repeated the example's two probabilities and product."
+        }
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 122,
       "title": "Mixture of experts",
-      "example": "Two selected experts output 2 and 6. With routing weights 0.25 and 0.75, their combined output is 0.25×2+0.75×6 = 5.",
+      "example": "Two selected experts output 2 and 6. With routing weights 0.25 and 0.75, their combined output is 0.25×2+0.75×6 = 5.\n\nThe selected outputs contribute 0.5 and 4.5 to the result 5. An unselected third expert contributes nothing to this token even if it has many parameters. A different token can activate that expert instead. Training must learn both useful expert transformations and routing behavior; always routing everything to one expert would waste most of the available capacity.",
       "questionIds": [
         "122-01",
         "122-02",
@@ -1944,12 +2218,13 @@
           "previousQuestion": "Experts output 2 and 6 with weights 0.25 and 0.75. What is their combined output?",
           "reason": "The original repeated the worked mixture and also the same solved attention calculation in earlier lessons."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 62,
       "title": "Fine-tuning",
-      "example": "A trainable weight starts at 0.5. With gradient 2 and η = 0.01, one update gives 0.48.",
+      "example": "A trainable weight starts at 0.5. With gradient 2 and η = 0.01, one update gives 0.48.\n\nThe value 0.48 is only one update, not proof that the task has improved. Run the updated model on the new examples, recompute loss and gradients, and repeat. Then compare with the starting model on held-out examples. If new-task training becomes too narrow, it can improve those examples while damaging earlier behavior; validation and the choice of trainable weights help manage that tradeoff.",
       "questionIds": [
         "62-01",
         "62-02",
@@ -1962,12 +2237,13 @@
         "62-09",
         "62-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 124,
       "title": "Model distillation",
-      "example": "A teacher assigns probabilities (0.8,0.2); the student predicts (0.5,0.5). The unscaled soft-target cross-entropy is −0.8ln(0.5)−0.2ln(0.5) ≈ 0.693.",
+      "example": "A teacher assigns probabilities (0.8,0.2); the student predicts (0.5,0.5). The unscaled soft-target cross-entropy is −0.8ln(0.5)−0.2ln(0.5) ≈ 0.693.\n\nIf the student changes its probabilities to 0.8 and 0.2, its soft-target cross-entropy falls to about 0.500. It does not fall to zero because the teacher itself spreads probability across two outcomes. The matching objective is minimized by reproducing that distribution. True labeled examples, when available, can provide a separate signal rather than treating the teacher as infallible.",
       "questionIds": [
         "124-01",
         "124-02",
@@ -1986,12 +2262,13 @@
           "previousQuestion": "What is the student's soft-target cross-entropy for teacher (0.8,0.2) and student (0.5,0.5), using natural logs?",
           "reason": "The original repeated the example's teacher/student distributions and its solved loss."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 63,
       "title": "Retrieval-augmented generation",
-      "example": "Question: “How deep is Well A?” Retrieve record 17: “Well A, total depth 2,400 m.” The answer reports 2,400 m and points to record 17.",
+      "example": "Question: “How deep is Well A?” Retrieve record 17: “Well A, total depth 2,400 m.” The answer reports 2,400 m and points to record 17.\n\nThe answer should attach the depth to the specific well and record, including its units. If another retrieved record describes a different Well A or an older survey, retrieval has not resolved the conflict merely by finding similar words. The system must use the identifying context or acknowledge uncertainty. A fluent answer without a matching source is still unsupported, even when retrieval ran successfully.",
       "questionIds": [
         "63-01",
         "63-02",
@@ -2004,12 +2281,13 @@
         "63-09",
         "63-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 94,
       "title": "API and SDK",
-      "example": "Calling mean([2, 4, 6]) returns 4. An SDK might provide a function that sends this request to a service and reads its response.",
+      "example": "Calling mean([2, 4, 6]) returns 4. An SDK might provide a function that sends this request to a service and reads its response.\n\nThe caller supplies three numbers; the implementation adds them and divides by the count; the caller receives 4. The contract also needs to say what happens for an empty list or a nonnumeric entry. A remote call can fail before producing any result, so a timeout must not be interpreted as a computed zero. The SDK can help encode requests and report errors consistently.",
       "questionIds": [
         "94-r2-01",
         "94-r2-02",
@@ -2028,12 +2306,13 @@
           "previousQuestion": "The API mean expects a list of numbers. Which argument matches this input requirement?",
           "reason": "The original correct option copied the precise argument used in the worked API call."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 64,
       "title": "Tool calling",
-      "example": "A model requests mean([10, 20, 30]); the calculator returns 20, which the answer reports.",
+      "example": "A model requests mean([10, 20, 30]); the calculator returns 20, which the answer reports.\n\nTrace the stages: recognize that an average is requested, send the three numbers to the defined calculator, receive 20, then explain that result. The number should come from the tool response, not from the model guessing what it would return. A rejected request or failed call needs explicit handling; operations with side effects also need authorization appropriate to the application.",
       "questionIds": [
         "64-01",
         "64-02",
@@ -2046,12 +2325,13 @@
         "64-09",
         "64-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 66,
       "title": "State, observation and action",
-      "example": "In a simple tank model, state s = 10 litres. A noisy sensor reports observation o = 9.8 litres. Choosing to add 3 litres is action a = 3.",
+      "example": "In a simple tank model, state s = 10 litres. A noisy sensor reports observation o = 9.8 litres. Choosing to add 3 litres is action a = 3.\n\nAdding 3 litres to the actual 10 would produce 13 litres if nothing drains or spills. Adding it to the sensor reading predicts 12.8 instead. That difference is measurement error, not a different physical action. If the tank also leaks at a changing rate, volume alone may not be enough state to predict the next volume; the model needs the relevant extra information.",
       "questionIds": [
         "66-01",
         "66-02",
@@ -2075,12 +2355,13 @@
           "previousQuestion": "Which is an action in that example?",
           "reason": "The original reused the tank-control action already labeled in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 65,
       "title": "Dynamical system",
-      "example": "A tank holds 10 litres. Add 3 and drain 2 during one step: next volume = 10 + 3 − 2 = 11.",
+      "example": "A tank holds 10 litres. Add 3 and drain 2 during one step: next volume = 10 + 3 − 2 = 11.\n\nRepeat the same inflow and drain for a second step: the predicted volume rises from 11 to 12 litres. Choosing no inflow instead would take 11 down to 9. These are two different trajectories starting from the same intermediate state. Capacity limits, disturbances or changing drain rates would require additional rules; the simple addition model only describes the stated conditions.",
       "questionIds": [
         "65-01",
         "65-02",
@@ -2093,12 +2374,13 @@
         "65-09",
         "65-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 67,
       "title": "Markov decision process",
-      "example": "In state “low,” choosing “fill” reaches “safe” with probability 0.9 and stays “low” with probability 0.1. Suppose reaching “safe” earns reward 1, otherwise 0.",
+      "example": "In state “low,” choosing “fill” reaches “safe” with probability 0.9 and stays “low” with probability 0.1. Suppose reaching “safe” earns reward 1, otherwise 0.\n\nThe stated fill action has expected immediate reward 0.9. If waiting in the same state reaches safe with probability 0.2 and earns the same rewards, its immediate expectation is 0.2. Filling is better for this one-step comparison, but action costs or future rewards could change the long-term preference. If equipment wear affects the transition, include it in the state rather than pretending the low-volume label contains all necessary information.",
       "questionIds": [
         "67-01",
         "67-02",
@@ -2111,12 +2393,13 @@
         "67-09",
         "67-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 68,
       "title": "Reward and return",
-      "example": "For three rewards (2, 0, 10) and γ = 0.5, return = 2 + 0 + 0.25 × 10 = 4.5.",
+      "example": "For three rewards (2, 0, 10) and γ = 0.5, return = 2 + 0 + 0.25 × 10 = 4.5.\n\nThe final reward 10 occurs two steps later, so it is multiplied by one-half twice, contributing only 2.5. With no discount, the three rewards would total 12. A competing action that paid 5 immediately and nothing later would beat the displayed discounted return but lose to the undiscounted total. The choice of horizon and discount can therefore change behavior.",
       "questionIds": [
         "68-01",
         "68-02",
@@ -2129,12 +2412,13 @@
         "68-09",
         "68-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 69,
       "title": "Policy",
-      "example": "In a low tank, π(fill) = 0.8 and π(wait) = 0.2. A deterministic policy might always fill.",
+      "example": "In a low tank, π(fill) = 0.8 and π(wait) = 0.2. A deterministic policy might always fill.\n\nImagine drawing a uniform random number between zero and one: fill below 0.8 and wait otherwise. Over many visits to this state, the proportions approach the stated probabilities, but a particular visit still takes one action. At a full tank the policy should usually be different; a probability table for only the low state does not define behavior everywhere.",
       "questionIds": [
         "69-01",
         "69-02",
@@ -2147,12 +2431,13 @@
         "69-09",
         "69-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 70,
       "title": "Value function",
-      "example": "A policy yields return 10 with probability 0.6 and 0 otherwise, so Vπ(s) = 6.",
+      "example": "A policy yields return 10 with probability 0.6 and 0 otherwise, so Vπ(s) = 6.\n\nSix is the average return across repeated runs, not a promise that a single run will earn six: this example yields either ten or zero. If a different policy raises the success probability to 0.8 without changing the two possible returns, its value becomes 8. Changing the policy changes the value even though the starting state is unchanged.",
       "questionIds": [
         "70-01",
         "70-02",
@@ -2165,12 +2450,13 @@
         "70-09",
         "70-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 71,
       "title": "Bellman equation",
-      "example": "Reward now is 2. Next-state value is 10 or 0, equally likely, under the policy. At γ = 0.9: V = 2 + 0.9×(0.5×10 + 0.5×0) = 6.5.",
+      "example": "Reward now is 2. Next-state value is 10 or 0, equally likely, under the policy. At γ = 0.9: V = 2 + 0.9×(0.5×10 + 0.5×0) = 6.5.\n\nFirst average the next-state values to get 5. Discount that future contribution to 4.5, then add the present reward 2. If 10 and zero are only provisional estimates, 6.5 is an update target rather than an already verified true value. Terminal states have no future return, which provides a natural starting point for working backward in a finite task.",
       "questionIds": [
         "71-01",
         "71-02",
@@ -2183,12 +2469,13 @@
         "71-09",
         "71-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 73,
       "title": "Exploration and exploitation",
-      "example": "With ε = 0.1 over 100 decisions, expect about 10 exploration-branch choices, not exactly 10.",
+      "example": "With ε = 0.1 over 100 decisions, expect about 10 exploration-branch choices, not exactly 10.\n\nWith two actions and one uniquely best estimated action, the exploration branch still chooses that best action half the time. Its total selection probability is therefore 0.95: 0.9 from exploitation and 0.05 from exploration. Only about five of 100 decisions choose the other action on average. Exploration-branch choices and visibly non-greedy choices are not the same count.",
       "questionIds": [
         "73-01",
         "73-02",
@@ -2201,12 +2488,13 @@
         "73-09",
         "73-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 72,
       "title": "Q-learning",
-      "example": "Q = 2, reward = 1, γ = 0.5, best next Q = 6. Target = 1 + 0.5×6 = 4. With α = 0.25, new Q = 2 + 0.25×(4−2) = 2.5.",
+      "example": "Q = 2, reward = 1, γ = 0.5, best next Q = 6. Target = 1 + 0.5×6 = 4. With α = 0.25, new Q = 2 + 0.25×(4−2) = 2.5.\n\nThe target 4 exceeds the current estimate 2, so a quarter-step closes one quarter of that gap. If the exact same target were observed again, the next estimate would rise from 2.5 to 2.875. If the transition ended the task, the future contribution would instead be zero. Learning needs visits to relevant actions; repeatedly updating one entry leaves unexplored entries uninformed.",
       "questionIds": [
         "72-01",
         "72-02",
@@ -2225,12 +2513,13 @@
           "previousQuestion": "In Q-learning, reward r = 1, discount γ = 0.5, and the best next-state Q value is 6. What is the update target r + γ max Q before averaging?",
           "reason": "The original asked for the target already calculated in the worked update."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 74,
       "title": "Policy gradient",
-      "example": "Choose A with probability p. Rewards: A gives 4, B gives 1. J(p) = 4p + (1−p) = 1+3p, so J′(p) = 3. With η = 0.1: p⁺ = 0.5 + 0.1×3 = 0.8.",
+      "example": "Choose A with probability p. Rewards: A gives 4, B gives 1. J(p) = 4p + (1−p) = 1+3p, so J′(p) = 3. With η = 0.1: p⁺ = 0.5 + 0.1×3 = 0.8.\n\nThe expected reward rises from 2.5 at probability 0.5 to 3.4 at probability 0.8. This example has known rewards, so its exact gradient is easy to calculate. Repeating the same step without a constraint would eventually push the probability above one. Practical policies use a parameterization such as softmax to keep probabilities valid while updating unconstrained weights.",
       "questionIds": [
         "74-01",
         "74-02",
@@ -2254,12 +2543,13 @@
           "previousQuestion": "For J(p) = 4p + 1(1−p), what is dJ/dp?",
           "reason": "The original repeated the derivative already explicitly calculated in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 76,
       "title": "Model-based RL",
-      "example": "A learned tank model predicts that “fill” yields return 7 and “wait” yields 5. Choose “fill,” observe the real outcome, and use it to check or improve the model.",
+      "example": "A learned tank model predicts that “fill” yields return 7 and “wait” yields 5. Choose “fill,” observe the real outcome, and use it to check or improve the model.\n\nThe return estimates 7 and 5 summarize simulated outcomes, rather than two real experiments already completed. After choosing fill, compare the measured next state and reward with their predictions. If the model consistently overlooks overflow, its apparently superior action can be worse in reality. Shorter plans, uncertainty estimates and safety restrictions can limit the consequences of that mismatch.",
       "questionIds": [
         "76-01",
         "76-02",
@@ -2272,12 +2562,13 @@
         "76-09",
         "76-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 78,
       "title": "Safety constraint",
-      "example": "If a valve setting must satisfy a ≤ 5, a proposed setting of 7 is rejected even if its predicted reward is high.",
+      "example": "If a valve setting must satisfy a ≤ 5, a proposed setting of 7 is rejected even if its predicted reward is high.\n\nThe proposed 7 exceeds the limit by 2, so it is outside the permitted set. Settings 4 and 5 pass this particular upper-bound check, but may have other limits such as a minimum or a maximum rate of change. Choosing 5 automatically is not always correct: the controller should compare the feasible choices using its objective. A model-based safety prediction is not a guarantee when the model is wrong.",
       "questionIds": [
         "78-01",
         "78-02",
@@ -2296,12 +2587,13 @@
           "previousQuestion": "A proposal violates a hard constraint but has the highest predicted reward. What should happen?",
           "reason": "The original repeated the example's rejection decision; the replacement requires choosing among several feasible and infeasible actions."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 77,
       "title": "Model predictive control",
-      "example": "A tank has 10 L, target 14 L, drain 2 L/step. Plan inflows (6, 2) L. Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L.",
+      "example": "A tank has 10 L, target 14 L, drain 2 L/step. Plan inflows (6, 2) L. Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L.\n\nThe original first inflow predicts 14 litres after the drain, and the planned second inflow 2 would hold that level. The observed 13 means the original second action would now leave the tank at 13. Replanning increases that inflow to 3 so the next predicted volume is 14. This example illustrates correcting a plan; a complete optimizer would compare candidate action sequences using a stated cost and constraints.",
       "questionIds": [
         "77-01",
         "77-02",
@@ -2320,12 +2612,13 @@
           "previousQuestion": "A tank should reach 14 litres next step and drains 2 litres during that step. A new measurement says it now holds 13 litres. What inflow should the replanned first action use?",
           "reason": "The original requested the exact replanned inflow already given in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 75,
       "title": "RLHF",
-      "example": "People prefer answer A to B. Suppose learned rewards are 2 and 0. Raising P(A) from 0.5 to 0.75 raises expected reward from 1 to 1.5.",
+      "example": "People prefer answer A to B. Suppose learned rewards are 2 and 0. Raising P(A) from 0.5 to 0.75 raises expected reward from 1 to 1.5.\n\nThe probabilities describe how often the policy would produce A or B for this fixed prompt. Shifting probability mass toward A improves the reward model's expected score. To learn that A is preferred in the first place, the reward model needs comparisons supplied by people. Separate evaluation must check actual helpfulness and reliability, because increasing the score from 1 to 1.5 alone proves neither.",
       "questionIds": [
         "75-01",
         "75-02",
@@ -2338,12 +2631,13 @@
         "75-09",
         "75-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 81,
       "title": "CPU",
-      "example": "To average (2, 4, 6), a program starts total = 0. Add each value: 2, then 6, then 12. Divide by 3 to return 4.",
+      "example": "To average (2, 4, 6), a program starts total = 0. Add each value: 2, then 6, then 12. Divide by 3 to return 4.\n\nThe running total is a dependency: the addition that produces 6 uses the previous total 2. One alternative adds independent groups first, then combines their partial sums. For a tiny list, organizing extra workers would likely cost more than it saves. Performance depends on the work and its data movement, not only on the number of cores.",
       "questionIds": [
         "81-01",
         "81-02",
@@ -2356,12 +2650,13 @@
         "81-09",
         "81-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 82,
       "title": "GPU",
-      "example": "For x = (1, 2, 3, 4), compute y = (2, 4, 6, 8). Each output can be calculated independently. The same pattern scales to millions of entries.",
+      "example": "For x = (1, 2, 3, 4), compute y = (2, 4, 6, 8). Each output can be calculated independently. The same pattern scales to millions of entries.\n\nFour workers could each read one input, double it and store one output without waiting for another worker's answer. A dot product is different: its individual multiplications can run independently, but their products must later be combined. Matrix operations provide many such products and sums. This repeated structure is a major reason GPUs suit neural-network workloads.",
       "questionIds": [
         "82-01",
         "82-02",
@@ -2385,12 +2680,13 @@
           "previousQuestion": "For which task can all four GPU outputs be calculated independently from the stated inputs?",
           "reason": "The original correct choice was the exact four-output computation used in the worked example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 83,
       "title": "Tensor core",
-      "example": "A = [[1, 2]], B = [[3], [4]], C = [[5]]. Multiply: AB = [[1×3 + 2×4]] = [[11]]. Add C: D = [[16]].",
+      "example": "A = [[1, 2]], B = [[3], [4]], C = [[5]]. Multiply: AB = [[1×3 + 2×4]] = [[11]]. Add C: D = [[16]].\n\nThe two products are 3 and 8, summing to 11; the accumulator contributes another 5. This tiny example explains the operation's meaning, not a supported physical instruction shape. Real kernels tile much larger matrices into supported blocks and combine partial results. Input and accumulation precision can differ, so performance and numerical error both depend on the chosen format.",
       "questionIds": [
         "83-01",
         "83-02",
@@ -2403,12 +2699,13 @@
         "83-09",
         "83-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 84,
       "title": "CUDA",
-      "example": "With B = 4, block 1 and thread 2 give i = 1×4+2 = 6. That thread can compute y₆ = 2x₆. Eight such blocks launch 8×4 = 32 threads.",
+      "example": "With B = 4, block 1 and thread 2 give i = 1×4+2 = 6. That thread can compute y₆ = 2x₆. Eight such blocks launch 8×4 = 32 threads.\n\nIndices start at zero here, so index 6 selects the seventh entry. With 30 entries and 32 launched threads, indices 30 and 31 have no valid item; a bounds check makes those threads do nothing. The launch creates logical work assignments, not a promise that all 32 execute at the exact same instant. Correct indexing and memory access matter as much as the arithmetic inside the kernel.",
       "questionIds": [
         "84-01",
         "84-02",
@@ -2421,12 +2718,13 @@
         "84-09",
         "84-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 85,
       "title": "Memory capacity",
-      "example": "1 billion parameters at 16 bits use 2 billion bytes, or 2 GB, for weights alone.",
+      "example": "1 billion parameters at 16 bits use 2 billion bytes, or 2 GB, for weights alone.\n\nSixteen bits make two bytes per parameter, which explains the 2 GB weight total using decimal gigabytes. A separate gradient stored at 32 bits adds another 4 GB for these parameters. That already gives 6 GB before activations, optimizer state or other buffers. A model whose weights barely fit therefore need not fit for training or for many simultaneous requests.",
       "questionIds": [
         "85-01",
         "85-02",
@@ -2439,12 +2737,13 @@
         "85-09",
         "85-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 123,
       "title": "Context windows and KV caching",
-      "example": "For 2 layers, 10 tokens, 1 KV head, dimension 4, and 2 bytes/value, the cache uses 2×2×10×1×4×2 = 320 bytes, excluding overhead and other memory.",
+      "example": "For 2 layers, 10 tokens, 1 KV head, dimension 4, and 2 bytes/value, the cache uses 2×2×10×1×4×2 = 320 bytes, excluding overhead and other memory.\n\nThe first factor of two counts keys and values; the second counts layers. Each new token in this toy model adds 32 bytes, so growing from 10 to 11 tokens grows the cache from 320 to 352 bytes. Two separate 10-token conversations need 640 bytes under these assumptions. The tiny dimensions keep the calculation visible; real models add much larger per-request memory requirements.",
       "questionIds": [
         "123-01",
         "123-02",
@@ -2463,12 +2762,13 @@
           "previousQuestion": "Under the stated cache formula, how many bytes are needed for 2 layers, 10 tokens, 1 KV head, dimension 4, and 2 bytes/value?",
           "reason": "The original repeated all dimensions and the solved cache size from the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 86,
       "title": "Memory bandwidth",
-      "example": "Moving 10 GB through a 100 GB/second channel takes at least 0.1 seconds under ideal conditions.",
+      "example": "Moving 10 GB through a 100 GB/second channel takes at least 0.1 seconds under ideal conditions.\n\nThe 0.1 seconds is a lower bound for this transfer alone, assuming the stated rate is sustained. If the same 10 GB must be read five times from that memory, it requires 50 GB of traffic and at least 0.5 seconds. Reusing it without those repeated transfers changes the traffic requirement. Real execution also includes computation, latency and other overhead.",
       "questionIds": [
         "86-01",
         "86-02",
@@ -2497,12 +2797,13 @@
           "previousQuestion": "At 50 GB/s effective bandwidth, how long does a 5 GB transfer take in the simple model?",
           "reason": "The original was another proportional rescaling of the example with the same 0.1-second answer."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 87,
       "title": "H100",
-      "example": "A 10-billion-parameter model uses about 20 GB at 16 bits for weights, leaving nominal space for other needs.",
+      "example": "A 10-billion-parameter model uses about 20 GB at 16 bits for weights, leaving nominal space for other needs.\n\nSubtracting the 20 GB weight estimate from 80 GB leaves a nominal 60 GB, but that is not all free for additional copies of the model. Activations, attention caches, temporary buffers and the runtime also need memory. Training would require further storage for gradients and optimizer state. This is a capacity estimate for the stated variant and precision, not a benchmark or a guarantee that a deployment fits.",
       "questionIds": [
         "87-01",
         "87-02",
@@ -2521,12 +2822,13 @@
           "previousQuestion": "In a hypothetical H100 run, transferring 60 GB at an effective 600 GB/s takes at least how long, ignoring all other costs?",
           "reason": "The original reused a scaled version of the memory-bandwidth example and its 0.1-second result."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 88,
       "title": "Compute cluster",
-      "example": "An 80-second job has 20 seconds of serial work and 60 divisible seconds. Four workers need at least 20 + 60/4 = 35 seconds in this model.",
+      "example": "An 80-second job has 20 seconds of serial work and 60 divisible seconds. Four workers need at least 20 + 60/4 = 35 seconds in this model.\n\nThe four-worker estimate gives a speedup of about 2.29, not four, because the serial 20 seconds do not shrink. Even infinitely many workers cannot reduce this simplified job below those 20 seconds, giving a maximum speedup of four. Real communication can make it slower still. Improving the serial work can therefore matter more than buying another worker.",
       "questionIds": [
         "88-01",
         "88-02",
@@ -2539,12 +2841,13 @@
         "88-09",
         "88-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 89,
       "title": "TSMC and chip fabrication",
-      "example": "In a hypothetical batch of 100 dies, 80 passing inspection gives 80% yield. This is a teaching example, not TSMC production data.",
+      "example": "In a hypothetical batch of 100 dies, 80 passing inspection gives 80% yield. This is a teaching example, not TSMC production data.\n\nIf the hypothetical fabrication batch cost 8,000 units and produced 80 usable dies, the fabrication cost per usable die would be 100 units, before packaging and other costs. With only 50 usable dies at the same batch cost, it would be 160. This shows why yield matters without treating the invented numbers as actual production economics.",
       "questionIds": [
         "89-01",
         "89-02",
@@ -2563,12 +2866,13 @@
           "previousQuestion": "If 80 of 100 fabricated dies are usable, what is yield?",
           "reason": "The original repeated the example's batch, passing count, and yield."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 90,
       "title": "Borehole logs and assays",
-      "example": "Sample A from borehole BH01 spans 100–102 m and assays 0.8% copper by mass. Its sampled interval is 102 − 100 = 2 m. A sensor log is a different measurement over depth.",
+      "example": "Sample A from borehole BH01 spans 100–102 m and assays 0.8% copper by mass. Its sampled interval is 102 − 100 = 2 m. A sensor log is a different measurement over depth.\n\nThe 0.8% describes copper mass fraction in the assayed sample, not the amount of copper in the entire borehole. Along-hole interval length is 2 m; converting it into rock tonnage would also require geometry and density. A sensor reading somewhere in that interval supplies another type of evidence and cannot simply be relabeled as an assay.",
       "questionIds": [
         "90-r2-01",
         "90-r2-02",
@@ -2592,12 +2896,13 @@
           "previousQuestion": "An assay reports 0.8% copper for sample BH01, 100–102 m. Which record identifies where this measured grade came from?",
           "reason": "The original copied the worked sample's identifier, interval, and assay directly into the correct option."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 125,
       "title": "Assay quality control",
-      "example": "A certified reference value is 1.00% copper and a lab reports 1.10%. Relative bias is 100×(1.10−1.00)/1.00 = +10%. Whether this passes depends on the specified acceptance limits and uncertainty.",
+      "example": "A certified reference value is 1.00% copper and a lab reports 1.10%. Relative bias is 100×(1.10−1.00)/1.00 = +10%. Whether this passes depends on the specified acceptance limits and uncertainty.\n\nThe reference error is 0.10 percentage points in composition, which is a 10% relative bias against 1.00%. Two duplicate results of 1.09% and 1.11% could be close to each other while both remain biased high. Good repeatability therefore does not establish accuracy. A failed control should trigger investigation under the defined quality procedure, not an automatic undocumented correction to every sample.",
       "questionIds": [
         "125-01",
         "125-02",
@@ -2616,12 +2921,13 @@
           "previousQuestion": "A reference is 1.00% copper and the measured value is 1.10%. What is the relative bias?",
           "reason": "The original repeated the example's reference, measurement, and computed bias."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 92,
       "title": "Provenance and uncertainty",
-      "example": "Borehole A, 100 m depth, sensor S2: 30 °C. With a justified error bound ±0.2 °C, the interval is [29.8, 30.2] °C. Keep the source and calibration version.",
+      "example": "Borehole A, 100 m depth, sensor S2: 30 °C. With a justified error bound ±0.2 °C, the interval is [29.8, 30.2] °C. Keep the source and calibration version.\n\nA second sensor reporting 30.1 with the same justified bound would give an overlapping interval from 29.9 to 30.3. That is compatible with agreement within the stated bounds, but does not prove independence or absence of shared bias. If calibration is later revised, recorded provenance tells us which downstream values need recalculation rather than silently mixing versions.",
       "questionIds": [
         "92-r2-01",
         "92-r2-02",
@@ -2634,12 +2940,13 @@
         "92-r2-09",
         "92-r2-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 93,
       "title": "Geoscience data integration",
-      "example": "BH01 has an assay for 100–102 m. Match it to geological records from BH01 covering that interval, check units, and retain both sources. A row at 100 m in BH02 refers to different rock.",
+      "example": "BH01 has an assay for 100–102 m. Match it to geological records from BH01 covering that interval, check units, and retain both sources. A row at 100 m in BH02 refers to different rock.\n\nSuppose two sensor intervals, 100–101 m and 101–102 m, have average readings 20 and 30. They overlap equal lengths of the assay interval, so a length-weighted summary is 25. That is a derived sensor feature, not a new chemical assay. Unequal overlaps need different weights; an uncovered gap should be reported rather than silently treated as a zero reading.",
       "questionIds": [
         "93-r2-01",
         "93-r2-02",
@@ -2652,12 +2959,13 @@
         "93-r2-09",
         "93-r2-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 91,
       "title": "Windowing and missing data",
-      "example": "Sequence (2, 4, missing, 6) gives length-3 windows (2, 4, missing) and (4, missing, 6). The second has mask (1, 0, 1): its middle value is absent.",
+      "example": "Sequence (2, 4, missing, 6) gives length-3 windows (2, 4, missing) and (4, missing, 6). The second has mask (1, 0, 1): its middle value is absent.\n\nFor the second window, the observed mean is 5 because only 4 and 6 contribute. Filling the missing entry with zero and averaging all three instead gives about 3.33, introducing a value that was never measured. A model can use an imputed value together with its mask, but the imputation rule should be fitted using training information only.",
       "questionIds": [
         "91-r2-01",
         "91-r2-02",
@@ -2670,12 +2978,13 @@
         "91-r2-09",
         "91-r2-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 96,
       "title": "Ore grade estimation",
-      "example": "In a toy estimate, 1,000 tonnes of rock at 0.8% copper contain 1,000 × 0.8 / 100 = 8 tonnes of copper before recovery losses.",
+      "example": "In a toy estimate, 1,000 tonnes of rock at 0.8% copper contain 1,000 × 0.8 / 100 = 8 tonnes of copper before recovery losses.\n\nConsider two portions: 400 tonnes at 0.5% and 600 tonnes at 1.0%. They contain 2 and 6 tonnes of copper, so their combined 1,000 tonnes contain 8 tonnes and have mass-weighted grade 0.8%. Averaging the two percentages without their masses would give 0.75%, the wrong mixture grade. Predicting an unsampled portion adds uncertainty beyond this exact mass balance.",
       "questionIds": [
         "96-r2-01",
         "96-r2-02",
@@ -2694,12 +3003,13 @@
           "previousQuestion": "How much copper is contained in 1,000 tonnes of rock at 0.8% copper by mass?",
           "reason": "The original repeated the exact rock mass, grade, and contained metal already calculated."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 127,
       "title": "Variograms and kriging",
-      "example": "At one distance bin, two pairs have value differences 2 and 4. Estimated semivariance is (2²+4²)/(2×2) = 5. Kriging weights would then require a fitted model and sample geometry.",
+      "example": "At one distance bin, two pairs have value differences 2 and 4. Estimated semivariance is (2²+4²)/(2×2) = 5. Kriging weights would then require a fitted model and sample geometry.\n\nFor a separate symmetric illustration, place two samples with values 4 and 8 at positions 0 and 2, and estimate at position 1. With an ordinary-kriging model that treats both sides identically, symmetry and the sum-to-one constraint give weights one-half each, producing 6. Off-center locations, extra nearby samples or an asymmetric spatial model can change the weights. The semivariance value 5 alone is not enough to calculate them.",
       "questionIds": [
         "127-01",
         "127-02",
@@ -2723,12 +3033,13 @@
           "previousQuestion": "Given kriging weights 0.25 and 0.75 and observations 2 and 6, what is the estimate?",
           "reason": "The original reused the (0.25,0.75) weights and (2,6) values already solved in multiple attention and expert-mixture examples."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 126,
       "title": "Spatial cross-validation",
-      "example": "A held-out block has a 100 m exclusion buffer. A candidate training sample 30 m from its boundary is excluded; one 150 m away satisfies this distance rule.",
+      "example": "A held-out block has a 100 m exclusion buffer. A candidate training sample 30 m from its boundary is excluded; one 150 m away satisfies this distance rule.\n\nThe buffer removes the nearby candidate from training even though it lies outside the held-out block. Fit on eligible samples such as the one 150 m away, then predict the block without using its answers. After scoring, rotate to another held-out block and refit. A 100 m buffer is an example design choice, not a universal safe distance; geology and the intended deployment determine an appropriate separation.",
       "questionIds": [
         "126-01",
         "126-02",
@@ -2747,12 +3058,13 @@
           "previousQuestion": "With a 100 m buffer around a held-out test block, which candidate training point meets the distance rule?",
           "reason": "The original selected the exact point already classified as allowed in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 128,
       "title": "Mineral processing and recovery",
-      "example": "For a steady, balanced example, 100 t of feed at 2% copper contains 2 t copper. A 10 t concentrate at 16% contains 1.6 t, giving recovery 1.6/2 = 80%. The 90 t tailings contain the remaining 0.4 t copper.",
+      "example": "For a steady, balanced example, 100 t of feed at 2% copper contains 2 t copper. A 10 t concentrate at 16% contains 1.6 t, giving recovery 1.6/2 = 80%. The 90 t tailings contain the remaining 0.4 t copper.\n\nThe tailings grade is about 0.444%: divide their 0.4 t copper by 90 t total mass and convert to percent. The balances close both ways: stream masses total 100 t and contained copper totals 2 t. A hypothetical 4 t concentrate at 25% would have a higher grade but contain only 1 t copper, giving 50% recovery from the same feed. A richer concentrate can therefore recover less metal.",
       "questionIds": [
         "128-01",
         "128-02",
@@ -2781,12 +3093,13 @@
           "previousQuestion": "Feed contains 2 tonnes of copper and concentrate captures 1.6 tonnes. How much copper remains in tailings under a closed balance?",
           "reason": "The original asked for the remaining copper explicitly calculated in the example."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 97,
       "title": "Representation alignment",
-      "example": "For a code paired with answer “rising,” predicting probability 0.2 gives loss −ln(0.2) ≈ 1.61. At 0.8, loss ≈ 0.22. Paired data teach the connection.",
+      "example": "For a code paired with answer “rising,” predicting probability 0.2 gives loss −ln(0.2) ≈ 1.61. At 0.8, loss ≈ 0.22. Paired data teach the connection.\n\nThe lower loss means the model now assigns more probability to the paired word; it does not show what evidence it used. If every rising example came from one instrument, it might learn that instrument's signature instead of the trend. Include varied instruments and held-out cases, then test whether changing the actual trend changes the answer appropriately.",
       "questionIds": [
         "97-01",
         "97-02",
@@ -2799,12 +3112,13 @@
         "97-09",
         "97-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 98,
       "title": "Benchmark and ablation",
-      "example": "On the same 50 held-out questions, the full system gets 40 right (80%). Disabling its learned-token input gives 35 (70%). The observed drop is 10 percentage points.",
+      "example": "On the same 50 held-out questions, the full system gets 40 right (80%). Disabling its learned-token input gives 35 (70%). The observed drop is 10 percentage points.\n\nThere are five fewer correct answers after removing the input, but examine which questions changed and whether other settings were kept fixed. Training each variant again can test its best adapted performance; disabling an input only at evaluation tests dependence of the already trained system. Those are different questions. Repeated runs and a larger held-out set help assess whether the observed difference is stable.",
       "questionIds": [
         "98-01",
         "98-02",
@@ -2823,12 +3137,13 @@
           "previousQuestion": "If a full system scores 0.8 and an ablated one 0.7, what is the absolute score difference?",
           "reason": "The original rewrote the example's 80% and 70% scores as decimals but asked for the same difference."
         }
-      ]
+      ],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 95,
       "title": "Open source and reproducibility",
-      "example": "Publish allowed data (2, 4, 6), code mean(x), and the environment. Another person obtains (2+4+6)/3 = 4. Publishing only “result = 4” cannot reproduce the calculation.",
+      "example": "Publish allowed data (2, 4, 6), code mean(x), and the environment. Another person obtains (2+4+6)/3 = 4. Publishing only “result = 4” cannot reproduce the calculation.\n\nSomeone can reconstruct the total 12 and divide by the three entries because both the inputs and rule are available. For a learning experiment, also record the data split, parameter settings and random seed; different splits can change the score. Where data cannot be shared, document the restriction and provide permitted examples or verification routes without claiming full reproducibility.",
       "questionIds": [
         "95-01",
         "95-02",
@@ -2841,12 +3156,13 @@
         "95-09",
         "95-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 99,
       "title": "Forward-deployed engineering",
-      "example": "If a verified workflow reduces a task from 30 to 10 minutes, 12 tasks save 240 minutes, or 4 hours.",
+      "example": "If a verified workflow reduces a task from 30 to 10 minutes, 12 tasks save 240 minutes, or 4 hours.\n\nEach task saves 20 minutes, totaling 240 across the 12 tasks. Now suppose reviewing the automated output takes an extra five minutes per task that was not included in the ten-minute estimate. Net savings fall to 180 minutes, or three hours. Measuring the complete workflow, including corrections and review, is essential to evaluating the benefit.",
       "questionIds": [
         "99-r2-01",
         "99-r2-02",
@@ -2859,12 +3175,13 @@
         "99-r2-09",
         "99-r2-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
       "conceptId": 100,
       "title": "Grounded model conversation",
-      "example": "“How much copper is recovered at 80% recovery?” For 1,000 t of rock at 0.8% copper, the tool computes 1,000 × 0.008 × 0.80 = 6.4 t. This assumes the stated grade represents the feed and recovery applies to its contained copper.",
+      "example": "“How much copper is recovered at 80% recovery?” For 1,000 t of rock at 0.8% copper, the tool computes 1,000 × 0.008 × 0.80 = 6.4 t. This assumes the stated grade represents the feed and recovery applies to its contained copper.\n\nFirst convert the grade to a mass fraction and obtain 8 t of contained copper. Then apply the stated recovery to obtain 6.4 t recovered, leaving 1.6 t unrecovered. Report the source of tonnage, grade and recovery alongside the calculation. If recovery came from a small laboratory test, distinguish that assumption from a verified operating recovery instead of presenting the product as a guaranteed plant output.",
       "questionIds": [
         "100-r2-01",
         "100-r2-02",
@@ -2877,7 +3194,8 @@
         "100-r2-09",
         "100-r2-10"
       ],
-      "replacements": []
+      "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     }
   ]
 }

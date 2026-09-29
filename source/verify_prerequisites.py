@@ -11,7 +11,7 @@ concepts = {c['legacyId']: c for c in course['concepts']}
 questions = {q['id']: (c, q) for c in course['concepts'] for q in c['questions']}
 assert review['reviewedConceptIds'] == [c['legacyId'] for c in course['concepts']]
 assert review['reviewedQuestionIds'] == list(questions)
-assert len(concepts) == 128 and len(questions) == 1280
+assert len(concepts) == 138 and len(questions) == len(concepts)*10
 assert len({r['conceptId'] for r in review['lessonChanges']}) == len(review['lessonChanges'])
 assert len({r['questionId'] for r in review['questionChanges']}) == len(review['questionChanges'])
 assert all(r['questionId'] in questions for r in review['questionChanges'])
@@ -77,4 +77,4 @@ for logits in ([0,2], [-3,1,4], [6,1,2,0]):
     assert all(a>b for a,b in zip(deviations,deviations[1:]))
 q = questions['124-06'][1]
 assert q['options'][q['correct']] == 'Probabilities move closer to an equal distribution'
-print(f'PASS: 128 lessons/1,280 questions recorded; {len(dependencies)} teaching-before-assessment links; standalone premises and revised calculations.')
+print(f'PASS: 138 lessons/1,380 questions recorded; {len(dependencies)} teaching-before-assessment links; standalone premises and revised calculations.')

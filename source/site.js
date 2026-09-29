@@ -39,7 +39,7 @@
   node.textContent=text;
   node.innerHTML=notation ? notation.html(text,`c:${c.legacyId}:${field}`,prose) : prose(text);
  }
- const conceptMenu = window.math2aiConceptMenu?.({select:el('concept-select'),trigger:el('concept-trigger'),list:el('concept-options'),label:el('concept-label'),onChoose:index=>go(index)});
+ const conceptMenu = window.math2aiConceptMenu?.({select:el('concept-select'),trigger:el('concept-trigger'),popup:el('concept-popup'),search:el('concept-search'),list:el('concept-options'),empty:el('concept-empty'),onChoose:index=>go(index)});
  const learning=window.math2aiLearning;
  let personal=learning?.status() || {owner:'loading',ready:false,values:{},message:''};
  const marker=c=>personal.values['concept:'+c.legacyId]==='revisit'?'revisit':'none';
@@ -246,9 +246,11 @@
   selected = null; checked = false;
  }
  function displayMode() {
+  if(review)window.math2aiPlayground?.suspend();
   el('review-panel').hidden = !review;
   el('lesson-panel').hidden = !!review;
   el('lesson-pager').hidden = !!review;
+  el('concept-neighbours').hidden = !!review;
   el('review-link').setAttribute('aria-current', review ? 'page' : 'false');
   el('review-back').href = `#lesson-${items[state.current].legacyId}`;
   el('review-chooser').hidden = !review || review.stage !== 'choose';
@@ -287,6 +289,14 @@
  }
  function navigation() {
   const c = items[state.current], correct = correctCount(c);
+  for (const [direction,step] of [['previous',-1],['next',1]]) {
+   const neighbour = items[state.current + step], button = el(`${direction}-concept-top`);
+   const label = direction === 'previous' ? 'Previous concept' : 'Next concept';
+   el(`${direction}-concept-name`).textContent = neighbour?.title || label;
+   button.disabled = !neighbour;
+   button.setAttribute('aria-label',neighbour ? `${label}: ${neighbour.title}` : label);
+   button.title = neighbour ? `${label}: ${neighbour.title}` : label;
+  }
   el('concept-score').textContent = '✓';
   el('concept-score').hidden = correct === 0;
   el('concept-score').setAttribute('aria-label', 'Answered correctly');
@@ -346,12 +356,13 @@
   for (const id of ['title','formula','metaphor']) write(el(id),c[id],`c:${c.legacyId}:${id}`);
   for (const id of ['definition','example','formulaNote']) writeLesson(el(id==='formulaNote'?'formula-note':id),c,id);
   el('formula-note').hidden = !c.formulaNote;
+  window.math2aiPlayground?.show(c.legacyId);
   el('previous').disabled = state.current === 0;
   el('concept-sources').hidden = !c.sources.length;
   el('concept-source-list').innerHTML = sourceList(c.sources);
   const applications=c.connections?.usedIn || [];
   el('concept-applications').hidden=!applications.length;
-  el('concept-applications').innerHTML=applications.length ? '<span>Used in:</span>'+applications.map(id=>conceptLink(id,byId.get(id).title)).join('') : '';
+  el('concept-applications').innerHTML=applications.length ? '(used in '+applications.map(id=>conceptLink(id,byId.get(id).title)).join(', ')+')' : '';
   navigation(); quiz(); save();
   if (focus) { el('title').focus({preventScroll:true}); window.scrollTo({top:0, behavior:'instant'}); }
  }
@@ -492,6 +503,8 @@
  };
  el('next').onclick = () => go((state.current + 1) % items.length);
  el('previous').onclick = () => go(state.current - 1);
+ el('previous-concept-top').onclick = () => go(state.current - 1);
+ el('next-concept-top').onclick = () => go(state.current + 1);
  el('concept-select').onchange = e => go(Number(e.target.value));
  el('reset').onclick = async () => {
   if (!ready) return;

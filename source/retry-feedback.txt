@@ -858,7 +858,7 @@ Index separation counts positions, while physical separation uses the measured d
 Pair each position with the one two places ahead, stopping when the second member would leave the sequence.
 At zero lag, each centered value pairs with itself. Compare that numerator with the stated normalization denominator.
 Compare the kind of neighboring relationships in each region. A summary over the whole sequence mixes both kinds together.
-## Autoregressive language model
+## Large language models and next-token prediction
 Use the chain rule for the joint event: combine the first event's probability with the next event's probability conditioned on it.
 The existing prefix is given as context. The model supplies possibilities for the next position rather than all independent positions at once.
 Combine one conditional factor for every token. Sequence probabilities use their product; adding factors does not give the joint probability.
@@ -1408,3 +1408,123 @@ The calculation has a defined output and scope. A generated explanation must not
 The calculation follows its inputs and assumptions. Actual plant behavior also depends on whether those inputs and assumptions hold in operation.
 Reproducibility requires following the claim back through its evidence and reasoning. A final number alone hides that path.
 Compare the certainty in the answer with the evidence supplied to the calculation. An assumed input does not become an observed fact when a tool uses it.
+
+## Linear combinations
+A coefficient scales every coordinate of its vector. Apply each scaling first, then combine the matching positions.
+Work one coordinate at a time. Remember that a coefficient counts multiples of the supplied vector, not units on the coordinate axis.
+The entries have roles as well as values. Consider what it would mean to combine two positions describing different physical quantities.
+Look at each scaled term separately. A coefficient acts on its own vector before the scaled vectors are added together.
+Return to the definition: multiply each vector by a real number and add. Check which restrictions it actually imposes on those numbers.
+Rather than trying many coefficients, look for a relationship between coordinates that each available movement preserves when scaled and added.
+A negative coefficient reverses a vector. Combine corresponding coordinates and check whether the two movements reinforce or cancel each other.
+The rule pairs corresponding coordinates. Try assigning a partner to every entry before thinking about the numerical size of the result.
+Write the result as a sum of scaled vectors. Track the common factor through every contribution and then through their sum.
+Test each candidate pair by scaling the two supplied vectors. Both resulting coordinates must match the requested vector, not just the first.
+
+## Norms and unit vectors
+Square and add the coordinates before taking a square root. Keep the squared length distinct from the length itself.
+Normalization divides by a positive length. It changes the size of the vector without reversing the signs that describe its direction.
+Compute the length first, before applying the division. Ask whether that denominator is allowed and whether the vector specifies any direction.
+Separate direction from length. A negative multiplier reverses the arrow, but the measure of its size cannot become negative.
+A unit vector is identified by its length, not by whether its coordinates are positive. Check the sum of squared entries.
+Compare the factor relating the original vectors with the factor relating their lengths. Both appear in the normalization calculation.
+Think about changing only one measurement's unit without changing the object. Would the computed geometric size retain the same meaning?
+Read whether the requested quantity is length or squared length. Negative entries still contribute positive squares to either calculation.
+Start from the dot product of a vector with itself. Then account for the length used to divide the second factor.
+Consider two arrows with the same direction but different lengths. Ask whether their normalized results let you tell the original lengths apart.
+
+## Orthogonality
+Use the sum of coordinate products as the test. Individual entries and individual products need not vanish for the total to vanish.
+Write the dot product using the supplied coordinates. Determine which coordinate of the candidate actually affects the resulting sum.
+Separate the two parts of the word: one concerns the angle, and the other concerns the length of each vector.
+Track the common multiplier through the coordinate products and their sum. Consider what happens when the original total was zero.
+The dot product is a sum. Think about whether nonzero terms with different signs can add to the required total.
+Apply the coordinate formula directly before attaching a geometric interpretation. Every entry in one of the two factors is zero.
+Distinguish reversing an arrow from turning it through a right angle. Use the sign of the coordinate-product sum to check.
+Insert each candidate into the second vector, then compute the dot product. Look for cancellation across the two coordinate products.
+Check both requirements separately: zero dot product between the vectors, and unit norm for each individual vector.
+The stated mathematical definition uses an exact equality. Keep that distinct from a practical decision to treat a rounded computation as close enough.
+
+## Vector projection
+The projected point must lie on the specified line. Keep the along-line component and check that the remaining difference is perpendicular.
+The direction is not a unit vector. Compute both dot products in the coefficient formula before multiplying by the direction.
+Imagine sliding the projected point a little along its line. Consider whether a residual component in that direction would allow an improvement.
+Follow the scaling through both dot products and then through multiplication by the direction vector. The line itself has not moved.
+Ask which point on the line can be closest when the original point is itself on that line.
+Imagine several points directly above the same point on a horizontal line. Their shadows coincide even though the original points differ.
+First identify the projected point on the vertical line. The residual is the original vector minus that point, not the point itself.
+Use the orthogonality condition in the numerator of the projection formula. The denominator stays positive for a nonzero direction.
+Examine both the geometry of the supplied direction and the denominator of the formula before performing any division.
+The allowed set is a line through the origin. Consider whether it includes multiples pointing opposite to the supplied direction.
+
+## Span
+For a single supplied vector, test whether one common multiplier transforms every coordinate into the target's matching coordinate.
+Track which coordinate can vary under scaling and addition, and which coordinate remains fixed for every possible choice of coefficients.
+Ask whether the proposed new movement can be reproduced with the existing movement. A longer arrow need not provide a new direction.
+Look for two distinct movement directions. If one vector is a multiple of the other, the pair still offers only one direction.
+The definition permits all real coefficients. Consider the simplest simultaneous choice of coefficients and the vector it produces.
+Apply different positive and negative multipliers to the supplied vector. Check whether any coordinate can become nonzero.
+Use a necessary property of every span rather than trying to find generating vectors. Check what happens when all coefficients vanish.
+Write each vector as a combination of the available building blocks. See whether scaling and adding require any new building block.
+Distinguish the display's sampling choices from the definition, which permits coefficients beyond the finite list used to draw it.
+Use the first coordinate to constrain the first coefficient. Then account for its contribution to the second before choosing the remaining coefficient.
+
+## Linear independence
+Different lengths do not necessarily mean different directions. Look for a single multiplier relating every pair of corresponding coordinates.
+For each pair, test whether one vector is a multiple of the other, or whether a zero vector creates an immediate redundancy.
+Focus on the coefficients rather than the final vector. Can a coefficient be nonzero while its scaled contribution still vanishes?
+Calculate the coordinatewise result of each proposed combination. A valid dependence relation must cancel every coordinate, using some nonzero coefficient.
+Imagine subtracting the two proposed representations. Their identical targets cancel, leaving a statement about a combination of the generating vectors.
+Independence asks about redundancy, while perpendicularity asks about angle. Consider whether scaling a nonzero arrow can turn it through a right angle.
+Separate the zero-combination test from the zero-dot-product test. They answer different questions about a pair of vectors.
+Ask whether a recipe that used the removed vector can be rewritten using the relation that made it redundant.
+Two nonparallel movements already reach every point in the plane. Consider whether additional vectors can provide an unreproducible movement.
+Apply the zero-combination definition to just one coefficient. Determine what coefficient is needed to make both coordinates vanish.
+
+## Basis and dimension
+Check both requirements: the pair must reach every point in the plane, and neither vector may be reproduced using the other.
+Treat the supplied coordinates as coefficients of the supplied basis, rather than assuming they are already horizontal and vertical coordinates.
+Count independent generators of the particular space under discussion. Do not confuse that count with the number of entries used to store each vector.
+Spanning is only one requirement. Check whether removing any listed vector would leave all the same points reachable.
+Distinguish a convenient special kind of basis from the definition of a basis itself. Reconsider which properties guarantee unique representations.
+The dimension belongs to the space, rather than the coordinate system. Think about why a redundant extra generator would fail the basis requirement.
+Each coefficient measures how many copies of its basis vector are needed. Account for the first basis vector's length before choosing its coefficient.
+Separate the vector being represented from the recipe used to describe it. Both recipes must add up to the same result.
+Which basis requirement is missing: reachability or independence? Choose an operation that repairs that requirement without losing reachable points.
+A basis cannot contain a redundant zero vector. Consider how many independent movements are needed to reach only the origin.
+
+## Systems of linear equations
+A candidate is valid only if it satisfies every equation. Substitute both entries into each relationship before accepting it.
+Compare what both equations demand of the very same expression. Extra equations do not guarantee extra useful information.
+Check whether one equation supplies a genuinely new restriction or simply repeats the other after multiplying every term by a constant.
+Follow a single row through matrix multiplication. Its dot product with the unknown vector produces one scalar relationship.
+Keep coefficients separate from the right-hand side, and keep their order aligned with the declared order of the unknown vector.
+Identify what rows and columns stand for before counting them. The number of equations need not match the number of unknowns.
+The defining equation gives a check you can perform without knowing how the candidate was found. Verify every resulting right-hand-side entry.
+Interpret matrix-vector multiplication as a combination of columns. Ask which right-hand-side vectors those available building blocks can reach.
+A linear equation allows fixed coefficients multiplying individual unknowns. Check which expression combines unknowns with each other instead.
+Think of an additional equation that the same candidate values also satisfy. More restrictions do not automatically make the existing restrictions inconsistent.
+
+## Matrix rank
+Inspect the columns as vectors. Count independent directions, rather than counting the number of nonzero entries in the array.
+Ask which vectors the columns can generate. The shape of an array does not by itself provide any nonzero direction.
+Rank is bounded by both the row count and the column count. Use the tighter of these limits.
+Consider whether a duplicate movement lets you reach any point that the original movement could not already reach by adjusting its coefficient.
+Compare the directions of the columns rather than the sizes of their entries. Decide whether either column can reproduce the other.
+Rank describes the dimension of the reachable output space. Count directions in that space, not the number of supplied inputs.
+Recall the zero-combination test for dependence. Consider adding such a combination to an existing recipe for an output.
+Use the supplied two-by-two test or look for proportional columns. The same multiplier must work in both rows.
+Distinguish how many numbers are stored from how many independent movements those columns provide. Redundant numbers still occupy entries.
+Separate exact mathematical dependence from a numerical decision to ignore a very weak direction. Rank itself counts whole independent directions.
+
+## Low-rank approximation
+Identify the stronger singular direction in this nonnegative diagonal matrix. Check both the rank limit and the error before choosing a candidate.
+The error comes from discarded components, not retained ones. Square the magnitude of the removed singular component.
+Separate the quantity minimized by the approximation from the goal of a later application. Small numerical size need not mean small practical importance.
+In a diagonal example, compare the two scales. Do not assume that the larger singular component occurs in the first matrix position.
+Think of the error as contributions from what is still discarded. Removing one nonnegative contribution cannot make their total larger.
+Rank counts nonzero singular components. Check whether any nonzero contribution remains outside the retained set.
+Compare the reconstruction error of retaining either equal-strength component. Equal errors can leave more than one valid optimum.
+Determine which component is absent in the rank-one version, then measure its contribution using the stated squared-error criterion.
+Recall the definition of rank before interpreting the approximation limit. A dense table of related numbers can still describe very few independent directions.
+Distinguish matrix entries from singular components. Ask what made the directions visible without calculation in the particular worked example.

@@ -77,7 +77,7 @@
   "Vector-quantized autoencoder": "Autoencoder",
   "Diffusion models": "Diffusion_model",
   "Sequence and autocorrelation": "Autocorrelation",
-  "Autoregressive language model": "Language_model#Neural_models",
+  "Large language models and next-token prediction": "Language_model#Neural_models",
   "Positional encoding": "Transformer_(deep_learning)#Positional_encoding",
   "Scaled dot-product attention": "Attention_(machine_learning)",
   "Multi-head attention": "Attention_(machine_learning)",
@@ -126,5 +126,15 @@
   "Benchmark and ablation": "Ablation_(artificial_intelligence)",
   "Open source and reproducibility": "Reproducibility",
   "Forward-deployed engineering": "Forward_deployed_engineer",
-  "Grounded model conversation": "Retrieval-augmented_generation"
+  "Grounded model conversation": "Retrieval-augmented_generation",
+  "Linear combinations": "Linear_combination",
+  "Norms and unit vectors": "Norm_(mathematics)",
+  "Orthogonality": "Orthogonality",
+  "Vector projection": "Vector_projection",
+  "Span": "Linear_span",
+  "Linear independence": "Linear_independence",
+  "Basis and dimension": "Basis_(linear_algebra)",
+  "Systems of linear equations": "System_of_linear_equations",
+  "Matrix rank": "Rank_(linear_algebra)",
+  "Low-rank approximation": "Low-rank_approximation"
 }

@@ -1,6 +1,6 @@
 # math2ai
 
-128 concept pages and 1,280 understanding checks for curious learners, with ten varied questions per concept.
+138 concept pages and 1,380 understanding checks for curious learners, with ten varied questions per concept.
 
 Try it at [math2ai.github.io](https://math2ai.github.io/).
 
@@ -12,7 +12,7 @@ Read a concept and try a randomly selected question. After the first wrong answe
 
 Small arrows beside **Question 1 of 10**, above the prompt, browse a saved, shuffled set of ten questions for each concept, wrapping at either end. Returning to a question restores its draft choice, feedback, and remaining attempt; only **Reset** beside the question number starts a fresh round. You can skip a question or use **Previous concept**, **Next concept** and the menu at any time. Small Wikipedia and relevant paper, textbook or documentation links beneath each concept offer further reading without expanding the lesson.
 
-Lessons are numbered 001–128 in pedagogical order in the concept menu. A plain checkmark appears beside a concept's title and menu entry once any question has been answered correctly. Unanswered concepts have no marker. Answer counts stay in browser storage without being displayed, and there are no navigation gates.
+Lessons are numbered 001–138 in pedagogical order in the concept menu. A plain checkmark appears beside a concept's title and menu entry once any question has been answered correctly. Unanswered concepts have no marker. Answer counts stay in browser storage without being displayed, and there are no navigation gates.
 
 **Review**, beside the concept menu, opens a topic chooser grouped into the existing chapters. Search or filter the list, select individual concepts or the matching concepts in a chapter, then start a review. Every topic shows distinct questions tried, correct first answers, and correct latest answers; untried topics have no accuracy result. **Looking solid** requires three distinct questions answered correctly on both their first and latest attempts, with no latest incorrect answers; **Worth revisiting** highlights a latest incorrect answer. These are practice signals, not mastery scores. Suggested topics prioritize concepts with latest mistakes, then practiced concepts, then the current lesson for a new learner. Untried topics are always selectable.
 
@@ -30,24 +30,47 @@ The public settings in `source/auth-config.json`, pinned SDK, and Google button 
 
 On the first load of this version, the previous shared browser save is assigned once to the resolved account, or to guest practice if signed out. The original record and an import recovery copy are retained. New guest answers transfer automatically on sign-in. Each transfer is assigned to one account, keeps the original operation IDs, and retains a recovery record until the server acknowledges it. Interrupted transfers resume for that account; they are not imported repeatedly or claimed by another account. Refresh all old tabs when updating the website.
 
+## Explore and the 256-concept outline
+
+Forty-five concepts include a small code-and-output box, covering foundational mathematics, regression and MSE, and every lesson from **Backpropagation through Autoencoder**, plus ten new linear-algebra bridges. The supplied code reproduces each worked example and runs automatically. The regression box compares a trial line with a fit to three observed taxi trips; editing those fares changes the fitted rate, starting fare, and MSE. Monte Carlo uses a repeatable seed; change it or the sample count to explore estimates. The neural-network examples expose gradients, batch updates, convolution, graph messages, and probability losses. PCA computes its direction from the data, and the autoencoder trains a one-number bottleneck on four inputs over 40 updates, plots the learning curve and reconstructions, and tests a held-out input. All 128 lesson explanations and worked examples also received a [content-depth review](source/CONTENT_DEPTH_REVIEW.md). The [playground checklist](source/PLAYGROUND_REVIEW.md) lists all 35 concepts and concrete edits to test. Editing code updates the output after a short pause in typing. A subtle math.js documentation link sits beside the output; an error appears there if the expression cannot be evaluated. **Reset example** restores the current concept's supplied code and recalculates its output. Draft expressions remain available while navigating within the tab and start fresh on reload. Calculations do not create quiz answers, earn checkmarks, or sync to an account.
+
+The pinned math.js 15.2.0 library is embedded as inert text and starts only inside a disposable worker when a lesson with code opens or its code changes. There is no runtime CDN request; the site remains a single offline file. This adds approximately 650 kB uncompressed to the page. The boxes use the full native [math.js expression language](https://mathjs.org/docs/expressions/syntax.html): transpose, inverses, indexing, ranges, custom functions, complex numbers, units, fractions, big numbers, and symbolic operations. Assignments produce output unless ended with a semicolon, as in math.js; the supplied examples use semicolons to keep their output concise. Rich values are formatted in the worker and inserted as text or bracketed tables, never HTML. Display previews limit matrices to 32 rows/columns, long text to 2,000 characters, and results to 100, with a visible note when shortened. These display limits do not change calculations. Each run has a fresh scope and a 3.5-second timeout. Edits and navigation cancel pending calculations, and stale replies are ignored. A browser that cannot start a worker keeps the lesson and quiz usable. The Apache-2.0 license and exact distribution hash are in `source/vendor/mathjs-15.2.0/`.
+
+Twelve boxes also use the course's `plot()` helper to draw directly in the output: vector scaling, variance, derivative, regression, covariance/correlation, backpropagation, mini-batch descent, deep networks, softmax, cross-entropy, PCA, and autoencoder. These are responsive SVG plots with labeled axes and legends, updated by editing the same code. They need no plotting-library download. The helper is a course extension, not a built-in math.js function. Use `plot(x, y, {xLabel: "Time", yLabel: "Value"})`, or `plot([{x: xs, y: ys, label: "Curve"}, {x: xs, y: targets, label: "Data", style: "points"}], options)` for multiple series. Styles are `line`, `points`, and `bar` (discrete stems from zero); `equal: true` preserves geometric angles by using equal axis scales. Plots accept numeric vectors of up to 1,000 points per series, six series per plot, and six plots per run. Nonfinite y values appear as gaps; unsupported types or larger inputs receive an editing error. A semicolon suppresses a plot like any other output.
+
+[The ordered 256-concept outline](source/CURRICULUM_256_PLAN.md) is authoring material only. It reserves stable IDs for 256 concepts, with 138 live lessons and 118 proposed additions. The first ten additions are documented in [the pilot review checklist](source/EXPANSION_PILOT_REVIEW.md). Adaptive assessment is deferred. See [the playground review and test checklist](source/PLAYGROUND_REVIEW.md) for this first review checkpoint.
+
+[The engine assessment](source/PLAYGROUND_ENGINE_REVIEW.md) recommends math.js for small mathematical experiments and selective Python/Pyodide use for lessons involving standard estimators or tabular workflows. No Python runtime is loaded yet. This pilot stops at 138 concepts for review; the other 118 remain unimplemented.
+
+Additional checks:
+
+```sh
+python verify_curriculum_plan.py
+node verify_playground.mjs
+node verify_math_playgrounds.mjs
+node verify_neural_playgrounds.mjs
+node verify_plots.mjs
+node verify_playground_ui.mjs
+```
+
 ## Print and present
 
 Use the accompanying **Mathematics-to-Model-Conversations.pdf** for printing. It contains exactly 100 A4 landscape pages, one concept per page, with embedded fonts. Print landscape, one page per sheet, single-sided, at actual size or fit to the printable area. A3 printing increases the text size. The PDF has chapter and concept bookmarks.
 
-The accompanying editable **Mathematics-to-Model-Conversations.pptx** uses the same content and layout. The original questions, answers, nuances, and source links are in slide notes. The PDF and PowerPoint remain the original printable/presentation editions; the 128-lesson course and expanded question bank are on the website. The typeface is DejaVu Sans; PDF is the most reliable choice for exact printing if that font is not installed.
+The accompanying editable **Mathematics-to-Model-Conversations.pptx** uses the same content and layout. The original questions, answers, nuances, and source links are in slide notes. The PDF and PowerPoint remain the original printable/presentation editions; the expanded 138-lesson course and question bank are on the website. The typeface is DejaVu Sans; PDF is the most reliable choice for exact printing if that font is not installed.
 
 ## Learning sequence
 
 | Concepts | Chapter | What it builds |
 | --- | --- | --- |
-| 1–15 | Numbers and linear algebra | Numbers, vectors, matrices, transformations, eigenvectors, SVD |
-| 16–31 | Probability and calculus | Probability, uncertainty, derivatives, constrained optimization |
-| 32–50 | Learning from data | Prediction, validation, neighbors, trees, ensembles, calibration, causality, adaptation |
-| 51–77 | Neural networks and representations | Neurons, training, CNNs, graphs, embeddings, compression, diffusion |
-| 78–90 | Language models | Sequences, attention, Transformers, experts, fine-tuning, distillation, retrieval, tools |
-| 91–104 | Reinforcement learning and control | States, returns, policies, values, learning, planning, RLHF |
-| 105–114 | Computing hardware | CPU, GPU, memory, KV caching, clusters, fabrication |
-| 115–128 | Applied AI: Mineral Resource Extraction | Assays and QC, integration, grade estimation, kriging, spatial validation, processing, delivery |
+| 1–25 | Numbers and linear algebra | Numbers, vectors, matrices, transformations, eigenvectors, SVD |
+| 26–41 | Probability and calculus | Probability, uncertainty, derivatives, constrained optimization |
+| 42–60 | Learning from data | Prediction, validation, neighbors, trees, ensembles, calibration, causality, adaptation |
+| 61–87 | Neural networks and representations | Neurons, training, CNNs, graphs, embeddings, compression, diffusion |
+| 88–100 | Language models | Sequences, attention, Transformers, experts, fine-tuning, distillation, retrieval, tools |
+| 101–114 | Reinforcement learning and control | States, returns, policies, values, learning, planning, RLHF |
+| 115–124 | Computing hardware | CPU, GPU, memory, KV caching, clusters, fabrication |
+| 125–138 | Applied AI: Mineral Resource Extraction | Assays and QC, integration, grade estimation, kriging, spatial validation, processing, delivery |
 
 Start with the worked numbers, retell the metaphor, then explain where the metaphor stops being exact. A correct answer is an understanding check, not evidence of durable mastery.
 
@@ -85,7 +108,7 @@ Define mathematical symbols locally, including their role, indices, and any spec
 
 Mathematical notation in lessons, quiz choices, hints and solutions is typeset by the bundled KaTeX renderer **during the build**. This includes matrices, grouped indices and powers, summation limits, fractions, and radicals. The published page contains prebuilt HTML and accessible MathML, plus embedded CSS and fonts; it never loads KaTeX JavaScript or a font CDN. A small display helper leaves the original readable notation visible until the required fonts load. Missing styles or failed fonts keep that fallback. Wide formulas scroll within their own container by touch or keyboard; answer controls also have spoken matrix row descriptions.
 
-`math-notation.json` supplies explicit, reviewed TeX for all 128 main formula fields and mathematical expressions throughout the course and question bank. Its spans must reconstruct the original text exactly; `build_math.mjs` rejects stale annotations after a content edit. The original numeric-array formatter remains available for unannotated matrix fields. Uneven or empty rows are preserved as row lists, and all options in a rectangularity question share that style so formatting does not reveal the answer. Course data, the course version, question IDs, answer positions, and saved-progress format remain unchanged. `verify_math.mjs` checks notation coverage, numerical and matrix-cell fidelity, bundled assets, accessible labels, and fallback behavior. See [mathematical notation](source/MATH_FORMATTING.md) for authoring and verification details.
+`math-notation.json` supplies explicit, reviewed TeX for all 138 main formula fields and mathematical expressions throughout the course and question bank. Its spans must reconstruct the original text exactly; `build_math.mjs` rejects stale annotations after a content edit. The original numeric-array formatter remains available for unannotated matrix fields. Uneven or empty rows are preserved as row lists, and all options in a rectangularity question share that style so formatting does not reveal the answer. Course data, the course version, question IDs, answer positions, and saved-progress format remain unchanged. `verify_math.mjs` checks notation coverage, numerical and matrix-cell fidelity, bundled assets, accessible labels, and fallback behavior. See [mathematical notation](source/MATH_FORMATTING.md) for authoring and verification details.
 
 `source/assets/math2ai-logo.png` is the existing math2ai GitHub profile logo. The site builder embeds it directly into the header, so the generated page still works as a single offline file.
 
@@ -99,6 +122,7 @@ python build_content.py
 python build_site.py
 python verify_course.py
 python verify_examples.py
+python verify_content_depth.py
 python verify_bank.py
 python verify_expansion.py
 python verify_alignment.py
@@ -121,7 +145,7 @@ node verify_auth.mjs
 node verify_progress.mjs
 ```
 
-The checks cover all 1,280 question records, independent numerical calculations, original worked examples, prerequisite order, embedded assets, and actual app event handlers. Feedback checks exercise the first explanation, single retry, finished round and history-preserving question reset for every question, plus lesson reloads, review and account transitions. State checks cover every question, stable shuffled question navigation, repeat attempts, correct-answer indicators, unrestricted navigation, reloads, reset, deep links, incompatible/corrupt saves, and unavailable storage. Authentication checks cover Google redirects, PKCE callbacks, cancellation, session restoration and sign-out, including the pinned SDK against simulated Auth endpoints. Progress checks run the real UI and persistence handlers with controllable storage, account, network and Realtime events: stale tabs, concurrent answers, account isolation, lost replies, offline retries, reset epochs, late responses after sign-out, and the complete guest-to-account signup flow (including a fresh OAuth return page, failed transfers, repeat logins, multiple upload batches and retained question state). These checks need no packages.
+The checks cover all 1,380 question records, independent numerical calculations, original worked examples, prerequisite order, embedded assets, and actual app event handlers. Feedback checks exercise the first explanation, single retry, finished round and history-preserving question reset for every question, plus lesson reloads, review and account transitions. State checks cover every question, stable shuffled question navigation, repeat attempts, correct-answer indicators, unrestricted navigation, reloads, reset, deep links, incompatible/corrupt saves, and unavailable storage. Authentication checks cover Google redirects, PKCE callbacks, cancellation, session restoration and sign-out, including the pinned SDK against simulated Auth endpoints. Progress checks run the real UI and persistence handlers with controllable storage, account, network and Realtime events: stale tabs, concurrent answers, account isolation, lost replies, offline retries, reset epochs, late responses after sign-out, and the complete guest-to-account signup flow (including a fresh OAuth return page, failed transfers, repeat logins, multiple upload batches and retained question state). These checks need no packages.
 
 `source/verify_progress_sql.mjs` also executes the actual migration and access-control tests in PostgreSQL using the optional test-only `@electric-sql/pglite` package (tested with 0.3.14). Install it outside the deployed website, then run `node source/verify_progress_sql.mjs /absolute/path/to/pglite/dist/index.js`. It tests owner-only reads, denied guest and cross-account access, restricted writes, duplicate-operation handling, and idempotent resets. PGlite is not a runtime website dependency. A real Google/Supabase multi-device test still requires the manual checklist in `source/AUTH_SETUP.md`.
 
@@ -132,7 +156,7 @@ Presentation builders are included for reuse; rebuilding the PPTX requires the O
 The original course source and website code in this package are offered under the included MIT license. The vendored Supabase SDK and KaTeX have their own included MIT licenses; the official Google sign-in button follows Google branding guidelines. Linked papers, documentation, data, company names, and third-party materials retain their own rights.
 
 
-Concept connections are curated in `source/concept-links.json`, with an explicit entry for all 128 lessons. Each lesson may link up to three earlier prerequisites within its explanation or worked example and up to two later applications in a small “Used in” line. Use stable concept IDs, not display numbers. The content build rejects missing phrases, backward/forward order mistakes, duplicate prerequisites, and links inside mathematical notation. Quiz text is not linked. Following a connection uses browser history; Back restores the question and reading position while keeping current answer and account state. No schema or course-version change is needed.
+Concept connections are curated in `source/concept-links.json`, with an explicit entry for all 138 lessons. Each lesson may link up to three earlier prerequisites within its explanation or worked example and up to four selected applications in a small “(used in …)” note beside its title, wrapping naturally on narrow screens. Every application link points to a later lesson. Prerequisite links point backward; reversing those prerequisite links produces the same forward dependency direction. The build exports the resulting acyclic graph to `source/dist/concept-graph.json`. Use stable concept IDs, not display numbers. The content build rejects missing phrases, forward prerequisite links, backward application links, duplicate or self links, and links inside mathematical notation. Quiz text is not linked. Following a connection uses browser history; Back restores the question and reading position while keeping current answer and account state. No schema or course-version change is needed. The [connection review](source/CONCEPT_CONNECTIONS_REVIEW.md) records the selected applications and explains the expanded Transformer and language-model connections.
 
 ## Revisit later
 
@@ -147,3 +171,11 @@ See [the release test checklist](source/LEARNING_CHOICES_TESTING.md) for the UI 
 ```sh
 node source/verify_learning_sql.mjs /absolute/path/to/pglite/dist/index.js
 ```
+
+## Ten-concept expansion pilot
+
+The current pilot adds linear combinations, norms and unit vectors, orthogonality, vector projection, span, linear independence, basis and dimension, systems of linear equations, matrix rank, and low-rank approximation. Every addition has a worked example, math.js code, metaphor, ten questions and staged explanations. See [the review checklist](source/EXPANSION_PILOT_REVIEW.md).
+
+Before release, apply `supabase/migrations/202609290001_expand_learning_concepts.sql` **after the existing bookmark migration**. This widens the bookmark ID bound to the reserved 256-concept range without deleting or rewriting saved rows. Guest bookmarks already work locally; account bookmarks on new IDs need this migration. The live database is not changed by building the website.
+
+Additional checks: `python source/verify_linear_bridges.py` and `node source/verify_linear_playgrounds.mjs`. `verify_learning_sql.mjs` tests both the original bookmark setup and this additive expansion, including preservation and reapplication, using test-only PGlite (also tested with 0.5.8).

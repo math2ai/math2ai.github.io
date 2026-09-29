@@ -11,7 +11,7 @@ review = json.loads((root / 'example-review.json').read_text(encoding='utf-8'))
 concepts = {c['legacyId']: c for c in course['concepts']}
 questions = {q['id']: q for c in course['concepts'] for q in c['questions']}
 assert course['version'] == review['courseVersion']
-assert len(review['reviewed']) == len(concepts) == 128
+assert len(review['reviewed']) == len(concepts)
 assert {c['conceptId'] for c in review['reviewed']} == set(concepts)
 reviewed_ids, replaced_ids = [], []
 for record in review['reviewed']:
@@ -25,7 +25,7 @@ for record in review['reviewed']:
         assert qid in record['questionIds'] and replacement['reason'].strip()
         assert replacement['previousQuestion'] != questions[qid]['question'], qid
         replaced_ids.append(qid)
-assert len(reviewed_ids) == len(set(reviewed_ids)) == 1280
+assert len(reviewed_ids) == len(set(reviewed_ids)) == len(concepts)*10
 assert len(replaced_ids) == len(set(replaced_ids)) == 99
 assert sum(bool(c['replacements']) for c in review['reviewed']) == 70
 
@@ -94,4 +94,4 @@ unique('60-08', lambda text: int(text.split()[-1]), lambda position: position > 
 # supplied logarithms. The prompt intentionally supplies sufficient precision.
 unique('124-01', lambda text: float(text.split()[-1]), lambda value: abs(value - (.25*.223+.75*1.609)) <= .00051)
 
-print('PASS: all 128 lessons and 1,280 question IDs covered by the editorial record; 99 copied prompts stay replaced; independent checks of fresh scenarios and unique answers.')
+print('PASS: all 138 lessons and 1,380 question IDs covered by the editorial record; 99 copied prompts stay replaced; independent checks of fresh scenarios and unique answers.')

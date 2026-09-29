@@ -13,6 +13,8 @@ SOURCES = {
  'autoencoder': ['Deep Learning, chapter 14: Autoencoders', 'https://www.deeplearningbook.org/contents/autoencoders.html'],
  'vq': ['Neural Discrete Representation Learning, van den Oord et al., 2017', 'https://arxiv.org/abs/1711.00937'],
  'attention': ['Attention Is All You Need, Vaswani et al., 2017', 'https://papers.nips.cc/paper/7181-attention-is-all-you-need'],
+ 'gpt3': ['Language Models are Few-Shot Learners, Brown et al., 2020', 'https://arxiv.org/abs/2005.14165'],
+ 'switch': ['Switch Transformers, Fedus et al., 2021', 'https://arxiv.org/abs/2101.03961'],
  'rlbook': ['Reinforcement Learning: Foundations, Mannor, Mansour and Tamar', 'https://sites.google.com/view/rlfoundations/home'],
  'sensing': ['Dynamic Sensing, Richman and Mannor, 2015', 'https://proceedings.mlr.press/v37/richman15.html'],
  'sensors': ['Sensor Selection for Crowdsensing Dynamical Systems, Schnitzler, Yu and Mannor, 2015', 'https://proceedings.mlr.press/v38/schnitzler15.html'],
@@ -58,6 +60,9 @@ def sources_for(i):
      75:['rlhf'],76:['rlbook'],78:['sensing'],83:['h100'],84:['cuda'],87:['h100'],88:['cuda'],89:['tsmc'],90:['las','assays'],93:['minerals'],95:['opensource'],96:['grade','core']}
     specific.update({101: ['probability'], 102: ['probability'], 103: ['linear'], 104: ['linear'], 105: ['probability'], 106: ['montecarlo'], 107: ['numerical'], 108: ['numerical'], 109: ['neighbors'], 110: ['trees'], 111: ['ensemble'], 112: ['ensemble'], 113: ['metrics'], 114: ['calibration'], 115: ['cnn'], 116: ['gnn'], 117: ['contrastive'], 118: ['shift'], 119: ['active'], 120: ['causal'], 121: ['diffusion'], 122: ['experts'], 123: ['cache'], 124: ['distillation'], 125: ['qc'], 126: ['spatial'], 127: ['kriging'], 128: ['recovery']})
     if i == 38: specific[i] = ['backprop','autograd']
+    if i == 61: specific[i] = ['gpt3']
+    if i == 122: specific[i] = ['experts','switch']
+    if i in {149,150,151,152,153,154,155,156,159,160}: specific[i] = ['linear']
     return [dict(title=SOURCES[k][0],url=SOURCES[k][1]) for k in specific.get(i,[])]
 
 LEGACY_IDS = json.loads((ROOT/'concept-ids.json').read_text(encoding='utf-8'))
@@ -103,7 +108,9 @@ for line in (ROOT/'curriculum-source.txt').read_text(encoding='utf-8').splitline
         course.append(dict(id=len(course)+1,legacyId=legacy_id,chapter=chapter,title=title,definition=definition,formula=formula,formulaNote=formula_note,
          example=example,metaphor=metaphor,question=question,options=opts,correct=opts.index(correct),feedback=feedback,
          sources=sources_for(legacy_id)))
-assert len(course)==128
+batch = json.loads((ROOT/'expansion-batch.json').read_text(encoding='utf-8'))
+assert len(course) == batch['currentCount'] == 138
+assert {c['legacyId'] for c in course} == set(range(1,129)) | set(batch['addedIds'])
 assert set(LEGACY_IDS) == {c['title'] for c in course}
 assert set(bank) == {c['title'] for c in course}
 assert set(retry_feedback) == set(bank)
@@ -160,7 +167,7 @@ assert set(connections) == {str(id) for id in by_id}, 'Review connections for ev
 for c in course:
     entry = connections[str(c['legacyId'])]
     assert set(entry) == {'title', 'mentions', 'usedIn'} and entry['title'] == c['title'], c['title']
-    assert len(entry['mentions']) <= 3 and len(entry['usedIn']) <= 2, c['title']
+    assert len(entry['mentions']) <= 3 and len(entry['usedIn']) <= 4, c['title']
     seen = set()
     for link in entry['mentions']:
         assert set(link) == {'field', 'text', 'target'}, (c['title'], link)
@@ -174,6 +181,7 @@ for c in course:
         pattern = re.compile(r'(?<!\w)' + re.escape(phrase) + r'(?!\w)')
         assert phrase and any(isinstance(p, str) and pattern.search(p) for p in parts), (c['title'], link, 'Missing prose phrase')
     assert len(set(entry['usedIn'])) == len(entry['usedIn']), c['title']
+    # An application link always moves forward; prerequisite mentions move back.
     assert all(target in by_id and by_id[target]['id'] > c['id'] for target in entry['usedIn']), c['title']
     c['connections'] = {key:entry[key] for key in ('mentions', 'usedIn')}
 payload={'version':'2.0','title':'math2ai','chapters':chapters,'concepts':course,
@@ -181,5 +189,13 @@ payload={'version':'2.0','title':'math2ai','chapters':chapters,'concepts':course
  'subtitle': 'From mathematics to AI, one concept at a time.',
  'sources':[dict(title=v[0],url=v[1]) for v in SOURCES.values()]}
 (ROOT/'dist').mkdir(exist_ok=True)
+edges = set()
+for c in course:
+    edges.update((link['target'],c['legacyId']) for link in c['connections']['mentions'])
+    edges.update((c['legacyId'],target) for target in c['connections']['usedIn'])
+assert all(by_id[a]['id'] < by_id[b]['id'] for a,b in edges), 'Every dependency must respect teaching order'
+graph = {'nodes':[{'id':c['legacyId'],'position':c['id'],'title':c['title']} for c in course],
+         'edges':[{'from':a,'to':b} for a,b in sorted(edges)]}
+(ROOT/'dist/concept-graph.json').write_text(json.dumps(graph,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 (ROOT/'dist/curriculum.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n', encoding='utf-8')
 print(f"Built {len(course)} concepts and {sum(len(c['questions']) for c in course)} questions.")

@@ -6,7 +6,7 @@ import json, math, re
 root=Path(__file__).resolve().parent
 course=json.loads((root/'dist/curriculum.json').read_text(encoding='utf-8'))
 by_title={c['title']:c for c in course['concepts']}
-new=[c for c in course['concepts'] if c['legacyId']>100]
+new=[c for c in course['concepts'] if 100<c['legacyId']<=128]
 assert len(new)==28 and sum(len(c['questions']) for c in new)==280
 assert all(c['sources'] for c in new)
 

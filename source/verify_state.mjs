@@ -71,7 +71,7 @@ for (const [position, identity, title] of [[32,33,'Artificial neuron'],[63,62,'F
 }
 const stablePosition = (await boot(new Map([[key,JSON.stringify({version:course.version,current:0,currentConceptId:128,concepts:{}})]])));
 assert.equal(stablePosition.current().title,'Mineral processing and recovery');
-assert.equal(stablePosition.current().id,123);
+assert.equal(stablePosition.current().id,course.concepts.find(c=>c.legacyId===128).id);
 console.log('PASS: old bookmarks and saved positions follow their concepts; stable IDs override obsolete display positions.');
 
 for (const seed of [1, 19, 2048, 123456]) {
@@ -119,7 +119,7 @@ for (const c of course.concepts) {
 assert.equal((all.get('concept-select').innerHTML.match(/✓<\/option>/g)||[]).length,course.concepts.length);
 const reloadAll=(await boot(all.storage));assert.equal(score(reloadAll),10);
 await reloadAll.get('reset').onclick();assert.equal(score(reloadAll),0);assert.equal(reloadAll.current().id,1);
-console.log('PASS: all 1,280 questions, full menu indicators, return to start, reload, and reset.');
+console.log('PASS: all 1,380 questions, full menu indicators, return to start, reload, and reset.');
 
 const skipped=(await boot());skipped.go(course.concepts.length-1);assert.equal(skipped.get('next').textContent,'Back to start');skipped.next();assert.equal(skipped.current().id,1);
 const deep=(await boot(new Map(),{hash:'#lesson-50'}));assert.equal(deep.current().legacyId,50);

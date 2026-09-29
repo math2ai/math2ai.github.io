@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {bootBrowser,course,flush,Server} from './progress-test-helpers.mjs';
 const authored=JSON.parse(fs.readFileSync(new URL('concept-links.json',import.meta.url),'utf8'));
 const byId=new Map(course.concepts.map(c=>[c.legacyId,c]));
-assert.equal(Object.keys(authored).length,128);
+assert.equal(Object.keys(authored).length,course.concepts.length);
 const boot=async options=>{const app=bootBrowser(options);await flush();return app;};
 const app=await boot();let backwards=0,forwards=0;
 const stripLinks=s=>s.replace(/<a\b[^>]*>/g,'').replaceAll('</a>','');
@@ -26,16 +26,28 @@ for(const c of course.concepts) {
   }
  }
  backwards+=seen.size;forwards+=spec.usedIn.length;
- assert(seen.size<=3 && spec.usedIn.length<=2);
+ assert(seen.size<=3 && spec.usedIn.length<=4);
  assert.equal(app.get('concept-applications').hidden,!spec.usedIn.length);
  assert.deepEqual(targets(app.get('concept-applications').innerHTML),spec.usedIn);
- for(const id of spec.usedIn)assert(byId.get(id).id>c.id);
+ for(const id of spec.usedIn)assert(byId.has(id) && byId.get(id).id>c.id);
  for(let i=0;i<10;i++) {
   for(const id of ['question','choices','feedback','formula'])assert(!app.get(id).innerHTML.includes('data-concept-id'),id+' must not gain links');
   app.another();
  }
 }
 app.close();
+
+// All application links move forward in teaching order. Keep the important
+// architecture-to-language-model and training connections discoverable.
+assert.equal(byId.get(61).id,byId.get(59).id+1);
+assert.equal(byId.get(61).title,'Large language models and next-token prediction');
+assert(byId.get(75).id > byId.get(69).id,'detailed RLHF follows policies');
+assert(authored[61].usedIn.includes(75),'the LLM overview must lead to RLHF');
+assert(authored[61].mentions.some(m=>m.target===59),'the LLM overview links back to its architecture');
+assert(authored[59].usedIn.includes(61));
+assert(authored[59].usedIn.includes(123));
+assert(authored[38].usedIn.includes(39));
+assert(authored[46].usedIn.includes(63));
 
 const nav=await boot({hash:'#lesson-38'});
 nav.another();nav.wrong();nav.retry();nav.draft(nav.question().correct);
@@ -73,4 +85,4 @@ assert.equal(Object.keys(signed.state().concepts[38]?.answers||{}).length,0);
 signed.followConcept(21);signed.signout();await flush();signed.browserBack();
 assert.equal(Object.keys(signed.state().concepts[38]?.answers||{}).length,0,'Back cannot restore another account’s answers');
 signed.close();
-console.log(`Reviewed all 128 concepts: ${backwards} prerequisite links, ${forwards} selected later applications. History, drafts, reset and account isolation passed.`);
+console.log(`Reviewed all 138 concepts: ${backwards} prerequisite links, ${forwards} selected applications. History, drafts, reset and account isolation passed.`);

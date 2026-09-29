@@ -45,14 +45,14 @@ otherDevice.signout();await flush();assert.ok(!marked(otherDevice,'Summation'));
 console.log('PASS: account switches and late responses preserve ownership; guest answers move into the account on sign-in.');
 
 // Offline operations survive reload, deduplicate, and flush only into their original account.
-server.offline=true;first.go(8);first.correct();await flush();
+server.offline=true;first.go(course.concepts.findIndex(c=>c.legacyId===9));first.correct();await flush();
 const offlineReload=bootBrowser({configured:true,shared});offlineReload.signin(server,A);await flush();assert.ok(marked(offlineReload,'Dot product'));
 server.offline=false;offlineReload.emit('online');await flush();assert.ok(server.data(A,course.version).answers[offlineReload.question().id]);
 console.log('PASS: offline answers survive reload and reconcile when the connection returns.');
 
 // Clearing uses an epoch; a device returning with offline writes from before the clear cannot restore them.
 const isolated=bootBrowser({configured:true});isolated.signin(server,A);await flush();
-server.offline=true;isolated.go(9);isolated.correct();await flush();
+server.offline=true;isolated.go(course.concepts.findIndex(c=>c.legacyId===10));isolated.correct();await flush();
 server.offline=false;await first.reset();await flush();
 await isolated.engine.sync();await flush();
 assert.equal(Object.keys(server.data(A,course.version).answers).length,0);
@@ -113,18 +113,18 @@ visitor.signout();await flush();assert.ok(!marked(visitor,'Scalar'));
 visitor.signin(signupServer,B);await flush();assert.equal(Object.keys(signupServer.data(B,course.version).answers).length,0);
 visitor.signin(signupServer,A);await flush();assert.ok(Object.values(signupServer.data(A,course.version).answers).every(a=>a.attempts===1));
 const remoteSignup=bootBrowser({configured:true});remoteSignup.signin(signupServer,A);await flush();
-assert.ok(marked(remoteSignup,'Scalar'));assert.ok(marked(remoteSignup,'Matrix multiplication'));
+assert.ok(marked(remoteSignup,'Scalar'));assert.ok(marked(remoteSignup,course.concepts[9].title));
 console.log('PASS: ten guest answers survive signup immediately, retain the current question/feedback, sync to a second device, and transfer to only one account.');
 
 // Existing account progress is merged, including different attempts at the same question.
 const returningHub=hub(),returning=bootBrowser({configured:true,shared:returningHub});returning.signout();await flush();
-returning.go(10);returning.correct();
+returning.go(course.concepts.findIndex(c=>c.legacyId===11));returning.correct();
 returning.go(0);const row=signupServer.data(A,course.version);
 for(let i=0;i<10&&!row.answers[returning.question().id];i++)returning.another();
 const guestQ=returning.question(),priorAttempts=row.answers[guestQ.id]?.attempts||0;
 assert.ok(priorAttempts>0);returning.wrong();
 returning.signin(signupServer,A);await flush();
-assert.ok(marked(returning,'Transpose'));assert.ok(marked(returning,'Matrix multiplication'));assert.ok(marked(returning,'Scalar'));
+assert.ok(marked(returning,'Transpose'));assert.ok(marked(returning,course.concepts[9].title));assert.ok(marked(returning,'Scalar'));
 assert.equal(row.answers[guestQ.id].attempts,priorAttempts+1);
 assert.equal(row.answers[guestQ.id].last,(guestQ.correct+1)%4);
 returning.signout();await flush();returning.signin(signupServer,A);await flush();

@@ -84,7 +84,9 @@
         "plain": "y = 2 × 3 + 1 = 7",
         "tex": "y = 2 \\times  3 + 1 = 7"
       },
-      "."
+      ".",
+      "\n\n",
+      "Read the calculation as a small process: take the input 3, double it to get 6, then add the fixed 1. The resulting 7 belongs to y. If the input changes, substitute the new value everywhere x occurs. This is how a single formula can describe many measurements or predictions without rewriting the calculation each time."
     ],
     "q:2-01:question": [
       "For ",
@@ -379,7 +381,9 @@
         "plain": "f(−3) = 9",
         "tex": "f(-3) = 9"
       },
-      ". Different inputs may share an output."
+      ". Different inputs may share an output.",
+      "\n\n",
+      "The rule squares its input. Starting with 3 or with −3 therefore reaches the same 9. The rule is perfectly definite in the forward direction, yet “which input produced 9?” has two answers here. This distinction matters whenever we transform measurements: an easy forward calculation may be impossible to undo uniquely."
     ],
     "q:3-04:question": [
       "For ",
@@ -553,7 +557,9 @@
         "plain": "3 metres/second × 4 seconds = 12 metres",
         "tex": "3 \\text{ metres}/\\text{second } \\times  4 \\text{ seconds } = 12 \\text{ metres}"
       },
-      ". Seconds cancel."
+      ". Seconds cancel.",
+      "\n\n",
+      "Think of four one-second intervals. Each contributes 3 metres, so four such intervals contribute 12 metres in total. The same speed is 300 centimetres per second; multiplying by 4 gives 1,200 centimetres, the same distance. A changed numerical representation should not change the physical prediction."
     ],
     "q:4-01:question": [
       "At ",
@@ -671,7 +677,9 @@
         "plain": "ℝⁿ",
         "tex": "\\mathbb{R} ^{n}"
       },
-      " is an ordered list of n real numbers. Each position is a coordinate or feature. Add or subtract vectors of the same length by combining matching coordinates."
+      " is an ordered list of n real numbers. Each position is a coordinate or feature. Add or subtract vectors of the same length by combining matching coordinates.",
+      "\n\n",
+      "The order gives the numbers their roles. A vector might hold horizontal and vertical displacement, or two measurements of one object. Operations on vectors only make sense when the corresponding positions refer to compatible quantities. This is how a model can process several inputs together while keeping their identities."
     ],
     "c:5:formula": [
       {
@@ -702,7 +710,9 @@
         "plain": "(2, 3) ≠ (3, 2)",
         "tex": "(2, 3) \\ne  (3, 2)"
       },
-      "."
+      ".",
+      "\n\n",
+      "For a displacement, start at the origin, move 2 units horizontally and 3 vertically. Doubling the vector doubles both movements, producing the same direction with twice the length. If instead the entries mean temperature and pressure, scaling still works coordinate by coordinate, but the geometric interpretation requires care because the units differ."
     ],
     "q:5-01:question": [
       "If ",
@@ -977,7 +987,9 @@
         "plain": "Aᵢᵢ",
         "tex": "A_{ii}"
       },
-      " have matching row and column indices."
+      " have matching row and column indices.",
+      "\n\n",
+      "A matrix can organize many vectors: for example, one observation per row and one measured feature per column. Those meanings are part of the data specification. A matrix can also hold the coefficients of a transformation, which we will apply using matrix multiplication."
     ],
     "c:6:formula": [
       {
@@ -1003,7 +1015,9 @@
         "plain": "A₂₃ = 6",
         "tex": "A_{23} = 6"
       },
-      ". Each horizontal row has three entries."
+      ". Each horizontal row has three entries.",
+      "\n\n",
+      "Suppose the first row describes observation A and the second describes observation B. Then the first feature is the column containing 1 and 4; the third feature is the column containing 3 and 6. Reading entry 6 means selecting observation B's third feature. Swapping rows changes observation order; swapping columns changes which measurement occupies each position."
     ],
     "q:6-01:question": [
       "What is ",
@@ -1322,7 +1336,9 @@
         "plain": "(2, 2, 2)",
         "tex": "(2, 2, 2)"
       },
-      "."
+      ".",
+      "\n\n",
+      "To find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering."
     ],
     "q:7-01:question": [
       "A tensor has tables ",
@@ -1571,7 +1587,9 @@
         "plain": "Σ",
         "tex": "\\sum"
       },
-      " says which index varies and where it starts and ends."
+      " says which index varies and where it starts and ends.",
+      "\n\n",
+      "The index is a bookkeeping device: expand the terms it names, then add each exactly once. Dividing a sum by the number of terms produces their arithmetic mean. Learning algorithms repeatedly use this pattern to combine contributions from many observations."
     ],
     "c:8:formula": [
       {
@@ -1596,7 +1614,9 @@
         "plain": "12/3 = 4",
         "tex": "12/3 = 4"
       },
-      "."
+      ".",
+      "\n\n",
+      "The three contributions are 2, 4, and 6; none is a multiplier or an extra index value. Their total is 12. Sharing that total equally across three positions gives the mean 4. A sum answers “how much altogether?” while a mean answers “how much per observation?” Doubling a dataset changes the sum but not its mean when all observations are duplicated."
     ],
     "c:8:metaphor": [
       {
@@ -1883,7 +1903,9 @@
         "plain": "x · w = 8 + 15 = 23",
         "tex": "x \\cdot  w = 8 + 15 = 23"
       },
-      "."
+      ".",
+      "\n\n",
+      "Imagine two products with quantities 2 and 3 and unit prices 4 and 5. Their costs are 8 and 15, totaling 23. Pairing a quantity with the wrong price would change the meaning. The same arithmetic can combine measured features into a score; learning will later mean adjusting those weights from examples."
     ],
     "q:9-01:question": [
       "What is ",
@@ -2118,7 +2140,9 @@
         "plain": "m × p",
         "tex": "m \\times  p"
       },
-      ". Each entry is a row-column dot product."
+      ". Each entry is a row-column dot product.",
+      "\n\n",
+      "Matrix multiplication bundles many dot products into one operation. Each row of the left matrix supplies a different set of weights; each column of the right matrix supplies an input. The shared inner dimension ensures that each weight has one matching input value."
     ],
     "c:10:formula": [
       {
@@ -2142,7 +2166,9 @@
         "plain": "3×5 + 4×6 = 39",
         "tex": "3\\times 5 + 4\\times 6 = 39"
       },
-      "."
+      ".",
+      "\n\n",
+      "The column holds one input with two coordinates. The first row combines it with weights 1 and 2; the second uses weights 3 and 4. That produces two different output coordinates, 17 and 39, from the same input. Adding another input column would calculate both outputs for that input as well, without changing the transformation."
     ],
     "q:10-01:question": [
       "A is ",
@@ -2395,7 +2421,9 @@
         "plain": "n × m",
         "tex": "n \\times  m"
       },
-      " matrix."
+      " matrix.",
+      "\n\n",
+      "Transpose changes which index plays which role; it does not change the entries themselves. It is useful when a calculation needs observations arranged as columns instead of rows, or when we need to pair rows of one matrix with rows of another through a dot product."
     ],
     "c:11:formula": [
       {
@@ -2415,7 +2443,9 @@
         "plain": "Aᵀ = [[1], [2], [3]]",
         "tex": "A^{\\mathsf{T}} = \\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}"
       },
-      "."
+      ".",
+      "\n\n",
+      "All three numbers survive, in the same order, but the horizontal row becomes a vertical column. Transposing again restores the original row. No stretching has been undone and no equation has been solved: rearranging entries is different from finding an inverse transformation."
     ],
     "q:11-01:question": [
       "What is the transpose of a ",
@@ -2659,7 +2689,9 @@
         "plain": "A(1, 2) = (2, 6)",
         "tex": "A(1, 2) = (2, 6)"
       },
-      ". The first coordinate doubles; the second triples."
+      ". The first coordinate doubles; the second triples.",
+      "\n\n",
+      "The horizontal unit direction becomes twice as long and the vertical one three times as long. The input contains one horizontal unit and two vertical units, so the result contains 2 horizontal units and 6 vertical units. The transformation changes the entire drawing consistently; it is not a separate rule invented for each point."
     ],
     "q:12-01:feedback": [
       "A linear map sends zero to zero and obeys superposition. The familiar straight-line function ",
@@ -2902,7 +2934,9 @@
         "plain": "distance = √(9 + 16) = 5",
         "tex": "\\text{distance } = \\sqrt{9 + 16} = 5"
       },
-      "."
+      ".",
+      "\n\n",
+      "Moving from the first point to the second changes the horizontal coordinate by 3 and the vertical by 4. These are perpendicular sides of a right triangle; the straight path is its hypotenuse, of length 5, not the 7-unit route along both sides. A feature measured on a much larger numerical scale can dominate this distance, even when it is not more important."
     ],
     "q:13-01:question": [
       "What is the Euclidean distance from ",
@@ -3149,7 +3183,9 @@
         "plain": "(1,0)",
         "tex": "(1,0)"
       },
-      " is an eigenvector with eigenvalue 2. The other coordinate direction has eigenvalue 3."
+      " is an eigenvector with eigenvalue 2. The other coordinate direction has eigenvalue 3.",
+      "\n\n",
+      "A vector with both coordinates nonzero usually changes its direction here because its horizontal part is multiplied by 2 while its vertical part is multiplied by 3. The coordinate arrows avoid that mixing. Repeating the transformation favors the vertical component because it grows by the larger factor on every application; this explains why the special directions are useful, beyond just naming them."
     ],
     "q:103-01:question": [
       "For ",
@@ -3522,7 +3558,9 @@
         "plain": "(6,5)",
         "tex": "(6,5)"
       },
-      ". This rank-one approximation keeps horizontal detail but loses vertical detail."
+      ". This rank-one approximation keeps horizontal detail but loses vertical detail.",
+      "\n\n",
+      "The compressed matrix needs only one input coordinate to reproduce its output, because the vertical contribution has been removed. For the displayed point, the missing vertical output is exactly the information lost. With a non-diagonal matrix, SVD first finds suitable perpendicular directions rather than assuming they are horizontal and vertical. Compression means choosing what to lose, not preserving every number for free."
     ],
     "q:104-01:question": [
       "For ",
@@ -3678,7 +3716,9 @@
         "plain": "P(even) = 3/6 = 0.5",
         "tex": "P(\\text{even}) = 3/6 = 0.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The event “even” collects three die faces, while the full experiment has six equally likely faces. The fraction one-half describes that event before a throw. It does not say which particular face will occur, or promise an exact split in a short run. This distinction lets a predictive model express uncertainty instead of pretending every future outcome is determined."
     ],
     "q:14-01:question": [
       "A fair die is rolled. What is ",
@@ -3898,7 +3938,9 @@
         "plain": "P(A given B) = P(A)",
         "tex": "P(A\\mid B) = P(A)"
       },
-      ": knowing B does not change the probability of A. Conditioning describes observed probabilities; it does not by itself establish a cause."
+      ": knowing B does not change the probability of A. Conditioning describes observed probabilities; it does not by itself establish a cause.",
+      "\n\n",
+      "Conditioning changes the group over which we count. First restrict attention to cases satisfying the information after “given”; then measure the requested event inside that group. It is useful when a prediction should change after part of an observation becomes known."
     ],
     "c:15:formula": [
       {
@@ -3913,7 +3955,9 @@
         "plain": "P(striped ∣ red) = 1/4",
         "tex": "P(\\text{striped }\\mid\\text{ red}) = 1/4"
       },
-      "."
+      ".",
+      "\n\n",
+      "Once “red” is known, non-red balls are outside the relevant group. The denominator is four red balls, and the numerator is the one ball that is both red and striped. To reverse the question and ask about red balls among striped balls, we would need the total number of striped balls instead. The two denominators answer different questions."
     ],
     "q:15-01:question": [
       "Of 10 samples, 4 are deep and 3 of those are hot. ",
@@ -4198,7 +4242,9 @@
         "plain": "P(defective ∣ flagged) = 8/17",
         "tex": "P(\\text{defective }\\mid\\text{ flagged}) = 8/17"
       },
-      "."
+      ".",
+      "\n\n",
+      "Begin with the 10 defective and 90 good parts, then follow each group through the flagging process. Eight of the defects are flagged, but so are nine good parts. The alert therefore narrows attention to 17 parts, not just the eight true defects. Its usefulness comes from increasing the defect fraction above the original 10%, while leaving substantial uncertainty."
     ],
     "q:101-01:feedback": [
       "There are ",
@@ -4384,7 +4430,9 @@
         "plain": "E[X] = 0.5 × 0 + 0.5 × 10 = 5",
         "tex": "E[X] = 0.5 \\times  0 + 0.5 \\times  10 = 5"
       },
-      "."
+      ".",
+      "\n\n",
+      "Half of many trials contribute zero and half contribute ten on average, so the average payout approaches five under independent repetition. A single trial still pays only zero or ten. A guaranteed payout of five would have the same mean but a very different experience: uncertainty about individual outcomes has not vanished just because we summarized them by one number."
     ],
     "q:16-01:question": [
       "A game pays 8 with probability ",
@@ -4641,7 +4689,9 @@
         "plain": "σ",
         "tex": "\\sigma"
       },
-      " is its square root."
+      " is its square root.",
+      "\n\n",
+      "The mean gives a center; variance asks how far values typically scatter around that center. Squaring makes both directions contribute positively and gives larger deviations more influence. Standard deviation expresses that spread back in the original measurement units."
     ],
     "c:17:formula": [
       {
@@ -4678,7 +4728,9 @@
         "plain": "Standard deviation = √4 = 2",
         "tex": "\\text{Standard deviation } = \\sqrt{4} = 2"
       },
-      "."
+      ".",
+      "\n\n",
+      "Subtracting the mean 4 produces deviations −2 and 2. Their signed average is zero, even though the readings differ. Squaring makes both contributions 4, and averaging gives variance 4. The standard deviation 2 describes the spread around the mean; it is not an uncertainty bound guaranteeing that future readings stay inside a fixed interval."
     ],
     "q:17-01:option:0": [
       {
@@ -4869,7 +4921,9 @@
         "plain": "correlation = 1",
         "tex": "\\text{correlation } = 1"
       },
-      "."
+      ".",
+      "\n\n",
+      "The first observation is below both means and the second above both, so both products contribute positively. The perfect correlation describes the straight-line pattern in these two points, not evidence that one measurement causes the other. With only two distinct pairs, this apparent perfection is especially weak evidence about what a larger dataset will do."
     ],
     "q:102-01:question": [
       "For equally likely pairs ",
@@ -5010,7 +5064,9 @@
         "plain": "12/4 = 3",
         "tex": "12/4 = 3"
       },
-      ", an estimate of expected reward rather than its exact value."
+      ", an estimate of expected reward rather than its exact value.",
+      "\n\n",
+      "Keep a running total: after the four draws it reaches 12, which divided by four gives 3. Another set of four draws can give a different average. In the editable example, the simulated population is explicitly the four equally likely reward values, so its exact mean is available as a check. In larger problems, that exact comparison may be unavailable."
     ],
     "q:106-01:option:0": [
       {
@@ -5132,7 +5188,9 @@
         "plain": "e ≈ 2.718",
         "tex": "e \\approx  2.718"
       },
-      "."
+      ".",
+      "\n\n",
+      "Exponentials turn repeated multiplication into a function of the repetition count. Logarithms reverse that viewpoint and turn products into sums. This makes them useful both for growth processes and for handling probabilities whose products become extremely small."
     ],
     "c:18:formula": [
       {
@@ -5173,7 +5231,9 @@
         "plain": "ln(7.389) ≈ 2",
         "tex": "\\ln (7.389) \\approx  2"
       },
-      "."
+      ".",
+      "\n\n",
+      "Starting from one, three doublings produce two, four, then eight. The base-2 logarithm asks how many doublings connect one to eight. Natural logarithms use a different base but the same inverse idea. A logarithm reports a multiplicative change on an additive scale; it is not another name for division."
     ],
     "q:18-01:question": [
       "What is ",
@@ -5505,7 +5565,9 @@
         "plain": "f′(3) = 6",
         "tex": "f'(3) = 6"
       },
-      "."
+      ".",
+      "\n\n",
+      "The slope 6 predicts a change of about 0.06 for an input increase of 0.01. The actual change, 0.0601, is close but not identical because the curve bends over that interval. The tangent in the plot represents this local straight-line prediction. Move the input and both its slope and the point of contact change."
     ],
     "q:19-01:question": [
       "For ",
@@ -5741,7 +5803,9 @@
         "plain": "∫₀³ 2 dt = 6",
         "tex": "\\int _{0}^{3} 2 dt = 6"
       },
-      " litres."
+      " litres.",
+      "\n\n",
+      "During each of the three seconds, two litres enter the tank. Adding those contributions produces six litres. For a varying flow, rectangles with different heights approximate the same total-volume calculation. If negative flow represents water leaving, its contribution subtracts, so the integral measures net change rather than all water that ever passed the valve."
     ],
     "q:22-01:question": [
       "A constant speed of ",
@@ -5949,7 +6013,9 @@
         "plain": "(2, 12)",
         "tex": "(2, 12)"
       },
-      "."
+      ".",
+      "\n\n",
+      "At the displayed point, increasing x by 0.01 alone raises the score by about 0.02; increasing y by 0.01 alone raises it by about 0.12. The y direction is locally more sensitive in these units. A small step opposite both gradient coordinates should lower the score, but the gradient must be recalculated as the point moves."
     ],
     "q:20-01:question": [
       "For ",
@@ -6167,7 +6233,9 @@
         "plain": "(0,0)",
         "tex": "(0,0)"
       },
-      ", the gradient is zero and both curvature directions are positive, so this is a strict local minimum."
+      ", the gradient is zero and both curvature directions are positive, so this is a strict local minimum.",
+      "\n\n",
+      "The x slope is twice x, and the y slope is six times y. Changing x by one unit therefore changes its slope by 2; changing y by one changes its slope by 6. The zero off-diagonal entries mean those slope changes do not couple the coordinates in this example. The valley is steeper in y even though both directions lead upward from the origin."
     ],
     "q:108-01:question": [
       "For ",
@@ -6507,7 +6575,9 @@
         "plain": "dy/dx = 8x + 18x",
         "tex": "\\frac{dy}{dx} = 8x + 18x"
       },
-      "."
+      ".",
+      "\n\n",
+      "A tiny increase in x is doubled on its way to u. Near the current u, squaring multiplies that small change by about 12, so the full change is amplified by about 24. Omitting either stage would answer a different sensitivity question. When two branches both affect the output, their effects add because both changes reach the same final quantity."
     ],
     "q:21-01:question": [
       "For ",
@@ -6931,7 +7001,9 @@
         "plain": "L(x*) = 1",
         "tex": "L(x*) = 1"
       },
-      "."
+      ".",
+      "\n\n",
+      "The score measures squared distance from 3, so without the restriction we would choose 3. The allowed interval ends at 2, making 2 the nearest permitted choice. This separates the best possible score from the best feasible score. Checking constraints after finding an unconstrained answer would miss the actual problem we were asked to solve."
     ],
     "q:23-01:question": [
       "Minimize ",
@@ -7037,7 +7109,9 @@
         "plain": "g(x,y)=0",
         "tex": "g(x,y)=0"
       },
-      " is the rule. Each function takes the pair (x,y) and returns one number; y is an input, not the value of f."
+      " is the rule. Each function takes the pair (x,y) and returns one number; y is an input, not the value of f.",
+      "\n\n",
+      "At a regular constrained optimum, moving along the allowed set cannot improve the objective to first order. The multiplier expresses the balance between the objective's gradient and the constraint's gradient. Solving those equations finds candidates; checking the allowed set and the objective still matters."
     ],
     "c:107:formula": [
       {
@@ -7149,7 +7223,9 @@
         "plain": "λ=−2",
         "tex": "\\lambda =-2"
       },
-      ". Moving away from this equal split raises the score."
+      ". Moving away from this equal split raises the score.",
+      "\n\n",
+      "The equality rule leaves only one freedom: increasing x forces y to decrease by the same amount. At the equal split, these opposing first-order effects balance. Here the squared objective rises for every unequal split, so the candidate is the minimum. In a different objective, the same method could instead identify a maximum or another stationary candidate."
     ],
     "q:107-01:question": [
       "The score is ",
@@ -7619,7 +7695,9 @@
         "plain": "η",
         "tex": "\\eta"
       },
-      " sets the step size. A sufficiently small step can lower the loss."
+      " sets the step size. A sufficiently small step can lower the loss.",
+      "\n\n",
+      "A training loop repeats three actions: evaluate the objective, calculate its current gradient, and update the parameters. The gradient is a local guide, so each step uses newly calculated information. This replaces an exhaustive search through all possible parameter combinations with a sequence of small, informed moves."
     ],
     "c:24:formula": [
       {
@@ -7654,7 +7732,9 @@
         "plain": "2.4² = 5.76",
         "tex": "2.4^{2} = 5.76"
       },
-      "."
+      ".",
+      "\n\n",
+      "The first step moves toward zero because the slope at 3 is positive. At the new value 2.4 the slope is smaller, so the next step must use that new slope rather than reuse 6. Repetition can approach the bottom of this simple bowl. A step that is too large can cross the bowl and land at a higher loss; decreasing loss is something to check, not assume."
     ],
     "q:24-01:question": [
       "For ",
@@ -7860,7 +7940,9 @@
         "plain": "X = [[2, 3], [4, 3]]",
         "tex": "X = \\begin{bmatrix}2 & 3\\\\4 & 3\\end{bmatrix}"
       },
-      " has two rows and two features per row."
+      " has two rows and two features per row.",
+      "\n\n",
+      "If the task is predicting floor area, the known targets for these two rooms are 6 and 12 square metres. The two dimensions form each input; area is the answer used to check a prediction. A future room must use the same column order and units. Replacing width with area in the input would change the task and could accidentally reveal the answer."
     ],
     "q:25-01:option:0": [
       {
@@ -7921,23 +8003,84 @@
     ],
     "c:30:formula": [
       {
-        "plain": "ŷ = w · x + b",
-        "tex": "\\hat y=w\\cdot x+b",
+        "plain": "ŷᵢ = wxᵢ + b",
+        "tex": "\\hat y_i=wx_i+b",
+        "display": true
+      },
+      "\n",
+      {
+        "plain": "MSE(w,b) = (1/N) Σᵢ₌₁ᴺ (yᵢ − ŷᵢ)²",
+        "tex": "\\operatorname{MSE}(w,b)=\\frac{1}{N}\\sum_{i=1}^{N}(y_i-\\hat y_i)^2",
         "display": true
       }
     ],
     "c:30:example": [
-      "A toy taxi fare model is ",
+      "Start with data: three trips of 1, 3 and 5 km cost $6, $7 and $14. We want to learn the fare per km and starting fare.\n",
+      "Try a line: ",
+      {
+        "plain": "w = 2, b = 2",
+        "tex": "w=2,\\ b=2"
+      },
+      " predicts ",
+      {
+        "plain": "(4, 8, 12)",
+        "tex": "(4,8,12)"
+      },
+      ". Residuals are ",
+      {
+        "plain": "(2, −1, 2)",
+        "tex": "(2,-1,2)"
+      },
+      ", so ",
+      {
+        "plain": "MSE = (2² + (−1)² + 2²)/3 = 3",
+        "tex": "\\operatorname{MSE}=\\frac{2^2+(-1)^2+2^2}{3}=3"
+      },
+      ".\n",
+      "Fit from data: for one input with at least two different values, there is a shortcut to the minimum-MSE line. Subtract each list's mean, take the dot product of the centered lists, and divide by the sum of squared centered inputs. Here the means are 3 and 9, giving centered lists ",
+      {
+        "plain": "(−2, 0, 2)",
+        "tex": "(-2,0,2)"
+      },
+      " and ",
+      {
+        "plain": "(−3, −2, 5)",
+        "tex": "(-3,-2,5)"
+      },
+      ". Thus ",
+      {
+        "plain": "w = (6 + 0 + 10)/(4 + 0 + 4) = 2",
+        "tex": "w=\\frac{6+0+10}{4+0+4}=2"
+      },
+      ". The fitted line passes through the pair of means, so ",
+      {
+        "plain": "b = 9 − 2×3 = 3",
+        "tex": "b=9-2\\times3=3"
+      },
+      ".\n",
+      "Check the fit: ",
       {
         "plain": "ŷ = 2x + 3",
-        "tex": "\\hat{y} = 2x + 3"
+        "tex": "\\hat y=2x+3"
       },
-      " dollars for x kilometres. At 5 km: ",
+      " predicts ",
       {
-        "plain": "ŷ = 2×5 + 3 = $13",
-        "tex": "\\hat{y} = 2\\times 5 + 3 = \\$13"
+        "plain": "(5, 9, 13)",
+        "tex": "(5,9,13)"
       },
-      ". The intercept is the starting fare."
+      ". Residuals ",
+      {
+        "plain": "(1, −2, 1)",
+        "tex": "(1,-2,1)"
+      },
+      " give ",
+      {
+        "plain": "MSE = (1² + (−2)² + 1²)/3 = 2",
+        "tex": "\\operatorname{MSE}=\\frac{1^2+(-2)^2+1^2}{3}=2"
+      },
+      ", the smallest possible for a straight line on these data. Even the best-fitting line need not pass through every observation.",
+      "\n\n",
+      "The slope means an additional kilometre adds two dollars to the predicted fare, and the intercept supplies the starting three dollars. Those meanings were inferred jointly from all three trips, not specified by a programmer. Check future trips separately: a line that fits these observations best need not remain accurate for very long journeys or a different pricing system."
     ],
     "q:30-01:question": [
       "A regression model predicts ",
@@ -8145,7 +8288,9 @@
         "plain": "MSE = (1 + 4)/2 = 2.5",
         "tex": "\\operatorname{MSE} = (1 + 4)/2 = 2.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The first prediction misses by one unit and the second by two. Their squared contributions are 1 and 4, so the second miss contributes four times as much, not twice as much. A training procedure can change the predictions and recompute this score. Minimizing it chooses what “better” means; if large errors should not dominate so strongly, another loss may be more suitable."
     ],
     "q:31-01:option:0": [
       {
@@ -8306,7 +8451,9 @@
         "plain": "f(x) = 2x",
         "tex": "f(x) = 2x"
       },
-      "; it predicts 8 for input 4."
+      "; it predicts 8 for input 4.",
+      "\n\n",
+      "A rule that simply returns the input misses all three targets. Within the family of straight lines through the origin, doubling the input removes every training error. That is evidence for the rule within this chosen family, not proof that nature must double every future value: many more complicated rules could also fit three points. The prediction at 4 therefore needs a fresh check."
     ],
     "c:32:formula": [
       {
@@ -8332,7 +8479,9 @@
         "plain": "η = 0.01",
         "tex": "\\eta  = 0.01"
       },
-      " is a hyperparameter."
+      " is a hyperparameter.",
+      "\n\n",
+      "Training calculates a gradient and uses it to change w; the value 0.01 controls the size of that change. To compare two learning rates, run training separately with each rate and examine validation performance. Editing w directly chooses a model coefficient; editing the learning rate changes the process that will discover coefficients."
     ],
     "q:32-05:question": [
       "A user chooses a quadratic model ",
@@ -8380,7 +8529,9 @@
         "plain": "σ",
         "tex": "\\sigma"
       },
-      "."
+      ".",
+      "\n\n",
+      "Rescaling changes how numerical differences influence a model. A distance-based method can otherwise treat a large-unit feature as more important just because its numbers are larger. Estimate the reference statistics from training data, then reuse those same statistics on validation, test and future inputs."
     ],
     "c:26:formula": [
       {
@@ -8410,7 +8561,9 @@
         "plain": "z = 2",
         "tex": "z = 2"
       },
-      "."
+      ".",
+      "\n\n",
+      "Subtracting 100 gives an excess of 40 in the original units. Dividing by 20 says the new value is two training standard deviations above the training mean. It is not a probability and need not lie between zero and one. A constant feature has zero standard deviation, so it needs a separate handling rule rather than division by zero."
     ],
     "q:26-01:question": [
       "With training mean 15 and standard deviation 4, what standardized value does ",
@@ -8652,7 +8805,9 @@
         "plain": "(2+4+9)/3 = 5",
         "tex": "(2+4+9)/3 = 5"
       },
-      "."
+      ".",
+      "\n\n",
+      "Make the neighbor search explicit: suppose the stored input positions are 1, 4 and 7 with the displayed targets 2, 4 and 9. A query at 5 has distances 4, 1 and 2. With three neighbors, all three targets contribute to the prediction 5; with one neighbor, only the target at position 4 contributes. Using more neighbors smooths the prediction, but may blend examples from genuinely different regions."
     ],
     "q:109-01:question": [
       {
@@ -8784,7 +8939,9 @@
         "plain": "x=4",
         "tex": "x=4"
       },
-      " follows the left branch and receives prediction 2."
+      " follows the left branch and receives prediction 2.",
+      "\n\n",
+      "For a small training set, take inputs 2, 4, 7 and 9 with targets 2, 2, 8 and 8. Before splitting, the mean target is 5 and every row has squared error 9. Splitting at 5 creates two constant-target groups: their means are 2 and 8, with zero training error. This explains how the displayed rule could be learned. With noisy data, continuing to split can memorize accidents rather than useful patterns."
     ],
     "q:110-01:question": [
       "A tree predicts 2 if ",
@@ -8983,7 +9140,9 @@
         "plain": "total loss = 2 + 0.1 × 25 = 4.5",
         "tex": "\\text{total loss } = 2 + 0.1 \\times  25 = 4.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The weights contribute squared magnitudes 9 and 16, totaling 25. The chosen penalty adds 2.5 to the data loss, producing 4.5. Suppose another candidate has data loss 3 and weights 1 and 2: its penalty is 0.5 and its total is 3.5. The regularized objective prefers that candidate despite its larger data error; held-out performance must tell us whether this preference was useful."
     ],
     "q:42-01:question": [
       "Increasing ",
@@ -9283,7 +9442,9 @@
         "plain": "6−4.2=1.8",
         "tex": "6-4.2=1.8"
       },
-      ". The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor."
+      ". The next tree learns from the updated errors, rather than starting over. Each stage adds to the existing predictor.",
+      "\n\n",
+      "A tiny full dataset makes the fitting step visible. For inputs 1, 2, 3 and 4, suppose targets are 6, 6, 2 and 2 and the baseline predicts 4 everywhere. Residuals are 2, 2, −2 and −2. A tree that splits between inputs 2 and 3 can learn those two mean residuals. Adding one-tenth of its output raises predictions in the first region to 4.2 and lowers those in the second to 3.8. At prediction time, evaluate the baseline and the saved correction trees; the targets are no longer needed."
     ],
     "q:112-01:question": [
       "A boosted model currently predicts 6. A new learner outputs −3 and ",
@@ -9466,7 +9627,9 @@
         "plain": "6/10=0.6",
         "tex": "6/10=0.6"
       },
-      "."
+      ".",
+      "\n\n",
+      "The detector raised eight alerts: six useful ones and two false alarms. But ten positive cases existed, and four received no alert. These are different denominators and answer different operational questions. A user reviewing alerts cares about the first; a user trying not to miss positives cares about the second. Neither metric alone counts correctly rejected negatives."
     ],
     "q:113-01:question": [
       "A detector has ",
@@ -9760,7 +9923,9 @@
         "plain": "12−9 = 3",
         "tex": "12-9 = 3"
       },
-      " cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect."
+      " cm: an average increase, not a promise that every plant gains 3 cm. Random assignment supports this comparison; the same height difference in the gardener's sunny and shady groups would not isolate the fertilizer's effect.",
+      "\n\n",
+      "Each plant supplies only its assigned outcome; we cannot observe the same plant both treated and untreated in the same trial. Randomization makes the other group's average a useful comparison rather than a chosen collection of sunnier plants. Repeating the trial would generally give a different estimated difference, so the point estimate needs an assessment of sampling uncertainty before drawing a strong conclusion."
     ],
     "q:120-01:feedback": [
       "The specified estimate is ",
@@ -10025,7 +10190,9 @@
         "plain": "a = max(0, 5) = 5",
         "tex": "a=\\max(0,5)=5"
       },
-      "\n\nThe neuron's output is 5."
+      "\n\nThe neuron's output is 5.",
+      "\n\n",
+      "The two weighted contributions are 6 and −2. Add them, then the bias, to obtain the pre-activation 5; this activation (called ReLU) keeps it because it is positive. For input values 0 and 2, the same neuron instead totals −3, so ReLU returns zero. One set of learned weights therefore responds differently to different inputs. Linking many such responses lets a network describe more than one straight-line relationship."
     ],
     "q:33-01:question": [
       "Before activation, what is ",
@@ -10183,7 +10350,9 @@
         "plain": "z",
         "tex": "z"
       },
-      ": the local slope, describing how sensitive the output is to a small change in input. The curve becomes flatter at very positive or negative inputs, where this slope is small."
+      ": the local slope, describing how sensitive the output is to a small change in input. The curve becomes flatter at very positive or negative inputs, where this slope is small.",
+      "\n\n",
+      "The curved shape turns any real score into a number strictly between zero and one. This is useful for a binary prediction when the model is trained to give that number a probability interpretation. The shape alone does not guarantee accurate probabilities. Its slope also explains why changing a very large positive or negative score has little effect on the output."
     ],
     "c:34:formula": [
       {
@@ -10229,7 +10398,9 @@
         "plain": "0.25 × 0.1 = 0.025",
         "tex": "0.25\\times0.1=0.025"
       },
-      "\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve."
+      "\nThe output moves from 0.5 to about 0.525. This is a local approximation: the slope changes as we move along the curve.",
+      "\n\n",
+      "A score of zero sits halfway between the two extremes. Raising it to 2 raises the output substantially, but raising an already large score from 6 to 8 changes it only from about 0.9975 to 0.9997. The output is approaching its upper limit. During training, the derivative measures how strongly an upstream score change reaches the output; it is not another prediction or a second activation."
     ],
     "q:34-01:question": [
       "For a sigmoid input z, suppose ",
@@ -10448,7 +10619,9 @@
         "plain": "ReLU(2) = 2",
         "tex": "\\operatorname{ReLU}(2) = 2"
       },
-      ". Its slope is 0 below zero and 1 above zero."
+      ". Its slope is 0 below zero and 1 above zero.",
+      "\n\n",
+      "Move the input from −8 to −7: both outputs stay zero. Move it from 6 to 7: the output rises by one. That change of behavior is the useful nonlinearity. At exactly zero the mathematical derivative is undefined; implementations choose a convention for training. A unit that stays negative on every example can receive no gradient through this gate and stop contributing."
     ],
     "q:35-01:question": [
       "What is ",
@@ -10689,7 +10862,9 @@
         "plain": "(2−6)² = 16",
         "tex": "(2-6)^{2} = 16"
       },
-      ". The weight is still 1."
+      ". The weight is still 1.",
+      "\n\n",
+      "The prediction 2 differs from the target 6 by −4, giving squared loss 16. Now keep the same weight but change the input to 3: the prediction becomes 3. This changes an input, not the model. Conversely, changing the weight to 2 would make the original input predict 4, with loss 4. Deciding which weight change helps is the job of backpropagation and optimization, not the forward pass itself."
     ],
     "q:37-02:question": [
       "A model's fixed forward rule is ",
@@ -10847,7 +11022,9 @@
         "plain": "∂L/∂w = (−8)×2 = −16",
         "tex": "\\frac{\\partial L}{\\partial w}=(-8)\\times2=-16"
       },
-      ". The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight."
+      ". The negative sign means a small increase in this weight would lower this example’s loss. Backpropagation computes that signal; it has not yet changed the weight.",
+      "\n\n",
+      "The negative gradient says that increasing the weight slightly should decrease this loss. With learning rate 0.1, subtracting one-tenth of −16 changes the weight from 1 to 2.6. Run forward again: the prediction is 5.2 and squared loss is 0.64. This closes one learning cycle. The gradient described the old weight; further training must recompute it, and a much larger step can overshoot."
     ],
     "q:38-01:question": [
       "Backpropagation gives ",
@@ -10992,7 +11169,9 @@
         "plain": "θ⁺ = 1 − 0.1×4 = 0.6",
         "tex": "\\theta ^{+} = 1 - 0.1\\times 4 = 0.6"
       },
-      "."
+      ".",
+      "\n\n",
+      "The two examples both push the weight down, with different strengths. Their average 4 gives a single update of −0.4. This is not two consecutive updates: after the first of those, the second example would see a changed weight and usually produce a different gradient. On the next mini-batch, calculate new predictions and gradients using the updated weight 0.6."
     ],
     "q:39-01:feedback": [
       "The signed sum is ",
@@ -11213,7 +11392,9 @@
         "plain": "y = 3h₂ = 6",
         "tex": "y = 3h_{2} = 6"
       },
-      ". These are two hidden layers and an output layer."
+      ". These are two hidden layers and an output layer.",
+      "\n\n",
+      "Follow the same network with input 0: both hidden outputs and the final output are zero. With input 2, the first gate passes 3, the second passes 2, and the output is 6. The gates therefore matter. If both ReLUs were removed, multiplying out the layers would give one straight-line rule, with output −6 at input 0 instead of zero."
     ],
     "q:36-08:feedback": [
       "For a matrix of shape ",
@@ -11251,7 +11432,9 @@
         "plain": "2−3=−1",
         "tex": "2-3=-1"
       },
-      ". This is the cross-correlation convention commonly used in CNNs."
+      ". This is the cross-correlation convention commonly used in CNNs.",
+      "\n\n",
+      "The filter compares each value with its right neighbor. Both pairs in the rising signal give −1. A falling pair, such as 3 followed by 1, gives 2, so the sign and size describe the local change. Training can learn these two filter weights from a task loss; they are supplied here only to make the operation visible. The output remains a sequence of local responses, not yet a class label."
     ],
     "q:115-01:question": [
       "Using the CNN cross-correlation convention, input ",
@@ -11419,7 +11602,9 @@
         "plain": "1+(2+4)/2 = 4",
         "tex": "1+(2+4)/2 = 4"
       },
-      "."
+      ".",
+      "\n\n",
+      "The neighbors contribute an average of 3, which combines with the node's own 1 to give 4. Compute all nodes' new values from their old values before starting another round; otherwise the result depends on visiting order. In a learned network, trainable transformations can control the messages and updates. This toy rule fixes them so we can see exactly how the connections move information."
     ],
     "q:116-01:feedback": [
       "The neighbor mean is ",
@@ -11500,7 +11685,9 @@
         "plain": "(0.25, 0.75)",
         "tex": "(0.25, 0.75)"
       },
-      "."
+      ".",
+      "\n\n",
+      "Exponentiation turns the two scores into positive weights 1 and 3, then division by their total 4 gives the probabilities. The second class receives three times as much probability as the first. These probabilities can supply a prediction, a sampled choice, or a training loss. In code, subtracting the largest score before exponentiation gives the same probabilities while avoiding very large intermediate numbers."
     ],
     "q:43-01:question": [
       "Equal logits ",
@@ -11638,7 +11825,9 @@
         "plain": "−ln(0.1) ≈ 2.303",
         "tex": "-\\ln (0.1) \\approx  2.303"
       },
-      ", a much larger loss."
+      ", a much larger loss.",
+      "\n\n",
+      "Both examples have the same true class; only the model's confidence changes. Moving its probability from 0.1 to 0.9 reduces loss by about 2.198. With several labeled rows, calculate each row's loss and average them before computing the gradient. At inference time, the model still produces probabilities, but this supervised loss cannot be calculated until the true answer is available."
     ],
     "q:44-01:feedback": [
       "For a single true class the loss is ",
@@ -11843,7 +12032,9 @@
         "plain": "ln(1) = 0",
         "tex": "\\ln (1) = 0"
       },
-      "."
+      ".",
+      "\n\n",
+      "The first distribution puts all its mass on the first outcome, so only that outcome contributes to this direction of KL. The second distribution wastes half its mass elsewhere, costing about 0.693. Reverse them and the comparison is infinite: the second outcome now has positive reference probability but zero probability under the approximating distribution. This is why order and support matter, not just the numerical difference between probability entries."
     ],
     "q:105-01:question": [
       "For fixed target ",
@@ -12115,7 +12306,9 @@
         "plain": "squared error = (5−4)² = 1",
         "tex": "\\text{squared error } = (5-4)^{2} = 1"
       },
-      "."
+      ".",
+      "\n\n",
+      "The input to the predictor contains only the visible 2 and 6; the hidden 4 is used afterward to score its answer. A prediction of 5 is an error, so backpropagation can change the predictor's weights. Repeating across many different sequences can teach useful regularities. Simply returning the target from the original unmasked sequence would get zero loss while learning nothing useful."
     ],
     "q:45-08:question": [
       "A recorded sequence is ",
@@ -12170,7 +12363,9 @@
         "plain": "(≈ 1.41)",
         "tex": "(\\approx  1.41)"
       },
-      "."
+      ".",
+      "\n\n",
+      "The displayed vectors illustrate a possible learned arrangement, not a training algorithm. A task that rewards identifying similar contexts could move cat and dog closer together while keeping rock farther away. That would change the table entries themselves. A different task might group all three differently, so the small distances should be interpreted as evidence about the learned task rather than universal semantic truth."
     ],
     "q:46-07:option:0": [
       {
@@ -12219,7 +12414,9 @@
         "plain": "similarity = 2/(1 × 2) = 1",
         "tex": "\\text{similarity } = 2/(1 \\times  2) = 1"
       },
-      ", despite different lengths."
+      ", despite different lengths.",
+      "\n\n",
+      "The first vector has length 1, the second length 2, and their dot product is 2. Dividing by the product of lengths removes that scale difference, producing similarity 1. Turning the second vector to point the opposite way would give −1; turning it perpendicular would give zero. Neither value by itself tells us whether the underlying items are relevant without a useful embedding."
     ],
     "q:47-01:question": [
       "What is the cosine similarity of ",
@@ -12381,7 +12578,9 @@
         "plain": "−ln(0.8) ≈ 0.223",
         "tex": "-\\ln (0.8) \\approx  0.223"
       },
-      ". Assigning it probability 0.2 gives a larger loss, about 1.609."
+      ". Assigning it probability 0.2 gives a larger loss, about 1.609.",
+      "\n\n",
+      "For one positive and one negative candidate, take similarity scores ln 4 and zero. Exponentiating gives 4 and 1, so the positive receives probability 0.8 after normalization. Swapping the scores gives probability 0.2 and the larger loss shown above. Training pushes the positive score upward relative to the negative. The choice of related views matters: a transformation that changes the true meaning can teach the wrong invariance."
     ],
     "q:117-01:question": [
       "A positive pair receives normalized probability ",
@@ -12481,7 +12680,9 @@
         "plain": "u · x",
         "tex": "u \\cdot  x"
       },
-      "."
+      ".",
+      "\n\n",
+      "PCA fits its directions to the training data: subtract each feature's mean, form the covariance matrix, and find directions with the largest variance. Projecting onto only a few such directions gives fewer coordinates while retaining as much squared variation as possible. High variance is not necessarily the same as importance for a prediction task."
     ],
     "c:48:formula": [
       {
@@ -12516,7 +12717,9 @@
         "plain": "√2",
         "tex": "\\sqrt{2}"
       },
-      ". One coordinate locates each point."
+      ". One coordinate locates each point.",
+      "\n\n",
+      "Here both feature means are zero. The two coordinates always move together, so averaging their products gives a covariance matrix whose four entries are all 1. Along the shared diagonal, the projection values are about −1.414 and 1.414; along the perpendicular direction both are zero. Keeping one diagonal coordinate therefore loses nothing for these two points. New points off that line would lose their perpendicular component."
     ],
     "q:48-03:question": [
       "A centered sample is ",
@@ -12654,27 +12857,92 @@
       " is the mean squared error (MSE) between original and reconstruction. Training adjusts both sets of weights."
     ],
     "c:49:example": [
-      "With toy weights: ",
+      "1. Start with data and a small network. Use four training inputs: ",
       {
-        "plain": "x = (2, 5)",
-        "tex": "x = (2, 5)"
+        "plain": "(−2, −4), (−1, −2), (1, 2), (2, 4)",
+        "tex": "(-2,-4),\\;(-1,-2),\\;(1,2),\\;(2,4)"
       },
-      ", encoder ",
+      ". The second coordinate is twice the first. Can the network learn to preserve that shared structure using one code number?\n\nUse encoder weights ",
       {
-        "plain": "z = x₁ = 2",
-        "tex": "z = x_{1} = 2"
+        "plain": "e = (1, 0)",
+        "tex": "e=(1,0)"
       },
-      ", decoder ",
+      " and decoder weights ",
       {
-        "plain": "x̂ = (z, 2z) = (2, 4)",
-        "tex": "\\hat{x} = (z, 2z) = (2, 4)"
+        "plain": "d = (1, 1)",
+        "tex": "d=(1,1)"
       },
-      ". ",
+      ". For each input ",
       {
-        "plain": "Reconstruction loss = (0² + 1²)/2 = 0.5",
-        "tex": "\\text{Reconstruction loss } = (0^{2} + 1^{2})/2 = 0.5"
+        "plain": "x = (x₁, x₂)",
+        "tex": "x=(x_1,x_2)"
       },
-      "."
+      ", compute ",
+      {
+        "plain": "z = e₁x₁ + e₂x₂",
+        "tex": "z=e_1x_1+e_2x_2"
+      },
+      ", then reconstruct ",
+      {
+        "plain": "x̂ = (d₁z, d₂z)",
+        "tex": "\\hat{x}=(d_1z,d_2z)"
+      },
+      ". Here e and d name the two weight vectors; their subscripts identify entries. This tiny network has no bias or nonlinear activation.\n\n2. Measure the initial error. The code is initially just the first coordinate. Input ",
+      {
+        "plain": "(1, 2)",
+        "tex": "(1,2)"
+      },
+      " reconstructs as ",
+      {
+        "plain": "(1, 1)",
+        "tex": "(1,1)"
+      },
+      ". Across the four rows, the first-coordinate errors are zero and the second-coordinate squared errors are 4, 1, 1 and 4. Averaging over all eight coordinates gives ",
+      {
+        "plain": "MSE = 10/8 = 1.25",
+        "tex": "\\mathrm{MSE}=10/8=1.25"
+      },
+      ".\n\n3. Learn from all four inputs. Backpropagation gives weight gradients ",
+      {
+        "plain": "∇e L = (−2.5, −5)",
+        "tex": "\\nabla_e L=(-2.5,-5)"
+      },
+      " and ",
+      {
+        "plain": "∇d L = (0, −2.5)",
+        "tex": "\\nabla_d L=(0,-2.5)"
+      },
+      ", where L is the mean squared error and each gradient measures sensitivity to its weight vector. For example, the second decoder weight has one contribution per input: code times second-coordinate error gives −4, −1, −1 and −4. Their average is −2.5. The other weight gradients follow the same chain rule. With learning rate 0.04, subtract the scaled gradients to obtain ",
+      {
+        "plain": "e = (1.1, 0.2)",
+        "tex": "e=(1.1,0.2)"
+      },
+      " and ",
+      {
+        "plain": "d = (1, 1.1)",
+        "tex": "d=(1,1.1)"
+      },
+      ". Both updates use the old weights. The input ",
+      {
+        "plain": "(1, 2)",
+        "tex": "(1,2)"
+      },
+      " now has code 1.5 and reconstruction ",
+      {
+        "plain": "(1.5, 1.65)",
+        "tex": "(1.5,1.65)"
+      },
+      ". The loss across all four inputs falls to 0.465625.\n\n4. Repeat, then test something new. Recompute the gradients after every update. After 40 updates, training MSE is about 0.0000000012. A held-out input ",
+      {
+        "plain": "(3, 6)",
+        "tex": "(3,6)"
+      },
+      " reconstructs as approximately ",
+      {
+        "plain": "(3.00008, 5.99996)",
+        "tex": "(3.00008,5.99996)"
+      },
+      ". The decoder has learned a direction whose second coordinate is about twice its first; that relationship was not fixed in its initial weights.\n\nOne number can describe position along this learned line. It cannot preserve every possible two-number input: try (3, 1), which lies off that line, or change the training rows. Different learned weight scales can express the same line, so the code itself has no unique numerical interpretation. The editable calculation below shows the loss falling and compares the input points with their reconstructions."
     ],
     "q:49-07:option:1": [
       {
@@ -12716,7 +12984,9 @@
         "plain": "(2, 5)",
         "tex": "(2, 5)"
       },
-      " breaks that pattern."
+      " breaks that pattern.",
+      "\n\n",
+      "All three pairs lie on the same line: the second number is twice the first. Saving only the first number is enough because the decoder has learned or been given that shared relationship. The pair 2, 5 does not obey it, so the same code reconstructs 2, 4 and loses a difference of 1. The benefit and the limitation both come from deciding which structure the representation preserves."
     ],
     "c:79:formula": [
       {
@@ -12737,7 +13007,9 @@
         "plain": "2⁸ = 256",
         "tex": "2^{8} = 256"
       },
-      " patterns."
+      " patterns.",
+      "\n\n",
+      "With two bits there are four choices, so one of four codebook entries can be stored as a two-bit index. Eight choices require three bits. A byte can therefore hold one of 256 distinct patterns, but it cannot represent every possible real number exactly. Data formats decide how to spend those patterns on range and precision."
     ],
     "q:79-01:option:0": [
       {
@@ -13035,7 +13307,9 @@
         "plain": "λ = 0.1",
         "tex": "\\lambda  = 0.1"
       },
-      ", scores are 3 and 2.5. B wins by accepting more error for fewer bits."
+      ", scores are 3 and 2.5. B wins by accepting more error for fewer bits.",
+      "\n\n",
+      "The first candidate preserves more detail, but spends 15 extra rate units. At the stated weight those units cost 1.5, outweighing its distortion improvement of 1. If the weight were 0.01 instead, the totals would be 1.2 and 2.05, preferring the first candidate. This comparison exposes the design choice rather than hiding it behind the word “compressed.”"
     ],
     "q:51-01:question": [
       "Minimize ",
@@ -13246,7 +13520,9 @@
         "plain": "e₁",
         "tex": "e_{1}"
       },
-      ", and store its index 1."
+      ", and store its index 1.",
+      "\n\n",
+      "The chosen entry substitutes 0, 2 for the original 1, 2, losing one unit in the first coordinate. If training vectors 0, 2 and 2, 2 are both assigned to this entry, their mean is 1, 2; moving the entry there reduces their total squared error from 4 to 2. Repeating assignment and averaging can improve the representatives, although initialization can affect the result."
     ],
     "q:52-01:question": [
       "For ",
@@ -13352,7 +13628,9 @@
         "plain": "(1, 2)",
         "tex": "(1, 2)"
       },
-      ". A vocabulary of 8 entries needs 3 bits per fixed-length ID."
+      ". A vocabulary of 8 entries needs 3 bits per fixed-length ID.",
+      "\n\n",
+      "Identifier 6 selects the corresponding row 1, 2 from the embedding table. Identifier 7 is not necessarily more similar to it than identifier 2; the learned vectors carry that relationship. Three bits suffice for each fixed-width identifier in an eight-entry vocabulary, but the table, tokenization rules and any framing information must also be stored somewhere."
     ],
     "q:54-05:feedback": [
       "A width of b bits supplies ",
@@ -13422,7 +13700,9 @@
         "plain": "MSE = (0+1)/2 = 0.5",
         "tex": "\\operatorname{MSE} = (0+1)/2 = 0.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The proposed code 1.9 selects entry 2, so the decoder receives exactly 2, not 1.9. Moving the proposal slightly within the same selection region leaves that discrete input unchanged. The reconstruction error supplies a training signal for the decoder; the encoder needs the stated gradient approximation, and the codebook needs its own learning signal or averaging update. Only the entry index is needed to represent this selected code once the model and codebook are shared."
     ],
     "q:53-05:question": [
       "An encoder returns ",
@@ -13535,7 +13815,9 @@
         "plain": "xₜ=0.8×2+0.6×1 = 2.2",
         "tex": "x_{t}=0.8\\times 2+0.6\\times 1 = 2.2"
       },
-      ". A network learns denoising information across many noise levels."
+      ". A network learns denoising information across many noise levels.",
+      "\n\n",
+      "The clean contribution is 1.6 and the noise contribution is 0.6, producing 2.2. If a predictor estimated the added noise as 0.5 instead of the actual 1, its squared noise-prediction error would be 0.25. Subtracting the estimated contribution 0.3 and dividing by 0.8 would estimate the clean value as 2.375, not 2. That error trains the predictor. Real generation uses a schedule of many reverse steps because heavily corrupted inputs do not determine one unique clean answer."
     ],
     "q:121-01:question": [
       "With ",
@@ -13791,7 +14073,9 @@
         "plain": "r₁ = (−1−1−1)/(1+1+1+1) = −0.75",
         "tex": "r_{1} = (-1-1-1)/(1+1+1+1) = -0.75"
       },
-      ". Neighbors alternate."
+      ". Neighbors alternate.",
+      "\n\n",
+      "At lag 1, each neighboring deviation has the opposite sign, producing three negative products. At lag 2, the two available pairs have the same sign, so the numerator is 2 and this estimator gives 0.5. The alternation becomes a positive match after two positions. The values are not exactly −1 and 1 because this finite-sample formula keeps the full-sequence denominator while fewer pairs are available at larger lags."
     ],
     "q:55-08:feedback": [
       "There are ",
@@ -13866,7 +14150,9 @@
         "plain": "P(A, B) = 0.1",
         "tex": "P(A, B) = 0.1"
       },
-      "."
+      ".",
+      "\n\n",
+      "Turn the short sequence A, B into a training case: after A, the target is B. A predicted probability of 0.2 for B gives a loss of about 1.609. Training can raise that probability; it does not store a rule saying B must always follow A. At generation time, a sample or selection rule chooses a next token, appends it, then recomputes the distribution for the longer prefix. An unlikely early choice can change every later prediction."
     ],
     "q:61-01:question": [
       {
@@ -14001,7 +14287,9 @@
         "plain": "(1, 2.1)",
         "tex": "(1, 2.1)"
       },
-      ". Its position now changes the input."
+      ". Its position now changes the input.",
+      "\n\n",
+      "The token's identity contribution stays 1, 2 in both positions. Only the added position vector changes. Now swap two different tokens: their identity vectors move while the position vectors stay attached to the locations, giving different combinations. Those combinations let later attention distinguish “A before B” from “B before A.” The tiny offsets are illustrative, not a claim that these two vectors are an effective encoding for long sequences."
     ],
     "q:56-03:question": [
       "In ",
@@ -14027,7 +14315,9 @@
         "plain": "√dₖ",
         "tex": "\\sqrt{d_{k}}"
       },
-      " moderates the score scale as that dimension grows, helping softmax avoid excessively concentrated weights."
+      " moderates the score scale as that dimension grows, helping softmax avoid excessively concentrated weights.",
+      "\n\n",
+      "Queries express what a location is looking for, keys provide matching features, and values provide the information to combine. In a learned layer, trainable transformations create all three from token representations. A changed query can therefore change the mixture even when the stored values are unchanged."
     ],
     "c:57:formula": [
       {
@@ -14066,7 +14356,9 @@
         "plain": "Output = 0.25×2 + 0.75×6 = 5",
         "tex": "\\text{Output } = 0.25\\times 2 + 0.75\\times 6 = 5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The weights favor the second value, but the output is a mixture, not selection of that value alone. With query zero, both scores become zero, so the weights become equal and the output becomes 4. This exposes attention's input-dependent behavior. Training adjusts the query, key and value transformations so that useful mixtures reduce the downstream loss."
     ],
     "q:57-01:question": [
       "Attention weights are ",
@@ -14267,7 +14559,9 @@
         "plain": "(0.5, 0.5)",
         "tex": "(0.5, 0.5)"
       },
-      " give 4."
+      " give 4.",
+      "\n\n",
+      "The first head favors the larger value and returns 5; the second favors the smaller and returns 3. Concatenation preserves both results as separate coordinates. The final equal-weight mixture gives 4, but other learned output weights could keep their difference or emphasize one view. Averaging the attention weights before computing head outputs would hide that distinction in this example."
     ],
     "q:58-04:option:0": [
       {
@@ -14302,12 +14596,15 @@
       " do?"
     ],
     "c:60:definition": [
+      "When training a model to predict the next token, letting it read that token would reveal the answer. ",
       "A causal mask blocks attention to future tokens. It adds ",
       {
         "plain": "−∞",
         "tex": "-\\infty"
       },
-      " to their attention scores, so softmax assigns them zero weight. Each position can use only its present and past."
+      " to their attention scores, so softmax assigns them zero weight. Each position can use only its present and past.",
+      "\n\n",
+      "The mask enforces which information is available, rather than asking the model to learn not to peek. Training can compute predictions for many sequence positions together while imposing this boundary separately at each position. The targets are the following tokens, and they must not leak into the representation used to predict them."
     ],
     "c:60:formula": [
       {
@@ -14338,7 +14635,9 @@
         "plain": "(0.5, 0.5, 0)",
         "tex": "(0.5, 0.5, 0)"
       },
-      ": the future contributes nothing."
+      ": the future contributes nothing.",
+      "\n\n",
+      "The output at position 2 uses a half share from each of positions 1 and 2 and none from position 3. At position 1, only position 1 is allowed, so its attention weights would be 1, 0, 0. This permits the same training sequence to supply several next-token targets without revealing their answers. A mask restricts access; it does not itself make the remaining predictions accurate."
     ],
     "q:60-01:retryFeedback": [
       "The allowed key positions satisfy ",
@@ -14472,7 +14771,9 @@
         "plain": "(−1, 1)",
         "tex": "(-1, 1)"
       },
-      "."
+      ".",
+      "\n\n",
+      "Continue the toy block: suppose the feed-forward network returns 0, 2 for the normalized input −1, 1. Their residual sum is −1, 3. Its mean is 1 and its population standard deviation is 2, so the next normalization again gives approximately −1, 1. This is a numerical walkthrough of one block, with outputs supplied to keep the arithmetic small; a real block computes them from learned weights. Practical normalization also includes a small denominator constant and learned scale and offset."
     ],
     "q:59-02:option:0": [
       {
@@ -14520,7 +14821,9 @@
         "plain": "0.25×2+0.75×6 = 5",
         "tex": "0.25\\times 2+0.75\\times 6 = 5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The selected outputs contribute 0.5 and 4.5 to the result 5. An unselected third expert contributes nothing to this token even if it has many parameters. A different token can activate that expert instead. Training must learn both useful expert transformations and routing behavior; always routing everything to one expert would waste most of the available capacity."
     ],
     "q:122-01:feedback": [
       "The weighted contributions are ",
@@ -14655,7 +14958,9 @@
         "plain": "η = 0.01",
         "tex": "\\eta  = 0.01"
       },
-      ", one update gives 0.48."
+      ", one update gives 0.48.",
+      "\n\n",
+      "The value 0.48 is only one update, not proof that the task has improved. Run the updated model on the new examples, recompute loss and gradients, and repeat. Then compare with the starting model on held-out examples. If new-task training becomes too narrow, it can improve those examples while damaging earlier behavior; validation and the choice of trainable weights help manage that tradeoff."
     ],
     "c:124:formula": [
       {
@@ -14680,7 +14985,9 @@
         "plain": "−0.8ln(0.5)−0.2ln(0.5) ≈ 0.693",
         "tex": "-0.8\\ln (0.5)-0.2\\ln (0.5) \\approx  0.693"
       },
-      "."
+      ".",
+      "\n\n",
+      "If the student changes its probabilities to 0.8 and 0.2, its soft-target cross-entropy falls to about 0.500. It does not fall to zero because the teacher itself spreads probability across two outcomes. The matching objective is minimized by reproducing that distribution. True labeled examples, when available, can provide a separate signal rather than treating the teacher as infallible."
     ],
     "q:124-01:question": [
       "Teacher probabilities are ",
@@ -14763,7 +15070,9 @@
         "plain": "mean([2, 4, 6])",
         "tex": "\\operatorname{mean}([2, 4, 6])"
       },
-      " returns 4. An SDK might provide a function that sends this request to a service and reads its response."
+      " returns 4. An SDK might provide a function that sends this request to a service and reads its response.",
+      "\n\n",
+      "The caller supplies three numbers; the implementation adds them and divides by the count; the caller receives 4. The contract also needs to say what happens for an empty list or a nonnumeric entry. A remote call can fail before producing any result, so a timeout must not be interpreted as a computed zero. The SDK can help encode requests and report errors consistently."
     ],
     "q:94-r2-07:option:2": [
       {
@@ -14790,7 +15099,9 @@
         "plain": "mean([10, 20, 30])",
         "tex": "\\operatorname{mean}([10, 20, 30])"
       },
-      "; the calculator returns 20, which the answer reports."
+      "; the calculator returns 20, which the answer reports.",
+      "\n\n",
+      "Trace the stages: recognize that an average is requested, send the three numbers to the defined calculator, receive 20, then explain that result. The number should come from the tool response, not from the model guessing what it would return. A rejected request or failed call needs explicit handling; operations with side effects also need authorization appropriate to the application."
     ],
     "c:66:formula": [
       {
@@ -14821,7 +15132,9 @@
         "plain": "a = 3",
         "tex": "a = 3"
       },
-      "."
+      ".",
+      "\n\n",
+      "Adding 3 litres to the actual 10 would produce 13 litres if nothing drains or spills. Adding it to the sensor reading predicts 12.8 instead. That difference is measurement error, not a different physical action. If the tank also leaks at a changing rate, volume alone may not be enough state to predict the next volume; the model needs the relevant extra information."
     ],
     "q:66-08:question": [
       "In ",
@@ -14876,7 +15189,9 @@
         "plain": "next volume = 10 + 3 − 2 = 11",
         "tex": "\\text{next volume } = 10 + 3 - 2 = 11"
       },
-      "."
+      ".",
+      "\n\n",
+      "Repeat the same inflow and drain for a second step: the predicted volume rises from 11 to 12 litres. Choosing no inflow instead would take 11 down to 9. These are two different trajectories starting from the same intermediate state. Capacity limits, disturbances or changing drain rates would require additional rules; the simple addition model only describes the stated conditions."
     ],
     "q:65-01:feedback": [
       "Use conservation: ",
@@ -15043,7 +15358,9 @@
         "plain": "0 ≤ γ < 1",
         "tex": "0 \\le  \\gamma  < 1"
       },
-      "."
+      ".",
+      "\n\n",
+      "The reward definition states what the agent is being encouraged to achieve; it is not automatically a complete measure of real-world success. Return makes delayed outcomes part of the decision. Discounting changes their relative influence and can favor an immediate gain over a larger distant one."
     ],
     "c:68:formula": [
       {
@@ -15110,7 +15427,9 @@
         "plain": "return = 2 + 0 + 0.25 × 10 = 4.5",
         "tex": "\\text{return } = 2 + 0 + 0.25 \\times  10 = 4.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The final reward 10 occurs two steps later, so it is multiplied by one-half twice, contributing only 2.5. With no discount, the three rewards would total 12. A competing action that paid 5 immediately and nothing later would beat the displayed discounted return but lose to the undiscounted total. The choice of horizon and discount can therefore change behavior."
     ],
     "q:68-01:question": [
       "Rewards are ",
@@ -15349,7 +15668,9 @@
         "plain": "π(wait) = 0.2",
         "tex": "\\pi(\\text{wait}) = 0.2"
       },
-      ". A deterministic policy might always fill."
+      ". A deterministic policy might always fill.",
+      "\n\n",
+      "Imagine drawing a uniform random number between zero and one: fill below 0.8 and wait otherwise. Over many visits to this state, the proportions approach the stated probabilities, but a particular visit still takes one action. At a full tank the policy should usually be different; a probability table for only the low state does not define behavior everywhere."
     ],
     "q:69-02:question": [
       "What does ",
@@ -15402,7 +15723,9 @@
         "plain": "Vπ(s) = 6",
         "tex": "V^\\pi(s) = 6"
       },
-      "."
+      ".",
+      "\n\n",
+      "Six is the average return across repeated runs, not a promise that a single run will earn six: this example yields either ten or zero. If a different policy raises the success probability to 0.8 without changing the two possible returns, its value becomes 8. Changing the policy changes the value even though the starting state is unchanged."
     ],
     "q:70-01:feedback": [
       "Value is the expected return: ",
@@ -15582,7 +15905,9 @@
         "plain": "V = 2 + 0.9×(0.5×10 + 0.5×0) = 6.5",
         "tex": "V = 2 + 0.9\\times (0.5\\times 10 + 0.5\\times 0) = 6.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "First average the next-state values to get 5. Discount that future contribution to 4.5, then add the present reward 2. If 10 and zero are only provisional estimates, 6.5 is an update target rather than an already verified true value. Terminal states have no future return, which provides a natural starting point for working backward in a finite task."
     ],
     "q:71-01:question": [
       "Reward 3, deterministic next value 4, ",
@@ -15763,7 +16088,9 @@
         "plain": "ε = 0.1",
         "tex": "\\varepsilon  = 0.1"
       },
-      " over 100 decisions, expect about 10 exploration-branch choices, not exactly 10."
+      " over 100 decisions, expect about 10 exploration-branch choices, not exactly 10.",
+      "\n\n",
+      "With two actions and one uniquely best estimated action, the exploration branch still chooses that best action half the time. Its total selection probability is therefore 0.95: 0.9 from exploitation and 0.05 from exploration. Only about five of 100 decisions choose the other action on average. Exploration-branch choices and visibly non-greedy choices are not the same count."
     ],
     "q:73-04:question": [
       "In ε-greedy selection, what does ",
@@ -15870,7 +16197,9 @@
         "plain": "Q = 2 + 0.25×(4−2) = 2.5",
         "tex": "Q = 2 + 0.25\\times (4-2) = 2.5"
       },
-      "."
+      ".",
+      "\n\n",
+      "The target 4 exceeds the current estimate 2, so a quarter-step closes one quarter of that gap. If the exact same target were observed again, the next estimate would rise from 2.5 to 2.875. If the transition ended the task, the future contribution would instead be zero. Learning needs visits to relevant actions; repeatedly updating one entry leaves unexplored entries uninformed."
     ],
     "q:72-01:question": [
       "A Q-learning transition has reward −2, discount ",
@@ -16136,7 +16465,9 @@
         "plain": "p⁺ = 0.5 + 0.1×3 = 0.8",
         "tex": "p^{+} = 0.5 + 0.1\\times 3 = 0.8"
       },
-      "."
+      ".",
+      "\n\n",
+      "The expected reward rises from 2.5 at probability 0.5 to 3.4 at probability 0.8. This example has known rewards, so its exact gradient is easy to calculate. Repeating the same step without a constraint would eventually push the probability above one. Practical policies use a parameterization such as softmax to keep probabilities valid while updating unconstrained weights."
     ],
     "q:74-01:feedback": [
       "The other probability is 0.3. Expected reward is ",
@@ -16397,7 +16728,9 @@
         "plain": "a ≤ 5",
         "tex": "a \\le  5"
       },
-      ", a proposed setting of 7 is rejected even if its predicted reward is high."
+      ", a proposed setting of 7 is rejected even if its predicted reward is high.",
+      "\n\n",
+      "The proposed 7 exceeds the limit by 2, so it is outside the permitted set. Settings 4 and 5 pass this particular upper-bound check, but may have other limits such as a minimum or a maximum rate of change. Choosing 5 automatically is not always correct: the controller should compare the feasible choices using its objective. A model-based safety prediction is not a guarantee when the model is wrong."
     ],
     "q:78-01:question": [
       "A hard limit requires ",
@@ -16523,7 +16856,9 @@
         "plain": "(6, 2) L",
         "tex": "(6, 2) L"
       },
-      ". Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L."
+      ". Apply 6 now. If the tank actually reaches 13 L, replan the next inflow as 3 L.",
+      "\n\n",
+      "The original first inflow predicts 14 litres after the drain, and the planned second inflow 2 would hold that level. The observed 13 means the original second action would now leave the tank at 13. Replanning increases that inflow to 3 so the next predicted volume is 14. This example illustrates correcting a plan; a complete optimizer would compare candidate action sequences using a stated cost and constraints."
     ],
     "q:77-02:feedback": [
       "Solve ",
@@ -16591,7 +16926,9 @@
         "plain": "P(A)",
         "tex": "P(A)"
       },
-      " from 0.5 to 0.75 raises expected reward from 1 to 1.5."
+      " from 0.5 to 0.75 raises expected reward from 1 to 1.5.",
+      "\n\n",
+      "The probabilities describe how often the policy would produce A or B for this fixed prompt. Shifting probability mass toward A improves the reward model's expected score. To learn that A is preferred in the first place, the reward model needs comparisons supplied by people. Separate evaluation must check actual helpfulness and reliability, because increasing the score from 1 to 1.5 alone proves neither."
     ],
     "q:75-10:feedback": [
       "Compute ",
@@ -16649,7 +16986,9 @@
         "plain": "total = 0",
         "tex": "\\text{total } = 0"
       },
-      ". Add each value: 2, then 6, then 12. Divide by 3 to return 4."
+      ". Add each value: 2, then 6, then 12. Divide by 3 to return 4.",
+      "\n\n",
+      "The running total is a dependency: the addition that produces 6 uses the previous total 2. One alternative adds independent groups first, then combines their partial sums. For a tiny list, organizing extra workers would likely cost more than it saves. Performance depends on the work and its data movement, not only on the number of cores."
     ],
     "q:81-07:question": [
       "For a sequential running sum of ",
@@ -16701,7 +17040,9 @@
         "plain": "y = (2, 4, 6, 8)",
         "tex": "y = (2, 4, 6, 8)"
       },
-      ". Each output can be calculated independently. The same pattern scales to millions of entries."
+      ". Each output can be calculated independently. The same pattern scales to millions of entries.",
+      "\n\n",
+      "Four workers could each read one input, double it and store one output without waiting for another worker's answer. A dot product is different: its individual multiplications can run independently, but their products must later be combined. Matrix operations provide many such products and sums. This repeated structure is a major reason GPUs suit neural-network workloads."
     ],
     "q:82-04:question": [
       "For a fixed input array, each output is ",
@@ -16770,7 +17111,9 @@
         "plain": "D = [[16]]",
         "tex": "D = \\begin{bmatrix}16\\end{bmatrix}"
       },
-      "."
+      ".",
+      "\n\n",
+      "The two products are 3 and 8, summing to 11; the accumulator contributes another 5. This tiny example explains the operation's meaning, not a supported physical instruction shape. Real kernels tile much larger matrices into supported blocks and combine partial results. Input and accumulation precision can differ, so performance and numerical error both depend on the chosen format."
     ],
     "q:83-01:question": [
       "For scalar ",
@@ -16926,7 +17269,9 @@
         "plain": "8×4 = 32",
         "tex": "8\\times 4 = 32"
       },
-      " threads."
+      " threads.",
+      "\n\n",
+      "Indices start at zero here, so index 6 selects the seventh entry. With 30 entries and 32 launched threads, indices 30 and 31 have no valid item; a bounds check makes those threads do nothing. The launch creates logical work assignments, not a promise that all 32 execute at the exact same instant. Correct indexing and memory access matter as much as the arithmetic inside the kernel."
     ],
     "q:84-01:option:0": [
       {
@@ -17065,7 +17410,9 @@
         "plain": "2×2×10×1×4×2 = 320",
         "tex": "2\\times 2\\times 10\\times 1\\times 4\\times 2 = 320"
       },
-      " bytes, excluding overhead and other memory."
+      " bytes, excluding overhead and other memory.",
+      "\n\n",
+      "The first factor of two counts keys and values; the second counts layers. Each new token in this toy model adds 32 bytes, so growing from 10 to 11 tokens grows the cache from 320 to 352 bytes. Two separate 10-token conversations need 640 bytes under these assumptions. The tiny dimensions keep the calculation visible; real models add much larger per-request memory requirements."
     ],
     "q:123-01:question": [
       "Using ",
@@ -17275,7 +17622,9 @@
         "plain": "20 + 60/4 = 35 seconds",
         "tex": "20 + 60/4 = 35 \\text{ seconds}"
       },
-      " in this model."
+      " in this model.",
+      "\n\n",
+      "The four-worker estimate gives a speedup of about 2.29, not four, because the serial 20 seconds do not shrink. Even infinitely many workers cannot reduce this simplified job below those 20 seconds, giving a maximum speedup of four. Real communication can make it slower still. Improving the serial work can therefore matter more than buying another worker."
     ],
     "q:88-06:question": [
       "For ",
@@ -17432,7 +17781,9 @@
         "plain": "102 − 100 = 2 m",
         "tex": "102 - 100 = 2 m"
       },
-      ". A sensor log is a different measurement over depth."
+      ". A sensor log is a different measurement over depth.",
+      "\n\n",
+      "The 0.8% describes copper mass fraction in the assayed sample, not the amount of copper in the entire borehole. Along-hole interval length is 2 m; converting it into rock tonnage would also require geometry and density. A sensor reading somewhere in that interval supplies another type of evidence and cannot simply be relabeled as an assay."
     ],
     "q:90-r2-01:option:0": [
       {
@@ -17503,7 +17854,9 @@
         "plain": "100×(1.10−1.00)/1.00 = +10%",
         "tex": "100\\times (1.10-1.00)/1.00 = +10\\%"
       },
-      ". Whether this passes depends on the specified acceptance limits and uncertainty."
+      ". Whether this passes depends on the specified acceptance limits and uncertainty.",
+      "\n\n",
+      "The reference error is 0.10 percentage points in composition, which is a 10% relative bias against 1.00%. Two duplicate results of 1.09% and 1.11% could be close to each other while both remain biased high. Good repeatability therefore does not establish accuracy. A failed control should trigger investigation under the defined quality procedure, not an automatic undocumented correction to every sample."
     ],
     "q:125-01:feedback": [
       "Relative bias is ",
@@ -17718,7 +18071,9 @@
         "plain": "mask (1, 0, 1)",
         "tex": "\\operatorname{mask} (1, 0, 1)"
       },
-      ": its middle value is absent."
+      ": its middle value is absent.",
+      "\n\n",
+      "For the second window, the observed mean is 5 because only 4 and 6 contribute. Filling the missing entry with zero and averaging all three instead gives about 3.33, introducing a value that was never measured. A model can use an imputed value together with its mask, but the imputation rule should be fitted using training information only."
     ],
     "q:91-r2-02:question": [
       "For sequence ",
@@ -17802,7 +18157,9 @@
         "plain": "000 × 0.8 / 100 = 8",
         "tex": "000 \\times  0.8 / 100 = 8"
       },
-      " tonnes of copper before recovery losses."
+      " tonnes of copper before recovery losses.",
+      "\n\n",
+      "Consider two portions: 400 tonnes at 0.5% and 600 tonnes at 1.0%. They contain 2 and 6 tonnes of copper, so their combined 1,000 tonnes contain 8 tonnes and have mass-weighted grade 0.8%. Averaging the two percentages without their masses would give 0.75%, the wrong mixture grade. Predicting an unsampled portion adds uncertainty beyond this exact mass balance."
     ],
     "q:96-r2-01:feedback": [
       "Contained copper is 2,",
@@ -17965,7 +18322,9 @@
         "plain": "(2²+4²)/(2×2) = 5",
         "tex": "(2^{2}+4^{2})/(2\\times 2) = 5"
       },
-      ". Kriging weights would then require a fitted model and sample geometry."
+      ". Kriging weights would then require a fitted model and sample geometry.",
+      "\n\n",
+      "For a separate symmetric illustration, place two samples with values 4 and 8 at positions 0 and 2, and estimate at position 1. With an ordinary-kriging model that treats both sides identically, symmetry and the sum-to-one constraint give weights one-half each, producing 6. Off-center locations, extra nearby samples or an asymmetric spatial model can change the weights. The semivariance value 5 alone is not enough to calculate them."
     ],
     "q:127-01:feedback": [
       "Square all three differences and divide by twice the pair count: ",
@@ -18149,7 +18508,9 @@
         "plain": "1.6/2 = 80%",
         "tex": "1.6/2 = 80\\%"
       },
-      ". The 90 t tailings contain the remaining 0.4 t copper."
+      ". The 90 t tailings contain the remaining 0.4 t copper.",
+      "\n\n",
+      "The tailings grade is about 0.444%: divide their 0.4 t copper by 90 t total mass and convert to percent. The balances close both ways: stream masses total 100 t and contained copper totals 2 t. A hypothetical 4 t concentrate at 25% would have a higher grade but contain only 1 t copper, giving 50% recovery from the same feed. A richer concentrate can therefore recover less metal."
     ],
     "q:128-01:feedback": [
       "Recovery is captured copper divided by feed copper: ",
@@ -18224,7 +18585,9 @@
         "plain": "≈ 0.22",
         "tex": "\\approx  0.22"
       },
-      ". Paired data teach the connection."
+      ". Paired data teach the connection.",
+      "\n\n",
+      "The lower loss means the model now assigns more probability to the paired word; it does not show what evidence it used. If every rising example came from one instrument, it might learn that instrument's signature instead of the trend. Include varied instruments and held-out cases, then test whether changing the actual trend changes the answer appropriately."
     ],
     "c:98:formula": [
       {
@@ -18323,7 +18686,9 @@
         "plain": "result = 4",
         "tex": "\\text{result } = 4"
       },
-      "” cannot reproduce the calculation."
+      "” cannot reproduce the calculation.",
+      "\n\n",
+      "Someone can reconstruct the total 12 and divide by the three entries because both the inputs and rule are available. For a learning experiment, also record the data split, parameter settings and random seed; different splits can change the score. Where data cannot be shared, document the restriction and provide permitted examples or verification routes without claiming full reproducibility."
     ],
     "c:99:formula": [
       {
@@ -18369,7 +18734,9 @@
         "plain": "000 × 0.008 × 0.80 = 6.4 t",
         "tex": "000 \\times  0.008 \\times  0.80 = 6.4 t"
       },
-      ". This assumes the stated grade represents the feed and recovery applies to its contained copper."
+      ". This assumes the stated grade represents the feed and recovery applies to its contained copper.",
+      "\n\n",
+      "First convert the grade to a mass fraction and obtain 8 t of contained copper. Then apply the stated recovery to obtain 6.4 t recovered, leaving 1.6 t unrecovered. Report the source of tonnage, grade and recovery alongside the calculation. If recovery came from a small laboratory test, distinguish that assumption from a verified operating recovery instead of presenting the product as a guaranteed plant output."
     ],
     "c:120:formulaNote": [
       "For the same plant, ",
@@ -18425,7 +18792,9 @@
         "plain": "a",
         "tex": "a"
       },
-      ". The weights and bias are adjusted during training."
+      ". The weights and bias are adjusted during training.",
+      "\n\n",
+      "The weights say how strongly each input contributes, while the bias shifts the total even when the inputs are zero. The activation then changes that total into the neuron's output. Training learns the weights and bias from errors across examples; the activation rule is chosen as part of the network design."
     ],
     "c:33:formulaNote": [
       "The dot product ",
@@ -19364,31 +19733,57 @@
       " stacks the input vectors as matrix rows."
     ],
     "c:30:formulaNote": [
+      "For observation ",
       {
-        "plain": "x",
-        "tex": "x"
+        "plain": "i",
+        "tex": "i"
       },
-      " is the input feature vector and ",
+      ", ",
+      {
+        "plain": "xᵢ",
+        "tex": "x_i"
+      },
+      " is the input, ",
+      {
+        "plain": "yᵢ",
+        "tex": "y_i"
+      },
+      " the observed target, and ",
+      {
+        "plain": "ŷᵢ",
+        "tex": "\\hat y_i"
+      },
+      " (y hat) the prediction. ",
+      {
+        "plain": "N",
+        "tex": "N"
+      },
+      " is the number of observations; ",
       {
         "plain": "w",
         "tex": "w"
       },
-      " the matching weights; their dot product adds the weighted features. ",
+      " is the slope and ",
       {
         "plain": "b",
         "tex": "b"
       },
-      " is the intercept. ",
+      " the intercept. With multiple features, ",
       {
-        "plain": "ŷ",
-        "tex": "\\hat{y}"
+        "plain": "x",
+        "tex": "x"
       },
-      ", read “y hat,” is the predicted target; ",
+      " and ",
       {
-        "plain": "y",
-        "tex": "y"
+        "plain": "w",
+        "tex": "w"
       },
-      " denotes the actual target. The taxi example uses just one feature, distance."
+      " are matching vectors and ",
+      {
+        "plain": "ŷ = w · x + b",
+        "tex": "\\hat y=w\\cdot x+b"
+      },
+      ": add the weighted features, then the intercept."
     ],
     "c:31:formulaNote": [
       {
@@ -19705,7 +20100,9 @@
         "plain": "L = (ŷ − y)²",
         "tex": "L = (\\hat{y} - y)^{2}"
       },
-      "."
+      ".",
+      "\n\n",
+      "Backpropagation reuses the intermediate values from the forward pass and combines local derivatives in reverse order. The result is a gradient for every trainable parameter, not an updated network. An optimizer uses those gradients to change the parameters; another forward pass is needed to measure the resulting error."
     ],
     "c:39:formulaNote": [
       {
@@ -20817,6 +21214,554 @@
         "tex": "\\operatorname{mean}(x)"
       },
       " is the code operation that returns its arithmetic average."
+    ],
+    "c:150:formula": [
+      {
+        "plain": "y = au + bv",
+        "tex": "y = a\\mathbf{u}+b\\mathbf{v}"
+      }
+    ],
+    "c:150:example": [
+      "Take ",
+      {
+        "plain": "u = (1, 0)",
+        "tex": "\\mathbf{u}=(1,0)"
+      },
+      " and ",
+      {
+        "plain": "v = (1, 2)",
+        "tex": "\\mathbf{v}=(1,2)"
+      },
+      ". Using coefficients 2 and 3 gives ",
+      {
+        "plain": "2u = (2, 0)",
+        "tex": "2\\mathbf{u}=(2,0)"
+      },
+      " and ",
+      {
+        "plain": "3v = (3, 6)",
+        "tex": "3\\mathbf{v}=(3,6)"
+      },
+      ". Adding gives ",
+      {
+        "plain": "y = (5, 6)",
+        "tex": "\\mathbf{y}=(5,6)"
+      },
+      ".\n\nThe plot walks along the first scaled vector and then along the second, ending at the sum. Change the second coefficient to minus one: the second movement reverses and the result becomes (1, −2). The rule is unchanged; the coefficients choose the mixture."
+    ],
+    "q:150-01:question": [
+      "For ",
+      {
+        "plain": "u = (2, 1)",
+        "tex": "u = (2, 1)"
+      },
+      " and ",
+      {
+        "plain": "v = (0, 3)",
+        "tex": "v = (0, 3)"
+      },
+      ", what is 3u − v?"
+    ],
+    "q:150-02:question": [
+      "Which coefficients of ",
+      {
+        "plain": "u = (1, 0)",
+        "tex": "u = (1, 0)"
+      },
+      " and ",
+      {
+        "plain": "v = (0, 2)",
+        "tex": "v = (0, 2)"
+      },
+      " produce (4, 6)?"
+    ],
+    "q:150-06:question": [
+      "Vectors ",
+      {
+        "plain": "u = (1, 2)",
+        "tex": "u = (1, 2)"
+      },
+      " and ",
+      {
+        "plain": "v = (3, 6)",
+        "tex": "v = (3, 6)"
+      },
+      " describe two available movements. Can any linear combination reach (0, 1)?"
+    ],
+    "q:150-07:question": [
+      "If ",
+      {
+        "plain": "u = (2, −1)",
+        "tex": "u = (2, -1)"
+      },
+      ", what is u + (−1)u?"
+    ],
+    "q:150-10:question": [
+      "For ",
+      {
+        "plain": "u = (1, 1)",
+        "tex": "u = (1, 1)"
+      },
+      " and ",
+      {
+        "plain": "v = (1, −1)",
+        "tex": "v = (1, -1)"
+      },
+      ", which coefficients produce (6, 2)?"
+    ],
+    "c:149:formula": [
+      {
+        "plain": "‖v‖ = √(v · v);   u = v/‖v‖",
+        "tex": "\\lVert\\mathbf{v}\\rVert=\\sqrt{\\mathbf{v}\\cdot\\mathbf{v}};\\quad\\mathbf{u}=\\frac{\\mathbf{v}}{\\lVert\\mathbf{v}\\rVert}"
+      }
+    ],
+    "c:149:example": [
+      "For ",
+      {
+        "plain": "v = (3, 4)",
+        "tex": "\\mathbf{v}=(3,4)"
+      },
+      ", the squared length is ",
+      {
+        "plain": "3² + 4² = 25",
+        "tex": "3^2+4^2=25"
+      },
+      ", so the length is 5. Dividing both coordinates by 5 gives ",
+      {
+        "plain": "u = (0.6, 0.8)",
+        "tex": "\\mathbf{u}=(0.6,0.8)"
+      },
+      ". Its squared length is ",
+      {
+        "plain": "0.6² + 0.8² = 1",
+        "tex": "0.6^2+0.8^2=1"
+      },
+      ".\n\nThe plot shows two vectors along the same direction, with different lengths. Normalizing twice changes nothing further. Edit the input to (0, 0) to see why the code must handle that case before dividing."
+    ],
+    "c:154:formula": [
+      {
+        "plain": "u · v = 0",
+        "tex": "\\mathbf{u}\\cdot\\mathbf{v}=0"
+      }
+    ],
+    "c:154:example": [
+      "Take ",
+      {
+        "plain": "u = (1, 2)",
+        "tex": "\\mathbf{u}=(1,2)"
+      },
+      " and ",
+      {
+        "plain": "v = (−2, 1)",
+        "tex": "\\mathbf{v}=(-2,1)"
+      },
+      ". Their dot product is ",
+      {
+        "plain": "1(−2) + 2(1) = 0",
+        "tex": "1(-2)+2(1)=0"
+      },
+      ". Both lengths are ",
+      {
+        "plain": "√5",
+        "tex": "\\sqrt{5}"
+      },
+      ", so they are orthogonal but not unit vectors.\n\nDividing each vector by its own length produces an orthonormal pair without changing the right angle. In the plot, edit the second vector's last coordinate from 1 to 2: the dot product becomes 2 and the right angle disappears."
+    ],
+    "c:155:formula": [
+      {
+        "plain": "c = (x · u)/(u · u);   p = cu;   r = x − p",
+        "tex": "c=\\frac{\\mathbf{x}\\cdot\\mathbf{u}}{\\mathbf{u}\\cdot\\mathbf{u}};\\quad\\mathbf{p}=c\\mathbf{u};\\quad\\mathbf{r}=\\mathbf{x}-\\mathbf{p}"
+      }
+    ],
+    "c:155:example": [
+      "Project ",
+      {
+        "plain": "x = (3, 1)",
+        "tex": "\\mathbf{x}=(3,1)"
+      },
+      " onto the line along ",
+      {
+        "plain": "u = (1, 1)",
+        "tex": "\\mathbf{u}=(1,1)"
+      },
+      ". The numerator is 4 and the denominator is 2, giving ",
+      {
+        "plain": "c = 2",
+        "tex": "c=2"
+      },
+      ". Therefore ",
+      {
+        "plain": "p = (2, 2)",
+        "tex": "\\mathbf{p}=(2,2)"
+      },
+      " and ",
+      {
+        "plain": "r = (1, −1)",
+        "tex": "\\mathbf{r}=(1,-1)"
+      },
+      ".\n\nCheck the result: the residual's dot product with u is zero. The plot shows the projected point on the diagonal and the perpendicular gap from it to the original point. Replacing u by (2, 2) changes c to 1 but leaves the same point p, because the line has not changed."
+    ],
+    "q:155-02:question": [
+      "For ",
+      {
+        "plain": "x = (4, 0)",
+        "tex": "x = (4, 0)"
+      },
+      " and direction ",
+      {
+        "plain": "u = (1, 1)",
+        "tex": "u = (1, 1)"
+      },
+      ", what is the projection coefficient c?"
+    ],
+    "q:155-09:question": [
+      "Why is ",
+      {
+        "plain": "u = (0, 0)",
+        "tex": "u = (0, 0)"
+      },
+      " not a valid direction for this formula?"
+    ],
+    "q:155-10:question": [
+      "For ",
+      {
+        "plain": "x = (−4, 2)",
+        "tex": "x = (-4, 2)"
+      },
+      " and direction (1, 0), the coefficient is negative. Is that valid?"
+    ],
+    "c:151:formula": [
+      {
+        "plain": "span(u, v) = {au + bv : a, b ∈ ℝ}",
+        "tex": "\\operatorname{span}(\\mathbf{u},\\mathbf{v})=\\{a\\mathbf{u}+b\\mathbf{v}:a,b\\in\\mathbb{R}\\}"
+      }
+    ],
+    "c:151:example": [
+      "Let ",
+      {
+        "plain": "u = (1, 2)",
+        "tex": "\\mathbf{u}=(1,2)"
+      },
+      " and ",
+      {
+        "plain": "v = (2, 4)",
+        "tex": "\\mathbf{v}=(2,4)"
+      },
+      ". The combination ",
+      {
+        "plain": "u + 2v = (5, 10)",
+        "tex": "\\mathbf{u}+2\\mathbf{v}=(5,10)"
+      },
+      " is reachable. Every combination keeps the second coordinate twice the first, so (1, 0) is unreachable.\n\nReplace v by (0, 1). Now (1, 0) is obtained with coefficients 1 and −2, and any point in the plane can be reached. The plot samples integer coefficients from −2 to 2; it shows the pattern but is not the whole span, which also includes fractional and arbitrarily large coefficients."
+    ],
+    "q:151-10:question": [
+      "For ",
+      {
+        "plain": "u = (1, 1)",
+        "tex": "u = (1, 1)"
+      },
+      " and ",
+      {
+        "plain": "v = (0, 2)",
+        "tex": "v = (0, 2)"
+      },
+      ", which coefficients demonstrate that (3, 7) belongs to their span?"
+    ],
+    "c:152:formula": [
+      {
+        "plain": "au + bv = 0 implies a = b = 0",
+        "tex": "a\\mathbf{u}+b\\mathbf{v}=\\mathbf{0}\\ \\Longrightarrow\\ a=b=0"
+      }
+    ],
+    "c:152:example": [
+      "For ",
+      {
+        "plain": "u = (1, 0)",
+        "tex": "\\mathbf{u}=(1,0)"
+      },
+      " and ",
+      {
+        "plain": "v = (0, 1)",
+        "tex": "\\mathbf{v}=(0,1)"
+      },
+      ", reaching zero forces each coefficient to be zero, so the pair is independent.\n\nAdd ",
+      {
+        "plain": "w = (1, 1)",
+        "tex": "\\mathbf{w}=(1,1)"
+      },
+      ". Now ",
+      {
+        "plain": "u + v − w = (0, 0)",
+        "tex": "\\mathbf{u}+\\mathbf{v}-\\mathbf{w}=(0,0)"
+      },
+      " with nonzero coefficients, so the three-vector set is dependent. The target (2, 3) can be made as two u plus three v, or as one u plus two v plus one w. The extra vector adds another recipe, not another reachable direction."
+    ],
+    "q:152-04:question": [
+      "Three vectors are ",
+      {
+        "plain": "u = (1, 0)",
+        "tex": "u = (1, 0)"
+      },
+      ", ",
+      {
+        "plain": "v = (0, 2)",
+        "tex": "v = (0, 2)"
+      },
+      ", and ",
+      {
+        "plain": "w = (1, 2)",
+        "tex": "w = (1, 2)"
+      },
+      ". Which relation proves dependence?"
+    ],
+    "q:152-04:option:1": [
+      {
+        "plain": "u + v − w = (0, 0)",
+        "tex": "u + v - w = (0, 0)"
+      }
+    ],
+    "q:152-04:option:0": [
+      {
+        "plain": "u + v + w = (0, 0)",
+        "tex": "u + v + w = (0, 0)"
+      }
+    ],
+    "q:152-04:option:2": [
+      {
+        "plain": "u − v + w = (0, 0)",
+        "tex": "u - v + w = (0, 0)"
+      }
+    ],
+    "q:152-04:option:3": [
+      {
+        "plain": "2u − v = (0, 0)",
+        "tex": "2u - v = (0, 0)"
+      }
+    ],
+    "c:153:formula": [
+      {
+        "plain": "x = c₁b₁ + c₂b₂",
+        "tex": "\\mathbf{x}=c_1\\mathbf{b}_1+c_2\\mathbf{b}_2"
+      }
+    ],
+    "c:153:example": [
+      "Use the basis ",
+      {
+        "plain": "b₁ = (1, 1)",
+        "tex": "\\mathbf{b}_1=(1,1)"
+      },
+      " and ",
+      {
+        "plain": "b₂ = (1, −1)",
+        "tex": "\\mathbf{b}_2=(1,-1)"
+      },
+      ". Basis coordinates (3, 1) represent ",
+      {
+        "plain": "x = 3b₁ + b₂ = (4, 2)",
+        "tex": "\\mathbf{x}=3\\mathbf{b}_1+\\mathbf{b}_2=(4,2)"
+      },
+      " in the usual horizontal-vertical coordinates.\n\nTo recover the basis coordinates, the first usual coordinate is their sum and the second is their difference. Adding the usual coordinates and halving gives 3; subtracting and halving gives 1. This is one vector described with two coordinate systems, not two different vectors. The example's recovery rule is specific to this chosen basis."
+    ],
+    "q:153-02:question": [
+      "Using ",
+      {
+        "plain": "b₁ = (1, 0)",
+        "tex": "b_1 = (1, 0)"
+      },
+      " and ",
+      {
+        "plain": "b₂ = (1, 2)",
+        "tex": "b_2 = (1, 2)"
+      },
+      ", what vector has basis coordinates (2, 3)?"
+    ],
+    "c:156:formula": [
+      {
+        "plain": "Ax = b",
+        "tex": "A\\mathbf{x}=\\mathbf{b}"
+      }
+    ],
+    "c:156:example": [
+      "Suppose two measurements give ",
+      {
+        "plain": "p + q = 5",
+        "tex": "p+q=5"
+      },
+      " and ",
+      {
+        "plain": "p − q = 1",
+        "tex": "p-q=1"
+      },
+      ", where p and q are the two unknowns. Adding the equations cancels q and gives ",
+      {
+        "plain": "2p = 6",
+        "tex": "2p=6"
+      },
+      ", so ",
+      {
+        "plain": "p = 3",
+        "tex": "p=3"
+      },
+      ". Substituting into the first gives ",
+      {
+        "plain": "q = 2",
+        "tex": "q=2"
+      },
+      ". Both original equations now hold.\n\nThe code stores coefficients in ",
+      {
+        "plain": "A = [[1, 1], [1, −1]]",
+        "tex": "A=\\begin{bmatrix}1&1\\\\1&-1\\end{bmatrix}"
+      },
+      " and right-hand sides in ",
+      {
+        "plain": "b = (5, 1)",
+        "tex": "\\mathbf{b}=(5,1)"
+      },
+      ". Its solver returns the two values; multiplying back verifies them. If the two equations instead demanded the same sum equal both 5 and 6, no values could satisfy both. A numerical solver is not a substitute for checking what system you asked it to solve."
+    ],
+    "q:156-01:question": [
+      "A system says ",
+      {
+        "plain": "p + q = 7",
+        "tex": "p + q = 7"
+      },
+      " and ",
+      {
+        "plain": "p − q = 3",
+        "tex": "p - q = 3"
+      },
+      ". Which pair (p, q) satisfies both?"
+    ],
+    "q:156-02:question": [
+      "The equations are ",
+      {
+        "plain": "p + q = 4",
+        "tex": "p + q = 4"
+      },
+      " and ",
+      {
+        "plain": "p + q = 6",
+        "tex": "p + q = 6"
+      },
+      ". How many solutions exist?"
+    ],
+    "q:156-03:question": [
+      "The equations are ",
+      {
+        "plain": "p + q = 4",
+        "tex": "p + q = 4"
+      },
+      " and ",
+      {
+        "plain": "2p + 2q = 8",
+        "tex": "2p + 2q = 8"
+      },
+      ". How many real solutions exist?"
+    ],
+    "q:156-05:question": [
+      "With unknown vector (p, q), which coefficient row represents ",
+      {
+        "plain": "3p − 2q = 8",
+        "tex": "3p - 2q = 8"
+      },
+      "?"
+    ],
+    "q:156-07:question": [
+      "What is the most direct check of a proposed solution x to ",
+      {
+        "plain": "Ax = b",
+        "tex": "Ax = b"
+      },
+      "?"
+    ],
+    "c:159:formula": [
+      {
+        "plain": "rank(A) = dim(span(columns of A))",
+        "tex": "\\operatorname{rank}(A)=\\dim(\\operatorname{span}(\\text{columns of }A))"
+      }
+    ],
+    "c:159:example": [
+      "For ",
+      {
+        "plain": "A = [[1, 2], [2, 4]]",
+        "tex": "A=\\begin{bmatrix}1&2\\\\2&4\\end{bmatrix}"
+      },
+      ", the second column is twice the first. Its rank is 1. Every output has a second coordinate twice its first: this matrix cannot reach an arbitrary point in the plane.\n\nChange the bottom-right entry from 4 to 5. The columns are no longer multiples, giving rank 2. For this two-by-two case, compare the products of opposite corners: they are both 4 in the first matrix, but 5 and 4 after the edit. Unequal products mean rank 2; equal products mean rank 1 unless every entry is zero, when the rank is 0. The code uses this exact two-by-two test; large or noisy matrices need more careful numerical methods."
+    ],
+    "c:160:formula": [
+      {
+        "plain": "Aₖ = Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ",
+        "tex": "A_k=\\sum_{i=1}^{k}\\sigma_i\\mathbf{u}_i\\mathbf{v}_i^{\\mathsf T}"
+      }
+    ],
+    "c:160:example": [
+      "Use ",
+      {
+        "plain": "A = [[6, 0], [0, 2]]",
+        "tex": "A=\\begin{bmatrix}6&0\\\\0&2\\end{bmatrix}"
+      },
+      ". Its singular values are 6 and 2. Keeping the stronger direction gives ",
+      {
+        "plain": "A₁ = [[6, 0], [0, 0]]",
+        "tex": "A_1=\\begin{bmatrix}6&0\\\\0&0\\end{bmatrix}"
+      },
+      ", of rank 1. The only changed entry is 2, so the squared entry error is ",
+      {
+        "plain": "2² = 4",
+        "tex": "2^2=4"
+      },
+      ".\n\nKeeping no directions instead gives the zero matrix, with error ",
+      {
+        "plain": "6² + 2² = 40",
+        "tex": "6^2+2^2=40"
+      },
+      ". Keeping both gives error zero. The plot shows this error versus the number retained. This diagonal example makes the SVD visible by inspection. Change the two nonnegative diagonal values and the code retains whichever is larger, not necessarily the first coordinate. A general matrix requires computing its singular vectors as well."
+    ],
+    "c:153:formulaNote": [
+      "For a two-vector basis, ",
+      {
+        "plain": "b₁",
+        "tex": "\\mathbf{b}_1"
+      },
+      " and ",
+      {
+        "plain": "b₂",
+        "tex": "\\mathbf{b}_2"
+      },
+      " are the basis vectors, ",
+      {
+        "plain": "c₁",
+        "tex": "c_1"
+      },
+      " and ",
+      {
+        "plain": "c₂",
+        "tex": "c_2"
+      },
+      " are the coordinates in that basis, and x is the represented vector. The coordinates are unique because the basis is independent."
+    ],
+    "c:160:formulaNote": [
+      "A is the original matrix and ",
+      {
+        "plain": "Aₖ",
+        "tex": "A_k"
+      },
+      " its approximation using at most k components. ",
+      {
+        "plain": "σᵢ",
+        "tex": "\\sigma_i"
+      },
+      " is singular value i, with values ordered largest first; ",
+      {
+        "plain": "uᵢ",
+        "tex": "\\mathbf{u}_i"
+      },
+      " and ",
+      {
+        "plain": "vᵢ",
+        "tex": "\\mathbf{v}_i"
+      },
+      " are the corresponding unit output and input directions. The superscript T means transpose. An outer product multiplies a column vector by a row vector: each entry is the corresponding output-direction coordinate times an input-direction coordinate. Scaling this matrix by its singular value gives one component."
     ]
   }
 }

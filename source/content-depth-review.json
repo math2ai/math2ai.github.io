@@ -1,0 +1,1543 @@
+{
+  "date": "2026-09-29",
+  "scope": "All 128 definitions and worked examples: purpose, mechanism, small numerical steps, interpretation and limitations. Existing questions and progress identifiers are preserved.",
+  "concepts": [
+    {
+      "conceptId": 1,
+      "title": "Scalar",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The important distinction is one value versus a collection of values. A scalar can record a temperature, a count, or a prediction error. Its numerical type does not tell us what it measures: the meaning and units come from the problem.",
+      "workedSteps": "A second reading might be 25.0 °C. Subtracting the first numerical value from the second gives a rise of 0.5 °C: two scalar inputs produce one scalar difference. Keeping both readings is a collection, rather than a single scalar. Later, a learning algorithm will also use a scalar to summarize how badly its predictions missed their targets.",
+      "teachingSha256": "21117a3bd7a42be570e67d423fc25e68fb4e504b65bfece6bb2a20e3b57c0bae",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 2,
+      "title": "Variable",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Symbols let us state one relationship and reuse it for many cases. Keep track of the role of each symbol: some values are supplied, some are calculated, and some are quantities we want to find. Changing a symbol's value does not change the rule that uses it.",
+      "workedSteps": "Read the calculation as a small process: take the input 3, double it to get 6, then add the fixed 1. The resulting 7 belongs to y. If the input changes, substitute the new value everywhere x occurs. This is how a single formula can describe many measurements or predictions without rewriting the calculation each time.",
+      "teachingSha256": "84f1d8a4f57d3646165d3237f0c7620b26aeebc88f1344585f5a6347482c17e2",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 3,
+      "title": "Function",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A function separates a reusable rule from the particular input passed to it. This is the basic shape of a prediction system: receive an allowed input, apply a rule, return an output. Knowing the output need not reveal the original input, because a function can discard information.",
+      "workedSteps": "The rule squares its input. Starting with 3 or with −3 therefore reaches the same 9. The rule is perfectly definite in the forward direction, yet “which input produced 9?” has two answers here. This distinction matters whenever we transform measurements: an easy forward calculation may be impossible to undo uniquely.",
+      "teachingSha256": "da3d621de4b58347e3f6818cf9a42f6e2bbfd708433ce2d2373e68bbdd38109c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 4,
+      "title": "Units",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Units help check whether an operation means what we think it means. Convert compatible measurements to a common unit before adding or comparing them. A computer can calculate with mismatched units without noticing; the result can still be meaningless.",
+      "workedSteps": "Think of four one-second intervals. Each contributes 3 metres, so four such intervals contribute 12 metres in total. The same speed is 300 centimetres per second; multiplying by 4 gives 1,200 centimetres, the same distance. A changed numerical representation should not change the physical prediction.",
+      "teachingSha256": "22c6e1c314f915e943529b3dfe8b2da4a1eacbcb1061fcac2f4b95bc0c45cd87",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 5,
+      "title": "Vector",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The order gives the numbers their roles. A vector might hold horizontal and vertical displacement, or two measurements of one object. Operations on vectors only make sense when the corresponding positions refer to compatible quantities. This is how a model can process several inputs together while keeping their identities.",
+      "workedSteps": "For a displacement, start at the origin, move 2 units horizontally and 3 vertically. Doubling the vector doubles both movements, producing the same direction with twice the length. If instead the entries mean temperature and pressure, scaling still works coordinate by coordinate, but the geometric interpretation requires care because the units differ.",
+      "teachingSha256": "b3cdfe7886a78e6a0e49db32fed46a92048ab2f07959d4e768b2876de48d136d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 6,
+      "title": "Matrix",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A matrix can organize many vectors: for example, one observation per row and one measured feature per column. Those meanings are part of the data specification. A matrix can also hold the coefficients of a transformation, which we will apply using matrix multiplication.",
+      "workedSteps": "Suppose the first row describes observation A and the second describes observation B. Then the first feature is the column containing 1 and 4; the third feature is the column containing 3 and 6. Reading entry 6 means selecting observation B's third feature. Swapping rows changes observation order; swapping columns changes which measurement occupies each position.",
+      "teachingSha256": "234064ccf56f46593213c5ffead1f7158060db3c31edd507c0a11028781d0987",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 7,
+      "title": "Tensor",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Extra axes preserve structure that a single long list would hide. For example, several observations can each contain a table of measurements. The tensor stores all of them together, but an axis has no built-in meaning: its name and ordering must be specified before indexing or combining the data.",
+      "workedSteps": "To find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
+      "teachingSha256": "4e9777cd7da83ede31a5672e0b23ad2e23a2df387367de70b52dd98b82c46350",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 8,
+      "title": "Summation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The index is a bookkeeping device: expand the terms it names, then add each exactly once. Dividing a sum by the number of terms produces their arithmetic mean. Learning algorithms repeatedly use this pattern to combine contributions from many observations.",
+      "workedSteps": "The three contributions are 2, 4, and 6; none is a multiplier or an extra index value. Their total is 12. Sharing that total equally across three positions gives the mean 4. A sum answers “how much altogether?” while a mean answers “how much per observation?” Doubling a dataset changes the sum but not its mean when all observations are duplicated.",
+      "teachingSha256": "aae180853eaa948d55b9ae0302ee32cdee7b30b8839c130e358decc16af3485e",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 9,
+      "title": "Dot product",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A dot product is a weighted total: each weight determines how much the matching input contributes. Positive weights add in the same direction, negative weights subtract, and zero weights ignore an input. This operation will be the core calculation inside a simple artificial neuron.",
+      "workedSteps": "Imagine two products with quantities 2 and 3 and unit prices 4 and 5. Their costs are 8 and 15, totaling 23. Pairing a quantity with the wrong price would change the meaning. The same arithmetic can combine measured features into a score; learning will later mean adjusting those weights from examples.",
+      "teachingSha256": "0015b324a44e48d3e6216950519ecfdc8dc813d1d4bcd61b15f2c05dea655291",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 10,
+      "title": "Matrix multiplication",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Matrix multiplication bundles many dot products into one operation. Each row of the left matrix supplies a different set of weights; each column of the right matrix supplies an input. The shared inner dimension ensures that each weight has one matching input value.",
+      "workedSteps": "The column holds one input with two coordinates. The first row combines it with weights 1 and 2; the second uses weights 3 and 4. That produces two different output coordinates, 17 and 39, from the same input. Adding another input column would calculate both outputs for that input as well, without changing the transformation.",
+      "teachingSha256": "0c689ad439dc889a94834e35f1f2a232b161764cd498a770b61e06f6db907f50",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 11,
+      "title": "Transpose",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Transpose changes which index plays which role; it does not change the entries themselves. It is useful when a calculation needs observations arranged as columns instead of rows, or when we need to pair rows of one matrix with rows of another through a dot product.",
+      "workedSteps": "All three numbers survive, in the same order, but the horizontal row becomes a vertical column. Transposing again restores the original row. No stretching has been undone and no equation has been solved: rearranging entries is different from finding an inverse transformation.",
+      "teachingSha256": "a4cf1cc516c2dc9d728e752ac5898fb6158abacb3640bd5c92409ec3173a43e7",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 12,
+      "title": "Linear transformation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A matrix's columns show where the unit coordinate directions go. Any input can be built from those directions, so the transformation applies the same combination to their transformed versions. This lets a few coefficients describe the action on infinitely many possible inputs.",
+      "workedSteps": "The horizontal unit direction becomes twice as long and the vertical one three times as long. The input contains one horizontal unit and two vertical units, so the result contains 2 horizontal units and 6 vertical units. The transformation changes the entire drawing consistently; it is not a separate rule invented for each point.",
+      "teachingSha256": "5a42e29b34834411d7ed3356ea89ae3fa168416126e323a30d550ffedb29fbf0",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 13,
+      "title": "Euclidean distance",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Distance converts several coordinate differences into one measure of separation. Squaring prevents positive and negative differences from cancelling, and the square root returns the result to the coordinates' units. This can help find nearby observations, provided the coordinates' scales are meaningful.",
+      "workedSteps": "Moving from the first point to the second changes the horizontal coordinate by 3 and the vertical by 4. These are perpendicular sides of a right triangle; the straight path is its hypotenuse, of length 5, not the 7-unit route along both sides. A feature measured on a much larger numerical scale can dominate this distance, even when it is not more important.",
+      "teachingSha256": "8d1843d6942eec7419462e6657c2f361cf99a639dc6ad16f7cd98af81b225cf0",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 103,
+      "title": "Eigenvalues and eigenvectors",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Most vectors mix directions under a transformation. Eigenvectors reveal special directions whose behavior is simpler: repeated applications keep the vector on one line and repeatedly multiply its scale. They help explain which patterns grow, shrink, or reverse in a repeated process.",
+      "workedSteps": "A vector with both coordinates nonzero usually changes its direction here because its horizontal part is multiplied by 2 while its vertical part is multiplied by 3. The coordinate arrows avoid that mixing. Repeating the transformation favors the vertical component because it grows by the larger factor on every application; this explains why the special directions are useful, beyond just naming them.",
+      "teachingSha256": "855f69b99d42b85cb9651ffcd185ebb2c259e23f794533eaefa6d1ed6b0c3bdd",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 104,
+      "title": "Singular value decomposition",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "SVD separates the choice of directions from the amount of stretching. Keeping only the largest stretches gives a simpler approximation when the omitted directions contribute little to the task. It is used to compress a transformation and to expose directions that nearly disappear; a small stretch is not automatically unimportant to every task.",
+      "workedSteps": "The compressed matrix needs only one input coordinate to reproduce its output, because the vertical contribution has been removed. For the displayed point, the missing vertical output is exactly the information lost. With a non-diagonal matrix, SVD first finds suitable perpendicular directions rather than assuming they are horizontal and vertical. Compression means choosing what to lose, not preserving every number for free.",
+      "teachingSha256": "c6ef751c2cc901f4f8e3dbfd76fa7b43d8d66409f95d43da5f8f1d576b20cd5c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 14,
+      "title": "Probability",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Start by specifying the possible outcomes and what event counts as success. Adding the probabilities of the outcomes in that event gives its probability. Counting outcomes works directly only when they are equally likely; otherwise their different weights must be respected.",
+      "workedSteps": "The event “even” collects three die faces, while the full experiment has six equally likely faces. The fraction one-half describes that event before a throw. It does not say which particular face will occur, or promise an exact split in a short run. This distinction lets a predictive model express uncertainty instead of pretending every future outcome is determined.",
+      "teachingSha256": "f11f76d1b0217ef2a00fdf56acf4fc5c205208e7c161c20c44d95505dd04015a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 15,
+      "title": "Conditional probability",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Conditioning changes the group over which we count. First restrict attention to cases satisfying the information after “given”; then measure the requested event inside that group. It is useful when a prediction should change after part of an observation becomes known.",
+      "workedSteps": "Once “red” is known, non-red balls are outside the relevant group. The denominator is four red balls, and the numerator is the one ball that is both red and striped. To reverse the question and ask about red balls among striped balls, we would need the total number of striped balls instead. The two denominators answer different questions.",
+      "teachingSha256": "231b553d8cf89129188d82b15f1e7a320da5bdc539470b6b9ce031bf062298ed",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 101,
+      "title": "Bayes’ theorem",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The update compares how well competing possibilities explain the evidence while retaining how common they were to begin with. Strong evidence can change a belief substantially, but an imperfect signal does not erase the base rate. This is useful for interpreting noisy alerts and updating predictions as evidence arrives.",
+      "workedSteps": "Begin with the 10 defective and 90 good parts, then follow each group through the flagging process. Eight of the defects are flagged, but so are nine good parts. The alert therefore narrows attention to 17 parts, not just the eight true defects. Its usefulness comes from increasing the defect fraction above the original 10%, while leaving substantial uncertainty.",
+      "teachingSha256": "921be82968644437f5be171a339507b212eb0ac117b49d37891a711fc1af4d3d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 16,
+      "title": "Expected value",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An expected value combines the magnitude of each outcome with how often it occurs. It is useful for comparing average consequences across repeated uncertain situations. It does not describe the spread of outcomes, and it need not be an outcome that can occur on any single trial.",
+      "workedSteps": "Half of many trials contribute zero and half contribute ten on average, so the average payout approaches five under independent repetition. A single trial still pays only zero or ten. A guaranteed payout of five would have the same mean but a very different experience: uncertainty about individual outcomes has not vanished just because we summarized them by one number.",
+      "teachingSha256": "c71f7ad1929959eaed6f1a89c6adf12d1069e8ffcb2337514ce2e793edd75772",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 17,
+      "title": "Variance",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The mean gives a center; variance asks how far values typically scatter around that center. Squaring makes both directions contribute positively and gives larger deviations more influence. Standard deviation expresses that spread back in the original measurement units.",
+      "workedSteps": "Subtracting the mean 4 produces deviations −2 and 2. Their signed average is zero, even though the readings differ. Squaring makes both contributions 4, and averaging gives variance 4. The standard deviation 2 describes the spread around the mean; it is not an uncertainty bound guaranteeing that future readings stay inside a fixed interval.",
+      "teachingSha256": "cfb934ce73debb50cc0344af12ae857d7b665c528093e55ca5a30d9ab1c055eb",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 102,
+      "title": "Covariance and correlation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Centering removes the two baseline levels before comparing their movement. Products of deviations are positive when both are above or both below their means, and negative when they move in opposite directions. Dividing by the two spreads makes correlation comparable across different measurement units.",
+      "workedSteps": "The first observation is below both means and the second above both, so both products contribute positively. The perfect correlation describes the straight-line pattern in these two points, not evidence that one measurement causes the other. With only two distinct pairs, this apparent perfection is especially weak evidence about what a larger dataset will do.",
+      "teachingSha256": "89e6f01698341f46e52fd2633b2f7bcfed9c47cc7f96cc191a5264c62366c433",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 106,
+      "title": "Monte Carlo estimation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A simulation replaces an expectation that is difficult to calculate directly with repeated experiments we can carry out. Each draw must follow the intended probabilities; compute the quantity of interest for that draw, then average. The approximation improves through sampling, not through finding a single “typical” outcome.",
+      "workedSteps": "Keep a running total: after the four draws it reaches 12, which divided by four gives 3. Another set of four draws can give a different average. In the editable example, the simulated population is explicitly the four equally likely reward values, so its exact mean is available as a check. In larger problems, that exact comparison may be unavailable.",
+      "teachingSha256": "6dbd670dae4c063a98d14a428672432d83b419d1c9f395bf2e848405755b76c1",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 18,
+      "title": "Exponential and logarithm",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Exponentials turn repeated multiplication into a function of the repetition count. Logarithms reverse that viewpoint and turn products into sums. This makes them useful both for growth processes and for handling probabilities whose products become extremely small.",
+      "workedSteps": "Starting from one, three doublings produce two, four, then eight. The base-2 logarithm asks how many doublings connect one to eight. Natural logarithms use a different base but the same inverse idea. A logarithm reports a multiplicative change on an additive scale; it is not another name for division.",
+      "teachingSha256": "ab5a22a11caf1b506c7fc9e8e12d0d41c2c58bbdb27c9a78e3db5b0298b9a6bf",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 19,
+      "title": "Derivative",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A derivative predicts the effect of a small input change near the current point. It gives local sensitivity, not the total change over an arbitrary interval. This is the information a training algorithm needs when deciding how to adjust a parameter to reduce an error.",
+      "workedSteps": "The slope 6 predicts a change of about 0.06 for an input increase of 0.01. The actual change, 0.0601, is close but not identical because the curve bends over that interval. The tangent in the plot represents this local straight-line prediction. Move the input and both its slope and the point of contact change.",
+      "teachingSha256": "39f4816b0c788f006e57c060c18eb216db6f920bce1cd82bc59edf2d80837702",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 22,
+      "title": "Integral",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Integration combines local contributions into a total. Split the interval into pieces, multiply each rate by its piece's duration, and add; smaller pieces allow a changing rate to be represented more faithfully. It connects a description of “how fast” with one of “how much.”",
+      "workedSteps": "During each of the three seconds, two litres enter the tank. Adding those contributions produces six litres. For a varying flow, rectangles with different heights approximate the same total-volume calculation. If negative flow represents water leaving, its contribution subtracts, so the integral measures net change rather than all water that ever passed the valve.",
+      "teachingSha256": "0ca74842a7cc56859f4105477851eeade1cd7c7e70d583b507c55eaffc9a8a63",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 20,
+      "title": "Gradient",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A gradient keeps separate the sensitivities to different adjustable inputs. It answers what would happen if we changed each coordinate while leaving the others fixed. Combining those sensitivities lets an optimization algorithm choose a coordinated step instead of blindly testing every possible change.",
+      "workedSteps": "At the displayed point, increasing x by 0.01 alone raises the score by about 0.02; increasing y by 0.01 alone raises it by about 0.12. The y direction is locally more sensitive in these units. A small step opposite both gradient coordinates should lower the score, but the gradient must be recalculated as the point moves.",
+      "teachingSha256": "7b813eadfdd7ac21480569191386516ecc655e4f0afc7e5a3923221eb204f877",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 108,
+      "title": "Hessian and curvature",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The gradient gives the current slope; the Hessian describes how that slope changes as we move. Large positive curvature means a narrow, steepening valley, while different signs reveal directions with different behavior. This helps explain why a step size that is comfortable in one direction may overshoot in another.",
+      "workedSteps": "The x slope is twice x, and the y slope is six times y. Changing x by one unit therefore changes its slope by 2; changing y by one changes its slope by 6. The zero off-diagonal entries mean those slope changes do not couple the coordinates in this example. The valley is steeper in y even though both directions lead upward from the origin.",
+      "teachingSha256": "ca9d0cef1436639d316140e3e7e48791ca8dbea8cf6634247faf162b4649ac1d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 21,
+      "title": "Chain rule",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A composed calculation can be understood one small operation at a time. First record intermediate values on the way forward, then multiply the sensitivities along each path on the way back. This makes derivatives of a long computation manageable without expanding it into one enormous formula.",
+      "workedSteps": "A tiny increase in x is doubled on its way to u. Near the current u, squaring multiplies that small change by about 12, so the full change is amplified by about 24. Omitting either stage would answer a different sensitivity question. When two branches both affect the output, their effects add because both changes reach the same final quantity.",
+      "teachingSha256": "8702328530cda34af42987fb74de05a97fa91a527d67f2eeb57bd6ed357211ca",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 23,
+      "title": "Optimization",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An optimization problem needs three ingredients: adjustable choices, a score, and rules describing what choices are allowed. The algorithm searches among those choices; it does not decide whether the chosen score represents the real goal. A model can optimize its stated objective very well while solving the wrong practical problem.",
+      "workedSteps": "The score measures squared distance from 3, so without the restriction we would choose 3. The allowed interval ends at 2, making 2 the nearest permitted choice. This separates the best possible score from the best feasible score. Checking constraints after finding an unconstrained answer would miss the actual problem we were asked to solve.",
+      "teachingSha256": "ae81152ffc0f95a53805320549bba2ffa8a42c85ca87a76e4e465d79ae4fe5e7",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 107,
+      "title": "Lagrange multipliers",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "At a regular constrained optimum, moving along the allowed set cannot improve the objective to first order. The multiplier expresses the balance between the objective's gradient and the constraint's gradient. Solving those equations finds candidates; checking the allowed set and the objective still matters.",
+      "workedSteps": "The equality rule leaves only one freedom: increasing x forces y to decrease by the same amount. At the equal split, these opposing first-order effects balance. Here the squared objective rises for every unequal split, so the candidate is the minimum. In a different objective, the same method could instead identify a maximum or another stationary candidate.",
+      "teachingSha256": "bc13680566cb058a4f0cdafeb0d3d1ee21b7e33c6cbecdd798b0797ad34b14f8",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 24,
+      "title": "Gradient descent",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A training loop repeats three actions: evaluate the objective, calculate its current gradient, and update the parameters. The gradient is a local guide, so each step uses newly calculated information. This replaces an exhaustive search through all possible parameter combinations with a sequence of small, informed moves.",
+      "workedSteps": "The first step moves toward zero because the slope at 3 is positive. At the new value 2.4 the slope is smaller, so the next step must use that new slope rather than reuse 6. Repetition can approach the bottom of this simple bowl. A step that is too large can cross the bowl and land at a higher loss; decreasing loss is something to check, not assume.",
+      "teachingSha256": "b8ec30929c4a26a48ccf38a1aeff86b0cf103e78233b1911cee78f4eaa21a711",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 25,
+      "title": "Dataset and features",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Before choosing an algorithm, decide what one row represents, which measurements will be available at prediction time, and what answer is wanted. A feature's name, units and ordering are part of that agreement. A target is not an extra input that the model is allowed to look at when predicting.",
+      "workedSteps": "If the task is predicting floor area, the known targets for these two rooms are 6 and 12 square metres. The two dimensions form each input; area is the answer used to check a prediction. A future room must use the same column order and units. Replacing width with area in the input would change the task and could accidentally reveal the answer.",
+      "teachingSha256": "2f328b9f6d4be4b989b2fc65cbbd3e616a89940f604293b33adb8f6d89bd6f68",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 30,
+      "title": "Linear regression",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The learned line is a compact rule that can be evaluated on a new input without refitting. Its usefulness depends on the relationship staying sufficiently similar to the training data. A straight line is a deliberate restriction: it can capture a trend without reproducing every noisy observation.",
+      "workedSteps": "The slope means an additional kilometre adds two dollars to the predicted fare, and the intercept supplies the starting three dollars. Those meanings were inferred jointly from all three trips, not specified by a programmer. Check future trips separately: a line that fits these observations best need not remain accurate for very long journeys or a different pricing system.",
+      "teachingSha256": "f4c87372b0fa80e6b6fb9beba0c6e4c27116b832d3ef08089b0e2b8db52bf47b",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 31,
+      "title": "Mean squared error",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A loss turns a collection of prediction errors into a single score that different parameter settings can be compared against. Squared errors avoid cancellation and make a large miss disproportionately costly. The average makes scores comparable across datasets of different sizes, when the cases and target scales are comparable.",
+      "workedSteps": "The first prediction misses by one unit and the second by two. Their squared contributions are 1 and 4, so the second miss contributes four times as much, not twice as much. A training procedure can change the predictions and recompute this score. Minimizing it chooses what “better” means; if large errors should not dominate so strongly, another loss may be more suitable.",
+      "teachingSha256": "94eb530650413f1883ba22f082bb3ccbe52e85ec8d86b847b06b55c738c422f2",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 29,
+      "title": "Supervised learning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Training needs both a family of candidate rules and an algorithm for choosing among them. The labels supply a correction signal: predict, compare with the known target, and improve the rule across examples. The final test is whether that rule works on cases not used to choose it.",
+      "workedSteps": "A rule that simply returns the input misses all three targets. Within the family of straight lines through the origin, doubling the input removes every training error. That is evidence for the rule within this chosen family, not proof that nature must double every future value: many more complicated rules could also fit three points. The prediction at 4 therefore needs a fresh check.",
+      "teachingSha256": "5960cca5d2f52b81c7f656a0ae7a2012c1e54dff85607d96ed7af1b7857b9344",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 32,
+      "title": "Parameter and hyperparameter",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Parameters change inside the training procedure; hyperparameters determine how that procedure runs or which kinds of rule it can consider. Their roles depend on the procedure, not on whether the values happen to be numbers. Hyperparameters are usually compared using validation results, because training fit alone rewards overly flexible choices.",
+      "workedSteps": "Training calculates a gradient and uses it to change w; the value 0.01 controls the size of that change. To compare two learning rates, run training separately with each rate and examine validation performance. Editing w directly chooses a model coefficient; editing the learning rate changes the process that will discover coefficients.",
+      "teachingSha256": "799d04d9fb380bf7fc2a7542bce27c86fb10c81a9a841d086f2633b48af1f27a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 27,
+      "title": "Training, validation and test",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The separation protects the meaning of an evaluation. Training examples influence fitted weights; validation examples influence choices such as model size or when to stop. Once those choices are fixed, the test set provides a less tailored check. Repeatedly choosing changes because they improve the test score turns that set into another validation set.",
+      "workedSteps": "Fit each candidate on the same 70 training wells, then use the 15 validation wells to select a candidate. Only then evaluate once on the remaining 15. The counts alone do not make the design valid: if the intended use is on new wells, measurements from one well should not be scattered across the groups. The split must imitate the future prediction task.",
+      "teachingSha256": "de8fbf1b9b9db6bb1a79143db16c55f598d215ab532ccff3cd8dae4796b0d204",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 28,
+      "title": "Data leakage",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Leakage changes the question an evaluation answers. A model may appear to predict unseen situations while actually using a clue derived from the answer or a near-duplicate training case. Prevent it by defining what information is available at prediction time and enforcing that boundary throughout splitting, preprocessing and fitting.",
+      "workedSteps": "The overlapping-window example is a problem when the goal is performance on a new well: the test should not reward recognition of the same measurements. If the goal were predicting a later depth in an already observed well, we would need a different split that respects the order and information available at that time. The correct fix follows the intended use, not a universal random-split recipe.",
+      "teachingSha256": "799a4fbefe3e55df0b429ac3a11257368e3ff658c1b27fd5b254f6d84a56603f",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 26,
+      "title": "Normalization",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Rescaling changes how numerical differences influence a model. A distance-based method can otherwise treat a large-unit feature as more important just because its numbers are larger. Estimate the reference statistics from training data, then reuse those same statistics on validation, test and future inputs.",
+      "workedSteps": "Subtracting 100 gives an excess of 40 in the original units. Dividing by 20 says the new value is two training standard deviations above the training mean. It is not a probability and need not lie between zero and one. A constant feature has zero standard deviation, so it needs a separate handling rule rather than division by zero.",
+      "teachingSha256": "e7c787c25968586639de29cbfd9120fc18565d9fc19f32c739f96c6c07e5dbb3",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 109,
+      "title": "k-nearest neighbors",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "This method stores examples instead of fitting a single prediction formula. For a new input, compute distances, select the closest k rows, then combine only their target values. The choices of features, scaling and k determine which cases count as relevant evidence.",
+      "workedSteps": "Make the neighbor search explicit: suppose the stored input positions are 1, 4 and 7 with the displayed targets 2, 4 and 9. A query at 5 has distances 4, 1 and 2. With three neighbors, all three targets contribute to the prediction 5; with one neighbor, only the target at position 4 contributes. Using more neighbors smooths the prediction, but may blend examples from genuinely different regions.",
+      "teachingSha256": "93312755af50a9cb8bc876fee293270b1a2203ffcbfe62f9f973030625c91f7e",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 110,
+      "title": "Decision trees",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Training builds the tests from data. A candidate split divides the training rows, assigns a prediction to each resulting group, and is scored by how well those predictions fit. The procedure repeats within groups until a stopping rule is reached. Prediction later just follows the learned tests.",
+      "workedSteps": "For a small training set, take inputs 2, 4, 7 and 9 with targets 2, 2, 8 and 8. Before splitting, the mean target is 5 and every row has squared error 9. Splitting at 5 creates two constant-target groups: their means are 2 and 8, with zero training error. This explains how the displayed rule could be learned. With noisy data, continuing to split can memorize accidents rather than useful patterns.",
+      "teachingSha256": "02c75d5d40101791adcfea5372d77e2beaafa33ccc27f314384134533d26a2f6",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 41,
+      "title": "Overfitting",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "More flexibility usually makes training data easier to fit, including their noise. To distinguish useful learning from memorization, follow performance on data that did not fit the parameters. A widening gap is evidence to investigate, although a changed data distribution can also make test performance worse.",
+      "workedSteps": "The model makes very few mistakes on familiar cases but many more on the held-out cases. During development, compare candidate complexity or training duration on validation data rather than repeatedly tuning against this test result. A simpler model may make slightly more training errors and fewer new-case errors, which is the useful tradeoff.",
+      "teachingSha256": "0eb8b9841012c3318ad14d8468fd3cc2525bac06dab4980531fadc5ab56857e4",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 42,
+      "title": "Regularization",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The penalty changes the training objective, so the optimizer may accept a little more prediction error to avoid an overly sensitive rule. Its strength is a choice that must be checked on validation data. Regularization can help when examples are limited or noisy; an excessively strong penalty can erase a useful relationship.",
+      "workedSteps": "The weights contribute squared magnitudes 9 and 16, totaling 25. The chosen penalty adds 2.5 to the data loss, producing 4.5. Suppose another candidate has data loss 3 and weights 1 and 2: its penalty is 0.5 and its total is 3.5. The regularized objective prefers that candidate despite its larger data error; held-out performance must tell us whether this preference was useful.",
+      "teachingSha256": "bd859c3f2685e45c2384815d74cd8b93758b231ca0e706dc6691208b5efc9e5a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 111,
+      "title": "Random forests",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Train separate trees on varied samples and feature choices, then combine their outputs. Randomness helps the trees make different mistakes; averaging can cancel part of that variation. It cannot remove an error that every tree shares, and adding identical trees contributes no new information.",
+      "workedSteps": "For the same new input, one tree predicts low, another in the middle and another high. The ensemble's 4 is the average of their outputs, not a new target supplied to training. With a three-row training set, one bootstrap sample could repeat the first row and omit the second; another tree can see a different sample. Those differing training views are one source of prediction diversity.",
+      "teachingSha256": "a20484c1f89c9dda3e49bcbf59e4a9883065812296e75069a5291eeba2459ece",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 112,
+      "title": "Gradient boosting",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Unlike a forest of separately trained predictors, boosting deliberately makes the next learner depend on the current ensemble's errors. It starts with a simple baseline, fits a correction across many rows, adds a scaled version of it, and repeats. The correction must itself be predictable from the inputs; it is not access to the true target at inference time.",
+      "workedSteps": "A tiny full dataset makes the fitting step visible. For inputs 1, 2, 3 and 4, suppose targets are 6, 6, 2 and 2 and the baseline predicts 4 everywhere. Residuals are 2, 2, −2 and −2. A tree that splits between inputs 2 and 3 can learn those two mean residuals. Adding one-tenth of its output raises predictions in the first region to 4.2 and lowers those in the second to 3.8. At prediction time, evaluate the baseline and the saved correction trees; the targets are no longer needed.",
+      "teachingSha256": "532b817e18094679c65f4c79eefe814395e9f5d1a7d4badd74f5896ba87226a3",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 113,
+      "title": "Class imbalance, precision and recall",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Choose a positive class that represents the event you want to find. Precision asks whether an alert can be trusted; recall asks how many real events were caught. Changing the score threshold changes which cases become alerts and can trade missed events against false alarms. The useful balance depends on the consequences of each mistake.",
+      "workedSteps": "The detector raised eight alerts: six useful ones and two false alarms. But ten positive cases existed, and four received no alert. These are different denominators and answer different operational questions. A user reviewing alerts cares about the first; a user trying not to miss positives cares about the second. Neither metric alone counts correctly rejected negatives.",
+      "teachingSha256": "ba5f4051f5e6731968cd09f9a9fea0e80e7c85b184745736e271e046538a612f",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 114,
+      "title": "Probability calibration",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A model can rank cases correctly while giving misleading probability values. Check calibration by grouping comparable predicted probabilities and comparing them with observed frequencies. A calibration procedure can learn a correction on separate data, then must itself be checked on fresh cases.",
+      "workedSteps": "The model effectively anticipated about 80 positives in this group, but only 60 appeared. On a representative calibration set, that may motivate lowering forecasts of this strength toward the observed frequency. It does not mean we know which 60 individuals will be positive, or that 0.6 is exact from only 100 cases. Keep final test cases separate from the data used to learn the correction.",
+      "teachingSha256": "95f93b8f96d0991a5f07ef1274f0d6419c632a285b063a0907cf37a5dd055659",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 120,
+      "title": "Causal inference",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The result also depends on what intervention is being compared, for whom, and over what time period. An average effect can differ across groups. A credible design makes the comparison interpretable; an uncertainty estimate then describes how precisely the available experiment estimates that effect.",
+      "workedSteps": "Each plant supplies only its assigned outcome; we cannot observe the same plant both treated and untreated in the same trial. Randomization makes the other group's average a useful comparison rather than a chosen collection of sunnier plants. Repeating the trial would generally give a different estimated difference, so the point estimate needs an assessment of sampling uncertainty before drawing a strong conclusion.",
+      "teachingSha256": "ed303c05baf675cb3fde6ca87a532634f6d1a8c3eb4195490448dee2e394c2ff",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 118,
+      "title": "Domain shift and adaptation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "First identify what changed: the mix of inputs, the measurement process, or the relationship between inputs and answers. These changes call for different responses. Adaptation may correct preprocessing or update fitted parameters using target-site examples, but it should be evaluated on target cases excluded from those updates.",
+      "workedSteps": "If the new sensor reports a systematically different scale, first check units and calibration rather than immediately retrain on its scores. If the physical input-target relationship changed, rescaling alone may not help. Reserve some new-site cases for evaluation, adapt using the others, then compare old and adapted models on the same reserved cases. That tests improvement on the intended setting rather than another source-site score.",
+      "teachingSha256": "e8e834e4b3f3af05dc56e91c4d5aceccab05bc692d209c0931a3db63abb02e95",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 119,
+      "title": "Active learning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The learning loop alternates between choosing an unlabeled case, obtaining its real label, and retraining. The label supplies information that the current model lacks; selecting a case is not itself learning its answer. Uncertainty is one useful signal, but repeatedly choosing near-duplicates or corrupted cases can waste the budget.",
+      "workedSteps": "The first case is near an even split between the two predicted classes, so its label could resolve an uncertainty. Send that case to a qualified labeler, add the returned answer to training data, and update the model before making the next selection. If all uncertain cases are almost identical, choosing a less uncertain but different case may teach more about another region.",
+      "teachingSha256": "412afe835b82faa20fed84e9929e6f30413ad5dbd9379322b6724fbc60f8fac3",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 33,
+      "title": "Artificial neuron",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The weights say how strongly each input contributes, while the bias shifts the total even when the inputs are zero. The activation then changes that total into the neuron's output. Training learns the weights and bias from errors across examples; the activation rule is chosen as part of the network design.",
+      "workedSteps": "The two weighted contributions are 6 and −2. Add them, then the bias, to obtain the pre-activation 5; this activation (called ReLU) keeps it because it is positive. For input values 0 and 2, the same neuron instead totals −3, so ReLU returns zero. One set of learned weights therefore responds differently to different inputs. Linking many such responses lets a network describe more than one straight-line relationship.",
+      "teachingSha256": "254ebe0539551756e9c232adf47430cbb969d1adb78e3a33c39523cfb4e8d972",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 34,
+      "title": "Sigmoid",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The curved shape turns any real score into a number strictly between zero and one. This is useful for a binary prediction when the model is trained to give that number a probability interpretation. The shape alone does not guarantee accurate probabilities. Its slope also explains why changing a very large positive or negative score has little effect on the output.",
+      "workedSteps": "A score of zero sits halfway between the two extremes. Raising it to 2 raises the output substantially, but raising an already large score from 6 to 8 changes it only from about 0.9975 to 0.9997. The output is approaching its upper limit. During training, the derivative measures how strongly an upstream score change reaches the output; it is not another prediction or a second activation.",
+      "teachingSha256": "633c93e63c5ea8b12f87b0a8ed6dad870040b650a11f070fb6d9f9948a93c209",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 35,
+      "title": "ReLU",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A neuron first forms a weighted sum; ReLU decides which side of zero that sum occupies. Keeping positive values while suppressing negative ones lets a network switch between different linear behaviors. Without nonlinear activations, stacking linear layers would still produce a single linear transformation.",
+      "workedSteps": "Move the input from −8 to −7: both outputs stay zero. Move it from 6 to 7: the output rises by one. That change of behavior is the useful nonlinearity. At exactly zero the mathematical derivative is undefined; implementations choose a convention for training. A unit that stays negative on every example can receive no gradient through this gate and stop contributing.",
+      "teachingSha256": "34386645751a63c3e3b1a36e85690ccdb663de91191ffc8c04f1cac3f50c2a8b",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 37,
+      "title": "Forward pass",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A forward pass evaluates the network with its current parameters. Each layer consumes the preceding layer's output, so intermediate values must be computed in dependency order. During training, compare the final prediction with its target to get a loss. During ordinary prediction, the target and loss are not required.",
+      "workedSteps": "The prediction 2 differs from the target 6 by −4, giving squared loss 16. Now keep the same weight but change the input to 3: the prediction becomes 3. This changes an input, not the model. Conversely, changing the weight to 2 would make the original input predict 4, with loss 4. Deciding which weight change helps is the job of backpropagation and optimization, not the forward pass itself.",
+      "teachingSha256": "122ceb91a673263c03b06ff67552cd088e900db771836a1431e5914531945eeb",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 38,
+      "title": "Backpropagation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Backpropagation reuses the intermediate values from the forward pass and combines local derivatives in reverse order. The result is a gradient for every trainable parameter, not an updated network. An optimizer uses those gradients to change the parameters; another forward pass is needed to measure the resulting error.",
+      "workedSteps": "The negative gradient says that increasing the weight slightly should decrease this loss. With learning rate 0.1, subtracting one-tenth of −16 changes the weight from 1 to 2.6. Run forward again: the prediction is 5.2 and squared loss is 0.64. This closes one learning cycle. The gradient described the old weight; further training must recompute it, and a much larger step can overshoot.",
+      "teachingSha256": "5abc59b847825f29d39ee498df80962c7965ea31fce6512e025560e8980665df",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 39,
+      "title": "Mini-batch gradient descent",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Each example proposes a gradient using the same current parameters. Average those proposals before making one shared update. A mini-batch balances the cost of reading all examples against the variability of an update based on only one; hardware can also process its examples together.",
+      "workedSteps": "The two examples both push the weight down, with different strengths. Their average 4 gives a single update of −0.4. This is not two consecutive updates: after the first of those, the second example would see a changed weight and usually produce a different gradient. On the next mini-batch, calculate new predictions and gradients using the updated weight 0.6.",
+      "teachingSha256": "c7784028a84fb64256fc979e26cab42b9275a9eab5f43bcc7f70860abfcb85f3",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 40,
+      "title": "Epoch",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An epoch describes coverage of the training set, not how much a model has learned. Usually the examples are shuffled between passes, then divided into mini-batches again. The parameters carry forward, so seeing the same example in a later epoch can produce a different prediction and gradient.",
+      "workedSteps": "After five batches of 20, all 100 examples have been used once. Start the next pass with the weights resulting from the fifth update, not with the initial weights. Training for more epochs may improve the fit but eventually overfit, so monitor held-out validation performance. If the dataset instead had 103 examples and partial batches were retained, the sixth batch would contain only three.",
+      "teachingSha256": "afa1379b7e5ca389b7af3913d3ea9aeed2b9c12aeedd48417e0ea1014cf92f6a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 36,
+      "title": "Deep neural network",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A hidden layer is an intermediate representation computed by the network, rather than a target we supplied. Training adjusts all layers so that these intermediate transformations support the final task. Depth composes simple transformations; it does not by itself guarantee better learning.",
+      "workedSteps": "Follow the same network with input 0: both hidden outputs and the final output are zero. With input 2, the first gate passes 3, the second passes 2, and the output is 6. The gates therefore matter. If both ReLUs were removed, multiplying out the layers would give one straight-line rule, with output −6 at input 0 instead of zero.",
+      "teachingSha256": "819844d47f2014809fa5d17d872825f74c92bb5c2027a66293cb6a5b8cf039ec",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 115,
+      "title": "Convolutional neural networks",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A convolutional layer slides the same learned filter over different locations. Weight sharing lets a pattern detector respond wherever that pattern appears, while using fewer parameters than independent weights at every location. Multiple filters can detect different local patterns; later layers combine their responses.",
+      "workedSteps": "The filter compares each value with its right neighbor. Both pairs in the rising signal give −1. A falling pair, such as 3 followed by 1, gives 2, so the sign and size describe the local change. Training can learn these two filter weights from a task loss; they are supplied here only to make the operation visible. The output remains a sequence of local responses, not yet a class label.",
+      "teachingSha256": "de26a53dca6f09d734887a8f6ed981209f91d99ec1235abbf1ed6744ee29da50",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 116,
+      "title": "Graph neural networks",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A graph supplies relationships explicitly through its edges. Each node collects messages from its neighbors, combines them, and updates its own representation. Shared update rules allow the same operation at every node. After another layer, information can arrive from nodes two edges away.",
+      "workedSteps": "The neighbors contribute an average of 3, which combines with the node's own 1 to give 4. Compute all nodes' new values from their old values before starting another round; otherwise the result depends on visiting order. In a learned network, trainable transformations can control the messages and updates. This toy rule fixes them so we can see exactly how the connections move information.",
+      "teachingSha256": "dce23cfa50d4682ccad29e53979d6970483f6de4e55d8a2e0addf988356acf76",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 43,
+      "title": "Softmax",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Softmax compares scores for mutually exclusive alternatives. Increasing one score increases its share and reduces the others' shares; no score is converted independently. Adding the same constant to every score leaves the distribution unchanged because only relative scores matter.",
+      "workedSteps": "Exponentiation turns the two scores into positive weights 1 and 3, then division by their total 4 gives the probabilities. The second class receives three times as much probability as the first. These probabilities can supply a prediction, a sampled choice, or a training loss. In code, subtracting the largest score before exponentiation gives the same probabilities while avoiding very large intermediate numbers.",
+      "teachingSha256": "8a5fc823901d644e19b9c26e0cdfa155ccc29d71347699744ce719822443c0f0",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 44,
+      "title": "Cross-entropy",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "For a known correct class, cross-entropy penalizes the probability assigned to that class. It connects a probabilistic prediction to a scalar training objective. Confidently excluding the right answer is penalized much more than making a mildly uncertain prediction, so wrong confidence matters as well as which class was largest.",
+      "workedSteps": "Both examples have the same true class; only the model's confidence changes. Moving its probability from 0.1 to 0.9 reduces loss by about 2.198. With several labeled rows, calculate each row's loss and average them before computing the gradient. At inference time, the model still produces probabilities, but this supervised loss cannot be calculated until the true answer is available.",
+      "teachingSha256": "4124218b7d775c73085805b61c118a8fbff105441b5a17427b78ce912ea917cc",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 105,
+      "title": "KL divergence",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "KL divergence compares whole distributions, weighting each log ratio by how often that outcome occurs under the first distribution. Reversing the distributions changes the question and usually changes the result. It is useful for training one distribution to match another, rather than measuring distance between individual samples.",
+      "workedSteps": "The first distribution puts all its mass on the first outcome, so only that outcome contributes to this direction of KL. The second distribution wastes half its mass elsewhere, costing about 0.693. Reverse them and the comparison is infinite: the second outcome now has positive reference probability but zero probability under the approximating distribution. This is why order and support matter, not just the numerical difference between probability entries.",
+      "teachingSha256": "593ed0fa7d25b3d30dd18fc467b95b328af05a06620d41ae1ed6222780114cf7",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 45,
+      "title": "Self-supervised learning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Construct a prediction task from the data itself: hide part, transform it, or ask for the next element, and use the withheld information as the target. The model must predict from the permitted view. Repeating this process supplies training examples without a human writing a separate label for every case.",
+      "workedSteps": "The input to the predictor contains only the visible 2 and 6; the hidden 4 is used afterward to score its answer. A prediction of 5 is an error, so backpropagation can change the predictor's weights. Repeating across many different sequences can teach useful regularities. Simply returning the target from the original unmasked sequence would get zero loss while learning nothing useful.",
+      "teachingSha256": "f98dcae3021010a1ad5e741d02fab0bf689cf3f465b651dafa8e8f000f08c2f6",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 46,
+      "title": "Embedding",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An embedding table starts with numerical vectors that need not have useful geometry. A learning objective updates them so that their relationships help solve a task. Similarity is therefore learned relative to the examples and objective; vector coordinates are not automatically named human properties.",
+      "workedSteps": "The displayed vectors illustrate a possible learned arrangement, not a training algorithm. A task that rewards identifying similar contexts could move cat and dog closer together while keeping rock farther away. That would change the table entries themselves. A different task might group all three differently, so the small distances should be interpreted as evidence about the learned task rather than universal semantic truth.",
+      "teachingSha256": "cf3f5032cafe56182a94dc7a562413d86785e46ebcdbaac910a87d6664641fab",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 47,
+      "title": "Cosine similarity",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Cosine similarity compares direction while ignoring positive changes of length. This can be useful when the pattern across coordinates matters more than overall strength. It also discards magnitude information that could matter for another task, and its meaning depends on the representation being compared.",
+      "workedSteps": "The first vector has length 1, the second length 2, and their dot product is 2. Dividing by the product of lengths removes that scale difference, producing similarity 1. Turning the second vector to point the opposite way would give −1; turning it perpendicular would give zero. Neither value by itself tells us whether the underlying items are relevant without a useful embedding.",
+      "teachingSha256": "eaac45cc3acba9dba50cf67b14363a66f53d53d003f38da6d9328880fd26af32",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 117,
+      "title": "Contrastive learning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Create two related views of one example, encode them, and score their similarity against alternative examples. The loss rewards selecting the related view. Backpropagation then updates the encoder, so future representations change; the model is learning a geometry rather than memorizing a provided list of similarities.",
+      "workedSteps": "For one positive and one negative candidate, take similarity scores ln 4 and zero. Exponentiating gives 4 and 1, so the positive receives probability 0.8 after normalization. Swapping the scores gives probability 0.2 and the larger loss shown above. Training pushes the positive score upward relative to the negative. The choice of related views matters: a transformation that changes the true meaning can teach the wrong invariance.",
+      "teachingSha256": "293d3342939d25b05f3981106339e6a4ca2af36d044c1946ce12c56f87f5a9ee",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 48,
+      "title": "Principal component analysis",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "PCA fits its directions to the training data: subtract each feature's mean, form the covariance matrix, and find directions with the largest variance. Projecting onto only a few such directions gives fewer coordinates while retaining as much squared variation as possible. High variance is not necessarily the same as importance for a prediction task.",
+      "workedSteps": "Here both feature means are zero. The two coordinates always move together, so averaging their products gives a covariance matrix whose four entries are all 1. Along the shared diagonal, the projection values are about −1.414 and 1.414; along the perpendicular direction both are zero. Keeping one diagonal coordinate therefore loses nothing for these two points. New points off that line would lose their perpendicular component.",
+      "teachingSha256": "a977dbb1619f34d9bbbb40b50b8f55b36acc7a36cc88c53a3d2477776b8728e1",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 49,
+      "title": "Autoencoder",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An autoencoder trains a network to reconstruct its input. An encoder turns the input into a code; a decoder turns that code back into a reconstruction. The original input supplies the target, so no separate class labels are needed.\n\nRestricting the code or the network makes copying harder and encourages it to capture patterns shared across the training data. A bottleneck is a code with fewer coordinates than the input. Here two input numbers must pass through one code number. Both the encoder and decoder weights are learned by reducing reconstruction error across several examples.\n\nThe resulting code can provide a compact representation for another task. However, low reconstruction error does not prove that the code has a human-readable meaning, and unrestricted networks can simply learn to copy or memorize. Test reconstruction on inputs excluded from training as well.",
+      "workedSteps": "1. Start with data and a small network. Use four training inputs: (−2, −4), (−1, −2), (1, 2), (2, 4). The second coordinate is twice the first. Can the network learn to preserve that shared structure using one code number?\n\nUse encoder weights e = (1, 0) and decoder weights d = (1, 1). For each input x = (x₁, x₂), compute z = e₁x₁ + e₂x₂, then reconstruct x̂ = (d₁z, d₂z). Here e and d name the two weight vectors; their subscripts identify entries. This tiny network has no bias or nonlinear activation.\n\n2. Measure the initial error. The code is initially just the first coordinate. Input (1, 2) reconstructs as (1, 1). Across the four rows, the first-coordinate errors are zero and the second-coordinate squared errors are 4, 1, 1 and 4. Averaging over all eight coordinates gives MSE = 10/8 = 1.25.\n\n3. Learn from all four inputs. Backpropagation gives weight gradients ∇e L = (−2.5, −5) and ∇d L = (0, −2.5), where L is the mean squared error and each gradient measures sensitivity to its weight vector. For example, the second decoder weight has one contribution per input: code times second-coordinate error gives −4, −1, −1 and −4. Their average is −2.5. The other weight gradients follow the same chain rule. With learning rate 0.04, subtract the scaled gradients to obtain e = (1.1, 0.2) and d = (1, 1.1). Both updates use the old weights. The input (1, 2) now has code 1.5 and reconstruction (1.5, 1.65). The loss across all four inputs falls to 0.465625.\n\n4. Repeat, then test something new. Recompute the gradients after every update. After 40 updates, training MSE is about 0.0000000012. A held-out input (3, 6) reconstructs as approximately (3.00008, 5.99996). The decoder has learned a direction whose second coordinate is about twice its first; that relationship was not fixed in its initial weights.\n\nOne number can describe position along this learned line. It cannot preserve every possible two-number input: try (3, 1), which lies off that line, or change the training rows. Different learned weight scales can express the same line, so the code itself has no unique numerical interpretation. The editable calculation below shows the loss falling and compares the input points with their reconstructions.",
+      "teachingSha256": "77d722ac5a57944cd0bbf795bacc35e5d0c627dec728bd8acef7f66d2e2de9c1",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 50,
+      "title": "Latent space and bottleneck",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The bottleneck constrains what the decoder receives. Useful compression is possible when several measured coordinates share structure, so fewer underlying quantities can describe their variation. A small representation encourages this, but its size alone does not ensure meaningful or robust features.",
+      "workedSteps": "All three pairs lie on the same line: the second number is twice the first. Saving only the first number is enough because the decoder has learned or been given that shared relationship. The pair 2, 5 does not obey it, so the same code reconstructs 2, 4 and loses a difference of 1. The benefit and the limitation both come from deciding which structure the representation preserves.",
+      "teachingSha256": "72848fc929f0e2a75668a172ad96302862abbc568785e3beb736cc23e2624696",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 79,
+      "title": "Bit and byte",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Bits count possible distinguishable patterns. Meaning comes from an encoding convention: the same bits might represent a number, a character, or one entry in a codebook. Adding one bit doubles the number of available patterns, rather than adding only one more value.",
+      "workedSteps": "With two bits there are four choices, so one of four codebook entries can be stored as a two-bit index. Eight choices require three bits. A byte can therefore hold one of 256 distinct patterns, but it cannot represent every possible real number exactly. Data formats decide how to spend those patterns on range and precision.",
+      "teachingSha256": "27429fb8f0ec2ddce6445e574fd068813eb767df3c85923a32fe67153a32b74c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 80,
+      "title": "Numerical precision",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A finite representation must round some values. More precision can reduce rounding error but increases storage or computation costs. Floating-point formats divide their bits between sign, exponent and fraction, so their spacing varies with magnitude; the decimal rounding here is an illustration, not a particular hardware format.",
+      "workedSteps": "Storing three rounded copies of 1.234 gives a sum of 3.69, while adding the original values gives 3.702. The small per-value errors have accumulated to 0.012. In a learning system, repeated operations can amplify or cancel such errors. Lower precision is useful when its speed and memory benefits outweigh the effect on the result, which needs to be measured.",
+      "teachingSha256": "ceb30a745dbdf2ac58bf8173da19d45e7223ec9090c123f19887afa6237850b3",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 51,
+      "title": "Rate-distortion tradeoff",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Compression chooses what to discard as well as how many bits to save. Distortion measures the damage using a stated criterion; rate measures storage or communication cost. Changing the tradeoff weight changes which candidate is preferred, so there is no best compression independent of the task and budget.",
+      "workedSteps": "The first candidate preserves more detail, but spends 15 extra rate units. At the stated weight those units cost 1.5, outweighing its distortion improvement of 1. If the weight were 0.01 instead, the totals would be 1.2 and 2.05, preferring the first candidate. This comparison exposes the design choice rather than hiding it behind the word “compressed.”",
+      "teachingSha256": "570f8e1e59fa52f60921ad1d6c42ad7b0f8e7e29a4a16fb99689b97ae9cdfd81",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 52,
+      "title": "Vector quantization",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A codebook is a finite list of representative vectors. Encoding chooses an entry and stores its index; decoding retrieves that entry. To learn a useful codebook, one simple method alternates between assigning training vectors to their nearest entries and moving each entry to the mean of its assigned vectors.",
+      "workedSteps": "The chosen entry substitutes 0, 2 for the original 1, 2, losing one unit in the first coordinate. If training vectors 0, 2 and 2, 2 are both assigned to this entry, their mean is 1, 2; moving the entry there reduces their total squared error from 4 to 2. Repeating assignment and averaging can improve the representatives, although initialization can affect the result.",
+      "teachingSha256": "bd9eddfc3b0bb2da7b5a2c7df486a468b64e6d4fe8e117a5c60009441c894148",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 54,
+      "title": "Token and vocabulary",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Tokenization defines the units a model receives; the vocabulary assigns them identifiers. The identifier selects a learned embedding, rather than serving as an ordinary numerical measurement. A useful tokenization balances vocabulary size against the length and information content of the resulting sequences.",
+      "workedSteps": "Identifier 6 selects the corresponding row 1, 2 from the embedding table. Identifier 7 is not necessarily more similar to it than identifier 2; the learned vectors carry that relationship. Three bits suffice for each fixed-width identifier in an eight-entry vocabulary, but the table, tokenization rules and any framing information must also be stored somewhere.",
+      "teachingSha256": "921bad20ae07a36f7c619815af74c02fdf31c1d8cee10850fbaf0621d5470623",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 53,
+      "title": "Vector-quantized autoencoder",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The encoder first proposes a continuous code; nearest-entry selection replaces it with a discrete codebook vector, and the decoder reconstructs from that choice. Training must improve the encoder, decoder and codebook together. Quantization prevents a plain derivative through the index choice, so training uses an approximation or a separate update rule.",
+      "workedSteps": "The proposed code 1.9 selects entry 2, so the decoder receives exactly 2, not 1.9. Moving the proposal slightly within the same selection region leaves that discrete input unchanged. The reconstruction error supplies a training signal for the decoder; the encoder needs the stated gradient approximation, and the codebook needs its own learning signal or averaging update. Only the entry index is needed to represent this selected code once the model and codebook are shared.",
+      "teachingSha256": "64b54171617ef5e45a64823dc044ed3d16dea4eb2ee399ca9a0e25a89b196f29",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 121,
+      "title": "Diffusion models",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Training corrupts real examples at a chosen noise level and asks a network to predict the added noise, or an equivalent denoising target. The clean example supplies supervision. Generation starts from fresh noise and repeatedly uses the learned predictions in a reverse process; it does not begin with a hidden copy of the desired clean sample.",
+      "workedSteps": "The clean contribution is 1.6 and the noise contribution is 0.6, producing 2.2. If a predictor estimated the added noise as 0.5 instead of the actual 1, its squared noise-prediction error would be 0.25. Subtracting the estimated contribution 0.3 and dividing by 0.8 would estimate the clean value as 2.375, not 2. That error trains the predictor. Real generation uses a schedule of many reverse steps because heavily corrupted inputs do not determine one unique clean answer.",
+      "teachingSha256": "d0e963d9e0e6086bfdc2f55c0bf0c5bab1db46fb58726745175375da8bbc06eb",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 55,
+      "title": "Sequence and autocorrelation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Order can contain information that a collection of independent values loses. Autocorrelation looks for repeated or alternating behavior by comparing separated positions. Different lags reveal different patterns; an association across time is not proof that an earlier value causes a later one.",
+      "workedSteps": "At lag 1, each neighboring deviation has the opposite sign, producing three negative products. At lag 2, the two available pairs have the same sign, so the numerator is 2 and this estimator gives 0.5. The alternation becomes a positive match after two positions. The values are not exactly −1 and 1 because this finite-sample formula keeps the full-sequence denominator while fewer pairs are available at larger lags.",
+      "teachingSha256": "b22915839be1aa3b5eb984fc0680822fc607b72d8ffe53d4f1a8ed925bc2c5fd",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 56,
+      "title": "Positional encoding",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Without a signal about order, an attention operation cannot generally distinguish a rearrangement merely from a bag of token vectors. A position representation supplies that missing information. The model must still learn how to use it; adding position numbers does not automatically teach grammar or chronology.",
+      "workedSteps": "The token's identity contribution stays 1, 2 in both positions. Only the added position vector changes. Now swap two different tokens: their identity vectors move while the position vectors stay attached to the locations, giving different combinations. Those combinations let later attention distinguish “A before B” from “B before A.” The tiny offsets are illustrative, not a claim that these two vectors are an effective encoding for long sequences.",
+      "teachingSha256": "71ac17ca666f4f16097969b2a82095cc80860e46912e404c8c71919ac3eaec10",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 57,
+      "title": "Scaled dot-product attention",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Queries express what a location is looking for, keys provide matching features, and values provide the information to combine. In a learned layer, trainable transformations create all three from token representations. A changed query can therefore change the mixture even when the stored values are unchanged.",
+      "workedSteps": "The weights favor the second value, but the output is a mixture, not selection of that value alone. With query zero, both scores become zero, so the weights become equal and the output becomes 4. This exposes attention's input-dependent behavior. Training adjusts the query, key and value transformations so that useful mixtures reduce the downstream loss.",
+      "teachingSha256": "03e057a54d497c1caebc6fb40e6a4a602a00c55c0f303980efb395dc0fb0d039",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 58,
+      "title": "Multi-head attention",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Separate heads can attend using different learned features at the same time. Their outputs remain separate until the output transformation mixes them. This gives the next layer several views of the same context, though a head need not correspond to a clean human-readable role.",
+      "workedSteps": "The first head favors the larger value and returns 5; the second favors the smaller and returns 3. Concatenation preserves both results as separate coordinates. The final equal-weight mixture gives 4, but other learned output weights could keep their difference or emphasize one view. Averaging the attention weights before computing head outputs would hide that distinction in this example.",
+      "teachingSha256": "01f044d53f79c98d5e262ad7a9678f8f0751f8edab483adc3a8e22ed28625459",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 60,
+      "title": "Causal mask",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The mask enforces which information is available, rather than asking the model to learn not to peek. Training can compute predictions for many sequence positions together while imposing this boundary separately at each position. The targets are the following tokens, and they must not leak into the representation used to predict them.",
+      "workedSteps": "The output at position 2 uses a half share from each of positions 1 and 2 and none from position 3. At position 1, only position 1 is allowed, so its attention weights would be 1, 0, 0. This permits the same training sequence to supply several next-token targets without revealing their answers. A mask restricts access; it does not itself make the remaining predictions accurate.",
+      "teachingSha256": "103b3780ba1abfe5b2b8c6786844f6103d75cab442d8357db8da06dd07e737e4",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 59,
+      "title": "Transformer",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "One block first lets tokens exchange information, then transforms each token's resulting features. Repeating blocks composes these operations. The residual paths carry an earlier representation forward alongside a learned correction, while normalization controls feature scale. Training adjusts the attention and feed-forward weights through the whole stack.",
+      "workedSteps": "Continue the toy block: suppose the feed-forward network returns 0, 2 for the normalized input −1, 1. Their residual sum is −1, 3. Its mean is 1 and its population standard deviation is 2, so the next normalization again gives approximately −1, 1. This is a numerical walkthrough of one block, with outputs supplied to keep the arithmetic small; a real block computes them from learned weights. Practical normalization also includes a small denominator constant and learned scale and offset.",
+      "teachingSha256": "cf13c587a3b4aa0087b7fb61c0aaae0d0c927ae0feb54014be9b2a5b8b665f8a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 61,
+      "title": "Large language models and next-token prediction",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A training sequence creates a prediction at each allowed position. Cross-entropy scores the probability of the actual following token, and backpropagation adjusts the shared network weights across many sequences. This learns statistical regularities useful for generation, but the next-token objective does not certify the factual correctness of a generated sentence.",
+      "workedSteps": "Turn the short sequence A, B into a training case: after A, the target is B. A predicted probability of 0.2 for B gives a loss of about 1.609. Training can raise that probability; it does not store a rule saying B must always follow A. At generation time, a sample or selection rule chooses a next token, appends it, then recomputes the distribution for the longer prefix. An unlikely early choice can change every later prediction.",
+      "teachingSha256": "4f5d93011878f945d6df22b448a2827058bff2159ae9ab58d42271818c4404cd",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 122,
+      "title": "Mixture of experts",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The router computes scores from the current input and chooses which experts to evaluate. This lets total parameter count grow while using only part of the expert computation for a token. All experts still need storage, and routing can create communication and load-balancing costs.",
+      "workedSteps": "The selected outputs contribute 0.5 and 4.5 to the result 5. An unselected third expert contributes nothing to this token even if it has many parameters. A different token can activate that expert instead. Training must learn both useful expert transformations and routing behavior; always routing everything to one expert would waste most of the available capacity.",
+      "teachingSha256": "cdff2386914a5399131d48c2818325f1d3d92cba33367e52425ef45b17c38525",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 62,
+      "title": "Fine-tuning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Pretraining provides an initialization that already captures useful patterns. Fine-tuning changes the trainable parameters using the new task's examples, often with fewer examples or smaller updates than training from scratch. Keeping some parameters fixed can reduce cost, but evaluation must still check both the new task and capabilities we want to retain.",
+      "workedSteps": "The value 0.48 is only one update, not proof that the task has improved. Run the updated model on the new examples, recompute loss and gradients, and repeat. Then compare with the starting model on held-out examples. If new-task training becomes too narrow, it can improve those examples while damaging earlier behavior; validation and the choice of trainable weights help manage that tradeoff.",
+      "teachingSha256": "dbfa537aab71c9fc323c227b0308e17ec79410721b90b50718518d10273fabc5",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 124,
+      "title": "Model distillation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Teacher probabilities contain more information than a single winning label: they also indicate plausible alternatives. The student learns to reproduce this pattern using its own parameters. This can make deployment cheaper, but it also transfers some teacher errors and cannot guarantee equal performance.",
+      "workedSteps": "If the student changes its probabilities to 0.8 and 0.2, its soft-target cross-entropy falls to about 0.500. It does not fall to zero because the teacher itself spreads probability across two outcomes. The matching objective is minimized by reproducing that distribution. True labeled examples, when available, can provide a separate signal rather than treating the teacher as infallible.",
+      "teachingSha256": "fb0b216a9b9b35370c59f415c3c3812a837ed06151e14a2d813e51cf50071e80",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 63,
+      "title": "Retrieval-augmented generation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Build the searchable collection first, usually by splitting documents into retrievable pieces and indexing them. For a question, find relevant pieces, pass them with the question to the generator, and retain their identifiers for citations. Updating those records can change available evidence without retraining model weights.",
+      "workedSteps": "The answer should attach the depth to the specific well and record, including its units. If another retrieved record describes a different Well A or an older survey, retrieval has not resolved the conflict merely by finding similar words. The system must use the identifying context or acknowledge uncertainty. A fluent answer without a matching source is still unsupported, even when retrieval ran successfully.",
+      "teachingSha256": "e95ebb0a6ea0fe7b55fc5bb34ffc7565c75c4259947f2849148c2f33f68abd24",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 94,
+      "title": "API and SDK",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "An API is a contract about operations, inputs, outputs and failures. An SDK packages convenient code for following that contract, but does not change what the underlying operation means. APIs can be local functions or remote services; only the latter require sending a request over a network.",
+      "workedSteps": "The caller supplies three numbers; the implementation adds them and divides by the count; the caller receives 4. The contract also needs to say what happens for an empty list or a nonnumeric entry. A remote call can fail before producing any result, so a timeout must not be interpreted as a computed zero. The SDK can help encode requests and report errors consistently.",
+      "teachingSha256": "3239bd7aedf2f2d72a307f01dee2148373ed82dcf9c4636490b5d6e48943e5f0",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 64,
+      "title": "Tool calling",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The model proposes the operation and arguments; the application validates them and decides whether to execute it. The tool then returns data that the model can use in a response. This separates language interpretation from operations that need exact computation or access to outside information.",
+      "workedSteps": "Trace the stages: recognize that an average is requested, send the three numbers to the defined calculator, receive 20, then explain that result. The number should come from the tool response, not from the model guessing what it would return. A rejected request or failed call needs explicit handling; operations with side effects also need authorization appropriate to the application.",
+      "teachingSha256": "1a2465ca01feb86a9f75064b0ffed2d7629591f0daaa06bdacf2b47f772de966",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 66,
+      "title": "State, observation and action",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The distinction matters because a controller usually chooses from measurements, not from direct access to the true state. A useful state includes whatever history is needed to predict what happens next. If a sensor is noisy or hides important quantities, a controller may need several observations to estimate that state.",
+      "workedSteps": "Adding 3 litres to the actual 10 would produce 13 litres if nothing drains or spills. Adding it to the sensor reading predicts 12.8 instead. That difference is measurement error, not a different physical action. If the tank also leaks at a changing rate, volume alone may not be enough state to predict the next volume; the model needs the relevant extra information.",
+      "teachingSha256": "5b849c1be7fc080278896b342b89547639aa6feda926e50f79d9083231d074ff",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 65,
+      "title": "Dynamical system",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Applying a transition rule repeatedly produces a trajectory: the sequence of states over time. Small errors in a transition model can accumulate across that sequence. A model is useful for comparing possible actions, but observations are needed to check whether the predicted trajectory matches the real system.",
+      "workedSteps": "Repeat the same inflow and drain for a second step: the predicted volume rises from 11 to 12 litres. Choosing no inflow instead would take 11 down to 9. These are two different trajectories starting from the same intermediate state. Capacity limits, disturbances or changing drain rates would require additional rules; the simple addition model only describes the stated conditions.",
+      "teachingSha256": "52bc0be60dfeba75b87cff3da52b251b204dd0484885cf8dfaf2fce0b5ef5e30",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 67,
+      "title": "Markov decision process",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The MDP separates what the environment does from what the decision-maker chooses. For every state-action pair, specify possible next states and rewards with their probabilities. A policy then chooses actions, allowing us to compare their expected long-term consequences.",
+      "workedSteps": "The stated fill action has expected immediate reward 0.9. If waiting in the same state reaches safe with probability 0.2 and earns the same rewards, its immediate expectation is 0.2. Filling is better for this one-step comparison, but action costs or future rewards could change the long-term preference. If equipment wear affects the transition, include it in the state rather than pretending the low-volume label contains all necessary information.",
+      "teachingSha256": "9bf0204bbc7b9622b595baf6b62179a9889e635a291e180be38995214f23ef2c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 68,
+      "title": "Reward and return",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The reward definition states what the agent is being encouraged to achieve; it is not automatically a complete measure of real-world success. Return makes delayed outcomes part of the decision. Discounting changes their relative influence and can favor an immediate gain over a larger distant one.",
+      "workedSteps": "The final reward 10 occurs two steps later, so it is multiplied by one-half twice, contributing only 2.5. With no discount, the three rewards would total 12. A competing action that paid 5 immediately and nothing later would beat the displayed discounted return but lose to the undiscounted total. The choice of horizon and discount can therefore change behavior.",
+      "teachingSha256": "b09d01de6f85f452ea234d4c70b18f34d498f91cc8f4669d4473445300ba523c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 69,
+      "title": "Policy",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A policy maps available information to an action rule, not to a prediction of the next state. A deterministic policy always chooses the same action for the same input; a stochastic one can sample different actions. Training seeks a policy whose resulting trajectories earn useful return.",
+      "workedSteps": "Imagine drawing a uniform random number between zero and one: fill below 0.8 and wait otherwise. Over many visits to this state, the proportions approach the stated probabilities, but a particular visit still takes one action. At a full tank the policy should usually be different; a probability table for only the low state does not define behavior everywhere.",
+      "teachingSha256": "a6f50fe29acc82f48a3d2a92e003945146ea49ed4b569a96d53f72fc08a428c4",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 70,
+      "title": "Value function",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Value summarizes delayed consequences as well as the next reward. It belongs to a specified policy because later choices affect those consequences. An action-value comparison can help choose a first action, while a state-value already averages over the actions selected by the policy.",
+      "workedSteps": "Six is the average return across repeated runs, not a promise that a single run will earn six: this example yields either ten or zero. If a different policy raises the success probability to 0.8 without changing the two possible returns, its value becomes 8. Changing the policy changes the value even though the starting state is unchanged.",
+      "teachingSha256": "c944a166257e73cf5e1ecdf9065e633797f69023b9bafad5fadf58b8493d6a7d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 71,
+      "title": "Bellman equation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The decomposition works because return consists of one reward followed by a smaller copy of the same future-return problem. Known values near the end of a task can therefore help determine values farther away. With loops, repeatedly updating estimates can solve the consistency equations under suitable conditions, such as a discounted finite MDP.",
+      "workedSteps": "First average the next-state values to get 5. Discount that future contribution to 4.5, then add the present reward 2. If 10 and zero are only provisional estimates, 6.5 is an update target rather than an already verified true value. Terminal states have no future return, which provides a natural starting point for working backward in a finite task.",
+      "teachingSha256": "bcdb68c7dfcd122c24b582a38d749c848a204a1b44f7c4aeb577db1df1184240",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 73,
+      "title": "Exploration and exploitation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The apparently best action may only be the one we have tried most. Exploration deliberately spends some decisions reducing uncertainty; exploitation uses current estimates to obtain reward. Useful exploration considers safety and the value of information, not merely randomness for its own sake.",
+      "workedSteps": "With two actions and one uniquely best estimated action, the exploration branch still chooses that best action half the time. Its total selection probability is therefore 0.95: 0.9 from exploitation and 0.05 from exploration. Only about five of 100 decisions choose the other action on average. Exploration-branch choices and visibly non-greedy choices are not the same count.",
+      "teachingSha256": "cdf03c068f1709954ce829b9a87efce904f775453a307df5f5fce6e67085abd0",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 72,
+      "title": "Q-learning",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Observe a transition, build a target from its reward and estimated future opportunity, then move only the selected state-action entry partway toward that target. Repeated experience propagates information through the value table. The action that generated the experience need not be the greedy action used in the target.",
+      "workedSteps": "The target 4 exceeds the current estimate 2, so a quarter-step closes one quarter of that gap. If the exact same target were observed again, the next estimate would rise from 2.5 to 2.875. If the transition ended the task, the future contribution would instead be zero. Learning needs visits to relevant actions; repeatedly updating one entry leaves unexplored entries uninformed.",
+      "teachingSha256": "61a664ad1509653b5361b35356728a2b631e415a25143e3e421fc883e1e065f5",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 74,
+      "title": "Policy gradient",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Policy-gradient learning changes the action-selection rule directly. In realistic tasks, the environment rarely supplies an exact return gradient, so sampled trajectories estimate which choices should become more likely. The estimates can be noisy; a higher predicted training objective needs to be checked against actual outcomes.",
+      "workedSteps": "The expected reward rises from 2.5 at probability 0.5 to 3.4 at probability 0.8. This example has known rewards, so its exact gradient is easy to calculate. Repeating the same step without a constraint would eventually push the probability above one. Practical policies use a parameterization such as softmax to keep probabilities valid while updating unconstrained weights.",
+      "teachingSha256": "a022870ede9858a82d91f7b7b00b326618649a8c2406383e1430862c095ff9bc",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 76,
+      "title": "Model-based RL",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Learn or specify a transition model, simulate candidate actions through it, and use their predicted consequences to make a decision. Real transitions can then improve the model and reveal where its predictions fail. Planning is only as reliable as the model in the regions it explores.",
+      "workedSteps": "The return estimates 7 and 5 summarize simulated outcomes, rather than two real experiments already completed. After choosing fill, compare the measured next state and reward with their predictions. If the model consistently overlooks overflow, its apparently superior action can be worse in reality. Shorter plans, uncertainty estimates and safety restrictions can limit the consequences of that mismatch.",
+      "teachingSha256": "c7706a4f1380ea8478281759a949c577009c0b6d793be3362c10392aa4bbf554",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 78,
+      "title": "Safety constraint",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A constraint rules out a choice even when its reward looks attractive. Check feasibility before selecting the best allowed action. Some constraints concern an immediate setting; others concern future states, and require a sufficiently reliable model or additional safeguards.",
+      "workedSteps": "The proposed 7 exceeds the limit by 2, so it is outside the permitted set. Settings 4 and 5 pass this particular upper-bound check, but may have other limits such as a minimum or a maximum rate of change. Choosing 5 automatically is not always correct: the controller should compare the feasible choices using its objective. A model-based safety prediction is not a guarantee when the model is wrong.",
+      "teachingSha256": "db0065d34b93c48a36d1530d56c00fe38345128eebc632286b21ad82a75feb0a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 77,
+      "title": "Model predictive control",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The essential loop is predict, optimize, act once, measure, and repeat. Keeping a moving planning horizon lets the controller revise a plan when disturbances make reality differ from the forecast. Costs can balance target tracking against energy use or abrupt changes, subject to physical limits.",
+      "workedSteps": "The original first inflow predicts 14 litres after the drain, and the planned second inflow 2 would hold that level. The observed 13 means the original second action would now leave the tank at 13. Replanning increases that inflow to 3 so the next predicted volume is 14. This example illustrates correcting a plan; a complete optimizer would compare candidate action sequences using a stated cost and constraints.",
+      "teachingSha256": "6ec7d52f695ea7b4c7601821c0cf372a752d6c14bc7035f27592130b736e51e5",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 75,
+      "title": "RLHF",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The feedback usually compares alternative responses to the same prompt. A reward model learns to predict those preferences; policy optimization then uses its scores as a training signal. These are two separate learning steps, and the resulting policy can exploit weaknesses in the learned reward rather than satisfy the underlying human intent.",
+      "workedSteps": "The probabilities describe how often the policy would produce A or B for this fixed prompt. Shifting probability mass toward A improves the reward model's expected score. To learn that A is preferred in the first place, the reward model needs comparisons supplied by people. Separate evaluation must check actual helpfulness and reliability, because increasing the score from 1 to 1.5 alone proves neither.",
+      "teachingSha256": "c70ff69da230587504138f1547665148dba2932337847f71968b07fd7e7b51c9",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 81,
+      "title": "CPU",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The processor reads instructions and data, performs operations, and stores results. Some instructions depend on earlier results; others can overlap or run on separate cores. CPUs are useful for varied control flow, preparing data, and coordinating specialized accelerators as well as performing arithmetic themselves.",
+      "workedSteps": "The running total is a dependency: the addition that produces 6 uses the previous total 2. One alternative adds independent groups first, then combines their partial sums. For a tiny list, organizing extra workers would likely cost more than it saves. Performance depends on the work and its data movement, not only on the number of cores.",
+      "teachingSha256": "97f809e300f415ccbd7e99fd49a0b07dbc77406e452a1499a1fd9131a9bc8b82",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 82,
+      "title": "GPU",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Parallel hardware helps when a calculation offers many independent pieces with similar instructions. A GPU divides that work among many workers and keeps data moving to them. Transferring inputs, launching work and collecting results also take time, so a tiny task may be faster on a CPU.",
+      "workedSteps": "Four workers could each read one input, double it and store one output without waiting for another worker's answer. A dot product is different: its individual multiplications can run independently, but their products must later be combined. Matrix operations provide many such products and sums. This repeated structure is a major reason GPUs suit neural-network workloads.",
+      "teachingSha256": "066e673fcde028f867ff86f5f9db0457ad421a7504bad0d307fa050e876abf83",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 83,
+      "title": "Tensor core",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A large matrix multiplication can be split into small blocks, with partial products accumulated into output blocks. Specialized circuits perform these repeated multiply-and-add operations efficiently. The software must arrange compatible shapes and data formats; arbitrary scalar code does not automatically become a Tensor Core operation.",
+      "workedSteps": "The two products are 3 and 8, summing to 11; the accumulator contributes another 5. This tiny example explains the operation's meaning, not a supported physical instruction shape. Real kernels tile much larger matrices into supported blocks and combine partial results. Input and accumulation precision can differ, so performance and numerical error both depend on the chosen format.",
+      "teachingSha256": "82234cb354a21c4769b845dfde7ac9a00ed4ffea2c6296898fca62abdd9c9dae",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 84,
+      "title": "CUDA",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The host program launches a kernel with a grid of thread blocks. Each thread uses its index to decide which data to process. Independent indexing creates parallel work; shared dependencies need explicit coordination or a different algorithm.",
+      "workedSteps": "Indices start at zero here, so index 6 selects the seventh entry. With 30 entries and 32 launched threads, indices 30 and 31 have no valid item; a bounds check makes those threads do nothing. The launch creates logical work assignments, not a promise that all 32 execute at the exact same instant. Correct indexing and memory access matter as much as the arithmetic inside the kernel.",
+      "teachingSha256": "b33f2de8dfc1e3d544f3e7049004bfc4b4bd53f8962f9fec92fdad4ef57f505d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 85,
+      "title": "Memory capacity",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Start with a memory budget: count stored values, multiply by bytes per value, then include temporary and per-request data. Different activities need different budgets. Inference can discard some intermediate values quickly; training often retains them for the backward pass and keeps additional optimizer data.",
+      "workedSteps": "Sixteen bits make two bytes per parameter, which explains the 2 GB weight total using decimal gigabytes. A separate gradient stored at 32 bits adds another 4 GB for these parameters. That already gives 6 GB before activations, optimizer state or other buffers. A model whose weights barely fit therefore need not fit for training or for many simultaneous requests.",
+      "teachingSha256": "77013226f7a2f14aa5e0b3db5471cc9f67a44e44a6eb87b24cd7dad4bdfbc0c7",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 123,
+      "title": "Context windows and KV caching",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "At each new token, attention needs keys and values for the earlier tokens. Reusing those saved arrays avoids recalculating them, but the cache grows with sequence length and with the number of active sequences. It saves repeated work; it does not extend the model's context limit or remove attention computation over the cached entries.",
+      "workedSteps": "The first factor of two counts keys and values; the second counts layers. Each new token in this toy model adds 32 bytes, so growing from 10 to 11 tokens grows the cache from 320 to 352 bytes. Two separate 10-token conversations need 640 bytes under these assumptions. The tiny dimensions keep the calculation visible; real models add much larger per-request memory requirements.",
+      "teachingSha256": "feb5fc553a379a3f496f7cee27445f31f512df4d164fd22a1c183edc9cd8bf17",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 86,
+      "title": "Memory bandwidth",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Capacity asks whether data fit; bandwidth asks how quickly they can be moved. Reusing data already close to the processor can reduce transfers and increase effective performance. A calculation can be limited by arithmetic, memory movement, or both, so more compute units do not solve every bottleneck.",
+      "workedSteps": "The 0.1 seconds is a lower bound for this transfer alone, assuming the stated rate is sustained. If the same 10 GB must be read five times from that memory, it requires 50 GB of traffic and at least 0.5 seconds. Reusing it without those repeated transfers changes the traffic requirement. Real execution also includes computation, latency and other overhead.",
+      "teachingSha256": "496fa2ad114611d4ef2116b70de28d6fd0361bbba40bc6854e49dc10986aa164",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 87,
+      "title": "H100",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A named accelerator combines compute circuits, memory and communication links. Suitability depends on the entire workload: whether its data fit, which numerical formats it uses, and how much data must move. Peak advertised arithmetic throughput is not the same as measured application speed.",
+      "workedSteps": "Subtracting the 20 GB weight estimate from 80 GB leaves a nominal 60 GB, but that is not all free for additional copies of the model. Activations, attention caches, temporary buffers and the runtime also need memory. Training would require further storage for gradients and optimizer state. This is a capacity estimate for the stated variant and precision, not a benchmark or a guarantee that a deployment fits.",
+      "teachingSha256": "f0f583bc9fbbb1c7e0beb78437aec978ee78be3d9c44e269eb43659702d08eca",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 88,
+      "title": "Compute cluster",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Parallel execution requires a decomposition of the job and a way to combine results. In data-parallel learning, workers compute gradients on different examples, then communicate to form a shared update. Splitting work adds communication and synchronization, which can limit the benefit of more devices.",
+      "workedSteps": "The four-worker estimate gives a speedup of about 2.29, not four, because the serial 20 seconds do not shrink. Even infinitely many workers cannot reduce this simplified job below those 20 seconds, giving a maximum speedup of four. Real communication can make it slower still. Improving the serial work can therefore matter more than buying another worker.",
+      "teachingSha256": "4c0579fa04d10f3841198c61e58690327643f23315e8efb7e2027955a9c68a31",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 89,
+      "title": "TSMC and chip fabrication",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Chip fabrication turns a circuit design into physical devices through repeated material and patterning steps. Testing identifies dies that meet requirements; packaging connects usable dies to the outside world. Manufacturing yield influences how much useful hardware results from a batch, alongside design, process and packaging choices.",
+      "workedSteps": "If the hypothetical fabrication batch cost 8,000 units and produced 80 usable dies, the fabrication cost per usable die would be 100 units, before packaging and other costs. With only 50 usable dies at the same batch cost, it would be 160. This shows why yield matters without treating the invented numbers as actual production economics.",
+      "teachingSha256": "54d59668f7417e2f3980a7406aec0f7c6a25d2a69b14661c9ad560d6f44dd6dd",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 90,
+      "title": "Borehole logs and assays",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Before modeling, identify what each measurement represents: a location, a depth interval, or a physical sample. Sensor readings and assays may differ in resolution and sampled material. Their identifiers, units and sampling support must be preserved so an apparent relationship is not just a mistaken join.",
+      "workedSteps": "The 0.8% describes copper mass fraction in the assayed sample, not the amount of copper in the entire borehole. Along-hole interval length is 2 m; converting it into rock tonnage would also require geometry and density. A sensor reading somewhere in that interval supplies another type of evidence and cannot simply be relabeled as an assay.",
+      "teachingSha256": "bd7e7fbaff95cab7999ee501ab7d345ec3c21375990181d147a1157833738d7d",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 125,
+      "title": "Assay quality control",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Different controls answer different questions. A reference checks agreement with a known value, a blank checks unwanted signal, and duplicates check repeatability. Examine them together before treating a batch of measurements as reliable training targets.",
+      "workedSteps": "The reference error is 0.10 percentage points in composition, which is a 10% relative bias against 1.00%. Two duplicate results of 1.09% and 1.11% could be close to each other while both remain biased high. Good repeatability therefore does not establish accuracy. A failed control should trigger investigation under the defined quality procedure, not an automatic undocumented correction to every sample.",
+      "teachingSha256": "1aab3671cf80c97b84bafb1279f735c6af105c86be60adc962d2b28881b42819",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 92,
+      "title": "Provenance and uncertainty",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Keep the chain from original measurement through calibration, cleaning and calculation to final result. Different uncertainty statements have different meanings: a justified error bound is not interchangeable with a confidence interval or a model's probability score. Both the source trail and the method behind the uncertainty are part of the result.",
+      "workedSteps": "A second sensor reporting 30.1 with the same justified bound would give an overlapping interval from 29.9 to 30.3. That is compatible with agreement within the stated bounds, but does not prove independence or absence of shared bias. If calibration is later revised, recorded provenance tells us which downstream values need recalculation rather than silently mixing versions.",
+      "teachingSha256": "cc05d681a0381cddeec831ce95c9fa9d183afa4359943ac3ce7555fd3809bd96",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 93,
+      "title": "Geoscience data integration",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Integration needs rules for matching observations with different sampling intervals and resolutions. Check identifiers first, then coordinate systems, units and interval overlap. Keep original observations distinguishable from derived averages or interpolations so later users can inspect the assumptions.",
+      "workedSteps": "Suppose two sensor intervals, 100–101 m and 101–102 m, have average readings 20 and 30. They overlap equal lengths of the assay interval, so a length-weighted summary is 25. That is a derived sensor feature, not a new chemical assay. Unequal overlaps need different weights; an uncovered gap should be reported rather than silently treated as a zero reading.",
+      "teachingSha256": "dc2b80496818dad500ccac4d8e8dd71a4ef8c8820fdea7071f5f8fdd115c4899",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 91,
+      "title": "Windowing and missing data",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A window supplies local context to a model, while its mask distinguishes an absent reading from a real zero. Filling missing entries is a modeling choice; keep the mask if absence itself may be informative. Overlapping windows also share measurements, which matters when splitting data for evaluation.",
+      "workedSteps": "For the second window, the observed mean is 5 because only 4 and 6 contribute. Filling the missing entry with zero and averaging all three instead gives about 3.33, introducing a value that was never measured. A model can use an imputed value together with its mask, but the imputation rule should be fitted using training information only.",
+      "teachingSha256": "e026e43dc2e931b496557662d4d7db3524a37a531b48820a6321c45a2af060be",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 96,
+      "title": "Ore grade estimation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Estimation must connect sampled measurements to a defined unsampled volume or mass. A simple average may be misleading when samples represent different amounts of material or preferentially cover rich locations. Geological context, spatial validation and uncertainty are needed before treating a predicted grade as representative.",
+      "workedSteps": "Consider two portions: 400 tonnes at 0.5% and 600 tonnes at 1.0%. They contain 2 and 6 tonnes of copper, so their combined 1,000 tonnes contain 8 tonnes and have mass-weighted grade 0.8%. Averaging the two percentages without their masses would give 0.75%, the wrong mixture grade. Predicting an unsampled portion adds uncertainty beyond this exact mass balance.",
+      "teachingSha256": "155ec664c62296c419f501f371fd47945e0e30e7da7787c64df8f293b6614377",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 127,
+      "title": "Variograms and kriging",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Build the empirical semivariogram from sample pairs, fit a spatial model, then combine that model with the geometry of samples around a prediction location. Kriging solves for weights under its stated mean and spatial assumptions; it is not merely inverse-distance averaging. The modeled uncertainty also depends on those assumptions.",
+      "workedSteps": "For a separate symmetric illustration, place two samples with values 4 and 8 at positions 0 and 2, and estimate at position 1. With an ordinary-kriging model that treats both sides identically, symmetry and the sum-to-one constraint give weights one-half each, producing 6. Off-center locations, extra nearby samples or an asymmetric spatial model can change the weights. The semivariance value 5 alone is not enough to calculate them.",
+      "teachingSha256": "79e3ae2a5e0f1d75ea1b76e8f25c6fe97a2c19295376018a8c5d9fda5f619880",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 126,
+      "title": "Spatial cross-validation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Nearby observations can share geological structure, so a random row split can overstate performance on new areas. Hold out a region, fit preprocessing and the model using the allowed training region, and evaluate on the held-out region. Repeat across regions to see how consistently the method transfers.",
+      "workedSteps": "The buffer removes the nearby candidate from training even though it lies outside the held-out block. Fit on eligible samples such as the one 150 m away, then predict the block without using its answers. After scoring, rotate to another held-out block and refit. A 100 m buffer is an example design choice, not a universal safe distance; geology and the intended deployment determine an appropriate separation.",
+      "teachingSha256": "e67320e499c547b2542c2939ccb36f86e81e366709c64d23abd432b08d328b5a",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 128,
+      "title": "Mineral processing and recovery",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A mass balance follows total material and contained metal separately. Recovery asks where the feed's metal went; grade asks how concentrated it is within a stream. Improving one need not improve the other, so evaluating a processing change requires both measures and consistent sampling.",
+      "workedSteps": "The tailings grade is about 0.444%: divide their 0.4 t copper by 90 t total mass and convert to percent. The balances close both ways: stream masses total 100 t and contained copper totals 2 t. A hypothetical 4 t concentrate at 25% would have a higher grade but contain only 1 t copper, giving 50% recovery from the same feed. A richer concentrate can therefore recover less metal.",
+      "teachingSha256": "a65a3b2711c287c11291bdc05e53ba96a8ff26e16037e3da9abc81a53a8ef08c",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 97,
+      "title": "Representation alignment",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A domain encoder and a language model may represent information differently. A trainable connecting transformation can map domain vectors into inputs the language model can use. Paired domain examples and descriptions provide a learning signal, but successful alignment must be tested on new examples and alternative descriptions.",
+      "workedSteps": "The lower loss means the model now assigns more probability to the paired word; it does not show what evidence it used. If every rising example came from one instrument, it might learn that instrument's signature instead of the trend. Include varied instruments and held-out cases, then test whether changing the actual trend changes the answer appropriately.",
+      "teachingSha256": "5aabc7060b46e29bd5d75af6dd7bea5a13beb604da644ad1ddb0230e0762a0e9",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 98,
+      "title": "Benchmark and ablation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A benchmark makes comparisons meaningful by holding the task, data and scoring rule fixed. An ablation probes a proposed explanation for performance by changing a component while controlling the other conditions. It provides evidence about that comparison, not a universal causal claim about the component in every system.",
+      "workedSteps": "There are five fewer correct answers after removing the input, but examine which questions changed and whether other settings were kept fixed. Training each variant again can test its best adapted performance; disabling an input only at evaluation tests dependence of the already trained system. Those are different questions. Repeated runs and a larger held-out set help assess whether the observed difference is stable.",
+      "teachingSha256": "524d657ad94982a06bba6fecf779b183bbfc6b145b70575b7bac9a7aa678e008",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 95,
+      "title": "Open source and reproducibility",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "A repeatable result needs the data or a lawful way to obtain them, preprocessing, code, configuration and enough environment detail to execute the procedure. An open license states permissions; it does not ensure that the experiment is documented or that its claims are correct.",
+      "workedSteps": "Someone can reconstruct the total 12 and divide by the three entries because both the inputs and rule are available. For a learning experiment, also record the data split, parameter settings and random seed; different splits can change the score. Where data cannot be shared, document the restriction and provide permitted examples or verification routes without claiming full reproducibility.",
+      "teachingSha256": "247b7ffdbedb7a6bb8200beefa61fd8f42798347a7441235ed10ab874504ed1f",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 99,
+      "title": "Forward-deployed engineering",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "Begin with an actual user decision or workflow, identify the data and constraints, build a small integration, then measure its effect in use. A better model score is valuable only if it improves the intended task. Observing exceptions and failures helps decide what to change next.",
+      "workedSteps": "Each task saves 20 minutes, totaling 240 across the 12 tasks. Now suppose reviewing the automated output takes an extra five minutes per task that was not included in the ten-minute estimate. Net savings fall to 180 minutes, or three hours. Measuring the complete workflow, including corrections and review, is essential to evaluating the benefit.",
+      "teachingSha256": "651bd163cb51fd2b6611108bc10e2d107dc59793cee18e5ea4e78280366e82dc",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    },
+    {
+      "conceptId": 100,
+      "title": "Grounded model conversation",
+      "changedFields": [
+        "definition",
+        "example"
+      ],
+      "mechanism": "The conversation should connect the user's words to specific records, select an appropriate computation, execute it, and explain the answer with its assumptions. If a required input is missing or ambiguous, ask for it rather than invent a number. Grounding makes the result inspectable; it does not make incorrect source data correct.",
+      "workedSteps": "First convert the grade to a mass fraction and obtain 8 t of contained copper. Then apply the stated recovery to obtain 6.4 t recovered, leaving 1.6 t unrecovered. Report the source of tonnage, grade and recovery alongside the calculation. If recovery came from a small laboratory test, distinguish that assumption from a verified operating recovery instead of presenting the product as a guaranteed plant output.",
+      "teachingSha256": "999b4dade6965de9817317bb1566b9a1901da91f0f6e8740b4091bb1e8e0f243",
+      "review": "Reviewed purpose, mechanism, numerical example interpretation and prerequisite wording. Existing notation retained; additions explain their quantities locally. Numerical scenario overlap with the quiz checked separately from general conceptual overlap."
+    }
+  ],
+  "questionSha256": "6ec5848e3c2289a59ff7633e5c459f53125238be33f462e7cfc1f886f0a66060"
+}

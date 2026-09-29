@@ -16,7 +16,11 @@
     </div>
     <p id="auth-status" role="status" aria-live="polite"></p>
   </div></div>
-  <div class="navigation"><label for="concept-select" id="concept-label">Concept</label><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select><div id="concept-trigger" class="concept-trigger" role="combobox" tabindex="0" aria-label="Choose a concept" aria-haspopup="listbox" aria-controls="concept-options" aria-expanded="false" hidden></div><div id="concept-options" class="concept-options" role="listbox" aria-label="Concepts" hidden></div></div><a class="review-link" id="review-link" href="#review">Review</a></div>
+  <div class="navigation"><div class="select-wrap"><select id="concept-select" aria-label="Choose a concept"></select><button id="concept-trigger" class="concept-trigger" type="button" aria-label="Choose a concept" aria-haspopup="dialog" aria-controls="concept-popup" aria-expanded="false" hidden></button><div id="concept-popup" class="concept-popup" role="dialog" aria-label="Choose a concept" hidden><div class="concept-search-wrap"><input id="concept-search" type="search" role="combobox" aria-label="Search concepts" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="concept-options" aria-expanded="false" placeholder="Search concepts…" autocomplete="off" spellcheck="false"></div><div id="concept-options" class="concept-options" role="listbox" aria-label="Concepts"></div><p id="concept-empty" class="concept-empty" role="status" hidden>No matching concepts.</p></div></div><a class="review-link" id="review-link" href="#review">Review</a></div>
+  <nav class="concept-neighbours" id="concept-neighbours" aria-label="Adjacent concepts" hidden>
+    <button id="previous-concept-top" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span id="previous-concept-name">Previous concept</span></button>
+    <button id="next-concept-top" type="button" disabled><span id="next-concept-name">Next concept</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button>
+  </nav>
 </header>
 <main>
   <noscript><p>Enable JavaScript to use the course and questions.</p></noscript>
@@ -41,11 +45,21 @@
     </section>
     <article class="concept" id="lesson-panel">
       <p class="chapter" id="chapter"></p>
-      <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span></div><p id="concept-personal" class="personal-summary" hidden></p>
+      <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span><nav id="concept-applications" class="concept-applications" aria-label="Concepts that use this idea" hidden></nav></div><p id="concept-personal" class="personal-summary" hidden></p>
       <h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p><p class="formula-note" id="formula-note" hidden></p>
       <h3>Worked example</h3><p class="example" id="example"></p>
+      <div class="explore" id="explore" hidden>
+        <textarea id="explore-expression" aria-label="Worked example code; edit to update the result" rows="3" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="explore-status"></textarea>
+        <div class="explore-output">
+          <output id="explore-result" class="explore-result" aria-label="Calculation output" aria-live="polite"></output>
+          <p id="explore-status" role="status" aria-live="polite"></p>
+          <span class="explore-tools">
+            <button type="button" id="explore-reset" class="explore-reset" title="Restore this concept's original example code">Reset example</button>
+            <a class="explore-docs" href="https://mathjs.org/docs/expressions/syntax.html" target="_blank" rel="noopener noreferrer" aria-label="math.js expression documentation (opens in a new tab)">math.js docs ↗</a>
+          </span>
+        </div>
+      </div>
       <h3>Metaphor</h3><p class="metaphor" id="metaphor"></p>
-      <nav id="concept-applications" class="concept-applications" aria-label="Later concepts that use this idea" hidden></nav>
       <nav id="concept-sources" class="concept-sources" aria-label="Further reading"><div id="concept-source-list"></div></nav>
     </article>
     <section class="quiz" id="quiz-panel" aria-label="Check your understanding">
@@ -75,5 +89,11 @@
 <script type="application/json" id="math-data">/*MATH_DATA*/</script>
 <script>/*MATH_JS*/</script>
 <script type="application/json" id="auth-config">/*AUTH_CONFIG*/</script>
+<script type="application/json" id="playground-data">/*PLAYGROUND_DATA*/</script>
+<script type="text/plain" id="playground-library">/*PLAYGROUND_LIBRARY*/</script>
+<script type="text/plain" id="playground-engine">/*PLAYGROUND_ENGINE*/</script>
+<script type="text/plain" id="playground-worker">/*PLAYGROUND_WORKER*/</script>
+<script>/*PLAYGROUND_PLOT*/</script>
+<script>/*PLAYGROUND_JS*/</script>
 <script>/*LEARNING_JS*/</script><script>/*AUTH_SDK*/</script><script>/*PROGRESS_JS*/</script><script>/*AUTH_JS*/</script><script>/*CONCEPT_MENU_JS*/</script><script>/*COURSE_JS*/</script>
 </body></html>

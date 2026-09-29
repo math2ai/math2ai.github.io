@@ -37,6 +37,16 @@ html=html.replace('/*AUTH_SDK*/',sdk)
 html=html.replace('/*PROGRESS_JS*/',(ROOT/'progress.js').read_text(encoding='utf-8'))
 html=html.replace('/*AUTH_JS*/',(ROOT/'auth.js').read_text(encoding='utf-8'))
 html=html.replace('/*COURSE_CSS*/',(ROOT/'site.css').read_text(encoding='utf-8'))
+playgrounds=json.loads((ROOT/'playgrounds.json').read_text(encoding='utf-8'))
+concept_ids={str(c['legacyId']) for c in json.loads((ROOT/'dist/curriculum.json').read_text(encoding='utf-8'))['concepts']}
+assert set(playgrounds)<=concept_ids, 'A playground must belong to an existing concept.'
+html=html.replace('/*PLAYGROUND_DATA*/',json.dumps(playgrounds,ensure_ascii=False).replace('</','<\\/'))
+# Keep the evaluator inert until a lesson with code opens. Embedding preserves offline use;
+# only a disposable worker parses and executes the library, never the main page.
+for marker,path in [('LIBRARY','vendor/mathjs-15.2.0/math.js'),('ENGINE','playground-engine.js'),('WORKER','playground-worker.js'),('PLOT','playground-plot.js'),('JS','playground.js')]:
+ source=(ROOT/path).read_text(encoding='utf-8')
+ assert '</script' not in source.lower(), f'{path} must be safe to embed.'
+ html=html.replace('/*PLAYGROUND_'+marker+'*/',source)
 html=html.replace('/*CONCEPT_MENU_JS*/',(ROOT/'concept-menu.js').read_text(encoding='utf-8'))
 html=html.replace('/*LEARNING_JS*/',(ROOT/'learning.js').read_text(encoding='utf-8'))
 html=html.replace('/*COURSE_JS*/',(ROOT/'site.js').read_text(encoding='utf-8'))

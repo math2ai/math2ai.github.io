@@ -111,7 +111,7 @@ for(const a of [app,reloaded,left,right,last,account,other,chain,conflict,missin
 const bulk=await boot({configured:true});bulk.signout();await flush();
 for(const c of course.concepts)bulk.learning.set(key(c),'revisit');
 bulk.signin(server,'Bulk');await flush();
-assert.equal(Object.keys(server.learningData('Bulk').fields).length,128);
+assert.equal(Object.keys(server.learningData('Bulk').fields).length,course.concepts.length);
 bulk.signout();await flush();assert.equal(Object.keys(bulk.learning.status().values).length,0);
 const queuedShared=hub(),queued=await boot({configured:true,shared:queuedShared});queued.signout();await flush();mark(queued);
 server.offline=true;queued.signin(server,'Queued');await flush();queued.close();
@@ -123,7 +123,7 @@ raceA.signout();raceB.signout();await flush();mark(raceA);
 raceA.signin(server,'RaceA');raceB.signin(server,'RaceB');await flush();
 assert.equal(['RaceA','RaceB'].filter(user=>server.learningData(user).fields[key(scalar)]).length,1,'one guest choice belongs to only one claiming account');
 for(const a of [bulk,recovered,raceA,raceB])a.close();
-console.log('PASS: all 128 guest markers upload in multiple batches; failed transfers survive reload; concurrent accounts claim guest choices only once.');
+console.log('PASS: all 138 guest markers upload in multiple batches; failed transfers survive reload; concurrent accounts claim guest choices only once.');
 
 // Earlier previews offered a separate completion marker. It must not reappear or
 // resurrect an older bookmark; keep server revisions so new bookmarks can sync.

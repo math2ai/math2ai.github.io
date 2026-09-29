@@ -2,9 +2,10 @@ from pathlib import Path
 import json, math, re
 root=Path(__file__).resolve().parent
 course=json.loads((root/'dist/curriculum.json').read_text(encoding='utf-8'))
-cs=course['concepts'];assert len(cs)==128
+cs=course['concepts'];assert len(cs)==138
 legacy={c['legacyId']:c for c in cs}
-assert sorted(legacy)==list(range(1,129))
+batch=json.loads((root/'expansion-batch.json').read_text(encoding='utf8'))
+assert set(legacy)==set(range(1,129))|set(batch['addedIds'])
 for i,c in enumerate(cs,1):
  assert c['id']==i
  assert len(c['options'])==len(set(c['options']))==4
@@ -14,7 +15,7 @@ for i,c in enumerate(cs,1):
  assert all(s['url'].startswith('https://') for s in c['sources'])
 assert course['title'] == 'math2ai'
 questions = [q for c in cs for q in c['questions']]
-assert len(questions) == len({q['id'] for q in questions}) == 1280
+assert len(questions) == len({q['id'] for q in questions}) == len(cs)*10
 for c in cs:
  assert len(c['questions']) == len({q['question'].strip().casefold() for q in c['questions']}) == 10
  for q in c['questions']:
@@ -46,7 +47,7 @@ assert json.loads(re.search(r'<script type="application/json" id="course-data">(
 for identifier in re.findall(r"el\('([^']+)'\)", (root/'site.js').read_text(encoding='utf-8')):
  assert ('id="'+identifier+'"') in html, identifier
 assert 'fetch(' not in (root/'site.js').read_text(encoding='utf-8')
-print(f'PASS: 128 complete concepts and 1,280 distinct-ID, single-answer questions; {len(numeric)+len(shapes)} independently calculated answers; embedded data and assets consistent.')
+print(f'PASS: 138 complete concepts and 1,380 distinct-ID, single-answer questions; {len(numeric)+len(shapes)} independently calculated answers; embedded data and assets consistent.')
 
 positions={c['title']:c['id'] for c in cs}
 chains=[
@@ -57,7 +58,7 @@ chains=[
  ['Decision trees','Overfitting','Regularization','Random forests','Gradient boosting'],
  ['Embedding','Autoencoder','Latent space and bottleneck','Rate-distortion tradeoff','Vector quantization','Token and vocabulary','Vector-quantized autoencoder'],
  ['Bit and byte','Numerical precision','Rate-distortion tradeoff'],
- ['Token and vocabulary','Sequence and autocorrelation','Autoregressive language model','Causal mask','Transformer'],
+ ['Token and vocabulary','Sequence and autocorrelation','Causal mask','Transformer','Large language models and next-token prediction'],
  ['Softmax','Scaled dot-product attention','Multi-head attention','Causal mask'],
  ['Positional encoding','Scaled dot-product attention'],
  ['API and SDK','Tool calling','Geoscience data integration'],
@@ -77,7 +78,7 @@ chains=[
  ['Cross-entropy','KL divergence','Contrastive learning'],
  ['Self-supervised learning','Embedding','Cosine similarity','Contrastive learning'],
  ['Autoencoder','Diffusion models'],
- ['Transformer','Mixture of experts','Fine-tuning','Model distillation'],
+ ['Transformer','Large language models and next-token prediction','Mixture of experts','Fine-tuning','Model distillation'],
  ['Transformer','Memory capacity','Context windows and KV caching'],
  ['Monte Carlo estimation','Policy gradient'],
  ['Domain shift and adaptation','Spatial cross-validation'],

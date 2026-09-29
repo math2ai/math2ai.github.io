@@ -1,0 +1,755 @@
+{
+  "5": {
+    "expression": "x = [2, 3];\nk = 2;\nk * x\n# plot() draws these two coordinate directions with equal axis scales.\nplot([{x: [0, x[1]], y: [0, x[2]], label: \"x\"},\n      {x: [0, k*x[1]], y: [0, k*x[2]], label: \"k x\"}],\n     {xLabel: \"First coordinate\", yLabel: \"Second coordinate\", equal: true})",
+    "expected": [
+      [
+        4,
+        6
+      ]
+    ],
+    "plots": 1
+  },
+  "6": {
+    "expression": "A = [1, 2, 3; 4, 5, 6];\nA\n# Entry in row 2, column 3\nA[2, 3]",
+    "expected": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      6
+    ]
+  },
+  "7": {
+    "expression": "# ones fills each entry with 1; edit the three axis lengths.\nT = ones(2, 3, 4);\n{shape: size(T), axes: count(size(T)), entries: prod(size(T))}\n# A smaller stack: table, row, column; indices start at 1.\nT = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];\nT[2, 1, 2]\nsize(T)",
+    "expected": [
+      {
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "axes": 3,
+        "entries": 24
+      },
+      6,
+      [
+        2,
+        2,
+        2
+      ]
+    ]
+  },
+  "8": {
+    "expression": "x = [2, 4, 6];\nsum(x)\n# Mean: sum divided by the number of entries\nmean(x)",
+    "expected": [
+      12,
+      4
+    ]
+  },
+  "9": {
+    "expression": "x = [2, 3];\nw = [4, 5];\ndot(x, w)",
+    "expected": [
+      23
+    ]
+  },
+  "10": {
+    "expression": "A = [1, 2; 3, 4];\nB = [[5], [6]];\nA * B\n# Inspect entry (1, 1): first row dotted with first column.\n# flatten turns each selected row or column into a vector.\nrow1 = flatten(A[1, 1:end]);\ncolumn1 = flatten(B[1:end, 1]);\ndot(row1, column1)\nsize(A * B)",
+    "expected": [
+      [
+        [
+          17
+        ],
+        [
+          39
+        ]
+      ],
+      17,
+      [
+        2,
+        1
+      ]
+    ]
+  },
+  "11": {
+    "expression": "# A matrix with one row and three columns\nA = [[1, 2, 3]];\ntranspose(A)",
+    "expected": [
+      [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    ]
+  },
+  "12": {
+    "expression": "A = [2, 0; 0, 3];\nx = [1, 2];\nA * x",
+    "expected": [
+      [
+        2,
+        6
+      ]
+    ]
+  },
+  "13": {
+    "expression": "x = [0, 0]; y = [3, 4];\ndifference = y - x;\n# .^ squares each coordinate separately.\ndifference .^ 2\nsqrt(sum(difference .^ 2))\n# norm computes the same Euclidean length.\nnorm(y - x)",
+    "expected": [
+      [
+        9,
+        16
+      ],
+      5,
+      5
+    ]
+  },
+  "14": {
+    "expression": "# A fair die: every face is equally likely.\nsides = 6; faces = 1:sides;\neven(face) = face % 2 == 0;\nfavorable = filter(faces, even);\np = count(favorable) / count(faces);\n# Round only the displayed results.\nround(p, 12)\n# Two independent throws: both even.\nround(p * p, 12)",
+    "expected": [
+      0.5,
+      0.25
+    ]
+  },
+  "16": {
+    "expression": "outcomes = [0, 10];\np = [0.5, 0.5];\n# One probability per outcome: nonnegative and totaling 1.\nvalid = min(p) >= 0 and abs(sum(p) - 1) < 1e-12;\n# .* multiplies matching entries: each outcome's contribution.\nvalid ? {contributions: outcomes .* p, expected: dot(outcomes, p)} :\n  \"Probabilities must be nonnegative and add to 1.\"",
+    "expected": [
+      {
+        "contributions": [
+          0,
+          5
+        ],
+        "expected": 5
+      }
+    ]
+  },
+  "17": {
+    "expression": "# Each value is equally likely.\nvalues = [2, 6];\nmu = mean(values);\nvalues - mu\n# Average squared distances from the mean.\nv = mean((values - mu) .^ 2);\n{mean: mu, variance: v, standardDeviation: sqrt(v)}\n# Each vertical distance from the mean contributes to variance.\nplot([{x: 1:count(values), y: values, label: \"Values\", style: \"points\"},\n      {x: [1, count(values)], y: [mu, mu], label: \"Mean\"}],\n     {xLabel: \"Observation\", yLabel: \"Value\"})",
+    "expected": [
+      [
+        -2,
+        2
+      ],
+      {
+        "mean": 4,
+        "variance": 4,
+        "standardDeviation": 2
+      }
+    ],
+    "plots": 1
+  },
+  "18": {
+    "expression": "base = 2; exponent = 3;\npower = base ^ exponent;\n# log(value, base) reverses exponentiation; base > 0, base != 1.\n{power: power, recoveredExponent: log(power, base)}\n# exp uses base e; log with no second argument is natural log.\nx = 2;\n{exponential: exp(x), naturalLog: log(exp(x))}",
+    "expected": [
+      {
+        "power": 8,
+        "recoveredExponent": 3
+      },
+      {
+        "exponential": 7.38905609893065,
+        "naturalLog": 2
+      }
+    ]
+  },
+  "19": {
+    "expression": "expression = \"x^2\";\nx = 3; h = 0.01;\nf(t) = evaluate(expression, {x: t});\n# Compare shrinking intervals. Tiny h can lose numeric precision.\nh == 0 ? \"Use a nonzero interval h.\" :\n  {change: round(f(x + h) - f(x), 10), slope: round((f(x + h) - f(x)) / h, 8)}\n# The symbolic derivative gives the instantaneous slope.\nd = derivative(expression, \"x\");\nd\nd.evaluate({x: x})\n# Curve and tangent at x. Change x or expression to move the tangent.\nplotX = range(x - 2, x + 2, 0.05, true);\nplotTangent(t) = f(x) + d.evaluate({x: x}) * (t - x);\nplot([{x: plotX, y: map(plotX, f), label: \"Function\"},\n      {x: plotX, y: map(plotX, plotTangent), label: \"Tangent at x\"},\n      {x: [x], y: [f(x)], label: \"At x\", style: \"points\"}],\n     {xLabel: \"x\", yLabel: \"f(x)\"})",
+    "expected": [
+      {
+        "change": 0.0601,
+        "slope": 6.01
+      },
+      "2 * x",
+      6
+    ],
+    "plots": 1
+  },
+  "30": {
+    "expression": "# Observed trips: x in km, y in dollars\nx = [1, 3, 5]; y = [6, 7, 14];\nmse(w, b) = mean((y - (w * x + b)) .^ 2);\n# Try changing this slope w or intercept b.\nw = 2; b = 2; prediction = w * x + b;\ntrialW = w; trialB = b;\n{prediction: prediction, residual: y - prediction, MSE: mse(w, b)}\n# Fit: dx and dy are deviations from the means.\ndx = x - mean(x); dy = y - mean(y);\nw = dot(dx, dy) / dot(dx, dx);\nb = mean(y) - w * mean(x);\ndot(dx, dx) == 0 ? \"Use at least two different distances.\" :\n  {rate: w, start: b, MSE: mse(w, b)}\n# Compare the original trial predictions with the fitted line.\nplot([{x: x, y: y, label: \"Observed fares\", style: \"points\"},\n      {x: [min(x), max(x)], y: [trialW*min(x)+trialB, trialW*max(x)+trialB], label: \"Trial line\"},\n      {x: [min(x), max(x)], y: [w*min(x)+b, w*max(x)+b], label: \"Fitted line\"}],\n     {xLabel: \"Distance (km)\", yLabel: \"Fare (dollars)\"})",
+    "expected": [
+      {
+        "prediction": [
+          4,
+          8,
+          12
+        ],
+        "residual": [
+          2,
+          -1,
+          2
+        ],
+        "MSE": 3
+      },
+      {
+        "rate": 2,
+        "start": 3,
+        "MSE": 2
+      }
+    ],
+    "plots": 1
+  },
+  "31": {
+    "expression": "prediction = [2, 5];\ntarget = [3, 3];\n# .^2 squares each error separately\nmean((prediction - target) .^ 2)",
+    "expected": [
+      2.5
+    ]
+  },
+  "36": {
+    "expression": "relu(z) = max(0, z);\nx = 2;\nw1 = 2; b1 = -1; w2 = 1; b2 = -1; w3 = 3;\n# Two hidden layers, then a linear output layer.\nh1 = relu(w1 * x + b1);\nh2 = relu(w2 * h1 + b2);\n{hidden1: h1, hidden2: h2, output: w3 * h2}\n# Try x = 0 or a negative input: removing ReLU changes the rule.\n{withoutRelu: w3 * (w2 * (w1 * x + b1) + b2)}\n# ReLU changes the shape, not just the size, of the input-output rule.\nplotX = range(-2, 4, 0.05, true);\nnetwork(t) = w3 * relu(w2 * relu(w1*t + b1) + b2);\naffine(t) = w3 * (w2 * (w1*t + b1) + b2);\nplot([{x: plotX, y: map(plotX, network), label: \"With ReLU\"},\n      {x: plotX, y: map(plotX, affine), label: \"Without ReLU\"}],\n     {xLabel: \"Input\", yLabel: \"Output\"})",
+    "expected": [
+      {
+        "hidden1": 3,
+        "hidden2": 2,
+        "output": 6
+      },
+      {
+        "withoutRelu": 6
+      }
+    ],
+    "plots": 1
+  },
+  "38": {
+    "expression": "x = 2; w = 1; target = 6;\nprediction = w * x; loss = (prediction - target)^2;\n{prediction: prediction, loss: loss}\n# Backward: multiply the two local derivatives.\ndLoss_dPrediction = 2 * (prediction - target);\ndPrediction_dWeight = x;\ngradient = dLoss_dPrediction * dPrediction_dWeight;\n{lossToPrediction: dLoss_dPrediction, predictionToWeight: x, gradient: gradient}\n# A separate gradient-descent step; backprop itself leaves w alone.\nrate = 0.1; newWeight = w - rate * gradient;\n{oldWeight: w, newWeight: newWeight, newLoss: round((newWeight * x - target)^2, 12)}\n# The curve shows this example's loss at different weights.\nplotLoss(t) = (t*x - target)^2;\nplotX = range(min(w, newWeight)-1, max(w, newWeight)+1, (abs(newWeight-w)+2)/80, true);\nplot([{x: plotX, y: map(plotX, plotLoss), label: \"Loss\"},\n      {x: [w], y: [plotLoss(w)], label: \"Before step\", style: \"points\"},\n      {x: [newWeight], y: [plotLoss(newWeight)], label: \"After step\", style: \"points\"}],\n     {xLabel: \"Weight\", yLabel: \"Squared error\"})",
+    "expected": [
+      {
+        "prediction": 2,
+        "loss": 16
+      },
+      {
+        "lossToPrediction": -8,
+        "predictionToWeight": 2,
+        "gradient": -16
+      },
+      {
+        "oldWeight": 1,
+        "newWeight": 2.6,
+        "newLoss": 0.64
+      }
+    ],
+    "plots": 1
+  },
+  "39": {
+    "expression": "inputs = [1, 2, 3, 4]; targets = [0, 0.5, 2, 3];\nbatch = [1, 2]; # Choose examples by their one-based indices.\nx = inputs[batch]; y = targets[batch];\ntheta = 1; rate = 0.1;\n# Prediction theta*x; backprop gives each squared-error gradient.\nprediction = theta * x;\ngradients = 2 * (prediction - y) .* x;\ng = mean(gradients); updated = theta - rate * g;\n{gradients: gradients, meanGradient: g, updatedWeight: updated}\n# Both losses use this same batch; round only for display.\n{before: round(mean((prediction - y).^2), 12), after: round(mean((updated * x - y).^2), 12)}\n# This loss curve changes when you choose a different batch.\nplotLoss(t) = mean((t*x - y).^2);\nplotX = range(min(theta, updated)-1, max(theta, updated)+1, (abs(updated-theta)+2)/80, true);\nplot([{x: plotX, y: map(plotX, plotLoss), label: \"Batch loss\"},\n      {x: [theta], y: [plotLoss(theta)], label: \"Before step\", style: \"points\"},\n      {x: [updated], y: [plotLoss(updated)], label: \"After step\", style: \"points\"}],\n     {xLabel: \"Weight\", yLabel: \"Batch MSE\"})",
+    "expected": [
+      {
+        "gradients": [
+          2,
+          6
+        ],
+        "meanGradient": 4,
+        "updatedWeight": 0.6
+      },
+      {
+        "before": 1.625,
+        "after": 0.425
+      }
+    ],
+    "plots": 1
+  },
+  "40": {
+    "expression": "N = 100; B = 20; epochs = 3;\n# Keep the final partial batch. Counts must be whole numbers.\nvalid = N >= 0 and N == floor(N) and B > 0 and B == floor(B);\nvalid = valid and epochs >= 0 and epochs == floor(epochs);\nvalid ? {stepsPerEpoch: ceil(N / B), totalUpdates: epochs * ceil(N / B),\n  finalBatchSize: N == 0 ? 0 : (N % B == 0 ? B : N % B)} :\n  \"Use a nonnegative example count and epoch count, and a positive batch size.\"",
+    "expected": [
+      {
+        "stepsPerEpoch": 5,
+        "totalUpdates": 15,
+        "finalBatchSize": 20
+      }
+    ]
+  },
+  "43": {
+    "expression": "logits = [0, log(3)];\n# A shared shift preserves probabilities and avoids huge exponentials.\nweights = map(logits - max(logits), exp);\np = weights / sum(weights);\nround(p, 12)\nround(sum(p), 12) # Probabilities sum to 1.\n# Heights show each class's share of the total probability.\nplot(1:count(p), p, {style: \"bar\", label: \"Probability\", xLabel: \"Class\", yLabel: \"Probability\"})",
+    "expected": [
+      [
+        0.25,
+        0.75
+      ],
+      1
+    ],
+    "plots": 1
+  },
+  "44": {
+    "expression": "# Order: cat, dog. q is the target; p is the prediction.\nq = [1, 0]; p = [0.9, 0.1];\nvalid(v) = count(v) > 0 and min(v) >= 0 and abs(sum(v) - 1) < 1e-12;\n# A zero target contributes 0, including when p[i] is also 0.\nterm(i) = q[i] == 0 ? 0 : -q[i] * log(p[i]);\nloss() = valid(q) and valid(p) and count(q) == count(p) ?\n  round(sum(map(1:count(q), term)), 6) : \"Use matching probability lists, each totaling 1.\";\nloss()\n# Compare the same target with a prediction favoring dog.\np = [0.1, 0.9];\nloss()\n# For ONE correct class, loss depends only on its assigned probability.\nplotP = range(0.01, 1, 0.01, true);\nclassLoss(t) = -log(t);\nplot(plotP, map(plotP, classLoss),\n     {label: \"One correct class\", xLabel: \"Probability of correct class\", yLabel: \"Cross-entropy\"})",
+    "expected": [
+      0.105361,
+      2.302585
+    ],
+    "plots": 1
+  },
+  "45": {
+    "expression": "data = [2, 4, 6]; hidden = 2;\nkeep(i) = i != hidden;\nvisible = data[filter(1:count(data), keep)];\ntarget = data[hidden]; prediction = 5;\n{visible: visible, target: target, prediction: prediction, squaredError: (prediction - target)^2}\n# A simple baseline, not a trained model: average VISIBLE values only.\nguess = mean(visible);\n{baselinePrediction: guess, squaredError: (guess - target)^2}",
+    "expected": [
+      {
+        "visible": [
+          2,
+          6
+        ],
+        "target": 4,
+        "prediction": 5,
+        "squaredError": 1
+      },
+      {
+        "baselinePrediction": 4,
+        "squaredError": 0
+      }
+    ]
+  },
+  "46": {
+    "expression": "# Toy fixed embeddings: change coordinates or the query word.\nwords = {cat: [1, 0], dog: [0.9, 0.1], rock: [0, 1]};\nquery = \"cat\";\nwords[query]\n{toDog: round(norm(words[query] - words.dog), 6),\n  toRock: round(norm(words[query] - words.rock), 6)}",
+    "expected": [
+      [
+        1,
+        0
+      ],
+      {
+        "toDog": 0.141421,
+        "toRock": 1.414214
+      }
+    ]
+  },
+  "47": {
+    "expression": "x = [1, 0]; y = [2, 0];\nnx = norm(x); ny = norm(y);\nnx == 0 or ny == 0 ? \"Cosine similarity needs two nonzero vectors.\" :\n  {dot: dot(x, y), lengths: [nx, ny], similarity: round(dot(x, y) / (nx * ny), 12)}",
+    "expected": [
+      {
+        "dot": 2,
+        "lengths": [
+          1,
+          2
+        ],
+        "similarity": 1
+      }
+    ]
+  },
+  "48": {
+    "expression": "data = [-1, -1; 1, 1]; # Rows are points; columns are features.\nmu = mean(data, 1); # In this language, dimension 1 averages each column.\nn = size(data)[1];\ncentered = data - ones(n, 1) * reshape(mu, [1, count(mu)]);\n# Population covariance; its top eigenvector keeps most variance.\nC = transpose(centered) * centered / n;\nparts = eigs(C);\ntop(pair) = pair.value == max(parts.values);\nu = filter(parts.eigenvectors, top)[1].vector; u = u / norm(u);\n# Either sign is valid; choose a nonnegative first coordinate.\nu = u[1] < 0 ? -u : u;\n{mean: mu, covariance: C}\nround(u, 6)\nround(centered * u, 6) # One coordinate per point.\n# Show the first two features; points move onto the retained direction.\nprojected = reshape(centered*u, [n, 1]) * reshape(u, [1, count(u)]);\nplotReach = max(1, max(abs(centered*u)));\nplot([{x: flatten(centered[1:end, 1]), y: flatten(centered[1:end, 2]), label: \"Centered data\", style: \"points\"},\n      {x: [-plotReach*u[1], plotReach*u[1]], y: [-plotReach*u[2], plotReach*u[2]], label: \"Principal direction\"},\n      {x: flatten(projected[1:end, 1]), y: flatten(projected[1:end, 2]), label: \"Projection\", style: \"points\"}],\n     {xLabel: \"Centered feature 1\", yLabel: \"Centered feature 2\", equal: true})",
+    "expected": [
+      {
+        "mean": [
+          0,
+          0
+        ],
+        "covariance": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      [
+        0.707107,
+        0.707107
+      ],
+      [
+        -1.414214,
+        1.414214
+      ]
+    ],
+    "plots": 1
+  },
+  "49": {
+    "expression": "# Four training rows; each has two input coordinates.\ndata = [-2, -4; -1, -2; 1, 2; 2, 4];\n# 2 inputs -> 1 code -> 2 reconstructed coordinates.\nencoder = [1; 0]; decoder = [[1, 1]];\nrate = 0.04; steps = 40;\nprobe = [[3, 6]]; # held out: never used to calculate a gradient\nreconstruct() = data * encoder * decoder;\nloss() = mean((reconstruct() - data).^2);\nbefore = reconstruct();\n{initialMSE: loss(), initialReconstruction: before}\n# Chain rule, averaged over every row and coordinate.\ngradientEncoder() = 2 / prod(size(data)) * transpose(data) * (reconstruct() - data) * transpose(decoder);\ngradientDecoder() = 2 / prod(size(data)) * transpose(data * encoder) * (reconstruct() - data);\n{encoderGradient: gradientEncoder(), decoderGradient: gradientDecoder()}\nhistory = zeros(steps + 1); history[1] = loss();\n# Each call calculates BOTH gradients before changing either set of weights.\n# The object records those steps in order; map repeats this learning cycle.\nstep(k) = {\n  gEncoder: (gEncoder = gradientEncoder()),\n  gDecoder: (gDecoder = gradientDecoder()),\n  encoder: (encoder = encoder - rate * gEncoder),\n  decoder: (decoder = decoder - rate * gDecoder),\n  MSE: (history[k + 1] = loss())\n};\nmap(1:steps, step);\n{updates: steps, trainedMSE: round(loss(), 12), encoder: round(encoder, 6), decoder: round(decoder, 6)}\n{heldOutInput: probe, code: round(probe * encoder, 6), reconstruction: round(probe * encoder * decoder, 6)}\nplot(0:steps, history, {label: \"Training MSE\", xLabel: \"Weight updates\", yLabel: \"Mean squared error\"})\n# Plot each row as a point, before and after training.\nplot([{x: flatten(data[:,1]), y: flatten(data[:,2]), label: \"Training inputs\", style: \"points\"},\n      {x: flatten(before[:,1]), y: flatten(before[:,2]), label: \"Before training\", style: \"points\"},\n      {x: flatten(reconstruct()[:,1]), y: flatten(reconstruct()[:,2]), label: \"After training\", style: \"points\"}],\n     {xLabel: \"First coordinate\", yLabel: \"Second coordinate\", equal: true})",
+    "expected": [
+      {
+        "initialMSE": 1.25,
+        "initialReconstruction": [
+          [
+            -2,
+            -2
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      },
+      {
+        "encoderGradient": [
+          [
+            -2.5
+          ],
+          [
+            -5
+          ]
+        ],
+        "decoderGradient": [
+          [
+            0,
+            -2.5
+          ]
+        ]
+      },
+      {
+        "updates": 40,
+        "trainedMSE": 1.216e-09,
+        "encoder": [
+          [
+            1.099574
+          ],
+          [
+            0.199148
+          ]
+        ],
+        "decoder": [
+          [
+            0.667633,
+            1.33522
+          ]
+        ]
+      },
+      {
+        "heldOutInput": [
+          [
+            3,
+            6
+          ]
+        ],
+        "code": [
+          [
+            4.493611
+          ]
+        ],
+        "reconstruction": [
+          [
+            3.000084,
+            5.999958
+          ]
+        ]
+      }
+    ],
+    "plots": 2
+  },
+  "102": {
+    "expression": "# Each position is a pair; the pairs are equally likely.\nx = [1, 3]; y = [2, 6];\ndx = x - mean(x); dy = y - mean(y);\n# .* multiplies matching deviations before averaging.\ncov = mean(dx .* dy);\nsx = sqrt(mean(dx .^ 2)); sy = sqrt(mean(dy .^ 2));\n{covariance: cov, correlation: sx * sy == 0 ?\n  \"Undefined: one list is constant.\" : cov / (sx * sy)}\n# Paired observations: reverse y to reverse the association.\nplot(x, y, {style: \"points\", label: \"Paired observations\", xLabel: \"x\", yLabel: \"y\"})",
+    "expected": [
+      {
+        "covariance": 2,
+        "correlation": 1
+      }
+    ],
+    "plots": 1
+  },
+  "103": {
+    "expression": "A = [2, 0; 0, 3];\nv = [1, 0]; lambda = 2;\n# Test a proposed eigenvector and its eigenvalue: Av = lambda*v.\nnorm(v) == 0 ? \"An eigenvector must be nonzero.\" :\n  {Av: A * v, scaled: lambda * v, mismatch: norm(A * v - lambda * v)}\n# Zero mismatch means the products agree. Now solve for this A.\neigs(A)",
+    "expected": [
+      {
+        "Av": [
+          2,
+          0
+        ],
+        "scaled": [
+          2,
+          0
+        ],
+        "mismatch": 0
+      },
+      {
+        "values": [
+          2,
+          3
+        ],
+        "eigenvectors": [
+          {
+            "value": 2,
+            "vector": [
+              1,
+              0
+            ]
+          },
+          {
+            "value": 3,
+            "vector": [
+              0,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "104": {
+    "expression": "# A diagonal matrix: edit its two stretches and the point.\nd = [3, 1]; A = diag(d); point = [2, 5];\nA * [1, 0]\nA * [0, 1]\n# For diagonal A, singular values are absolute stretches.\nsort(abs(d), \"desc\")\n# Keep just the strongest direction, choosing the first on a tie.\nkept = abs(d[1]) >= abs(d[2]) ? [d[1], 0] : [0, d[2]];\nA1 = diag(kept);\nA1\nA * point\nA1 * point",
+    "expected": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        0
+      ]
+    ]
+  },
+  "105": {
+    "expression": "p = [1, 0]; q = [0.5, 0.5];\nvalid(v) = count(v) > 0 and min(v) >= 0 and abs(sum(v) - 1) < 1e-12;\n# Zero p contributes 0; positive p with zero q gives Infinity.\nterm(i) = p[i] == 0 ? 0 : p[i] * log(p[i] / q[i]);\ndivergence() = valid(p) and valid(q) and count(p) == count(q) ?\n  round(sum(map(1:count(p), term)), 6) : \"Use matching probability lists, each totaling 1.\";\ndivergence()\n# Identical distributions have zero divergence.\nq = p;\ndivergence()",
+    "expected": [
+      0.693147,
+      0
+    ]
+  },
+  "106": {
+    "expression": "# Reproduce the four recorded rewards in the worked example.\nsample = [0, 2, 4, 6];\nmean(sample)\n# Now simulate new draws from these equally likely outcomes.\noutcomes = [0, 2, 4, 6]; n = 1000;\nconfig({randomSeed: \"math2ai\"}); # Change the seed or n.\nreward(index) = outcomes[index];\n# randomInt includes 1 and excludes count(outcomes) + 1.\ndraws = map(randomInt([n], 1, count(outcomes) + 1), reward);\n{samples: n, estimate: mean(draws), exact: mean(outcomes)}",
+    "expected": [
+      3,
+      {
+        "samples": 1000,
+        "estimate": 3.1,
+        "exact": 3
+      }
+    ]
+  },
+  "115": {
+    "expression": "signal = [1, 2, 3]; kernel = [1, -1];\nbias = 0; stride = 1; padding = 0;\n# Add this many zeros at each end of the one-dimensional signal.\npadded = concat(zeros(padding), signal, zeros(padding));\nwidth = count(kernel); lastStart = count(padded) - width + 1;\n# Reuse the SAME weights at each position; do not reverse them.\nat(i) = dot(kernel, padded[i:i + width - 1]) + bias;\nvalid = stride >= 1 and stride == floor(stride) and width > 0 and lastStart >= 1;\nvalid ? map(1:stride:lastStart, at) :\n  \"Use a positive integer stride and a nonempty filter that fits the padded signal.\"",
+    "expected": [
+      [
+        -1,
+        -1
+      ]
+    ]
+  },
+  "116": {
+    "expression": "# Rows list a node's neighbors: 1 is an edge, 0 is no edge.\nh = [1, 2, 4]; edges = [0, 1, 1; 1, 0, 0; 1, 0, 0];\n# An isolated node receives zero message and keeps its own value.\nmessage(i) = sum(edges[i, 1:end]) == 0 ? 0 :\n  dot(flatten(edges[i, 1:end]), h) / sum(edges[i, 1:end]);\nupdate(i) = h[i] + message(i);\n# All nodes read the old h: updates happen simultaneously.\nnext = map(1:count(h), update);\n{before: h, afterOneHop: next}\nh = next;\nmap(1:count(h), update) # A second hop.",
+    "expected": [
+      {
+        "before": [
+          1,
+          2,
+          4
+        ],
+        "afterOneHop": [
+          4,
+          3,
+          5
+        ]
+      },
+      [
+        8,
+        7,
+        9
+      ]
+    ]
+  },
+  "117": {
+    "expression": "# Score 1 is the related (positive) pair; score 2 is an alternative.\nscores = [log(4), 0];\nsoftmax(s) = map(s - max(s), exp) / sum(map(s - max(s), exp));\np = softmax(scores);\n{positiveProbability: round(p[1], 6), loss: round(-log(p[1]), 6)}\n# Compare a model assigning the scores the other way round.\nscores = [scores[2], scores[1]];\np = softmax(scores);\n{positiveProbability: round(p[1], 6), loss: round(-log(p[1]), 6)}",
+    "expected": [
+      {
+        "positiveProbability": 0.8,
+        "loss": 0.223144
+      },
+      {
+        "positiveProbability": 0.2,
+        "loss": 1.609438
+      }
+    ]
+  },
+  "150": {
+    "expression": "u = [1, 0]; v = [1, 2];\na = 2; b = 3;\ny = a*u + b*v;\ny\n# Change a or b. The second segment starts where the first ends.\nplot([{x:[0,a*u[1]], y:[0,a*u[2]], label:\"a u\"},\n      {x:[a*u[1],y[1]], y:[a*u[2],y[2]], label:\"then b v\"},\n      {x:[0,y[1]], y:[0,y[2]], label:\"sum\"}],\n     {xLabel:\"First coordinate\",yLabel:\"Second coordinate\",equal:true})",
+    "expected": [
+      [
+        5,
+        6
+      ]
+    ],
+    "plots": 1
+  },
+  "149": {
+    "expression": "v = [3, 4];\nlength = norm(v);\nlength == 0 ? \"The zero vector has no unit direction.\" : {length:length, unit:v/length}\n# Change v, including negative coordinates. A zero vector stays a point in the plot.\nu = length == 0 ? v : v/length;\nplot([{x:[0,v[1]],y:[0,v[2]],label:\"original\"},\n      {x:[0,u[1]],y:[0,u[2]],label:\"unit direction\"}],\n     {xLabel:\"First coordinate\",yLabel:\"Second coordinate\",equal:true})",
+    "expected": [
+      {
+        "length": 5,
+        "unit": [
+          0.6,
+          0.8
+        ]
+      }
+    ],
+    "plots": 1
+  },
+  "154": {
+    "expression": "u = [1, 2]; v = [-2, 1];\n{dotProduct:dot(u,v), lengthU:round(norm(u),6), lengthV:round(norm(v),6)}\n# The dot product changes when the angle changes.\nplot([{x:[0,u[1]],y:[0,u[2]],label:\"u\"},\n      {x:[0,v[1]],y:[0,v[2]],label:\"v\"}],\n     {xLabel:\"First coordinate\",yLabel:\"Second coordinate\",equal:true})",
+    "expected": [
+      {
+        "dotProduct": 0,
+        "lengthU": 2.236068,
+        "lengthV": 2.236068
+      }
+    ],
+    "plots": 1
+  },
+  "155": {
+    "expression": "x = [3, 1]; u = [1, 1];\nd = dot(u,u);\nc = d == 0 ? 0 : dot(x,u)/d;\np = c*u; r = x-p;\nd == 0 ? \"Choose a nonzero direction u.\" : {coefficient:c, projection:p, residual:r, perpendicularCheck:dot(r,u)}\n# A zero direction produces no plot until you replace it.\nd == 0 ? \"No line is defined.\" : plot([{x:[-2*u[1],3*u[1]],y:[-2*u[2],3*u[2]],label:\"line\"},\n {x:[0,x[1]],y:[0,x[2]],label:\"original\"},\n {x:[0,p[1]],y:[0,p[2]],label:\"projection\"},\n {x:[p[1],x[1]],y:[p[2],x[2]],label:\"residual\"}],\n {xLabel:\"First coordinate\",yLabel:\"Second coordinate\",equal:true})",
+    "expected": [
+      {
+        "coefficient": 2,
+        "projection": [
+          2,
+          2
+        ],
+        "residual": [
+          1,
+          -1
+        ],
+        "perpendicularCheck": 0
+      }
+    ],
+    "plots": 1
+  },
+  "151": {
+    "expression": "u = [1, 2]; v = [2, 4];\nu + 2*v\n# Replace v with [0, 1]: the reachable points spread from a line into a plane.\nk = 0:24;\nfirst(t) = floor(t/5)-2;\nsecond(t) = mod(t,5)-2;\na = map(k,first); b = map(k,second);\nplot(a*u[1]+b*v[1], a*u[2]+b*v[2],\n {style:\"points\",label:\"sampled combinations\",xLabel:\"First coordinate\",yLabel:\"Second coordinate\",equal:true})",
+    "expected": [
+      [
+        5,
+        10
+      ]
+    ],
+    "plots": 1
+  },
+  "152": {
+    "expression": "u = [1, 0]; v = [0, 1]; w = [1, 1];\n# Nonzero coefficients [1, 1, -1] cancel: the three-vector set is dependent.\nu + v - w\n# Two different recipes for the same target.\n{first:2*u+3*v, second:u+2*v+w}\n# Change w to see whether this particular dependence relation still holds.\n# A failed relation alone does not prove independence.",
+    "expected": [
+      [
+        0,
+        0
+      ],
+      {
+        "first": [
+          2,
+          3
+        ],
+        "second": [
+          2,
+          3
+        ]
+      }
+    ]
+  },
+  "153": {
+    "expression": "b1 = [1, 1]; b2 = [1, -1];\nc = [3, 1];\nx = c[1]*b1 + c[2]*b2;\nx\n# Recover coordinates for this fixed basis. Edit c or x, keeping b1 and b2 fixed.\nrecovered = [(x[1]+x[2])/2, (x[1]-x[2])/2];\nrecovered\nrecovered[1]*b1 + recovered[2]*b2 - x",
+    "expected": [
+      [
+        4,
+        2
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "156": {
+    "expression": "A = [1, 1; 1, -1];\nb = [5, 1];\n# lusolve solves this square system; x is a column matrix.\nx = lusolve(A,b);\nx\n# Substitution checks both equations, rather than trusting the solver alone.\n{leftSide:A*x, rightSide:reshape(b,[2,1]), residual:A*x-reshape(b,[2,1])}\n# Try changing b. Singular or contradictory systems may produce a solver error.",
+    "expected": [
+      [
+        [
+          3
+        ],
+        [
+          2
+        ]
+      ],
+      {
+        "leftSide": [
+          [
+            5
+          ],
+          [
+            1
+          ]
+        ],
+        "rightSide": [
+          [
+            5
+          ],
+          [
+            1
+          ]
+        ],
+        "residual": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "159": {
+    "expression": "A = [1, 2; 2, 4];\n# Exact 2-by-2 test only. Edit the bottom-right entry to 5, or zero every entry.\ncrossDifference = A[1,1]*A[2,2] - A[1,2]*A[2,1];\nrank2 = crossDifference != 0 ? 2 : (sum(abs(A)) == 0 ? 0 : 1);\n{rank:rank2, oppositeCornerDifference:crossDifference}\n# Check the dependence in the original example; this is not a general rank test.\nA*[2,-1]",
+    "expected": [
+      {
+        "rank": 1,
+        "oppositeCornerDifference": 0
+      },
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "160": {
+    "expression": "# Nonnegative diagonal example only: the singular directions are the axes.\ns = [6, 2];\nA = diag(s);\nj = s[1] >= s[2] ? 1 : 2;\nkept = [0,0]; kept[j] = s[j];\napprox = diag(kept);\nmin(s) < 0 ? \"Use nonnegative diagonal values.\" : {approximation:approx, squaredError:sum((A-approx).^2)}\n# Three choices: retain 0, 1, or 2 directions.\nerrors = [sum(s.^2), sum((s-kept).^2), 0];\nmin(s) < 0 ? \"No nonnegative diagonal example to plot.\" : plot([0,1,2],errors,{style:\"bar\",label:\"squared entry error\",xLabel:\"Directions retained\",yLabel:\"Error\"})",
+    "expected": [
+      {
+        "approximation": [
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "squaredError": 4
+      }
+    ],
+    "plots": 1
+  }
+}

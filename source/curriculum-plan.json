@@ -1,0 +1,1790 @@
+{
+  "status": "138 live lessons; remaining 118 are an authoring outline, not published",
+  "currentCount": 138,
+  "targetCount": 256,
+  "chapters": [
+    {
+      "title": "Numbers, notation and functions",
+      "concepts": [
+        {
+          "stableId": 1,
+          "title": "Scalar",
+          "status": "existing"
+        },
+        {
+          "stableId": 2,
+          "title": "Variable",
+          "status": "existing"
+        },
+        {
+          "stableId": 133,
+          "title": "Order of operations",
+          "status": "proposed",
+          "handExample": "Compare 2 + 3 × 4 with (2 + 3) × 4.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 129,
+          "title": "Fractions and ratios",
+          "status": "proposed",
+          "handExample": "Simplify 6/8 and compare 3:4 with 6:8.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 130,
+          "title": "Percentages and percentage points",
+          "status": "proposed",
+          "handExample": "Distinguish a rise from 40% to 50% from a 10% relative increase.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 131,
+          "title": "Powers and roots",
+          "status": "proposed",
+          "handExample": "Calculate 3² and √9; distinguish √9 from solving x² = 9.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 132,
+          "title": "Absolute value",
+          "status": "proposed",
+          "handExample": "Compare signed error −3 with its magnitude 3.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 134,
+          "title": "Substitution and evaluating expressions",
+          "status": "proposed",
+          "handExample": "Evaluate 2x + y at x = 3, y = −1.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 8,
+          "title": "Summation",
+          "status": "existing"
+        },
+        {
+          "stableId": 135,
+          "title": "Solving an equation",
+          "status": "proposed",
+          "handExample": "Undo the operations in 2x + 3 = 11.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 136,
+          "title": "Inequalities and intervals",
+          "status": "proposed",
+          "handExample": "Mark the inputs satisfying −1 ≤ x < 2.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 137,
+          "title": "Sets and membership",
+          "status": "proposed",
+          "handExample": "Find the intersection of {1, 2, 3} and {2, 4}.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 4,
+          "title": "Units",
+          "status": "existing"
+        },
+        {
+          "stableId": 138,
+          "title": "Coordinates and graphs",
+          "status": "proposed",
+          "handExample": "Plot (1, 2), (2, 4), (3, 6), naming both axes.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 3,
+          "title": "Function",
+          "status": "existing"
+        },
+        {
+          "stableId": 141,
+          "title": "Domain and range",
+          "status": "proposed",
+          "handExample": "Find the allowed inputs and possible outputs of √x over real numbers.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 139,
+          "title": "Slope and intercept",
+          "status": "proposed",
+          "handExample": "Find the slope between (1, 3) and (3, 7), then the intercept.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 142,
+          "title": "Function composition",
+          "status": "proposed",
+          "handExample": "For f(x) = 2x and g(x) = x + 1, compare f(g(3)) and g(f(3)).",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 143,
+          "title": "Inverse functions",
+          "status": "proposed",
+          "handExample": "Undo f(x) = 3x + 2; explain why an inverse needs a suitable domain.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 144,
+          "title": "Piecewise functions",
+          "status": "proposed",
+          "handExample": "Evaluate a rule using one formula below zero and another above it.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 145,
+          "title": "Polynomials",
+          "status": "proposed",
+          "handExample": "Evaluate x² + 2x + 1 at three inputs and identify its degree.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 140,
+          "title": "Means and weighted averages",
+          "status": "proposed",
+          "handExample": "Compare an equal average of 2 and 8 with weights 3/4 and 1/4.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 146,
+          "title": "Angles and radians",
+          "status": "proposed",
+          "handExample": "Relate a quarter turn to 90° and π/2 radians.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 147,
+          "title": "Sine and cosine",
+          "status": "proposed",
+          "handExample": "Read the coordinates of a point on the unit circle at quarter turns.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 148,
+          "title": "Polar coordinates",
+          "status": "proposed",
+          "handExample": "Represent (0, 2) using a length and an angle.",
+          "batch": "foundations"
+        }
+      ]
+    },
+    {
+      "title": "Vectors and matrices",
+      "concepts": [
+        {
+          "stableId": 5,
+          "title": "Vector",
+          "status": "existing"
+        },
+        {
+          "stableId": 6,
+          "title": "Matrix",
+          "status": "existing"
+        },
+        {
+          "stableId": 7,
+          "title": "Tensor",
+          "status": "existing"
+        },
+        {
+          "stableId": 150,
+          "title": "Linear combinations",
+          "status": "existing",
+          "handExample": "Form 2(1, 0) + 3(0, 1).",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 9,
+          "title": "Dot product",
+          "status": "existing"
+        },
+        {
+          "stableId": 149,
+          "title": "Norms and unit vectors",
+          "status": "existing",
+          "handExample": "Turn (3, 4) into a unit vector; distinguish length from direction.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 13,
+          "title": "Euclidean distance",
+          "status": "existing"
+        },
+        {
+          "stableId": 154,
+          "title": "Orthogonality",
+          "status": "existing",
+          "handExample": "Check that (1, 1) and (1, −1) have zero dot product.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 155,
+          "title": "Vector projection",
+          "status": "existing",
+          "handExample": "Project (3, 4) onto the horizontal axis and calculate the residual.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 151,
+          "title": "Span",
+          "status": "existing",
+          "handExample": "Identify which points multiples of (1, 2) can reach.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 152,
+          "title": "Linear independence",
+          "status": "existing",
+          "handExample": "Decide whether (1, 2) and (2, 4) provide two independent directions.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 153,
+          "title": "Basis and dimension",
+          "status": "existing",
+          "handExample": "Express (3, 2) using the basis (1, 1), (1, −1).",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 10,
+          "title": "Matrix multiplication",
+          "status": "existing"
+        },
+        {
+          "stableId": 11,
+          "title": "Transpose",
+          "status": "existing"
+        },
+        {
+          "stableId": 12,
+          "title": "Linear transformation",
+          "status": "existing"
+        },
+        {
+          "stableId": 156,
+          "title": "Systems of linear equations",
+          "status": "existing",
+          "handExample": "Solve x + y = 5 and x − y = 1.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 157,
+          "title": "Gaussian elimination",
+          "status": "proposed",
+          "handExample": "Remove one variable by subtracting rows in a two-equation system.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 158,
+          "title": "Matrix inverse",
+          "status": "proposed",
+          "handExample": "Undo a diagonal scaling; contrast it with a transformation that discards a coordinate. Define the identity matrix explicitly here.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 159,
+          "title": "Matrix rank",
+          "status": "existing",
+          "handExample": "Compare the independent columns of [[1, 2], [2, 4]] and the identity matrix.",
+          "batch": "linear-algebra"
+        },
+        {
+          "stableId": 103,
+          "title": "Eigenvalues and eigenvectors",
+          "status": "existing"
+        },
+        {
+          "stableId": 104,
+          "title": "Singular value decomposition",
+          "status": "existing"
+        },
+        {
+          "stableId": 160,
+          "title": "Low-rank approximation",
+          "status": "existing",
+          "handExample": "Replace diag(4, 1) with diag(4, 0) and measure squared entrywise error.",
+          "batch": "linear-algebra"
+        }
+      ]
+    },
+    {
+      "title": "Change and optimization",
+      "concepts": [
+        {
+          "stableId": 18,
+          "title": "Exponential and logarithm",
+          "status": "existing"
+        },
+        {
+          "stableId": 161,
+          "title": "Average rate of change",
+          "status": "proposed",
+          "handExample": "Compute the slope of x² between x = 1 and x = 2.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 162,
+          "title": "Limits",
+          "status": "proposed",
+          "handExample": "Examine (x² − 1)/(x − 1) near x = 1, distinguishing its limit from its undefined value there.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 19,
+          "title": "Derivative",
+          "status": "existing"
+        },
+        {
+          "stableId": 165,
+          "title": "Finite differences",
+          "status": "proposed",
+          "handExample": "Approximate the derivative of x² at x = 2 with two different step sizes.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 166,
+          "title": "Local linear approximation",
+          "status": "proposed",
+          "handExample": "Use the slope of x² at 2 to estimate 2.1² and compare with the exact answer.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 22,
+          "title": "Integral",
+          "status": "existing"
+        },
+        {
+          "stableId": 163,
+          "title": "Functions of several variables",
+          "status": "proposed",
+          "handExample": "Evaluate f(x, y) = x² + 3y at two input pairs.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 164,
+          "title": "Partial derivatives",
+          "status": "proposed",
+          "handExample": "For x² + 3y², vary x while holding y fixed, then reverse the roles.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 20,
+          "title": "Gradient",
+          "status": "existing"
+        },
+        {
+          "stableId": 167,
+          "title": "Jacobian",
+          "status": "proposed",
+          "handExample": "Build the derivative matrix for F(x, y) = (2x + y, x − y).",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 21,
+          "title": "Chain rule",
+          "status": "existing"
+        },
+        {
+          "stableId": 23,
+          "title": "Optimization",
+          "status": "existing"
+        },
+        {
+          "stableId": 168,
+          "title": "Convexity",
+          "status": "proposed",
+          "handExample": "Compare a bowl-shaped objective with a two-valley objective.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 108,
+          "title": "Hessian and curvature",
+          "status": "existing"
+        },
+        {
+          "stableId": 170,
+          "title": "Constraints and feasible regions",
+          "status": "proposed",
+          "handExample": "Draw the allowed region x ≥ 0, y ≥ 0, x + y ≤ 4.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 107,
+          "title": "Lagrange multipliers",
+          "status": "existing"
+        },
+        {
+          "stableId": 24,
+          "title": "Gradient descent",
+          "status": "existing"
+        },
+        {
+          "stableId": 169,
+          "title": "Learning rate and convergence",
+          "status": "proposed",
+          "handExample": "Take one gradient step on (x − 3)² with step sizes 0.25, 0.5 and 1.",
+          "batch": "foundations"
+        }
+      ]
+    },
+    {
+      "title": "Probability and evidence",
+      "concepts": [
+        {
+          "stableId": 14,
+          "title": "Probability",
+          "status": "existing"
+        },
+        {
+          "stableId": 171,
+          "title": "Random variables",
+          "status": "proposed",
+          "handExample": "Map two coin tosses to the number of heads.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 172,
+          "title": "Discrete probability distributions",
+          "status": "proposed",
+          "handExample": "Build the probability table for that head count and check its total.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 173,
+          "title": "Bernoulli distribution",
+          "status": "proposed",
+          "handExample": "Represent a single success/failure trial with success probability 1/4.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 174,
+          "title": "Binomial distribution",
+          "status": "proposed",
+          "handExample": "Enumerate three fair tosses and find the probability of exactly two heads.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 178,
+          "title": "Joint probability",
+          "status": "proposed",
+          "handExample": "Fill a 2 × 2 table for two binary outcomes.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 179,
+          "title": "Marginalization",
+          "status": "proposed",
+          "handExample": "Sum that table's rows and columns to recover individual distributions.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 15,
+          "title": "Conditional probability",
+          "status": "existing"
+        },
+        {
+          "stableId": 180,
+          "title": "Independence",
+          "status": "proposed",
+          "handExample": "Test whether a joint probability equals the product of its marginals.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 181,
+          "title": "Conditional independence",
+          "status": "proposed",
+          "handExample": "Use a small supplied table to see whether two variables are independent within each group.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 182,
+          "title": "Likelihood",
+          "status": "proposed",
+          "handExample": "Compare how well coin biases 1/2 and 3/4 explain two heads and one tail.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 101,
+          "title": "Bayes’ theorem",
+          "status": "existing"
+        },
+        {
+          "stableId": 16,
+          "title": "Expected value",
+          "status": "existing"
+        },
+        {
+          "stableId": 17,
+          "title": "Variance",
+          "status": "existing"
+        },
+        {
+          "stableId": 175,
+          "title": "Probability density",
+          "status": "proposed",
+          "handExample": "Use a uniform density over [0, 2] to calculate probability from area.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 176,
+          "title": "Normal distribution",
+          "status": "proposed",
+          "handExample": "Locate values one standard deviation from a stated mean; use supplied areas rather than unexplained tables.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 177,
+          "title": "Cumulative probability",
+          "status": "proposed",
+          "handExample": "Add a discrete table's probabilities up to a chosen threshold.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 102,
+          "title": "Covariance and correlation",
+          "status": "existing"
+        },
+        {
+          "stableId": 183,
+          "title": "Populations and samples",
+          "status": "proposed",
+          "handExample": "Enumerate all size-two samples from a four-item population.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 184,
+          "title": "Median and quantiles",
+          "status": "proposed",
+          "handExample": "Sort five values and compare the median with the mean after adding an outlier.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 185,
+          "title": "Sample variance",
+          "status": "proposed",
+          "handExample": "Calculate squared deviations for three readings; explain the estimator and denominator being used.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 186,
+          "title": "Sampling and selection bias",
+          "status": "proposed",
+          "handExample": "Compare an average from all four readings with an average after selecting only high readings.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 187,
+          "title": "Law of large numbers",
+          "status": "proposed",
+          "handExample": "Follow the running head fraction in a supplied sequence of coin tosses.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 188,
+          "title": "Central limit theorem",
+          "status": "proposed",
+          "handExample": "Build the distribution of sample means from a small population; explain the conditions and approximation limits.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 189,
+          "title": "Standard error",
+          "status": "proposed",
+          "handExample": "Distinguish spread of observations from spread of sample means using enumerated samples.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 190,
+          "title": "Confidence intervals",
+          "status": "proposed",
+          "handExample": "Interpret intervals from repeated supplied samples without claiming a frequentist interval assigns probability to a fixed parameter.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 191,
+          "title": "Bootstrap resampling",
+          "status": "proposed",
+          "handExample": "Resample a three-value dataset with replacement and compare resulting means.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 192,
+          "title": "Randomized experiments",
+          "status": "proposed",
+          "handExample": "Compare group mean outcomes and explain why random assignment matters.",
+          "batch": "foundations"
+        },
+        {
+          "stableId": 106,
+          "title": "Monte Carlo estimation",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Learning from data",
+      "concepts": [
+        {
+          "stableId": 25,
+          "title": "Dataset and features",
+          "status": "existing"
+        },
+        {
+          "stableId": 29,
+          "title": "Supervised learning",
+          "status": "existing"
+        },
+        {
+          "stableId": 32,
+          "title": "Parameter and hyperparameter",
+          "status": "existing"
+        },
+        {
+          "stableId": 205,
+          "title": "Baseline models",
+          "status": "proposed",
+          "handExample": "Compare always predicting the majority class or training mean with a learned model.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 27,
+          "title": "Training, validation and test",
+          "status": "existing"
+        },
+        {
+          "stableId": 28,
+          "title": "Data leakage",
+          "status": "existing"
+        },
+        {
+          "stableId": 211,
+          "title": "Cross-validation",
+          "status": "proposed",
+          "handExample": "Rotate three held-out folds while fitting preprocessing only on each training fold.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 200,
+          "title": "One-hot encoding",
+          "status": "proposed",
+          "handExample": "Encode three categories without inventing an ordinal relationship.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 201,
+          "title": "Feature engineering",
+          "status": "proposed",
+          "handExample": "Add area = width × height to a tiny table and state when each input is available.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 30,
+          "title": "Linear regression",
+          "status": "existing"
+        },
+        {
+          "stableId": 31,
+          "title": "Mean squared error",
+          "status": "existing"
+        },
+        {
+          "stableId": 210,
+          "title": "Mean absolute error",
+          "status": "proposed",
+          "handExample": "Compare absolute and squared losses on errors 1, 1 and 4.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 202,
+          "title": "Polynomial regression",
+          "status": "proposed",
+          "handExample": "Fit a curved relationship using features x and x² while remaining linear in the fitted weights.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 26,
+          "title": "Normalization",
+          "status": "existing"
+        },
+        {
+          "stableId": 109,
+          "title": "k-nearest neighbors",
+          "status": "existing"
+        },
+        {
+          "stableId": 110,
+          "title": "Decision trees",
+          "status": "existing"
+        },
+        {
+          "stableId": 41,
+          "title": "Overfitting",
+          "status": "existing"
+        },
+        {
+          "stableId": 42,
+          "title": "Regularization",
+          "status": "existing"
+        },
+        {
+          "stableId": 111,
+          "title": "Random forests",
+          "status": "existing"
+        },
+        {
+          "stableId": 112,
+          "title": "Gradient boosting",
+          "status": "existing"
+        },
+        {
+          "stableId": 212,
+          "title": "Hyperparameter search",
+          "status": "proposed",
+          "handExample": "Choose among a supplied validation-results table while leaving test results untouched.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 213,
+          "title": "Learning curves",
+          "status": "proposed",
+          "handExample": "Read training and validation errors as the number of examples grows.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 214,
+          "title": "Bias–variance tradeoff",
+          "status": "proposed",
+          "handExample": "Compare predictions from several fits across repeated supplied training sets.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 197,
+          "title": "Unsupervised learning",
+          "status": "proposed",
+          "handExample": "Group unlabeled points, then distinguish the grouping from known target labels.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 198,
+          "title": "k-means clustering",
+          "status": "proposed",
+          "handExample": "Assign four one-dimensional points to two centers and update their means once.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 120,
+          "title": "Causal inference",
+          "status": "existing"
+        },
+        {
+          "stableId": 118,
+          "title": "Domain shift and adaptation",
+          "status": "existing"
+        },
+        {
+          "stableId": 119,
+          "title": "Active learning",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Probabilistic models and evaluation",
+      "concepts": [
+        {
+          "stableId": 193,
+          "title": "Entropy",
+          "status": "proposed",
+          "handExample": "Compare uncertainty in a fair binary outcome with a certain outcome, using base-two logarithms.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 194,
+          "title": "Mutual information",
+          "status": "proposed",
+          "handExample": "Compare independent bits with two identical bits using tiny probability tables.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 195,
+          "title": "Maximum likelihood estimation",
+          "status": "proposed",
+          "handExample": "Find the coin bias maximizing the likelihood of two heads in three tosses.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 196,
+          "title": "Maximum a posteriori estimation",
+          "status": "proposed",
+          "handExample": "Combine a supplied likelihood and prior table over three candidate parameters.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 34,
+          "title": "Sigmoid",
+          "status": "existing"
+        },
+        {
+          "stableId": 199,
+          "title": "Logistic regression",
+          "status": "proposed",
+          "handExample": "Convert a linear score into a probability, then distinguish the probability from the chosen class.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 204,
+          "title": "Naive Bayes",
+          "status": "proposed",
+          "handExample": "Classify one example from two binary features using supplied probabilities and a stated conditional-independence assumption.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 203,
+          "title": "Kernel methods",
+          "status": "proposed",
+          "handExample": "Compare an explicit small feature map with the dot products it produces.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 206,
+          "title": "Confusion matrix",
+          "status": "proposed",
+          "handExample": "Classify six predictions into true/false positives and negatives.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 113,
+          "title": "Class imbalance, precision and recall",
+          "status": "existing"
+        },
+        {
+          "stableId": 207,
+          "title": "Decision thresholds",
+          "status": "proposed",
+          "handExample": "Move a threshold across those six scores and recount mistakes.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 208,
+          "title": "Precision–recall curves",
+          "status": "proposed",
+          "handExample": "Compute precision and recall at three thresholds.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 209,
+          "title": "ROC curves and AUC",
+          "status": "proposed",
+          "handExample": "Count how often a positive example ranks above a negative, handling ties explicitly.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 114,
+          "title": "Probability calibration",
+          "status": "existing"
+        },
+        {
+          "stableId": 43,
+          "title": "Softmax",
+          "status": "existing"
+        },
+        {
+          "stableId": 44,
+          "title": "Cross-entropy",
+          "status": "existing"
+        },
+        {
+          "stableId": 105,
+          "title": "KL divergence",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Signals and complex numbers",
+      "concepts": [
+        {
+          "stableId": 215,
+          "title": "Complex numbers",
+          "status": "proposed",
+          "handExample": "Add 2 + 3i and 1 − i; plot the result in the complex plane.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 216,
+          "title": "Complex multiplication and rotation",
+          "status": "proposed",
+          "handExample": "Multiply 3 + 4i by i and compare lengths and directions.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 217,
+          "title": "Euler's formula",
+          "status": "proposed",
+          "handExample": "Relate e^(iθ) to quarter turns using cosine and sine.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 219,
+          "title": "Amplitude and phase",
+          "status": "proposed",
+          "handExample": "Compare two waves of equal frequency with different heights or horizontal shifts.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 220,
+          "title": "Superposition of signals",
+          "status": "proposed",
+          "handExample": "Add two short sampled waves entry by entry.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 55,
+          "title": "Sequence and autocorrelation",
+          "status": "existing"
+        },
+        {
+          "stableId": 218,
+          "title": "Sampling and aliasing",
+          "status": "proposed",
+          "handExample": "Sample two different waves at the same four times and observe identical samples.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 221,
+          "title": "Fourier transform and the DFT",
+          "status": "proposed",
+          "handExample": "Transform the four samples [1, 0, −1, 0], with the transform convention stated.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 253,
+          "title": "Algorithmic complexity",
+          "status": "proposed",
+          "handExample": "Count operations as a small input doubles; distinguish growth rates from measured runtime.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 222,
+          "title": "Fast Fourier Transform",
+          "status": "proposed",
+          "handExample": "Split a four-point DFT into even and odd parts and count reused calculations.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 223,
+          "title": "Convolution",
+          "status": "proposed",
+          "handExample": "Slide a two-entry filter over a four-entry signal, explicitly defining reversal and boundary handling.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 224,
+          "title": "Spectrograms",
+          "status": "proposed",
+          "handExample": "Compare frequency summaries of two short windows and explain the time/frequency tradeoff.",
+          "batch": "math-to-ai"
+        }
+      ]
+    },
+    {
+      "title": "Neural networks and training",
+      "concepts": [
+        {
+          "stableId": 33,
+          "title": "Artificial neuron",
+          "status": "existing"
+        },
+        {
+          "stableId": 35,
+          "title": "ReLU",
+          "status": "existing"
+        },
+        {
+          "stableId": 225,
+          "title": "Computation graphs",
+          "status": "proposed",
+          "handExample": "Draw the operations for (wx + b)² and identify reused intermediate values.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 37,
+          "title": "Forward pass",
+          "status": "existing"
+        },
+        {
+          "stableId": 226,
+          "title": "Tensor reshaping",
+          "status": "proposed",
+          "handExample": "Reshape six entries into 2 × 3 and 3 × 2 arrays without changing their sequence.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 227,
+          "title": "Broadcasting",
+          "status": "proposed",
+          "handExample": "Add a three-entry bias vector to each row of a 2 × 3 matrix; distinguish this from matrix multiplication.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 36,
+          "title": "Deep neural network",
+          "status": "existing"
+        },
+        {
+          "stableId": 38,
+          "title": "Backpropagation",
+          "status": "existing"
+        },
+        {
+          "stableId": 39,
+          "title": "Mini-batch gradient descent",
+          "status": "existing"
+        },
+        {
+          "stableId": 40,
+          "title": "Epoch",
+          "status": "existing"
+        },
+        {
+          "stableId": 228,
+          "title": "Weight initialization",
+          "status": "proposed",
+          "handExample": "Show why two identically initialized hidden neurons can receive identical updates.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 229,
+          "title": "Vanishing and exploding gradients",
+          "status": "proposed",
+          "handExample": "Multiply four local derivatives of 1/2 or 2 and inspect the resulting sensitivity.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 230,
+          "title": "Gradient clipping",
+          "status": "proposed",
+          "handExample": "Clip a two-dimensional gradient to a stated maximum norm.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 231,
+          "title": "Momentum",
+          "status": "proposed",
+          "handExample": "Apply a stated recurrence to three supplied gradients.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 232,
+          "title": "Adam",
+          "status": "proposed",
+          "handExample": "Compute its first update from a scalar gradient with all conventions and bias corrections supplied.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 233,
+          "title": "Dropout",
+          "status": "proposed",
+          "handExample": "Apply a stated mask to four activations, including the chosen rescaling convention.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 234,
+          "title": "Batch normalization",
+          "status": "proposed",
+          "handExample": "Normalize one feature over a tiny batch and distinguish training from inference statistics.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 235,
+          "title": "Layer normalization",
+          "status": "proposed",
+          "handExample": "Normalize the features of one token and contrast the normalization axis with batch normalization.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 236,
+          "title": "Residual connections",
+          "status": "proposed",
+          "handExample": "Compute x + F(x) for two coordinates and trace the direct path.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 115,
+          "title": "Convolutional neural networks",
+          "status": "existing"
+        },
+        {
+          "stableId": 247,
+          "title": "Graphs and adjacency matrices",
+          "status": "proposed",
+          "handExample": "Convert a three-node drawing into a matrix and count neighbors.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 116,
+          "title": "Graph neural networks",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Representations and compression",
+      "concepts": [
+        {
+          "stableId": 45,
+          "title": "Self-supervised learning",
+          "status": "existing"
+        },
+        {
+          "stableId": 46,
+          "title": "Embedding",
+          "status": "existing"
+        },
+        {
+          "stableId": 47,
+          "title": "Cosine similarity",
+          "status": "existing"
+        },
+        {
+          "stableId": 117,
+          "title": "Contrastive learning",
+          "status": "existing"
+        },
+        {
+          "stableId": 48,
+          "title": "Principal component analysis",
+          "status": "existing"
+        },
+        {
+          "stableId": 49,
+          "title": "Autoencoder",
+          "status": "existing"
+        },
+        {
+          "stableId": 50,
+          "title": "Latent space and bottleneck",
+          "status": "existing"
+        },
+        {
+          "stableId": 79,
+          "title": "Bit and byte",
+          "status": "existing"
+        },
+        {
+          "stableId": 80,
+          "title": "Numerical precision",
+          "status": "existing"
+        },
+        {
+          "stableId": 51,
+          "title": "Rate-distortion tradeoff",
+          "status": "existing"
+        },
+        {
+          "stableId": 52,
+          "title": "Vector quantization",
+          "status": "existing"
+        },
+        {
+          "stableId": 54,
+          "title": "Token and vocabulary",
+          "status": "existing"
+        },
+        {
+          "stableId": 53,
+          "title": "Vector-quantized autoencoder",
+          "status": "existing"
+        },
+        {
+          "stableId": 121,
+          "title": "Diffusion models",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Attention and language models",
+      "concepts": [
+        {
+          "stableId": 237,
+          "title": "Byte-pair tokenization",
+          "status": "proposed",
+          "handExample": "Apply a few explicitly supplied merge rules to a short string.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 56,
+          "title": "Positional encoding",
+          "status": "existing"
+        },
+        {
+          "stableId": 240,
+          "title": "Rotary positional embeddings",
+          "status": "proposed",
+          "handExample": "Rotate a pair of coordinates at two positions and examine their relative angle.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 57,
+          "title": "Scaled dot-product attention",
+          "status": "existing"
+        },
+        {
+          "stableId": 58,
+          "title": "Multi-head attention",
+          "status": "existing"
+        },
+        {
+          "stableId": 60,
+          "title": "Causal mask",
+          "status": "existing"
+        },
+        {
+          "stableId": 238,
+          "title": "Feed-forward blocks",
+          "status": "proposed",
+          "handExample": "Apply two small linear maps with a nonlinearity between them to one token vector.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 59,
+          "title": "Transformer",
+          "status": "existing"
+        },
+        {
+          "stableId": 239,
+          "title": "Encoder and decoder architectures",
+          "status": "proposed",
+          "handExample": "Draw which tokens can see which other tokens in small bidirectional, causal and encoder–decoder examples.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 61,
+          "title": "Large language models and next-token prediction",
+          "status": "existing"
+        },
+        {
+          "stableId": 241,
+          "title": "Temperature and sampling",
+          "status": "proposed",
+          "handExample": "Convert two logits into probabilities at two temperatures, then distinguish sampling from choosing the maximum.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 242,
+          "title": "Top-k and top-p sampling",
+          "status": "proposed",
+          "handExample": "Keep and renormalize entries from a four-token probability table.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 243,
+          "title": "Perplexity",
+          "status": "proposed",
+          "handExample": "Compare two models' probabilities for a three-token sequence.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 122,
+          "title": "Mixture of experts",
+          "status": "existing"
+        },
+        {
+          "stableId": 62,
+          "title": "Fine-tuning",
+          "status": "existing"
+        },
+        {
+          "stableId": 244,
+          "title": "Low-rank adaptation (LoRA)",
+          "status": "proposed",
+          "handExample": "Multiply a 2 × 1 and a 1 × 2 matrix to create a small weight update.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 246,
+          "title": "In-context learning",
+          "status": "proposed",
+          "handExample": "Contrast supplying examples in the prompt with updating the model's weights. Use a tiny pattern-completion example without claiming guaranteed learning.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 124,
+          "title": "Model distillation",
+          "status": "existing"
+        },
+        {
+          "stableId": 63,
+          "title": "Retrieval-augmented generation",
+          "status": "existing"
+        },
+        {
+          "stableId": 245,
+          "title": "Retrieval ranking and reranking",
+          "status": "proposed",
+          "handExample": "Rank four documents by a supplied score, then rerank the shortlist under a second criterion.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 94,
+          "title": "API and SDK",
+          "status": "existing"
+        },
+        {
+          "stableId": 64,
+          "title": "Tool calling",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Decisions, learning and control",
+      "concepts": [
+        {
+          "stableId": 66,
+          "title": "State, observation and action",
+          "status": "existing"
+        },
+        {
+          "stableId": 65,
+          "title": "Dynamical system",
+          "status": "existing"
+        },
+        {
+          "stableId": 248,
+          "title": "Markov chains",
+          "status": "proposed",
+          "handExample": "Multiply a two-state probability vector by a transition matrix.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 67,
+          "title": "Markov decision process",
+          "status": "existing"
+        },
+        {
+          "stableId": 68,
+          "title": "Reward and return",
+          "status": "existing"
+        },
+        {
+          "stableId": 69,
+          "title": "Policy",
+          "status": "existing"
+        },
+        {
+          "stableId": 70,
+          "title": "Value function",
+          "status": "existing"
+        },
+        {
+          "stableId": 71,
+          "title": "Bellman equation",
+          "status": "existing"
+        },
+        {
+          "stableId": 250,
+          "title": "Dynamic programming",
+          "status": "proposed",
+          "handExample": "Reuse solutions to shorter paths in a small acyclic decision graph.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 252,
+          "title": "Value iteration",
+          "status": "proposed",
+          "handExample": "Perform one Bellman optimality update on two states with two actions.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 73,
+          "title": "Exploration and exploitation",
+          "status": "existing"
+        },
+        {
+          "stableId": 249,
+          "title": "Multi-armed bandits",
+          "status": "proposed",
+          "handExample": "Compare two actions' estimated rewards and identify the value of another observation.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 72,
+          "title": "Q-learning",
+          "status": "existing"
+        },
+        {
+          "stableId": 251,
+          "title": "Temporal-difference learning",
+          "status": "proposed",
+          "handExample": "Calculate one reward-plus-next-value prediction error and update a value estimate.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 74,
+          "title": "Policy gradient",
+          "status": "existing"
+        },
+        {
+          "stableId": 76,
+          "title": "Model-based RL",
+          "status": "existing"
+        },
+        {
+          "stableId": 78,
+          "title": "Safety constraint",
+          "status": "existing"
+        },
+        {
+          "stableId": 77,
+          "title": "Model predictive control",
+          "status": "existing"
+        },
+        {
+          "stableId": 75,
+          "title": "RLHF",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Computing and deployment",
+      "concepts": [
+        {
+          "stableId": 81,
+          "title": "CPU",
+          "status": "existing"
+        },
+        {
+          "stableId": 254,
+          "title": "FLOPs and matrix-operation cost",
+          "status": "proposed",
+          "handExample": "Count multiply/add operations in a 2 × 3 by 3 × 2 product under a stated convention.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 82,
+          "title": "GPU",
+          "status": "existing"
+        },
+        {
+          "stableId": 83,
+          "title": "Tensor core",
+          "status": "existing"
+        },
+        {
+          "stableId": 84,
+          "title": "CUDA",
+          "status": "existing"
+        },
+        {
+          "stableId": 85,
+          "title": "Memory capacity",
+          "status": "existing"
+        },
+        {
+          "stableId": 256,
+          "title": "Weight quantization",
+          "status": "proposed",
+          "handExample": "Map four weights onto a small integer grid and measure reconstruction error.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 123,
+          "title": "Context windows and KV caching",
+          "status": "existing"
+        },
+        {
+          "stableId": 86,
+          "title": "Memory bandwidth",
+          "status": "existing"
+        },
+        {
+          "stableId": 255,
+          "title": "Latency and throughput",
+          "status": "proposed",
+          "handExample": "Compare time per request with requests per second in a small batching example.",
+          "batch": "math-to-ai"
+        },
+        {
+          "stableId": 87,
+          "title": "H100",
+          "status": "existing"
+        },
+        {
+          "stableId": 88,
+          "title": "Compute cluster",
+          "status": "existing"
+        },
+        {
+          "stableId": 89,
+          "title": "TSMC and chip fabrication",
+          "status": "existing"
+        }
+      ]
+    },
+    {
+      "title": "Applied AI: mineral resource extraction",
+      "concepts": [
+        {
+          "stableId": 90,
+          "title": "Borehole logs and assays",
+          "status": "existing"
+        },
+        {
+          "stableId": 125,
+          "title": "Assay quality control",
+          "status": "existing"
+        },
+        {
+          "stableId": 92,
+          "title": "Provenance and uncertainty",
+          "status": "existing"
+        },
+        {
+          "stableId": 93,
+          "title": "Geoscience data integration",
+          "status": "existing"
+        },
+        {
+          "stableId": 91,
+          "title": "Windowing and missing data",
+          "status": "existing"
+        },
+        {
+          "stableId": 96,
+          "title": "Ore grade estimation",
+          "status": "existing"
+        },
+        {
+          "stableId": 127,
+          "title": "Variograms and kriging",
+          "status": "existing"
+        },
+        {
+          "stableId": 126,
+          "title": "Spatial cross-validation",
+          "status": "existing"
+        },
+        {
+          "stableId": 128,
+          "title": "Mineral processing and recovery",
+          "status": "existing"
+        },
+        {
+          "stableId": 97,
+          "title": "Representation alignment",
+          "status": "existing"
+        },
+        {
+          "stableId": 98,
+          "title": "Benchmark and ablation",
+          "status": "existing"
+        },
+        {
+          "stableId": 95,
+          "title": "Open source and reproducibility",
+          "status": "existing"
+        },
+        {
+          "stableId": 99,
+          "title": "Forward-deployed engineering",
+          "status": "existing"
+        },
+        {
+          "stableId": 100,
+          "title": "Grounded model conversation",
+          "status": "existing"
+        }
+      ]
+    }
+  ],
+  "sequenceChecks": [
+    [
+      134,
+      3
+    ],
+    [
+      142,
+      21
+    ],
+    [
+      149,
+      155
+    ],
+    [
+      154,
+      155
+    ],
+    [
+      152,
+      159
+    ],
+    [
+      153,
+      103
+    ],
+    [
+      159,
+      104
+    ],
+    [
+      104,
+      160
+    ],
+    [
+      160,
+      244
+    ],
+    [
+      163,
+      164
+    ],
+    [
+      164,
+      20
+    ],
+    [
+      20,
+      24
+    ],
+    [
+      170,
+      107
+    ],
+    [
+      172,
+      16
+    ],
+    [
+      178,
+      15
+    ],
+    [
+      182,
+      195
+    ],
+    [
+      193,
+      44
+    ],
+    [
+      43,
+      44
+    ],
+    [
+      34,
+      199
+    ],
+    [
+      206,
+      113
+    ],
+    [
+      207,
+      208
+    ],
+    [
+      207,
+      209
+    ],
+    [
+      147,
+      217
+    ],
+    [
+      215,
+      217
+    ],
+    [
+      221,
+      222
+    ],
+    [
+      221,
+      224
+    ],
+    [
+      223,
+      115
+    ],
+    [
+      225,
+      37
+    ],
+    [
+      225,
+      38
+    ],
+    [
+      21,
+      38
+    ],
+    [
+      247,
+      116
+    ],
+    [
+      236,
+      59
+    ],
+    [
+      235,
+      59
+    ],
+    [
+      238,
+      59
+    ],
+    [
+      58,
+      59
+    ],
+    [
+      59,
+      61
+    ],
+    [
+      61,
+      75
+    ],
+    [
+      74,
+      75
+    ],
+    [
+      54,
+      237
+    ],
+    [
+      62,
+      244
+    ],
+    [
+      63,
+      245
+    ],
+    [
+      248,
+      67
+    ],
+    [
+      71,
+      252
+    ],
+    [
+      10,
+      254
+    ],
+    [
+      80,
+      256
+    ]
+  ]
+}

@@ -1,42 +1,58 @@
-// Select-only combobox. Keep the native select available if enhancement fails.
+// Searchable concept picker. Keep the native select if enhancement is unavailable.
 (() => {
  'use strict';
- window.math2aiConceptMenu = ({select,trigger,list,label,onChoose}) => {
+ window.math2aiConceptMenu = ({select,trigger,popup,search,list,empty,onChoose}) => {
   const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  let rows=[],current=0,active=0,opened=false,signature='',buffer='',typedAt=0;
+  let rows=[],visible=[],current=0,active=-1,opened=false,signature='';
   function close() {
-   opened=false;list.hidden=true;trigger.setAttribute('aria-expanded','false');
-   trigger.removeAttribute('aria-activedescendant');buffer='';
+   opened=false;popup.hidden=true;search.value='';
+   trigger.setAttribute('aria-expanded','false');search.setAttribute('aria-expanded','false');
+   search.removeAttribute('aria-activedescendant');
   }
   function place() {
-   const box=trigger.getBoundingClientRect(),below=window.innerHeight-box.bottom-12,above=box.top-12;
-   const upwards=below<180 && above>below;
-   list.style.top=upwards?'auto':'calc(100% + 4px)';
-   list.style.bottom=upwards?'calc(100% + 4px)':'auto';
-   list.style.maxHeight=Math.max(40,Math.min(420,upwards?above:below))+'px';
+   const box=trigger.getBoundingClientRect(),viewport=window.visualViewport;
+   const top=viewport?.offsetTop || 0,bottom=top+(viewport?.height || window.innerHeight);
+   const below=bottom-box.bottom-12,above=box.top-top-12,upwards=below<180 && above>below;
+   popup.style.top=upwards?'auto':'calc(100% + 4px)';
+   popup.style.bottom=upwards?'calc(100% + 4px)':'auto';
+   popup.style.maxHeight=Math.max(80,Math.min(420,upwards?above:below))+'px';
   }
   function highlight(index,center=false) {
-   active=Math.max(0,Math.min(rows.length-1,index));
-   const options=list.querySelectorAll('[role="option"]');
+   active=visible.includes(index)?index:visible[0] ?? -1;
+   const options=[...list.querySelectorAll('[role="option"]')];
    for(const option of options) {
     const focused=Number(option.dataset.index)===active;
     option.setAttribute('aria-selected',String(focused));
     option.classList.toggle('active',focused);
    }
-   const option=options[active];
-   if(!option)return;
-   trigger.setAttribute('aria-activedescendant',option.id);
+   const option=options.find(option=>Number(option.dataset.index)===active);
+   if(!option){search.removeAttribute('aria-activedescendant');return;}
+   search.setAttribute('aria-activedescendant',option.id);
    const top=option.offsetTop,bottom=top+option.offsetHeight;
    if(center)list.scrollTop=top-(list.clientHeight-option.offsetHeight)/2;
    else if(top<list.scrollTop)list.scrollTop=top;
    else if(bottom>list.scrollTop+list.clientHeight)list.scrollTop=bottom-list.clientHeight;
   }
-  function open() {
+  function renderOptions() {
+   const query=search.value.trim().toLocaleLowerCase();
+   visible=rows.map((_,index)=>index).filter(index=>`${String(index+1).padStart(3,'0')} ${rows[index].title}`.toLocaleLowerCase().includes(query));
+   let chapter='';
+   list.innerHTML=visible.map((index,position)=>{
+    const row=rows[index],heading=row.chapter!==chapter;
+    const prefix=heading?`${position?'</div>':''}<div role="group" aria-label="${escape(row.chapter)}"><div class="concept-group" aria-hidden="true">${escape(row.chapter)}</div>`:'';
+    chapter=row.chapter;
+    return `${prefix}<div role="option" id="concept-option-${index}" data-index="${index}" aria-selected="false">${escape(row.text)}${row.marker?`<span class="menu-personal">${row.marker==='Revisit later'?'<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M3 1h10v15l-5-3-5 3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>':''}${escape(row.marker)}</span>`:''}</div>`;
+   }).join('')+(visible.length?'</div>':'');
+   empty.hidden=visible.length!==0;
+  }
+  function open(query='') {
    if(!rows.length)return;
-   opened=true;list.hidden=false;trigger.setAttribute('aria-expanded','true');
-   place();highlight(current,true);trigger.focus({preventScroll:true});
+   opened=true;search.value=query;popup.hidden=false;
+   trigger.setAttribute('aria-expanded','true');search.setAttribute('aria-expanded','true');
+   renderOptions();place();highlight(query?visible[0]:current,true);search.focus({preventScroll:true});
   }
   function choose() {
+   if(!visible.includes(active))return;
    const index=active;
    close();onChoose(index);trigger.focus({preventScroll:true});
   }
@@ -44,59 +60,61 @@
    const nextSignature=JSON.stringify(nextRows),changed=index!==current;
    rows=nextRows;current=index;
    trigger.textContent=(rows[current]?.text || '')+(rows[current]?.marker?' · '+rows[current].marker:'');
-   if(nextSignature!==signature) {
-    const scroll=list.scrollTop;
-    let chapter='';
-    list.innerHTML=rows.map((row,i)=>{
-     const heading=row.chapter!==chapter;
-     const prefix=heading?`${i?'</div>':''}<div role="group" aria-label="${escape(row.chapter)}"><div class="concept-group" aria-hidden="true">${escape(row.chapter)}</div>`:'';
-     chapter=row.chapter;
-     return `${prefix}<div role="option" id="concept-option-${i}" data-index="${i}" aria-selected="false">${escape(row.text)}${row.marker?`<span class="menu-personal">${row.marker==='Revisit later'?'<svg viewBox="0 0 16 18" aria-hidden="true"><path d="M3 1h10v15l-5-3-5 3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>':''}${escape(row.marker)}</span>`:''}</div>`;
-    }).join('')+'</div>';
-    signature=nextSignature;
-    list.scrollTop=scroll;
-   }
+   trigger.setAttribute('aria-label','Choose a concept: '+trigger.textContent);
    if(changed)close();
-   else if(opened)highlight(active);
+   if(nextSignature!==signature || changed) {
+    const scroll=list.scrollTop;
+    renderOptions();signature=nextSignature;list.scrollTop=scroll;
+   }
+   if(opened)highlight(active);
    select.hidden=true;trigger.hidden=false;
   }
   trigger.addEventListener('click',()=>opened?close():open());
   trigger.addEventListener('keydown',event=>{
+   if(event.isComposing || event.ctrlKey || event.metaKey || event.altKey)return;
+   if(['Enter',' ','ArrowDown','ArrowUp','Home','End'].includes(event.key)) {
+    event.preventDefault();open();
+    if(event.key==='Home')highlight(visible[0]);
+    if(event.key==='End')highlight(visible.at(-1));
+   } else if(event.key.length===1) {event.preventDefault();open(event.key);}
+   else if(event.key==='Escape' && opened){event.preventDefault();close();}
+  });
+  search.addEventListener('input',()=>{
+   renderOptions();highlight(search.value.trim()?visible[0]:current,true);
+  });
+  search.addEventListener('keydown',event=>{
+   if(event.isComposing || event.ctrlKey || event.metaKey)return;
    const key=event.key;
-   if(key==='Escape'){if(opened){event.preventDefault();close();}return;}
-   if(key==='Tab'){if(opened)choose();return;}
-   if(['Enter',' ','ArrowDown','ArrowUp','Home','End','PageDown','PageUp'].includes(key)) {
+   if(key==='Escape' || event.altKey && key==='ArrowUp') {
+    event.preventDefault();close();trigger.focus({preventScroll:true});return;
+   }
+   if(key==='Enter'){event.preventDefault();choose();return;}
+   if(['ArrowDown','ArrowUp','PageDown','PageUp'].includes(key) && !event.altKey) {
     event.preventDefault();
-    if(!opened){open();if(key==='Home')highlight(0);if(key==='End')highlight(rows.length-1);return;}
-    if(key==='Enter'||key===' '||event.altKey&&key==='ArrowUp'){choose();return;}
-    const next=key==='Home'?0:key==='End'?rows.length-1:active+({ArrowDown:1,ArrowUp:-1,PageDown:10,PageUp:-10}[key]||0);
-    highlight(next);return;
+    const position=visible.indexOf(active),step={ArrowDown:1,ArrowUp:-1,PageDown:10,PageUp:-10}[key];
+    highlight(visible[Math.max(0,Math.min(visible.length-1,position+step))]);
    }
-   if(key.length===1&&!event.ctrlKey&&!event.metaKey&&!event.altKey) {
-    event.preventDefault();if(!opened)open();
-    const now=Date.now();buffer=(now-typedAt<750?buffer:'')+key.toLowerCase();typedAt=now;
-    if([...buffer].every(c=>c===buffer[0]))buffer=buffer[0];
-    const start=buffer.length===1?active+1:active;
-    for(let offset=0;offset<rows.length;offset++) {
-     const index=(start+offset)%rows.length,row=rows[index];
-     if(row.title.toLowerCase().startsWith(buffer)||row.text.toLowerCase().startsWith(buffer)) {highlight(index);break;}
-    }
-   }
+   // Home/End edit the search text. Tab moves focus without choosing a lesson.
   });
   list.addEventListener('click',event=>{
    const option=event.target.closest('[role="option"]');
-   if(!option||!list.contains(option))return;
+   if(!option||!list.contains(option)||!visible.includes(Number(option.dataset.index)))return;
    active=Number(option.dataset.index);choose();
   });
-  document.addEventListener('pointerdown',event=>{
-   if(opened&&!trigger.contains(event.target)&&!list.contains(event.target))close();
-  });
-  trigger.addEventListener('blur',()=>{if(opened)close();});
-  // Prevent a mouse press from moving DOM focus away before the option click.
+  // Keep the input focused so a mouse selection is handled before focus leaves.
   list.addEventListener('mousedown',event=>event.preventDefault());
-  label.addEventListener('click',event=>{if(!trigger.hidden){event.preventDefault();trigger.focus();}});
-  window.addEventListener('resize',()=>{if(opened){place();highlight(active,true);}});
-  window.addEventListener('scroll',()=>{if(opened)close();},{passive:true});
+  document.addEventListener('pointerdown',event=>{
+   if(opened&&!trigger.contains(event.target)&&!popup.contains(event.target))close();
+  });
+  const focusOut=event=>{
+   if(opened&&!trigger.contains(event.relatedTarget)&&!popup.contains(event.relatedTarget))close();
+  };
+  popup.addEventListener('focusout',focusOut);trigger.addEventListener('focusout',focusOut);
+  const reposition=()=>{if(opened)place();};
+  window.addEventListener('resize',reposition);
+  window.addEventListener('scroll',reposition,{passive:true});
+  window.visualViewport?.addEventListener('resize',reposition);
+  window.visualViewport?.addEventListener('scroll',reposition);
   return {update,close};
  };
 })();

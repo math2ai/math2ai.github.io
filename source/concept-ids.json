@@ -59,7 +59,7 @@
   "Multi-head attention": 58,
   "Transformer": 59,
   "Causal mask": 60,
-  "Autoregressive language model": 61,
+  "Large language models and next-token prediction": 61,
   "Fine-tuning": 62,
   "Retrieval-augmented generation": 63,
   "Tool calling": 64,
@@ -126,5 +126,15 @@
   "Assay quality control": 125,
   "Spatial cross-validation": 126,
   "Variograms and kriging": 127,
-  "Mineral processing and recovery": 128
+  "Mineral processing and recovery": 128,
+  "Linear combinations": 150,
+  "Norms and unit vectors": 149,
+  "Orthogonality": 154,
+  "Vector projection": 155,
+  "Span": 151,
+  "Linear independence": 152,
+  "Basis and dimension": 153,
+  "Systems of linear equations": 156,
+  "Matrix rank": 159,
+  "Low-rank approximation": 160
 }

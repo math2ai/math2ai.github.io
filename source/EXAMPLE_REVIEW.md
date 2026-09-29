@@ -67,7 +67,7 @@ The numerical and structural verifiers independently recompute answers, check un
 | Token and vocabulary | `54-01`, `54-05` |
 | Vector-quantized autoencoder | `53-05` |
 | Diffusion models | `121-01` |
-| Autoregressive language model | `61-03` |
+| Large language models and next-token prediction | `61-03` |
 | Scaled dot-product attention | `57-01` |
 | Causal mask | `60-08` |
 | Mixture of experts | `122-01` |
