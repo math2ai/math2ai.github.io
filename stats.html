@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Statistics · math2ai</title>
+<meta name="description" content="Anonymous, public usage statistics for the math2ai course: visitors, lesson views, and which questions learners miss.">
+<link rel="canonical" href="https://math2ai.github.io/stats.html">
+<style>
+:root{--ink:#111;--muted:#555;--rule:#ccc;--paper:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+header,main{max-width:1000px;margin:auto;padding:1.3rem 2rem}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--rule)}
+.brand{font-weight:700;letter-spacing:.04em;text-decoration:none}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid #111;outline-offset:4px}
+h1{font-size:2.25rem;line-height:1.12;letter-spacing:-.04em;margin:.6rem 0 .8rem}
+h2{font-size:1.15rem;margin:2.4rem 0 .4rem}
+.lead{max-width:44rem;margin:0 0 1.2rem}
+.note,.small{color:var(--muted);font-size:.8rem}
+.note{max-width:44rem;margin:0 0 .8rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.8rem;margin:1.2rem 0 0}
+.tile{border:1px solid var(--rule);padding:.8rem 1rem}
+.tile-label{font-size:.78rem;color:var(--muted)}
+.tile-value{font-size:1.9rem;font-weight:700;line-height:1.2}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{text-align:left;padding:.45rem .7rem .45rem 0;border-bottom:1px solid #e4e4e4;vertical-align:top}
+thead th{border-bottom:1px solid var(--ink);font-size:.78rem;color:var(--muted);font-weight:400;white-space:nowrap}
+tbody th{font-weight:400}
+td{font-variant-numeric:tabular-nums;white-space:nowrap}
+#hardest td:last-child{white-space:normal}
+thead button{font:inherit;color:inherit;background:none;border:0;padding:.3rem 0;min-height:44px;cursor:pointer;text-align:left}
+thead th[aria-sort="ascending"] button::after{content:" ↑"}
+thead th[aria-sort="descending"] button::after{content:" ↓"}
+thead th[aria-sort] button{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+ul{max-width:44rem;padding-left:1.2rem}
+li{margin:.3rem 0}
+[hidden]{display:none!important}
+@media(max-width:600px){header,main{padding:1rem}h1{font-size:1.8rem}}
+</style></head>
+<body>
+<header><a class="brand" href="./">math2ai</a><a href="./">Back to the course</a></header>
+<main id="stats-app">
+  <h1>Statistics</h1>
+  <p class="lead">How the course is being used, counted anonymously and shown to everyone. No accounts, cookies or visitor IDs are involved. The page refreshes every minute.</p>
+  <p id="status" role="status">Loading…</p>
+  <noscript><p>Enable JavaScript to see the statistics.</p></noscript>
+  <div id="content" hidden>
+    <section class="tiles" id="tiles" aria-label="Totals"></section>
+    <section aria-labelledby="lessons-title">
+      <h2 id="lessons-title">Lessons</h2>
+      <p class="note">A first try is the first answer to a question in one browser or account. Select a column heading to sort.</p>
+      <div class="scroll"><table id="lessons"><thead id="lessons-head"></thead><tbody id="lessons-body"></tbody></table></div>
+    </section>
+    <section aria-labelledby="hardest-title">
+      <h2 id="hardest-title">Questions most often missed</h2>
+      <p class="note">Ranked by the share of first tries that were correct. A low share can mean a hard idea, an unclear lesson or a misleading question.</p>
+      <p id="hardest-empty" class="note" hidden></p>
+      <div class="scroll"><table id="hardest" hidden><thead><tr><th scope="col">Question</th><th scope="col">First tries</th><th scope="col">Correct on first try</th><th scope="col">Most chosen wrong answer</th></tr></thead><tbody id="hardest-body"></tbody></table></div>
+    </section>
+    <section aria-labelledby="days-title">
+      <h2 id="days-title">Recent days</h2>
+      <p class="note">Days follow UTC. <span id="since"></span></p>
+      <p id="days-empty" class="note" hidden>Nothing counted yet.</p>
+      <div class="scroll"><table id="days" hidden><thead><tr><th scope="col">Day</th><th scope="col">New visitors</th><th scope="col">Visits</th><th scope="col">Lesson views</th><th scope="col">Answers checked</th></tr></thead><tbody id="days-body"></tbody></table></div>
+    </section>
+    <section aria-labelledby="method-title">
+      <h2 id="method-title">How this is counted</h2>
+      <ul>
+        <li>A <strong>visit</strong> is one page load. A <strong>visitor</strong> is a browser seen for the first time, remembered by a yes-or-no flag in that browser. A second device, or cleared browser data, counts as a new visitor.</li>
+        <li>A <strong>lesson view</strong> is counted once per lesson per page load.</li>
+        <li>Every checked answer is counted, with the choice made and whether it was a first try. Nothing links answers to each other or to a person.</li>
+        <li><strong>Online</strong> counts browsers with the site open and visible in the last few minutes, including this page. Each one sends a heartbeat about once a minute that says only which lesson is on screen, so the number can lag by a minute or two.</li>
+        <li>Browsers that send Do Not Track or Global Privacy Control are not counted. Offline copies of the course are not counted either.</li>
+        <li>The counters accept anonymous input, so treat the numbers as indicative.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+<script src="source/vendor/supabase-2.105.0.js"></script>
+<script src="source/stats-page.js"></script>
+</body></html>

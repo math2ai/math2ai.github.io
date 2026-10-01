@@ -4,7 +4,7 @@
 
 [**Start learning at math2ai.github.io →**](https://math2ai.github.io/)
 
-Free. No sign-up, nothing to install, no tracking.
+Free. No sign-up and nothing to install.
 
 [![A math2ai lesson on the dot product, showing its definition and formula](source/assets/readme-lesson.jpg)](https://math2ai.github.io/)
 
@@ -56,7 +56,7 @@ A report like "this lesson uses a word it never explained" leads directly to a f
 
 - **Your progress** is saved in your browser. Signing in with Google is optional and syncs it across devices.
 - **It works offline.** The whole course is one file, [`index.html`](index.html). Save it and open it in a browser; only the further-reading links need a connection.
-- **No analytics.** The site does not track what you do.
+- **Anonymous, public statistics.** The site counts visits, lesson views and answers without accounts, cookies or visitor IDs, and shows the totals to everyone on its [statistics page](https://math2ai.github.io/stats.html). Browsers that send Do Not Track are not counted, and neither are offline copies.
 - **A checkmark is not mastery.** It means you answered one of a lesson's questions correctly. Use Review to come back to a topic later.
 - **Scope.** The course is an educational synthesis with constructed numerical examples. Lessons link to Wikipedia and to primary papers, textbooks and documentation.
 - **Print.** A [PDF](Mathematics-to-Model-Conversations.pdf) and an editable [PowerPoint](Mathematics-to-Model-Conversations.pptx) of the original 100-concept edition are included, one concept per page.

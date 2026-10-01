@@ -34,6 +34,7 @@ html=html.replace('/*AUTH_CONFIG*/',json.dumps(config).replace('</','<\\/'))
 sdk=(ROOT/'vendor/supabase-2.105.0.js').read_text(encoding='utf-8') if enabled else ''
 assert '</script' not in sdk.lower(), 'SDK must be safe to embed in a script element.'
 html=html.replace('/*AUTH_SDK*/',sdk)
+html=html.replace('/*STATS_JS*/',(ROOT/'stats.js').read_text(encoding='utf-8'))
 html=html.replace('/*PROGRESS_JS*/',(ROOT/'progress.js').read_text(encoding='utf-8'))
 html=html.replace('/*AUTH_JS*/',(ROOT/'auth.js').read_text(encoding='utf-8'))
 html=html.replace('/*COURSE_CSS*/',(ROOT/'site.css').read_text(encoding='utf-8'))

@@ -374,6 +374,8 @@
   for (const id of ['definition','example','formulaNote']) writeLesson(el(id==='formulaNote'?'formula-note':id),c,id);
   el('formula-note').hidden = !c.formulaNote;
   window.math2aiPlayground?.show(c.legacyId);
+  // Wait for saved progress, so the default first lesson is not counted for a returning learner.
+  if (ready) window.math2aiStats?.lesson(c.legacyId);
   el('previous').disabled = state.current === 0;
   el('concept-sources').hidden = !c.sources.length;
   el('concept-source-list').innerHTML = sourceList(c.sources);
@@ -482,6 +484,7 @@
   if (roundFinished(r,q)) return;
   const p = progress(c), old = p.answers[q.id];
   if (!persistence.record(q.id,selected)) return;
+  window.math2aiStats?.answer(q.id,selected,!old);
   p.answers[q.id] = {first:old ? old.first : selected, last:selected, attempts:old ? old.attempts + 1 : 1, solved:!!(old && old.solved) || selected === q.correct};
   r.attempts++; r.last = selected; r.pending=false; r.draft=null;
   checked = true;

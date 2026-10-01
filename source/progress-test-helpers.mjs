@@ -20,7 +20,7 @@ export function hub(storage=new Map()) {
   }
  };
 }
-export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7,now,learning=false}={}) {
+export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=false,writeBlocked=false,confirm=true,seed=7,now,learning=false,stats=null}={}) {
  const elements=new Map(),events={},timers=new Set();
  const get=id=>{
   if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',hidden:false,disabled:false,value:'',handlers:{},attributes:{},
@@ -32,7 +32,7 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  get('course-data').textContent=JSON.stringify(course);
  get('math-data').textContent=mathData;
  get('auth-config').textContent=JSON.stringify(configured?{supabaseUrl:'https://example.supabase.co',publishableKey:'sb_publishable_test'}:{supabaseUrl:'',publishableKey:''});
- const location={hash};const math=Object.create(Math);
+ const location={hash,protocol:stats?.protocol||'https:',hostname:stats?.hostname||'localhost'};const math=Object.create(Math);
  const entries=[{state:null,hash}],clone=v=>v==null?null:JSON.parse(JSON.stringify(v));let position=0;
  const history={
   get state(){return clone(entries[position].state);},get length(){return entries.length;},scrollRestoration:'auto',
@@ -42,9 +42,9 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  };
  math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};
  const clock=now===undefined ? Date : class extends Date {static now(){return now;}};
- const context=vm.createContext({URL,JSON,Math:math,Date:clock,crypto:webcrypto,navigator:{locks:shared.locks},
+ const context=vm.createContext({URL,JSON,Math:math,Date:clock,crypto:webcrypto,navigator:{locks:shared.locks,...stats?.navigator},
   localStorage:shared.connect(emit,{readBlocked,writeBlocked}),location,
-  document:{getElementById:get,querySelector:()=>get('skip'),title:'',visibilityState:'visible',addEventListener:on},
+  document:{getElementById:get,querySelector:()=>get('skip'),title:'',visibilityState:stats?.visibility||'visible',addEventListener:on},
   history,
   setTimeout(fn,ms){const id=setTimeout(fn,ms);id.unref();timers.add(id);return id;},clearTimeout,
   setInterval(){return 0;},clearInterval,queueMicrotask,
@@ -52,9 +52,11 @@ export function bootBrowser({shared=hub(),configured=false,hash='',readBlocked=f
  context.window=context;
  vm.runInContext(fs.readFileSync(new URL('math-display.js',root),'utf8'),context);
  if(learning)vm.runInContext(fs.readFileSync(new URL('learning.js',root),'utf8'),context);
+ // Usage statistics load only when a test supplies a simulated SDK, as the built page does after the real one.
+ if(stats){context.supabase=stats.sdk;vm.runInContext(fs.readFileSync(new URL('stats.js',root),'utf8'),context);}
  vm.runInContext(fs.readFileSync(new URL('progress.js',root),'utf8'),context);
  vm.runInContext(fs.readFileSync(new URL('site.js',root),'utf8'),context);
- const app={get,shared,storage:shared.storage,events,emit,history,math:context.math2aiMath,engine:context.math2aiProgress,learning:context.math2aiLearning,
+ const app={get,shared,storage:shared.storage,events,emit,history,math:context.math2aiMath,engine:context.math2aiProgress,learning:context.math2aiLearning,stats:context.math2aiStats,
   state:()=>JSON.parse(JSON.stringify(context.math2aiProgress.load())),
   current:()=>course.concepts.find(c=>c.title===get('title').textContent),
   question:()=> (get('review-panel').hidden ? app.current() : course.concepts.find(c=>c.title===get('review-concept').textContent))?.questions.find(q=>q.question===get('question').textContent),

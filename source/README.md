@@ -6,7 +6,7 @@ File paths in commands and prose are written from the repository root unless a c
 
 ## Use the course
 
-Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install or network requests needed for guest practice. Optional Google sign-in uses Supabase when configured; the course remains usable without an account. There are no analytics.
+Open `index.html` in a browser. Everything needed is included in that file. It works offline, except for optional links to source readings. There are no packages to install, and an offline or local copy makes no network requests for guest practice. Optional Google sign-in uses Supabase when configured; the course remains usable without an account. The published website also counts usage anonymously; see [Public statistics](#public-statistics).
 
 Read a concept and try a randomly selected question. After the first wrong answer, a question-specific explanation helps you reason through the problem without naming the correct option. **Try again** gives one more attempt, with that explanation still visible. A correct answer or a second mistake finishes the round and shows the full explanation; after the second mistake, the correct answer is also identified. A finished round offers **Next question** beneath its explanation, which takes the same step as the small forward arrow. **Reset question** starts a fresh practice round without deleting answer history or earned checkmarks.
 
@@ -18,7 +18,7 @@ Lessons are numbered 001–139 in pedagogical order in the concept menu. A plain
 
 Review draws exclusively from the selected concepts, prioritizes latest mistakes, and varies concepts and questions. **Change topics** returns to current stats; **Resume review** keeps the question and draft if the selection is unchanged. Filters never alter the selection. Selected topic IDs are saved locally per project, course and account (or guest), separately from answers; incoming answer updates do not change the set. **Back to lesson** restores the lesson question, deck and unfinished choice. Review answers use the existing guest/account saving and sync. There is no time-based review schedule: the aggregate history does not retain review dates.
 
-Guest progress stays in this browser's **local storage** until sign-in. Signing in automatically merges those answers into the Google account, keeps the current question and feedback, and preserves any existing account progress. Account answers are saved in Supabase, with live updates across open tabs and devices. Signing out hides the account's checkmarks and allows fresh guest practice; signing back in restores the account's answers. Guest answers already transferred to one account are not copied into another account. There are no analytics.
+Guest progress stays in this browser's **local storage** until sign-in. Signing in automatically merges those answers into the Google account, keeps the current question and feedback, and preserves any existing account progress. Account answers are saved in Supabase, with live updates across open tabs and devices. Signing out hides the account's checkmarks and allows fresh guest practice; signing back in restores the account's answers. Guest answers already transferred to one account are not copied into another account. Saved progress is separate from the anonymous [public statistics](#public-statistics), which never carry an account.
 
 Answers are written individually, so an older tab cannot replace the account's newer progress. Pending answers survive offline reloads and retry with the same operation ID to avoid double counting. The active lesson, question, randomized order and two-attempt practice round remain local preferences and survive lesson navigation and reloads. Remote answers update history and checkmarks without replacing another tab's current choice or feedback. Review rounds remain temporary, like review drafts. **Clear saved answers** resets the current account across devices, or just guest practice when signed out, after confirmation. Old offline writes cannot undo a reset. Site updates, browser storage failures, or incompatible course versions may reset progress; this is a convenience feature, not a durable learning record.
 
@@ -192,8 +192,31 @@ Additional check: `python source/verify_limits.py`.
 
 A new visitor sees a short welcome above the lesson, on whichever lesson they arrive at. It disappears after the first recorded answer or when **Hide** is pressed; Hide is remembered in this browser under `math2ai-welcome-v1`, separately from answers and accounts. Nothing is shown while an account's answers are still loading.
 
-**Something unclear? Send feedback** under the questions opens a new GitHub issue in a new tab, prefilled with the lesson number and title, its link, and the visible question's ID. The link carries no account or answer data, and the page itself sends nothing: there is still no network request unless the learner follows the link. The repository and site addresses are constants at the top of `site.js`.
+**Something unclear? Send feedback** under the questions opens a new GitHub issue in a new tab, prefilled with the lesson number and title, its link, and the visible question's ID. The link carries no account or answer data, and nothing is sent to GitHub unless the learner follows it. The repository and site addresses are constants at the top of `site.js`.
 
 The page head has Open Graph and Twitter card tags so a shared link shows a title, description and image. The image is `source/assets/readme-lesson.jpg`, served by GitHub Pages from this repository; replace that file, or the tag in `site-template.html`, to change the preview. Sites that cache previews may take a while to pick up a change.
 
 Additional check: `node source/verify_onboarding.mjs`.
+
+## Public statistics
+
+The published website counts how it is used and shows the totals to everyone at [`stats.html`](../stats.html). Only counters are kept. There is no visitor ID, cookie, account, IP address or free text in what the page sends or the database stores.
+
+What is counted:
+
+- **Visit:** one page load. **Visitor:** a browser seen for the first time, remembered by the yes-or-no flag `math2ai-stats-visitor` in that browser's storage.
+- **Lesson view:** once per lesson per page load, and only after saved progress has loaded, so a returning learner's saved lesson is counted instead of lesson 1.
+- **Answer:** the question ID, the choice (0–3) and whether it was the first answer to that question in this browser or account. The statistics page works out which choice was correct from the course data.
+- **Online:** a heartbeat. A browser with the site visible sends one about once a minute, saying only which lesson is on screen. The database counts heartbeats per minute and lesson, and "online" is the busiest of the current and two previous minutes, so it can lag by a minute or two. Tabs of one browser share the time of their last heartbeat (`math2ai-stats-beat`, a time, not an identifier), so reloads and extra tabs do not count twice. Hidden tabs send none.
+
+What is not counted: offline and local copies (the recorder runs only at `https://math2ai.github.io`), builds without account settings, and browsers that send Do Not Track or Global Privacy Control, which can still read the totals.
+
+`stats.js` is the recorder embedded in the page. It uses its own Supabase client with no session, so a signed-in learner's account never reaches the statistics. Events are batched (at most 50 per request) and best effort: a failed request is dropped and not retried in a loop. Everything travels as ordinary requests; there is no live connection, so the number of simultaneous visitors is not limited by Realtime and does not compete with account syncing. The footer shows who is online and the visitor total once the server has answered, and stays hidden otherwise. `stats.html` and `stats-page.js` are a separate static page that reads the totals, the course data and the vendored SDK from this repository.
+
+**Database setup, once:** in the Supabase dashboard open **SQL Editor → New query**, paste the complete contents of [`202610010001_public_stats.sql`](../supabase/migrations/202610010001_public_stats.sql), and click **Run**. It adds four counter tables with no direct access and two functions, `math2ai_stats_count` and `math2ai_stats_read`, that anyone may call. It changes no existing table or function, contains no `drop` or `delete`, and is safe to run again. Until it is applied the site works as before and shows no statistics. The heartbeat table is a ring of eight reused minute slots per lesson, so it never grows and needs no clean-up.
+
+Limits worth knowing: anyone can call the counting function, so the counters can be inflated and should be read as indicative. Each visible browser makes about one small request a minute, plus one shortly after it counts something.
+
+To remove the feature, run `drop function public.math2ai_stats_count(jsonb,boolean,integer); drop function public.math2ai_stats_read(); drop table public.math2ai_stats_days, public.math2ai_stats_lessons, public.math2ai_stats_answers, public.math2ai_stats_minutes;` in the SQL Editor. The SQL check confirms that this, like applying the migration, leaves every other table, function, policy, grant and row identical.
+
+Checks: `node source/verify_stats.mjs`, and `node source/verify_stats_sql.mjs /absolute/path/to/pglite/dist/index.js`, which runs the real migration in PostgreSQL with the optional test-only PGlite package (tested with 0.5.8).
