@@ -85,4 +85,4 @@ assert.equal(Object.keys(signed.state().concepts[38]?.answers||{}).length,0);
 signed.followConcept(21);signed.signout();await flush();signed.browserBack();
 assert.equal(Object.keys(signed.state().concepts[38]?.answers||{}).length,0,'Back cannot restore another account’s answers');
 signed.close();
-console.log(`Reviewed all 138 concepts: ${backwards} prerequisite links, ${forwards} selected applications. History, drafts, reset and account isolation passed.`);
+console.log(`Reviewed all 139 concepts: ${backwards} prerequisite links, ${forwards} selected applications. History, drafts, reset and account isolation passed.`);

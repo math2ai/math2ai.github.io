@@ -34,6 +34,7 @@ for(const [id,d]of Object.entries(data)) {
   '8':12,'9':23,'10':[[17],[39]],'11':[[1],[2],[3]],'12':[2,6],
   '13':[9,16],'14':.5,'16':{contributions:[0,5],expected:5},'17':[-2,2],
   '18':{power:8,recoveredExponent:3},'19':{change:.0601,slope:6.01},
+  '162':{below:[1.9,1.99,1.999],above:[2.1,2.01,2.001]},
   '30':{prediction:[4,8,12],residual:[2,-1,2],MSE:3},'31':2.5,
   '102':{covariance:2,correlation:1},'103':{Av:[2,0],scaled:[2,0],mismatch:0},
   '104':[3,0],'106':3,

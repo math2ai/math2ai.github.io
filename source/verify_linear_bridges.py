@@ -9,11 +9,12 @@ load=lambda n:json.loads((R/n).read_text(encoding='utf8'))
 course=load('dist/curriculum.json');batch=load('expansion-batch.json')
 by={c['legacyId']:c for c in course['concepts']}
 added={149,150,151,152,153,154,155,156,159,160}
-assert set(batch['addedIds'])==added and len(by)==138
-assert set(by)==set(range(1,129))|added
+later=set(batch['laterAddedIds'])
+assert set(batch['addedIds'])==added and len(by)==139
+assert set(by)==set(range(1,129))|added|later
 assert course['version']=='2.0'
 questions={q['id']:q for c in course['concepts'] for q in c['questions']}
-assert len(questions)==1380
+assert len(questions)==1390
 old=load('content-depth-review.json')
 original=[(r['conceptId'],by[r['conceptId']]['questions']) for r in old['concepts']]
 digest=hashlib.sha256(json.dumps(original,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
@@ -43,7 +44,7 @@ while ready:
  for b in out[a]:
   indegree[b]-=1
   if indegree[b]==0:ready.append(b)
-assert len(visited)==138
+assert len(visited)==139
 
 for chain in [[5,150,151,152,153,12,156,159,104,160,48,49],
               [9,149,13,154,155,153],[10,11,12,156],[159,103,104]]:
@@ -113,4 +114,4 @@ new=(R.parent/'supabase/migrations/202609290001_expand_learning_concepts.sql').r
 oldfunc=base[base.index('create or replace function'):base.index('\ndo $$ begin')].strip()
 newfunc=new[new.index('create or replace function'):new.rindex('commit;')].strip()
 assert newfunc==oldfunc.replace('::integer>128','::integer>256')
-print(f'PASS: 10 full lessons/100 new questions; {len(checked)} independently solved numerical option sets; original 1,280 questions unchanged; 138-node DAG; prerequisites and additive SQL boundary.')
+print(f'PASS: 10 full lessons/100 new questions; {len(checked)} independently solved numerical option sets; original 1,280 questions unchanged; 139-node DAG; prerequisites and additive SQL boundary.')

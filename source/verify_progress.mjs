@@ -38,10 +38,10 @@ console.log('PASS: simultaneous stale-tab saves merge; retry after a lost respon
 const delayed=server.holdNext();otherDevice.go(5);otherDevice.correct();await flush();
 otherDevice.signout();await flush();delayed();await flush();assert.ok(!marked(otherDevice,'Scalar'));
 otherDevice.signin(server,B);await flush();assert.ok(!marked(otherDevice,'Scalar'));assert.ok(!marked(otherDevice,'Matrix'));
-otherDevice.go(6);otherDevice.correct();await flush();assert.ok(marked(otherDevice,'Tensor'));assert.ok(!marked(first,'Tensor'));
-otherDevice.signout();await flush();otherDevice.go(7);otherDevice.correct();assert.ok(marked(otherDevice,'Summation'));
-otherDevice.signin(server,A);await flush();assert.ok(marked(otherDevice,'Matrix'));assert.ok(marked(otherDevice,'Summation'));
-otherDevice.signout();await flush();assert.ok(!marked(otherDevice,'Summation'));assert.ok(!marked(otherDevice,'Matrix'));
+otherDevice.go(6);otherDevice.correct();await flush();assert.ok(marked(otherDevice,'Summation'));assert.ok(!marked(first,'Summation'));
+otherDevice.signout();await flush();otherDevice.go(7);otherDevice.correct();assert.ok(marked(otherDevice,'Linear combinations'));
+otherDevice.signin(server,A);await flush();assert.ok(marked(otherDevice,'Matrix'));assert.ok(marked(otherDevice,'Linear combinations'));
+otherDevice.signout();await flush();assert.ok(!marked(otherDevice,'Linear combinations'));assert.ok(!marked(otherDevice,'Matrix'));
 console.log('PASS: account switches and late responses preserve ownership; guest answers move into the account on sign-in.');
 
 // Offline operations survive reload, deduplicate, and flush only into their original account.

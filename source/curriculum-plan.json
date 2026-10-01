@@ -1,6 +1,6 @@
 {
-  "status": "138 live lessons; remaining 118 are an authoring outline, not published",
-  "currentCount": 138,
+  "status": "139 live lessons; remaining 117 are an authoring outline, not published",
+  "currentCount": 139,
   "targetCount": 256,
   "chapters": [
     {
@@ -187,11 +187,6 @@
           "status": "existing"
         },
         {
-          "stableId": 7,
-          "title": "Tensor",
-          "status": "existing"
-        },
-        {
           "stableId": 150,
           "title": "Linear combinations",
           "status": "existing",
@@ -201,6 +196,11 @@
         {
           "stableId": 9,
           "title": "Dot product",
+          "status": "existing"
+        },
+        {
+          "stableId": 7,
+          "title": "Tensor",
           "status": "existing"
         },
         {
@@ -330,7 +330,7 @@
         {
           "stableId": 162,
           "title": "Limits",
-          "status": "proposed",
+          "status": "existing",
           "handExample": "Examine (x² − 1)/(x − 1) near x = 1, distinguishing its limit from its undefined value there.",
           "batch": "foundations"
         },

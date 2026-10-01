@@ -335,6 +335,11 @@
         "field": "definition",
         "text": "function",
         "target": 3
+      },
+      {
+        "field": "definition",
+        "text": "limit",
+        "target": 162
       }
     ],
     "usedIn": [
@@ -355,6 +360,11 @@
         "field": "definition",
         "text": "sums",
         "target": 8
+      },
+      {
+        "field": "definition",
+        "text": "limit",
+        "target": 162
       }
     ],
     "usedIn": []
@@ -2239,6 +2249,20 @@
     "usedIn": [
       48,
       49
+    ]
+  },
+  "162": {
+    "title": "Limits",
+    "mentions": [
+      {
+        "field": "definition",
+        "text": "function",
+        "target": 3
+      }
+    ],
+    "usedIn": [
+      19,
+      22
     ]
   }
 }

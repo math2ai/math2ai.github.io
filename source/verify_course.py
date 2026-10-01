@@ -2,10 +2,10 @@ from pathlib import Path
 import json, math, re
 root=Path(__file__).resolve().parent
 course=json.loads((root/'dist/curriculum.json').read_text(encoding='utf-8'))
-cs=course['concepts'];assert len(cs)==138
+cs=course['concepts'];assert len(cs)==139
 legacy={c['legacyId']:c for c in cs}
 batch=json.loads((root/'expansion-batch.json').read_text(encoding='utf8'))
-assert set(legacy)==set(range(1,129))|set(batch['addedIds'])
+assert set(legacy)==set(range(1,129))|set(batch['addedIds'])|set(batch['laterAddedIds'])
 for i,c in enumerate(cs,1):
  assert c['id']==i
  assert len(c['options'])==len(set(c['options']))==4
@@ -47,10 +47,12 @@ assert json.loads(re.search(r'<script type="application/json" id="course-data">(
 for identifier in re.findall(r"el\('([^']+)'\)", (root/'site.js').read_text(encoding='utf-8')):
  assert ('id="'+identifier+'"') in html, identifier
 assert 'fetch(' not in (root/'site.js').read_text(encoding='utf-8')
-print(f'PASS: 138 complete concepts and 1,380 distinct-ID, single-answer questions; {len(numeric)+len(shapes)} independently calculated answers; embedded data and assets consistent.')
+print(f'PASS: 139 complete concepts and 1,390 distinct-ID, single-answer questions; {len(numeric)+len(shapes)} independently calculated answers; embedded data and assets consistent.')
 
 positions={c['title']:c['id'] for c in cs}
 chains=[
+ ['Vector','Summation','Dot product','Tensor'],
+ ['Function','Limits','Derivative','Integral'],
  ['Derivative','Gradient','Chain rule','Backpropagation'],
  ['Linear regression','Mean squared error','Supervised learning'],
  ['Parameter and hyperparameter','Training, validation and test','Data leakage','Normalization'],

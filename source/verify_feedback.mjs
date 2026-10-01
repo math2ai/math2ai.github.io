@@ -12,6 +12,7 @@ for(let i=0;i<course.concepts.length;i++) {
   const q=all.question();
   all.wrong();
   assert.equal(all.get('retry').hidden,false,q.id);
+  assert.equal(all.get('next-question').hidden,true,'an unfinished round offers Try again, not the next question');
   assert.equal(all.get('reset-question').hidden,true,q.id);
   assert.doesNotMatch(visibleText(all),/The correct answer is:/,q.id);
   assert.ok(q.retryFeedback.length>40 && q.retryFeedback!==q.feedback,q.id);
@@ -24,6 +25,7 @@ for(let i=0;i<course.concepts.length;i++) {
   assert.match(visibleText(all),/The correct answer is:/,q.id);
   assert.notEqual(all.get('feedback').innerHTML,hint,q.id);
   assert.equal(all.get('retry').hidden,true,q.id);
+  assert.equal(all.get('next-question').hidden,false,q.id);
   assert.equal(all.get('reset-question').hidden,false,q.id);
   assert.equal(answer(all,q).attempts,2,q.id);
   all.retry();all.correct();
@@ -38,11 +40,19 @@ for(let i=0;i<course.concepts.length;i++) {
   assert.equal(answer(all,q).solved,true);
   assert.equal(all.get('retry').hidden,true);
   assert.equal(all.get('reset-question').hidden,false);
-  if(j<9)all.another();
+  assert.equal(all.get('next-question').hidden,false);
+  assert.equal(all.get('next-question').textContent,'Next question');
+  if(j<9) {
+   // The button beside the feedback takes the same step as the small arrow.
+   const before=answer(all,q).attempts;all.nextQuestion();
+   assert.notEqual(all.question().id,q.id);assert.equal(answer(all,q).attempts,before,'moving on records nothing');
+   assert.equal(all.get('next-question').hidden,true,'a fresh question starts with Check answer');
+   assert.equal(all.get('check').hidden,false);
+  }
  }
  all.close();
 }
-console.log('PASS: all 1,380 questions have staged feedback; two wrong attempts lock the round; reset retains history; successful practice still marks completion.');
+console.log('PASS: all 1,390 questions have staged feedback; two wrong attempts lock the round; reset retains history; successful practice still marks completion.');
 
 const shared=hub();let app=await boot({shared});const q=app.question();app.wrong();app.retry();app.close();
 app=await boot({shared});assert.equal(app.question().id,q.id);assert.match(visibleText(app),/Try again/);
@@ -60,6 +70,7 @@ console.log('PASS: retry budget and reset survive lesson navigation and reload; 
 const review=await boot();review.review();review.startReview();const rq=review.question();
 review.wrong();review.retry();review.changeTopics();review.startReview();assert.match(visibleText(review),/Try again/);
 review.wrong();review.retry();review.correct();assert.equal(answer(review,rq).attempts,2);
+assert.equal(review.get('next-question').hidden,false);assert.equal(review.get('next-question').textContent,'Next review question');
 review.changeTopics();review.startReview();assert.equal(review.get('retry').hidden,true);
 review.resetQuestion();review.correct();assert.equal(answer(review,rq).attempts,3);review.close();
 console.log('PASS: review uses the same two-attempt feedback flow and retains its round when changing/resuming topics.');

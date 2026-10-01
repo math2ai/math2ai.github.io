@@ -8,7 +8,7 @@ const read=name=>readFileSync(new URL(name,import.meta.url),'utf8');
 const math=createRequire(import.meta.url)('./vendor/mathjs-15.2.0/math.js');
 vm.runInThisContext(read('playground-engine.js'));
 const definitions=JSON.parse(read('playgrounds.json'));
-const ids=[7,10,13,103,104,14,16,17,102,106,18,19];
+const ids=[7,10,13,103,104,14,16,17,102,106,18,162,19];
 assert.ok(Object.keys(definitions).length>=20);
 for(const id of ids)assert.ok(definitions[id],`Missing requested playground ${id}`);
 const source=id=>definitions[id].expression;
@@ -156,4 +156,13 @@ for(const [expression,x,expected]of [['x^3',2,12],['5*x+2',-2,5],['sin(x)',0,1],
  const s=source(19).replace('"x^2"',JSON.stringify(expression)).replace('x = 3;',`x = ${x};`);
  near(last(s),expected);
 }
-console.log('PASS: exponent/log inverses, finite-interval slopes from both sides, edited symbolic derivatives, and zero-interval guard.');
+// Limits: nearby outputs follow x + 1 on both sides, edited lists move closer,
+// and the point itself stays undefined instead of being silently filled in.
+for(const [below,above]of [[[.9,.99,.999],[1.1,1.01,1.001]],[[.9999,.99999],[1.0001,1.00001]],[[0,-3],[2,7.5]]]) {
+ const s=source(162).replace('[0.9, 0.99, 0.999]',`[${below}]`).replace('[1.1, 1.01, 1.001]',`[${above}]`);
+ const table=parsed(run(s)[0]);
+ below.forEach((x,i)=>near(table.below[i],x+1,1e-8));above.forEach((x,i)=>near(table.above[i],x+1,1e-8));
+}
+assert.equal(run(source(162)).at(-1).text,'NaN');
+assert.equal(run(source(162).replace('f(1)','f(1.5)')).at(-1).text,'2.5');
+console.log('PASS: exponent/log inverses, finite-interval slopes from both sides, edited symbolic derivatives, zero-interval guard, and two-sided limit tables with an undefined point.');

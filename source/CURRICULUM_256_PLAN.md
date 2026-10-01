@@ -4,11 +4,13 @@ Review checkpoint: 28 September 2026. This is the authoring outline, not a chang
 
 29 September update: the first ten linear-algebra bridges are implemented. Gaussian elimination and matrix inverse remain proposed. See EXPANSION_PILOT_REVIEW.md for the local test checklist and required bookmark migration. Previous work added and reviewed code examples within the original 128 concepts. See PLAYGROUND_REVIEW.md for current coverage and PLAYGROUND_ENGINE_REVIEW.md for the math.js/Python assessment. The delivery sequence below remains a proposal.
 
+1 October update: Limits (ID 162) is implemented ahead of its foundations batch, directly before Derivative, because Derivative and Integral are both defined through a limit. Tensor now follows Dot product, so the first vector calculations come before arrays with more axes. The website has 139 concepts and 1,390 questions; 51 foundational lessons remain in step 3. The Limits lesson is an author draft with independent numerical checks in `verify_limits.py` and has not yet had the editorial review given to the pilot.
+
 ## Delivery order
 
 1. Review this outline and the three Explore prototypes on Vector, Dot product, and Linear transformation.
 2. Review the ten-lesson pilot (138 concepts). Add the remaining two linear-algebra bridges only after review, eventually reaching 140. All additions include ten questions, retry explanations, and editable examples.
-3. Add the other 52 foundational lessons in batches of roughly 8–12. Reach 192 concepts.
+3. Add the other 52 foundational lessons in batches of roughly 8–12. Reach 192 concepts. Limits, one of the 52, is already live.
 4. Add the remaining 64 lessons, with suitable playgrounds. Reach 256 concepts and 2,560 questions.
 5. Complete the cross-course consistency review. Every earlier batch also gets editorial and functional review before handoff.
 
@@ -83,9 +85,9 @@ The approved playground is an always-visible code/output box below the worked ex
 | --- | --- | --- | --- |
 | 026 | Vector | 5 | Existing |
 | 027 | Matrix | 6 | Existing |
-| 028 | Tensor | 7 | Existing |
-| 029 | Linear combinations | 150 | Existing |
-| 030 | Dot product | 9 | Existing |
+| 028 | Linear combinations | 150 | Existing |
+| 029 | Dot product | 9 | Existing |
+| 030 | Tensor | 7 | Existing |
 | 031 | Norms and unit vectors | 149 | Existing |
 | 032 | Euclidean distance | 13 | Existing |
 | 033 | Orthogonality | 154 | Existing |
@@ -110,7 +112,7 @@ The approved playground is an always-visible code/output box below the worked ex
 | --- | --- | --- | --- |
 | 048 | Exponential and logarithm | 18 | Existing |
 | 049 | Average rate of change | 161 | New |
-| 050 | Limits | 162 | New |
+| 050 | Limits | 162 | Existing |
 | 051 | Derivative | 19 | Existing |
 | 052 | Finite differences | 165 | New |
 | 053 | Local linear approximation | 166 | New |

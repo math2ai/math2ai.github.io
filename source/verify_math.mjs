@@ -90,7 +90,7 @@ assert.deepEqual(JSON.parse(built.match(/id="math-data">(.*?)<\/script>/s)[1]),d
 assert.ok(built.includes(css));
 assert.ok(!built.includes(read('vendor/katex-0.18.7/katex.js')),'KaTeX parser must not ship to browsers');
 assert.doesNotMatch(built,/\/\*MATH_\w+\*\//);
-console.log(`PASS: all 138 formula fields and ${Object.keys(data.fields).length} annotated fields render; ${data.fragments.length} distinct fragments preserve numbers, matrix cells and original fallback text; grouped scripts, limits, bundled fonts, MathML and build-only renderer.`);
+console.log(`PASS: all 139 formula fields and ${Object.keys(data.fields).length} annotated fields render; ${data.fragments.length} distinct fragments preserve numbers, matrix cells and original fallback text; grouped scripts, limits, bundled fonts, MathML and build-only renderer.`);
 
 // Small isolated DOM fixture for fallback/readiness and keyboard-overflow behavior.
 const code = read('math-display.js');

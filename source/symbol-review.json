@@ -73,18 +73,6 @@
       "previousReview": "Added local symbol explanations."
     },
     {
-      "conceptId": 7,
-      "title": "Tensor",
-      "changedFields": [
-        "definition",
-        "example",
-        "formulaNote"
-      ],
-      "review": "Depth revision retains the reviewed formula and symbol note; added prose uses named quantities. Existing symbols retain their previously defined meanings.",
-      "teachingSha256": "4e9777cd7da83ede31a5672e0b23ad2e23a2df387367de70b52dd98b82c46350",
-      "previousReview": "Added local symbol explanations."
-    },
-    {
       "conceptId": 8,
       "title": "Summation",
       "changedFields": [
@@ -118,6 +106,18 @@
       ],
       "review": "Depth revision retains the reviewed formula and symbol note; added prose uses named quantities. Existing symbols retain their previously defined meanings.",
       "teachingSha256": "0015b324a44e48d3e6216950519ecfdc8dc813d1d4bcd61b15f2c05dea655291",
+      "previousReview": "Added local symbol explanations."
+    },
+    {
+      "conceptId": 7,
+      "title": "Tensor",
+      "changedFields": [
+        "definition",
+        "example",
+        "formulaNote"
+      ],
+      "review": "Depth revision retains the reviewed formula and symbol note; added prose uses named quantities. Existing symbols retain their previously defined meanings.",
+      "teachingSha256": "4e9777cd7da83ede31a5672e0b23ad2e23a2df387367de70b52dd98b82c46350",
       "previousReview": "Added local symbol explanations."
     },
     {
@@ -395,6 +395,18 @@
       "review": "Depth revision retains the reviewed formula and symbol note; added prose uses named quantities. Existing symbols retain their previously defined meanings.",
       "teachingSha256": "ab5a22a11caf1b506c7fc9e8e12d0d41c2c58bbdb27c9a78e3db5b0298b9a6bf",
       "previousReview": "Added local symbol explanations."
+    },
+    {
+      "conceptId": 162,
+      "title": "Limits",
+      "changedFields": [
+        "definition",
+        "formula",
+        "formulaNote",
+        "example"
+      ],
+      "review": "Added 2026-10-01. The function, its input, the approached point and the limit are named locally; the arrow is read aloud and distinguished from equality; the infinity symbol is introduced in words. Author check of plain and typeset notation; not yet independently reviewed.",
+      "teachingSha256": "fd1b6e0e402a1c7d9bfba7c12ecbf1bd8cf592b157aad3310fab8573deb549cd"
     },
     {
       "conceptId": 19,

@@ -135,41 +135,6 @@
       "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
-      "conceptId": 7,
-      "title": "Tensor",
-      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).\n\nTo find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
-      "questionIds": [
-        "7-01",
-        "7-02",
-        "7-03",
-        "7-04",
-        "7-05",
-        "7-06",
-        "7-07",
-        "7-08",
-        "7-09",
-        "7-10"
-      ],
-      "replacements": [
-        {
-          "questionId": "7-01",
-          "previousQuestion": "A tensor has tables [[1,2],[3,4]] and [[5,6],[7,8]]. Indices start at 1 and mean (table, row, column). What is T₂₂₁?",
-          "reason": "Fresh tables replace another lookup in the worked example's two tables."
-        },
-        {
-          "questionId": "7-03",
-          "previousQuestion": "How many entries are in shape (2, 3, 4)?",
-          "reason": "The original repeated shape (2,3,4) and the solved count of 24."
-        },
-        {
-          "questionId": "7-04",
-          "previousQuestion": "The axes of a tensor are (table, row, column), with shape (2, 3, 4). What does the middle length, 3, count?",
-          "reason": "The original asked for a dimension explicitly described in the worked stack."
-        }
-      ],
-      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
-    },
-    {
       "conceptId": 8,
       "title": "Summation",
       "example": "For x = (2, 4, 6), Σᵢ₌₁³ xᵢ = 12. Their mean is 12/3 = 4.\n\nThe three contributions are 2, 4, and 6; none is a multiplier or an extra index value. Their total is 12. Sharing that total equally across three positions gives the mean 4. A sum answers “how much altogether?” while a mean answers “how much per observation?” Doubling a dataset changes the sum but not its mean when all observations are duplicated.",
@@ -224,6 +189,41 @@
         "9-10"
       ],
       "replacements": [],
+      "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 7,
+      "title": "Tensor",
+      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).\n\nTo find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
+      "questionIds": [
+        "7-01",
+        "7-02",
+        "7-03",
+        "7-04",
+        "7-05",
+        "7-06",
+        "7-07",
+        "7-08",
+        "7-09",
+        "7-10"
+      ],
+      "replacements": [
+        {
+          "questionId": "7-01",
+          "previousQuestion": "A tensor has tables [[1,2],[3,4]] and [[5,6],[7,8]]. Indices start at 1 and mean (table, row, column). What is T₂₂₁?",
+          "reason": "Fresh tables replace another lookup in the worked example's two tables."
+        },
+        {
+          "questionId": "7-03",
+          "previousQuestion": "How many entries are in shape (2, 3, 4)?",
+          "reason": "The original repeated shape (2,3,4) and the solved count of 24."
+        },
+        {
+          "questionId": "7-04",
+          "previousQuestion": "The axes of a tensor are (table, row, column), with shape (2, 3, 4). What does the middle length, 3, count?",
+          "reason": "The original asked for a dimension explicitly described in the worked stack."
+        }
+      ],
       "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
     },
     {
@@ -737,6 +737,25 @@
         }
       ],
       "depthReview": "Expanded the calculation or its interpretation. Kept numerical quiz scenarios distinct; no question or answer identifiers changed."
+    },
+    {
+      "conceptId": 162,
+      "title": "Limits",
+      "example": "Let f(x) = (x² − 1)/(x − 1). At x = 1 the numerator (top) and the denominator (bottom) are both 0, and 0/0 has no value, so f(1) is undefined. Nearby inputs do give outputs: f(0.9) = 1.9 and f(0.99) = 1.99 on one side, f(1.1) = 2.1 and f(1.01) = 2.01 on the other. Both sides close in on 2, so the limit as x approaches 1 is 2.\n\nNone of these inputs produces exactly 2, and the function still has no value at 1. The limit is a statement about the trend: the outputs can be brought as close to 2 as we like by taking x close enough to 1. For every input other than 1, this ratio works out to x + 1, which is why the outputs head for 2. In the code, add an input such as 0.9999 to either list to move closer. The next lesson relies on exactly this situation: a ratio whose denominator shrinks toward zero.",
+      "questionIds": [
+        "162-01",
+        "162-02",
+        "162-03",
+        "162-04",
+        "162-05",
+        "162-06",
+        "162-07",
+        "162-08",
+        "162-09",
+        "162-10"
+      ],
+      "replacements": [],
+      "depthReview": "Added 2026-10-01. Ten new questions checked against this example: numerical questions use other functions and data, and conceptual questions test the stated definition and its boundaries. Author check; not yet independently reviewed."
     },
     {
       "conceptId": 19,

@@ -21,4 +21,4 @@ html=(root/'dist/index.html').read_text(encoding='utf-8')
 assert '<details id="concept-sources">' not in html
 assert 'aria-label="Further reading"' in html
 assert 'id="reset-question"' in html
-print('PASS: 1,380 authored first-mistake explanations; no explicit answer labels or copied long options; direct reading links on all 138 concepts.')
+print('PASS: 1,390 authored first-mistake explanations; no explicit answer labels or copied long options; direct reading links on all 139 concepts.')

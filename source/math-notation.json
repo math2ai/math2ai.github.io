@@ -21762,6 +21762,397 @@
         "tex": "\\mathbf{v}_i"
       },
       " are the corresponding unit output and input directions. The superscript T means transpose. An outer product multiplies a column vector by a row vector: each entry is the corresponding output-direction coordinate times an input-direction coordinate. Scaling this matrix by its singular value gives one component."
+    ],
+    "c:162:formula": [
+      {
+        "plain": "limₓ→ₐ f(x) = L",
+        "tex": "\\lim_{x\\to a} f(x)=L",
+        "display": true
+      }
+    ],
+    "c:162:definition": [
+      "A limit is the value that a function's outputs approach as its input approaches a chosen point. The input may come as close to that point as we like without reaching it. Because a limit describes the nearby outputs, the function need not take that value at the point, or have any value there at all.",
+      "\n\n",
+      "To estimate a limit, try inputs closer and closer to the point, some slightly smaller than it and some slightly larger. If the outputs on both sides settle toward one number, that number is the limit. If the two sides settle toward different numbers, the limit does not exist. For a rule with no break at the point, such as ",
+      {
+        "plain": "x²",
+        "tex": "x^{2}"
+      },
+      " or ",
+      {
+        "plain": "2x + 1",
+        "tex": "2x + 1"
+      },
+      ", the limit is simply the rule's value there. The same idea applies when an input grows without bound: ",
+      {
+        "plain": "1/n",
+        "tex": "1/n"
+      },
+      " approaches 0 as ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " grows, although no ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " makes it equal 0."
+    ],
+    "c:162:example": [
+      "Let ",
+      {
+        "plain": "f(x) = (x² − 1)/(x − 1)",
+        "tex": "f(x)=\\dfrac{x^{2}-1}{x-1}"
+      },
+      ". At ",
+      {
+        "plain": "x = 1",
+        "tex": "x = 1"
+      },
+      " the numerator (top) and the denominator (bottom) are both 0, and ",
+      {
+        "plain": "0/0",
+        "tex": "0/0"
+      },
+      " has no value, so ",
+      {
+        "plain": "f(1)",
+        "tex": "f(1)"
+      },
+      " is undefined. Nearby inputs do give outputs: ",
+      {
+        "plain": "f(0.9) = 1.9",
+        "tex": "f(0.9) = 1.9"
+      },
+      " and ",
+      {
+        "plain": "f(0.99) = 1.99",
+        "tex": "f(0.99) = 1.99"
+      },
+      " on one side, ",
+      {
+        "plain": "f(1.1) = 2.1",
+        "tex": "f(1.1) = 2.1"
+      },
+      " and ",
+      {
+        "plain": "f(1.01) = 2.01",
+        "tex": "f(1.01) = 2.01"
+      },
+      " on the other. Both sides close in on 2, so the limit as ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " approaches 1 is 2.",
+      "\n\n",
+      "None of these inputs produces exactly 2, and the function still has no value at 1. The limit is a statement about the trend: the outputs can be brought as close to 2 as we like by taking ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " close enough to 1. For every input other than 1, this ratio works out to ",
+      {
+        "plain": "x + 1",
+        "tex": "x + 1"
+      },
+      ", which is why the outputs head for 2. In the code, add an input such as 0.9999 to either list to move closer. The next lesson relies on exactly this situation: a ratio whose denominator shrinks toward zero."
+    ],
+    "c:162:formulaNote": [
+      {
+        "plain": "f",
+        "tex": "f"
+      },
+      " is the function, ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " its input, ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " the point that the input approaches, and ",
+      {
+        "plain": "L",
+        "tex": "L"
+      },
+      " the limit. Read the formula as “the limit of f of x, as x approaches a, equals L.” The arrow means “approaches”: ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " gets close to ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " without needing to equal it. Writing ",
+      {
+        "plain": "∞",
+        "tex": "\\infty"
+      },
+      " (infinity) in place of ",
+      {
+        "plain": "a",
+        "tex": "a"
+      },
+      " means that the input grows without bound."
+    ],
+    "q:162-01:question": [
+      "For ",
+      {
+        "plain": "g(x) = (x² − 4)/(x − 2)",
+        "tex": "g(x)=\\dfrac{x^{2}-4}{x-2}"
+      },
+      ", nearby outputs are ",
+      {
+        "plain": "g(1.9) = 3.9",
+        "tex": "g(1.9) = 3.9"
+      },
+      ", ",
+      {
+        "plain": "g(1.99) = 3.99",
+        "tex": "g(1.99) = 3.99"
+      },
+      ", ",
+      {
+        "plain": "g(2.01) = 4.01",
+        "tex": "g(2.01) = 4.01"
+      },
+      " and ",
+      {
+        "plain": "g(2.1) = 4.1",
+        "tex": "g(2.1) = 4.1"
+      },
+      ". What is the limit as ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " approaches 2?"
+    ],
+    "q:162-01:feedback": [
+      "From both sides the outputs close in on 4. The ratio has no value at 2 itself, where it becomes ",
+      {
+        "plain": "0/0",
+        "tex": "0/0"
+      },
+      ", yet its limit there exists."
+    ],
+    "q:162-01:option:1": [
+      {
+        "plain": "3.9",
+        "tex": "3.9"
+      }
+    ],
+    "q:162-01:option:2": [
+      {
+        "plain": "4",
+        "tex": "4"
+      }
+    ],
+    "q:162-01:option:3": [
+      {
+        "plain": "2",
+        "tex": "2"
+      }
+    ],
+    "q:162-02:feedback": [
+      "A limit describes the trend of nearby outputs. A ratio that becomes ",
+      {
+        "plain": "0/0",
+        "tex": "0/0"
+      },
+      " at one input can still have outputs that settle toward one number around it."
+    ],
+    "q:162-03:option:1": [
+      {
+        "plain": "0",
+        "tex": "0"
+      }
+    ],
+    "q:162-03:option:2": [
+      {
+        "plain": "1",
+        "tex": "1"
+      }
+    ],
+    "q:162-03:option:3": [
+      {
+        "plain": "−1",
+        "tex": "-1"
+      }
+    ],
+    "q:162-04:question": [
+      "What is the limit of ",
+      {
+        "plain": "f(x) = 2x + 1",
+        "tex": "f(x) = 2x + 1"
+      },
+      " as ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " approaches 3?"
+    ],
+    "q:162-04:feedback": [
+      "This rule has no break at 3, so nearby outputs approach its value there: ",
+      {
+        "plain": "2 × 3 + 1 = 7",
+        "tex": "2\\times 3+1=7"
+      },
+      "."
+    ],
+    "q:162-04:option:0": [
+      {
+        "plain": "3",
+        "tex": "3"
+      }
+    ],
+    "q:162-04:option:1": [
+      {
+        "plain": "7",
+        "tex": "7"
+      }
+    ],
+    "q:162-04:option:2": [
+      {
+        "plain": "6",
+        "tex": "6"
+      }
+    ],
+    "q:162-05:question": [
+      "A function has ",
+      {
+        "plain": "f(2) = 10",
+        "tex": "f(2) = 10"
+      },
+      ", yet its outputs approach 4 as ",
+      {
+        "plain": "x",
+        "tex": "x"
+      },
+      " approaches 2 from both sides. What is its limit at 2?"
+    ],
+    "q:162-05:option:0": [
+      {
+        "plain": "10",
+        "tex": "10"
+      }
+    ],
+    "q:162-05:option:1": [
+      {
+        "plain": "7",
+        "tex": "7"
+      }
+    ],
+    "q:162-05:option:3": [
+      {
+        "plain": "4",
+        "tex": "4"
+      }
+    ],
+    "q:162-06:question": [
+      "As ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " grows without bound, what does ",
+      {
+        "plain": "1/n",
+        "tex": "1/n"
+      },
+      " approach?"
+    ],
+    "q:162-06:feedback": [
+      "Dividing 1 by larger and larger numbers gives 0.1, 0.01, 0.001 and so on. The outputs approach 0, although no ",
+      {
+        "plain": "n",
+        "tex": "n"
+      },
+      " makes ",
+      {
+        "plain": "1/n",
+        "tex": "1/n"
+      },
+      " equal to 0."
+    ],
+    "q:162-06:option:1": [
+      {
+        "plain": "1",
+        "tex": "1"
+      }
+    ],
+    "q:162-06:option:2": [
+      {
+        "plain": "n",
+        "tex": "n"
+      }
+    ],
+    "q:162-06:option:3": [
+      {
+        "plain": "0",
+        "tex": "0"
+      }
+    ],
+    "q:162-08:question": [
+      "Why can the value of ",
+      {
+        "plain": "(x² − 9)/(x − 3)",
+        "tex": "\\dfrac{x^{2}-9}{x-3}"
+      },
+      " at ",
+      {
+        "plain": "x = 3",
+        "tex": "x = 3"
+      },
+      " not be found by substituting?"
+    ],
+    "q:162-08:feedback": [
+      "The numerator and the denominator are both 0 at 3, and ",
+      {
+        "plain": "0/0",
+        "tex": "0/0"
+      },
+      " has no value. Nearby inputs still give outputs, so a limit can be examined."
+    ],
+    "q:162-08:option:2": [
+      "Substituting gives ",
+      {
+        "plain": "0/0",
+        "tex": "0/0"
+      },
+      ", which has no value"
+    ],
+    "q:162-10:option:0": [
+      {
+        "plain": "6.001",
+        "tex": "6.001"
+      }
+    ],
+    "q:162-10:option:1": [
+      {
+        "plain": "0.001",
+        "tex": "0.001"
+      }
+    ],
+    "q:162-10:option:2": [
+      {
+        "plain": "0",
+        "tex": "0"
+      }
+    ],
+    "q:162-10:option:3": [
+      {
+        "plain": "6",
+        "tex": "6"
+      }
     ]
   }
 }

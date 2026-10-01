@@ -751,5 +751,23 @@
       }
     ],
     "plots": 1
+  },
+  "162": {
+    "expression": "f(x) = (x^2 - 1) / (x - 1);\n# Inputs closing in on 1 from each side. Add 0.9999 or 1.0001 to move closer.\nbelow = [0.9, 0.99, 0.999];\nabove = [1.1, 1.01, 1.001];\n{below: round(map(below, f), 9), above: round(map(above, f), 9)}\n# At 1 itself the ratio is 0/0. NaN means \"not a number\": it has no value.\nf(1)",
+    "expected": [
+      {
+        "below": [
+          1.9,
+          1.99,
+          1.999
+        ],
+        "above": [
+          2.1,
+          2.01,
+          2.001
+        ]
+      },
+      "NaN"
+    ]
   }
 }

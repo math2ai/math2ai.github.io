@@ -12,27 +12,27 @@
     },
     {
       "title": "Learning from data",
-      "start": 42
+      "start": 43
     },
     {
       "title": "Neural networks and representations",
-      "start": 61
+      "start": 62
     },
     {
       "title": "Language models",
-      "start": 88
+      "start": 89
     },
     {
       "title": "Reinforcement learning and control",
-      "start": 101
+      "start": 102
     },
     {
       "title": "Computing hardware",
-      "start": 115
+      "start": 116
     },
     {
       "title": "Applied AI: Mineral Resource Extraction",
-      "start": 125
+      "start": 126
     }
   ],
   "concepts": [
@@ -1045,193 +1045,6 @@
     },
     {
       "id": 7,
-      "legacyId": 7,
-      "chapter": "Numbers and linear algebra",
-      "title": "Tensor",
-      "definition": "In machine learning, a tensor is an array of numbers organized along axes. A scalar has no axes, a vector one, and a matrix two. A stack of tables has three: table, row, and column. Its shape lists the length of each axis in that order.\n\nAn entry is one number stored at one position. The entry count is the total number of these positions, including zeros and repeated values. Multiply all the axis lengths to find it. This differs from the number of axes, which is how many lengths the shape lists.\n\nExtra axes preserve structure that a single long list would hide. For example, several observations can each contain a table of measurements. The tensor stores all of them together, but an axis has no built-in meaning: its name and ordering must be specified before indexing or combining the data.",
-      "formula": "shape = (tables, rows, columns)\nentries = tables × rows × columns",
-      "formulaNote": "T names the tensor. Tᵢⱼₖ selects table i, row j, column k. Indices start at 1.",
-      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).\n\nTo find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
-      "metaphor": "A book of number tables needs a page, row, and column to locate one number.",
-      "question": "A tensor has tables [[2,8],[5,1]] and [[9,4],[6,3]]. Indices start at 1 and mean (table, row, column). What is T₁₂₁?",
-      "options": [
-        "8",
-        "6",
-        "9",
-        "5"
-      ],
-      "correct": 3,
-      "feedback": "The first index selects the first table. Its second row is [5,1], whose first entry is 5.",
-      "sources": [
-        {
-          "title": "Array (data type): Multi-dimensional arrays, Wikipedia",
-          "label": "Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Array_(data_type)#Multi-dimensional_arrays"
-        },
-        {
-          "title": "Introduction to Tensors, TensorFlow",
-          "url": "https://www.tensorflow.org/guide/tensor",
-          "label": "Documentation"
-        }
-      ],
-      "questions": [
-        {
-          "id": "7-01",
-          "question": "A tensor has tables [[2,8],[5,1]] and [[9,4],[6,3]]. Indices start at 1 and mean (table, row, column). What is T₁₂₁?",
-          "options": [
-            "8",
-            "6",
-            "9",
-            "5"
-          ],
-          "correct": 3,
-          "feedback": "The first index selects the first table. Its second row is [5,1], whose first entry is 5.",
-          "retryFeedback": "Use the three indices in their stated order. Select a table first, then a row within it, and finally a column."
-        },
-        {
-          "id": "7-02",
-          "question": "How many axes does an ML tensor of shape (5, 3, 2) have?",
-          "options": [
-            "3",
-            "10",
-            "5",
-            "30"
-          ],
-          "correct": 0,
-          "feedback": "Each listed dimension describes one axis.",
-          "retryFeedback": "Each position in a shape tuple specifies one axis. The values in those positions specify axis lengths."
-        },
-        {
-          "id": "7-03",
-          "question": "How many scalar entries are in a tensor of shape (3, 2, 5)?",
-          "options": [
-            "15",
-            "3",
-            "30",
-            "10"
-          ],
-          "correct": 2,
-          "feedback": "Multiply the axis lengths: 3 × 2 × 5 = 30 entries.",
-          "retryFeedback": "Each choice on one axis combines with every choice on the others. Count all combinations rather than adding axis lengths."
-        },
-        {
-          "id": "7-04",
-          "question": "A tensor's axes are (table, row, column), with shape (4, 6, 2). What does the final length, 2, count?",
-          "options": [
-            "Rows in each table",
-            "Tables in the stack",
-            "Columns in each table",
-            "All scalar entries in the tensor"
-          ],
-          "correct": 2,
-          "feedback": "Shape lengths follow the stated axis order. The third length counts columns, so each table has two columns.",
-          "retryFeedback": "Match each length to the axis in the same position. An axis length counts positions along that axis, not the number of axes."
-        },
-        {
-          "id": "7-05",
-          "question": "How many indices select a scalar entry from a three-axis tensor?",
-          "options": [
-            "2",
-            "1",
-            "6",
-            "3"
-          ],
-          "correct": 3,
-          "feedback": "One index is needed for each axis.",
-          "retryFeedback": "Selecting one entry means fixing a position on every axis. Leaving an axis unspecified leaves a collection of values."
-        },
-        {
-          "id": "7-06",
-          "question": "What is the number of axes of a scalar in ML tensor terminology?",
-          "options": [
-            "0",
-            "2",
-            "Undefined for all scalars",
-            "1"
-          ],
-          "correct": 0,
-          "feedback": "A scalar has no indexing axes.",
-          "retryFeedback": "An axis is a direction along which entries vary. A single numerical value requires no coordinate positions to distinguish entries."
-        },
-        {
-          "id": "7-07",
-          "question": "A stack has 3 tables, each with 4 rows and 2 columns. Which shape describes it in (table, row, column) order?",
-          "options": [
-            "(24)",
-            "(3, 2, 4)",
-            "(3, 4, 2)",
-            "(2, 4, 3)"
-          ],
-          "correct": 2,
-          "feedback": "The shape lists the three axis lengths in the specified order: (3, 4, 2). The product 24 is the entry count, not the shape.",
-          "retryFeedback": "Read the axis names in order and match each to its length. Multiplying lengths answers a different question."
-        },
-        {
-          "id": "7-08",
-          "question": "Which shape has a different entry count from (2, 3)?",
-          "options": [
-            "(3, 2)",
-            "(2, 4)",
-            "(1, 6)",
-            "(6)"
-          ],
-          "correct": 1,
-          "feedback": "Shape (2, 3) has 6 entries. Shape (2, 4) has 8; each other choice has 6.",
-          "retryFeedback": "Multiply the lengths in each shape to count entries. Having the same number of axes does not ensure the same number of entries."
-        },
-        {
-          "id": "7-09",
-          "question": "Does an axis length of three mean there are three axes?",
-          "options": [
-            "No",
-            "Only for integers",
-            "Yes",
-            "Only for images"
-          ],
-          "correct": 0,
-          "feedback": "An axis's length and the number of axes are different properties.",
-          "retryFeedback": "Distinguish the number of positions in a shape tuple from the length specified at one of those positions."
-        },
-        {
-          "id": "7-10",
-          "question": "In a tensor indexed as (table, row, column), which index changes when moving to another table but keeping the row and column fixed?",
-          "options": [
-            "All three indices",
-            "The third index only",
-            "The second index only",
-            "The first index only"
-          ],
-          "correct": 3,
-          "feedback": "The first index selects the table. The other two still select the same row and column within the new table.",
-          "retryFeedback": "Separate the coordinate that selects a table from the coordinates that locate an entry inside that table."
-        }
-      ],
-      "connections": {
-        "mentions": [
-          {
-            "field": "definition",
-            "text": "scalar",
-            "target": 1
-          },
-          {
-            "field": "definition",
-            "text": "vector",
-            "target": 5
-          },
-          {
-            "field": "definition",
-            "text": "matrix",
-            "target": 6
-          }
-        ],
-        "usedIn": [
-          115,
-          59
-        ]
-      }
-    },
-    {
-      "id": 8,
       "legacyId": 8,
       "chapter": "Numbers and linear algebra",
       "title": "Summation",
@@ -1399,7 +1212,7 @@
       }
     },
     {
-      "id": 9,
+      "id": 8,
       "legacyId": 150,
       "chapter": "Numbers and linear algebra",
       "title": "Linear combinations",
@@ -1583,7 +1396,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 9,
       "legacyId": 9,
       "chapter": "Numbers and linear algebra",
       "title": "Dot product",
@@ -1753,6 +1566,193 @@
           154,
           155,
           33
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "legacyId": 7,
+      "chapter": "Numbers and linear algebra",
+      "title": "Tensor",
+      "definition": "In machine learning, a tensor is an array of numbers organized along axes. A scalar has no axes, a vector one, and a matrix two. A stack of tables has three: table, row, and column. Its shape lists the length of each axis in that order.\n\nAn entry is one number stored at one position. The entry count is the total number of these positions, including zeros and repeated values. Multiply all the axis lengths to find it. This differs from the number of axes, which is how many lengths the shape lists.\n\nExtra axes preserve structure that a single long list would hide. For example, several observations can each contain a table of measurements. The tensor stores all of them together, but an axis has no built-in meaning: its name and ordering must be specified before indexing or combining the data.",
+      "formula": "shape = (tables, rows, columns)\nentries = tables × rows × columns",
+      "formulaNote": "T names the tensor. Tᵢⱼₖ selects table i, row j, column k. Indices start at 1.",
+      "example": "A stack of 2 tables, each with 3 rows and 4 columns, has shape (2, 3, 4): 3 axes and 2×3×4 = 24 entries. For a smaller stack with tables [[1,2],[3,4]] and [[5,6],[7,8]], T₂₁₂ = 6. Its shape is (2, 2, 2).\n\nTo find the displayed 6, first choose table 2, then its first row, then that row's second entry. Changing only the first index selects another table while keeping the same row and column. Flattening the stack into a list would keep its numbers, but recovering the table structure would also require remembering the original shape and ordering.",
+      "metaphor": "A book of number tables needs a page, row, and column to locate one number.",
+      "question": "A tensor has tables [[2,8],[5,1]] and [[9,4],[6,3]]. Indices start at 1 and mean (table, row, column). What is T₁₂₁?",
+      "options": [
+        "8",
+        "6",
+        "9",
+        "5"
+      ],
+      "correct": 3,
+      "feedback": "The first index selects the first table. Its second row is [5,1], whose first entry is 5.",
+      "sources": [
+        {
+          "title": "Array (data type): Multi-dimensional arrays, Wikipedia",
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Array_(data_type)#Multi-dimensional_arrays"
+        },
+        {
+          "title": "Introduction to Tensors, TensorFlow",
+          "url": "https://www.tensorflow.org/guide/tensor",
+          "label": "Documentation"
+        }
+      ],
+      "questions": [
+        {
+          "id": "7-01",
+          "question": "A tensor has tables [[2,8],[5,1]] and [[9,4],[6,3]]. Indices start at 1 and mean (table, row, column). What is T₁₂₁?",
+          "options": [
+            "8",
+            "6",
+            "9",
+            "5"
+          ],
+          "correct": 3,
+          "feedback": "The first index selects the first table. Its second row is [5,1], whose first entry is 5.",
+          "retryFeedback": "Use the three indices in their stated order. Select a table first, then a row within it, and finally a column."
+        },
+        {
+          "id": "7-02",
+          "question": "How many axes does an ML tensor of shape (5, 3, 2) have?",
+          "options": [
+            "3",
+            "10",
+            "5",
+            "30"
+          ],
+          "correct": 0,
+          "feedback": "Each listed dimension describes one axis.",
+          "retryFeedback": "Each position in a shape tuple specifies one axis. The values in those positions specify axis lengths."
+        },
+        {
+          "id": "7-03",
+          "question": "How many scalar entries are in a tensor of shape (3, 2, 5)?",
+          "options": [
+            "15",
+            "3",
+            "30",
+            "10"
+          ],
+          "correct": 2,
+          "feedback": "Multiply the axis lengths: 3 × 2 × 5 = 30 entries.",
+          "retryFeedback": "Each choice on one axis combines with every choice on the others. Count all combinations rather than adding axis lengths."
+        },
+        {
+          "id": "7-04",
+          "question": "A tensor's axes are (table, row, column), with shape (4, 6, 2). What does the final length, 2, count?",
+          "options": [
+            "Rows in each table",
+            "Tables in the stack",
+            "Columns in each table",
+            "All scalar entries in the tensor"
+          ],
+          "correct": 2,
+          "feedback": "Shape lengths follow the stated axis order. The third length counts columns, so each table has two columns.",
+          "retryFeedback": "Match each length to the axis in the same position. An axis length counts positions along that axis, not the number of axes."
+        },
+        {
+          "id": "7-05",
+          "question": "How many indices select a scalar entry from a three-axis tensor?",
+          "options": [
+            "2",
+            "1",
+            "6",
+            "3"
+          ],
+          "correct": 3,
+          "feedback": "One index is needed for each axis.",
+          "retryFeedback": "Selecting one entry means fixing a position on every axis. Leaving an axis unspecified leaves a collection of values."
+        },
+        {
+          "id": "7-06",
+          "question": "What is the number of axes of a scalar in ML tensor terminology?",
+          "options": [
+            "0",
+            "2",
+            "Undefined for all scalars",
+            "1"
+          ],
+          "correct": 0,
+          "feedback": "A scalar has no indexing axes.",
+          "retryFeedback": "An axis is a direction along which entries vary. A single numerical value requires no coordinate positions to distinguish entries."
+        },
+        {
+          "id": "7-07",
+          "question": "A stack has 3 tables, each with 4 rows and 2 columns. Which shape describes it in (table, row, column) order?",
+          "options": [
+            "(24)",
+            "(3, 2, 4)",
+            "(3, 4, 2)",
+            "(2, 4, 3)"
+          ],
+          "correct": 2,
+          "feedback": "The shape lists the three axis lengths in the specified order: (3, 4, 2). The product 24 is the entry count, not the shape.",
+          "retryFeedback": "Read the axis names in order and match each to its length. Multiplying lengths answers a different question."
+        },
+        {
+          "id": "7-08",
+          "question": "Which shape has a different entry count from (2, 3)?",
+          "options": [
+            "(3, 2)",
+            "(2, 4)",
+            "(1, 6)",
+            "(6)"
+          ],
+          "correct": 1,
+          "feedback": "Shape (2, 3) has 6 entries. Shape (2, 4) has 8; each other choice has 6.",
+          "retryFeedback": "Multiply the lengths in each shape to count entries. Having the same number of axes does not ensure the same number of entries."
+        },
+        {
+          "id": "7-09",
+          "question": "Does an axis length of three mean there are three axes?",
+          "options": [
+            "No",
+            "Only for integers",
+            "Yes",
+            "Only for images"
+          ],
+          "correct": 0,
+          "feedback": "An axis's length and the number of axes are different properties.",
+          "retryFeedback": "Distinguish the number of positions in a shape tuple from the length specified at one of those positions."
+        },
+        {
+          "id": "7-10",
+          "question": "In a tensor indexed as (table, row, column), which index changes when moving to another table but keeping the row and column fixed?",
+          "options": [
+            "All three indices",
+            "The third index only",
+            "The second index only",
+            "The first index only"
+          ],
+          "correct": 3,
+          "feedback": "The first index selects the table. The other two still select the same row and column within the new table.",
+          "retryFeedback": "Separate the coordinate that selects a table from the coordinates that locate an entry inside that table."
+        }
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "scalar",
+            "target": 1
+          },
+          {
+            "field": "definition",
+            "text": "vector",
+            "target": 5
+          },
+          {
+            "field": "definition",
+            "text": "matrix",
+            "target": 6
+          }
+        ],
+        "usedIn": [
+          115,
+          59
         ]
       }
     },
@@ -5869,6 +5869,178 @@
     },
     {
       "id": 34,
+      "legacyId": 162,
+      "chapter": "Probability and calculus",
+      "title": "Limits",
+      "definition": "A limit is the value that a function's outputs approach as its input approaches a chosen point. The input may come as close to that point as we like without reaching it. Because a limit describes the nearby outputs, the function need not take that value at the point, or have any value there at all.\n\nTo estimate a limit, try inputs closer and closer to the point, some slightly smaller than it and some slightly larger. If the outputs on both sides settle toward one number, that number is the limit. If the two sides settle toward different numbers, the limit does not exist. For a rule with no break at the point, such as x² or 2x + 1, the limit is simply the rule's value there. The same idea applies when an input grows without bound: 1/n approaches 0 as n grows, although no n makes it equal 0.",
+      "formula": "limₓ→ₐ f(x) = L",
+      "formulaNote": "f is the function, x its input, a the point that the input approaches, and L the limit. Read the formula as “the limit of f of x, as x approaches a, equals L.” The arrow means “approaches”: x gets close to a without needing to equal it. Writing ∞ (infinity) in place of a means that the input grows without bound.",
+      "example": "Let f(x) = (x² − 1)/(x − 1). At x = 1 the numerator (top) and the denominator (bottom) are both 0, and 0/0 has no value, so f(1) is undefined. Nearby inputs do give outputs: f(0.9) = 1.9 and f(0.99) = 1.99 on one side, f(1.1) = 2.1 and f(1.01) = 2.01 on the other. Both sides close in on 2, so the limit as x approaches 1 is 2.\n\nNone of these inputs produces exactly 2, and the function still has no value at 1. The limit is a statement about the trend: the outputs can be brought as close to 2 as we like by taking x close enough to 1. For every input other than 1, this ratio works out to x + 1, which is why the outputs head for 2. In the code, add an input such as 0.9999 to either list to move closer. The next lesson relies on exactly this situation: a ratio whose denominator shrinks toward zero.",
+      "metaphor": "Walk toward a doorway. The limit is the threshold you are heading for, whether or not you are allowed to step onto it.",
+      "question": "For g(x) = (x² − 4)/(x − 2), nearby outputs are g(1.9) = 3.9, g(1.99) = 3.99, g(2.01) = 4.01 and g(2.1) = 4.1. What is the limit as x approaches 2?",
+      "options": [
+        "It does not exist",
+        "3.9",
+        "4",
+        "2"
+      ],
+      "correct": 2,
+      "feedback": "From both sides the outputs close in on 4. The ratio has no value at 2 itself, where it becomes 0/0, yet its limit there exists.",
+      "sources": [
+        {
+          "title": "Limit of a function, Wikipedia",
+          "label": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Limit_of_a_function"
+        }
+      ],
+      "questions": [
+        {
+          "id": "162-01",
+          "question": "For g(x) = (x² − 4)/(x − 2), nearby outputs are g(1.9) = 3.9, g(1.99) = 3.99, g(2.01) = 4.01 and g(2.1) = 4.1. What is the limit as x approaches 2?",
+          "options": [
+            "It does not exist",
+            "3.9",
+            "4",
+            "2"
+          ],
+          "correct": 2,
+          "feedback": "From both sides the outputs close in on 4. The ratio has no value at 2 itself, where it becomes 0/0, yet its limit there exists.",
+          "retryFeedback": "Read the outputs in order as the input nears the point from each side. Ask which single number both lists are closing in on."
+        },
+        {
+          "id": "162-02",
+          "question": "Must a function have a value at a point for its limit there to exist?",
+          "options": [
+            "Yes; the limit is the value at the point",
+            "No; the limit depends only on outputs at nearby inputs",
+            "Only when that value is zero",
+            "Yes; otherwise nearby outputs have no value either"
+          ],
+          "correct": 1,
+          "feedback": "A limit describes the trend of nearby outputs. A ratio that becomes 0/0 at one input can still have outputs that settle toward one number around it.",
+          "retryFeedback": "A limit is built from outputs at inputs near the point, not at the point. Consider whether the point's own output is ever consulted."
+        },
+        {
+          "id": "162-03",
+          "question": "Approaching 0 using inputs below it, a function's outputs stay at −1. Using inputs above it, they stay at 1. What is its limit at 0?",
+          "options": [
+            "It does not exist",
+            "0",
+            "1",
+            "−1"
+          ],
+          "correct": 0,
+          "feedback": "A limit needs the outputs on both sides to settle toward the same number. Here the sides settle toward different numbers, and averaging them does not create a limit.",
+          "retryFeedback": "Compare the number the outputs settle toward on one side with the number on the other side. A limit requires those two to match."
+        },
+        {
+          "id": "162-04",
+          "question": "What is the limit of f(x) = 2x + 1 as x approaches 3?",
+          "options": [
+            "3",
+            "7",
+            "6",
+            "It does not exist"
+          ],
+          "correct": 1,
+          "feedback": "This rule has no break at 3, so nearby outputs approach its value there: 2 × 3 + 1 = 7.",
+          "retryFeedback": "Check whether this rule has any break at the point. If it does not, the nearby outputs approach the rule's own value there."
+        },
+        {
+          "id": "162-05",
+          "question": "A function has f(2) = 10, yet its outputs approach 4 as x approaches 2 from both sides. What is its limit at 2?",
+          "options": [
+            "10",
+            "7",
+            "It does not exist",
+            "4"
+          ],
+          "correct": 3,
+          "feedback": "The limit follows the outputs at nearby inputs, which approach 4. The single value assigned at the point does not change it.",
+          "retryFeedback": "Separate two facts: the value assigned at the point, and the number that outputs at nearby inputs approach. Only one of them defines a limit."
+        },
+        {
+          "id": "162-06",
+          "question": "As n grows without bound, what does 1/n approach?",
+          "options": [
+            "It grows without bound",
+            "1",
+            "n",
+            "0"
+          ],
+          "correct": 3,
+          "feedback": "Dividing 1 by larger and larger numbers gives 0.1, 0.01, 0.001 and so on. The outputs approach 0, although no n makes 1/n equal to 0.",
+          "retryFeedback": "Try a few growing inputs, such as 10, 100 and 1,000, and watch the outputs. Ask what number they are closing in on."
+        },
+        {
+          "id": "162-07",
+          "question": "Outputs near a point are 2.9, 2.99 and 2.999 on one side and 3.1, 3.01 and 3.001 on the other. Which statement do they support?",
+          "options": [
+            "The function's value at the point is 3",
+            "The limit is 2.999",
+            "No limit exists, because 3 never appears",
+            "The limit at the point appears to be 3"
+          ],
+          "correct": 3,
+          "feedback": "Both sides close in on 3, which is what a limit records. The list says nothing about the value at the point itself, and a limit need not appear among the outputs.",
+          "retryFeedback": "A limit is read from the trend of nearby outputs. Check what the list tells you about the point itself, and whether a limit must appear in it."
+        },
+        {
+          "id": "162-08",
+          "question": "Why can the value of (x² − 9)/(x − 3) at x = 3 not be found by substituting?",
+          "options": [
+            "Substituting gives 6",
+            "The ratio has no value at any input",
+            "Substituting gives 0/0, which has no value",
+            "Substituting gives 0"
+          ],
+          "correct": 2,
+          "feedback": "The numerator and the denominator are both 0 at 3, and 0/0 has no value. Nearby inputs still give outputs, so a limit can be examined.",
+          "retryFeedback": "Work out the numerator and the denominator separately at that input. Then ask whether the resulting division has a value."
+        },
+        {
+          "id": "162-09",
+          "question": "You want to estimate a limit at 5 from calculated outputs. Which inputs are most useful?",
+          "options": [
+            "Inputs close to 5 on both sides, such as 4.99 and 5.01",
+            "Inputs far from 5, such as 0 and 100",
+            "Only the input 5 itself",
+            "Only inputs larger than 5"
+          ],
+          "correct": 0,
+          "feedback": "A limit concerns outputs near the point, and both sides must agree. One side alone could miss a disagreement, and distant inputs say little about behavior near 5.",
+          "retryFeedback": "A limit describes outputs near the point from both directions. Decide which inputs reveal that nearby behavior, and whether one direction is enough."
+        },
+        {
+          "id": "162-10",
+          "question": "A ratio is 6.1 when its denominator is 0.1, 6.01 when the denominator is 0.01, and 6.001 when it is 0.001. What does the ratio approach as the denominator shrinks toward zero?",
+          "options": [
+            "6.001",
+            "0.001",
+            "0",
+            "6"
+          ],
+          "correct": 3,
+          "feedback": "The ratios close in on 6 as the denominator shrinks. The denominator heads toward 0, but the ratio does not follow it there. The derivative is built from a ratio like this.",
+          "retryFeedback": "Watch the ratio, not the shrinking denominator. List the three ratios in order and ask what number they are closing in on."
+        }
+      ],
+      "connections": {
+        "mentions": [
+          {
+            "field": "definition",
+            "text": "function",
+            "target": 3
+          }
+        ],
+        "usedIn": [
+          19,
+          22
+        ]
+      }
+    },
+    {
+      "id": 35,
       "legacyId": 19,
       "chapter": "Probability and calculus",
       "title": "Derivative",
@@ -6031,6 +6203,11 @@
             "field": "definition",
             "text": "function",
             "target": 3
+          },
+          {
+            "field": "definition",
+            "text": "limit",
+            "target": 162
           }
         ],
         "usedIn": [
@@ -6041,7 +6218,7 @@
       }
     },
     {
-      "id": 35,
+      "id": 36,
       "legacyId": 22,
       "chapter": "Probability and calculus",
       "title": "Integral",
@@ -6209,13 +6386,18 @@
             "field": "definition",
             "text": "sums",
             "target": 8
+          },
+          {
+            "field": "definition",
+            "text": "limit",
+            "target": 162
           }
         ],
         "usedIn": []
       }
     },
     {
-      "id": 36,
+      "id": 37,
       "legacyId": 20,
       "chapter": "Probability and calculus",
       "title": "Gradient",
@@ -6394,7 +6576,7 @@
       }
     },
     {
-      "id": 37,
+      "id": 38,
       "legacyId": 108,
       "chapter": "Probability and calculus",
       "title": "Hessian and curvature",
@@ -6581,7 +6763,7 @@
       }
     },
     {
-      "id": 38,
+      "id": 39,
       "legacyId": 21,
       "chapter": "Probability and calculus",
       "title": "Chain rule",
@@ -6752,7 +6934,7 @@
       }
     },
     {
-      "id": 39,
+      "id": 40,
       "legacyId": 23,
       "chapter": "Probability and calculus",
       "title": "Optimization",
@@ -6920,7 +7102,7 @@
       }
     },
     {
-      "id": 40,
+      "id": 41,
       "legacyId": 107,
       "chapter": "Probability and calculus",
       "title": "Lagrange multipliers",
@@ -7106,7 +7288,7 @@
       }
     },
     {
-      "id": 41,
+      "id": 42,
       "legacyId": 24,
       "chapter": "Probability and calculus",
       "title": "Gradient descent",
@@ -7284,7 +7466,7 @@
       }
     },
     {
-      "id": 42,
+      "id": 43,
       "legacyId": 25,
       "chapter": "Learning from data",
       "title": "Dataset and features",
@@ -7452,7 +7634,7 @@
       }
     },
     {
-      "id": 43,
+      "id": 44,
       "legacyId": 30,
       "chapter": "Learning from data",
       "title": "Linear regression",
@@ -7625,7 +7807,7 @@
       }
     },
     {
-      "id": 44,
+      "id": 45,
       "legacyId": 31,
       "chapter": "Learning from data",
       "title": "Mean squared error",
@@ -7797,7 +7979,7 @@
       }
     },
     {
-      "id": 45,
+      "id": 46,
       "legacyId": 29,
       "chapter": "Learning from data",
       "title": "Supervised learning",
@@ -7965,7 +8147,7 @@
       }
     },
     {
-      "id": 46,
+      "id": 47,
       "legacyId": 32,
       "chapter": "Learning from data",
       "title": "Parameter and hyperparameter",
@@ -8139,7 +8321,7 @@
       }
     },
     {
-      "id": 47,
+      "id": 48,
       "legacyId": 27,
       "chapter": "Learning from data",
       "title": "Training, validation and test",
@@ -8313,7 +8495,7 @@
       }
     },
     {
-      "id": 48,
+      "id": 49,
       "legacyId": 28,
       "chapter": "Learning from data",
       "title": "Data leakage",
@@ -8485,7 +8667,7 @@
       }
     },
     {
-      "id": 49,
+      "id": 50,
       "legacyId": 26,
       "chapter": "Learning from data",
       "title": "Normalization",
@@ -8658,7 +8840,7 @@
       }
     },
     {
-      "id": 50,
+      "id": 51,
       "legacyId": 109,
       "chapter": "Learning from data",
       "title": "k-nearest neighbors",
@@ -8840,7 +9022,7 @@
       }
     },
     {
-      "id": 51,
+      "id": 52,
       "legacyId": 110,
       "chapter": "Learning from data",
       "title": "Decision trees",
@@ -9023,7 +9205,7 @@
       }
     },
     {
-      "id": 52,
+      "id": 53,
       "legacyId": 41,
       "chapter": "Learning from data",
       "title": "Overfitting",
@@ -9195,7 +9377,7 @@
       }
     },
     {
-      "id": 53,
+      "id": 54,
       "legacyId": 42,
       "chapter": "Learning from data",
       "title": "Regularization",
@@ -9361,7 +9543,7 @@
       }
     },
     {
-      "id": 54,
+      "id": 55,
       "legacyId": 111,
       "chapter": "Learning from data",
       "title": "Random forests",
@@ -9537,7 +9719,7 @@
       }
     },
     {
-      "id": 55,
+      "id": 56,
       "legacyId": 112,
       "chapter": "Learning from data",
       "title": "Gradient boosting",
@@ -9723,7 +9905,7 @@
       }
     },
     {
-      "id": 56,
+      "id": 57,
       "legacyId": 113,
       "chapter": "Learning from data",
       "title": "Class imbalance, precision and recall",
@@ -9899,7 +10081,7 @@
       }
     },
     {
-      "id": 57,
+      "id": 58,
       "legacyId": 114,
       "chapter": "Learning from data",
       "title": "Probability calibration",
@@ -10076,7 +10258,7 @@
       }
     },
     {
-      "id": 58,
+      "id": 59,
       "legacyId": 120,
       "chapter": "Learning from data",
       "title": "Causal inference",
@@ -10250,7 +10432,7 @@
       }
     },
     {
-      "id": 59,
+      "id": 60,
       "legacyId": 118,
       "chapter": "Learning from data",
       "title": "Domain shift and adaptation",
@@ -10428,7 +10610,7 @@
       }
     },
     {
-      "id": 60,
+      "id": 61,
       "legacyId": 119,
       "chapter": "Learning from data",
       "title": "Active learning",
@@ -10604,7 +10786,7 @@
       }
     },
     {
-      "id": 61,
+      "id": 62,
       "legacyId": 33,
       "chapter": "Neural networks and representations",
       "title": "Artificial neuron",
@@ -10783,7 +10965,7 @@
       }
     },
     {
-      "id": 62,
+      "id": 63,
       "legacyId": 34,
       "chapter": "Neural networks and representations",
       "title": "Sigmoid",
@@ -10959,7 +11141,7 @@
       }
     },
     {
-      "id": 63,
+      "id": 64,
       "legacyId": 35,
       "chapter": "Neural networks and representations",
       "title": "ReLU",
@@ -11132,7 +11314,7 @@
       }
     },
     {
-      "id": 64,
+      "id": 65,
       "legacyId": 37,
       "chapter": "Neural networks and representations",
       "title": "Forward pass",
@@ -11305,7 +11487,7 @@
       }
     },
     {
-      "id": 65,
+      "id": 66,
       "legacyId": 38,
       "chapter": "Neural networks and representations",
       "title": "Backpropagation",
@@ -11499,7 +11681,7 @@
       }
     },
     {
-      "id": 66,
+      "id": 67,
       "legacyId": 39,
       "chapter": "Neural networks and representations",
       "title": "Mini-batch gradient descent",
@@ -11678,7 +11860,7 @@
       }
     },
     {
-      "id": 67,
+      "id": 68,
       "legacyId": 40,
       "chapter": "Neural networks and representations",
       "title": "Epoch",
@@ -11855,7 +12037,7 @@
       }
     },
     {
-      "id": 68,
+      "id": 69,
       "legacyId": 36,
       "chapter": "Neural networks and representations",
       "title": "Deep neural network",
@@ -12029,7 +12211,7 @@
       }
     },
     {
-      "id": 69,
+      "id": 70,
       "legacyId": 115,
       "chapter": "Neural networks and representations",
       "title": "Convolutional neural networks",
@@ -12206,7 +12388,7 @@
       }
     },
     {
-      "id": 70,
+      "id": 71,
       "legacyId": 116,
       "chapter": "Neural networks and representations",
       "title": "Graph neural networks",
@@ -12374,7 +12556,7 @@
       }
     },
     {
-      "id": 71,
+      "id": 72,
       "legacyId": 43,
       "chapter": "Neural networks and representations",
       "title": "Softmax",
@@ -12548,7 +12730,7 @@
       }
     },
     {
-      "id": 72,
+      "id": 73,
       "legacyId": 44,
       "chapter": "Neural networks and representations",
       "title": "Cross-entropy",
@@ -12727,7 +12909,7 @@
       }
     },
     {
-      "id": 73,
+      "id": 74,
       "legacyId": 105,
       "chapter": "Neural networks and representations",
       "title": "KL divergence",
@@ -12904,7 +13086,7 @@
       }
     },
     {
-      "id": 74,
+      "id": 75,
       "legacyId": 45,
       "chapter": "Neural networks and representations",
       "title": "Self-supervised learning",
@@ -13072,7 +13254,7 @@
       }
     },
     {
-      "id": 75,
+      "id": 76,
       "legacyId": 46,
       "chapter": "Neural networks and representations",
       "title": "Embedding",
@@ -13251,7 +13433,7 @@
       }
     },
     {
-      "id": 76,
+      "id": 77,
       "legacyId": 47,
       "chapter": "Neural networks and representations",
       "title": "Cosine similarity",
@@ -13433,7 +13615,7 @@
       }
     },
     {
-      "id": 77,
+      "id": 78,
       "legacyId": 117,
       "chapter": "Neural networks and representations",
       "title": "Contrastive learning",
@@ -13609,7 +13791,7 @@
       }
     },
     {
-      "id": 78,
+      "id": 79,
       "legacyId": 48,
       "chapter": "Neural networks and representations",
       "title": "Principal component analysis",
@@ -13790,7 +13972,7 @@
       }
     },
     {
-      "id": 79,
+      "id": 80,
       "legacyId": 49,
       "chapter": "Neural networks and representations",
       "title": "Autoencoder",
@@ -13968,7 +14150,7 @@
       }
     },
     {
-      "id": 80,
+      "id": 81,
       "legacyId": 50,
       "chapter": "Neural networks and representations",
       "title": "Latent space and bottleneck",
@@ -14151,7 +14333,7 @@
       }
     },
     {
-      "id": 81,
+      "id": 82,
       "legacyId": 79,
       "chapter": "Neural networks and representations",
       "title": "Bit and byte",
@@ -14318,7 +14500,7 @@
       }
     },
     {
-      "id": 82,
+      "id": 83,
       "legacyId": 80,
       "chapter": "Neural networks and representations",
       "title": "Numerical precision",
@@ -14491,7 +14673,7 @@
       }
     },
     {
-      "id": 83,
+      "id": 84,
       "legacyId": 51,
       "chapter": "Neural networks and representations",
       "title": "Rate-distortion tradeoff",
@@ -14668,7 +14850,7 @@
       }
     },
     {
-      "id": 84,
+      "id": 85,
       "legacyId": 52,
       "chapter": "Neural networks and representations",
       "title": "Vector quantization",
@@ -14850,7 +15032,7 @@
       }
     },
     {
-      "id": 85,
+      "id": 86,
       "legacyId": 54,
       "chapter": "Neural networks and representations",
       "title": "Token and vocabulary",
@@ -15023,7 +15205,7 @@
       }
     },
     {
-      "id": 86,
+      "id": 87,
       "legacyId": 53,
       "chapter": "Neural networks and representations",
       "title": "Vector-quantized autoencoder",
@@ -15209,7 +15391,7 @@
       }
     },
     {
-      "id": 87,
+      "id": 88,
       "legacyId": 121,
       "chapter": "Neural networks and representations",
       "title": "Diffusion models",
@@ -15377,7 +15559,7 @@
       }
     },
     {
-      "id": 88,
+      "id": 89,
       "legacyId": 55,
       "chapter": "Language models",
       "title": "Sequence and autocorrelation",
@@ -15549,7 +15731,7 @@
       }
     },
     {
-      "id": 89,
+      "id": 90,
       "legacyId": 56,
       "chapter": "Language models",
       "title": "Positional encoding",
@@ -15735,7 +15917,7 @@
       }
     },
     {
-      "id": 90,
+      "id": 91,
       "legacyId": 57,
       "chapter": "Language models",
       "title": "Scaled dot-product attention",
@@ -15919,7 +16101,7 @@
       }
     },
     {
-      "id": 91,
+      "id": 92,
       "legacyId": 58,
       "chapter": "Language models",
       "title": "Multi-head attention",
@@ -16101,7 +16283,7 @@
       }
     },
     {
-      "id": 92,
+      "id": 93,
       "legacyId": 60,
       "chapter": "Language models",
       "title": "Causal mask",
@@ -16289,7 +16471,7 @@
       }
     },
     {
-      "id": 93,
+      "id": 94,
       "legacyId": 59,
       "chapter": "Language models",
       "title": "Transformer",
@@ -16478,7 +16660,7 @@
       }
     },
     {
-      "id": 94,
+      "id": 95,
       "legacyId": 61,
       "chapter": "Language models",
       "title": "Large language models and next-token prediction",
@@ -16667,7 +16849,7 @@
       }
     },
     {
-      "id": 95,
+      "id": 96,
       "legacyId": 122,
       "chapter": "Language models",
       "title": "Mixture of experts",
@@ -16848,7 +17030,7 @@
       }
     },
     {
-      "id": 96,
+      "id": 97,
       "legacyId": 62,
       "chapter": "Language models",
       "title": "Fine-tuning",
@@ -17030,7 +17212,7 @@
       }
     },
     {
-      "id": 97,
+      "id": 98,
       "legacyId": 124,
       "chapter": "Language models",
       "title": "Model distillation",
@@ -17206,7 +17388,7 @@
       }
     },
     {
-      "id": 98,
+      "id": 99,
       "legacyId": 63,
       "chapter": "Language models",
       "title": "Retrieval-augmented generation",
@@ -17387,7 +17569,7 @@
       }
     },
     {
-      "id": 99,
+      "id": 100,
       "legacyId": 94,
       "chapter": "Language models",
       "title": "API and SDK",
@@ -17554,7 +17736,7 @@
       }
     },
     {
-      "id": 100,
+      "id": 101,
       "legacyId": 64,
       "chapter": "Language models",
       "title": "Tool calling",
@@ -17720,7 +17902,7 @@
       }
     },
     {
-      "id": 101,
+      "id": 102,
       "legacyId": 66,
       "chapter": "Reinforcement learning and control",
       "title": "State, observation and action",
@@ -17898,7 +18080,7 @@
       }
     },
     {
-      "id": 102,
+      "id": 103,
       "legacyId": 65,
       "chapter": "Reinforcement learning and control",
       "title": "Dynamical system",
@@ -18076,7 +18258,7 @@
       }
     },
     {
-      "id": 103,
+      "id": 104,
       "legacyId": 67,
       "chapter": "Reinforcement learning and control",
       "title": "Markov decision process",
@@ -18260,7 +18442,7 @@
       }
     },
     {
-      "id": 104,
+      "id": 105,
       "legacyId": 68,
       "chapter": "Reinforcement learning and control",
       "title": "Reward and return",
@@ -18433,7 +18615,7 @@
       }
     },
     {
-      "id": 105,
+      "id": 106,
       "legacyId": 69,
       "chapter": "Reinforcement learning and control",
       "title": "Policy",
@@ -18616,7 +18798,7 @@
       }
     },
     {
-      "id": 106,
+      "id": 107,
       "legacyId": 70,
       "chapter": "Reinforcement learning and control",
       "title": "Value function",
@@ -18803,7 +18985,7 @@
       }
     },
     {
-      "id": 107,
+      "id": 108,
       "legacyId": 71,
       "chapter": "Reinforcement learning and control",
       "title": "Bellman equation",
@@ -18991,7 +19173,7 @@
       }
     },
     {
-      "id": 108,
+      "id": 109,
       "legacyId": 73,
       "chapter": "Reinforcement learning and control",
       "title": "Exploration and exploitation",
@@ -19168,7 +19350,7 @@
       }
     },
     {
-      "id": 109,
+      "id": 110,
       "legacyId": 72,
       "chapter": "Reinforcement learning and control",
       "title": "Q-learning",
@@ -19347,7 +19529,7 @@
       }
     },
     {
-      "id": 110,
+      "id": 111,
       "legacyId": 74,
       "chapter": "Reinforcement learning and control",
       "title": "Policy gradient",
@@ -19533,7 +19715,7 @@
       }
     },
     {
-      "id": 111,
+      "id": 112,
       "legacyId": 76,
       "chapter": "Reinforcement learning and control",
       "title": "Model-based RL",
@@ -19714,7 +19896,7 @@
       }
     },
     {
-      "id": 112,
+      "id": 113,
       "legacyId": 78,
       "chapter": "Reinforcement learning and control",
       "title": "Safety constraint",
@@ -19895,7 +20077,7 @@
       }
     },
     {
-      "id": 113,
+      "id": 114,
       "legacyId": 77,
       "chapter": "Reinforcement learning and control",
       "title": "Model predictive control",
@@ -20069,7 +20251,7 @@
       }
     },
     {
-      "id": 114,
+      "id": 115,
       "legacyId": 75,
       "chapter": "Reinforcement learning and control",
       "title": "RLHF",
@@ -20253,7 +20435,7 @@
       }
     },
     {
-      "id": 115,
+      "id": 116,
       "legacyId": 81,
       "chapter": "Computing hardware",
       "title": "CPU",
@@ -20419,7 +20601,7 @@
       }
     },
     {
-      "id": 116,
+      "id": 117,
       "legacyId": 82,
       "chapter": "Computing hardware",
       "title": "GPU",
@@ -20593,7 +20775,7 @@
       }
     },
     {
-      "id": 117,
+      "id": 118,
       "legacyId": 83,
       "chapter": "Computing hardware",
       "title": "Tensor core",
@@ -20769,7 +20951,7 @@
       }
     },
     {
-      "id": 118,
+      "id": 119,
       "legacyId": 84,
       "chapter": "Computing hardware",
       "title": "CUDA",
@@ -20946,7 +21128,7 @@
       }
     },
     {
-      "id": 119,
+      "id": 120,
       "legacyId": 85,
       "chapter": "Computing hardware",
       "title": "Memory capacity",
@@ -21129,7 +21311,7 @@
       }
     },
     {
-      "id": 120,
+      "id": 121,
       "legacyId": 123,
       "chapter": "Computing hardware",
       "title": "Context windows and KV caching",
@@ -21313,7 +21495,7 @@
       }
     },
     {
-      "id": 121,
+      "id": 122,
       "legacyId": 86,
       "chapter": "Computing hardware",
       "title": "Memory bandwidth",
@@ -21479,7 +21661,7 @@
       }
     },
     {
-      "id": 122,
+      "id": 123,
       "legacyId": 87,
       "chapter": "Computing hardware",
       "title": "H100",
@@ -21660,7 +21842,7 @@
       }
     },
     {
-      "id": 123,
+      "id": 124,
       "legacyId": 88,
       "chapter": "Computing hardware",
       "title": "Compute cluster",
@@ -21844,7 +22026,7 @@
       }
     },
     {
-      "id": 124,
+      "id": 125,
       "legacyId": 89,
       "chapter": "Computing hardware",
       "title": "TSMC and chip fabrication",
@@ -22012,7 +22194,7 @@
       }
     },
     {
-      "id": 125,
+      "id": 126,
       "legacyId": 90,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Borehole logs and assays",
@@ -22190,7 +22372,7 @@
       }
     },
     {
-      "id": 126,
+      "id": 127,
       "legacyId": 125,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Assay quality control",
@@ -22367,7 +22549,7 @@
       }
     },
     {
-      "id": 127,
+      "id": 128,
       "legacyId": 92,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Provenance and uncertainty",
@@ -22534,7 +22716,7 @@
       }
     },
     {
-      "id": 128,
+      "id": 129,
       "legacyId": 93,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Geoscience data integration",
@@ -22717,7 +22899,7 @@
       }
     },
     {
-      "id": 129,
+      "id": 130,
       "legacyId": 91,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Windowing and missing data",
@@ -22889,7 +23071,7 @@
       }
     },
     {
-      "id": 130,
+      "id": 131,
       "legacyId": 96,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Ore grade estimation",
@@ -23078,7 +23260,7 @@
       }
     },
     {
-      "id": 131,
+      "id": 132,
       "legacyId": 127,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Variograms and kriging",
@@ -23254,7 +23436,7 @@
       }
     },
     {
-      "id": 132,
+      "id": 133,
       "legacyId": 126,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Spatial cross-validation",
@@ -23430,7 +23612,7 @@
       }
     },
     {
-      "id": 133,
+      "id": 134,
       "legacyId": 128,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Mineral processing and recovery",
@@ -23611,7 +23793,7 @@
       }
     },
     {
-      "id": 134,
+      "id": 135,
       "legacyId": 97,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Representation alignment",
@@ -23792,7 +23974,7 @@
       }
     },
     {
-      "id": 135,
+      "id": 136,
       "legacyId": 98,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Benchmark and ablation",
@@ -23964,7 +24146,7 @@
       }
     },
     {
-      "id": 136,
+      "id": 137,
       "legacyId": 95,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Open source and reproducibility",
@@ -24134,7 +24316,7 @@
       }
     },
     {
-      "id": 137,
+      "id": 138,
       "legacyId": 99,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Forward-deployed engineering",
@@ -24299,7 +24481,7 @@
       }
     },
     {
-      "id": 138,
+      "id": 139,
       "legacyId": 100,
       "chapter": "Applied AI: Mineral Resource Extraction",
       "title": "Grounded model conversation",

@@ -335,6 +335,10 @@
   el('retry').disabled = !ready;
   el('reset').disabled = !ready;
   el('retry').hidden = !checked || finished || r.attempts !== 1;
+  // Once a round is finished, offer the next question beside its explanation.
+  el('next-question').hidden = !finished;
+  el('next-question').disabled = !ready;
+  el('next-question').textContent = nextLabel;
   el('reset-question').hidden = !finished;
   el('reset-question').disabled = !ready;
   el('feedback').hidden = r.attempts === 0;
@@ -496,6 +500,12 @@
   const c = items[state.current]; draw(c);
   // Browsing preserves each question's draft, feedback and retry budget.
   quiz(); save();
+ };
+ el('next-question').onclick = () => {
+  if (!ready) return;
+  el('another').onclick();
+  // The button usually disappears with the old feedback; move to the new prompt.
+  el('question').focus();
  };
  el('previous-question').onclick = () => {
   if (!ready || review) return;

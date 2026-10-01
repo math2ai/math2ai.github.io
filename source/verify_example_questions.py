@@ -94,4 +94,4 @@ unique('60-08', lambda text: int(text.split()[-1]), lambda position: position > 
 # supplied logarithms. The prompt intentionally supplies sufficient precision.
 unique('124-01', lambda text: float(text.split()[-1]), lambda value: abs(value - (.25*.223+.75*1.609)) <= .00051)
 
-print('PASS: all 138 lessons and 1,380 question IDs covered by the editorial record; 99 copied prompts stay replaced; independent checks of fresh scenarios and unique answers.')
+print('PASS: all 139 lessons and 1,390 question IDs covered by the editorial record; 99 copied prompts stay replaced; independent checks of fresh scenarios and unique answers.')

@@ -1528,3 +1528,14 @@ Compare the reconstruction error of retaining either equal-strength component. E
 Determine which component is absent in the rank-one version, then measure its contribution using the stated squared-error criterion.
 Recall the definition of rank before interpreting the approximation limit. A dense table of related numbers can still describe very few independent directions.
 Distinguish matrix entries from singular components. Ask what made the directions visible without calculation in the particular worked example.
+## Limits
+Read the outputs in order as the input nears the point from each side. Ask which single number both lists are closing in on.
+A limit is built from outputs at inputs near the point, not at the point. Consider whether the point's own output is ever consulted.
+Compare the number the outputs settle toward on one side with the number on the other side. A limit requires those two to match.
+Check whether this rule has any break at the point. If it does not, the nearby outputs approach the rule's own value there.
+Separate two facts: the value assigned at the point, and the number that outputs at nearby inputs approach. Only one of them defines a limit.
+Try a few growing inputs, such as 10, 100 and 1,000, and watch the outputs. Ask what number they are closing in on.
+A limit is read from the trend of nearby outputs. Check what the list tells you about the point itself, and whether a limit must appear in it.
+Work out the numerator and the denominator separately at that input. Then ask whether the resulting division has a value.
+A limit describes outputs near the point from both directions. Decide which inputs reveal that nearby behavior, and whether one direction is enough.
+Watch the ratio, not the shrinking denominator. List the three ratios in order and ask what number they are closing in on.

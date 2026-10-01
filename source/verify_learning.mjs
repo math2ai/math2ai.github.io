@@ -123,7 +123,7 @@ raceA.signout();raceB.signout();await flush();mark(raceA);
 raceA.signin(server,'RaceA');raceB.signin(server,'RaceB');await flush();
 assert.equal(['RaceA','RaceB'].filter(user=>server.learningData(user).fields[key(scalar)]).length,1,'one guest choice belongs to only one claiming account');
 for(const a of [bulk,recovered,raceA,raceB])a.close();
-console.log('PASS: all 138 guest markers upload in multiple batches; failed transfers survive reload; concurrent accounts claim guest choices only once.');
+console.log('PASS: all 139 guest markers upload in multiple batches; failed transfers survive reload; concurrent accounts claim guest choices only once.');
 
 // Earlier previews offered a separate completion marker. It must not reappear or
 // resurrect an older bookmark; keep server revisions so new bookmarks can sync.

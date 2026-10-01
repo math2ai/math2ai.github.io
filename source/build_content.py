@@ -109,8 +109,8 @@ for line in (ROOT/'curriculum-source.txt').read_text(encoding='utf-8').splitline
          example=example,metaphor=metaphor,question=question,options=opts,correct=opts.index(correct),feedback=feedback,
          sources=sources_for(legacy_id)))
 batch = json.loads((ROOT/'expansion-batch.json').read_text(encoding='utf-8'))
-assert len(course) == batch['currentCount'] == 138
-assert {c['legacyId'] for c in course} == set(range(1,129)) | set(batch['addedIds'])
+assert len(course) == batch['currentCount'] == 139
+assert {c['legacyId'] for c in course} == set(range(1,129)) | set(batch['addedIds']) | set(batch['laterAddedIds'])
 assert set(LEGACY_IDS) == {c['title'] for c in course}
 assert set(bank) == {c['title'] for c in course}
 assert set(retry_feedback) == set(bank)
