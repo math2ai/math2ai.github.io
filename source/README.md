@@ -187,3 +187,13 @@ Limits (stable ID 162) now sits directly before Derivative. It teaches what a li
 Stable concept IDs, question IDs, answer positions and the course version are unchanged, so saved progress, bookmarks and `#lesson-…` links keep their meaning; only display numbers shift. ID 162 is inside the range the bookmark migration already allows, so no database change is needed. The lesson is an author draft: its numerical answers are independently recomputed, but it has not had the editorial reviews recorded for earlier lessons.
 
 Additional check: `python source/verify_limits.py`.
+
+## Welcome, feedback link and link preview
+
+A new visitor sees a short welcome above the lesson, on whichever lesson they arrive at. It disappears after the first recorded answer or when **Hide** is pressed; Hide is remembered in this browser under `math2ai-welcome-v1`, separately from answers and accounts. Nothing is shown while an account's answers are still loading.
+
+**Something unclear? Send feedback** under the questions opens a new GitHub issue in a new tab, prefilled with the lesson number and title, its link, and the visible question's ID. The link carries no account or answer data, and the page itself sends nothing: there is still no network request unless the learner follows the link. The repository and site addresses are constants at the top of `site.js`.
+
+The page head has Open Graph and Twitter card tags so a shared link shows a title, description and image. The image is `source/assets/readme-lesson.jpg`, served by GitHub Pages from this repository; replace that file, or the tag in `site-template.html`, to change the preview. Sites that cache previews may take a while to pick up a change.
+
+Additional check: `node source/verify_onboarding.mjs`.

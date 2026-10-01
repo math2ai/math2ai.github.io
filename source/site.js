@@ -44,6 +44,10 @@
  let personal=learning?.status() || {owner:'loading',ready:false,values:{},message:''};
  const marker=c=>personal.values['concept:'+c.legacyId]==='revisit'?'revisit':'none';
  const markerLabel=value=>value==='revisit'?'Revisit later':'';
+ // Feedback opens a prefilled issue in a new tab; the page itself sends nothing.
+ const feedbackUrl = 'https://github.com/math2ai/math2ai.github.io/issues/new', siteUrl = 'https://math2ai.github.io/';
+ let welcomeHidden = false;
+ try { welcomeHidden = localStorage.getItem('math2ai-welcome-v1') === 'hidden'; } catch {}
  const fresh = () => ({version:course.version, current:0, concepts:{}});
  const validIndex = n => Number.isInteger(n) && n >= 0 && n < items.length;
  let state = fresh(), storageMessage = '', owner = null, viewRevision = null, ready = false, initialRender = true;
@@ -287,8 +291,14 @@
  function sourceList(sources) {
   return sources.map(s => `<a href="${escape(s.url)}" target="_blank" rel="noopener noreferrer" title="${escape(s.title)}" aria-label="${escape(s.title)} (opens in a new tab)">${escape(s.label || 'Reading')}<span aria-hidden="true"> ↗</span></a>`).join('');
  }
+ // New visitors get a short orientation until they answer a question or hide it.
+ function welcome() {
+  const practiced = Object.values(state.concepts).some(p => Object.keys(p.answers || {}).length);
+  el('welcome').hidden = !ready || welcomeHidden || practiced;
+ }
  function navigation() {
   const c = items[state.current], correct = correctCount(c);
+  welcome();
   for (const [direction,step] of [['previous',-1],['next',1]]) {
    const neighbour = items[state.current + step], button = el(`${direction}-concept-top`);
    const label = direction === 'previous' ? 'Previous concept' : 'Next concept';
@@ -326,6 +336,9 @@
   el('question-position').textContent = review ? 'Review question' : `Question ${progress(c).order.indexOf(q.id) + 1} of ${c.questions.length}`;
   const r = currentRound(c,q), finished = roundFinished(r,q);
   if (review) { el('review-concept').textContent = c.title; el('review-concept').href = `#lesson-${c.legacyId}`; }
+  const lessonLabel = `${String(c.id).padStart(3,'0')} · ${c.title}`;
+  el('report-link').href = feedbackUrl + '?title=' + encodeURIComponent('Feedback: ' + lessonLabel) + '&body=' +
+   encodeURIComponent(`Lesson: ${lessonLabel} (${siteUrl}#lesson-${c.legacyId})\nQuestion: ${q.id}\n\nWhat stopped me:\n\nWhat I expected instead:\n`);
   write(el('question'),q.question,`q:${q.id}:question`);
   el('question-group').setAttribute('aria-label',spoken(q.question,`q:${q.id}:question`));
   el('choices').innerHTML = q.options.map((o,i) => `<label class="option"><input type="radio" name="answer" aria-label="${escape(spoken(o,`q:${q.id}:option:${i}`))}" value="${i}" ${selected === i ? 'checked' : ''} ${checked || finished || !ready ? 'disabled' : ''}><span>${content(o,`q:${q.id}:option:${i}`)}</span></label>`).join('');
@@ -522,6 +535,12 @@
   const scope = persistence.status().account ? 'your account on all devices' : 'guest practice in this browser';
   if (window.confirm(`Clear all saved answers for ${scope}?`) && await persistence.reset() && owner === originalOwner) { review = null; lessonDraft = null; state = fresh(); storageMessage = ''; go(0); }
  };
+ el('welcome-hide').onclick = () => {
+  welcomeHidden = true;
+  try { localStorage.setItem('math2ai-welcome-v1','hidden'); } catch {}
+  welcome(); el('title').focus({preventScroll:true});
+ };
+ el('welcome-count').textContent = items.length;
  el('subtitle').textContent = course.subtitle;
  function hashIndex() {
   const match = location.hash.match(/^#(lesson|concept)-(\d+)$/);

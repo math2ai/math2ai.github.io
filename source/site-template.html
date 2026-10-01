@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore the ideas behind AI with clear explanations, worked examples, and practice questions."><title>math2ai</title><style>/*MATH_CSS*/</style><style>/*COURSE_CSS*/</style></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore the ideas behind AI with clear explanations, worked examples, and practice questions."><title>math2ai</title>
+<link rel="canonical" href="https://math2ai.github.io/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="math2ai"><meta property="og:url" content="https://math2ai.github.io/">
+<meta property="og:title" content="math2ai: the mathematics behind AI, one small idea at a time">
+<meta property="og:description" content="Short lessons from a single number to how a large language model works. Worked examples, editable code and ten questions per lesson. Free, no sign-up.">
+<meta property="og:image" content="https://math2ai.github.io/source/assets/readme-lesson.jpg"><meta property="og:image:width" content="800"><meta property="og:image:height" content="560"><meta property="og:image:alt" content="A math2ai lesson on the dot product, showing its definition and formula">
+<meta name="twitter:card" content="summary_large_image"><style>/*MATH_CSS*/</style><style>/*COURSE_CSS*/</style></head>
 <body>
 <a class="skip" href="#title">Skip to concept</a>
 <header>
@@ -44,6 +50,10 @@
       <a id="review-concept" class="review-concept" href="#lesson-1" hidden></a>
     </section>
     <article class="concept" id="lesson-panel">
+      <aside class="welcome" id="welcome" aria-label="About this course" hidden>
+        <p><strong>New here?</strong> math2ai explains the mathematics behind AI in <span id="welcome-count"></span> short lessons, from a single number to how a large language model works. Each lesson is one idea with a worked example and ten questions. Go in order, or pick any lesson from the menu above. If something is unclear, the feedback link under the questions is the place to say so.</p>
+        <button id="welcome-hide" type="button">Hide</button>
+      </aside>
       <p class="chapter" id="chapter"></p>
       <div class="concept-heading"><h1 id="title" tabindex="-1"></h1><span id="concept-score" class="concept-score" role="img"></span><nav id="concept-applications" class="concept-applications" aria-label="Concepts that use this idea" hidden></nav></div><p id="concept-personal" class="personal-summary" hidden></p>
       <h3>Definition</h3><p id="definition"></p><p class="formula" id="formula"></p><p class="formula-note" id="formula-note" hidden></p>
@@ -76,6 +86,7 @@
         <div id="feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
         <div class="quiz-actions"><button class="primary" id="check" type="submit" disabled>Check answer</button><button class="primary" id="retry" type="button" hidden>Try again</button><button class="primary" id="next-question" type="button" hidden>Next question</button></div>
       </form>
+      <p class="report"><a id="report-link" href="https://github.com/math2ai/math2ai.github.io/issues/new" target="_blank" rel="noopener noreferrer" title="Opens a prefilled GitHub issue naming this lesson and question">Something unclear? Send feedback<span aria-hidden="true"> ↗</span></a></p>
     </section>
     <nav class="pager" id="lesson-pager" aria-label="Concept navigation"><button id="previous">Previous concept</button><div class="pager-next"><button class="revisit-toggle" id="mark-revisit" type="button" aria-label="Revisit later" aria-pressed="false" title="Revisit later. Click to save or remove this reminder."><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path class="revisit-check" d="m7 12 3.5 3.5L17 9"/></svg><span>Revisit later</span></button><button class="primary" id="next">Next concept</button></div></nav>
   </div>
